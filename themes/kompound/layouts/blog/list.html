@@ -1,0 +1,36 @@
+{{ define "main" }}
+<section class="container mt-4">
+	<div class="row">
+		<div class="col-md-9">
+			{{ range (.Paginator 6).Pages }}
+			<article class="blog-post">
+				{{- with .Params.image -}}
+				<img src="{{ . | absURL }}" class="img-responsive" alt="post-thumb">
+				{{- end -}}
+				<a class="post-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+				{{ with .Date }}
+				<div>{{- .Format "January 2, 2006" -}}</div>
+				{{ end }}
+				<p>
+					{{- .Summary | safeHTML -}}
+				</p>
+				{{ if .Truncated -}}
+				<a href="{{ .RelPermalink }}">Read More</a>
+				{{- end }}
+			</article>
+			<hr>
+			{{ end -}}
+		</div>
+		<div class="col-md-3">
+			{{ partial "widget-tags.html" . }}<br>
+			{{ partial "widget-recent.html" . }}<br>
+			{{ partial "widget-archives.html" . }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 text-center">
+			{{ template "_internal/pagination.html" . }}
+		</div>
+	</div>
+</section>
+{{ end }}

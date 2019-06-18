@@ -1,0 +1,50 @@
+
+.interact-form .alert {
+    margin: 24px 0;
+    transition: transform .5s;
+}
+
+.interact-form input,
+.interact-form textarea {
+    padding: 24px 27px;
+    margin: 0px;
+}
+
+.form-special {
+    display: none;
+}
+
+.interact-form input:hover,
+.interact-form input:active,
+.interact-form input:focus,
+.interact-form textarea:hover,
+.interact-form textarea:active,
+.interact-form textarea:focus {
+    border-color: #79a741ff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem #79a74126;
+}
+
+.interact-form textarea {
+    background: #F6F8FA;
+    height: 135px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.interact-form button[type=submit] {
+    background: #79a741ff;
+    border: none;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    transition: background .5s;
+}
+
+.interact-form button[type=submit]:hover {
+    background: rgb(70, 97, 38);
+}
+
+.interact-form button[type=submit][disabled] {
+    background: rgba(121, 167, 65, 0.37);
+}

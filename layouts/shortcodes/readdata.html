@@ -1,0 +1,2 @@
+{{ $target := index .Site.Data.downloads (.Get 1)}}
+{{ index $target (.Get 0) }}

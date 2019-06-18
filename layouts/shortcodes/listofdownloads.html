@@ -1,0 +1,6 @@
+{{ range $element := .Site.Data.downloads }}
+{{ with $element.title }}
+<dt>{{ $element.title }}</dt>
+<dd>{{ $element.desc }}</dd>
+{{ end }}
+{{ end }}

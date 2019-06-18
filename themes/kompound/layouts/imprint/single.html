@@ -1,0 +1,29 @@
+{{ define "main" }}
+{{ partial "pageheader.html" . }}
+
+<section class="container my-4">
+  <div class="row">
+    <div class="col-md-7 col-sm-12">
+      {{ with .Params }}
+
+      <h3>{{ .headtitle }}</h3>
+
+      <div class="imprintblock">{{ .address | safeHTML }}</div>
+      <p>{{ .responsible }}</p>
+
+      <p><i class="fas fa-envelope"></i> <a href="{{ $.Site.Params.email_link }}">{{ $.Site.Params.email }}</a><br>
+        <i class="fas fa-phone"></i> <a href="{{ $.Site.Params.phone_link }}">{{ $.Site.Params.phone }}</a></p>
+      <p>{{ .vat }}</p>
+
+
+      {{ end }}
+    </div>
+
+    <div class="col-md-5 col-sm-12">
+      {{ .Content }}
+    </div>
+
+  </div>
+</section>
+
+{{ end }}

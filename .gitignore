@@ -1,0 +1,5 @@
+resources/
+.directory
+node_modules/
+public/
+src/

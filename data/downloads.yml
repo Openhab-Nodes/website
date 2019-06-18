@@ -1,0 +1,18 @@
+pi3image:
+  title: RPI-3 | 2019.05.05-α
+  desc: Raspberry Pi 3 SD-Card Image 64-bit 2910.05.05-Alpha
+  url: "/getting_started#download"
+  arch: "RPI-3"
+  type: "Image"
+  version: "2019.05.05-α"
+x86docker:
+  title: PC | 2019.05.05-α
+  desc: x86 Docker 64-bit 2910.05.05-Alpha
+  url: "/getting_started#download"
+  arch: "PC"
+  type: "Docker"
+  version: "2019.05.05-α"
+changelogs:
+  2019-05-05-α:
+    version: "2019.05.05-α"
+    desc: "Startup problems fixed"

@@ -1,0 +1,7 @@
+{{ $options := (dict "targetPath" "/css/index.css" "outputStyle" "compressed" "enableSourceMap" true) -}}
+<link rel="stylesheet"
+	href='{{- (resources.Get "/scss/index.scss" | toCSS $options | minify).Permalink | safeHTMLAttr -}}'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+<script defer src="/js/component_swiper.js"></script>
+<script defer type="module" src="/js/cmp_subscription.js"></script>

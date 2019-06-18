@@ -1,0 +1,38 @@
+title: Why openHAB X
+subtitle: >
+  openHAB X talks to more than just one family of devices and frees you from vendor lock-ins.
+  Find support for &hellip;
+subtitle2: >
+  &hellip;, ZWave, Zigbee and many, many more in the
+  <a href='{{ relLangURL "addons" }}'>Addons</a> section.
+content:
+  - title: App Compatible
+    image: /img/logos/hue-font.png
+    text: >
+      Control your smarthome via any <abbr
+      title="It is not guaranteed that the official Philips Hue app works, of course.">compatible</abbr>
+      Hue App. Including Room, Rules, Schedules support.
+  - title: Mobile / Tablet App
+    icon: mobile-alt
+    text: >
+      A simple, themeable Android &amp; iOS App complements how you control openHAB X.
+  - title: Voice Assistant Control
+    icon: microphone
+    text: >
+      Use the offline Snips voice recognition and our Natural Language Interpreter support or <abbr
+      title="Cloud connections cause traffic and uptime costs. A low fare subscription is required.">cloud
+      based assistants</abbr>.
+
+content2:
+  - title: "Powerful: Textual &amp; Graphical"
+    icon: font
+    text: >
+      Use Copy &amp; Paste, Find &amp; Replace in text mode or stay in graphically mode for configuration and rule management.
+  - title: Stay In Full Control
+    icon: chart-pie
+    text: >
+      Keep an eye on many runtime metrics and setup alarm notifications to detect unusual behaviour.
+  - title: Commercial support
+    icon: receipt
+    text: >
+      Concentrate on awesome DIY projects while we keep your back free, your system up-to-date and your home running.

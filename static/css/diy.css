@@ -1,0 +1,37 @@
+.esp8266 {
+    justify-content: center;
+    align-items: flex-start;
+}
+.line-container {
+    position: relative;
+    margin-top: 2px;
+    margin-bottom: 8px;
+}
+.line1 {
+    width: 50px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.line2 {
+    width: 100%;
+    opacity: .2;
+}
+.line1, .line2 {
+    height: 2px;
+    background: #fff;
+}
+.features {
+    border-radius: 6px;
+    padding: 15px;
+    color: #fff;
+    font-size: 15px;
+    text-align: left;
+    display: block;
+    position: relative;
+    background: var(--primary);
+}
+.badge-gpio  {
+    background-color: #8d4ba3;
+    color:white;
+}

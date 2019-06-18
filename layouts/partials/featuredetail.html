@@ -1,0 +1,40 @@
+<section class="section" class="container" id="{{ .id }}">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-12 col-md-9">
+            <h2>{{ safeHTML .header }}</h2>
+        </div>
+        <div class="col col-md-3 servicecategory" style="align-self: center;">
+            <picture>
+                <source srcset="{{ .img1 }}" type="image/webp">
+                <img src="{{.img2 }}" />
+            </picture>
+        </div>
+        <div class="col-12 col-md-9">
+            {{ safeHTML .main }}
+        </div>
+        <div class="col col-md-3"></div>
+        <div class="col-md-9 py-3">
+            <div class="card-deck">
+                {{ range $icon := .icons }}
+                <div class="card servicecard mb-3">
+                    <div class="card-header">{{ safeHTML $icon.title }}</div>
+                    <div class="card-body">
+                        <img class="img pr-3" src="{{ $icon.icon }}">
+                        <div class="card-text">
+                            <p>{{ safeHTML $icon.text }}</p>
+                            {{ with $icon.links }}
+                            <ul>
+                                {{ range $title, $href := $icon.links }}
+                                <li><a href="{{ $href }}">{{ $title }}</a></li>
+                                {{ end }}
+                            </ul>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>

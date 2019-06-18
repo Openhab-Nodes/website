@@ -1,0 +1,35 @@
+#news {
+    .blog-post {
+        margin-bottom: 50px;
+    }
+
+    .blog-post img {
+        margin-bottom: 15px;
+    }
+
+    .blog-post p {
+        color: #8d8f92;
+        margin: 15px 0 20px;
+    }
+
+    .post-title {
+        font-size: x-large;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+    .blog-post {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    #news .features-img {
+        text-align: center;
+    }
+}

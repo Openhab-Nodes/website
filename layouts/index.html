@@ -1,0 +1,155 @@
+{{ define "main" }}
+{{ partial "head_index.html" }}
+
+<section id="jumbo">
+	<div class="back clouds"></div>
+	<div class="back2 clouds"></div>
+	<div class="front clouds"></div>
+	<div class="front2 clouds"></div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				{{ with .Site.Params.slider }}
+				<img class="animated fadeInUp mainlogo" src="/img/openhab-logo-x.svg">
+				<p class="animated fadeInUp block">
+					{{- i18n "aboutus_index" | safeHTML -}}
+				</p>
+				<div class="animated fadeInUp descriptions">
+					<a href="#features" class="btn btn-lg btn-primary btn-impressive">Learn more</a>
+				</div>
+				{{ end }}
+			</div>
+			<div class="col-md-4 offset-md-2 text-center d-none d-md-block" id="intro_features">
+				<div class="swiper-container" style="max-width: 350px;height: 250px">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide center"
+							style="background-image:url(/img/rasp_with_sd.png);background-position-y: 50px;">
+							<h3 class="block" style="align-self: flex-start;">Easy Setup</h2>
+						</div>
+						<div class="swiper-slide center"
+							style="background-image:url(/img/rasp_with_sticks.png);background-position-y: 50px;">
+							<h3 class="block" style="align-self: flex-start;">Extensible</h2>
+						</div>
+						<div class="swiper-slide center">
+							<div class="wrapper">
+								<div class="back image" style="background-image:url(/img/features/create_account.png);">
+								</div>
+								<div class="front image"
+									style="background-image:url(/img/features/connect_to_wifi.png);"></div>
+							</div>
+							<h3 class="block" style="align-self: flex-start;">Guided First Time Config</h2>
+						</div>
+						<div class="swiper-slide center" style="overflow: hidden">
+							<div class="addons_anim" style="background-image:url(/img/features/addons.png);"></div>
+							<h3 class="block" style="align-self: flex-start;position: relative;">Hundreds of Addons</h2>
+						</div>
+						<div class="swiper-slide center" style="overflow: hidden">
+							<div class="addons_anim2" style="background-image:url(/img/features/automation.png);"></div>
+							<h3 class="block" style="align-self: flex-start;position: relative;">Automation</h2>
+						</div>
+						<div class="swiper-slide center" style="background-image:url(/img/features/maintenance.png);">
+							<h3 class="block">Full control</h2>
+						</div>
+					</div>
+					<div class="swiper-pagination"></div>
+				</div>
+				<ui-swiper target="intro_features" cube autoplay></ui-swiper>
+
+			</div>
+		</div>
+		<img class="animated fadeIn" src="/img/logo1.webp"
+			style="position: relative;z-index:-1; float: right;margin-top:-100px;margin-right:-100px;filter: opacity(0.5);max-width: 100%">
+	</div>
+	<div class="scroll-down" aria-hidden="true">
+		<svg class="icon icon-scroll-down">
+			<use xlink:href="#scroll-down"></use>
+			<svg id="scroll-down" viewBox="0 0 25.166666 37.8704414">
+				<path fill="none" stroke="currentColor" stroke-width="2.5" stroke-miterlimit="10"
+					d="M12.5833445 36.6204414h-0.0000229C6.3499947 36.6204414 1.25 31.5204487 1.25 25.2871208V12.5833216C1.25 6.3499947 6.3499951 1.25 12.5833216 1.25h0.0000229c6.2333269 0 11.3333216 5.0999947 11.3333216 11.3333216v12.7037992C23.916666 31.5204487 18.8166714 36.6204414 12.5833445 36.6204414z">
+				</path>
+				<path style="animation: scrollDownMove .8s ease-in-out alternate infinite;" fill="currentColor"
+					d="M13.0833359 19.2157116h-0.9192753c-1.0999985 0-1.9999971-0.8999996-1.9999971-1.9999981v-5.428606c0-1.0999994 0.8999987-1.9999981 1.9999971-1.9999981h0.9192753c1.0999985 0 1.9999981 0.8999987 1.9999981 1.9999981v5.428606C15.083334 18.315712 14.1833344 19.2157116 13.0833359 19.2157116z">
+				</path>
+			</svg>
+		</svg>
+	</div>
+</section>
+
+{{ $data := index .Site.Data .Site.Language.Lang }}
+<section id="features" class="container">
+	<div class="row">
+		<article class="col-md-4 mt-md-4">
+			<h3>{{ safeHTML $data.features.title }}</h3>
+			<p>{{ safeHTML $data.features.subtitle }}</p>
+			<div class="logos">
+				<img src="/img/logos/hue.png">
+				<img src="/img/logos/wemo.png">
+				<img src="/img/logos/lifx.png">
+				<img src="/img/logos/tradfri.png">
+			</div>
+			<p class="text-left mt-3">{{ safeHTML $data.features.subtitle2 }}</p>
+		</article>
+		<div class="col-md-4 text-justify mt-md-4">
+			<div class="text-center display-4 mb-3 text-primary"></div>
+			<dl>
+				{{ range $data.features.content }}
+				<dt>
+					{{- with .icon -}}
+					<i class="fas fa-{{ . }} mr-2"></i>
+					{{ else -}}
+					<img src="{{ .image }}" class="mr-2" style="height: 1em;">
+					{{- end -}}
+					{{ safeHTML .title }}</dt>
+				<dd>{{ safeHTML .text }}</dd>
+				{{ end }}
+			</dl>
+		</div>
+		<div class="col-md-4 text-justify mt-md-4">
+			<div class="d-none d-md-block my-4">&nbsp;</div>
+			<dl>
+				{{ range $data.features.content2 }}
+				<dt><i class="fas fa-{{ .icon }} mr-2"></i> {{ safeHTML .title }}</dt>
+				<dd>{{ safeHTML .text }}</dd>
+				{{ end }}
+			</dl>
+		</div>
+	</div>
+</section>
+
+<div class="container">
+{{ .Content }}
+</div>
+
+<h2 class="index-subtitle">News</h2>
+
+<section id="news" class="container">
+	<div class="row">
+		{{ $pages := .Site.RegularPages }}
+		{{ range .Site.Home.Translations }}
+		{{ $pages = $pages | lang.Merge .Site.RegularPages }}
+		{{ end }}
+		{{ $events := where $pages.ByDate.Reverse "Section" "blog" }}
+		{{ range first 2 $events }}
+		<div class="col-md-6">
+			<article class="blog-post">
+				{{- with .Params.image -}}
+				<img src="{{ . }}" class="img-responsive" alt="post-thumb">
+				{{- end -}}
+				<a class="post-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+				{{ with .Date }}
+				<div>{{- .Format "January 2, 2006" -}}</div>
+				{{ end }}
+				<p>
+					{{- .Summary | safeHTML -}}
+				</p>
+				{{ if .Truncated -}}
+				<a href="{{ .RelPermalink }}">Read More</a>
+				{{- end }}
+			</article>
+		</div>
+		{{ end }}
+	</div>
+</section>
+
+{{ end }}

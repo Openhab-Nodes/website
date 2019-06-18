@@ -1,0 +1,53 @@
+
+/** cookie **/
+.cc-banner {
+    left: 0;
+    right: 0;
+    top: 75px;
+    align-items: center;
+    padding: 1em 1.8em;
+    width: 100%;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    position: absolute;
+    color: rgb(131, 131, 145);
+    background-color: rgb(237, 239, 245);
+    display: flex;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    z-index: 20;
+}
+
+.cc-banner .cc-message {
+    display: block;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    max-width: 100%;
+    margin-right: 1em;
+}
+
+.cc-compliance {
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    -ms-flex-line-pack: justify;
+    align-content: space-between;
+}
+
+a.cc-dismiss {
+    color: rgb(255, 255, 255);
+    background-color: #79a741;
+    border-color: transparent;
+    display: block;
+    padding: .4em .8em;
+    font-size: .9em;
+    font-weight: 700;
+    border-width: 2px;
+    border-style: solid;
+    text-align: center;
+    white-space: nowrap;
+}
+
+a.cc-dismiss:hover {
+    background-color: rgb(113, 167, 255);
+}

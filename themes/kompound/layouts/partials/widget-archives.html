@@ -1,0 +1,4 @@
+<h5>{{ i18n "archives" }}</h5>
+{{ range (where .Site.RegularPages "Section" "blog").GroupByDate "2006" }}
+<a href="{{ "archives" | absURL }}/{{ .Key }}">{{ .Key }}</a> ({{ len .Pages }})<br>
+{{ end }}

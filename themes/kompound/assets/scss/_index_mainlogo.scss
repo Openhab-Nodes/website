@@ -1,0 +1,144 @@
+.btn-impressive {
+    border-radius: 20px;
+    padding-left: 46px;
+    padding-right: 46px;
+    transition-property: color, background, border-color;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in;
+}
+
+.btn-impressive:not(:hover) {
+    color: white;
+}
+
+#jumbo {
+    min-height: calc(100vh - 70px);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .scroll-down {
+        position: absolute;
+        bottom: 2rem;
+        left: 0;
+        transform: translateX(50vw);
+        transform-origin: center center;
+        color: gainsboro;
+
+        .icon {
+            min-width: 1em;
+            display: inline-block;
+            background-repeat: no-repeat;
+            margin-right: .125rem;
+            height: 2.5em;
+            width: 1.5em;
+        }
+    }
+
+
+    @keyframes scrollDownMove {
+        0% {
+            -webkit-transform: translateY(-.15em);
+            transform: translateY(-.15em)
+        }
+
+        to {
+            -webkit-transform: translateY(.65em);
+            transform: translateY(.65em)
+        }
+    }
+
+    img.mainlogo {
+        margin-bottom: 30px;
+        max-width: 100%;
+    }
+
+    .descriptions {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        div {
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+
+        img {
+            max-height: 130px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .block {
+        color: rgb(136, 136, 136);
+
+        h1 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 100;
+            font-size: 45px;
+            line-height: 60px;
+            letter-spacing: 10px;
+            padding-bottom: 45px;
+        }
+
+        p {
+            font-size: 23px;
+            line-height: 40px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    #jumbo-work {
+        padding-top: 100px;
+        padding-bottom: 100px;
+
+        .block {
+            padding-left: 0px;
+
+            h1 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 11px;
+                line-height: 25px;
+            }
+        }
+    }
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    #jumbo-work .block h1 {
+        font-size: 28px;
+    }
+
+    #jumbo-work .block p {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    #jumbo {
+        padding-top: 90px;
+        padding-bottom: 100px;
+
+        .block {
+            padding-left: 0px;
+
+            h1 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 13px;
+            }
+        }
+    }
+}

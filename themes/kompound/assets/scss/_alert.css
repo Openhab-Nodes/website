@@ -1,0 +1,98 @@
+
+.alert {
+    border-radius: 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.11);
+    display: table;
+    background-image: linear-gradient(to bottom, #fff, #d9edf7);
+    padding-left: 61px;
+    position: relative;
+    border-color: #98cce6;
+    color: #3a87ad;
+    border-radius: 3px;
+}
+
+.alert-white .icon {
+    border-radius: 3px 0 0 3px;
+    text-align: center;
+    width: 45px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #3a8ace;
+    padding-top: 15px;
+    background: #4d90fd;
+}
+
+.alert-white .icon:after {
+    transform: rotate(45deg);
+    display: block;
+    content: '';
+    width: 10px;
+    height: 10px;
+    border: 1px solid #3a8ace;
+    position: absolute;
+    border-left: 0;
+    border-bottom: 0;
+    top: 50%;
+    right: -6px;
+    margin-top: -3px;
+    background: #4d90fd;
+}
+
+.alert-white .icon i {
+    font-size: 20px;
+    color: #fff;
+    left: 12px;
+    margin-top: -10px;
+    position: absolute;
+    top: 50%;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-image: linear-gradient(to bottom, #fff, #dff0d8);
+    border-color: #d6e9c6;
+}
+
+.alert-white.alert-success .icon,
+.alert-white.alert-success .icon:after {
+    border-color: #54a754;
+    background: #79a741ff;
+}
+
+.alert-info {
+    background-image: linear-gradient(to bottom, #fff, #d9edf7);
+    border-color: #98cce6;
+    color: #3a87ad;
+}
+
+.alert-white.alert-info .icon,
+.alert-white.alert-info .icon:after {
+    border-color: #3a8ace;
+    background: #4d90fd;
+}
+
+.alert-white.alert-warning .icon,
+.alert-white.alert-warning .icon:after {
+    border-color: #d68000;
+    background: #fc9700;
+}
+
+.alert-warning {
+    background-image: linear-gradient(to bottom, #fff, #fcf8e3);
+    border-color: #f1daab;
+    color: #c09853;
+}
+
+.alert-danger {
+    background-image: linear-gradient(to bottom, #fff, #f2dede);
+    border-color: #e0b1b8;
+    color: #b94a48;
+}
+
+.alert-white.alert-danger .icon,
+.alert-white.alert-danger .icon:after {
+    border-color: #ca452e;
+    background: #da4932;
+}

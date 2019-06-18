@@ -1,0 +1,51 @@
+<footer>
+  <div class="d-print-none px-2 px-sm-4">
+    <div class="row">
+      <div class="col-sm-6 col-md-3 col-lg-3 mb-3 footer-links">
+        <h3>{{ i18n "footer1" }}</h3>
+        <ol>
+          {{ range $element := .Site.Menus.footer1 -}}
+          <li><a href="{{ $element.URL | relLangURL }}">{{- $element.Name | safeHTML -}}</a></li>
+          {{- end }}
+        </ol>
+      </div>
+
+      <div class="col-sm-6 col-md-3 col-lg-3 mb-3 footer-links">
+        <h3>{{ i18n "footer2" }}</h3>
+        <ul>
+          {{ range $element := .Site.Menus.footer2 -}}
+          <li><a href="{{ $element.URL | relLangURL }}">{{- $element.Name | safeHTML -}}</a></li>
+          {{- end }}
+        </ul>
+
+        <h3>{{ i18n "footer3" }}</h3>
+        <ul>
+          {{ range $element := .Site.Menus.footer3 -}}
+          <li><a href="{{ $element.URL | relLangURL }}">{{- $element.Name | safeHTML -}}</a></li>
+          {{- end }}
+        </ul>
+      </div>
+
+      <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+          <h3>{{ i18n "aboutustitle" }}</h3>
+          <div class="d-flex">
+            <p>{{ safeHTML (i18n "aboutus") }} <br><br><span>{{ safeHTML (i18n "aboutus_warn") }}</span></p>
+              <img class="d-none d-lg-block" src="/img/logo.png" style="width: 120px;height: 120px;">
+          </div>
+
+          <div class="d-flex flex-wrap">
+              {{ range $element := .Site.Menus.social -}}
+              <a class="mr-md-2 btn btn-lg" title='{{ $element.Name }}' href="{{ $element.URL }}"><i class="fab fa-{{- $element.Pre -}}"></i>
+                <span class="text-dark">{{ $element.Name }}</span></a>
+              {{- end }}
+          </div>
+        </div>
+    </div>
+  </div>
+  <ul class="footer-legal">
+    {{ range $element := .Site.Menus.legal -}}
+    <li><a href="{{ $element.URL | relLangURL }}">{{- $element.Name | safeHTML -}}</a></li>
+    {{- end }}
+    <li>{{ $.Site.Copyright }}</li>
+  </ul>
+</footer>

@@ -1,0 +1,31 @@
+{{ define "main" }}
+{{ partial "pageheader.html" . }}
+{{ $cols := split .Content "<split>" }}
+
+<section class="container mt-4">
+	<div class="row">
+		<div class="col-md-12">
+			{{ index $cols 0 | safeHTML }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col mx-4" id="guidechapters">
+			<ol>
+				{{ range .Pages }}
+				<li>
+				<a class="post-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+				<p>
+					{{- .Summary | safeHTML -}}
+				</p>
+			</li>
+				{{ end -}}
+			</ol>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			{{ index $cols 1 | safeHTML }}
+		</div>
+	</div>
+</section>
+{{ end }}

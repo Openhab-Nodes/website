@@ -1,0 +1,4 @@
+{{ range $element := .Site.Data.downloads.changelogs }}
+<dt>{{ .version }}</dt>
+<dd>{{ .desc }}</dd>
+{{ end }}

@@ -1,0 +1,28 @@
+{{ define "main" }}
+{{ partial "pageheader.html" . }}
+
+<style>
+	.post {
+		border: 1px dotted #ddd;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		padding-top: 10px;
+	}
+	.post h3 {
+		padding-bottom: 20px;
+	}
+	.post section {
+		column-count: 2;
+		column-width: 200px;
+		padding-bottom: 20px;
+	}
+</style>
+
+<div class="container post">
+	{{ markdownify .Content }}
+	<hr />
+	<div class="post-info-wrapper">
+		<p class="italic bold">{{ .Params.dateInfo }}</p>
+	</div>
+</div>
+{{ end }}

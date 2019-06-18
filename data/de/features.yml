@@ -1,0 +1,38 @@
+title: Warum openHAB X
+subtitle: >
+  openHAB X versteht nicht nur Geräte eines einzelnen Herstellers und verhindert, dass es bei dir Zuhause zu einem Hersteller-lock-in kommt.
+  Unter anderen funktionieren &hellip;
+subtitle2: >
+  &hellip;, ZWave, Zigbee und viele mehr. Sieh' dich einfach in
+  <a href='{{ relLangURL "addons" }}'>Addons</a> um.
+content:
+  - title: Hue App Kompatible
+    image: /img/logos/hue-font.png
+    text: >
+      Steuere deine Geräte einfach über beliebige <abbr
+      title="Natürlich kann nicht garantiert werden, dass die offzielle Hue APP auch funktioniert. openHAB X ist kompatibel, aber kein 1:1 Ersatz.">kompatible</abbr>
+      Hue Apps. Auch die Hue Raumverwaltung, Regeln und Zeitsteuerung funktionieren.
+  - title: Nutze Sprachassistenten
+    icon: mobile-alt
+    text: >
+      Use the offline Snips voice recognition and our Natural Language Interpreter support or <abbr
+      title="Cloud connections cause traffic and uptime costs. A low fare subscription is required.">cloud
+      based assistants</abbr>.
+  - title: Handy / Tablet App
+    icon: microphone
+    text: >
+      Die simple, anpassbare Android &amp; iOS App lässt dich dein openHAB X einfach steuern.
+
+content2:
+  - title: Textual &amp; Graphical interface
+    icon: microphone
+    text: >
+      Alle Funktionen und Konfigurationen können textuell (denk' an Copy &amp; Paste oder Suchen &amp; Ersetzen) oder grafisch erledigt werden.
+  - title: Behalte alles im Auge
+    icon: chart-pie
+    text: >
+      Erstelle Alarm Benachrichtigungen und behalte ein Auge auf duzende von Laufzeitmetriken im Verwaltungsinterface.
+  - title: Kommerzieller Support
+    icon: receipt
+    text: >
+      Baue an deinem nächsten coolen DIY Projekt oder geh mit deiner Familie raus, während wir deinen Rücken frei und dein System am laufen halten.

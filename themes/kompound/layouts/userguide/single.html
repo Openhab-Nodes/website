@@ -1,0 +1,36 @@
+{{ define "main" }}
+{{ partial "pageheader.html" . }}
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			{{ partial "breadcrumb.html" . }}
+		</div>
+		<div class="col-12">
+			{{ with .Params.image }}<img src="{{ . }}" width="100%" alt="post-image"> {{ end }}
+			<!-- <div style="max-width: 200px;float:right" class="ml-md-3">
+				{{ partial "widget-tags.html" . }}<br>
+				Table of content:
+				{{ .TableOfContents }}
+			</div> -->
+			{{ .Content | markdownify }}
+
+			<hr />
+			<div class="text-right">By <b>{{ .Params.author }}</b> on <i>
+					{{ .Date.Format .Site.Params.dateFormat }}</i></div>
+			<div class="d-flex p-3" style="justify-content: space-between;">
+				{{ with .NextInSection }}<a class="btn btn-secondary" href='{{ .Permalink | relURL }}'><i
+						class="fas fa-backward"></i> {{ .Title }}</a> {{ end }}<div></div>
+				{{ with .PrevInSection }}<a class="btn btn-secondary" href='{{ .Permalink | relURL }}'>{{ .Title }} <i
+						class="fas fa-forward"></i></a> {{ end }}
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-12 pb-3">
+			{{ template "_internal/disqus.html" . }}
+		</div>
+	</div>
+</div>
+{{ end }}

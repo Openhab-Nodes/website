@@ -1,0 +1,8 @@
+name = "Kompound"
+license = "MIT"
+description = "Kompound theme"
+min_version = 0.48
+
+[author]
+  name = "David Graeff"
+

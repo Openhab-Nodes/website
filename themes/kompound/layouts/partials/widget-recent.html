@@ -1,0 +1,7 @@
+<h5>{{ i18n "recent" }}</h5>
+{{ range first 2 (where .Site.RegularPages "Section" "blog").ByPublishDate.Reverse }}
+<div class="mb-3">
+    <div><a href="{{ .Permalink | absURL }}">{{ .Title }}</a></div>
+    <time class="mute small">{{ .Date.Day }} {{ .Date.Month }} {{ .Date.Year }}</time>
+</div>
+{{ end }}

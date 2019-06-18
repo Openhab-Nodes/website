@@ -1,0 +1,33 @@
+{{ define "main" }}
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			{{ partial "breadcrumb.html" . }}
+		</div>
+		<div class="col-12 col-md-9">
+			{{ with .Params.image }}<img src="{{ . }}" width="100%" alt="post-image"> {{ end }}
+			<h1>{{ .Params.title }}</h1>
+			<p class="italic">By <span class="bold">{{ .Params.author }}</span> on <span class="bold">
+					{{ .Date.Format .Site.Params.dateFormat }}</span></p>
+			<hr />
+			{{ .Content | markdownify }}
+
+			<div class="text-center" style="padding: 30px;">
+				<a class="btn btn-secondary" href='{{ "blog" | relURL }}'>{{ i18n "back_to_news" }}</a>
+			</div>
+		</div>
+		<div class="col-md-3">
+			{{ partial "widget-tags.html" . }}<br>
+			{{ partial "widget-recent.html" . }}<br>
+			{{ partial "widget-archives.html" . }}
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			{{ template "_internal/disqus.html" . }}
+		</div>
+	</div>
+</div>
+{{ end }}

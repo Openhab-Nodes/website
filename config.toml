@@ -1,0 +1,336 @@
+baseURL = "https://www.openhabx.com/"
+languageCode = "en-us"
+title = "openHAB X"
+theme = "kompound"
+canonifyurls = true
+paginate = 10
+copyright = "© 2019 David Graeff"
+pygmentsCodeFences = true
+pygmentsStyle = "colorful"
+
+defaultContentLanguage = "en"
+disqusShortname = "openhabx"
+
+[outputs]
+  home = ["HTML"]
+
+[taxonomies]
+    tag = "tags"
+    archive = "archives"
+
+[languages]
+  [languages.en]
+  weight = 0
+  languageName = "English"
+  contentDir = "content/en"
+    [[languages.en.menu.header]]
+      weight = 1
+      name = "Features"
+      url = "#features"
+    [[languages.en.menu.header]]
+      weight = 2
+      name = "Blog"
+      url = "/blog/"
+    [[languages.en.menu.header]]
+      weight = 4
+      name = "User Guide"
+      url = "/userguide/"
+    [[languages.en.menu.header]]
+      weight = 5
+      name = "Developers"
+      url = "/developer/"
+    [[languages.en.menu.legal]]
+      weight = 3
+      name = "Terms of Service"
+      url = "/terms/"
+    [[languages.en.menu.legal]]
+      weight = 4
+      name = "Privacy Policy"
+      url = "/privacy/"
+    [[languages.en.menu.legal]]
+      weight = 5
+      name = "Code of Conduct"
+      url = "/conduct/"
+    [[languages.en.menu.legal]]
+      weight = 6
+      name = "Imprint"
+      url = "/impressum/"
+
+    [[languages.en.menu.footer2]]
+      name = "Corporate Contact"
+      url = "/corporate/"
+      weight = 1
+    [[languages.en.menu.footer2]]
+      name = "openHAB Community"
+      url = "https://community.openhab.org/"
+      weight = 2
+    [[languages.en.menu.footer2]]
+      name = "Compatibility / Difference to openHAB"
+      url = "/openhab/"
+      weight = 3
+
+    [[languages.en.menu.footer3]]
+      name = "Introduction &amp; Project Philosophy"
+      url = "/developer/"
+      weight = 1
+    [[languages.en.menu.footer3]]
+      name = "openHAB X Architecture"
+      url = "/developer/architecture"
+      weight = 2
+    [[languages.en.menu.footer3]]
+      name = "Data History / Runtime Metrics"
+      url = "/developer/metrics/"
+      weight = 3
+    [[languages.en.menu.footer3]]
+      name = "Frontend: Apps / Web-UI via GraphQL"
+      url = "/developer/frontend/"
+      weight = 4
+    [[languages.en.menu.footer3]]
+      name = "Develop addons"
+      url = "/developer/addons/"
+      weight = 5
+    [[languages.en.menu.footer3]]
+      name = "Rule Engine"
+      url = "/developer/ruleengine/"
+      weight = 6
+
+    [[languages.en.menu.footer1]]
+      name = "Getting started"
+      url = "/userguide/getting_started"
+      weight = 1
+    [[languages.en.menu.footer1]]
+      name = "Administer your System"
+      url = "/userguide/administer"
+      weight = 2
+    [[languages.en.menu.footer1]]
+      name = "Install Addons &amp; Devices"
+      url = "/userguide/addons"
+      weight = 3
+    [[languages.en.menu.footer1]]
+      name = "Link Channels"
+      url = "/userguide/channellinks"
+      weight = 4
+    [[languages.en.menu.footer1]]
+      name = "Backup &amp; Restore"
+      url = "/userguide/backup_restore"
+      weight = 5
+    [[languages.en.menu.footer1]]
+      name = "Control your Smarthome"
+      url = "/userguide/control"
+      weight = 6
+    [[languages.en.menu.footer1]]
+      name = "Data History"
+      url = "/userguide/data_history"
+      weight = 7
+    [[languages.en.menu.footer1]]
+      name = "<abbr title='Do it yourself'>DIY</abbr> Hardware &amp; Service Integration"
+      url = "/userguide/diy"
+      weight = 8
+    [[languages.en.menu.footer1]]
+      name = "Scenes"
+      url = "/userguide/scenes"
+      weight = 9
+    [[languages.en.menu.footer1]]
+      name = "Schedules"
+      url = "/userguide/schedules"
+      weight = 10
+    [[languages.en.menu.footer1]]
+      name = "Making It Smart: Rule engine"
+      url = "/userguide/rules"
+      weight = 11
+
+    [[languages.en.menu.social]]
+      name = "Hackster.io"
+      weight = 1
+      url = "https://www.hackster.io/search?i=projects&q=openhab"
+      pre = "hackerrank"
+    [[languages.en.menu.social]]
+      name = "Github"
+      weight = 2
+      url = "https://www.github.com/openhab-nodes/openhabx"
+      pre = "github"
+    [[languages.en.menu.social]]
+      name = "Discord Chat"
+      weight = 3
+      url = "https://discord.gg/HAhGSQt"
+      pre = "discord"
+    [[languages.en.menu.social]]
+      name = "openHAB Forum"
+      weight = 4
+      url = "https://community.openhab.org/"
+      pre = "discourse"
+
+  [languages.de]
+  weight = 10
+  languageName = "Deutsch"
+  contentDir = "content/de"
+    [[languages.de.menu.header]]
+      weight = 1
+      name = "Features"
+      url = "#features"
+    [[languages.de.menu.header]]
+      weight = 2
+      name = "Blog"
+      url = "/de/blog/"
+    [[languages.de.menu.header]]
+      weight = 3
+      name = "Benutzerhandbuch"
+      url = "/de/userguide/"
+    [[languages.de.menu.header]]
+      weight = 5
+      name = "Entwickler Dockumentation"
+      lang = "en"
+      url = "/de/developer/"
+    [[languages.de.menu.legal]]
+      weight = 3
+      name = "AGB"
+      url = "/terms/"
+    [[languages.de.menu.legal]]
+      weight = 4
+      name = "Datenschutzerklärung"
+      url = "/privacy/"
+    [[languages.de.menu.legal]]
+      weight = 5
+      name = "Verhaltensregeln"
+      url = "/conduct/"
+    [[languages.de.menu.legal]]
+      weight = 5
+      name = "Impressum"
+      url = "/impressum/"
+
+    [[languages.de.menu.footer2]]
+      name = "Kontakt für Unternehmen"
+      url = "/corporate/"
+      weight = 1
+    [[languages.de.menu.footer2]]
+      name = "openHAB Gemeinschaft"
+      url = "https://community.openhab.org/"
+      weight = 2
+    [[languages.de.menu.footer2]]
+      name = "Kompatibilität / Unterschiede zu openHAB"
+      url = "/openhab/"
+      weight = 3
+
+    [[languages.de.menu.footer3]]
+      name = "Einführung &amp; Projekt Philosophie"
+      url = "/developer"
+      weight = 1
+    [[languages.de.menu.footer3]]
+      name = "openHAB X Architektur"
+      url = "/developer/architecture"
+      weight = 1
+    [[languages.de.menu.footer3]]
+      name = "Daten Historie / Laufzeitmetriken"
+      url = "/developer/metrics/"
+      weight = 2
+    [[languages.de.menu.footer3]]
+      name = "Frontend: Apps / Web-UI via GraphQL"
+      url = "/developer/frontend/"
+      weight = 3
+    [[languages.de.menu.footer3]]
+      name = "Addon Entwicklung"
+      url = "/developer/addons/"
+      weight = 4
+    [[languages.de.menu.footer3]]
+      name = "Automatisierungs-Engine"
+      url = "/developer/ruleengine/"
+      weight = 5
+
+    [[languages.de.menu.footer1]]
+      name = "Einführung"
+      url = "/userguide/getting_started"
+      weight = 1
+    [[languages.de.menu.footer1]]
+      name = "Verwalte openHAB X"
+      url = "/userguide/administer"
+      weight = 2
+    [[languages.de.menu.footer1]]
+      name = "Erweiterungen und Geräte Installieren"
+      url = "/userguide/addons"
+      weight = 3
+    [[languages.de.menu.footer1]]
+      name = "Gerätekanäle verbinden"
+      url = "/userguide/channellinks"
+      weight = 4
+    [[languages.de.menu.footer1]]
+      name = "Datensicherung &amp; -Wiederherstellung"
+      url = "/userguide/backup_restore"
+      weight = 5
+    [[languages.de.menu.footer1]]
+      name = "Steuere dein Smarthome"
+      url = "/userguide/control"
+      weight = 6
+    [[languages.de.menu.footer1]]
+      name = "Daten Historie"
+      url = "/userguide/data_history"
+      weight = 7
+    [[languages.de.menu.footer1]]
+      name = "<abbr title='Do it yourself'>DIY</abbr> Hardware &amp; Service Integration"
+      url = "/userguide/diy"
+      weight = 8
+    [[languages.de.menu.footer1]]
+      name = "Szenen"
+      url = "/userguide/scenes"
+      weight = 9
+    [[languages.de.menu.footer1]]
+      name = "Zeitsteuerung"
+      url = "/userguide/schedules"
+      weight = 10
+    [[languages.de.menu.footer1]]
+      name = "Richtig Automatisieren"
+      url = "/userguide/rules"
+      weight = 11
+
+    [[languages.de.menu.social]]
+      name = "Hackster.io"
+      weight = 1
+      url = "https://www.hackster.io/search?i=projects&q=openhab"
+      pre = "hackerrank"
+    [[languages.de.menu.social]]
+      name = "Github"
+      weight = 2
+      url = "https://www.github.com/openhab-nodes/openhabx"
+      pre = "github"
+    [[languages.de.menu.social]]
+      name = "Discord Chat"
+      weight = 3
+      url = "https://discord.gg/HAhGSQt"
+      pre = "discord"
+    [[languages.de.menu.social]]
+      name = "openHAB Forum"
+      weight = 4
+      url = "https://community.openhab.org/"
+      pre = "discourse"
+
+[params]
+  email_link = "mailto:contact@openhabx.com"
+  email = "contact@openhabx.com"
+  phone_link = "tel:+491632662555"
+  phone = "+49 163 266 2555"
+
+# The site's parameters
+[languages.de.params]
+  dateFormat = "6. Januar 2006"
+  cookiemsg = "Diese Webseite nutzt Cookies um Ihnen das beste Erlebnis auf dieser Seite zu ermöglichen"
+  cookielearnmore = "Erfahren Sie mehr"
+  cookieok = "Schließen"
+
+[languages.en.params]
+  dateFormat = "6 January 2006"
+  cookiemsg = "This website uses cookies to ensure you get the best experience on our website."
+  cookielearnmore = "Learn more"
+  cookieok = "Dismiss"
+
+  [languages.en.params.slider]
+    title = "A digital marketing &amp; design agency"
+    subtitle = "Easy, extendable Smarthome Solution"
+    p1 = "Workstations"
+    p2 = "Automation"
+    p3 = "Internet of Things"
+
+  [languages.de.params.slider]
+    title = "A digital marketing &amp; design agency"
+    subtitle = "Einfache, erweiterbare Smarthome Lösung"
+    p1 = "Office"
+    p2 = "Automatisierung"
+    p3 = "dem Internet der Dinge"
