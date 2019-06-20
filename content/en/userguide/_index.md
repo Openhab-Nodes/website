@@ -1,5 +1,6 @@
 +++
 title = "User Guide"
+layout = "list"
 +++
 
 <p class="bs-callout">

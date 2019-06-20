@@ -14,6 +14,7 @@ window.customElements.define('ui-subscription', class extends HTMLElement {
         target.oninput = () => {
             let x=parseInt(target.subscriptionValue.value);
             target.x.value=x;
+            target.m.value=x;
             target.influencepoints.value=x;
             target.supporttime.value = 15 + Math.floor(30*((x-10)/90));
             target.ruletemplates.value = 3 + Math.floor(3*((x-10)/90));

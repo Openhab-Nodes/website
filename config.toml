@@ -26,19 +26,41 @@ disqusShortname = "openhabx"
     [[languages.en.menu.header]]
       weight = 1
       name = "Features"
-      url = "#features"
+      url = "/#features"
     [[languages.en.menu.header]]
       weight = 2
       name = "Blog"
       url = "/blog/"
     [[languages.en.menu.header]]
-      weight = 4
+      weight = 3
       name = "User Guide"
       url = "/userguide/"
     [[languages.en.menu.header]]
-      weight = 5
+      weight = 4
       name = "Developers"
       url = "/developer/"
+
+    [[languages.en.menu.dashboard]]
+      weight = 1
+      name = "Dashboard"
+      url = "/dashboard"
+    [[languages.en.menu.dashboard]]
+      weight = 2
+      name = "Manage OHX Installations"
+      url = "/dashboard/installations"
+    [[languages.en.menu.dashboard]]
+      weight = 3
+      name = "Subscription"
+      url = "/dashboard/subscription"
+    [[languages.en.menu.dashboard]]
+      weight = 4
+      name = "Access Token"
+      url = "/dashboard/tokens"
+    [[languages.en.menu.dashboard]]
+      weight = 5
+      name = "Backups"
+      url = "/dashboard/backups"
+
     [[languages.en.menu.legal]]
       weight = 3
       name = "Terms of Service"
@@ -167,7 +189,7 @@ disqusShortname = "openhabx"
     [[languages.de.menu.header]]
       weight = 1
       name = "Features"
-      url = "#features"
+      url = "/#features"
     [[languages.de.menu.header]]
       weight = 2
       name = "Blog"
@@ -181,6 +203,29 @@ disqusShortname = "openhabx"
       name = "Entwickler Dockumentation"
       lang = "en"
       url = "/de/developer/"
+
+
+    [[languages.de.menu.dashboard]]
+      weight = 1
+      name = "Übersicht"
+      url = "/dashboard"
+    [[languages.de.menu.dashboard]]
+      weight = 2
+      name = "Verwalte OHX Installationen"
+      url = "/dashboard/installations"
+    [[languages.de.menu.dashboard]]
+      weight = 3
+      name = "Abonnement"
+      url = "/dashboard/subscription"
+    [[languages.de.menu.dashboard]]
+      weight = 4
+      name = "Zugriffsschlüssel"
+      url = "/dashboard/tokens"
+    [[languages.de.menu.dashboard]]
+      weight = 5
+      name = "Sicherungen"
+      url = "/dashboard/backups"
+
     [[languages.de.menu.legal]]
       weight = 3
       name = "AGB"

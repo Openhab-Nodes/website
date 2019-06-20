@@ -20,13 +20,20 @@ window.customElements.define('ui-checklogin', class extends HTMLElement {
     constructor() {
         super();
         this.authCb = () => this.auth();
-        window.fetchWithAuth=fetchWithAuth;
+        window.fetchWithAuth=this.fetchWithAuth;
     }
 
     auth() {
         firebase.auth().onAuthStateChanged(function (user) {
             if (!user) {
-                window.location.assign("/login");
+                //document.body.classList.remove("logged_in");
+                if (window.location.search)
+                    window.location.assign("/login?redirect="+encodeURIComponent("/"+window.location.pathname+window.location.search));
+                else
+                    window.location.assign("/login");
+            } else {
+                if (!document.body.classList.contains("logged_in"))
+                    document.body.classList.add("logged_in");
             }
         }, function (error) {
             console.log(error);

@@ -40,7 +40,6 @@ class Popover {
 
     this.handleDocumentEvent = (evt) => {
       if (this.isVisible && evt.target !== this.trigger && evt.target !== this.popover) {
-        console.log("handleDocumentEvent", evt.target !== this.trigger, evt.target !== this.popover);
         this.destroy();
       }
     };

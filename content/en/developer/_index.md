@@ -1,5 +1,6 @@
 +++
 title = "Developer documentation"
+layout = "list"
 +++
 
 {{< readfile file="developer/_partials/authorsnote.inc" markdown="false" >}}

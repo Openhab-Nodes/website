@@ -3,7 +3,168 @@ title = "Home"
 author = "David Graeff"
 tags = []
 type = "index"
+layout = "index"
 +++
+
+## Install Addons &amp; Add Devices
+
+Adding your first devices is done in a breath.
+
+<div class="row">
+    <div class="col-md-5">
+        <h4>1. Install Addon</h4>
+        <p>Choose from over 200 Device and Service Addons. Not just commercial ones. We will come to openHAB X's
+            extensive Do-It-Yourself support in a moment.</p>
+    </div>
+    <div class="col-md-7">
+        <div id="addons_stack" class="ui_addon_cards mt-4">
+            <article>
+                <header>
+                    <span>Astro Binding</span> <small class="ml-2">2.5M1</small>
+                </header>
+                <section class="actions"><span role="group" class="btn-group"><a title="Change Version"
+                          class="btn btn-secondary-hover"><i
+                                class="fas fa-cog"></i><span class="ml-2">Configure</span></a>
+                    </span></section>
+                <section class="description"><span>Das Astro Binding berechnet astronomische Daten von Sonne und Mond.</span>
+                    <small style="white-space: nowrap; text-overflow: ellipsis;">– By Gerhard Riegler</small></section>
+                <footer>
+                    <button class="ml-auto btn btn-outline-success"><span>Install</span></button>
+                </footer>
+            </article>
+            <article>
+                <header>
+                    <span>Dresden Elektronik Deconz</span> <small class="ml-2">2.5M1</small>
+                </header>
+                <section class="actions"><span role="group" class="btn-group"><a title="Change Version"
+                            class="btn btn-secondary-hover"><i class="fas fa-cog"></i><span class="ml-2">Configure</span></a>
+                    </span></section>
+                <section class="description"><span>Unterstützt die Raspbee und Conbee Zigbee Dongles via Deconz</span> <small
+                        style="white-space: nowrap; text-overflow: ellipsis;">– By David Graeff</small></section>
+                <footer>
+                    <button class="ml-auto btn btn-outline-success"><span>Install</span></button>
+                </footer>
+            </article>
+            <article>
+                <header>
+                    <span>Hue Binding</span> <small class="ml-2">2.5M1</small>
+                </header>
+                <section class="actions"><span role="group" class="btn-group"><a title="Change Version"
+                            class="btn btn-secondary-hover"><i
+                                class="fas fa-cog"></i><span class="ml-2">Configure</span></a>
+                    </span>
+                </section>
+                <section class="description"><span>Dieses Binding integriert das Philips Hue System. Durch diese können die Hue
+                        Lampen &hellip; </span> <small
+                        style="white-space: nowrap; text-overflow: ellipsis;">– By Deutsche Telekom AG</small>
+                </section>
+                <footer>
+                    <button class="ml-auto btn btn-outline-success"><span>Install</span></button>
+                </footer>
+            </article>
+            <article >
+                <header>
+                    <span>MQTT Binding</span> <small class="ml-2">2.5M1</small>
+                    <oh-doc-link title="Known problems and workarounds for your installed version" show=""
+                        class="ml-2 link text-nowrap" tabindex="0"><i
+                            class="fas fa-exclamation-triangle"></i></oh-doc-link>
+                </header>
+                <section class="actions"><span role="group" class="btn-group"><a title="Change Version"
+                         class="btn btn-secondary-hover"><i
+                                class="fas fa-cog"></i><span class="ml-2">Configure</span></a>
+                    </span>
+                </section>
+                <section class="description"><span>Erlaubt die Verwaltung von MQTT Verbindungen und das Verknüpfen von MQTT
+                        Topics</span> <small style="white-space: nowrap; text-overflow: ellipsis;">– By David Graeff</small>
+                </section>
+                <footer>
+                    <button class="ml-auto btn btn-outline-success"><span>Install</span></button>
+                </footer>
+            </article>
+            <article>
+                <header><span>Network Binding</span> <small class="ml-2">2.5M1</small>
+                </header>
+                <section class="actions"><span role="group" class="btn-group"><a title="Change Version"
+                            class="btn btn-secondary-hover"><i
+                                class="fas fa-cog"></i><span class="ml-2">Configure</span></a>
+                    </span>
+                </section>
+                <section class="description"><span>Das Network Binding überprüft, ob sich ein Gerät aktuell im Netzwerk befindet
+                        oder nicht.</span> <small style="white-space: nowrap; text-overflow: ellipsis;">– By Marc Mettke, David
+                        Graeff</small>
+                </section>
+                <footer>
+                    <button class="ml-auto btn btn-outline-success"><span>Install</span></button>
+                </footer>
+            </article>
+        </div>
+    </div>
+</div>
+
+<svg class="d-none d-md-block" style="margin-top:-50px" xmlns="http://www.w3.org/2000/svg" width="898" height="277" viewBox="0 0 898 377">
+    <path fill="none" fill-rule="nonzero" stroke="#ff8a65" stroke-dasharray="8" stroke-linecap="round" stroke-linejoin="round" d="M1.35 0v222.298c-2.717 31.994 10.356 47.991 39.22 47.991h813.902c28.352 0 42.528 9.332 42.528 27.995V378"/>
+</svg>
+
+<div class="row ">
+    <div class="col-md-7">
+         <div id="inbox_grid" class="ui_addon_cards" style="padding-top:100px">
+            <article class="wider">
+                <header><span>2-Gang Wall Switch</span>
+                </header>
+                <section class="description">
+                    <small style="white-space: nowrap; text-overflow: ellipsis;">ZWave Addon – #acee30fe</small><br>
+                    <span>This Thing contains <a href="">2 fixed</a> channels and <b>no</b> dynamic channels.</span>
+                </section>
+                <footer>
+                    <i class="badge badge-info">2019-05-30 11:10</i>
+                    <button class="ml-auto btn btn-outline-success"><span>Approve</span></button>
+                    <button class="btn btn-outline-secondary"><i class="fas fa-ellipsis-v label"></i></button>
+                </footer>
+            </article>
+            <article class="wider">
+                <header><span>Bedroom Ceiling</span>
+                </header>
+                <section class="description">
+                    <small style="white-space: nowrap; text-overflow: ellipsis;">Hue Addon – #63be30ca</small><br>
+                    <span>This Thing contains <a href="">5 fixed</a> channels and <b>no</b> dynamic channels.</span>
+                </section>
+                <footer>
+                    <i class="badge badge-info">2019-05-30 12:10</i>
+                    <button class="ml-auto btn btn-outline-success"><span>Approve</span></button>
+                    <button class="btn btn-outline-secondary"><i class="fas fa-ellipsis-v label"></i></button>
+                </footer>
+            </article>
+            <article class="wider">
+                <header><span>Colour Bulb</span>
+                </header>
+                <section class="description">
+                    <small style="white-space: nowrap; text-overflow: ellipsis;">Hue Addon – #153430fe</small><br>
+                    <span>This Thing contains <a href="">5 fixed</a> channels and <b>no</b> dynamic channels.</span>
+                </section>
+                <footer>
+                    <i class="badge badge-info">2019-05-30 12:12</i>
+                    <button class="ml-auto btn btn-outline-success"><span>Approve</span></button>
+                    <button class="btn btn-outline-secondary"><i class="fas fa-ellipsis-v label"></i></button>
+                </footer>
+            </article>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <h4>2. Find Devices in the Inbox*</h4>
+        <p>Head to the Inbox and Approve or Hide <b>Things</b>. Things in openHAB X are representations of external
+            devices ("Light bulb") or Services ("Weather service") and are provided via Addons. A physical device might
+            provide multiple Things.</p>
+        <p>An approved Thing is by default visible to digital assistants and to any control App.</p>
+        <small>* Some Addons do not support the Inbox. <button class="btn-link contexthelp" id="no_inbox_details"
+                title="Context help">Details</button></small>
+    </div>
+</div>
+
+<template data-popover="no_inbox_details">
+    <p style="max-width: 500px">Some protocols like KNX do not support auto discovery of connected devices. Things of
+        the KNX Addon for example need to be configured manually. All modern standards allow discovery though.</p>
+</template>
+<ui-tooltip target="no_inbox_details"></ui-tooltip>
 
 ## Digital assistants &amp; Voice control
 
@@ -22,7 +183,7 @@ type = "index"
     <div class="col-md-5">
         <p>Digitial assistants can be pretty neat. The picture shows Amazon Alexa, Google Home and Apple Homepod
             (Siri) from left to right.
-            You might use one or two of those already. And that's why it is especially easy to make them work with
+            You might use one or two of those already. And that's why they work out of the box with
             openHAB X*.
         </p>
         <small>* A subscription is required to balance costs of the cloud connector.</small>
@@ -41,7 +202,8 @@ type = "index"
 <div class="row mb-4">
     <div class="col-md-5">
         <h4>Compatible to any Hue App</h4>
-        <p>Control your lights with any Hue compatible App on Android or iOS. openHAB X supports Hue Rooms, Scenes, Timers and Rules.</p>
+        <p>Control your lights with any Hue compatible App on Android or iOS. openHAB X supports Hue Rooms, Scenes,
+            Timers and Rules.</p>
     </div>
     <div class="col-md-7">
         <img src="/img/features/Hue-app-scenes.png" class="w-100">
@@ -54,82 +216,73 @@ type = "index"
     </div>
     <div class="col-md-5" style="align-self: center;">
         <h4>Companion App for Android &amp; iOS</h4>
-        <p>The companion App is not winning a design award, but does render all basic channel types. It allows free channel arrangement per screen, on multiple screens and supports remote control and authentication.</p>
+        <p>The companion App is not winning a design award, but does render all basic channel types. It allows free
+            channel arrangement per screen, on multiple screens and supports remote control and authentication.</p>
     </div>
 </div>
 
 <div class="row mb-4">
     <div class="col-md-5" style="align-self: center;">
         <h4>Web-based Dashboard</h4>
-        <p>You've got a wall mounted tablet or want to quickly turn on a light from your PC seat? The OHX Dashboard is probably what you want.</p>
+        <p>You've got a wall mounted tablet or want to quickly turn on a light from your PC seat? The OHX Dashboard is
+            probably what you want.</p>
     </div>
     <div class="col-md-7">
-        <img src="/img/features/control_dash.png" class="w-100">
+        <img src="/img/features/control_dash.png" class="w-100" style="transform: perspective(802px) rotateY(-25deg); box-shadow: 22px 4px 10px 0 rgba(0,0,0,0.25);">
+    </div>
+</div>
+
+
+## Interconnect Devices Across Vendors
+
+<div class="row mb-4">
+    <div class="col-md-5">
+        <h4>Channel Connections</h4>
+        <p >Imagine you want your ZWave Wall Button to toggle your
+            Philips Hue Bulb &hellip;</p>
+        <p>&hellip; with a fade animation. Who likes abrupt light level changes, huh?!
+        The channel data flow can be intercepted and altered.</p>
+        <p>In the interactive Connection Editor to the right a <b>Dimmer</b> Element
+        for smooth on / off brightness fading (5 seconds duration) has been added.</p>
+        <p>
+        <h4 class="ml-md-4">Link Processors</h4>
+        </p>
+        <ul class="ml-md-4">
+        <li>Connect your switch to more than one recipient.
+        <li>Chain multiple Link Processors<br>(Example: Invert --> Dimmer)
+        <li>Benefit from implicit conversions<br>(<code>Off == 0% Brightness</code> for example)
+        <li>Control Link Processors from within Rules (Enable, Disable, Passthrough, Alter Config)
+        </ul>
+    </div>
+    <div class="col-md-7">
+        <div id="rete" class="node-editor"></div>
+        <ui-interactive-interconnect target="rete"></ui-interactive-interconnect>
     </div>
 </div>
 
 ## Make it smart
 
-<div class="row mb-4">
-    <div class="col-md-5">
-        <h4>Channel Connections</h4>
-        <p class="bs-callout bs-callout-tiny bs-callout-default">Imagine you want a ZWave Wall Button to toggle a
-            Philips Hue Bulb.</p>
-        <p>That's </p>
-    </div>
-    <div class="col-md-7">
-        <img src="/img/connections.png" class="w-100">
-    </div>
-</div>
 <div class="row" id="diy">
-    <div class="col-md-6 swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <h4 style="position: absolute;bottom:30px;right:0;">Graphical Rule Editor</h4>
-                <img src="/img/ruleeditor.png" style="width: 100%">
-            </div>
-            <div class="swiper-slide">
-{{< highlight yaml "linenos=table" >}}
-triggers:
-  - id: '1'
-    label: 'it is a fixed time of day'
-    description: 'Triggers at a specified time'
-    configuration:
-      time: '12:12'
-    type: timer.TimeOfDayTrigger
-conditions: []
-actions:
-  - id: '2'
-    inputs: {}
-    label: 'execute a given script'
-    description: 'A script that logs Hello World'
-    configuration:
-      type: application/javascript
-      script: |
-        var myLog = context.logger;
-        myLog.info("Hello world!");
-    type: script.ScriptAction
-{{< / highlight >}}
-            </div>
-        </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <ui-swiper target="diy" navigation></ui-swiper>
+    <div class="col-md-6">
+        <img src="/img/ruleeditor.png" style="width: 100%">
     </div>
     <div class="col-md-5 offset-md-1">
-        <h4>Rules</h4>
-        <p class="bs-callout bs-callout-tiny bs-callout-info">Rules are an advanced concept. If you use OHX only as
-            an interconnection hub, you'll not need them.</p>
+        <h4>Rules</h4> <button class="btn-link contexthelp" id="rules_advanced" title="Context help"><i
+                class="badge badge-primary" style="pointer-events: none;">ADVANCED</i></button>
+        <template data-popover="rules_advanced">
+            <p style="max-width: 500px">Rules are an advanced concept. If you use OHX only as
+                an interconnection hub, you'll not need them.</p>
+        </template>
+        <ui-tooltip target="rules_advanced"></ui-tooltip>
         <p>Rules consists of Triggers, Conditions and Actions, known as <button class="btn-link contexthelp"
                 id="rule_modules" title="Context help">Rule Modules</button>.
         </p>
-        <p>
-            A <a href='{{< relref "/userguide/rules" >}}'>Rule Editor</a> makes creating Rules easy and keep the
-            learning curve flat. Use JavaScript in Conditions and Actions to go beyond what the Rule Engine provides
-            out of the box.</p>
-        <p><a class="developer_link" href='{{< relref "/developer/ruleengine" >}}'>Develop your own Rule
-                Modules</a></p>
+        <p>Especially if you experience a Rule Module like the <i>Fixed time of Day</i> Trigger the first time, you want to use the graphical <a href='{{< relref "/userguide/rules" >}}'>Rule Editor</a>. JavaScript  Conditions and Actions help if you need to go beyond what the Rule Engine provides out
+            of the box.</p>
+        <p>Clicking everything together can be tedious, especially if you could use Copy&amp;Paste or
+            Search&amp;Replace. We got you sorted. Edit Rules (and all other Configuration across openHAB X by the way) in text
+            mode via the maintenance user-interface. <button class="btn-link contexthelp" id="text_rule"
+                title="Context help">Example</button>
     </div>
     <template data-popover="rule_modules">
         <p style="max-width: 500px">OHX comes with a predefined set of modules for dealing with date/time, different
@@ -137,100 +290,69 @@ actions:
             <b>Channels</b>, <b>Channel Connections</b>, User Management and many more.</p>
     </template>
     <ui-tooltip target="rule_modules"></ui-tooltip>
+    <template data-popover="text_rule">
+        <div style="max-width: 700px">
+            {{< highlight yaml "linenos=table" >}}
+            triggers:
+            - id: '1'
+            label: 'it is a fixed time of day'
+            description: 'Triggers at a specified time'
+            configuration:
+            time: '12:12'
+            type: timer.TimeOfDayTrigger
+            conditions: []
+            actions:
+            - id: '2'
+            inputs: {}
+            label: 'execute a given script'
+            description: 'A script that logs Hello World'
+            configuration:
+            type: application/javascript
+            script: |
+            var myLog = context.logger;
+            myLog.info("Hello world!");
+            type: script.ScriptAction
+            {{< / highlight >}}
+        </div>
+        <p>A Visual Studio Code text editor interface allows</p>
+        <ul>
+            <li>auto-formatting,</li>
+            <li>syntax highlighting,
+            <li>auto-completion and</li>
+            <li>syntax checking.</li>
+        </ul>
+    </template>
+    <ui-tooltip target="text_rule"></ui-tooltip>
 </div>
 
-
-## Setup &amp; Maintenance
-
-<section id="feature_ui"  class="row">
-    <div class="col-md-6 px-3 swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image:url(/img/features/tutorials.png)"></div>
-            <div class="swiper-slide" style="background-image:url(/img/features/addons.png)"></div>
-            <div class="swiper-slide" style="background-image:url(/img/features/config.png)"></div>
-            <div class="swiper-slide" style="background-image:url(/img/features/things.png)"></div>
-            <div class="swiper-slide" style="background-image:url(/img/features/maintenance.png)"></div>
-            <div class="swiper-slide" style="background-image:url(/img/features/scenes.png)"></div>
-            <div class="swiper-slide" style="background-image:url(/img/features/scenes_text.png)"></div>
-            <div class="swiper-slide" style="background-image:url(/img/features/automation.png)"></div>
-            <div class="swiper-slide" style="background-image:url(/img/features/scheduler.png)"></div>
-        </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+<div class="row mt-4">
+    <div class="col-md-5">
+        <h4>Scheduler</h4>
+        <p>Time based actions can have a very simple purpose like a "Weekday wake-up timer". Internally they are
+            just Rules and they can be edited via the Rule Editor.</p>
+        <p>Use the <a href='{{< relref "/userguide/rules#schedules" >}}'>Scheduler Editor</a> as another interface to modify Time based actions and recurring events more intuitive.</p>
     </div>
-    <div class="col-md-6">
-        <div class="swiper-content swiper-content-0">
-            <h4>Setup &amp; Maintenance user-interface</h4>
-            <p>The maintenance user-interface includes a full introduction tutorial and interactive exercises.</p>
-            <p>All pages have a context help that walks you through new material.</p>
-        </div>
-        <div class="swiper-content swiper-content-1">
-            <p><b>Addons</b> allow openHAB X to find and communicate with external devices and services.</p>
-            <p>Install new <b><a class="demolink" href='{{< relref "/userguide/addons" >}}'>Addons</a></b> with a button
-                click. Find available ones here on the webpage already without installing openHAB X first.</p>
-            <p>Addons can be developed in many programming languages ranging from Java to C++ or Rust. More
-                information is to be found in the <a href='{{< relref "/developer/addons" >}}'>Development</a> section.</p>
-        </div>
-        <div class="swiper-content swiper-content-2">
-            <h4>Configuration</h4>
-            <p>Something as complex as a smart acting home automation system requires configuration.</p>
-            <p>openHAB X and Addon configuration can be performed in the maintenance user-interface in text form or
-                graphically.</p>
-        </div>
-        <div class="swiper-content swiper-content-3">
-            <p><b>Things</b> in openHAB X are a representation of external devices ("Light bulb") or Services
-                ("Weather service") and are provided via Addons.</p>
-            <p>A <b>Thing</b> will usually provide at least one <b>Channel</b> ("Light brightness") to control a
-                feature or get data from it. </p>
-            <p>If your installed <b>Addon</b> supports discovery, it will present its found <b>Things</b> in the
-                Inbox section. Inbox Things are already configured for you, except if pairing or credentials are
-                required.</p>
-        </div>
-        <div class="swiper-content swiper-content-4">
-            <h4>Analyse and Verify Runtime Metrics</h4>
-            <p>openHAB X uses InfluxDB &amp; Grafana to collect and visualize runtime metrics. You can setup alarm
-                thresholds for all available metrics.</p>
-            <p>If you are a subscriber, the openHAB X online platform will take appropriate actions to keep your
-                system in a stable state.</p>
-        </div>
-        <div class="swiper-content swiper-content-5">
-            <h4>Scenes</h4>
-            <p>A <b>Scene</b> is a collection of previously selected <b>Channel</b> states.</p>
-            <p>For example a "Cooking" scene could turn on all your kitchen lights to a dimmed value of 80% except
-                the serving cabinet with a value of 100% and switch on the kitchen radio and tune in a specific
-                radio channel.</p>
-        </div>
-        <div class="swiper-content swiper-content-6">
-            <h4>Graphical and Textual</h4>
-            <p>Edit your configuration in a graphical fashion or via a Visual Studio Code text editor interface,
-                including</p>
-            <ul>
-                <li>auto-formatting,</li>
-                <li>syntax highlighting,
-                <li>auto-completion and</li>
-                <li>syntax checking.</li>
-            </ul>
-        </div>
-        <div class="swiper-content swiper-content-7">
-            <h4>Rules</h4>
-            <p>A graphical <a href='{{< relref "/userguide/rules" >}}'>Rule Editor</a> (next to the text mode)
-                allows to setup simple as well as complex
-                rules in an easy and fast fashion.</p>
-            <p>A Rule consists of a Name, a unique ID and optional Triggers, Conditions and Actions. Rules are the
-                fundament for <b>Scenes</b> and Time based actions.</p>
-        </div>
-        <div class="swiper-content swiper-content-8">
-            <h4>Scheduler</h4>
-            <p>Time based actions can have a very simple purpose like a "Weekday wake-up timer". Internally they are
-                just Rules and they can be edited via the <a href='{{< relref "/userguide/rules" >}}'>Rule
-                    Editor</a>.</p>
-            <p>Use the Scheduler Editor however to add and modify Time based actions and easily create recurring
-                Events more intuitively with a better overall view.</p>
+    <div class="col-md-7">
+        <img src="/img/features/scheduler.png" class="w-100" style="transform: perspective(802px) rotateY(-16deg); box-shadow: 0px 2px 8px 0 rgba(0,0,0,0.25);">
+    </div>
+</div>
+
+## Maintenance &amp; Time Series Data
+
+<div class="row mb-4">
+    <div class="col-md-7">
+        <img src="/img/features/dashboard.jpg" class="w-100" style="transform: perspective(602px) rotateY(16deg);box-shadow: -10px 8px 8px 0 rgba(0,0,0,0.35);">
+    </div>
+    <div class="col-md-5">
+        <h4>Time Series Data</h4>
+        <p>openHAB X uses <a href="https://www.influxdata.com" target="_blank">InfluxDB</a> Dashboards to collect and visualize runtime metrics. You can base rule triggers on
+            past data, setup alarm thresholds and also react to them via Rules.</p>
+        <div class="bs-callout bs-callout-tiny bs-callout-default">
+            <h4>Example Rule Idea</h4>
+            3 days in a row warmer than 30°C?<br> --> Change sprinkler schedule
         </div>
     </div>
-    <ui-swiper target="feature_ui" content coverflow navigation></ui-swiper>
-</section>
+</div>
 
 ## DIY Integration
 
@@ -276,7 +398,7 @@ actions:
     <ui-tooltip target="diy_auto_discovery"></ui-tooltip>
 </div>
 
-## Up &amp; running in 3 steps
+## Up &amp; Running in 3 Steps
 
 <div class="row" style="justify-content: space-between;">
     <div class="col-md-4 py-3 card-hover">
@@ -284,8 +406,8 @@ actions:
         <img style="float:left;height: 80px;" class="mr-4" src="/img/raspberry-pi-3-case-enclosure.jpg">
         <p>Head over to a <button class="btn-link contexthelp" id="hw_partners_tr"
                 title="Context help">retailer</button>
-            and get yourself a <button class="btn-link contexthelp" id="raspberry_detail"
-                title="Context help">Raspberry Pi
+            and get yourself a <button class="btn-link contexthelp" id="raspberry_detail" title="Context help">Raspberry
+                Pi
                 3/3+</button>.
         </p>
         <template data-popover="hw_partners_tr">
@@ -316,29 +438,29 @@ actions:
     </div>
     <div class="p-3 card-hover">
         <h3 style="white-space: nowrap">2. Download</h3>
-        <a href="{{ .Site.Data.downloads.pi3image.url }}" title="{{ .Site.Data.downloads.pi3image.desc }}"
+        <a href="{{< readdata browser_download_url rpi3-64 >}}" title="{{< readdata name rpi3-64 >}}"
             class="btn btn-dwnload">
             <img src="/img/raspberrypi.png" style="height: 1em" class="mr-2">
-            <span>{{< readdata arch pi3image >}}</span>
+            <span>RPI 3</span>
         </a>
-        <a href="{{ .Site.Data.downloads.x86docker.url }}" title="{{ .Site.Data.downloads.x86docker.desc }}"
+        <a href="{{< readdata browser_download_url ova >}}" title="{{< readdata name ova >}}"
             class="btn btn-dwnload">
             <i class="fas fa-desktop mr-2"></i>
-            <span>{{< readdata arch x86docker >}}</span>
+            <span>x86 64-Bit</span>
         </a>
         <button class="btn btn-dwnload" id="download_tr" title="Context help">Other &#9660;</button>
         <br>
         <small class="muted">Version: <button class="btn-link contexthelp" id="version_tr"
-                title="Context help">{{< readdata version pi3image >}}</button></small>
+                title="Context help">{{< getversion tag_name >}}</button></small>
         <template data-popover="download_tr">
             <dl style="max-width: 500px">
-            {{< listofdownloads >}}
+                {{< listofdownloads >}}
             </dl>
         </template>
         <ui-tooltip target="download_tr"></ui-tooltip>
         <template data-popover="version_tr">
             <dl style="max-width: 500px">
-            {{< changelogs >}}
+                {{< changelogs >}}
             </dl>
         </template>
         <ui-tooltip target="version_tr"></ui-tooltip>
@@ -371,10 +493,10 @@ actions:
                     </tr>
                     <tr>
                         <td>&check;</td>
-                        <td><button class="btn-link contexthelp" id="sub_openhab2addons_tr"
-                                title="Context help">openHAB
+                        <td><button class="btn-link contexthelp" id="sub_openhab2addons_tr" title="Context help">openHAB
                                 Addons</button></td>
-                        <td><a href='#'><i class="fas fa-external-link-alt"></i></a></td>
+                        <td><a href='https://www.openhab.org/addons' target="_blank"><i
+                                    class="fas fa-external-link-alt"></i></a></td>
                     </tr>
                     <tr>
                         <td>&check;</td>
@@ -449,21 +571,24 @@ actions:
         <template data-popover="sub_ui_tr">
             <div style="max-width: 500px">
                 <ul>
-                    <li>Dashpanel UI for wall mounted tablets <a href='#'><i
-                                class="fas fa-external-link-alt"></i></a></li>
+                    <li>Dashpanel UI for wall mounted tablets <a href='#'><i class="fas fa-external-link-alt"></i></a>
+                    </li>
                     <li>Flutter Android/iOS App <a href='#'><i class="fas fa-external-link-alt"></i></a></li>
                     <li>Management Web UI <a href='#'><i class="fas fa-external-link-alt"></i></a></li>
                 </ul>
             </div>
         </template>
         <ui-tooltip target="sub_ui_tr"></ui-tooltip>
-        <div class="text-center mb-3"><a href="#download"
-                class="btn btn-primary btn-impressive">
+        <div class="text-center mb-3">
+            <a href='{{< relref "/userguide/getting_started" >}}' class="btn btn-primary btn-impressive">
                 <span>Getting started</span>
             </a>
         </div>
     </div>
-    <div class="col">
+    <form class="col" method="GET" action="/dashboard/subscription">
+        <input type="hidden" name="t" value="create">
+        <input type="hidden" name="m" value="3">
+        <input type="hidden" name="type" value="cloud">
         <div class="header">
             <h4>Cloud connector</h4>
             <i class="img fas fa-cloud text-primary" style="font-size: 60pt;line-height: 120pt;"></i>
@@ -507,13 +632,15 @@ actions:
         </template>
         <ui-tooltip target="sub_cloudfee_tr"></ui-tooltip>
         <div class="text-center mb-3">
-            <a href="#download" 
-                class="btn btn-primary btn-impressive">
+            <button type="submit" class="btn btn-primary btn-impressive">
                 <span>3€ / Month</span>
-            </a>
+            </button>
         </div>
-    </div>
-    <form class="col" id="subscriptionSupportPlan">
+    </form>
+    <form class="col" id="subscriptionSupportPlan" method="GET" action="/dashboard/subscription">
+        <input type="hidden" name="t" value="create">
+        <input type="hidden" name="m">
+        <input type="hidden" name="type" value="support">
         <div class="header">
             <h4>Support plan</h4>
             <i class="img fas fa-headset text-primary" style="font-size: 60pt;line-height: 120pt;"></i>
@@ -554,8 +681,8 @@ actions:
                 the service provider and the service user.
             </q><br><br>
             <p><output name="sla2">-</output>% means
-            <b><output name="sla_hours">-</output>h a day</b> or
-            <b><output name="sla_days">-</output> days every 31 days</b>.</p>
+                <b><output name="sla_hours">-</output>h a day</b> or
+                <b><output name="sla_days">-</output> days every 31 days</b>.</p>
             <p>The Software-only SLA is limited to:<br>Cloud Connectors, Rule Engine, IAM-Service, Operating
                 Sytem, Hue Emulation + API Access.
                 Your own services will be limited to 1/4 of the available memory and 20% CPU-time in SLA mode.
@@ -566,10 +693,9 @@ actions:
         <ui-tooltip target="sub_sla_tr"></ui-tooltip>
         <div class="text-center mb-3">
             <input type="range" min="10" max="100" value="10" class="slider" id="subscriptionValue">
-            <a href="#download" 
-                class="btn btn-primary btn-impressive">
+            <button type="submit" class="btn btn-primary btn-impressive">
                 <span><output name="x" for="subscriptionValue">10</output>€ / Month</span>
-            </a>
+            </button>
         </div>
     </form>
 </div>
@@ -581,6 +707,12 @@ actions:
     “There Is One Thing Stronger Than All The Armies In The World, And That Is An
     Idea Whose Time Has Come.” <small>– Victor Hugo</small>
 </blockquote>
+
+A few notable remarks:
+
+* Addons can be developed in many programming languages ranging from Java to C++ or Rust.
+* The core is written in Rust and follows a microservice architecture
+* The Android/iOS App is Flutter/Dart based
 
 We are organising a hang out every Thursday 6pm EST on Discord. If you are new, check out the
 [Developer Documentation](/developer) first.

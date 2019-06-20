@@ -142,3 +142,130 @@
         }
     }
 }
+
+
+#jumbo_features {
+    .swiper-slide.center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        .title {
+            position: relative;
+        }
+    }
+
+    .swiper-slide.center>.title:before {
+        content: "";
+        position: absolute;
+        left: -5px;
+        right: -5px;
+        top: -5px;
+        bottom: -5px;
+        z-index: -1;
+        box-shadow: inset 0 0 0 200px rgb(255, 255, 255);
+        filter: blur(10px);
+    }
+
+    .swiper-slide-active .wrapper {
+        opacity: 1;
+    }
+
+    .wrapper {
+        position: absolute;
+        opacity: 0;
+        transition: opacity 0.3s;
+
+        .front {
+            transform: matrix3d(0.84, 0, 0.34, -0.0002, 0, 1, 0, 0, -0.34, 0, 0.94, 0, 111, -30, 10, 1);
+        }
+
+        .back {
+            transform: matrix3d(0.94, 0, 0.34, -0.00025, 0, 1, 0, 0, -0.34, 0, 0.94, 0, -80, 80, 10, 1);
+        }
+    }
+
+    .image {
+        transition: transform .2s ease;
+        height: 150px;
+        width: 250px;
+        background-size: cover;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .5);
+    }
+
+    .front {
+        z-index: 1;
+    }
+
+    .back {
+        z-index: 0;
+    }
+
+    .addons_anim {
+        position: absolute;
+        top: 0;
+        height: 700px;
+        width: 700px;
+        background-size: contain;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        background-repeat: no-repeat;
+        transform: translateZ(0);
+        animation: addons_anim 10s ease-in-out 0s infinite alternate;
+        will-change: transform;
+    }
+
+    .addons_anim2 {
+        position: absolute;
+        top: 0;
+        height: 700px;
+        width: 700px;
+        background-size: contain;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        background-repeat: no-repeat;
+        transform: translateZ(0);
+        animation: addons_anim2 10s ease-in-out 0s infinite alternate;
+        will-change: transform;
+    }
+
+
+    @keyframes addons_anim {
+        0% {
+            transform: scale(4) translate(-15%, 40%);
+        }
+
+        20% {
+            transform: scale(4) translate(-15%, 40%);
+        }
+
+        40% {
+            transform: scale(1.2) translate(9%, 4%);
+        }
+
+        60% {
+            transform: scale(1.2) translate(9%, 4%);
+        }
+
+        90% {
+            transform: scale(0.5) translate(-0px, -25%);
+        }
+
+        100% {
+            transform: scale(0.5) translate(-0px, -25%);
+        }
+    }
+
+    @keyframes addons_anim2 {
+        0% {
+            transform: translate(-50%, 50px);
+
+        }
+
+        100% {
+            transform: translate(20%, -90px);
+        }
+    }
+}

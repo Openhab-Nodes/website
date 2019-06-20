@@ -1,2 +1,13 @@
-{{ $target := index .Site.Data.downloads (.Get 1)}}
-{{ index $target (.Get 0) }}
+{{ $attr := .Get 0}}
+{{ $arch := .Get 1}}
+
+{{ range $p := .Site.Data.downloads.assets }}
+  {{ if in $p.name $arch }}
+    {{ if in $p.name "img.gz" }}
+     {{ index $p $attr }}
+     {{ end }}
+     {{ if in $p.name "vmd" }}
+     {{ index $p $attr }}
+     {{ end }}
+  {{ end }}
+{{ end }}

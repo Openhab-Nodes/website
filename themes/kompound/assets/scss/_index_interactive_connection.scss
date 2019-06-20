@@ -1,0 +1,202 @@
+#rete {
+    height: 400px;
+    width: 100%;
+    color: white;
+
+    .socket {
+        display: inline-block;
+        cursor: pointer;
+        border: 1px solid white;
+        border-radius: 12px;
+        width: 24px;
+        height: 24px;
+        margin: 6px;
+        vertical-align: middle;
+        background: #96b38a;
+        z-index: 2;
+        box-sizing: border-box;
+    }
+
+    .socket:hover {
+        border-width: 4px;
+    }
+
+    .socket.multiple {
+        border-color: yellow;
+    }
+
+    .socket.output {
+        margin-right: -12px;
+    }
+
+    .socket.input {
+        margin-left: -12px;
+    }
+
+    .node {
+        background: rgba(110, 136, 255, 0.8);
+        border: 2px solid #4e58bf;
+        border-radius: 10px;
+        cursor: pointer;
+        min-width: 180px;
+        height: auto;
+        padding-bottom: 6px;
+        box-sizing: content-box;
+        position: relative;
+        user-select: none;
+    }
+
+    .node:hover {
+        background: rgba(130, 153, 255, 0.8);
+    }
+
+    .node.selected {
+        background: #ffd92c;
+        border-color: #e3c000;
+    }
+
+    .node .title {
+        color: white;
+        font-family: sans-serif;
+        font-size: 18px;
+        padding: 8px 8px 8px 0px;
+        display: inline-block;
+    }
+
+    .node .collapse {
+        display: inline-block;
+        padding: 8px;
+        cursor: pointer;
+        width: 11px;
+        color: white;
+    }
+
+    .node .collapse:after {
+        content: '\25BC';
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .node .collapse.closed:after {
+        content: '\25b8';
+        padding-left: 4px;
+    }
+
+    .node .output {
+        text-align: right;
+    }
+
+    .node .input {
+        text-align: left;
+    }
+
+    .node .input .input-socket {
+        display: inline-block;
+    }
+
+    .node .input-title,
+    .node .output-title {
+        vertical-align: middle;
+        color: white;
+        display: inline-block;
+        font-family: sans-serif;
+        font-size: 14px;
+        margin: 6px;
+        line-height: 24px;
+    }
+
+    .node .input-control {
+        z-index: 1;
+        vertical-align: middle;
+        display: inline-block;
+    }
+
+    .node .input-control .control {
+        padding-left: 0;
+    }
+
+    .node .control {
+        padding: 6px 18px;
+    }
+
+    .node.collapsed {
+        float: left;
+    }
+
+    .node.collapsed .control {
+        display: none;
+    }
+
+    .node.collapsed .outputs,
+    .node.collapsed .inputs {
+        display: inline-block;
+        width: auto;
+    }
+
+    .node.collapsed .inputs,
+    .node.collapsed .input-title,
+    .node.collapsed .collapse {
+        float: left;
+    }
+
+    .node.collapsed .outputs {
+        float: right;
+    }
+
+    .node.collapsed .output .output-title {
+        display: none;
+    }
+
+    .node.collapsed .input .input-title {
+        display: none;
+    }
+
+    &.node-editor {
+        /* background-size: 20px 20px;
+    background-image: linear-gradient(to right, #363636 1px, transparent 1px), linear-gradient(to bottom, #363636 1px, transparent 1px);
+    background-color: #272727; */
+        overflow: hidden;
+    }
+
+    &.node-editor * {
+        box-sizing: border-box;
+    }
+
+    &.node-editor .output>* {
+        display: inline-block;
+    }
+
+    &.node-editor .node {
+        background: rgba(35, 35, 35, 0.7);
+        box-shadow: 1px solid black;
+        border: 1px solid black;
+        border-radius: 10px;
+        cursor: pointer;
+        display: inline-block;
+        height: auto;
+        padding-bottom: 6px;
+        box-sizing: content-box;
+        box-shadow: 4px 5px 9px rgba(0, 0, 0, 0.5);
+        min-width: 160px;
+    }
+
+    .node .title {
+        display: block;
+    }
+
+    .node .collapse {
+        margin-right: 10px;
+    }
+
+    .controlrender {
+        grid-template-columns: 60px 80px;
+        grid-column-gap: 20px;
+        display: grid;
+    }
+
+    .controlvalue {
+        background-color: rgba(35, 35, 35, 0.7);
+        padding: 3px;
+    }
+
+}

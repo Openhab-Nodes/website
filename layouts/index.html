@@ -1,6 +1,7 @@
-{{ define "main" }}
+{{ define "body" }}
 {{ partial "head_index.html" }}
-
+<main>
+{{- partial "jsonld.html" . -}}
 <section id="jumbo">
 	<div class="back clouds"></div>
 	<div class="back2 clouds"></div>
@@ -20,7 +21,7 @@
 				</div>
 				{{ end }}
 			</div>
-			<div class="col-md-4 offset-md-2 text-center d-none d-md-block" id="intro_features">
+			<div class="col-md-4 offset-md-2 text-center d-none d-md-block" id="jumbo_features">
 				<div class="swiper-container" style="max-width: 350px;height: 250px">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide center"
@@ -40,21 +41,10 @@
 							</div>
 							<h3 class="block" style="align-self: flex-start;">Guided First Time Config</h2>
 						</div>
-						<div class="swiper-slide center" style="overflow: hidden">
-							<div class="addons_anim" style="background-image:url(/img/features/addons.png);"></div>
-							<h3 class="block" style="align-self: flex-start;position: relative;">Hundreds of Addons</h2>
-						</div>
-						<div class="swiper-slide center" style="overflow: hidden">
-							<div class="addons_anim2" style="background-image:url(/img/features/automation.png);"></div>
-							<h3 class="block" style="align-self: flex-start;position: relative;">Automation</h2>
-						</div>
-						<div class="swiper-slide center" style="background-image:url(/img/features/maintenance.png);">
-							<h3 class="block">Full control</h2>
-						</div>
 					</div>
 					<div class="swiper-pagination"></div>
 				</div>
-				<ui-swiper target="intro_features" cube autoplay></ui-swiper>
+				<ui-swiper target="jumbo_features" cube autoplay></ui-swiper>
 
 			</div>
 		</div>
@@ -152,4 +142,5 @@
 	</div>
 </section>
 
+</main>
 {{ end }}

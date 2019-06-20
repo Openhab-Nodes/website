@@ -7,8 +7,13 @@ window.customElements.define('ui-login', class extends HTMLElement {
         let lang = document.getElementById("signed-in").dataset.lang;
         if (lang == "en") lang = ""; else lang = "/" + lang;
     
+        let successURL = lang + '/dashboard';
+        let redirect = new URL(window.location).searchParams.get("redirect");
+        if (redirect)
+            successURL = window.location.origin + decodeURIComponent(redirect);
+    
         var uiConfig = {
-            signInSuccessUrl: lang + '/dashboard',
+            signInSuccessUrl: successURL,
             signInOptions: [
                 firebase.auth.GoogleAuthProvider.PROVIDER_ID,
                 //   firebase.auth.FacebookAuthProvider.PROVIDER_ID,

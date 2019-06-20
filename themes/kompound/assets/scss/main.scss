@@ -47,7 +47,7 @@ $theme-colors: ("orange": #ff7214, "primary": #ff8a65);
 @import "pageheader";
 @import "popover";
 @import "bootstrap_callouts";
-
+@import "loader";
 
 @font-face {
     font-family: BebasNeueBook;
@@ -65,7 +65,9 @@ $theme-colors: ("orange": #ff7214, "primary": #ff8a65);
     padding: 0;
 }
 
-
+i.fas {
+    line-height: 1.5;
+}
 .demolink {
     margin-right: 10px;
     margin-left: 10px;
@@ -170,8 +172,14 @@ label {
     margin-bottom: 0;
 }
 
-#mainContent {
+body > main{
     margin-top: 76px;
+}
+
+@media (max-width: 992px) {
+    body > main {
+        margin-top:0;
+    }
 }
 
 .section {

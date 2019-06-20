@@ -22,12 +22,14 @@
 	<nav-ajax-page-load></nav-ajax-page-load>
 	{{- partial "header.html" . -}}
 
+	{{ block "body" . }}
 	<main id="mainContent">
 		{{- partial "jsonld.html" . -}}
 		{{ block "main" . }}
 		{{ .Content }}
 		{{ end }}
 	</main>
+	{{ end }}
 
 	{{- partial "footer.html" . }}
 </body>

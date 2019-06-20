@@ -18,9 +18,10 @@ window.customElements.define('ui-loginstatus', class extends HTMLElement {
             appId: "1:889637406242:web:68e31a7134337311"
         };
 
-        console.log("Start firebase");
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);    
+        if (!firebase.apps.length) {
+            console.log("Start firebase");
+            firebase.initializeApp(firebaseConfig);
+        }
     }
 
     auth() {

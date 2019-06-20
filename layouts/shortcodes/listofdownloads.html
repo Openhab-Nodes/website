@@ -1,6 +1,8 @@
-{{ range $element := .Site.Data.downloads }}
-{{ with $element.title }}
-<dt>{{ $element.title }}</dt>
-<dd>{{ $element.desc }}</dd>
+{{ range $element := .Site.Data.downloads.assets }}
+{{ with $element.name }}
+{{ if in $element.name "img.gz" }}
+<dt><a href='{{ $element.browser_download_url }}' target="_blank">{{ $element.name }}</a></dt>
+<dd>{{ math.Round (div (div $element.size 1024) 1024) }} MB</dd>
+{{ end }}
 {{ end }}
 {{ end }}
