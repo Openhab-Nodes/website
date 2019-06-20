@@ -438,7 +438,7 @@ Adding your first devices is done in a breath.
     </div>
     <div class="p-3 card-hover">
         <h3 style="white-space: nowrap">2. Download</h3>
-        <a href="{{< readdata browser_download_url rpi3-64 >}}" title="{{< readdata name rpi3-64 >}}"
+        <a href="{{< readdata browser_downloa d_url rpi3-64 >}}" title="{{< readdata name rpi3-64 >}}"
             class="btn btn-dwnload">
             <img src="/img/raspberrypi.png" style="height: 1em" class="mr-2">
             <span>RPI 3</span>
@@ -457,7 +457,7 @@ Adding your first devices is done in a breath.
                 {{< listofdownloads >}}
             </dl>
         </template>
-        <ui-tooltip target="download_tr"></ui-tooltip>
+        <ui-tooltip target="download_tr"></ui-to oltip>
         <template data-popover="version_tr">
             <dl style="max-width: 500px">
                 {{< changelogs >}}
