@@ -20,17 +20,25 @@ window.customElements.define('ui-checklogin', class extends HTMLElement {
     constructor() {
         super();
         this.authCb = () => this.auth();
-        window.fetchWithAuth=this.fetchWithAuth;
+        window.fetchWithAuth = this.fetchWithAuth;
+    }
+
+    notLoggedIn() {
+        //document.body.classList.remove("logged_in");
+        if (window.location.search)
+            window.location.assign("/login?redirect=" + encodeURIComponent("/" + window.location.pathname + window.location.search));
+        else
+            window.location.assign("/login");
     }
 
     auth() {
-        firebase.auth().onAuthStateChanged(function (user) {
+        if (!window.firebase) {
+            this.notLoggedIn();
+            return;
+        }
+        window.firebase.auth().onAuthStateChanged(function (user) {
             if (!user) {
-                //document.body.classList.remove("logged_in");
-                if (window.location.search)
-                    window.location.assign("/login?redirect="+encodeURIComponent("/"+window.location.pathname+window.location.search));
-                else
-                    window.location.assign("/login");
+                this.notLoggedIn();
             } else {
                 if (!document.body.classList.contains("logged_in"))
                     document.body.classList.add("logged_in");

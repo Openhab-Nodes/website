@@ -143,7 +143,7 @@ class Page {
     return this;
   }
 
-  addNewStyles(context = 'head') {
+  addNewStyles(context = 'head',waitForResult=false) {
     const currentPage = this.querySelector(context, document);
     const newPage = this.querySelector(context);
 
@@ -179,8 +179,12 @@ class Page {
       newLinks.map(
         link =>
           new Promise((resolve, reject) => {
-            link.addEventListener('load', resolve);
-            link.addEventListener('error', reject);
+            if (waitForResult) {
+              link.addEventListener('load', resolve);
+              link.addEventListener('error', reject);  
+            } else {
+              resolve();
+            }
             currentPage.append(link);
           })
       )
@@ -202,7 +206,7 @@ class Page {
    *
    * @return Promise
    */
-  replaceScripts(context = 'head') {
+  replaceScripts(context = 'head',waitForResult=false) {
     const documentContext = this.querySelector(context, document);
     const pageContext = this.querySelector(context);
     const oldScripts = Array.from(
@@ -239,8 +243,12 @@ class Page {
 
             if (script.src) {
               scriptElement.src = script.src;
-              scriptElement.addEventListener('load', resolve);
-              scriptElement.addEventListener('error', reject);
+              if (waitForResult) {
+                scriptElement.addEventListener('load', resolve);
+                scriptElement.addEventListener('error', reject);  
+              } else {
+                resolve();
+              }  
               documentContext.append(scriptElement);
               return;
             }

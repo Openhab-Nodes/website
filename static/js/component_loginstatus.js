@@ -18,13 +18,22 @@ window.customElements.define('ui-loginstatus', class extends HTMLElement {
             appId: "1:889637406242:web:68e31a7134337311"
         };
 
-        if (!firebase.apps.length) {
+        if (!window.firebase) {
+            return;
+        }
+
+        if (!window.firebase.apps.length) {
             console.log("Start firebase");
             firebase.initializeApp(firebaseConfig);
         }
     }
 
     auth() {
+        if (!window.firebase) {
+            document.getElementById('signed-temp').innerHTML = "Connection Issue!";
+            return;
+        }
+
         firebase.auth().onAuthStateChanged(function (user) {
             document.getElementById('signed-temp').classList.add("d-none");
             if (user) {
@@ -39,15 +48,19 @@ window.customElements.define('ui-loginstatus', class extends HTMLElement {
                 document.getElementById('signed-out').classList.remove("d-none");
             }
         }, function (error) {
+            let btn = document.getElementById('signed-temp');
+            btn.innerHTML = "Connection Issue!";
+            btn.title = error;
+            return;
             console.log(error);
         });
     }
-    
+
     signout(e) {
         e.preventDefault();
         firebase.auth().signOut();
     }
-    
+
     connectedCallback() {
         document.addEventListener("PreInit", this.initCb);
         document.addEventListener("MainContentChanged", this.authCb);

@@ -3,26 +3,42 @@ title = "User Guide"
 layout = "list"
 +++
 
-<p class="bs-callout">
-Welcome to <b>The openHAB X User Guide</b>, an introductory guide about openHAB X. The open Home Automation Bus Extended (openHAB X, <i>pronounced ˈəʊpənˈhæb ˈeks</i>) is an open source, technology agnostic home automation platform which runs as the center of your smart home!
-</p>
+{{< callout >}}
+Welcome to <b>The openHAB X User Guide</b>, an introductory guide about openHAB X. The open Home Automation Bus Plux X (openHAB X, <i>pronounced ˈəʊpənˈhæb ˈeks</i>) is an open source, technology agnostic home automation platform which runs as the center of your smart home!
+{{< /callout >}}
 
 ## Who openHAB X Is For
-openHAB X is ideal for many people for a variety of reasons. Let’s look at a few of the most important groups.
+openHAB X is for people who crave **stability** and **ease to use** in a home automation system and is ideal for many people for a variety of reasons. Let’s look at a few of the most important groups.
 
-### People Who Don't Like Vendor Lock-Ins
+openHAB X is for People Who &hellip;
+
+{{< col3md >}}
+
+### Don't Like Vendor Lock-Ins
 
 openHAB's strength is it's ability to integrate a multitude of other devices and systems. It includes other home automation systems, (smart) devices and other technologies into a single solution with a uniform user interface and a common approach to automation rules.
+
 If you can think it, odds are that you can implement it with openHAB X.
 
-Open Source means, it will be available forever. No vendor lock-in: Add your feature to the well documented, continously tested code or ask around in the community.
+<split>
+### Value Simplicity
 
-### People Who Value Simplicity
+openHAB X offers a user-interface for all kinds of configuration or automation. From the very first start to access management, device or voice control integrations and automation rules.
 
-openHAB X offers a user-interface for all kinds of configuration or automation. From the very first start to access management, device or voice control integrations and automation rules. You do not need to type a single line in any sort of text file or drop to a command line. At the same time you always have the coice to do so, watch out for the <i class="badge badge-primary">ADVANCED</i> badge.
+You do not need to type a single line in any sort of text file or drop to a command line. At the same time you always have the coice to do so, watch out for the <i class="badge badge-primary">ADVANCED</i> badge.
 
-### People Who Value Speed and Stability
-openHAB X is for people who crave **speed**, **efficiency** and **stability** in a home automation system. By stability, we mean the execution efficiency of the different robust, self-healing services that openHAB X is composed of and the speed at which openHAB X lets you extend the system. By efficiency we mean the intuitive and quick methods to reach any device integration and automation goal.
+<split>
+### Value Speed and Stability
+
+By stability, we mean execution efficiency (low, controlled memory usage) of all the different robust, self-healing services that openHAB X is composed of.
+
+Speed is not only measured in processed events per second and overall efficiency (see [Design Principles](/developer/design_principles)), but alse the speed at which openHAB X lets you extend the system.
+
+{{< /col3md >}}
+
+<br><br>
+
+**Open Source** (Apache 2 &amp; MIT license) means, it will be around for a while. No vendor lock-in: Add your feature to the well documented, continously tested code or ask around in the community.
 
 If you are interested in technical backgrounds of openHAB X, check out the [Developer Documentation](/developer).
 

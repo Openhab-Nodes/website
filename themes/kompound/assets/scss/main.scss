@@ -65,6 +65,22 @@ $theme-colors: ("orange": #ff7214, "primary": #ff8a65);
     padding: 0;
 }
 
+.btn-dwnload {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    color: white;
+    background-color: #ff8a65;
+    border-color: #ff8a65;
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+}
+
+.btn-dwnload:hover {
+    color: #ff5019;
+    background-color: white;
+}
+
 i.fas {
     line-height: 1.5;
 }
@@ -128,10 +144,6 @@ body {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
-}
-
-main {
-    flex: 1 0 auto;
 }
 
 footer {

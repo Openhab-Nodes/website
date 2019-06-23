@@ -1,3 +1,9 @@
-<section>
-{{ .Inner }}
-</section>
+{{ $cols := split .Inner "<split>" }}
+
+<div class="d-md-flex">
+    {{ range $cols }}
+    <section class="px-md-3 text-justify" style="flex-basis: {{ math.Round (div 100 (len $cols)) }}%">
+    {{ . | markdownify }}
+    </section>
+    {{ end }}
+</div>

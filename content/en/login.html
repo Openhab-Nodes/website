@@ -5,7 +5,14 @@ type = "plain"
 +++
 
 <div style="display: flex;justify-content: center;">
-    <div style="max-width: 500px;min-width:400px;width:30%" id="firebaseui-auth-container">
+    <div style="max-width: 500px;" id="firebaseui-auth-container">
+    </div>
+    <div style="max-width: 500px;display:none" class="card" id="firebaseui-not-online">
+        <div class="card-header"><h4>No Internet Connection</h4></div>
+        <div class="card-body">
+            <p>You seem to have connection issues. Please reload and try again.</p>
+            <button class="btn btn-info" onclick="window.location.reload()">Reload</button>
+        </div>
     </div>
 </div>
 

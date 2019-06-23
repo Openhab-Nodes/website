@@ -6,7 +6,7 @@
 
 <main id="dashboard">
     <div class="dimNotLoggedIn">
-            <div class="loader">Logging in...</div>
+        <div class="loader">Logging in...</div>
     </div>
     <nav>
         <ul>
@@ -20,7 +20,8 @@
             {{ $.Scratch.Set "classactive" "" }}
             {{ end }}
             <li>
-                <a class='btn btn-outline-primary d-block m-2 text-nowrap {{ $.Scratch.Get "classactive" }}' href="{{ $p.URL }}">
+                <a class='btn btn-outline-primary d-block m-2 text-nowrap {{ $.Scratch.Get "classactive" }}'
+                    href="{{ $p.URL }}">
                     <i class="fas fa-envelope-open-text"></i> {{ $p.Name | safeHTML }}</a>
             </li>
             {{- end -}}

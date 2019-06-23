@@ -12,6 +12,14 @@ window.customElements.define('ui-login', class extends HTMLElement {
         if (redirect)
             successURL = window.location.origin + decodeURIComponent(redirect);
     
+
+        if (!window.firebaseui || !window.firebase) {
+            document.getElementById('firebaseui-not-online').style.display="block";
+            return;
+        } else {
+            document.getElementById('firebaseui-not-online').style.display="none";
+        }
+
         var uiConfig = {
             signInSuccessUrl: successURL,
             signInOptions: [

@@ -1,0 +1,29 @@
+h1,
+h2,
+h3,
+h4 {
+    margin-top: 3em;
+}
+
+#doc .navmain {
+    display: flex;
+
+    .toc {
+        font-size: 1.2em;
+        padding: 15px;
+        max-width: 400px;
+        border-right: 1px dashed var(--primary);
+
+        &>nav>ul {
+            display: flex;
+            flex-direction: column;
+            padding-left: 20px;
+            margin-bottom: 0;
+            list-style: none;
+
+            ul {
+                padding-left: 20px;
+            }
+        }
+    }
+}
