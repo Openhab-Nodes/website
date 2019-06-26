@@ -1,0 +1,6 @@
+{{- $context := .Get "context" -}}
+{{- $file := $.Page.File.BaseFileName -}}
+<div style="text-align:center" class="my-4">
+<img src="/img/diagrams/{{ $file }}_{{ $context }}.svg" style="max-width:80%">
+</div>
+{{ cond (eq ("") .Inner) "" "" }}

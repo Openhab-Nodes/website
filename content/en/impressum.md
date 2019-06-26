@@ -17,3 +17,8 @@ Some icons on this page are made available under the [Creative Commons BY 3.0 li
 * Flaticon (Linh Pham): [Linh Pham](https://www.flaticon.com/authors/linh-pham)
 * Flaticon (Smashicons): [Smashicons](https://www.flaticon.com/authors/smashicons)
 * <a href="http://www.transparentpng.com//details/mobile-hands-vector-_10844.html" target="_blank">Mobile Hands Vector Png @transparentpng.com</a>
+
+#### Static Page
+
+* Hugo Static Page Generator
+* Tab Shortcut https://github.com/rvanhorn/hugo-dynamic-tabs

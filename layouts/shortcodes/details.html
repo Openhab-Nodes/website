@@ -1,7 +1,5 @@
-{{ $title := .Get "title" }}
-{{ $id := now.UnixNano }}
-<button class="btn-link contexthelp" id="popup{{ $id }}" title="Context help">{{ $title }}</button>
-<template data-popover="popup{{ $id }}">
+{{- $title := .Get "title" -}}
+{{- $id := now.UnixNano -}}
+<button class="btn-link contexthelp" id="popup{{ $id }}" title="Context help">{{ $title }}</button><template data-popover="popup{{ $id }}">
     <p style="max-width: 500px">{{ .Inner | markdownify }}</p>
-</template>
-<ui-tooltip target="popup{{ $id }}"></ui-tooltip>
+</template><ui-tooltip target="popup{{ $id }}"></ui-tooltip>

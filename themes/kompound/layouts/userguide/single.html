@@ -12,10 +12,14 @@
 			<h4>Chapters</h4>
 			<ul>
 				{{ range .Parent.Pages }}
+				{{ $prevPerm := "" }}
+				{{ with $.PrevInSection }}
+				{{ $prevPerm := .Permalink }}
+				{{ end }}
 				<li>
 					{{ if eq .Permalink $.Permalink }}
 					{{ .Title }}
-					{{ else if eq .Permalink $.PrevInSection.Permalink }}
+					{{ else if eq .Permalink $prevPerm }}
 					<a href='{{ .Permalink | relURL }}'><i class="fas fa-forward"></i>
 						{{ .Title }}</a>
 					{{ else }}
@@ -37,9 +41,6 @@
 						{{ partial "editlink.html" . }}
 				{{ with .PrevInSection }}<a class="btn btn-secondary" href='{{ .Permalink | relURL }}'>{{ .Title }} <i
 						class="fas fa-forward"></i></a> {{ end }}
-			</div>
-			<div class="col-12 pb-3">
-				{{ template "_internal/disqus.html" . }}
 			</div>
 		</div>
 	</div>

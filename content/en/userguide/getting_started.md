@@ -9,7 +9,7 @@ You've got a few options.
 {{< col3md >}}
 {{< figure src="/img/raspberry-pi-3-case-enclosure.jpg" title="Standalone"  width="300px">}}
 
-openHAB X comes as a [standalone](#standalone) SD-Card Image for the Raspberry PI 3 Hardware Bundle.
+openHAB X comes as a [standalone](#standalone) SD-Card Image for the Raspberry PI Hardware Bundle.
 
 This is the easiest and most secure way to get a copy of openHAB X running.
 
@@ -31,17 +31,43 @@ Head over to the [Developer Documentation](/developer) for more information, if 
 
 {{< /col3md >}}
 
+Minimal openHAB X Requirements (including basic Addons):
+
+* 256 MB Memory
+* 1GHz Dual Core x86 or ARM CPU
+
 # Standalone
 
+{{< colpic >}}
+
+<img src="/img/rasp-pi-3_-starterkit-1.jpg" style="" class="w-100">
+
+<split>
+
 What you will need:
- 
-* A {{< details title="Raspberry Pi® 3" >}}
-The Raspberry Pi® 3 is only one of many single board computer options actually. It the recommended one, but you will find download links for other systems down below as well.
-{{< /details >}} single board computer, power supply (minimum 2A) and casing
-* A microSD card (8GB, class 10 or better)
+
+* Powersupply (minimum 2.5A)
+* A Raspberry Pi® 3B (minimum*)
+* Casing
+* A microSD card (minimum 8GB, class 10)
+* A microSD card Writer
+
+Starter Kit Set - Retailer:<br>
+<a target="_blank" href="https://core-electronics.com.au/raspberry-pi-3-starter-kit-34285.html"
+    class="btn btn-sm btn-outline-dark my-2">Australia</a>
+<a target="_blank"
+    href="https://www.amazon.de/Almost-Anything-Ltd-Raspberry-Offizielles/dp/B07CZLWPLF/ref=sr_1_20?ie=UTF8&keywords=raspberry%20pi%203&language=en_GB&qid=1559931725&s=gateway&sr=8-20"
+    class="btn btn-sm btn-outline-dark my-2">Europe</a>
+<a target="_blank"
+    href="https://www.amazon.com/CanaKit-Raspberry-Complete-Starter-Kit/dp/B01C6Q2GSY/ref=sr_1_18?keywords=Raspberry+Pi&qid=1559931481&s=gateway&sr=8-18"
+    class="btn btn-sm btn-outline-dark my-2">USA / Canada</a>
+    
+*: The Raspberry Pi® 3 is the recommended, but only one of many single board computer options. You will find download links for other systems down below.
+
+{{< /colpic >}}
 
 {{< callout >}}
-Note: The Raspberry Pi 3 comes with Wi-Fi and Bluetooth radios. Optional USB dongles are needed if you want to support other smart home protocols like Zigbee and Z-Wave.
+Note: The Raspberry Pi 3 and 4 come with Wi-Fi and Bluetooth radios. Optional USB dongles help with Zigbee and Z-Wave.
 {{< /callout >}}
 
 {{< col3md >}}
@@ -56,6 +82,18 @@ Note: The Raspberry Pi 3 comes with Wi-Fi and Bluetooth radios. Optional USB don
 <h4>ZWave Dongles</h4>
 
 [Sigma Designs UZB Stick](http://www.vesternet.com/z-wave-sigma-designs-usb-controller), [Aeotec Z-Stick](http://aeotec.com/z-wave-usb-stick) (Gen5), Any [OpenZWave compatible dongle](https://github.com/OpenZWave/open-zwave/wiki/Controller-Compatibility-List)
+
+{{< /col3md >}}
+
+{{< col3md >}}
+#### Offline Voice Control
+
+A microphone array is required. Head mounted on the Raspberry PI: [ReSpeaker-4-Mic-Array](https://www.seeedstudio.com/ReSpeaker-4-Mic-Array-for-Raspberry-Pi-p-2941.html)
+
+Offline Voice Control is implemented via [Snips.ai](https://www.snips.ai).
+Snips Satelites like the [Snips AIR](https://www.snips.ai) can be used for recording voice.
+
+<split>
 
 {{< /col3md >}}
 
@@ -86,15 +124,16 @@ Note: The Raspberry Pi 3 comes with Wi-Fi and Bluetooth radios. Optional USB don
 Please uncompress the downloaded file with any tool that can handle `gz` files (7-Zip, WinRar, `tar xfv` etc).
 
 ## 2. Flash Image
-Next you will need to flash the downloaded image onto your microSD card. There are various methods of doing this but we recommend using <a href="https://www.balena.io/etcher/" target="_blank">Etcher</a>.
+There are various methods of flashing the downloaded image onto your microSD card. We recommend using <a href="https://www.balena.io/etcher/" target="_blank">Etcher</a>.
 
-<img src="/img/doc/etcher_screenshot.png" style="max-width:70%">
+<div class="flashimage">
+<div class="title">
+{{< readdata name rpi3-64 >}}
+</div>
+<img src="/img/doc/etcher_screenshot.png">
+</div>
 
-1. Insert your SD card into an SD card reader attached to your computer
-1. Select the downloaded image as the source file
-1. Select your SD card as the target
-
-Click “Flash!”
+1. Insert your SD card | 2. Select the downloaded image | 3. Select your SD card as the target | 4. Click “Flash!”
 
 ## 3. Boot Raspberry Pi
 
@@ -129,23 +168,26 @@ The most known implementation for containers is [Docker](https://www.docker.io) 
 The command line on any operating system will allow to download and start the image via:
 
 ```
-docker pull openhabx-x86-64bit
+docker pull {{< readdata name rpi3-64 >}}
 ```
 
 This only starts the core services. Download and use the [Docker Compose](https://example.com) file to run the full openHAB X distribution.
 
 # First Time Setup
 
-The first time setup process will guide you through the last steps.
+The first time setup process will guide you through the last installation steps.
 
+{{< col3md >}}
 ### Optional WiFi Setup
 
 Select your home network from the list and enter your Wi-Fi password to connect.
 <img src="/img/features/connect_to_wifi.png">
 
+<split>
 ### Create User Account
 Enter your login name or email address and a password to create your administrative user account.
 
 <img src="/img/features/create_account.png">
+{{< /col3md >}}
 
 Learn in the next chapter on how to administer your openHAB X installation including    how to create additional user accounts.

@@ -25,7 +25,7 @@ If you can think it, odds are that you can implement it with openHAB X.
 
 openHAB X offers a user-interface for all kinds of configuration or automation. From the very first start to access management, device or voice control integrations and automation rules.
 
-You do not need to type a single line in any sort of text file or drop to a command line. At the same time you always have the coice to do so, watch out for the <i class="badge badge-primary">ADVANCED</i> badge.
+You do not need to type a single line in any sort of text file or drop to a command line. At the same time you always have the coice to do so, watch out for the {{< advanced >}} badge.
 
 <split>
 ### Value Speed and Stability
@@ -49,7 +49,7 @@ This guide assumes no further background on your side. We’ve tried to make the
 
 In general, this guide assumes that you’re reading it in sequence from front to back. Later chapters build on concepts in earlier chapters, and earlier chapters might not delve into details on a topic; we typically revisit the topic in a later chapter.
 
-You’ll find two kinds of chapters in this guide: concept chapters and project chapters. In concept chapters, you’ll learn about an aspect of openHAB X. In project chapters, we’ll build small demonstrations together, applying what you’ve learned so far.
+You’ll find two kinds of content in this guide: concept sections and project sections. In concept sections, you’ll learn about an aspect of openHAB X. In project sections, we’ll build small demonstrations together, applying what you’ve learned so far.
 
 The chapters are outlined like this:
 

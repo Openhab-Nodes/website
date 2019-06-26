@@ -1,0 +1,11 @@
+{{- $percentage := float (.Get "ratio" | default "40") -}}
+{{- $margin := .Get "margin" | default "px-md-3" -}}
+{{- $cols := split .Inner "<split>" -}}
+<div class="d-md-flex">
+<section class="{{ $margin }} text-justify" style='flex-basis: {{- $percentage -}}%'>
+{{- index $cols 0 | markdownify -}}
+</section>
+<section class="{{ $margin }} text-justify" style='flex-basis: {{- sub 100 $percentage -}}%'>
+{{- index $cols 1 | markdownify -}}
+</section>
+</div>

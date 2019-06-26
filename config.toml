@@ -11,6 +11,10 @@ pygmentsStyle = "colorful"
 defaultContentLanguage = "en"
 disqusShortname = "openhabx"
 
+[blackfriday]
+  skipHTML = false
+  hrefTargetBlank = true
+
 [outputs]
   home = ["HTML"]
 

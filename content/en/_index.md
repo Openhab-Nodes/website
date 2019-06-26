@@ -406,9 +406,7 @@ Adding your first devices is done in a breath.
         <img style="float:left;height: 80px;" class="mr-4" src="/img/raspberry-pi-3-case-enclosure.jpg">
         <p>Head over to a <button class="btn-link contexthelp" id="hw_partners_tr"
                 title="Context help">retailer</button>
-            and get yourself a <button class="btn-link contexthelp" id="raspberry_detail" title="Context help">Raspberry
-                Pi
-                3/3+</button>.
+            and get yourself a <button class="btn-link contexthelp" id="raspberry_detail" title="Context help">Raspberry Pi</button>.
         </p>
         <template data-popover="hw_partners_tr">
             <a target="_blank" href="https://core-electronics.com.au/raspberry-pi-3-starter-kit-34285.html"
@@ -425,13 +423,10 @@ Adding your first devices is done in a breath.
             <div style="max-width: 500px">
                 <p>A small and affordable computer with 4x1.4 GHz 64-bit, 1 GB memory and SD-Card Slot for storage.
                 </p>
-                <p>It's affordable price, fully open sourced firmware, long availability guarantee and low energy
-                    consumption of 1.5W to 6.7W (max) makes it the most suiting core of a home automation solution.
+                <p>It's affordable price, fully open sourced firmware, long availability guarantee and low energy consumption of 1.5W to 6.7W (max) makes it the most suiting core of a home automation solution.
                 </p>
-                <p>You need additional RPI-3 hardware extensions for ZWave, Zigbee, KNX and other non-IP-network
-                    busses and radios.</p>
-                <p>More info in the <a href='{{< relref "/userguide/getting_started" >}}'>Getting started</a>
-                    guide.</p>
+                <p>You need additional USB hardware extensions for ZWave, Zigbee, KNX and other non-IP-network busses and radios.</p>
+                <p>More info in the <a href='{{< relref "/userguide/getting_started" >}}'>Getting started</a> guide.</p>
             </div>
         </template>
         <ui-tooltip target="raspberry_detail"></ui-tooltip>
