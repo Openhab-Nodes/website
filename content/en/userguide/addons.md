@@ -5,8 +5,113 @@ weight = 30
 tags = ["addons"]
 +++
 
+{{< scss file="addons" >}}
+
+openHAB X has been developed with extendability in mind. OHX extensions are called **Add-ons** if they integrates physical hardware, external systems and web services and called **Core Add-ons** if they add *Channel Link Processors* or *Rule Modules*.
+
+{{< callout type="danger" title="Security considerations" >}}
+{{< advanced >}} openHAB X addons are isolated containers with no access to the base operating system, a dedicated, limited space for configuration and a user restrictable access to system resources like CPU and main memory.
+
+Like with Android or iOS mobile applications you must acknowledge elevated permission requests, for example to enumerate or alter *Thing* states or to raise the default CPU / memory limit.
+
+It is **generally safe to install Addons**, even from untrusted sources, as long as you are <u>responsible with granting permissions</u>.
+{{< /callout >}}
+
+Some of the installed extensions have their own extension system like for example the voice recognition service **Snips.Ai** (It allows to install additional *Intends* for more recognised commands). If so, you find instructions on the respective addon page in the **Setup &amp; Maintenance** interface.
+
 ## Install Addons
 
+{{< colpic ratio="40" >}}
+
+Install extensions via the **Setup &amp; Maintenance** interface on the <a class="demolink" href="">Addons</a> page in the subsection "Install Addon" or here on this website if you are logged in.
+
+The *Install* button will by default install the latest version. If you want a different one, click on the settings icon first.
+
+**Note**: Not every version of every Add-on is reviewed. Check for user ratings, comments, the release date and the open Issues count before installing.
+<split>
+
+<div id="addons_stack_wrapper">
+<div id="addons_stack" class="ui_addon_cards">
+    <article>
+        <header>
+            <span>Astro Binding</span> <small class="ml-2">2.5M1</small>
+        </header>
+        <section class="actions"><span role="group" class="btn-group"><a title="Change Version"
+                    class="btn btn-secondary-hover"><i
+                        class="fas fa-cog"></i><span class="ml-2">Configure</span></a>
+            </span></section>
+        <section class="description"><span>Computes andprovides astronomic data</span>
+            <small style="white-space: nowrap; text-overflow: ellipsis;">– By Gerhard Riegler</small></section>
+        <footer>
+            <button class="ml-auto btn btn-outline-success"><span>Install</span></button>
+        </footer>
+    </article>
+    <article>
+        <header>
+            <span>Dresden Elektronik Deconz</span> <small class="ml-2">2.5M1</small>
+        </header>
+        <section class="actions"><span role="group" class="btn-group"><a title="Change Version"
+                    class="btn btn-secondary-hover"><i class="fas fa-cog"></i><span class="ml-2">Configure</span></a>
+            </span></section>
+        <section class="description"><span>Supports the Raspbee und Conbee Zigbee Dongles via Deconz</span> <small
+                style="white-space: nowrap; text-overflow: ellipsis;">– By David Graeff</small></section>
+        <footer>
+            <button class="ml-auto btn btn-outline-success"><span>Install</span></button>
+        </footer>
+    </article>
+    <article>
+        <header>
+            <span>Hue Binding</span> <small class="ml-2">2.5M1</small>
+        </header>
+        <section class="actions"><span role="group" class="btn-group"><a title="Change Version"
+                    class="btn btn-secondary-hover"><i
+                        class="fas fa-cog"></i><span class="ml-2">Configure</span></a>
+            </span>
+        </section>
+        <section class="description"><span>Integrates the Philips Hue Bridge &hellip; </span> <small
+                style="white-space: nowrap; text-overflow: ellipsis;">– By David Graeff</small>
+        </section>
+        <footer>
+            <button class="ml-auto btn btn-outline-success"><span>Install</span></button>
+        </footer>
+    </article>
+    <article >
+        <header>
+            <span>MQTT Binding</span> <small class="ml-2">2.5M1</small>
+            <oh-doc-link title="Known problems and workarounds for your installed version" show=""
+                class="ml-2 link text-nowrap" tabindex="0"><i
+                    class="fas fa-exclamation-triangle"></i></oh-doc-link>
+        </header>
+        <section class="actions"><span role="group" class="btn-group"><a title="Change Version"
+                    class="btn btn-secondary-hover"><i
+                        class="fas fa-cog"></i><span class="ml-2">Configure</span></a>
+            </span>
+        </section>
+        <section class="description"><span>Manages MQTT Connections and allow for MQTT topic autodiscovery.</span> <small style="white-space: nowrap; text-overflow: ellipsis;">– By David Graeff</small>
+        </section>
+        <footer>
+            <button class="ml-auto btn btn-outline-success"><span>Install</span></button>
+        </footer>
+    </article>
+    <article>
+        <header><span>Network Binding</span> <small class="ml-2">2.5M1</small>
+        </header>
+        <section class="actions"><span role="group" class="btn-group"><a title="Change Version"
+                    class="btn btn-secondary-hover"><i
+                        class="fas fa-cog"></i><span class="ml-2">Configure</span></a>
+            </span>
+        </section>
+        <section class="description"><span>The network addon checks a local subnet for pingable or by other means detectable network devices.</span> <small style="white-space: nowrap; text-overflow: ellipsis;">– By David
+                Graeff</small>
+        </section>
+        <footer>
+            <button class="ml-auto btn btn-outline-success"><span>Install</span></button>
+        </footer>
+    </article>
+</div>
+</div>
+
+{{< /colpic >}}
 ## Device Inbox
 
 ## Manually add Bridge / Device

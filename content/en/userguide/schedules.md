@@ -64,15 +64,15 @@ switch_off_after_5_min:
   tags: # optional
     - auto_off_rule 
   triggers:
-     -  id: on_state_change
+     -  _id: on_state_change
         type: channelchange
         source: my_light.brightness
         equals: "ON"
   actions:
-     -  id: a_delay_action
+     -  _id: a_delay_action
         type: "delay"
         delay_in_sec: 360
-     -  id: turn_off
+     -  _id: turn_off
         type: channelcommand
         target: my_light.brightness
         command: "OFF"
@@ -108,17 +108,17 @@ graph LR;
 perm_switch_on:
   title: Switch lights on permanentely or use automatic mode
   triggers:
-     -  id: perm_switch
+     -  _id: perm_switch
         type: channelchange
         source: my_wall_switch
   actions:
-     -  id: perm_on
+     -  _id: perm_on
         title: (Dis/En)able motion rule
         type: "enabledisable"
         target_by_tag: auto_off_rule
         negate: true
         command: "&perm_switch.value"
-     -  id: lights_action
+     -  _id: lights_action
         title: Switch on/off light
         type: channelcommand
         target: my_light.brightness
@@ -154,12 +154,12 @@ Turn the night-light on between 11pm (23h) and 6am.
 perm_switch_on:
   title: Turn the night-light on between 11pm (23h) and 6am.
   triggers:
-     -  id: within_time_range
+     -  _id: within_time_range
         type: timerange
         time_start: "23:00"
         time_end: "06:00"
   actions:
-     -  id: lights_action
+     -  _id: lights_action
         title: Switch night-light
         type: channelcommand
         target: my_light.brightness
@@ -177,9 +177,9 @@ This is not hard to implement if you know about CRON expressions.
 
 A CRON expression is a string comprising five or six fields (min hour day month dow [year]) separated by white space that represents a set of times. The star character has the special meaning: Always.
 
-This expression `* * * * * *`" for example means "every minute" (a minute is the smalled period you can express with CRON).
+This expression "`* * * * * *`" for example means "every minute" (a minute is the smallest period you can express with CRON).
 
-<table class="wikitable"><tbody><tr>
+<table class="table"><tbody><tr>
 <th>Field
 </th>
 <th>Required
@@ -253,11 +253,60 @@ This expression `* * * * * *`" for example means "every minute" (a minute is the
 Every field allows multiple comma separated values.
 To execute something every hour you say `0 * * * *` and to execute on *15:12* you say `12 15 * * *`. There are multiple cron expression generators in the world wide web and the **Setup &amp; Maintenance** Interface also has a powerful UI, if you don't want to wrap your head around it.
 
-A matching expression for the example above is `5 7 * MAY-OCT` (five minutes after 7, every day in the months May to October). A more sophicated example of the previous one that we are going to implement follows.
+A matching expression for the example above is `0 7 * MAY-OCT` (At 7, every day in the months May to October). A more sophicated example of the previous one that we are going to implement follows.
 
 {{< callout type="info" >}}
 #### Motivation
 Turn on the garden sprinkler every day at 7 in the morning in the months from May-Oct. Turn it off after 10 mins if the last 3 days had a mid-day temperature above 30°C otherwise after 5 mins. 
 {{< /callout >}}
 
-**Note**: Rule limitations are subject of the next chapter. You just need to know that *Rules* follow the strict Trigger-Condition-Action schema. Control flow options like if-then-else are not supported (an exception are JavaScript code blocks). *Actions* can carry their own *Conditions* and that is what we will basing the implementation on.
+**Note**: Rule limitations are subject of the next chapter. For now you need to know that *Rules* follow the strict Trigger-Condition-Action schema. Control flow options like if-then-else are not supported (with JavaScript code blocks being the exception).
+
+*Actions* can carry their own *Conditions*. That is what we will basing the implementation on.
+
+{{< mermaid align="left" context="sprinkler_var_delay">}}
+graph LR;
+    A[Cron Schedule] -->|Trigger| turn_on(Sprinkler on)
+	turn_on --> delay_1(Delay, 5 min)
+	delay_1 --> cond>"30°C Condition"]
+	subgraph Delay if condition true
+	cond -->|Yes| delay_2(Delay, 5 min)
+	end
+	delay_2 --> turn_off(Sprinkler off)
+	cond -->|No| turn_off
+{{< /mermaid >}}
+
+
+{{< code-toggle file="sprinkler_var_delay_code">}}
+sprinkler_on:
+  title: Turn on the garden sprinkler every day at 7 in the morning
+  triggers:
+     -  _id: a_cron_trigger
+        type: cron
+        cron: "0 7 * MAY-OCT"
+  actions:
+     -  _id: turn_on
+        title: Turn springler on
+        type: channelcommand
+        target: sprinkler.power
+        command: "ON"
+     -  _id: a_delay_action
+        type: "delay"
+        title: "5 min delay"
+        delay_in_sec: 360
+     -  _id: a_condition_delay_action
+        type: "delay"
+        title: "5 min delay"
+        delay_in_sec: 360
+        conditions:
+        -  _id: think_history
+           type: history
+           expression: "MIN(SELECT weather.temperature RANGE NOW-3d TO NOW AT 12:00)"
+           op: greaterThan
+           value: 30
+     -  _id: turn_off
+        title: Turn springler off
+        type: channelcommand
+        target: sprinkler.power
+        command: "OFF"
+{{< /code-toggle >}}

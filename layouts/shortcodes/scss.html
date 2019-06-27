@@ -1,0 +1,4 @@
+{{- $cssname := (print "/css/" (.Get "file") ".css") -}}
+{{- $scssname := (print "/scss/" (.Get "file") ".scss") -}}
+{{- $options := (dict "targetPath" $cssname "outputStyle" "compressed" "enableSourceMap" true) -}}
+<link rel="stylesheet" href='{{- (resources.Get $scssname | toCSS $options | minify).Permalink | safeHTMLAttr -}}'>

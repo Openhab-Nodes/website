@@ -26,7 +26,7 @@ Adding your first devices is done in a breath.
                           class="btn btn-secondary-hover"><i
                                 class="fas fa-cog"></i><span class="ml-2">Configure</span></a>
                     </span></section>
-                <section class="description"><span>Das Astro Binding berechnet astronomische Daten von Sonne und Mond.</span>
+                <section class="description"><span>Computes andprovides astronomic data</span>
                     <small style="white-space: nowrap; text-overflow: ellipsis;">– By Gerhard Riegler</small></section>
                 <footer>
                     <button class="ml-auto btn btn-outline-success"><span>Install</span></button>
@@ -39,7 +39,7 @@ Adding your first devices is done in a breath.
                 <section class="actions"><span role="group" class="btn-group"><a title="Change Version"
                             class="btn btn-secondary-hover"><i class="fas fa-cog"></i><span class="ml-2">Configure</span></a>
                     </span></section>
-                <section class="description"><span>Unterstützt die Raspbee und Conbee Zigbee Dongles via Deconz</span> <small
+                <section class="description"><span>Supports the Raspbee und Conbee Zigbee Dongles via Deconz</span> <small
                         style="white-space: nowrap; text-overflow: ellipsis;">– By David Graeff</small></section>
                 <footer>
                     <button class="ml-auto btn btn-outline-success"><span>Install</span></button>
@@ -54,9 +54,8 @@ Adding your first devices is done in a breath.
                                 class="fas fa-cog"></i><span class="ml-2">Configure</span></a>
                     </span>
                 </section>
-                <section class="description"><span>Dieses Binding integriert das Philips Hue System. Durch diese können die Hue
-                        Lampen &hellip; </span> <small
-                        style="white-space: nowrap; text-overflow: ellipsis;">– By Deutsche Telekom AG</small>
+                <section class="description"><span>Integrates the Philips Hue Bridge &hellip; </span> <small
+                        style="white-space: nowrap; text-overflow: ellipsis;">– By David Graeff</small>
                 </section>
                 <footer>
                     <button class="ml-auto btn btn-outline-success"><span>Install</span></button>
@@ -74,8 +73,7 @@ Adding your first devices is done in a breath.
                                 class="fas fa-cog"></i><span class="ml-2">Configure</span></a>
                     </span>
                 </section>
-                <section class="description"><span>Erlaubt die Verwaltung von MQTT Verbindungen und das Verknüpfen von MQTT
-                        Topics</span> <small style="white-space: nowrap; text-overflow: ellipsis;">– By David Graeff</small>
+                <section class="description"><span>Manages MQTT Connections and allow for MQTT topic autodiscovery.</span> <small style="white-space: nowrap; text-overflow: ellipsis;">– By David Graeff</small>
                 </section>
                 <footer>
                     <button class="ml-auto btn btn-outline-success"><span>Install</span></button>
@@ -89,8 +87,7 @@ Adding your first devices is done in a breath.
                                 class="fas fa-cog"></i><span class="ml-2">Configure</span></a>
                     </span>
                 </section>
-                <section class="description"><span>Das Network Binding überprüft, ob sich ein Gerät aktuell im Netzwerk befindet
-                        oder nicht.</span> <small style="white-space: nowrap; text-overflow: ellipsis;">– By Marc Mettke, David
+                <section class="description"><span>The network addon checks a local subnet for pingable or by other means detectable network devices.</span> <small style="white-space: nowrap; text-overflow: ellipsis;">– By David
                         Graeff</small>
                 </section>
                 <footer>
