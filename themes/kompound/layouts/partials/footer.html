@@ -1,27 +1,29 @@
 <footer id="footer">
   <div class="d-print-none px-2 px-sm-4">
     <div class="row">
-      <div class="col-sm-6 col-md-3 col-lg-3 mb-3 footer-links">
+      <div class="col-sm-6 col-md-3 col-lg-3 mb-3">
         <h3>{{ i18n "footer1" }}</h3>
-        <ol>
+        <ol class="footer-links-non-block">
           {{ range $element := .Site.Menus.footer1 -}}
-          <li><a href="{{ $element.URL | relLangURL }}">{{- $element.Name | safeHTML -}}</a></li>
+          {{ if (modBool $element.Weight 10) }}<li>{{else}}<span class="mx-2">|</span>{{ end }}
+            <a href="{{ $element.URL | relLangURL }}">{{ $element.Pre | safeHTML }}{{- $element.Name | safeHTML -}}{{ $element.Post | safeHTML }}</a>
           {{- end }}
         </ol>
       </div>
 
-      <div class="col-sm-6 col-md-3 col-lg-3 mb-3 footer-links">
+      <div class="col-sm-6 col-md-3 col-lg-3 mb-3">
         <h3>{{ i18n "footer2" }}</h3>
-        <ul>
+        <ul class="footer-links">
           {{ range $element := .Site.Menus.footer2 -}}
-          <li><a href="{{ $element.URL | relLangURL }}">{{- $element.Name | safeHTML -}}</a></li>
+          <li><a href="{{ $element.URL | relLangURL }}">{{ $element.Pre | safeHTML }}{{- $element.Name | safeHTML -}}{{ $element.Post | safeHTML }}</a></li>
           {{- end }}
         </ul>
 
         <h3>{{ i18n "footer3" }}</h3>
-        <ul>
+        <ul class="footer-links-non-block">
           {{ range $element := .Site.Menus.footer3 -}}
-          <li><a href="{{ $element.URL | relLangURL }}">{{- $element.Name | safeHTML -}}</a></li>
+          {{ if (modBool $element.Weight 10) }}<li>{{else}}<span class="mx-2">|</span>{{ end }}
+            <a href="{{ $element.URL | relLangURL }}">{{ $element.Pre | safeHTML }}{{- $element.Name | safeHTML -}}{{ $element.Post | safeHTML }}</a>
           {{- end }}
         </ul>
       </div>

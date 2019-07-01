@@ -1,0 +1,2 @@
+<img src='{{ with (.Get "src") }}{{ . }}{{ end }}' title='{{ with (.Get "title") }}{{ . }}{{ end }}' alt='{{ with (.Get "title") }}{{ . }}{{ end }}'
+    style='object-fit: contain;display:block;text-align:center;margin:auto;margin-bottom:20px;{{ with (.Get "maxwidth") }}max-width:{{ . }};{{ end }}{{ with (.Get "height") }}height:{{ . }};{{ end }}'>

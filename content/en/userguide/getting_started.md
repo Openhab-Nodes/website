@@ -7,7 +7,8 @@ weight = 10
 You've got a few options.
 
 {{< col3md >}}
-{{< figure src="/img/raspberry-pi-3-case-enclosure.jpg" title="Standalone"  width="300px">}}
+
+{{< img src="/img/raspberry-pi-3-case-enclosure.jpg" title="Standalone"  maxwidth="300px" height="220px">}}
 
 openHAB X comes as a [standalone](#standalone) SD-Card Image for the Raspberry PI Hardware Bundle.
 
@@ -15,15 +16,15 @@ This is the easiest and most secure way to get a copy of openHAB X running.
 
 <split>
 
-{{< figure src="/img/raspberry-pi-3-case-enclosure.jpg" title="Container"  width="300px">}}
+{{< imgicon src="fab fa-docker" title="Container" color="var(--primary)" maxwidth="300px" height="220px">}}
 
 There is also a [container](#container) ("Docker") based installation for Windows, Mac OS or Linux.
 
 You want this option to try openHAB X out and if you want to manage the operating system yourself. The provided container is stateless (easy updates!) and you only need to provide a writable directory and network connection.
 
-<split>
+<split> 
 
-{{< figure src="/img/raspberry-pi-3-case-enclosure.jpg" title="From Source"  width="300px">}}
+{{< imgicon src="fas fa-laptop-code" color="var(--primary)" title="From Source"  maxwidth="300px" height="220px">}}
 
 A third option is to dowload the open sourced services that openHAB X is composed of and build and start those individually.
 
@@ -36,7 +37,7 @@ Minimal openHAB X Requirements (including basic Addons):
 * 256 MB Memory
 * 1GHz Dual Core x86 or ARM CPU
 
-# Standalone
+## Standalone
 
 {{< colpic >}}
 
@@ -97,7 +98,7 @@ Snips Satelites like the [Snips AIR](https://www.snips.ai) can be used for recor
 
 {{< /col3md >}}
 
-## 1. Download Image
+### 1. Download Image
 <small class="muted">Latest Version: <button class="btn-link contexthelp" id="version_tr"
         title="Context help">{{< getversion tag_name >}}</button></small>
 
@@ -123,7 +124,7 @@ Snips Satelites like the [Snips AIR](https://www.snips.ai) can be used for recor
 
 Please uncompress the downloaded file with any tool that can handle `gz` files (7-Zip, WinRar, `tar xfv` etc).
 
-## 2. Flash Image
+### 2. Flash Image
 There are various methods of flashing the downloaded image onto your microSD card. We recommend using <a href="https://www.balena.io/etcher/" target="_blank">Etcher</a>.
 
 <div class="flashimage">
@@ -135,7 +136,7 @@ There are various methods of flashing the downloaded image onto your microSD car
 
 1. Insert your SD card | 2. Select the downloaded image | 3. Select your SD card as the target | 4. Click “Flash!”
 
-## 3. Boot Raspberry Pi
+### 3. Boot Raspberry Pi
 
 <img src="/img/doc/plug_in.png">
 
@@ -160,20 +161,25 @@ When the gateway starts up it will create a Wi-Fi hotspot called “openHAB X XX
 
 Skip to [First Time Setup](#first-time-setup).
 
-# Container
+## Container
 
 A software container allows one or muliple applications to run in an isolated, defined environment.
 The most known implementation for containers is [Docker](https://www.docker.io) and runs on all major operating systems. 
 
-The command line on any operating system will allow to download and start the image via:
+openHAB X requires the [Redis Key-Value Database](https://redis.io) as well as [Influx Time Series Database](https://influxdata.com) and [Keycloak Identity Broker](https://www.keycloak.org/) next to the core services.
+
+The command line on any operating system will allow to download required images via:
 
 ```
-docker pull {{< readdata name rpi3-64 >}}
+docker pull {{< readdata name ova >}}
+docker pull redis
+docker pull influxdb
+docker pull keycloak
 ```
 
-This only starts the core services. Download and use the [Docker Compose](https://example.com) file to run the full openHAB X distribution.
+Download and use the [Docker Compose](https://example.com) file to run the full openHAB X distribution.
 
-# First Time Setup
+## First Time Setup
 
 The first time setup process will guide you through the last installation steps.
 
@@ -190,4 +196,11 @@ Enter your login name or email address and a password to create your administrat
 <img src="/img/features/create_account.png">
 {{< /col3md >}}
 
-Learn in the next chapter on how to administer your openHAB X installation including    how to create additional user accounts.
+## Setup &amp; Maintenance interface
+
+After you have finished the initial setup, you will see the welcome screen of the Setup &amp; Maintenance interface.
+Throughout the guide, references to different pages are given like this: <a class="demolink" href="">Things</a> for example.
+
+You generally use *Setup &amp; Maintenance* for administering your installation, add and remove addons as well as configuring Things and connections between Things. You do not "control" your Smart Home from here. Remember that you can always log into the interface by entering “http://gateway.local” into your webbroser (as long as you haven't changed the hostname configuration).
+
+Learn in the next chapter on how to administer your openHAB X installation including how to create additional user accounts.

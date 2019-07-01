@@ -1,12 +1,15 @@
 +++
-title = "Develop addons"
+title = "Develop Addons"
 author = "David Graeff"
 weight = 50
 tags = []
 +++
 
+# Binding Addons
 
-# Integrate a Weather service via HTTP
+# IO Service Addons
+
+# Walkthrough: A Weather service Binding
 
 <a href="https://www.weather.gov/" style="float:right;max-width:50%" target="_blank" class="card-hover"><img src="/img/doc/usa-national-weather-service.png" class="w-100"></a>
 
@@ -18,7 +21,7 @@ We are using the HTTP based API. This is exemplary - CoAP and MQTT work in a sim
 
 To start with, all the endpoints use the API base https://api.weather.gov (as documented on their website). The basic endpoints are all extensions of that original API base to include latitude and longitude values. 
 
-#### Familiarize with the required HTTP endpoints
+### Familiarize with the required HTTP endpoints
 
 For this walkthrough, we’re going to get the local weather for Richmond, Va. We’re going to use the following location:
 
@@ -72,7 +75,7 @@ A forecast response, again, contains a *properties* key which contains a list of
 }
 ```
 
-#### Channel topology
+### Channel topology
 
 We now need to decide on the channel topology.
 One way is to create two Things called **WeatherForecast12hoursPeriod** for a 12hours period and **WeatherForecast1hourPeriod** for a 1h forecast period. We then assign a few channels for today and tomorrow and for now, in 1h, in 2h, in 3h respectively.
@@ -86,7 +89,7 @@ One way is to create two Things called **WeatherForecast12hoursPeriod** for a 12
                                                        -> [Channel] In2h (Number, Unit: °F)
                                                        -> [Channel] In3h (Number, Unit: °F)
 
-#### Define channels via Channel configurations
+### Define channels via Channel configurations
 
 The channel configuration can be performed entirely in the graphical interface.
 For brevity we will only look at the textual representation of the first channel *Today (Number, Unit: °F)* though.
@@ -117,7 +120,7 @@ As we already know the data is a json encoded object. In OHX we use so called *p
 The **context** refers to a specific defined schema, in our case the value represents a "Temperature". This helps user interfaces to render the channel correctly.
 Schema repositories can be found at http://iotschema.org/ and https://iot.mozilla.org/schemas). The graphical interface will show a selection.
 
-#### A few notable things
+### A few notable things
 
 That's it for our weather forecast integration. 
 

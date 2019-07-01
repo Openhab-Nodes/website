@@ -1,3 +1,21 @@
+@import "bootstrap/functions";
+@import "bootstrap/variables"; // (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px)
+@import "bootstrap/mixins";
+
+@function get-breakpoints($key: "md") {
+    // If the breakpoint exists in the map.
+    @if map-has-key($container-max-widths, $key) {
+        // Get the breakpoint value.
+        $breakpoint-value: map-get($container-max-widths, $key); // Write the media query.
+        @return $breakpoint-value;
+    }
+    @else {
+        // Log a warning.
+        @warn 'Invalid breakpoint: #{$key}.';
+        @return 100;
+    }
+}
+
 h1:not(:first-child),
 h2,
 h3{
@@ -5,13 +23,34 @@ h3{
 }
 
 #doc .navmain {
-    display: flex;
+    display: grid;
+    grid-template-columns: [nav] 1fr [main] get-breakpoints("lg") [aside] 1fr [end];
+    grid-template-areas: "chapters content toc";
+    &>.chapters {
+        grid-area: chapters;
+        justify-self: end;
+    }
+    &>.content {
+        grid-area: content;
+    }
+    &>.sidemenu {
+        ul {
+            display: flex;
+            flex-direction: column;
+            padding-left: 20px;
+            margin-bottom: 0;
+            list-style: none;
 
+            ul {
+                padding-left: 20px;
+            }
+        }
+    }
     .toc {
+        grid-area: toc;
         font-size: 1.2em;
         padding: 15px;
         max-width: 400px;
-        border-right: 1px dashed var(--primary);
 
         &>nav>ul {
             display: flex;

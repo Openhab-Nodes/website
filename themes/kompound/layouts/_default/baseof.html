@@ -16,6 +16,7 @@
 	<link rel="stylesheet" async href="/css/fontawesome.min.css">
 	<link rel="stylesheet" async href="/css/animate.min.css">
 	{{ partial "head.html" . }}
+	{{ template "_internal/opengraph.html" . }}
 </head>
 
 <body>
@@ -24,7 +25,6 @@
 
 	{{ block "body" . }}
 	<main id="mainContent">
-		{{- partial "jsonld.html" . -}}
 		{{ block "main" . }}
 		{{ .Content }}
 		{{ end }}

@@ -5,16 +5,16 @@ layout = "list"
 
 {{< readfile file="developer/_partials/authorsnote.inc" markdown="false" >}}
 
-<p class="p-4">
-Welcome to <b>The openHAB X Developer Documentation</b>, an introductory guide to make you familiar with design principles, the project philosophy, overall architecture as well component specific architecture.
-</p>
+{{< indent >}}
+Welcome to **The openHAB X Developer Documentation**, an introductory guide to make you familiar with design principles, the project philosophy, overall architecture as well component specific architectures.
+{{< /indent >}}
 
 ## Who This Guide Is For
 This documentation assumes that you’ve written code in another programming language. Software Developer Kits for addon development in different languages are introduced.
 
 Quite a few chapters are dedicated to openHAB X Core development. OpenHAB X follows the idea of micro-services. You will read about concepts and the overall as well as service individual architecture. The programming language is [Rust](https://doc.rust-lang.org/book).
 
-Frontend developers as well as App developers are very much welcome and will feel at home in the [Frontend: Apps / Web-UI](developer/frontend) chapter.
+Frontend developers as well as App developers are very much welcome and will feel at home in the [Frontend: Apps / Web-UI](/developer/frontend) chapter.
 
 ## How to Use This Guide
 

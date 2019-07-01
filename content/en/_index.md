@@ -289,27 +289,27 @@ Adding your first devices is done in a breath.
     <ui-tooltip target="rule_modules"></ui-tooltip>
     <template data-popover="text_rule">
         <div style="max-width: 700px">
-            {{< highlight yaml "linenos=table" >}}
-            triggers:
-            - id: '1'
-            label: 'it is a fixed time of day'
-            description: 'Triggers at a specified time'
-            configuration:
-            time: '12:12'
-            type: timer.TimeOfDayTrigger
-            conditions: []
-            actions:
-            - id: '2'
-            inputs: {}
-            label: 'execute a given script'
-            description: 'A script that logs Hello World'
-            configuration:
-            type: application/javascript
-            script: |
-            var myLog = context.logger;
-            myLog.info("Hello world!");
-            type: script.ScriptAction
-            {{< / highlight >}}
+{{< highlight yaml "linenos=table" >}}
+triggers:
+  - id: '1'
+    label: 'it is a fixed time of day'
+    description: 'Triggers at a specified time'
+    configuration:
+    time: '12:12'
+    type: timer.TimeOfDayTrigger
+    conditions: []
+    actions:
+  - id: '2'
+    inputs: {}
+    label: 'execute a given script'
+    description: 'A script that logs Hello World'
+    configuration:
+    type: application/javascript
+    script: |
+      var myLog = context.logger;
+      myLog.info("Hello world!");
+    type: script.ScriptAction
+{{< / highlight >}}
         </div>
         <p>A Visual Studio Code text editor interface allows</p>
         <ul>

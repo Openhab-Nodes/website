@@ -5,11 +5,7 @@
 
 <main id="doc">
 	<div class="navmain">
-		<div class="toc">
-			<h4>Table of content</h4>
-			{{ .TableOfContents }}
-			<br>
-			<h4>Chapters</h4>
+		<div class="chapters sidemenu mr-md-4 mt-md-4">
 			<ul>
 				{{ range .Parent.Pages }}
 				{{ $prevPerm := "" }}
@@ -28,20 +24,22 @@
 				</li>
 				{{ end -}}
 			</ul>
-
-			<!--<br><br><br><br>{{ partial "widget-tags.html" . }}-->
 		</div>
-		<div class="container">
+		<div class="content">
+			<div style="float:right" class="m-4">{{ partial "editlink.html" . }}</div>
 			<h1 class="mt-4">{{ .Title }}</h1>
 			{{ .Content | markdownify }}
  
 			<div class="d-flex p-3" style="justify-content: space-between;">
 				{{ with .NextInSection }}<a class="btn btn-secondary" href='{{ .Permalink | relURL }}'><i
 						class="fas fa-backward"></i> {{ .Title }}</a> {{ end }}
-						{{ partial "editlink.html" . }}
 				{{ with .PrevInSection }}<a class="btn btn-secondary" href='{{ .Permalink | relURL }}'>{{ .Title }} <i
 						class="fas fa-forward"></i></a> {{ end }}
 			</div>
+		</div>
+		<div class="toc sidemenu">
+			<h6>Table of content</h6>
+			{{ .TableOfContents }}
 		</div>
 	</div>
 </main>

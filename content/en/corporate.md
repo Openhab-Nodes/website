@@ -28,7 +28,7 @@ Feature overview:
 
 <template data-popover="benchmark">
 <p style="max-width: 500px">
-Based on a 95%-percentile 50ms response time on a Raspberry PI 3 with the openHAB X Distribution OS 2019-05-30 and simulated http connected WebThings.
+Based on a p99 50ms response time on a Raspberry PI 3 with the openHAB X Distribution OS 2019-05-30 and simulated http connected WebThings.
 </p>
 <p>Perform your own benchmark with the <a href="#">Benchmark Tool</a>.
 </template>

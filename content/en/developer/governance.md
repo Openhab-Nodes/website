@@ -1,5 +1,5 @@
 +++
-title = "Governance of the openHAB X Project"
+title = "Governance of the Project"
 author = "David Graeff"
 weight = 100
 tags = []

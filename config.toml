@@ -28,19 +28,23 @@ disqusShortname = "openhabx"
   languageName = "English"
   contentDir = "content/en"
     [[languages.en.menu.header]]
-      weight = 1
+      weight = 10
       name = "Features"
       url = "/#features"
     [[languages.en.menu.header]]
-      weight = 2
+      weight = 20
+      name = "Addons"
+      url = "/addons/"
+    [[languages.en.menu.header]]
+      weight = 30
       name = "Blog"
       url = "/blog/"
     [[languages.en.menu.header]]
-      weight = 3
+      weight = 40
       name = "User Guide"
       url = "/userguide/"
     [[languages.en.menu.header]]
-      weight = 4
+      weight = 50
       name = "Developers"
       url = "/developer/"
 
@@ -89,6 +93,7 @@ disqusShortname = "openhabx"
     [[languages.en.menu.footer2]]
       name = "openHAB Community"
       url = "https://community.openhab.org/"
+      post = "<i class='fas fa-external-link-alt ml-2'></i>"
       weight = 2
     [[languages.en.menu.footer2]]
       name = "Compatibility / Difference to openHAB"
@@ -96,74 +101,86 @@ disqusShortname = "openhabx"
       weight = 3
 
     [[languages.en.menu.footer3]]
-      name = "Introduction &amp; Project Philosophy"
+      name = "Introduction"
       url = "/developer/"
-      weight = 1
+      weight = 10
+    [[languages.en.menu.footer3]]
+      name = "Design Principles"
+      url = "/developer/design_principles"
+      weight = 11
     [[languages.en.menu.footer3]]
       name = "openHAB X Architecture"
       url = "/developer/architecture"
-      weight = 2
+      weight = 20
     [[languages.en.menu.footer3]]
       name = "Data History / Runtime Metrics"
       url = "/developer/metrics/"
-      weight = 3
+      weight = 30
     [[languages.en.menu.footer3]]
-      name = "Frontend: Apps / Web-UI via GraphQL"
-      url = "/developer/frontend/"
-      weight = 4
+      name = "Apps &amp; Web-UI"
+      url = "/developer/frontend_apps/"
+      weight = 40
     [[languages.en.menu.footer3]]
-      name = "Develop addons"
+      name = "Management UI"
+      url = "/developer/frontend_maintenance/"
+      weight = 41
+    [[languages.en.menu.footer3]]
+      name = "Develop Addons"
       url = "/developer/addons/"
-      weight = 5
+      weight = 50
     [[languages.en.menu.footer3]]
       name = "Rule Engine"
       url = "/developer/ruleengine/"
-      weight = 6
+      weight = 60
 
     [[languages.en.menu.footer1]]
       name = "Getting started"
       url = "/userguide/getting_started"
-      weight = 1
+      weight = 10
     [[languages.en.menu.footer1]]
       name = "Administer your System"
       url = "/userguide/administer"
-      weight = 2
+      weight = 20
     [[languages.en.menu.footer1]]
       name = "Install Addons &amp; Devices"
       url = "/userguide/addons"
-      weight = 3
+      weight = 30
     [[languages.en.menu.footer1]]
       name = "Link Channels"
       url = "/userguide/channellinks"
-      weight = 4
+      weight = 40
+    [[languages.en.menu.footer1]]
+      name = "Groups"
+      url = "/userguide/groups"
+      weight = 41
     [[languages.en.menu.footer1]]
       name = "Backup &amp; Restore"
       url = "/userguide/backup_restore"
-      weight = 5
+      weight = 50
     [[languages.en.menu.footer1]]
       name = "Control your Smarthome"
       url = "/userguide/control"
-      weight = 6
+      weight = 60
     [[languages.en.menu.footer1]]
       name = "Data History"
       url = "/userguide/data_history"
-      weight = 7
+      weight = 70
     [[languages.en.menu.footer1]]
       name = "<abbr title='Do it yourself'>DIY</abbr> Hardware &amp; Service Integration"
       url = "/userguide/diy"
-      weight = 8
+      weight = 80
     [[languages.en.menu.footer1]]
       name = "Scenes"
       url = "/userguide/scenes"
-      weight = 9
+      weight = 90
     [[languages.en.menu.footer1]]
       name = "Schedules"
       url = "/userguide/schedules"
-      weight = 10
+      weight = 100
     [[languages.en.menu.footer1]]
       name = "Making It Smart: Rule engine"
       url = "/userguide/rules"
-      weight = 11
+      weight = 110
 
     [[languages.en.menu.social]]
       name = "Hackster.io"
@@ -254,6 +271,7 @@ disqusShortname = "openhabx"
     [[languages.de.menu.footer2]]
       name = "openHAB Gemeinschaft"
       url = "https://community.openhab.org/"
+      post = "<i class='fas fa-external-link-alt ml-2'></i>"
       weight = 2
     [[languages.de.menu.footer2]]
       name = "Kompatibilität / Unterschiede zu openHAB"
@@ -261,74 +279,86 @@ disqusShortname = "openhabx"
       weight = 3
 
     [[languages.de.menu.footer3]]
-      name = "Einführung &amp; Projekt Philosophie"
+      name = "Einführung"
       url = "/developer"
-      weight = 1
+      weight = 10
+    [[languages.de.menu.footer3]]
+      name = "Design Prinzipien"
+      url = "/developer/design_principles"
+      weight = 11
     [[languages.de.menu.footer3]]
       name = "openHAB X Architektur"
       url = "/developer/architecture"
-      weight = 1
+      weight = 20
     [[languages.de.menu.footer3]]
       name = "Daten Historie / Laufzeitmetriken"
       url = "/developer/metrics/"
-      weight = 2
+      weight = 30
     [[languages.de.menu.footer3]]
-      name = "Frontend: Apps / Web-UI via GraphQL"
-      url = "/developer/frontend/"
-      weight = 3
+      name = "Apps &amp; Web-UI"
+      url = "/developer/frontend_apps/"
+      weight = 40
+    [[languages.de.menu.footer3]]
+      name = "Management UI"
+      url = "/developer/frontend_maintenance/"
+      weight = 41
     [[languages.de.menu.footer3]]
       name = "Addon Entwicklung"
       url = "/developer/addons/"
-      weight = 4
+      weight = 50
     [[languages.de.menu.footer3]]
       name = "Automatisierungs-Engine"
       url = "/developer/ruleengine/"
-      weight = 5
+      weight = 60
 
     [[languages.de.menu.footer1]]
       name = "Einführung"
       url = "/userguide/getting_started"
-      weight = 1
+      weight = 10
     [[languages.de.menu.footer1]]
       name = "Verwalte openHAB X"
       url = "/userguide/administer"
-      weight = 2
+      weight = 20
     [[languages.de.menu.footer1]]
       name = "Erweiterungen und Geräte Installieren"
       url = "/userguide/addons"
-      weight = 3
+      weight = 30
     [[languages.de.menu.footer1]]
       name = "Gerätekanäle verbinden"
       url = "/userguide/channellinks"
-      weight = 4
+      weight = 40
+    [[languages.de.menu.footer1]]
+      name = "Gruppen"
+      url = "/userguide/groups"
+      weight = 41
     [[languages.de.menu.footer1]]
       name = "Datensicherung &amp; -Wiederherstellung"
       url = "/userguide/backup_restore"
-      weight = 5
+      weight = 50
     [[languages.de.menu.footer1]]
       name = "Steuere dein Smarthome"
       url = "/userguide/control"
-      weight = 6
+      weight = 60
     [[languages.de.menu.footer1]]
       name = "Daten Historie"
       url = "/userguide/data_history"
-      weight = 7
+      weight = 70
     [[languages.de.menu.footer1]]
       name = "<abbr title='Do it yourself'>DIY</abbr> Hardware &amp; Service Integration"
       url = "/userguide/diy"
-      weight = 8
+      weight = 80
     [[languages.de.menu.footer1]]
       name = "Szenen"
       url = "/userguide/scenes"
-      weight = 9
+      weight = 90
     [[languages.de.menu.footer1]]
       name = "Zeitsteuerung"
       url = "/userguide/schedules"
-      weight = 10
+      weight = 100
     [[languages.de.menu.footer1]]
       name = "Richtig Automatisieren"
       url = "/userguide/rules"
-      weight = 11
+      weight = 110
 
     [[languages.de.menu.social]]
       name = "Hackster.io"
@@ -356,6 +386,7 @@ disqusShortname = "openhabx"
   email = "contact@openhabx.com"
   phone_link = "tel:+491632662555"
   phone = "+49 163 266 2555"
+  editURL = "https://github.com/Openhab-Nodes/website/edit/master/content/"
 
 # The site's parameters
 [languages.de.params]

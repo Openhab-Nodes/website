@@ -85,6 +85,7 @@ $theme-colors: ("orange": #ff7214, "primary": #ff8a65);
 i.fas {
     line-height: 1.5;
 }
+
 .demolink {
     margin-right: 10px;
     margin-left: 10px;
@@ -147,6 +148,40 @@ body {
     overflow-y: scroll;
 }
 
+a[target="_blank"]:after {
+    line-height: 1.5;
+    font-weight: 900;
+    font-family: "Font Awesome 5 Free";
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    margin-left: .5rem;
+    content: "\f35d";
+}
+
+.contexthelp {
+    cursor: help;
+
+    &:after {
+        line-height: 1.5;
+        font-weight: 900;
+        font-family: "Font Awesome 5 Free";
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        line-height: 1;
+        margin-left: .5rem;
+        content: "\f05a";
+    }
+}
+
 footer {
     flex-shrink: 0;
 }
@@ -185,13 +220,13 @@ label {
     margin-bottom: 0;
 }
 
-body > main{
+body>main {
     margin-top: 76px;
 }
 
-@media (max-width: 992px) {
-    body > main {
-        margin-top:0;
+@include media-breakpoint-down(lg) {
+    body>main {
+        margin-top: 0;
     }
 }
 
@@ -257,7 +292,7 @@ body > main{
     border-radius: 4px;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@include media-breakpoint-between(md,lg) {
     #wrapper {
         text-align: center;
     }
@@ -280,7 +315,7 @@ body > main{
     }
 }
 
-@media only screen and (max-width: 767px) {
+@include media-breakpoint-down(md) {
     .heading {
         padding-left: 0px;
     }
@@ -360,11 +395,12 @@ nav#TableOfContents {
     border: 1px solid maroon;
     cursor: pointer;
 }
+
 .copy-button:hover {
     background-color: maroon;
     color: white;
-  }
+}
 
-  div.highlight table {
+div.highlight table {
     position: relative;
-  }
+}
