@@ -111,7 +111,7 @@
 {{ .Content }}
 </div>
 
-<h2 class="index-subtitle">News</h2>
+<h2 class="index-subtitle">Blog</h2>
 
 <section id="news" class="container">
 	<div class="row">
@@ -120,21 +120,21 @@
 		{{ $pages = $pages | lang.Merge .Site.RegularPages }}
 		{{ end }}
 		{{ $events := where $pages.ByDate.Reverse "Section" "blog" }}
-		{{ range first 2 $events }}
+		{{ range $p := first 2 $events }}
 		<div class="col-md-6">
 			<article class="blog-post">
-				{{- with .Params.image -}}
-				<img src="{{ . }}" class="img-responsive" alt="post-thumb">
-				{{- end -}}
-				<a class="post-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
-				{{ with .Date }}
+				<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+				{{ with $p.Date }}
 				<div>{{- .Format "January 2, 2006" -}}</div>
 				{{ end }}
+				{{- with $p.Params.image -}}
+				<a href="{{ $p.RelPermalink }}"><img title="{{ $p.Title }}" src="{{ . }}" class="img-responsive" alt="post-thumb"></a>
+				{{- end -}}
 				<p>
-					{{- .Summary | safeHTML -}}
+					{{- $p.Summary | safeHTML -}}
 				</p>
-				{{ if .Truncated -}}
-				<a href="{{ .RelPermalink }}">Read More</a>
+				{{ if $p.Truncated -}}
+				<a href="{{ $p.RelPermalink }}">Read More</a>
 				{{- end }}
 			</article>
 		</div>

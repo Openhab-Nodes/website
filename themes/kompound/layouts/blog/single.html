@@ -1,19 +1,28 @@
 {{ define "main" }}
-<div class="container">
+{{ $options := (dict "targetPath" "/css/blog.css" "outputStyle" "compressed" "enableSourceMap" true) -}}
+<link rel="stylesheet"
+    href='{{- (resources.Get "/scss/blog.scss" | toCSS $options | minify | fingerprint).Permalink | safeHTMLAttr -}}'>
+
+<div class="container blog-posts">
 	<div class="row">
 		<div class="col-12">
 			{{ partial "breadcrumb.html" . }}
 		</div>
 		<div class="col-12 col-md-9">
-			{{ with .Params.image }}<img src="{{ . }}" width="100%" alt="post-image"> {{ end }}
+			{{ with .Params.headerimage }}<img src="{{ . }}" width="100%" alt="post-image"> {{ end }}
 			<h1>{{ .Params.title }}</h1>
 			<p class="italic">By <span class="bold">{{ .Params.author }}</span> on <span class="bold">
 					{{ .Date.Format .Site.Params.dateFormat }}</span></p>
 			<hr />
 			{{ .Content | markdownify }}
 
-			<div class="text-center" style="padding: 30px;">
+			<div class="d-flex p-3" style="justify-content: space-between;">
+				{{ with .NextInSection }}<a title="{{ .Title }}" class="btn btn-secondary" href='{{ .Permalink | relURL }}'><i
+						class="fas fa-backward"></i> <span class="sectionnavlabel">{{ .Title }}</span></a> {{ end }}
 				<a class="btn btn-secondary" href='{{ "blog" | relURL }}'>{{ i18n "back_to_news" }}</a>
+				{{ with .PrevInSection }}<a title="{{ .Title }}" class="btn btn-secondary" href='{{ .Permalink | relURL }}'>
+					<span class="sectionnavlabel">{{ .Title }}</span><i
+						class="fas fa-forward"></i></a> {{ end }}
 			</div>
 		</div>
 		<div class="col-md-3">

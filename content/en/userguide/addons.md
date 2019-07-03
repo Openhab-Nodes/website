@@ -27,7 +27,7 @@ Install extensions via the **Setup &amp; Maintenance** interface on the <a class
 
 The *Install* button will by default install the latest version. If you want a different one, click on the settings icon first.
 
-Review the permissions and accept if appropriate. Some addons like to have elevated permissions for more CPU time or a larger disk storage quota. Read the description carefully and grant those permissions if wanted. You can change permissions later on.
+Review the permissions and accept if appropriate. 
 
 <split>
 
@@ -113,6 +113,8 @@ Review the permissions and accept if appropriate. Some addons like to have eleva
 </div>
 
 {{< /colpic >}}
+
+Some addons like to have elevated permissions for more CPU time or a larger disk storage quota. Read the description carefully and grant those permissions if wanted. You can change permissions later on.
 
 **Note**: Not every version of every Add-on is reviewed. Check for user ratings, comments, the release date and the open Issues count before installing.
 

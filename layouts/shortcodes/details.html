@@ -1,5 +1,5 @@
 {{- $title := .Get "title" -}}
 {{- $id := now.UnixNano -}}
 <button class="btn-link contexthelp" id="popup{{ $id }}" title="Context help">{{ $title }}</button><template data-popover="popup{{ $id }}">
-    <p style="max-width: 500px">{{ .Inner | markdownify }}</p>
+    <div style='{{ with (.Get "maxwidth") }}max-width:{{ . }};{{ end }}'>{{ .Inner | markdownify }}</div>
 </template><ui-tooltip target="popup{{ $id }}"></ui-tooltip>

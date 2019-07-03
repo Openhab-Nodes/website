@@ -4,7 +4,9 @@
     }
 
     .blog-post img {
-        margin-bottom: 15px;
+        margin: 15px;
+        max-width: 220px;
+        float: left;
     }
 
     .blog-post p {

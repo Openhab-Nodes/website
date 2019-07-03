@@ -16,6 +16,10 @@ tab-header-item {
 	padding: 6px 8px 6px;
 	min-width: 8em;
 	text-align: center;
+	cursor: pointer;
+}
+tab-header-item:not(.tab-active):hover {
+	background-color: var(--primary);
 }
 tab-header-item::before,
 tab-header-item::after {
@@ -25,7 +29,7 @@ tab-header-item::after {
 	right: 0;
 	bottom: 0;
 	top: 0;
-	z-index: 100;
+	// z-index: 100;
 	border: 0px solid var(--primary);
 	transition: transform 0.2s cubic-bezier(1, 0.6, 0, 1);
 }

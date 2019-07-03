@@ -1,18 +1,32 @@
-.blog-post {
-    margin-bottom: 50px;
+
+.blog-list {
+    .blog-post {
+        clear:both;
+    }
+    
+    .blog-post img {
+        margin: 15px;
+        max-width: 220px;
+        float: left;
+    }
+    
+    .blog-post p {
+        margin: 15px 0 20px;
+    }
+    
+    .post-title {
+        font-size: x-large;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 10px;
+    }
 }
 
-.blog-post img {
-    margin-bottom: 15px;
-}
-
-.blog-post p {
-    margin: 15px 0 20px;
-}
-
-.post-title {
-    font-size: x-large;
-    font-weight: 600;
-    display: block;
-    margin-bottom: 10px;
+.sectionnavlabel {
+    text-overflow: ellipsis;
+    max-width: 150px;
+    white-space: nowrap;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
 }

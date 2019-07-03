@@ -16,8 +16,8 @@
     }
 }
 
-h1:not(:first-child),
-h2,
+h1:not(:first-of-type),
+h2:not(:first-of-type),
 h3{
     margin-top: 3em;
 }

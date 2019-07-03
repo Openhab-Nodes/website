@@ -58,9 +58,23 @@ CPU Time is limited to 20% for an Addon, except if you have granted the CPU_MAX 
 
 Main memory is restricted to 200 MB for an Addon, except if you have granted the MEM_500 (500 MB), MEM_1000 (1GB) or MEM_MAX permission.
 
-The above restrictions make sure that a malicous addon cannot just start mining Bit-Coins on your system (at least not with full power and to the extend that the rest does not work correctly anymore) or abuse it in other ways or overheat the hardware.
+The above restrictions make sure that a malicous addon cannot just start mining Bit-Coins on your system (at least not with full power and to the extend that other services are affected) or abuse it in other ways or overheat the hardware.
 
 ## Updates
+
+Each component of openHAB X is individually versioned. You find current and latest versions displayed on the root maintenance screen.
+
+If you are using the standalone installation, the UI will offer an update button if there is one or more newer service versions or a new operating system available. Add-ons may block the update if relying on older versions. Downgrades are not intended nor supported, but should never be necessary anyway.
+
+Updates will cause a few seconds of downtime, while services are reconnecting to each other.
+
+### Automatic Updates
+
+By default the system will automatically update once a month on Sunday 4am. If an updated service fails to start up, the update will be rolled back. A successfully started service that causes Things to not work, cannot be detetected unfortunately. Therefore an update is always a little rist for the installation. You may want to disable updates, although not recommended.
+
+Operating System updates are not automatically performed*. Because the SSH service is an attack surface, you might want to watch out for vulnerability reports and update the system if necessary.
+
+<small>* Subscribers can enable operating system updates. Those updates were tested by the openhabx.com staff.</small>
 
 ## Configuration Via Forms &amp; Textual
 

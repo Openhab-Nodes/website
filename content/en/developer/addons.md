@@ -1,129 +1,254 @@
 +++
-title = "Develop Addons"
+title = "About Addons"
 author = "David Graeff"
 weight = 50
 tags = []
 +++
 
-# Binding Addons
+Developing an Addon for openHAB X is not complicated.
+Programming libraries are provided for Rust, C++, Java and NodeJS.
 
-# IO Service Addons
+This chapter sheds some light on what addons actually are in the [Addon: Technical background](#addon-technical-background) section and introduces into addon development in later sections. Various *template* repositories allow you to easily clone example code and start experimenting and coding.
 
-# Walkthrough: A Weather service Binding
+You will not find library APIs in this documentation, refer to the code repositories if you are looking for those.
 
-<a href="https://www.weather.gov/" style="float:right;max-width:50%" target="_blank" class="card-hover"><img src="/img/doc/usa-national-weather-service.png" class="w-100"></a>
+There are two types of Addons that require different interfaces to be implemented.
 
-In this section we are going to integrate a weather forecast service into OHX (without writing an addon).
-We are going to use the National Weather Service (USA), because it does not require any form of authorisation.
-Usually you want to register to your favourite, locale weather service and use the API Key in your requests.
+{{< colpic ratio="50" margin="mx-2" >}}
 
-We are using the HTTP based API. This is exemplary - CoAP and MQTT work in a similar fashion.
+{{< imgicon src="far fa-lightbulb" height="50px" caption="**Binding**" >}}
 
-To start with, all the endpoints use the API base https://api.weather.gov (as documented on their website). The basic endpoints are all extensions of that original API base to include latitude and longitude values. 
+An Addon that integrates external services or devices is called a Binding. Related service interfaces are: The discovery service interface ("*Inbox*") and the Things interface.
 
-### Familiarize with the required HTTP endpoints
+The [Binding](/developer/addons_binding) chapter contains all the details.
 
-For this walkthrough, we’re going to get the local weather for Richmond, Va. We’re going to use the following location:
+<split>
 
-* latitude = 37.540726
-* longitude = -77.436050
+{{< imgicon src="fas fa-exchange-alt" height="50px" caption="**IO Service**" >}}
 
-Lets get the metadata for that location using the metadata endpoint:
+An IO Service is a type of Addon that exposes Things / Thing Channels. May it be via an http interface for mobile Apps or HomeKit or for example the Hue protocol for Hue Apps.
 
-    https://api.weather.gov/points/{<latitude>,<longitude>}
+The [IO Service](/developer/addons_ioservice) chapter contains all the details.
 
-So for the Richmond location, this would look like:
+{{< /colpic >}}
 
-    https://api.weather.gov/points/37.540726,-77.436050
+Other kinds of addons
+: An addon with the purpose of for example voice recognition or a machine learning related service, might not fit into one of the two categories. If you remember the architecture chapter from earlier, openHAB X consists of different core services that are accessible via purpose-specific libraries. If you develop in {{< details title="Rust">}}In other languages you would need to implement the gRPC interfaces.{{< /details >}}, you can just link to those libraries and interoperate with all parts of OHX. 
 
-A response contains content like this:
+## Addon: Technical background
 
-```json
-{
-  "properties": {
-     "forecast": "https://api.weather.gov/gridpoints/AKQ/45,76/forecast",
-     "forecastHourly": "https://api.weather.gov/gridpoints/AKQ/45,76/forecast/hourly",
-     "forecastGridData": "https://api.weather.gov/gridpoints/AKQ/45,76",
-  }
-}
+To understand what an Addon means for openHAB X, let's have a look at the following figure.
+
+<div class="text-center">
+<img src="/img/doc/addon-container.svg" class="w-100 p-3">
+</div>
+
+Right in the middle you see the {{< details title="software container(s)" maxwidth="500px" >}}
+A **container** is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. A **container image** is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries and settings. Containers are not virtual machines!
+
+The Open Container Initiative (OCI), founded by Docker, is a Linux Foundation project to design open standards for operating-system-level virtualization, most importantly containers.
+{{< /details >}} (pod) that your Addon is comprised of. In most cases your Addon consists of exactly one container, which runs software that is linked to `libAddon`, to communicate with the `AddonManager` and other core services via Interprocess Communication. OHX uses [gRPC](https://grpc.io/). Sometimes you might require additional external services, like a database. This is when you have more than one container running.
+
+Define network ports, storage, permissions
+: The "[Kubernetes Objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) Yaml file", pictured on the right side of the figure above, is a wide spread file format to describe how to start one or multiple containers in regard to exposed network ports, storage requirements and access to host hardware. openHAB X permissions, explained in a later section, are also specified in that file. 
+
+Author, Addon Name and other metadata
+: The "Addon Description File", seen on the left side of the figure above, tells the Addon Registry and users about the authors, the addon *name* (title) and  description. The npm package.json standard has been adopted for this purpose.
+
+### Restrictions &amp; Permissions
+
+A pod (set of containers) runs an in isolated, contained environment and is confined to 100 MB of disk quota and 1 MB of configuration data. A pod might request a larger disk quota via the DISK_QUOTA_500 (500 MB), DISK_QUOTA_1000 (1 GB) and DISK_QUOTA_MAX permissions.
+
+CPU Time is limited to 20% for a pod, except if the user has granted the CPU_MAX permission. Main memory is restricted to 200 MB for an Addon, except if the user has granted the MEM_500 (500 MB), MEM_1000 (1GB) or MEM_MAX permission. Access to hardware like Bluetooth and USB is denied. Request for HW_BLUETOOTH, HW_NETWORK, HW_IC2, HW_GPIO, HW_USB to access respective hardware.
+
+The above restrictions make sure that malicous addons cannot just start mining Bit-Coins on a users system (at least not with full power and to the extend that other services are affected) or abuse it in other ways or overheat the hardware.
+
+If you require further access, you may use the FULL_PRIVILEGE permission. That should be really rare and you rather talk to the core team to add special permissions for your use case. The **Setup &amp; Maintenance** interface will warn a user from accepting this permission.
+
+Any of the above mentioned permissions can also be marked as required. The snips.ai addon for example requires the CPU_MAX permission. A user must accept required permissions during installation, but may deny optional permissions. `libaddon` allows you to query for granted permissions.
+
+## Setting up the development enviroment
+
+This guide assumes that you develop with an Integrated Developer Enviroment (IDE).<br>
+A recommended one is [Visual Studio Code](https://code.visualstudio.com/).
+
+The source code of openHAB X is hosted on https://www.github.com. Respective repositories are referenced further down. To retrieve the source code, you either download zipped archives or `git clone` repositories via [git](https://git-scm.com/) (recommended).
+
+Depending on your your target programming language you need to install the required compiler or development runtime.
+
+<div class="mb-2">
+	<tab-container>
+		<tab-header>
+			<tab-header-item class="tab-active">Rust</tab-header-item>
+			<tab-header-item>Go</tab-header-item>
+			<tab-header-item>C++</tab-header-item>
+			<tab-header-item>NodeJS</tab-header-item>
+			<tab-header-item>Java</tab-header-item>
+		</tab-header>
+		<tab-body>
+			<tab-body-item >
+{{< md >}}
+Rust 1.32+ is required. Install via [rustup](https://rustup.rs/) for example.
+
+See https://marketplace.visualstudio.com/items?itemName=rust-lang.rust for the Visual Studio Code extension.
+{{< /md >}}
+			</tab-body-item>
+			<tab-body-item >
+{{< md >}}
+[Go 1.10+](https://golang.org/) is required.
+
+See https://code.visualstudio.com/docs/languages/go for the Visual Studio Code extension.
+{{< /md >}}
+			</tab-body-item>
+			<tab-body-item >
+{{< md >}}
+A C++17 capable compiler like g++7, clang or others is required. The buildsystem is [CMake](https://cmake.org/).
+
+Because C++ does not have a package manager, additional libraries like for networking https://github.com/Qihoo360/evpp are downloaded via a bootstrapping script.
+
+See https://code.visualstudio.com/docs/languages/cpp for the Visual Studio Code extension.
+{{< /md >}}
+			</tab-body-item>
+			<tab-body-item >
+{{< md >}}
+[NodeJS](https://nodejs.org/) 10+ including the Node Package Manager (npm) is required.
+
+Visual Studio Code supports Javascript development out of the box.
+{{< /md >}}
+			</tab-body-item>
+			<tab-body-item >
+{{< md >}}
+The Java Development Kit (JDK) 8 or newer is required, for example from Oracle: [Oracle JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+
+[Gradle](https://gradle.org/) is the build system tool.
+
+See https://code.visualstudio.com/docs/languages/java for the Visual Studio Code extension.
+{{< /md >}}
+			</tab-body-item>
+		</tab-body>
+	</tab-container>
+</div>
+
+In each repository you find a `start.sh` file. Open a terminal (for Windows the [new terminal](https://github.com/microsoft/terminal) is recommended).
+
+## Containers
+
+OHX uses containers for distributing addons.
+For local testing you do not need to care about containers, just start 
+
+## Define Meta-data
+
+Before you dive into coding, let us define all the required meta data first: 
+Most and importantly, the addon description file.
+
+### Configurations in Addons
+
+One type of metadata is configurations. May it be Thing or Addon or Service configuration. Why is that?
+
+Configuration in openHAB X ~~should~~ must always be possible in textual form as well as graphical via forms and dialogs.
+For this to work, configuration structure and key-values need to be described in a machine readable fashion. OHX uses JsonSchema for this purpose.
+Whenever you require configuration, you start by defining the corresponding JsonSchema.
+
+For example if you have a service `my_service` and like your users to be able to configure a port, username and password:
+
+```yaml
+credentials:
+  username: a_user
+  password: secret_password_hash
+port: 1212
 ```
 
-Evaluating the response we find the link for a 12h-period forecast: "https://api.weather.gov/gridpoints/AKQ/45,76/forecast".
+{{< colpic ratio="50" margin="mx-2" >}}
+A corresponding JsonSchemas looks like this:
 
-A forecast response, again, contains a *properties* key which contains a list of *periods*.
 ```json
 {
+  "title": "My service configuration",
+  "description": "A description that might be long",
+  "type": "object",
+  "required": [
+    "port"
+  ],
   "properties": {
-    "periods": [
-        {
-            "number": 1,
-            "name": "Today",
-            "startTime": "2019-06-17T11:00:00-04:00",
-            "endTime": "2019-06-17T18:00:00-04:00",
-            "isDaytime": true,
-            "temperature": 93,
-            "temperatureUnit": "F",
-            "temperatureTrend": null,
-            "windSpeed": "6 to 12 mph",
-            "windDirection": "SW",
-            "icon": "https://api.weather.gov/icons/land/day/sct/tsra_hi,40?size=medium",
-            "shortForecast": "Mostly Sunny then Chance Showers And Thunderstorms",
-            "detailedForecast": "A chance of showers and thunderstorms between 2pm and 5pm, ..."
+    "credentials": {
+      "type": "object",
+      "title": "User credentials",
+      "description": "Another long description",
+      "properties": {
+        "username": {
+          "type": "string",
+          "title": "Username",
+          "default": "a_user"
         },
-    ]
+        "password": {
+          "type": "string",
+          "title": "Password",
+          "minLength": 3
+        }
+      }
+    },
+    "port": {
+      "type": "integer",
+      "title": "Port"
+    }
   }
 }
 ```
 
-### Channel topology
+<split>
 
-We now need to decide on the channel topology.
-One way is to create two Things called **WeatherForecast12hoursPeriod** for a 12hours period and **WeatherForecast1hourPeriod** for a 1h forecast period. We then assign a few channels for today and tomorrow and for now, in 1h, in 2h, in 3h respectively.
+And renders into what you see below. Almost*.
 
-    [Addon] HTTP -> [Thing] WeatherForecast12hoursPeriod -> [Channel] Today (Number, Unit: °F)
-                                                         -> [Channel] Tonight (Number, Unit: °F)
-                                                         -> [Channel] Tomorrow (Number, Unit: °F)
-                                                         -> [Channel] Tomorrow Night (Number, Unit: °F)
-                 -> [Thing] WeatherForecast1hourPeriod -> [Channel] Now (Number, Unit: °F)
-                                                       -> [Channel] In1h (Number, Unit: °F)
-                                                       -> [Channel] In2h (Number, Unit: °F)
-                                                       -> [Channel] In3h (Number, Unit: °F)
+<form class="card p-4"><div class="form-group field field-object"><fieldset><legend>My service configuration</legend><p class="field-description">A description that might be long</p><div class="form-group field field-object"><fieldset class="ml-4"><legend>User Credentials</legend><p class="field-description">Another long description</p><div class="form-group field field-string"><label class="control-label" for="root_credentials_username">Username</label><input type="text" class="form-control" value="Chuck" label="Username"></div><div class="form-group field field-string"><label class="control-label" for="root_credentials_password">Password</label><input type="password" class="form-control" value="secret_password_hash" label="Password"></div></fieldset></div><div class="form-group field field-integer"><label class="control-label" for="root_port">Port<span class="required">*</span></label><input type="number" step="1" class="form-control" value="12" label="Port"></div></fieldset></div></form>
 
-### Define channels via Channel configurations
+<small>*A second schema <b>UISchema</b> complements JsonSchema. It is used for translations and to further specify on how to render specific fields like the password field.</small>
 
-The channel configuration can be performed entirely in the graphical interface.
-For brevity we will only look at the textual representation of the first channel *Today (Number, Unit: °F)* though.
-If you are interested in all channel configuration options of the http addon, check the documentation page out:
-[HTTP Addon](/addons/http).
+{{< details title="See a UISchema example for the above form" >}}
+```json
+{
+  "credentials": {
+    "username": {
+      "ui:autofocus": true,
+      "ui:emptyValue": ""
+    },
+    "password": {
+      "ui:widget": "password",
+      "ui:help": "Hint: Make it strong!"
+    }
+  },
+  "port": {
+    "ui:widget": "updown",
+    "ui:title": "Port (translated)",
+    "ui:description": "(an additional description)"
+  }
+}
+```
+{{< /details >}}
 
-A channel is by default read-only and a http channel in particular is by default a GET request with no additional http headers attached. Have a look at the channel definition:
+{{< /colpic >}}
 
-{{< highlight yaml "linenos=table" >}}
-today:
-    context: Temperature
-    image:
-        uri: https://api.weather.gov/icons/land/day/sct/tsra_hi,40?size=medium
-    type: integer
-    unit: °F
-    http_in:
-        cache: 180 # Cache time in minutes
-        uri: https://api.weather.gov/gridpoints/AKQ/45,76/forecast
-    processors_in:
-        - jsonpath:
-            path: $.properties.periods[0].temperature # http://jsonpathfinder.com/ helps here
-{{< / highlight >}}
+A longer example is given in the walkthrough section in the [Binding](/developer/addons_binding) chapter.
 
-We choose an **image** (can be a statically uploaded image or an internet URL), a type, [unit](/developer/addons#unit-of-measurement) and where to get the data from. For an http channel that is set via the **http_in** configuration.
+{{< callout type="info" >}}
+<h4>Version your Configuration</h4>
+Addon configuration is kept even if an addon is uninstalled or updated. Version your configuration to not get surprised in a later version of your addon. If you require a clean config, perform a configuration wipe when receiving the `installed` callback.
+{{< /callout >}}
 
-As we already know the data is a json encoded object. In OHX we use so called *processors* to transform an input to another value. Via **processors_in** we can define one or multiple [processors](/userguide/channellinks#processors). We use the *jsonpath* processor to extract the temperature. 
+#### Tools to generate JSONSchema
 
-The **context** refers to a specific defined schema, in our case the value represents a "Temperature". This helps user interfaces to render the channel correctly.
-Schema repositories can be found at http://iotschema.org/ and https://iot.mozilla.org/schemas). The graphical interface will show a selection.
+Some programming languages support to define JSONSchema in code together with the structs that hold the configuration values, like Rust (macros) and Java (annotations). Those languages therefore don't face the problem of desyncing schema and code.
 
-### A few notable things
+Because this is not supported in all languages, the idiomatic way is the other way round. You define the JSONSchema (and UISchema). That's your source of truth and you always commit them to your source repository as well. You then generate the programming language specific parts using those schemas.
 
-That's it for our weather forecast integration. 
+1. Design your schemas with https://mozilla-services.github.io/react-jsonschema-form/
+2. Generate code with: https://app.quicktype.io/. Choose JSON Schema on the left. Choose the target language on the right.
 
-A non read-only (writable) http channel would need to have `http_out` and probably a method like *post* and an authorisation header to be defined. You can find all options in the documentation: [HTTP Addon](/addons/http).
- 
-MQTT (and CoAP) speaking devices can be integrated in a very similar fashion, you would just define an *mqtt_subscribe* and *mqtt_publish* topics for retrieving and sending values. See [MQTT Addon](/addons/mqtt) and [CoAP Addon](/addons/coap).
+#### Usage in Code
+
+If you register a structure for configuration retrival with `libaddon`, you must also specify the JSONSchema and optionally the UISchema.
+
+{{< callout type="info" >}}
+<h4>Dynamic updates</h4>
+You can at any time update a JSONSchema. For example in response to a just received configuration or your addons current state.
+All connected user interfaces, including Setup &amp; Maintenance will update the rendered forms.
+{{< /callout >}}

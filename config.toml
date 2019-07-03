@@ -10,6 +10,7 @@ pygmentsStyle = "colorful"
 
 defaultContentLanguage = "en"
 disqusShortname = "openhabx"
+enableInlineShortcodes = true
 
 [blackfriday]
   skipHTML = false

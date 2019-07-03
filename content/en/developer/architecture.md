@@ -13,6 +13,9 @@ Code of conduct
 
 ## Configuration Storage
 
+GlusterFS is a scalable network filesystem.
+Git.
+
 ## Identity and Access Management (IAM)
 
 Keycloak
