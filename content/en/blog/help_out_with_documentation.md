@@ -20,17 +20,64 @@ The different pages are compiled into HTML via the static page generator Hugo. H
 
 Click on the "Improve this page" link next to the page title and you will be redirected to the document in edit mode on GitHub. Small fixes or short additions are best done this way.
 
-If you plan on adding an entire new document or require a preview that includes shortcodes, you better clone the website repository on Github and to your computer. You then create a git branch for your changes, make your changes, perform a commit and a git push to finish the procedure.
+If you plan on adding an entire new document or require a preview that includes shortcodes, you better clone the website repository on Github and to your computer. Create a git branch for your changes, make your changes, perform a commit and a git push to finish the procedure.
 
-On the command line you would enter those 
+On the command line you would enter:
+
+1. `git checkout -o new_branch`
+1. make changes
+1. `git add .`
+1. `git commit -m "A message that describes what happened" -s`
+1. `git push`
 
 ## Markdown
 
-...
+Markdown is used to format documents. 
+
+* Use `#`, `##`, `###`, `####` for different types of headings.
+* Inline markup: `**bold**` **bold** and `*italic*` *italic* and both `***both***` ***both*** and strike-through `~~strike~~` ~~strike~~
+* Links: `[Title](https://www.example.com)` and internal links: `[Title](/developer/addons)`
+* Inline `sourcecode` via backticks: ``sourcecode` `
 
 ## Images, Icons and Figures
 
+You can always just include the html img tag: `<img src="/img/doc/some_image.png">`.
+
+There are also some shortcodes for preformatted images and font-awesome icons:
+
+* <code>{<span></span>{< img src="/img/doc/some_image.png" title="a title" >}}</code>
+* <code>{<span></span>{< imgicon src="fas fa-lightbulb" title="a title" >}}</code>
+
+Each with optional arguments `maxwidth="20px"` and `height="20px"`. 
+
+If you like the 3d rotated, shadowed images that 
+## Layout
+
 ## Sourcecode
+
+Use three backticks around multiple lines of code and specify the highlight syntax:
+
+<pre>
+`<span></span>`<span></span>` json
+{
+    "some":"value"
+}
+```
+</pre>
+
+``` json
+{
+    "some":"value"
+}
+```
+
+Sometimes you get better results by directly using Hugo's highlight shortcode:
+
+<pre>
+{<span></span>{< highlight yaml >}}
+my_config_key: "my_value"
+{<span></span>{< /highlight >}}
+</pre>
 
 ## Diagrams
 
