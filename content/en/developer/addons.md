@@ -11,6 +11,7 @@ Programming libraries are provided for Rust, C++, Java and NodeJS.
 This chapter sheds some light on what addons actually are in the [Addon: Technical background](#addon-technical-background) section and introduces into addon development in later sections. Various *template* repositories allow you to easily clone example code and start experimenting and coding.
 
 You will not find library APIs in this documentation, refer to the code repositories if you are looking for those.
+This text assumes that you know how to open and operate a terminal, because for brevity reasons only command line instructions are given.
 
 There are two types of Addons that require different interfaces to be implemented.
 
@@ -91,6 +92,10 @@ Depending on your your target programming language you need to install the requi
 Rust 1.32+ is required. Install via [rustup](https://rustup.rs/) for example.
 
 See https://marketplace.visualstudio.com/items?itemName=rust-lang.rust for the Visual Studio Code extension.
+
+Clone the repository at https://www.github.com/openhab-nodes/addon-rust.
+
+Command line: Change to the desired example directory and start with `cargo run`.
 {{< /md >}}
 			</tab-body-item>
 			<tab-body-item >
@@ -98,15 +103,22 @@ See https://marketplace.visualstudio.com/items?itemName=rust-lang.rust for the V
 [Go 1.10+](https://golang.org/) is required.
 
 See https://code.visualstudio.com/docs/languages/go for the Visual Studio Code extension.
+
+Clone the repository at https://www.github.com/openhab-nodes/addon-go.
+
+Command line: Change to the desired example directory and start with `go run src/main.go`.
 {{< /md >}}
 			</tab-body-item>
 			<tab-body-item >
 {{< md >}}
 A C++17 capable compiler like g++7, clang or others is required. The buildsystem is [CMake](https://cmake.org/).
-
-Because C++ does not have a package manager, additional libraries like for networking https://github.com/Qihoo360/evpp are downloaded via a bootstrapping script.
+Additional libraries like for networking https://github.com/Qihoo360/evpp are downloaded during build.
 
 See https://code.visualstudio.com/docs/languages/cpp for the Visual Studio Code extension.
+
+Clone the repository at https://www.github.com/openhab-nodes/addon-cpp.
+
+Command line: Change to the desired example directory and start with `cmake -S . -B build && cmake --build build --target addon --config Debug && ./build/addon`.
 {{< /md >}}
 			</tab-body-item>
 			<tab-body-item >
@@ -114,6 +126,10 @@ See https://code.visualstudio.com/docs/languages/cpp for the Visual Studio Code 
 [NodeJS](https://nodejs.org/) 10+ including the Node Package Manager (npm) is required.
 
 Visual Studio Code supports Javascript development out of the box.
+
+Clone the repository at https://www.github.com/openhab-nodes/addon-nodejs.
+
+Command line: Change to the desired example directory and start with `npm run start`.
 {{< /md >}}
 			</tab-body-item>
 			<tab-body-item >
@@ -123,18 +139,22 @@ The Java Development Kit (JDK) 8 or newer is required, for example from Oracle: 
 [Gradle](https://gradle.org/) is the build system tool.
 
 See https://code.visualstudio.com/docs/languages/java for the Visual Studio Code extension.
+
+Clone the repository at https://www.github.com/openhab-nodes/addon-java.
+
+Command line: Change to the desired example directory and start with `gradle && java -jar ./target/addon.jar`.
 {{< /md >}}
 			</tab-body-item>
 		</tab-body>
 	</tab-container>
 </div>
 
-In each repository you find a `start.sh` file. Open a terminal (for Windows the [new terminal](https://github.com/microsoft/terminal) is recommended).
+{{< callout title="Containerless testing" >}}
+For local testing, containers are not required. Execute `sh ./start_all.sh` of the [core repository](https://www.github.com/openhab-nodes/core) on the command line and then start your addon or the example addon via the command line given above, like `cargo run` for a Rust addon or `npm run start` for NodeJS.
+{{< /callout >}}
 
-## Containers
-
-OHX uses containers for distributing addons.
-For local testing you do not need to care about containers, just start 
+At this point in time you are already able to edit and play around with the example addons.
+To start your own addon, you first define required metadata. That is what the next section is about.
 
 ## Define Meta-data
 
@@ -143,13 +163,15 @@ Most and importantly, the addon description file.
 
 ### Configurations in Addons
 
-One type of metadata is configurations. May it be Thing or Addon or Service configuration. Why is that?
+Configuration, may it be Thing or Addon or Service configuration, in openHAB X ~~should~~ must always be possible in textual form as well as graphical via forms and dialogs.
+For this to work, a configuration description is necessary. This is also a form of metadata.
+OHX uses **JsonSchema** for this purpose.
 
-Configuration in openHAB X ~~should~~ must always be possible in textual form as well as graphical via forms and dialogs.
-For this to work, configuration structure and key-values need to be described in a machine readable fashion. OHX uses JsonSchema for this purpose.
+{{< callout type="danger" >}}
 Whenever you require configuration, you start by defining the corresponding JsonSchema.
+{{< /callout >}}
 
-For example if you have a service `my_service` and like your users to be able to configure a port, username and password:
+For example if you have a service `my_service` and like your users to be able to configure a port, username and password. Username and password form a unit "credentials":
 
 ```yaml
 credentials:
@@ -247,8 +269,168 @@ Because this is not supported in all languages, the idiomatic way is the other w
 
 If you register a structure for configuration retrival with `libaddon`, you must also specify the JSONSchema and optionally the UISchema.
 
-{{< callout type="info" >}}
-<h4>Dynamic updates</h4>
+<div class="mb-2">
+	<tab-container>
+		<tab-header>
+			<tab-header-item class="tab-active">Rust</tab-header-item>
+		</tab-header>
+		<tab-body>
+<tab-body-item >{{< md >}}
+```rust
+use serde::{Serialize, Deserialize};
+use ohx::{Configs};
+
+// This is for demonstration only. A code generator like the one
+// mentioned above will create a separate file for configuration structs.
+
+#[derive(Serialize, Deserialize, Debug)]
+struct Credentials {
+    username: String;
+    password: String;
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+struct ServiceConfig {
+    credentials: Option<Credentials>
+    port: Option<i32>
+}
+
+static json_schema = include_str!("schema/config_id_schema.json");
+
+fn main() {
+    // ...
+    // Publish schemas. No optional ui schema is given in this example.
+    Configs::publish(&json_schema, None)?;
+    // Synchronously request a configuration object. Should only happen on startup.
+    let config : Option<ServiceConfig> = Configs::get("config_id").unwrap();
+}
+```
+{{< /md >}}</tab-body-item >
+		</tab-body>
+    </tab-container>
+</div>
+
+{{< callout type="info" title="Dynamic schema updates">}}
 You can at any time update a JSONSchema. For example in response to a just received configuration or your addons current state.
 All connected user interfaces, including Setup &amp; Maintenance will update the rendered forms.
 {{< /callout >}}
+
+### Listen to configuration changes
+
+Configuration may be altered by the user during runtime.
+It is up to you on how to react to changes.
+
+It is generally a better idea to use this asyncronous API instead of the `get` method.
+The listener callback method will also be called for the inital configuration.
+Via a computed hash over the configuration you will only be called back for actuall changes.
+
+<div class="mb-2">
+	<tab-container>
+		<tab-header>
+			<tab-header-item class="tab-active">Rust</tab-header-item>
+		</tab-header>
+		<tab-body>
+<tab-body-item >{{< md >}}
+```rust
+
+// ...
+
+fn config_changed(config_id: &str, config: Option<ServiceConfig>) {
+
+}
+
+fn main() {
+    // ...
+    Config::register_lister("config_id", &config_changed);
+}
+```
+{{< /md >}}</tab-body-item >
+		</tab-body>
+    </tab-container>
+</div>
+
+## Test your addon with your production OHX
+
+It is possible to run your addon on your developer machine and have your (production) OHX installation running on a different system.
+For this to work, you first need to create an access token on the <a class="demolink" href="">Maintenance</a> page with the "REMOTE_ADDON" permission. Add additional permissions as needed. You are basically executing the reprocedure that happens when an addon is installed.
+
+Start your addon with the environment variable `REMOTE_OHX=192.168.1.11` set (change the IP accordingly) and the environment variable `REMOTE_OHX_ACCESS` should be set to your token, like `REMOTE_OHX_ACCESS=e5868ebb4445fc2ad9f9...49956c1cb9ddefa0d421`.
+
+The addon should report that it will attempt to connect to a remote instance.
+Please note, that configuration is not shared across devices.
+Depending on the granted permissions you will have access to Things and Thing states, Thing Channel history, the user database etc.
+
+{{< callout type="info" >}}
+As long as you do not grant full cpu, memory and disk quota permissions, it is generally safe to develop an addon towards your production OHX. You cannot break anything or render the installation unstable.
+{{< /callout >}}
+
+## Publishing your Addon
+
+OHX uses containers for distributing addons and a [Kubernetes Objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) file that describes how to start your container(s).
+
+Let's begin with the container file.
+Depending on your programming language you need a slightly different file.
+The template repositories contain matching `Dockerfile`s.
+The following snippet shows the `Dockerfile` file for a Rust based addon.
+
+```
+FROM rust:1.35-slim
+
+WORKDIR /usr/src/myapp
+COPY . .
+
+RUN cargo install --path .
+
+CMD ["myapp"]
+```
+
+The next step is to write the *Kubernetes Objects* file.
+This file contains all metadata like the addon title, description, author information as well as mandatory and optional permissions and required containers.
+
+The following example for an imaginary addon called "ohx-addon-name" names two containers.
+One custom with the addon application inside and an mqtt broker.
+
+```yaml
+---
+ apiVersion: v1
+ kind: Pod
+ spec:
+   containers:
+     - name: ohx-addon-name
+       image: addon
+       ports:
+         - containerPort: 80
+     - name: mqtt-broker
+       image: eclipse-mosquitto:latest
+       ports:
+        - port: 1883
+          protocol: TCP
+        - containerPort: 9001
+          protocol: TCP
+    securityContext:
+      allowPrivilegeEscalation: false
+      privileged: false
+      readOnlyRootFilesystem: true
+    tty: true
+ metadata:
+   name: ohx-addon-name
+   uid: "ohx-addon-v1.0"
+   labels:
+     title: "My addon"
+     title_de: "A translated title"
+     description: "A long description that *may* use markdown and \n line breaks"
+     homepage: "https://www.github.com/my/repository"
+     github_releases: "https://www.github.com/my/repository"
+     issues_web: "https://www.github.com/my/repository/issues"
+     category: binding
+     authors: ["your name"]
+     supports:
+       manufacturers: ["Samsong"]
+       products: ["XT-1247"]
+     permissions:
+       mandatory: []
+       optional: []
+     version: "1.0"
+```
+
+Define `containerPort` if ports should be only opened for the device that is running the container, meaning that only other addons and containers can interact with that service. Use `port` for ports that should be opened on the host operating system. In the example above an mqtt broker is exposed and potentially reachable via the internet.
