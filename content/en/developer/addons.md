@@ -56,18 +56,6 @@ Define network ports, storage, permissions
 Author, Addon Name and other metadata
 : The "Addon Description File", seen on the left side of the figure above, tells the Addon Registry and users about the authors, the addon *name* (title) and  description. The npm package.json standard has been adopted for this purpose.
 
-### Restrictions &amp; Permissions
-
-A pod (set of containers) runs an in isolated, contained environment and is confined to 100 MB of disk quota and 1 MB of configuration data. A pod might request a larger disk quota via the DISK_QUOTA_500 (500 MB), DISK_QUOTA_1000 (1 GB) and DISK_QUOTA_MAX permissions.
-
-CPU Time is limited to 20% for a pod, except if the user has granted the CPU_MAX permission. Main memory is restricted to 200 MB for an Addon, except if the user has granted the MEM_500 (500 MB), MEM_1000 (1GB) or MEM_MAX permission. Access to hardware like Bluetooth and USB is denied. Request for HW_BLUETOOTH, HW_NETWORK, HW_IC2, HW_GPIO, HW_USB to access respective hardware.
-
-The above restrictions make sure that malicous addons cannot just start mining Bit-Coins on a users system (at least not with full power and to the extend that other services are affected) or abuse it in other ways or overheat the hardware.
-
-If you require further access, you may use the FULL_PRIVILEGE permission. That should be really rare and you rather talk to the core team to add special permissions for your use case. The **Setup &amp; Maintenance** interface will warn a user from accepting this permission.
-
-Any of the above mentioned permissions can also be marked as required. The snips.ai addon for example requires the CPU_MAX permission. A user must accept required permissions during installation, but may deny optional permissions. `libaddon` allows you to query for granted permissions.
-
 ## Setting up the development enviroment
 
 This guide assumes that you develop with an Integrated Developer Enviroment (IDE).<br>
@@ -156,15 +144,10 @@ For local testing, containers are not required. Execute `sh ./start_all.sh` of t
 At this point in time you are already able to edit and play around with the example addons.
 To start your own addon, you first define required metadata. That is what the next section is about.
 
-## Define Meta-data
-
-Before you dive into coding, let us define all the required meta data first: 
-Most and importantly, the addon description file.
-
-### Configurations in Addons
+## Configurations in Addons
 
 Configuration, may it be Thing or Addon or Service configuration, in openHAB X ~~should~~ must always be possible in textual form as well as graphical via forms and dialogs.
-For this to work, a configuration description is necessary. This is also a form of metadata.
+For this to work, a configuration description is necessary. This is a form of metadata.
 OHX uses **JsonSchema** for this purpose.
 
 {{< callout type="danger" >}}
@@ -256,7 +239,7 @@ A longer example is given in the walkthrough section in the [Binding](/developer
 Addon configuration is kept even if an addon is uninstalled or updated. Version your configuration to not get surprised in a later version of your addon. If you require a clean config, perform a configuration wipe when receiving the `installed` callback.
 {{< /callout >}}
 
-#### Tools to generate JSONSchema
+### Tools to generate JSONSchema
 
 Some programming languages support to define JSONSchema in code together with the structs that hold the configuration values, like Rust (macros) and Java (annotations). Those languages therefore don't face the problem of desyncing schema and code.
 
@@ -265,7 +248,7 @@ Because this is not supported in all languages, the idiomatic way is the other w
 1. Design your schemas with https://mozilla-services.github.io/react-jsonschema-form/
 2. Generate code with: https://app.quicktype.io/. Choose JSON Schema on the left. Choose the target language on the right.
 
-#### Usage in Code
+### Code Example
 
 If you register a structure for configuration retrival with `libaddon`, you must also specify the JSONSchema and optionally the UISchema.
 
@@ -349,7 +332,7 @@ fn main() {
     </tab-container>
 </div>
 
-## Test your addon with your production OHX
+## Test With Production OHX
 
 It is possible to run your addon on your developer machine and have your (production) OHX installation running on a different system.
 For this to work, you first need to create an access token on the <a class="demolink" href="">Maintenance</a> page with the "REMOTE_ADDON" permission. Add additional permissions as needed. You are basically executing the reprocedure that happens when an addon is installed.
@@ -364,31 +347,36 @@ Depending on the granted permissions you will have access to Things and Thing st
 As long as you do not grant full cpu, memory and disk quota permissions, it is generally safe to develop an addon towards your production OHX. You cannot break anything or render the installation unstable.
 {{< /callout >}}
 
-## Publishing your Addon
+## Metadata &amp; Prepare For Publishing
 
-OHX uses containers for distributing addons and a [Kubernetes Objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) file that describes how to start your container(s).
+OHX uses containers for distributing addons and a [Kubernetes Objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) file that describes how to start your container(s) and that contains all descriptive metadata.
 
 Let's begin with the container file.
+
+### Containerize
+
 Depending on your programming language you need a slightly different file.
 The template repositories contain matching `Dockerfile`s.
 The following snippet shows the `Dockerfile` file for a Rust based addon.
 
-```
+```dockerfile
 FROM rust:1.35-slim
-
 WORKDIR /usr/src/myapp
 COPY . .
-
 RUN cargo install --path .
-
 CMD ["myapp"]
 ```
 
-The next step is to write the *Kubernetes Objects* file.
-This file contains all metadata like the addon title, description, author information as well as mandatory and optional permissions and required containers.
+You build the addon container with `docker build . -name addon` or `podman build . -name addon`.
 
-The following example for an imaginary addon called "ohx-addon-name" names two containers.
-One custom with the addon application inside and an mqtt broker.
+### Kubernetes Pods File
+
+The next step is to write the *Kubernetes Objects* file. Although the software Kubernetes is not used, it is a well understood and documented file format for container setups which allow to attach metadata.
+
+Metadata like the addon title, description, author information as well as mandatory and optional permissions are part of this declaration.
+
+The following example for an imaginary addon called "ohx-addon-name" names two containers. `apiVersion` is always `v1` and `kind` must be set to `Pod`. A pod is a set of containers.
+The first container entry references the addon application (which we named "addon" in the section above) and an mqtt broker container.
 
 ```yaml
 ---
@@ -416,21 +404,92 @@ One custom with the addon application inside and an mqtt broker.
    name: ohx-addon-name
    uid: "ohx-addon-v1.0"
    labels:
+     version: "1.0"
+     category: binding
+     authors: ["your name"]
      title: "My addon"
      title_de: "A translated title"
      description: "A long description that *may* use markdown and \n line breaks"
-     homepage: "https://www.github.com/my/repository"
-     github_releases: "https://www.github.com/my/repository"
-     issues_web: "https://www.github.com/my/repository/issues"
-     category: binding
-     authors: ["your name"]
      supports:
        manufacturers: ["Samsong"]
        products: ["XT-1247"]
      permissions:
-       mandatory: []
+       mandatory:
+        - id: HW_BLUETOOTH
+          reason: "This addon connects to HW via Bluetooth."
        optional: []
-     version: "1.0"
+     homepage: "https://www.github.com/my/repository"
+     github_releases: "https://www.github.com/my/repository"
+     issues_web: "https://www.github.com/my/repository/issues"
 ```
 
-Define `containerPort` if ports should be only opened for the device that is running the container, meaning that only other addons and containers can interact with that service. Use `port` for ports that should be opened on the host operating system. In the example above an mqtt broker is exposed and potentially reachable via the internet.
+The `image: addon` line points to the image that is created with the local Dockerfile.
+
+Hardware
+: If your addon interacts with hardware like Bluetooth directly (via kernel system calls), you need to set `allowPrivilegeEscalation` and `privileged` to true. For userspace USB access this does not need to be set, but you need the HW_USB permission. The next section talks about permissions and restrictions in more detail.
+
+Networking
+: Define `containerPort` if ports should be only opened for the device that is running the container, meaning that only other addons and containers can interact with that service. Use `port` for ports that should be opened on the host operating system. In the example above an mqtt broker is exposed and potentially reachable via the internet.
+
+You can map a containers port to a different host port. Use a structure like this:
+```yaml
+ports:
+- port: 1883
+  hostPort: 8000
+  protocol: TCP
+```
+
+Metadata
+: All addon metadata sits under "metadata->labels". 
+
+.
+
+* `title` and `description` can be translated by appending the 2 or 3 letter language code to the key (eg `title_de` for German).
+* `version` Assign your addon a version. Consider to use semantic versioning.
+* `category` is either "binding" or "ioservice". Leave this key out if none of those are matching.
+* `supports` This object contains to lists `manufacturers` and `products`. Add all matching entries. For an Addon that supports specific Samsung TVs, you would set the keys accordingly. 
+* `permissions` List the mandatory and optional permissions. You may optionally tell the user why a permission is necessary via the `reason` field. See the next section for further information.
+* `homepage` A website for that addon. Might just point to a Github repository.
+* `github_releases` An optional key to the github releases page. This should be set if Github releases are used for distributing new addon versions. The **AddonsManager** will periodically check for new releases.
+* `issues_web` If this is set, a "Report an Issue" link will appear whenever appropriate in the **Setup &amp; Maintenance** interface.
+
+### Restrictions &amp; Permissions
+
+A pod (set of containers) runs an in isolated, contained environment and is confined to 100 MB of disk quota and 1 MB of configuration data. A pod might request a larger disk quota via the DISK_QUOTA_500 (500 MB), DISK_QUOTA_1000 (1 GB) and DISK_QUOTA_MAX permissions.
+
+CPU Time is limited to 20% for a pod, except if the user has granted the CPU_MAX permission. Main memory is restricted to 200 MB for an Addon, except if the user has granted the MEM_500 (500 MB), MEM_1000 (1GB) or MEM_MAX permission. Access to hardware like Bluetooth and USB is denied. Request for HW_BLUETOOTH, HW_NETWORK, HW_IC2, HW_GPIO, HW_USB to access respective hardware.
+
+The above restrictions make sure that malicous addons cannot just start mining Bit-Coins on a users system (at least not with full power and to the extend that other services are affected) or abuse it in other ways or overheat the hardware.
+
+If you require further access, you may use the `privileged` key. That should be really rare and you rather talk to the core team to add special permissions for your use case. The **Setup &amp; Maintenance** interface will warn a user from accepting a privileged Addon.
+
+Any of the above mentioned permissions can be mandatory or optional. The snips.ai addon for example requires the CPU_MAX permission for working correctly.
+
+A user must accept required permissions during installation, but may deny optional permissions.
+
+`libaddon` allows you to query for granted and denied permissions.
+
+
+<div class="mb-2">
+	<tab-container>
+		<tab-header>
+			<tab-header-item class="tab-active">Rust</tab-header-item>
+		</tab-header>
+		<tab-body>
+<tab-body-item >{{< md >}}
+```rust
+use ohx::{Addon};
+
+// ...
+
+fn main() {
+    // ...
+    let list_granted = Addon::granted_permissions().unwrap();
+    let list_denied = Addon::denied_permissions().unwrap();
+}
+```
+{{< /md >}}</tab-body-item >
+		</tab-body>
+    </tab-container>
+</div>
+

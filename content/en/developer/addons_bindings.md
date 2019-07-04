@@ -5,52 +5,11 @@ weight = 51
 tags = []
 +++
 
-There are a few helper and tool libraries available to ease mapping http endpoints, mqtt topics and coap endpoints to Things and Thing Channels. An addon that binds an mqtt topic to a Thing is written in 20 lines of code.
+There are a few helper and tool libraries available to ease mapping http endpoints, mqtt topics and coap endpoints to Things and Thing Channels. A binding that binds an mqtt topic to a Thing is written in just 20 lines of code, a http API based weather service binding takes around the same code. Find an mqtt and http binding walkthrough at the end of this chapter.  
 
-Each supported programming language has a template repository that you can clone, build and play around with.
-The most examples you will probably find for Rust at the moment.
+Each supported programming language has a template repository with multiple examples that you can clone, build and play around with.
 
-It always makes sense to the pick the language that you are either familiar with or that helps to solve a problem the easiest way.
-For example take zwave support. Because of the project [openzwave](https://github.com/OpenZWave/open-zwave) that is programmed in C++, it makes sense to pick the C++ SDK.
-
-<div class="mb-2">
-	<tab-container>
-		<tab-header>
-			<tab-header-item class="tab-active">Rust</tab-header-item>
-			<tab-header-item>Go</tab-header-item>
-			<tab-header-item>C++</tab-header-item>
-			<tab-header-item>NodeJS</tab-header-item>
-			<tab-header-item>Java</tab-header-item>
-		</tab-header>
-		<tab-body>
-			<tab-body-item >
-{{< md >}}
-See https://code.visualstudio.com/docs/languages/java
-{{< /md >}}
-			</tab-body-item>
-			<tab-body-item >
-{{< md >}}
-See https://code.visualstudio.com/docs/languages/java
-{{< /md >}}
-			</tab-body-item>
-			<tab-body-item >
-{{< md >}}
-See https://code.visualstudio.com/docs/languages/java
-{{< /md >}}
-			</tab-body-item>
-			<tab-body-item >
-{{< md >}}
-See https://code.visualstudio.com/docs/languages/java
-{{< /md >}}
-			</tab-body-item>
-			<tab-body-item >
-{{< md >}}
-See https://code.visualstudio.com/docs/languages/java
-{{< /md >}}
-			</tab-body-item>
-		</tab-body>
-	</tab-container>
-</div>
+Pick the language that you are either familiar with or that helps to solve a problem the easiest way. Because of the project [openzwave](https://github.com/OpenZWave/open-zwave) that is written in C++, it makes sense to pick the C++ SDK for a ZWave based Addon.
 
 ## Walkthrough: A Weather Forecast Binding
 

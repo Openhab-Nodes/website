@@ -12,7 +12,7 @@
 				{{ with $.PrevInSection }}
 				{{ $prevPerm := .Permalink }}
 				{{ end }}
-				<li>
+				{{ if (modBool .Weight 10) }}<li>{{else}}<li class="ml-3">{{ end }}
 					{{ if eq .Permalink $.Permalink }}
 					{{ .Title }}
 					{{ else if eq .Permalink $prevPerm }}

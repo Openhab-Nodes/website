@@ -51,7 +51,44 @@ There are also some shortcodes for preformatted images and font-awesome icons:
 Each with optional arguments `maxwidth="20px"` and `height="20px"`. 
 
 If you like the 3d rotated, shadowed images that 
+
 ## Layout
+
+Sometimes you want to render a picture next to a piece of text. Unfortunately css `float` doesn't really work. The shortcode <code>{<span></span>{< colpic ratio="50" >}}left<<span></span>split>right{<span></span>{< /colpic >}}</code> ("column picture") splits the text area into two columns with the given ratio percentage.
+
+For arbitrary columns with equal sized width use
+
+<code>{<span></span>{< col >}}<br>
+&nbsp;&nbsp;1st<br>
+&nbsp;&nbsp;<<span></span>split><br>
+&nbsp;&nbsp;2nd<br>
+&nbsp;&nbsp;<<span></span>split><br>
+&nbsp;&nbsp;3rd<br>
+{<span></span>{< /col >}}</code>
+
+## Configuration examples
+
+Configuration parts where json, yaml and toml examples are given, are implemented via the `codetoggle` shortcode. Only yaml source is provide and the other formats are computed.
+
+<pre>
+{<span></span>{< code-toggle file="switch_off_after_5_min">}}
+my_kitchen_scene:
+  title: Cooking
+  description: Lights to 70%, serving cabinet 100%, radion on
+  tags:
+    - scene
+{<span></span>{< /code-toggle >}}
+</pre>
+
+This is rendered to:
+
+{{< code-toggle file="switch_off_after_5_min">}}
+my_kitchen_scene:
+  title: Cooking
+  description: Lights to 70%, serving cabinet 100%, radion on
+  tags:
+    - scene
+{{< /code-toggle >}}
 
 ## Sourcecode
 
@@ -78,6 +115,52 @@ Sometimes you get better results by directly using Hugo's highlight shortcode:
 my_config_key: "my_value"
 {<span></span>{< /highlight >}}
 </pre>
+
+If you like to give code examples in different languages in a tabbed design, you need to fall back to html. 
+
+
+<div class="mb-2">
+	<tab-container>
+		<tab-header>
+			<tab-header-item class="tab-active">Rust</tab-header-item>
+			<tab-header-item>C++</tab-header-item>
+		</tab-header>
+		<tab-body>
+<tab-body-item >{{< md >}}
+```rust
+fn main() {
+    // ...
+}
+```
+{{< /md >}}</tab-body-item >
+<tab-body-item >{{< md >}}
+```c++
+int main(int argc, char** argv) {
+    // ...
+}
+```
+{{< /md >}}</tab-body-item >
+		</tab-body>
+    </tab-container>
+</div>
+
+A custom html component is used for rendering:
+
+```html
+<div class="mb-2">
+	<tab-container>
+		<tab-header>
+			<tab-header-item class="tab-active">Rust</tab-header-item>
+			<tab-header-item>C++</tab-header-item>
+		</tab-header>
+		<tab-body>
+			<tab-body-item >...</tab-body-item >
+		</tab-body>
+    </tab-container>
+</div>
+```
+
+Because html disables markdown rendering, you need to wrap your source code in the highlight shortcode mentioned above or use the <code>{<span></span>{< md >}}markdown{<span></span>{< /md >}}</code> markdown shortcode to re-enable markdown rendering.
 
 ## Diagrams
 
