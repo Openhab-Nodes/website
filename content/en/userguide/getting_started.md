@@ -183,24 +183,24 @@ Download and use the [Docker Compose](https://example.com) file to run the full 
 
 The first time setup process will guide you through the last installation steps.
 
-{{< col3md >}}
-### Optional WiFi Setup
+{{< colpic ratio="50"  >}}
+### 1. Optional WiFi Setup
 
 Select your home network from the list and enter your Wi-Fi password to connect.
-<img src="/img/features/connect_to_wifi.png">
+<img src="/img/features/connect_to_wifi.png" class="w-100">
 
 <split>
-### Create User Account
+### 2. Create User Account
 Enter your login name or email address and a password to create your administrative user account.
 
-<img src="/img/features/create_account.png">
-{{< /col3md >}}
+<img src="/img/features/create_account.png" class="w-100">
+{{< /colpic >}}
 
 ## Setup &amp; Maintenance interface
 
 After you have finished the initial setup, you will see the welcome screen of the Setup &amp; Maintenance interface.
 Throughout the guide, references to different pages are given like this: <a class="demolink" href="">Things</a> for example.
 
-You generally use *Setup &amp; Maintenance* for administering your installation, add and remove addons as well as configuring Things and connections between Things. You do not "control" your Smart Home from here. Remember that you can always log into the interface by entering “http://gateway.local” into your webbroser (as long as you haven't changed the hostname configuration).
+You generally use *Setup &amp; Maintenance* for administering your installation, add and remove addons as well as configuring Things and connections between Things. Remember that you can always log into the interface by entering “http://gateway.local” into your webbroser (as long as you haven't changed the respective configuration).
 
 Learn in the next chapter on how to administer your openHAB X installation including how to create additional user accounts.

@@ -17,7 +17,7 @@ enableInlineShortcodes = true
   hrefTargetBlank = true
 
 [outputs]
-  home = ["HTML"]
+  home = ["HTML", "RSS", "JSON"]
 
 [taxonomies]
     tag = "tags"

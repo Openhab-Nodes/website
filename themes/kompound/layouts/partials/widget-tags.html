@@ -1,5 +1,5 @@
 <h5>{{ i18n "tags" }}</h5>
-<div class="">
+<div style="text-align: justify">
     {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
     <span class="tag"><a href="{{ "tags" | absURL }}/{{ $name | urlize }}">{{ $name }}</a></span>
     {{ end }}

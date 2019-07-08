@@ -1,4 +1,18 @@
 $theme-colors: ("orange": #ff7214, "primary": #ff8a65);
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1300px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1240px
+);
 
 @import "bootstrap/functions";
 @import "bootstrap/variables";
@@ -16,7 +30,7 @@ $theme-colors: ("orange": #ff7214, "primary": #ff8a65);
 // @import "bootstrap/dropdown";
 @import "bootstrap/button-group";
 @import "bootstrap/input-group";
-// @import "bootstrap/custom-forms";
+@import "bootstrap/custom-forms";
 @import "bootstrap/nav";
 @import "bootstrap/navbar";
 @import "bootstrap/card";
@@ -59,6 +73,7 @@ $theme-colors: ("orange": #ff7214, "primary": #ff8a65);
     font-family: BebasNeueLight;
     src: url(/fonts/BebasNeue-Light.ttf);
 }
+
 
 .btn-link {
     cursor: pointer;
@@ -148,7 +163,7 @@ body {
     overflow-y: scroll;
 }
 
-a[target="_blank"]:after {
+a[target="_blank"]:not(.noref):after {
     line-height: 1.5;
     font-weight: 900;
     font-family: "Font Awesome 5 Free";
@@ -322,10 +337,6 @@ body>main {
 
     h2 {
         font-size: 18px;
-    }
-
-    p {
-        font-size: 13px;
     }
 
     header .navbar-default .navbar-toggle {

@@ -66,10 +66,12 @@ tab-body-item {
 	transition: transform 0.2s cubic-bezier(1, 0.6, 0, 1);
 }
 .code-toggle tab-body {
-	max-height: 400px;
-	overflow: hidden;
-
 	tab-body-item {
 		overflow-y: auto;
 	}
+}
+
+.code-toggle-limited tab-body {
+	max-height: 400px;
+	overflow: hidden;
 }

@@ -1,8 +1,8 @@
-{{ define "main" }}
+{{ define "body" }}
+{{ partial "pageheader.html" . }}
+<main id="mainContent" class="container my-4">
 
-{{ $archive := lower .Title }}
-
-<section class="container my-4">
+    {{ $archive := lower .Title }}
     <div class="row">
         <div class="col-9">
             {{ range $key, $value := .Site.Taxonomies.archives }}{{ if eq $key $archive }}{{ range $value.Pages }}
@@ -30,6 +30,6 @@
             {{ partial "widget-archives.html" . }}
         </div>
     </div>
-</section>
+</main>
 
 {{ end }}

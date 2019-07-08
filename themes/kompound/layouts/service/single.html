@@ -1,98 +1,114 @@
-{{ define "main" }}
+{{ define "body" }}
 {{ partial "pageheader.html" . }}
+<main id="mainContent" class="container">
 
-<style>
-    .servicecategory picture, .servicecategory img {
-        width:100%;
-    }
-    .servicecard {
-        min-width: 300px;
-        max-width: 400px;
-        transition: box-shadow 0.5s;
-    }
-    @media(max-width:768px) {
-        .servicecategory picture, .servicecategory img {
-            height: 100px;
-            width: initial;
+    <style>
+        .servicecategory picture,
+        .servicecategory img {
+            width: 100%;
         }
+
         .servicecard {
-            max-width: 100%;
+            min-width: 300px;
+            max-width: 400px;
+            transition: box-shadow 0.5s;
         }
-    }
-    .servicecard:hover {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
-    .servicecard > .card-header {
-        padding: 4px;
-    }
-    .servicecard > .card-body {
-        display: flex;
-    }
-    .servicecard .card-text > p {
-        margin-top:-5px;
-        font-size: 15px;
-        line-height: 20px;
-        margin-bottom: 0;
-    }
-    .servicecard > .card-body > img {
-        height: 80px;
-        width:100px;
-    }
-    .servicecard > .card-body ul {
-        font-size: 0.8em;
-        list-style-type: none;
-        margin: 0; padding: 0;
-        margin-top:5px;
-    }
-    .servicecard > .card-body li {
-        display: inline;
-    }
-    .servicecard > .card-body li:not(:last-child):after {
-        content:' |';
-    }
-</style>
 
-<section class="section">
+        @media(max-width:768px) {
 
-{{ range $element := .Page.Params.services  }}
-<div class="container">
-<div class="row" id="{{ $element.id }}">
-    <div class="col-md-3"></div>
-    <div class="col-12 col-md-9"><h2>{{ safeHTML $element.header }}</h2></div>
-    <div class="col col-md-3 servicecategory" style="align-self: center;">
-        <picture>
-        <source srcset="{{ $element.img1 }}" type="image/webp">
-        <img src="{{$element.img2 }}" />
-        </picture>
-    </div>
-    <div class="col-12 col-md-9">
+            .servicecategory picture,
+            .servicecategory img {
+                height: 100px;
+                width: initial;
+            }
+
+            .servicecard {
+                max-width: 100%;
+            }
+        }
+
+        .servicecard:hover {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .servicecard>.card-header {
+            padding: 4px;
+        }
+
+        .servicecard>.card-body {
+            display: flex;
+        }
+
+        .servicecard .card-text>p {
+            margin-top: -5px;
+            font-size: 15px;
+            line-height: 20px;
+            margin-bottom: 0;
+        }
+
+        .servicecard>.card-body>img {
+            height: 80px;
+            width: 100px;
+        }
+
+        .servicecard>.card-body ul {
+            font-size: 0.8em;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            margin-top: 5px;
+        }
+
+        .servicecard>.card-body li {
+            display: inline;
+        }
+
+        .servicecard>.card-body li:not(:last-child):after {
+            content: ' |';
+        }
+
+    </style>
+
+    {{ range $element := .Page.Params.services  }}
+    <div class="row" id="{{ $element.id }}">
+        <div class="col-md-3"></div>
+        <div class="col-12 col-md-9">
+            <h2>{{ safeHTML $element.header }}</h2>
+        </div>
+        <div class="col col-md-3 servicecategory" style="align-self: center;">
+            <picture>
+                <source srcset="{{ $element.img1 }}" type="image/webp">
+                <img src="{{$element.img2 }}" />
+            </picture>
+        </div>
+        <div class="col-12 col-md-9">
             {{ safeHTML $element.main }}
-    </div>
-    <div class="col col-md-3"></div>
-    <div class="col-md-9 py-3">
-        <div class="card-deck">
-            {{ range $icon := $element.icons }}
-            <div class="card servicecard mb-3">
-                <div class="card-header">{{ safeHTML $icon.title }}</div>
-                <div class="card-body">
-                    <img class="img pr-3" src="{{ $icon.icon }}" >
-                    <div class="card-text">
-                        <p>{{ safeHTML $icon.text }}</p>
-                        {{ with $icon.links }}
-                        <ul>
-                            {{ range $title, $href := $icon.links }}
+        </div>
+        <div class="col col-md-3"></div>
+        <div class="col-md-9 py-3">
+            <div class="card-deck">
+                {{ range $icon := $element.icons }}
+                <div class="card servicecard mb-3">
+                    <div class="card-header">{{ safeHTML $icon.title }}</div>
+                    <div class="card-body">
+                        <img class="img pr-3" src="{{ $icon.icon }}">
+                        <div class="card-text">
+                            <p>{{ safeHTML $icon.text }}</p>
+                            {{ with $icon.links }}
+                            <ul>
+                                {{ range $title, $href := $icon.links }}
                                 <li><a href="{{ $href }}">{{ $title }}</a></li>
-                            {{ end }} 
-                        </ul>
-                        {{ end }}         
+                                {{ end }}
+                            </ul>
+                            {{ end }}
+                        </div>
                     </div>
                 </div>
+                {{ end }}
             </div>
-            {{ end }} 
         </div>
     </div>
-</div>
-</div>
-{{ end }}
-</section>
+    </div>
+    {{ end }}
+</main>
 {{ end }}

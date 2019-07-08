@@ -1,4 +1,4 @@
-<div class='mb-3 bs-callout {{ with (.Get "type") }}bs-callout-{{ . }}{{ end }}'>
-{{ with (.Get "title") }}<h4>{{ . }}</h4>{{ end }}
-{{ .Inner | markdownify }}
+<div class='mb-3 bs-callout {{ with (.Get "type") -}}bs-callout-{{ . }}{{- end -}}'>
+{{- with (.Get "title") -}}<h4>{{ . }}</h4>{{- end -}}
+{{- .Inner | markdownify -}}
 </div>

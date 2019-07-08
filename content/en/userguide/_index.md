@@ -1,7 +1,10 @@
-+++
-title = "User Guide"
-layout = "list"
-+++
+---
+title: "User Guide"
+layout: "list"
+outputs:
+- html
+- json
+---
 
 {{< callout >}}
 Welcome to <b>The openHAB X User Guide</b>, an introductory guide about openHAB X. The open Home Automation Bus Plux X (openHAB X, <i>pronounced ˈəʊpənˈhæb ˈeks</i>) is an open source, technology agnostic home automation platform which runs as the center of your smart home!

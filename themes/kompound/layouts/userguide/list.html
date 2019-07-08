@@ -1,12 +1,22 @@
-{{ define "main" }}
-{{ partial "pageheader.html" . }}
+{{ define "body" }}
+<section id="pageheader">
+	<div class="d-flex flex-column align-items-center">
+		<h1>{{ .Title }}</h1>
+		<form style="max-width: 700px;width: 500px;" id="inlinesearch">
+			<div class="form-group">
+				<input type="search" class="form-control" placeholder="Search {{ .Title }}"
+					autofocus="true">
+			</div>
+			<ui-inlinesearch target="inlinesearch" index="userguide"></ui-inlinesearch>
+		</form>
+	</div>
+</section>
 {{ $options := (dict "targetPath" "/css/documentation.css" "outputStyle" "compressed" "enableSourceMap" true) -}}
 <link rel="stylesheet"
 	href='{{- (resources.Get "/scss/documentation.scss" | toCSS $options | minify | fingerprint).Permalink | safeHTMLAttr -}}'>
 
 {{ $cols := split .Content "<split>" }}
-
-<section class="container mt-4">
+<main id="mainContent" class="container mt-4">
 	<div class="row">
 		<div class="col-md-12">
 			{{ index $cols 0 | safeHTML }}
@@ -31,5 +41,5 @@
 			{{ index $cols 1 | safeHTML }}
 		</div>
 	</div>
-</section>
+</main>
 {{ end }}

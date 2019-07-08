@@ -8,53 +8,9 @@ tags = []
 Developing an Addon for openHAB X is not complicated.
 Programming libraries are provided for Rust, C++, Java and NodeJS.
 
-This chapter sheds some light on what addons actually are in the [Addon: Technical background](#addon-technical-background) section and introduces into addon development in later sections. Various *template* repositories allow you to easily clone example code and start experimenting and coding.
+This chapter sheds some light on what addons actually are and introduces into addon development. It starts with how to setup your development environment and refers to the various *template* repositories that allow you to easily clone example code.
 
-You will not find library APIs in this documentation, refer to the code repositories if you are looking for those.
-This text assumes that you know how to open and operate a terminal, because for brevity reasons only command line instructions are given.
-
-There are two types of Addons that require different interfaces to be implemented.
-
-{{< colpic ratio="50" margin="mx-2" >}}
-
-{{< imgicon src="far fa-lightbulb" height="50px" caption="**Binding**" >}}
-
-An Addon that integrates external services or devices is called a Binding. Related service interfaces are: The discovery service interface ("*Inbox*") and the Things interface.
-
-The [Binding](/developer/addons_binding) chapter contains all the details.
-
-<split>
-
-{{< imgicon src="fas fa-exchange-alt" height="50px" caption="**IO Service**" >}}
-
-An IO Service is a type of Addon that exposes Things / Thing Channels. May it be via an http interface for mobile Apps or HomeKit or for example the Hue protocol for Hue Apps.
-
-The [IO Service](/developer/addons_ioservice) chapter contains all the details.
-
-{{< /colpic >}}
-
-Other kinds of addons
-: An addon with the purpose of for example voice recognition or a machine learning related service, might not fit into one of the two categories. If you remember the architecture chapter from earlier, openHAB X consists of different core services that are accessible via purpose-specific libraries. If you develop in {{< details title="Rust">}}In other languages you would need to implement the gRPC interfaces.{{< /details >}}, you can just link to those libraries and interoperate with all parts of OHX. 
-
-## Addon: Technical background
-
-To understand what an Addon means for openHAB X, let's have a look at the following figure.
-
-<div class="text-center">
-<img src="/img/doc/addon-container.svg" class="w-100 p-3">
-</div>
-
-Right in the middle you see the {{< details title="software container(s)" maxwidth="500px" >}}
-A **container** is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. A **container image** is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries and settings. Containers are not virtual machines!
-
-The Open Container Initiative (OCI), founded by Docker, is a Linux Foundation project to design open standards for operating-system-level virtualization, most importantly containers.
-{{< /details >}} (pod) that your Addon is comprised of. In most cases your Addon consists of exactly one container, which runs software that is linked to `libAddon`, to communicate with the `AddonManager` and other core services via Interprocess Communication. OHX uses [gRPC](https://grpc.io/). Sometimes you might require additional external services, like a database. This is when you have more than one container running.
-
-Define network ports, storage, permissions
-: The "[Kubernetes Objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) Yaml file", pictured on the right side of the figure above, is a wide spread file format to describe how to start one or multiple containers in regard to exposed network ports, storage requirements and access to host hardware. openHAB X permissions, explained in a later section, are also specified in that file. 
-
-Author, Addon Name and other metadata
-: The "Addon Description File", seen on the left side of the figure above, tells the Addon Registry and users about the authors, the addon *name* (title) and  description. The npm package.json standard has been adopted for this purpose.
+This text assumes that you know how to open and operate a terminal, because for brevity reasons only command line instructions are given most of the time.
 
 ## Setting up the development enviroment
 
@@ -137,17 +93,59 @@ Command line: Change to the desired example directory and start with `gradle && 
 	</tab-container>
 </div>
 
-{{< callout title="Containerless testing" >}}
-For local testing, containers are not required. Execute `sh ./start_all.sh` of the [core repository](https://www.github.com/openhab-nodes/core) on the command line and then start your addon or the example addon via the command line given above, like `cargo run` for a Rust addon or `npm run start` for NodeJS.
+At this point in time you are already able to edit and play around with the example addons.
+To start your own addon, you first define required metadata and configuration descriptions.
+That is what the next sections are about.
+
+### Test without Containers
+
+Usually an Addon and also openHAB X core services are bundled into software containers for distributing. Containers are explained in a later section.
+For local testing, containers are not required though.
+
+1. Execute `sh ./start_all.sh` of the [core repository](https://www.github.com/openhab-nodes/core) on the command line to start openHAB X.
+2. And then start your addon or the example addon via the command line given above, like `cargo run` for a Rust addon or `npm run start` for NodeJS.
+
+### Test With Production OHX
+
+It is possible to run your addon on your developer machine and have your (production) OHX installation running on a different system.
+For this to work, you first need to create an access token on the <a class="demolink" href="">Maintenance</a> page with the "REMOTE_ADDON" permission. Add additional permissions as needed. You are basically executing the procedure that happens when an addon is installed.
+
+Start your addon with the environment variable `REMOTE_OHX=192.168.1.11` set (change the IP accordingly) and the environment variable `REMOTE_OHX_ACCESS` should be set to your token, like `REMOTE_OHX_ACCESS=e5868ebb4445fc2ad9f9...49956c1cb9ddefa0d421`.
+
+The addon should report that it will attempt to connect to a remote instance.
+Please note, that configuration is not shared across devices.
+Depending on the granted permissions you will have access to Things and Thing states, Thing Channel history, the user database etc.
+
+{{< callout type="info" >}}
+As long as you do not grant full cpu, memory and disk quota permissions, it is generally safe to develop an addon towards your production OHX. It is almost impossible to break anything or render the installation unstable.
 {{< /callout >}}
 
-At this point in time you are already able to edit and play around with the example addons.
-To start your own addon, you first define required metadata. That is what the next section is about.
+## Addon Types
 
-## Configurations in Addons
+If you remember the architecture chapter from earlier, openHAB X consists of different core services that are accessible via purpose-specific libraries. Two main types of Addons are especially important for OHX and have utility libaries available for easier implementation and help with common operations.
 
-Configuration, may it be Thing or Addon or Service configuration, in openHAB X ~~should~~ must always be possible in textual form as well as graphical via forms and dialogs.
-For this to work, a configuration description is necessary. This is a form of metadata.
+{{< colpic ratio="50" left="mx-2" right="mx-2" >}}
+
+{{< imgicon src="far fa-lightbulb" height="50px" caption="**Binding**" >}}
+
+An Addon that integrates external services, hardware or devices is called a Binding. Related service interfaces are: The discovery service interface ("*Inbox*") and the Things interface.
+
+The [Binding](/developer/addons_binding) chapter contains all the details.
+
+<split>
+
+{{< imgicon src="fas fa-exchange-alt" height="50px" caption="**IO Service**" >}}
+
+An IO Service is a type of Addon that exposes Things / Thing Channels. May it be via an http interface for mobile Apps or HomeKit or for example the Hue protocol for Hue Apps.
+
+The [IO Service](/developer/addons_ioservice) chapter contains all the details.
+
+{{< /colpic >}}
+
+## Configurations for Addons
+
+Configuration, may it be Thing or Addon or Service configuration, in openHAB X must be possible in textual form as well as graphical via forms and dialogs.
+For this to work, the configuration meta data or configuration description is necessary. 
 OHX uses **JsonSchema** for this purpose.
 
 {{< callout type="danger" >}}
@@ -163,10 +161,10 @@ credentials:
 port: 1212
 ```
 
-{{< colpic ratio="50" margin="mx-2" >}}
+{{< colpic ratio="50" left="mx-2" right="mx-2" >}}
 A corresponding JsonSchemas looks like this:
 
-```json
+{{< code-toggle file="switch_off_after_5_min" active="json" >}}
 {
   "title": "My service configuration",
   "description": "A description that might be long",
@@ -198,13 +196,13 @@ A corresponding JsonSchemas looks like this:
     }
   }
 }
-```
+{{< /code-toggle >}}
 
 <split>
 
 And renders into what you see below. Almost*.
 
-<form class="card p-4"><div class="form-group field field-object"><fieldset><legend>My service configuration</legend><p class="field-description">A description that might be long</p><div class="form-group field field-object"><fieldset class="ml-4"><legend>User Credentials</legend><p class="field-description">Another long description</p><div class="form-group field field-string"><label class="control-label" for="root_credentials_username">Username</label><input type="text" class="form-control" value="Chuck" label="Username"></div><div class="form-group field field-string"><label class="control-label" for="root_credentials_password">Password</label><input type="password" class="form-control" value="secret_password_hash" label="Password"></div></fieldset></div><div class="form-group field field-integer"><label class="control-label" for="root_port">Port<span class="required">*</span></label><input type="number" step="1" class="form-control" value="12" label="Port"></div></fieldset></div></form>
+<form class="card p-4"><div class="form-group field field-object"><fieldset><legend>My service configuration</legend><p class="field-description">A description that might be long</p><div class="form-group field field-object" style="border-left: gray solid; padding-left: 20px;"><fieldset><legend>User Credentials</legend><p class="field-description">Another long description</p><div class="form-group field field-string"><label class="control-label" for="root_credentials_username">Username</label><input type="text" class="form-control" value="Chuck" label="Username"></div><div class="form-group field field-string"><label class="control-label" for="root_credentials_password">Password</label><input type="password" class="form-control" value="secret_password_hash" label="Password"></div></fieldset></div><div class="form-group field field-integer"><label class="control-label" for="root_port">Port<span class="required">*</span></label><input type="number" step="1" class="form-control" value="12" label="Port"></div></fieldset></div></form>
 
 <small>*A second schema <b>UISchema</b> complements JsonSchema. It is used for translations and to further specify on how to render specific fields like the password field.</small>
 
@@ -332,32 +330,48 @@ fn main() {
     </tab-container>
 </div>
 
-## Test With Production OHX
 
-It is possible to run your addon on your developer machine and have your (production) OHX installation running on a different system.
-For this to work, you first need to create an access token on the <a class="demolink" href="">Maintenance</a> page with the "REMOTE_ADDON" permission. Add additional permissions as needed. You are basically executing the reprocedure that happens when an addon is installed.
+## Addons: Technical background
 
-Start your addon with the environment variable `REMOTE_OHX=192.168.1.11` set (change the IP accordingly) and the environment variable `REMOTE_OHX_ACCESS` should be set to your token, like `REMOTE_OHX_ACCESS=e5868ebb4445fc2ad9f9...49956c1cb9ddefa0d421`.
+An Addon in OHX may consist of multiple processes (services), but at least one is an isolated process that registers itself to the **AddonsManger** service and implements one or more interfaces ("binding", "IO Service"). For easy distribution and enhanced resource control as well as enforcing specific security features, Addon processes are bundled as *containers*. A set of containers is called a *Pod*.
 
-The addon should report that it will attempt to connect to a remote instance.
-Please note, that configuration is not shared across devices.
-Depending on the granted permissions you will have access to Things and Thing states, Thing Channel history, the user database etc.
+{{< callout title="Containers" type="info" >}}
+A **container** is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. Containers are not virtual machines! A container process can be easily restricted in its resource usage, including main memory, cpu time, disk and network access as well as direct hardware control. A known container implementation is {{< details title="Docker" maxwidth="500px" >}}
+Docker is just one of many container engines. OHX uses vendor neutral software containers, defined by the OCI.
 
-{{< callout type="info" >}}
-As long as you do not grant full cpu, memory and disk quota permissions, it is generally safe to develop an addon towards your production OHX. You cannot break anything or render the installation unstable.
+The Open Container Initiative (OCI), founded by Docker, is a Linux Foundation project to design open standards for operating-system-level virtualization, most importantly containers.
+{{< /details >}}.
 {{< /callout >}}
+
+
+A container is first of all like any other executable. It requires enviroment variables, command line arguments and configuration to work properly. openHAB X uses the [Kubernetes Objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) Yaml file format. It is a wide spread file format to describe how to start one or multiple containers in regard to exposed network ports, storage requirements and access to host hardware. Later in the text, the section [Metadata & Prepare For Publishing](/developer/addons/#metadata-amp-prepare-for-publishing) guides through all the details concerning this file.
+
+To understand how an Addon communicates with OHX, have a look at the following figure and focus on the top, left box first.
+
+<div class="text-center">
+<img src="/img/doc/addon-container.svg" class="w-100 p-3">
+</div>
+
+In most cases your Addon consists of exactly one container, which runs software that is linked to `libAddon`, to communicate with the *AddonsManager*. OHX uses [gRPC](https://grpc.io/) for interprocess communication. Sometimes you might require additional external services, like a database. This is when you have more than one container running.
+
+1. Your Addon registers to *AddonsManager*. The *AddonsManager* will in turn request service tokens from the `IAM` service (not shown in the picture).
+2. The *AddonsManager* will start a dedicated process, the *AddonConnector* which is equipped with access tokens for various services. This process will on behalf of your Addon 
+3. `libAddon` will mainly communicate with the *AddonConnector* for querying and interacting with core services.
+
+We refine this model in the dedicated sections about binding and IO Service development.  
 
 ## Metadata &amp; Prepare For Publishing
 
-OHX uses containers for distributing addons and a [Kubernetes Objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) file that describes how to start your container(s) and that contains all descriptive metadata.
-
-Let's begin with the container file.
+OHX uses containers for distributing addons and a [Kubernetes Objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) file that describes how to start your container(s) and that contains all  metadata like addon name, description and so on.
 
 ### Containerize
 
-Depending on your programming language you need a slightly different file.
-The template repositories contain matching `Dockerfile`s.
-The following snippet shows the `Dockerfile` file for a Rust based addon.
+A container is your addon executable and all other software, except the operating system kernel, to run your addon.
+A recipe tells a container image creation tool how to bundle your addon. OHX uses the `Dockerfile` format and therefore expect a file with that name in your source code repository.
+
+The template repositories already contain `Dockerfile`s.
+Depending on your programming language the recipe looks slightly different.
+The following file is for a Rust based addon.
 
 ```dockerfile
 FROM rust:1.35-slim
@@ -367,17 +381,18 @@ RUN cargo install --path .
 CMD ["myapp"]
 ```
 
-You build the addon container with `docker build . -name addon` or `podman build . -name addon`.
+The template repositories contain a build script `./build.sh`, but you can also manually call `docker build` for example, like: `docker build . -name ohx-addon-name` or `podman build . -name ohx-addon-name`.
 
 ### Kubernetes Pods File
 
-The next step is to write the *Kubernetes Objects* file. Although the software Kubernetes is not used, it is a well understood and documented file format for container setups which allow to attach metadata.
+The next step is to write the *Kubernetes Objects* file. Although the software Kubernetes itself is not used, the file format is a well understood and documented format for container setups.
 
 Metadata like the addon title, description, author information as well as mandatory and optional permissions are part of this declaration.
 
-The following example for an imaginary addon called "ohx-addon-name" names two containers. `apiVersion` is always `v1` and `kind` must be set to `Pod`. A pod is a set of containers.
-The first container entry references the addon application (which we named "addon" in the section above) and an mqtt broker container.
+The following example for an imaginary addon called "ohx-addon-name" lists two containers. `apiVersion` is always `v1` and `kind` must be set to `Pod` (A pod is a set of containers).
+The first container entry references the addon application (which we named "ohx-addon-name" in the section above) and an mqtt broker container for demonstrational purposes.
 
+You 
 ```yaml
 ---
  apiVersion: v1
@@ -385,7 +400,7 @@ The first container entry references the addon application (which we named "addo
  spec:
    containers:
      - name: ohx-addon-name
-       image: addon
+       image: ohx-addon-name
        ports:
          - containerPort: 80
      - name: mqtt-broker
@@ -423,10 +438,10 @@ The first container entry references the addon application (which we named "addo
      issues_web: "https://www.github.com/my/repository/issues"
 ```
 
-The `image: addon` line points to the image that is created with the local Dockerfile.
+The `image: ohx-addon-name` line points to the image that is created with the local Dockerfile.
 
 Hardware
-: If your addon interacts with hardware like Bluetooth directly (via kernel system calls), you need to set `allowPrivilegeEscalation` and `privileged` to true. For userspace USB access this does not need to be set, but you need the HW_USB permission. The next section talks about permissions and restrictions in more detail.
+: If your addon interacts with hardware like Bluetooth directly (via kernel system calls), you need to set `allowPrivilegeEscalation` and `privileged` to true. This is not necessary for libusb access (but you need the HW_USB permission). The next section talks about permissions and restrictions in more detail.
 
 Networking
 : Define `containerPort` if ports should be only opened for the device that is running the container, meaning that only other addons and containers can interact with that service. Use `port` for ports that should be opened on the host operating system. In the example above an mqtt broker is exposed and potentially reachable via the internet.

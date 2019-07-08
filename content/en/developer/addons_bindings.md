@@ -5,25 +5,46 @@ weight = 51
 tags = []
 +++
 
-There are a few helper and tool libraries available to ease mapping http endpoints, mqtt topics and coap endpoints to Things and Thing Channels. A binding that binds an mqtt topic to a Thing is written in just 20 lines of code, a http API based weather service binding takes around the same code. Find an mqtt and http binding walkthrough at the end of this chapter.  
+There are a few helper and tool libraries available to ease mapping http endpoints, mqtt topics and coap endpoints to Things and Thing Channels. 
 
-Each supported programming language has a template repository with multiple examples that you can clone, build and play around with.
+A binding that binds an mqtt topic to a Thing is written in just 20 lines of code, a http API based weather service binding takes around the same code. Find an mqtt and http binding walkthrough at the end of this chapter.  
 
-Pick the language that you are either familiar with or that helps to solve a problem the easiest way. Because of the project [openzwave](https://github.com/OpenZWave/open-zwave) that is written in C++, it makes sense to pick the C++ SDK for a ZWave based Addon.
+Each supported programming language has a template repository with multiple examples that you can clone, build and play around with. If you haven't checked one out yet, go back to [Setting up the development enviroment](/developer/addons#setting-up-the-development-enviroment).
 
-## Walkthrough: A Weather Forecast Binding
+Pick the language that you are either familiar with or that helps to solve a problem the easiest way. For instance, because of the project [openzwave](https://github.com/OpenZWave/open-zwave) that is written in C++, it makes sense to pick the C++ SDK for a ZWave based Addon.
+
+Examples in this chapter are written in Rust.
+
+## Things
+
+You have learned about the Things concept in the user guide already.
+Implementation wise, they are composed of three parts.
+
+1. A JSonSchema to declare a Thing,
+2. Configuration that defines an actual Thing instance,
+3. and a Thing handler.
+
+A Thing has channels. A hifi amplifier Thing for example has a power, mute, volume channel etc. Channels are added during runtime by the Thing handler.
+
+A user may add a Thing manually, by providing Thing configuration to openHAB X.
+
+A Thing in openHAB X
+
+## Example MQTT Topic to Thing Binding
+
+## Walkthrough: HTTP - A Weather Forecast Binding
 
 <a href="https://www.weather.gov/" style="float:right;max-width:50%" target="_blank" class="card-hover"><img src="/img/doc/usa-national-weather-service.png" class="w-100"></a>
 
-In this section we are going to integrate a weather forecast service into OHX (without writing an addon).
+In this section we are going to integrate a weather forecast service into OHX via the HTTP to Thing utility libraries.
+The entire development process including initial design questions is handled.
+
 We are going to use the National Weather Service (USA), because it does not require any form of authorisation.
 Usually you want to register to your favourite, locale weather service and use the API Key in your requests.
 
-We are using the HTTP based API. This is exemplary - CoAP and MQTT work in a similar fashion.
+### Familiarize with the required HTTP endpoints
 
 To start with, all the endpoints use the API base https://api.weather.gov (as documented on their website). The basic endpoints are all extensions of that original API base to include latitude and longitude values. 
-
-### Familiarize with the required HTTP endpoints
 
 For this walkthrough, we’re going to get the local weather for Richmond, Va. We’re going to use the following location:
 
@@ -77,10 +98,13 @@ A forecast response, again, contains a *properties* key which contains a list of
 }
 ```
 
+For all half-structured, in this case json formatted, responses you can use https://app.quicktype.io/ to generate structures/classes for your desired programming language.
+
 ### Channel topology
 
-We now need to decide on the channel topology.
-One way is to create two Things called **WeatherForecast12hoursPeriod** for a 12hours period and **WeatherForecast1hourPeriod** for a 1h forecast period. We then assign a few channels for today and tomorrow and for now, in 1h, in 2h, in 3h respectively.
+We now need to decide on the Thing Channel topology.
+One way is to create two Things called **WeatherForecast12hoursPeriod** for a 12hours period and **WeatherForecast1hourPeriod** for a 1h forecast period.
+We then assign channels for today and tomorrow and for now, in 1h, in 2h, in 3h respectively.
 
     [Addon] HTTP -> [Thing] WeatherForecast12hoursPeriod -> [Channel] Today (Number, Unit: °F)
                                                          -> [Channel] Tonight (Number, Unit: °F)
@@ -91,7 +115,9 @@ One way is to create two Things called **WeatherForecast12hoursPeriod** for a 12
                                                        -> [Channel] In2h (Number, Unit: °F)
                                                        -> [Channel] In3h (Number, Unit: °F)
 
-### Define channels via Channel configurations
+### Define Things
+
+A Thing in openHAB X
 
 The channel configuration can be performed entirely in the graphical interface.
 For brevity we will only look at the textual representation of the first channel *Today (Number, Unit: °F)* though.

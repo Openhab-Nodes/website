@@ -73,19 +73,23 @@ class Page {
   async replaceContent(selector = 'body', options = null) {
     const content = this.querySelector(selector);
 
-    if (!options || !options.animationClass)
+    if (!options || !options.animationInClass)
       this.querySelector(selector, document).replaceWith(content);
     else {
       try {
         const oldMain = this.querySelector(selector, document);
-        const duration = options.duration || 1;
-        // First insert the new element, just before the old one.
-        // The grid layout will make sure the old one is still at the front
-        oldMain.parentNode.insertBefore(content, oldMain);
-        // Add animation class and remove old after timeout
-        oldMain.classList.add(options.animationClass);
-        await this.timeout(duration * 1000)
-        oldMain.remove();
+        const isCurrentVisible = oldMain.hasChildNodes() && window.getComputedStyle(oldMain).opacity>0.4;
+        if (!content.hasChildNodes()) { // remove from doc
+          if (isCurrentVisible) {
+            oldMain.classList.add(...options.animationOutClass);
+          }
+        } else { // Add to doc
+          console.log("IS VIS", isCurrentVisible, window.getComputedStyle(oldMain).opacity);
+          this.querySelector(selector, document).replaceWith(content);
+          if (!isCurrentVisible) {
+            this.querySelector(selector, document).classList.add(...options.animationInClass);
+          }
+        }
       } catch (e) {
         console.warn("ANIM failed", e);
       }
@@ -585,6 +589,7 @@ class NavAjaxPageLoad extends HTMLElement {
         .then(page => page.replaceContent('footer#footer'))
         .then(page => page.replaceContent('header#header .navbar-nav'))
         .then(page => page.replaceContent('header #navbarlogo'))
+        .then(page => page.replaceContent('#pageheader',{animationInClass:["animated","fadeInDown"],animationOutClass:["beforeRemove","animated","fadeOutUp"]}))
         .then(page => page.replaceContent('main'))
         .then(page => page.removeOldStyles("body"))
         .then(page => page.replaceScripts("body"))
@@ -640,6 +645,8 @@ class NavAjaxPageLoad extends HTMLElement {
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       document.dispatchEvent(new Event('DOMContentLoaded'));
+      const autofocus = document.querySelector("input[autofocus]");
+      if (autofocus) autofocus.focus();
     }, 50);
   }
 

@@ -1,5 +1,14 @@
 {{- $title := .Get "title" -}}
+{{- $mount := .Get "mount" -}}
 {{- $id := now.UnixNano -}}
-<button class="btn-link contexthelp" id="popup{{ $id }}" title="Context help">{{ $title }}</button><template data-popover="popup{{ $id }}">
+<button class="btn-link contexthelp" id="popup{{ $id }}" title="Context help">{{ $title }}</button>
+{{ if eq "true" $mount}}
+<div style="position:fixed;visibility:hidden" data-popover="popup{{ $id }}">
     <div style='{{ with (.Get "maxwidth") }}max-width:{{ . }};{{ end }}'>{{ .Inner | markdownify }}</div>
-</template><ui-tooltip target="popup{{ $id }}"></ui-tooltip>
+</div>    
+{{ else }}
+<template data-popover="popup{{ $id }}">
+    <div style='{{ with (.Get "maxwidth") }}max-width:{{ . }};{{ end }}'>{{ .Inner | markdownify }}</div>
+</template>
+{{ end }}
+<ui-tooltip target="popup{{ $id }}"></ui-tooltip>

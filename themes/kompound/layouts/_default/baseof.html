@@ -24,11 +24,7 @@
 	{{- partial "header.html" . -}}
 
 	{{ block "body" . }}
-	<main id="mainContent">
-		{{ block "main" . }}
-		{{ .Content }}
-		{{ end }}
-	</main>
+	{{ .Content }}
 	{{ end }}
 
 	{{- partial "footer.html" . }}

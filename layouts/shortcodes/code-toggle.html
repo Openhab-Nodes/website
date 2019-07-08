@@ -1,14 +1,16 @@
 {{- $langs := (slice "yaml" "toml" "json") -}}
-<div class="code-toggle">
+{{- $active := .Get "active" | default "yaml" -}}
+{{- $class := .Get "class" -}}
+<div class="code-toggle {{ $class }}"> 
 	<tab-container {{ with .Get "file" }}id="{{ . | urlize}}"{{ end }}>
 		<tab-header>
 			{{ range $langs }}
-			<tab-header-item class="{{ cond (eq . "yaml") "tab-active" ""}}">{{ . }}</tab-header-item>
+			<tab-header-item class="{{ cond (eq . $active) "tab-active" ""}}">{{ . }}</tab-header-item>
 			{{ end }}
 		</tab-header>
 		<tab-body>
 			{{ range $langs }}
-			<tab-body-item class="{{ cond (eq . "yaml") "" "tab-no-overflow"}}">
+			<tab-body-item class="{{ cond (eq . $active) "" "tab-no-overflow"}}">
 				{{ highlight ($.Inner | transform.Remarshal . | safeHTML) . ""}}
 			</tab-body-item>
 			{{ end }}

@@ -1,7 +1,6 @@
-{{ define "main" }}
+{{ define "body" }}
 {{ partial "pageheader.html" . }}
-
-<div class="container my-4">
+<main id="mainContent" class="container my-4">
 	{{ markdownify .Content }}
-</div>
+</main>
 {{ end }}

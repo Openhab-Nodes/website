@@ -1,77 +1,75 @@
-{{ define "main" }}
-
+{{ define "body" }}
+<section id="pageheader"></section>
+<main id="mainContent" class="container">
 {{ with $.Site.Params }}
-<section class="section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-sm-12">
-        <div class="block" id="contact-box">
-          <h2>{{ $.Params.addresstitle }}</h2>
-          <ul class="address-block no">
-            <li>
-              <i class="fas fa-map-marker"></i><a href="#gmap">{{ .boxaddress }}</a>
-            </li>
-            <li>
-              <i class="fas fa-envelope"></i>
-              <a href="{{ safeHTML $.Site.Params.email }}">{{ safeHTML $.Site.Params.email_title }}</a>
-            </li>
-            <li>
-              <i class="fas fa-phone"></i>
-              <a href="{{ safeHTML $.Site.Params.phone }}">{{ safeHTML $.Site.Params.phone_title }}</a>
-            </li>
-            <li>
-              <i class="fas fa-fax"></i>
-              <a href="{{ safeHTML $.Site.Params.fax }}">{{ safeHTML $.Site.Params.fax_title }}</a>
-            </li>
-          </ul>
-          <br>
-          <h2>{{ i18n "socialtitle" }}</h2>
-          <ul class="social-icons no">
-            {{ range $.Params.boxsocial }}
-            <li>
-              <a href="{{ .url }}"><i class="fab fa-{{ .icon }}"></i> {{ .title }}</a>
-            </li>
-            {{ end }}
-          </ul>
-        </div>
-      </div>
-      {{ end }}
-      {{ with .Params }}
-      <div class="col-md-6 col-sm-12">
-        <div class="block">
-          <form class="interact-form" action="/contactform" data-netlify="true" name="contact" netlify-honeypot="cigarette-brand"
-            id="contactform">
-            <div class="form-group form-special">
-              <input type="text" class="form-control" placeholder="Cigarette brand" name="cigarette-brand">
-            </div>
-            <div class="form-group">
-              <input required type="text" class="form-control" placeholder="{{ .formname }}" name="fullname" autofocus>
-            </div>
-            <div class="form-group">
-              <input required type="email" class="form-control" placeholder="{{ .formemail }}" name="email">
-            </div>
-            <div class="form-group">
-              <input required type="text" class="form-control" placeholder="{{ .formsubject }}" name="subject">
-            </div>
-            <div class="form-group">
-              <textarea required class="form-control" rows="3" placeholder="{{ .formmessage }}" name="text"></textarea>
-            </div>
-            <button class="btn btn-default" type="submit" data-loading="<i class='fas fa-circle-notch fa-spin'></i> {{ i18n "transmitting" }}...">
-              {{ .formbutton }}
-            </button>
-          </form>
-        </div>
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <div class="block" id="contact-box">
+        <h2>{{ $.Params.addresstitle }}</h2>
+        <ul class="address-block no">
+          <li>
+            <i class="fas fa-map-marker"></i><a href="#gmap">{{ .boxaddress }}</a>
+          </li>
+          <li>
+            <i class="fas fa-envelope"></i>
+            <a href="{{ safeHTML $.Site.Params.email }}">{{ safeHTML $.Site.Params.email_title }}</a>
+          </li>
+          <li>
+            <i class="fas fa-phone"></i>
+            <a href="{{ safeHTML $.Site.Params.phone }}">{{ safeHTML $.Site.Params.phone_title }}</a>
+          </li>
+          <li>
+            <i class="fas fa-fax"></i>
+            <a href="{{ safeHTML $.Site.Params.fax }}">{{ safeHTML $.Site.Params.fax_title }}</a>
+          </li>
+        </ul>
+        <br>
+        <h2>{{ i18n "socialtitle" }}</h2>
+        <ul class="social-icons no">
+          {{ range $.Params.boxsocial }}
+          <li>
+            <a href="{{ .url }}"><i class="fab fa-{{ .icon }}"></i> {{ .title }}</a>
+          </li>
+          {{ end }}
+        </ul>
       </div>
     </div>
-
-    <div class="row" id="gmap">
-      <div class="col-md-12 google-map">
-        <iframe width="100%" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ7aOK7nDduEcR098APnyle94&key=AIzaSyBJqEDARzKtjdqMFGje1TapGofxLjVbh0k"
-          allowfullscreen></iframe>
+    {{ end }}
+    {{ with .Params }}
+    <div class="col-md-6 col-sm-12">
+      <div class="block">
+        <form class="interact-form" action="/contactform" data-netlify="true" name="contact" netlify-honeypot="cigarette-brand"
+          id="contactform">
+          <div class="form-group form-special">
+            <input type="text" class="form-control" placeholder="Cigarette brand" name="cigarette-brand">
+          </div>
+          <div class="form-group">
+            <input required type="text" class="form-control" placeholder="{{ .formname }}" name="fullname" autofocus>
+          </div>
+          <div class="form-group">
+            <input required type="email" class="form-control" placeholder="{{ .formemail }}" name="email">
+          </div>
+          <div class="form-group">
+            <input required type="text" class="form-control" placeholder="{{ .formsubject }}" name="subject">
+          </div>
+          <div class="form-group">
+            <textarea required class="form-control" rows="3" placeholder="{{ .formmessage }}" name="text"></textarea>
+          </div>
+          <button class="btn btn-default" type="submit" data-loading="<i class='fas fa-circle-notch fa-spin'></i> {{ i18n "transmitting" }}...">
+            {{ .formbutton }}
+          </button>
+        </form>
       </div>
     </div>
   </div>
-</section>
+
+  <div class="row" id="gmap">
+    <div class="col-md-12 google-map">
+      <iframe width="100%" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ7aOK7nDduEcR098APnyle94&key=AIzaSyBJqEDARzKtjdqMFGje1TapGofxLjVbh0k"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+</main>
 <style>
   .address-block li {
     margin-bottom: 20px;

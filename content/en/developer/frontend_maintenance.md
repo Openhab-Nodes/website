@@ -9,7 +9,7 @@ openHAB X strives to be accessible and easy to grasp, without reading tons of do
 
 This chapter introduces into this interface, technical backgrounds and how to start hacking on it.<!--more-->
 
-{{< colpic ratio="60" margin="mx-0" >}}
+{{< colpic ratio="60" >}}
 
 The interface was initially developed as a replacement for the [openHAB](https://www.openhab.org) Paper UI configuration interface (picture on the right). Both are web-based graphical solutions to allow to setup, reconfigure and in parts also maintain the installation. 
 
@@ -64,6 +64,7 @@ Vscodes support for YAML, TOML and JSON is used to offer the user a choice durin
 **Setup &amp; Maintenance** tries to stay maintainable for a long time and not use discarded technology.
 
 It is NOT a Single Page Application (SPA). No js framework ought to be used if not required. Pages are pure html and (s)css and use web-components for interactive parts.
+With the "Progressive enhancement" thought in mind, some components are developed to be purely optional. 
 
 Scripts
 : Javascript ES7 and newer is used. Not Coffeescript, not Typescript, not Closure. I do see the benefits of Typescript, but JS gets more and more expressive as well each year. [Jsdoc](https://devhints.io/jsdoc) (Javascript comments) is used to add "types" to arguments and variables. Modern IDEs like Visual Studio Code can interpret those annotations and offer correct auto-completion in real-time. Also only JS6-module compatible JS libraries are allowed.
@@ -71,30 +72,34 @@ Scripts
 Styling
 : SASS/SCSS is used for styling: This CSS dialect offers a few useful extensions to CSS, but doesn't look to unfamiliar or different like Stylus for example. Bootstrap 4 is used for the base style. Styling fulfils a function, like leading your eye, making you focus specific parts and so on. Material Design was not used on purpose for exactly those reasons.
 
-External libraries
-: The Visual Studio Code Editor (monaco editor) has been selected as the editor of choice. For graphical rule editing Rete-JS is used. If any charts are involved charts.js is rendering them.
+Graphical Rule Editor
+: For graphical rule editing Rete-JS is used. Its memory leaks have been fixed (even de-registration was not implemented) and its vue renderer plugin has been adapter to use es6 modules. It's API has not been changed and should always stay upstream compatible!
 
-With the "Progressive enhancement" thought in mind, some components are developed to be purely optional. 
+Minimal Page Reloading while Server Side Rendered
+: The advantage of SPAs are that the shell of the application stays, so there is no flickering while changing to another subpage. This project is fully "server-side-rendered" and a similar page change feature is realized as a progressive enhancement, by adding the custom component `<nav-ajax-page-load></nav-ajax-page-load>` to the page. Clicks are intercepted and only parts of the current shown page are replaced.
 
-The advantage of SPAs are that the shell of the application stays, so there is no flickering while changing to another subpage. This is realised in this project as a progressive enhancement, by adding the custom component `<nav-ajax-page-load></nav-ajax-page-load>` to the page. Clicks are intercepted and only parts of the current shown page are replaced.
+Code Editor
+: The Visual Studio Code Editor (monaco editor) has been selected as the editor of choice. It supports syntax highlighting and auto-completion for all supported programming languages and half-structed data formats like json, yaml, toml. It allows to load JSonSchema files for advanced, semantic auto-completion.
 
-The Vue framework is used for reactive parts. One reason is that its component files use regular html with only a few Vue specific annotations and scss/css for styles. Still, to reduce dependency on the framework, html templates are embedded into the html pages whenever possible. Styles are kept outside of component files. If Vue ever gets replaced, we don't want to end up with a bunch of useless vue component files.
+Reactivity
+: The Vue framework and Svelte are used for reactive parts. One reason is that Vue and Svelte component files use regular html with only a few Vue/Svelte specific annotations and scss/css for styles.
+To reduce dependencies on frameworks, html templates should be embedded into html pages in-place whenever possible. Styles must be kept outside of component files and either be global or referenced. If Vue or Svelte ever gets replaced, we don't want to end up with a bunch of useless component files.
 
 Browser support
 : Setup &amp; Maintenance targets modern evergreen browsers. This excludes Internet Explorer.
 
 ### Web Components
 
-Web Components and Custom Components allow for framework independant browser components. **Setup &amp; Maintenance** makes use of Custom Components whenever possible. A huge benefit is also the component life cycle. For example the vscode editor component shuts correctly down and frees resources when the component is unloaded due to a javascript initiated page change.
+Web Components and Custom Components allow for framework independant browser components. **Setup &amp; Maintenance** makes use of Custom Components whenever possible. A huge benefit is the component life cycle. For example the vscode editor component shuts correctly down and frees resources when the component is unloaded due to a javascript initiated page change. This is quite important because VScode is 8 Mb in size and would cloak the javascript engine if loaded multiple times.
 
 The following Web Components have been developed and are potentially also useful for other projects:
 
-* fetching and displaying a markdown context help including rendering to html,
+* fetching and displaying markdown context help including rendering to html,
 * featching and displaying forum topics (used for the openHAB community forum),
 * navigation components (breadcrumb, prev/next-buttons),
-* openHAB addons documentation fetching and displaying component.
+* openHAB and openHAB X addons documentation fetching and displaying component.
 
-More complex, reactive components are a bit tedious with just the clumsy html dom API alone.
+More complex, reactive components are a bit tedious with just the clumsy html dom API alone. Svelte is
 In the future, one option could be [Vue 3](https://medium.com/the-vue-point/plans-for-the-next-iteration-of-vue-js-777ffea6fabf). Thanks
 to tree-shaking and building up on modern standards, it will come with a low footprint, suited for standalone html components.
 

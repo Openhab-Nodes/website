@@ -1,7 +1,10 @@
-+++
-title = "Developer documentation"
-layout = "list"
-+++
+---
+title: "Developer documentation"
+layout: "list"
+outputs:
+- html
+- json
+---
 
 {{< readfile file="developer/_partials/authorsnote.inc" markdown="false" >}}
 

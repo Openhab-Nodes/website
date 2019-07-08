@@ -12,7 +12,7 @@ openHAB X strives to be accessible and easy to grasp, without reading tons of do
 
 Read on to hear about design considerations, implementation obstacles and technical details.<!--more-->
 
-{{< colpic ratio="60" margin="mx-0" >}}
+{{< colpic ratio="60" >}}
 
 The interface was initially developed as a replacement for the [openHAB](https://www.openhab.org) Paper UI configuration interface (picture on the right). Both are web-based graphical solutions to allow to setup, reconfigure and in parts also maintain the installation. 
 

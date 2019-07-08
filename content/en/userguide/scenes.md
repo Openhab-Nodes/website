@@ -5,7 +5,7 @@ weight = 90
 tags = ["scene"]
 +++
 
-{{< colpic ratio="30" >}}
+{{< colpic ratio="30" left="pb-3" >}}
 
 <img src="/img/doc/living-scene.png" class="w-100 pt-3" style="transform: perspective(602px) rotateY(16deg);box-shadow: -5px 8px 8px 0 rgba(0,0,0,0.15);">
 
@@ -52,7 +52,7 @@ This interface also allows to enter and edit a Scene in text form.
 In all cases you need to select the Thing Channels that should be part of the new *Scene*.
 
 ## Run a Scene
-{{< colpic ratio="70" margin=" " >}}
+{{< colpic ratio="70" >}}
 
 Scenes will appear in control interfaces, like the Hue App, openHAB X App, openHAB X Dashboard and also in the Setup &amp; Maintenance interface.
 

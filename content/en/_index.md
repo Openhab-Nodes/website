@@ -64,9 +64,9 @@ Adding your first devices is done in a breath.
             <article >
                 <header>
                     <span>MQTT Binding</span> <small class="ml-2">2.5M1</small>
-                    <oh-doc-link title="Known problems and workarounds for your installed version" show=""
+                    <span title="Known problems and workarounds for your installed version" show=""
                         class="ml-2 link text-nowrap" tabindex="0"><i
-                            class="fas fa-exclamation-triangle"></i></oh-doc-link>
+                            class="fas fa-exclamation-triangle"></i></span>
                 </header>
                 <section class="actions"><span role="group" class="btn-group"><a title="Change Version"
                          class="btn btn-secondary-hover"><i
@@ -102,97 +102,88 @@ Adding your first devices is done in a breath.
     <path fill="none" fill-rule="nonzero" stroke="#ff8a65" stroke-dasharray="8" stroke-linecap="round" stroke-linejoin="round" d="M1.35 0v222.298c-2.717 31.994 10.356 47.991 39.22 47.991h813.902c28.352 0 42.528 9.332 42.528 27.995V378"/>
 </svg>
 
-<div class="row ">
-    <div class="col-md-7">
-         <div id="inbox_grid" class="ui_addon_cards" style="padding-top:100px">
-            <article class="wider">
-                <header><span>2-Gang Wall Switch</span>
-                </header>
-                <section class="description">
-                    <small style="white-space: nowrap; text-overflow: ellipsis;">ZWave Addon – #acee30fe</small><br>
-                    <span>This Thing contains <a href="">2 fixed</a> channels and <b>no</b> dynamic channels.</span>
-                </section>
-                <footer>
-                    <i class="badge badge-info">2019-05-30 11:10</i>
-                    <button class="ml-auto btn btn-outline-success"><span>Approve</span></button>
-                    <button class="btn btn-outline-secondary"><i class="fas fa-ellipsis-v label"></i></button>
-                </footer>
-            </article>
-            <article class="wider">
-                <header><span>Bedroom Ceiling</span>
-                </header>
-                <section class="description">
-                    <small style="white-space: nowrap; text-overflow: ellipsis;">Hue Addon – #63be30ca</small><br>
-                    <span>This Thing contains <a href="">5 fixed</a> channels and <b>no</b> dynamic channels.</span>
-                </section>
-                <footer>
-                    <i class="badge badge-info">2019-05-30 12:10</i>
-                    <button class="ml-auto btn btn-outline-success"><span>Approve</span></button>
-                    <button class="btn btn-outline-secondary"><i class="fas fa-ellipsis-v label"></i></button>
-                </footer>
-            </article>
-            <article class="wider">
-                <header><span>Colour Bulb</span>
-                </header>
-                <section class="description">
-                    <small style="white-space: nowrap; text-overflow: ellipsis;">Hue Addon – #153430fe</small><br>
-                    <span>This Thing contains <a href="">5 fixed</a> channels and <b>no</b> dynamic channels.</span>
-                </section>
-                <footer>
-                    <i class="badge badge-info">2019-05-30 12:12</i>
-                    <button class="ml-auto btn btn-outline-success"><span>Approve</span></button>
-                    <button class="btn btn-outline-secondary"><i class="fas fa-ellipsis-v label"></i></button>
-                </footer>
-            </article>
-        </div>
-    </div>
-    <div class="col-md-5">
-        <h4>2. Find Devices in the Inbox*</h4>
-        <p>Head to the Inbox and Approve or Hide <b>Things</b>. Things in openHAB X are representations of external
-            devices ("Light bulb") or Services ("Weather service") and are provided via Addons. A physical device might
-            provide multiple Things.</p>
-        <p>An approved Thing is by default visible to digital assistants and to any control App.</p>
-        <small>* Some Addons do not support the Inbox. <button class="btn-link contexthelp" id="no_inbox_details"
-                title="Context help">Details</button></small>
-    </div>
+{{< colpic ratio="58" left="mr-md-3">}}
+<div id="inbox_grid" class="ui_addon_cards" style="padding-top:100px">
+    <article class="wider">
+        <header><span>2-Gang Wall Switch</span>
+        </header>
+        <section class="description">
+            <small style="white-space: nowrap; text-overflow: ellipsis;">ZWave Addon – #acee30fe</small><br>
+            <span>This Thing contains <a href="">2 fixed</a> channels and <b>no</b> dynamic channels.</span>
+        </section>
+        <footer>
+            <i class="badge badge-info">2019-05-30 11:10</i>
+            <button class="ml-auto btn btn-outline-success"><span>Approve</span></button>
+            <button class="btn btn-outline-secondary"><i class="fas fa-ellipsis-v label"></i></button>
+        </footer>
+    </article>
+    <article class="wider">
+        <header><span>Bedroom Ceiling</span>
+        </header>
+        <section class="description">
+            <small style="white-space: nowrap; text-overflow: ellipsis;">Hue Addon – #63be30ca</small><br>
+            <span>This Thing contains <a href="">5 fixed</a> channels and <b>no</b> dynamic channels.</span>
+        </section>
+        <footer>
+            <i class="badge badge-info">2019-05-30 12:10</i>
+            <button class="ml-auto btn btn-outline-success"><span>Approve</span></button>
+            <button class="btn btn-outline-secondary"><i class="fas fa-ellipsis-v label"></i></button>
+        </footer>
+    </article>
+    <article class="wider">
+        <header><span>Colour Bulb</span>
+        </header>
+        <section class="description">
+            <small style="white-space: nowrap; text-overflow: ellipsis;">Hue Addon – #153430fe</small><br>
+            <span>This Thing contains <a href="">5 fixed</a> channels and <b>no</b> dynamic channels.</span>
+        </section>
+        <footer>
+            <i class="badge badge-info">2019-05-30 12:12</i>
+            <button class="ml-auto btn btn-outline-success"><span>Approve</span></button>
+            <button class="btn btn-outline-secondary"><i class="fas fa-ellipsis-v label"></i></button>
+        </footer>
+    </article>
 </div>
 
-<template data-popover="no_inbox_details">
-    <p style="max-width: 500px">Some protocols like KNX do not support auto discovery of connected devices. Things of
-        the KNX Addon for example need to be configured manually. All modern standards allow discovery though.</p>
-</template>
-<ui-tooltip target="no_inbox_details"></ui-tooltip>
+<split>
+
+#### 2. Find Devices in the Inbox*
+Head to the Inbox and Approve or Hide **Things**. Things in openHAB X are representations of external
+devices ("Light bulb") or Services ("Weather service") and are provided via Addons. A physical device might
+provide multiple Things.
+
+An approved Thing is by default visible to digital assistants and to any control App.
+
+{{< small >}}
+\* Some Addons do not support the Inbox.
+{{< details title="Details" maxwidth="500px" >}}
+Some protocols like KNX do not support auto discovery of connected devices. Things of
+the KNX Addon for example need to be configured manually. All modern standards allow discovery though.
+{{< /details >}}
+{{< /small >}}
+
+{{< /colpic >}}
 
 ## Digital assistants &amp; Voice control
 
-<div class="row mb-4">
-    <div class="col-md-4 text-center">
-        <img src="/img/alexa.jpg" class="w-100" title="Amazon Alexa">
-    </div>
-    <div class="col-md-4 text-center">
-        <img src="/img/google_home.jpg" class="w-100" title="Google Home">
-    </div>
-    <div class="col-md-4 text-center">
-        <img src="/img/apple_homepod.webp" class="" style="max-width: 80%" title="Apple Homepod">
-    </div>
-</div>
-<div class="row mb-4">
-    <div class="col-md-5">
-        <p>Digitial assistants can be pretty neat. The picture shows Amazon Alexa, Google Home and Apple Homepod
-            (Siri) from left to right.
-            You might use one or two of those already. And that's why they work out of the box with
-            openHAB X*.
-        </p>
-        <small>* A subscription is required to balance costs of the cloud connector.</small>
-    </div>
-    <div class="col-md-5 offset-md-1 mt-md-4 pt-md-4">
-        <p>If you want to go all offline, openHAB X also features a <a href="https://snips.ai/"
-                target="_blank">Snips</a> integration.
-        </p>
-        <img src="/img/snips.png" class="" style="max-width: 100%"
-            title="Snips AIR. You don't need them. Any microphone array, directly connected to the Raspberry PI3 works.">
-    </div>
-</div>
+{{< col3md class="text-center m-auto" >}}
+<img src="/img/alexa.jpg" class="w-100" title="Amazon Alexa">
+<split>
+<img src="/img/google_home.jpg" class="w-100" title="Google Home">
+<split>
+<img src="/img/apple_homepod.webp" class="" style="max-width: 80%" title="Apple Homepod">
+{{< /col3md >}}
+
+{{< colpic ration="40" right="offset-md-1 mt-md-4 pt-md-4" >}}
+Digitial assistants can be pretty neat. The picture shows Amazon Alexa, Google Home and Apple Homepod (Siri) from left to right.
+You might use one or two of those already. And that's why they work out of the box with openHAB X*.
+
+{{< small >}}\* A subscription is required to balance costs of the cloud connector.{{< /small >}}
+<split>
+If you want to go all offline, openHAB X also features a [Snips]("https://snips.ai/)  integration.
+
+<img src="/img/snips.png" class="w-100" title="Snips AIR. You don't need them. Any microphone array, directly connected to the Raspberry PI3 works.">
+{{< /colpic >}}
 
 ## Interact with openHAB X
 
@@ -459,7 +450,7 @@ triggers:
     </div>
     <div class="col-md-4 py-3 card-hover">
         <h3>3. Flash</h3>
-        <a href="https://www.balena.io/etcher/" target="_blank"><img style="float:left;height: 70px;" class="mr-3"
+        <a href="https://www.balena.io/etcher/" class="noref" target="_blank"><img style="float:left;height: 70px;" class="mr-3"
                 src="/img/etcher.svg"></a>
         <p><a href="https://www.balena.io/etcher/" target="_blank">Etcher</a> transfers the Operating System
             and openHAB X Software onto your SD-Card.</p>
@@ -481,96 +472,56 @@ triggers:
                     <tr>
                         <td>&check;</td>
                         <td>The Distribution<br><small>(OS Bundle, Docker Image)</small></td>
-                        <td><a href='#'><i class="fas fa-external-link-alt"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>&check;</td>
-                        <td><button class="btn-link contexthelp" id="sub_openhab2addons_tr" title="Context help">openHAB
-                                Addons</button></td>
-                        <td><a href='https://www.openhab.org/addons' target="_blank"><i
-                                    class="fas fa-external-link-alt"></i></a></td>
                     </tr>
                     <tr>
                         <td>&check;</td>
                         <td>
-                            <button class="btn-link contexthelp" id="sub_openhabx_tr" title="Context help">openHAB X
-                                Extensions</button>
+{{< details title="openHAB Addons" maxwidth="500px" >}}
+<a href='https://www.openhab.org/addons' target="_blank">openHAB 2 Addons</a> that are implemented on top of openHAB 2 Core APIs
+{{< /details >}}</td>
+                    </tr>
+                    <tr>
+                        <td>&check;</td>
+                        <td>
+{{< details title="openHAB X Core" maxwidth="500px" >}}
+* OpenHAB Core Shim
+* Automation Engine
+* Identity / Access Management
+* Addon Manager and Supervisior
+* Backup &amp; Restore with Snapshots and Rollbacks
+{{< /details >}}
                         </td>
-                        <td></td>
                     </tr>
                     <tr>
                         <td>&check;</td>
-                        <td><button class="btn-link contexthelp" id="sub_cloud_tr" title="Context help">Cloud
-                                connectors</button></td>
-                        <td></td>
+                        <td>
+{{< details title="Cloud Connector" maxwidth="500px" >}}
+* Amazon Alexa
+* Google Home
+* IFTTT
+{{< /details >}}</td>
                     </tr>
                     <tr>
                         <td>&check;</td>
-                        <td><button class="btn-link contexthelp" id="sub_ui_tr" title="Context help">User
-                                interfaces</button>
+                        <td>
+{{< details title="User Interfaces" maxwidth="500px" >}}
+* Dashpanel UI for wall mounted tablets
+* Flutter Android/iOS App
+* Management Web UI
+{{< /details >}}
                         </td>
-                        <td></td>
                     </tr>
                     <tr>
                         <td>&check;</td>
-                        <td><button class="btn-link contexthelp" id="sub_integrations_tr"
-                                title="Context help">Integrations</button> </td>
-                        <td></td>
+                        <td>
+{{< details title="Integrations" maxwidth="500px" >}}
+* Snips Local Voice Recognition Integration
+* InfluxDB Time Series Integration
+{{< /details >}}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <template data-popover="sub_openhab2addons_tr">
-            <div style="max-width: 500px">
-                <q>Add-ons that are implemented on top of openHAB 2 Core APIs</q>
-            </div>
-        </template>
-        <ui-tooltip target="sub_openhab2addons_tr"></ui-tooltip>
-        <template data-popover="sub_openhabx_tr">
-            <div style="max-width: 500px">
-                <ul>
-                    <li>OpenHAB Core Shim <a href='#'><i class="fas fa-external-link-alt"></i></a></li>
-                    <li>OHX Automation Engine <a href='#'><i class="fas fa-external-link-alt"></i></a></li>
-                    <li>OHX GraphQL API + Identity / Access Management <a href='#'><i
-                                class="fas fa-external-link-alt"></i></a>
-                    </li>
-                    <li>OHX Backup &amp; Restore <a href='#'><i class="fas fa-external-link-alt"></i></a></li>
-                </ul>
-            </div>
-        </template>
-        <ui-tooltip target="sub_openhabx_tr"></ui-tooltip>
-        <template data-popover="sub_cloud_tr">
-            <div style="max-width: 500px">
-                <ul>
-                    <li>Amazon Alexa <a href='#'><i class="fas fa-external-link-alt"></i></a></li>
-                    <li>Google Home <a href='#'><i class="fas fa-external-link-alt"></i></a></li>
-                    <li>IFTTT <a href='#'><i class="fas fa-external-link-alt"></i></a></li>
-                </ul>
-            </div>
-        </template>
-        <ui-tooltip target="sub_cloud_tr"></ui-tooltip>
-        <template data-popover="sub_integrations_tr">
-            <div style="max-width: 500px">
-                <ul>
-                    <li>Snips Local Voice Recognition Integration <a href='#'><i
-                                class="fas fa-external-link-alt"></i></a></li>
-                    <li>InfluxDB / Grafana Time Series Integration <a href='#'><i
-                                class="fas fa-external-link-alt"></i></a></li>
-                </ul>
-            </div>
-        </template>
-        <ui-tooltip target="sub_integrations_tr"></ui-tooltip>
-        <template data-popover="sub_ui_tr">
-            <div style="max-width: 500px">
-                <ul>
-                    <li>Dashpanel UI for wall mounted tablets <a href='#'><i class="fas fa-external-link-alt"></i></a>
-                    </li>
-                    <li>Flutter Android/iOS App <a href='#'><i class="fas fa-external-link-alt"></i></a></li>
-                    <li>Management Web UI <a href='#'><i class="fas fa-external-link-alt"></i></a></li>
-                </ul>
-            </div>
-        </template>
-        <ui-tooltip target="sub_ui_tr"></ui-tooltip>
         <div class="text-center mb-3">
             <a href='{{< relref "/userguide/getting_started" >}}' class="btn btn-primary btn-impressive">
                 <span>Getting started</span>
@@ -586,9 +537,13 @@ triggers:
             <i class="img fas fa-cloud text-primary" style="font-size: 60pt;line-height: 120pt;"></i>
         </div>
         <p class="text-center p-2">A steady connection is required for any kind of cloud based service. The
-            subscription fee is <button class="btn-link contexthelp" id="sub_cloudfee_tr" title="Context help">as
-                low as
-                possible</button>.</p>
+            subscription fee is 
+{{< details title="as low as possible" maxwidth="500px" >}}
+The subscription fee is as low as possible and covers bandwidth and connection-time costs, 1/4 is
+taxes and 1/4 is for maintenance.
+
+The price may drop over time with more users and further implemented cost savings.
+{{< /details >}}.</p>
         <div class="mx-4 mb-2 table">
             <table>
                 <tbody>
@@ -615,14 +570,6 @@ triggers:
                 </tbody>
             </table>
         </div>
-        <template data-popover="sub_cloudfee_tr">
-            <div style="max-width: 500px">
-                <p>The subscription fee is as low as possible and covers bandwidth and connection-time costs, 1/4 is
-                    taxes and 1/4 is for maintenance.</p>
-                <p>The price may drop over time with more users and further implemented cost savings.</p>
-            </div>
-        </template>
-        <ui-tooltip target="sub_cloudfee_tr"></ui-tooltip>
         <div class="text-center mb-3">
             <button type="submit" class="btn btn-primary btn-impressive">
                 <span>3€ / Month</span>
@@ -659,30 +606,30 @@ triggers:
                         <td>Remote access via <a target="_blank" href="https://pagekite.net/">Pagekite</a></td>
                     </tr>
                     <tr>
-                        <td><output name="sla">95</output>%</td>
-                        <td><button class="btn-link contexthelp" id="sub_sla_tr" title="Context help">Software
-                                SLA</button>
+                        <td style="white-space: nowrap;"><output name="sla">95</output>%</td>
+                        <td>
+{{< details title="Software SLA" maxwidth="500px" mount="true" >}}
+<q>A service-level agreement (SLA) is a commitment between a service provider and a client.
+    Particular aspects of the service – quality, availability, responsibilities – are agreed between
+    the service provider and the service user.
+</q>
+
+<output name="sla2">-</output>% means
+<b><output name="sla_hours">-</output>h a day</b> or
+<b><output name="sla_days">-</output> days every 31 days</b>.
+
+The Software-only SLA is limited to:<br>Cloud Connectors, Rule Engine, IAM-Service, Operating
+Sytem, Hue Emulation + API Access.
+Your own services will be limited to 1/4 of the available memory and 20% CPU-time in SLA mode.
+
+Manipulating the supervisior will free the service provider from any SLA obligations with
+immediate effect.
+{{< /details >}}
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div style="max-width: 500px;position:fixed;visibility:hidden" data-popover="sub_sla_tr">
-            <q>A service-level agreement (SLA) is a commitment between a service provider and a client.
-                Particular aspects of the service – quality, availability, responsibilities – are agreed between
-                the service provider and the service user.
-            </q><br><br>
-            <p><output name="sla2">-</output>% means
-                <b><output name="sla_hours">-</output>h a day</b> or
-                <b><output name="sla_days">-</output> days every 31 days</b>.</p>
-            <p>The Software-only SLA is limited to:<br>Cloud Connectors, Rule Engine, IAM-Service, Operating
-                Sytem, Hue Emulation + API Access.
-                Your own services will be limited to 1/4 of the available memory and 20% CPU-time in SLA mode.
-            </p>
-            <p>Manipulating the supervisior will free the service provider from any SLA obligations with
-                immediate effect.</p>
-        </div>
-        <ui-tooltip target="sub_sla_tr"></ui-tooltip>
         <div class="text-center mb-3">
             <input type="range" min="10" max="100" value="10" class="slider" id="subscriptionValue">
             <button type="submit" class="btn btn-primary btn-impressive">
