@@ -142,6 +142,10 @@ The [IO Service](/developer/addons_ioservice) chapter contains all the details.
 
 {{< /colpic >}}
 
+## Addon-Manger Callbacks
+
+
+
 ## Configurations for Addons
 
 Configuration, may it be Thing or Addon or Service configuration, in openHAB X must be possible in textual form as well as graphical via forms and dialogs.
@@ -232,11 +236,6 @@ And renders into what you see below. Almost*.
 
 A longer example is given in the walkthrough section in the [Binding](/developer/addons_binding) chapter.
 
-{{< callout type="info" >}}
-<h4>Version your Configuration</h4>
-Addon configuration is kept even if an addon is uninstalled or updated. Version your configuration to not get surprised in a later version of your addon. If you require a clean config, perform a configuration wipe when receiving the `installed` callback.
-{{< /callout >}}
-
 ### Tools to generate JSONSchema
 
 Some programming languages support to define JSONSchema in code together with the structs that hold the configuration values, like Rust (macros) and Java (annotations). Those languages therefore don't face the problem of desyncing schema and code.
@@ -246,7 +245,7 @@ Because this is not supported in all languages, the idiomatic way is the other w
 1. Design your schemas with https://mozilla-services.github.io/react-jsonschema-form/
 2. Generate code with: https://app.quicktype.io/. Choose JSON Schema on the left. Choose the target language on the right.
 
-### Code Example
+### Register Configuration Schemas
 
 If you register a structure for configuration retrival with `libaddon`, you must also specify the JSONSchema and optionally the UISchema.
 
@@ -259,6 +258,7 @@ If you register a structure for configuration retrival with `libaddon`, you must
 <tab-body-item >{{< md >}}
 ```rust
 use serde::{Serialize, Deserialize};
+use semver::Version;
 use ohx::{Configs};
 
 // This is for demonstration only. A code generator like the one
@@ -276,14 +276,17 @@ struct ServiceConfig {
     port: Option<i32>
 }
 
-static json_schema = include_str!("schema/config_id_schema.json");
+fn upgrade_config_id_cb(...) -> Result<String> {
+  // ...
+}
 
 fn main() {
     // ...
     // Publish schemas. No optional ui schema is given in this example.
-    Configs::publish(&json_schema, None)?;
+    let json_schema = fs::read_to_string("schema/config_id_schema.json").unwrap();
+    Configs::publish(&json_schema, None).unwrap();
     // Synchronously request a configuration object. Should only happen on startup.
-    let config : Option<ServiceConfig> = Configs::get("config_id").unwrap();
+    let config : Option<ServiceConfig> = Configs::get("config_id", &upgrade_config_id_cb).unwrap();
 }
 ```
 {{< /md >}}</tab-body-item >
@@ -303,7 +306,7 @@ It is up to you on how to react to changes.
 
 It is generally a better idea to use this asyncronous API instead of the `get` method.
 The listener callback method will also be called for the inital configuration.
-Via a computed hash over the configuration you will only be called back for actuall changes.
+Via a computed hash over the configuration you will only be called back for actual changes.
 
 <div class="mb-2">
 	<tab-container>
@@ -320,9 +323,13 @@ fn config_changed(config_id: &str, config: Option<ServiceConfig>) {
 
 }
 
+fn upgrade_config_id_cb(...) -> Result<String> {
+  // ...
+}
+
 fn main() {
     // ...
-    Config::register_lister("config_id", &config_changed);
+    Config::register_lister("config_id", &config_changed, &upgrade_config_id_cb);
 }
 ```
 {{< /md >}}</tab-body-item >
@@ -330,35 +337,72 @@ fn main() {
     </tab-container>
 </div>
 
+### Update-Paths for Configuration
 
-## Addons: Technical background
+Sometimes you need to restructure your addon and your configuration structure changes. This includes service as well as users Thing configurations.
 
-An Addon in OHX may consist of multiple processes (services), but at least one is an isolated process that registers itself to the **AddonsManger** service and implements one or more interfaces ("binding", "IO Service"). For easy distribution and enhanced resource control as well as enforcing specific security features, Addon processes are bundled as *containers*. A set of containers is called a *Pod*.
+As seen in the last example, openHAB X calls you back if your addon version doesn't match your configuration version for a given config_id. You should keep adding migration paths to an `upgrade_cb` function as seen in the following example.
 
-{{< callout title="Containers" type="info" >}}
-A **container** is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. Containers are not virtual machines! A container process can be easily restricted in its resource usage, including main memory, cpu time, disk and network access as well as direct hardware control. A known container implementation is {{< details title="Docker" maxwidth="500px" >}}
-Docker is just one of many container engines. OHX uses vendor neutral software containers, defined by the OCI.
+<div class="mb-2">
+	<tab-container>
+		<tab-header>
+			<tab-header-item class="tab-active">Rust</tab-header-item>
+		</tab-header>
+		<tab-body>
+<tab-body-item >{{< md >}}
+```rust
 
-The Open Container Initiative (OCI), founded by Docker, is a Linux Foundation project to design open standards for operating-system-level virtualization, most importantly containers.
-{{< /details >}}.
-{{< /callout >}}
+// ...
 
+// Upgrading from version 1.1 via 1.2 to 2.0
+fn upgrade_cb(config:&str, current_version:Version, new_version:Version) -> Result<String> {
+  let version = current_version;
+  let mut new_conf = config.to_own();
 
-A container is first of all like any other executable. It requires enviroment variables, command line arguments and configuration to work properly. openHAB X uses the [Kubernetes Objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) Yaml file format. It is a wide spread file format to describe how to start one or multiple containers in regard to exposed network ports, storage requirements and access to host hardware. Later in the text, the section [Metadata & Prepare For Publishing](/developer/addons/#metadata-amp-prepare-for-publishing) guides through all the details concerning this file.
+  if version == Version::new(1,1,0) {
+    // do your conversion on new_conf
+    version = Version::new(1,2,0);
+  }
+  if version == Version::new(1,2,0) {
+    // do your conversion on new_conf
+    version = Version::new(2,0,0);
+  }
 
-To understand how an Addon communicates with OHX, have a look at the following figure and focus on the top, left box first.
-
-<div class="text-center">
-<img src="/img/doc/addon-container.svg" class="w-100 p-3">
+  return new_conf;
+}
+```
+{{< /md >}}</tab-body-item >
+		</tab-body>
+    </tab-container>
 </div>
 
-In most cases your Addon consists of exactly one container, which runs software that is linked to `libAddon`, to communicate with the *AddonsManager*. OHX uses [gRPC](https://grpc.io/) for interprocess communication. Sometimes you might require additional external services, like a database. This is when you have more than one container running.
+So far this did not include users Thing configuration. Thing config auto-migration works similar to the concept above. It is absolutely optional to provide a migration method, but your *Binding* users will definitely enjoy that feature.
 
-1. Your Addon registers to *AddonsManager*. The *AddonsManager* will in turn request service tokens from the `IAM` service (not shown in the picture).
-2. The *AddonsManager* will start a dedicated process, the *AddonConnector* which is equipped with access tokens for various services. This process will on behalf of your Addon 
-3. `libAddon` will mainly communicate with the *AddonConnector* for querying and interacting with core services.
+<div class="mb-2">
+	<tab-container>
+		<tab-header>
+			<tab-header-item class="tab-active">Rust</tab-header-item>
+		</tab-header>
+		<tab-body>
+<tab-body-item >{{< md >}}
+```rust
 
-We refine this model in the dedicated sections about binding and IO Service development.  
+// ...
+
+// Upgrading from version 1.1 via 1.2 to 2.0
+fn upgrade_things_cb(thing_id:&str, config:&str, current_version:Version, new_version:Version) -> Result<String> {
+  // ...
+}
+
+fn main() {
+    // ...
+    Config::migrate_things(&upgrade_things_cb);
+}
+```
+{{< /md >}}</tab-body-item >
+		</tab-body>
+    </tab-container>
+</div>
 
 ## Metadata &amp; Prepare For Publishing
 
