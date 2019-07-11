@@ -142,9 +142,40 @@ The [IO Service](/developer/addons_ioservice) chapter contains all the details.
 
 {{< /colpic >}}
 
-## Addon-Manger Callbacks
+## Registering as Addon
+
+One of the first things you should do is to register your process as an Addon.
+The **Addon Manager** will record your process id and container id and the IAM service will use those immutable data for granting further permission based access.
+
+If you have a `static/` directory, that will also be examined during the registration process. See the [User Interfaces](/developer/frontend_apps) chapter for more information on what the static directory is used for.
+
+The example below registers a service with a few callbacks, that are explained in the following sections.
 
 
+<div class="mb-2">
+	<tab-container>
+		<tab-header>
+			<tab-header-item class="tab-active">Rust</tab-header-item>
+		</tab-header>
+		<tab-body>
+<tab-body-item >{{< highlight rust "linenos=table" >}}
+use ohx::{Addon};
+
+// ...
+
+fn main() {
+    // ...
+    // Create registration builder.
+    let builder = Addon::registration_builder::new();
+    // Set all mandatory and optional arguments.
+    // ...
+    // Register service
+    Addon::register(builder.build());
+}
+{{< /highlight >}}</tab-body-item >
+		</tab-body>
+    </tab-container>
+</div>
 
 ## Configurations for Addons
 
@@ -255,8 +286,7 @@ If you register a structure for configuration retrival with `libaddon`, you must
 			<tab-header-item class="tab-active">Rust</tab-header-item>
 		</tab-header>
 		<tab-body>
-<tab-body-item >{{< md >}}
-```rust
+<tab-body-item >{{< highlight rust "linenos=table" >}}
 use serde::{Serialize, Deserialize};
 use semver::Version;
 use ohx::{Configs};
@@ -289,7 +319,7 @@ fn main() {
     let config : Option<ServiceConfig> = Configs::get("config_id", &upgrade_config_id_cb).unwrap();
 }
 ```
-{{< /md >}}</tab-body-item >
+{{< /highlight >}}</tab-body-item >
 		</tab-body>
     </tab-container>
 </div>
@@ -314,9 +344,7 @@ Via a computed hash over the configuration you will only be called back for actu
 			<tab-header-item class="tab-active">Rust</tab-header-item>
 		</tab-header>
 		<tab-body>
-<tab-body-item >{{< md >}}
-```rust
-
+<tab-body-item >{{< highlight rust "linenos=table" >}}
 // ...
 
 fn config_changed(config_id: &str, config: Option<ServiceConfig>) {
@@ -332,7 +360,7 @@ fn main() {
     Config::register_lister("config_id", &config_changed, &upgrade_config_id_cb);
 }
 ```
-{{< /md >}}</tab-body-item >
+{{< /highlight >}}</tab-body-item >
 		</tab-body>
     </tab-container>
 </div>
@@ -349,9 +377,7 @@ As seen in the last example, openHAB X calls you back if your addon version does
 			<tab-header-item class="tab-active">Rust</tab-header-item>
 		</tab-header>
 		<tab-body>
-<tab-body-item >{{< md >}}
-```rust
-
+<tab-body-item >{{< highlight rust "linenos=table" >}}
 // ...
 
 // Upgrading from version 1.1 via 1.2 to 2.0
@@ -371,7 +397,7 @@ fn upgrade_cb(config:&str, current_version:Version, new_version:Version) -> Resu
   return new_conf;
 }
 ```
-{{< /md >}}</tab-body-item >
+{{< /highlight >}}</tab-body-item >
 		</tab-body>
     </tab-container>
 </div>
@@ -384,9 +410,7 @@ So far this did not include users Thing configuration. Thing config auto-migrati
 			<tab-header-item class="tab-active">Rust</tab-header-item>
 		</tab-header>
 		<tab-body>
-<tab-body-item >{{< md >}}
-```rust
-
+<tab-body-item >{{< highlight rust "linenos=table" >}}
 // ...
 
 // Upgrading from version 1.1 via 1.2 to 2.0
@@ -399,7 +423,7 @@ fn main() {
     Config::migrate_things(&upgrade_things_cb);
 }
 ```
-{{< /md >}}</tab-body-item >
+{{< /highlight >}}</tab-body-item >
 		</tab-body>
     </tab-container>
 </div>
@@ -535,8 +559,7 @@ A user must accept required permissions during installation, but may deny option
 			<tab-header-item class="tab-active">Rust</tab-header-item>
 		</tab-header>
 		<tab-body>
-<tab-body-item >{{< md >}}
-```rust
+<tab-body-item >{{< highlight rust "linenos=table" >}}
 use ohx::{Addon};
 
 // ...
@@ -547,7 +570,7 @@ fn main() {
     let list_denied = Addon::denied_permissions().unwrap();
 }
 ```
-{{< /md >}}</tab-body-item >
+{{< /highlight >}}</tab-body-item >
 		</tab-body>
     </tab-container>
 </div>

@@ -55,7 +55,37 @@ Login as a different user and enable pairing. The Hue App will only see Thing Ch
 
 ## openHAB X Mobile App
 
-## Dashboard App
 
-## Amazon Alexa, Google Home, HomeKit
+## The Dashboard App
 
+This application is targeting (Wall-mounted) tablets. 
+
+Create multiple dashboards and synchronize them to other devices easily.
+A *Dashboard* consists of *Tiles* and Things are rendered as *Tiles* that can be placed and also moved around. The Dashboard APP comes with *Tiles* for all common Thing and Thing Channel types. With some knowledge of web technologies you can also create your own *Tiles*.
+
+In the configuration screen you can add additional *Tile* repositories, like a github repository of another user.
+
+Theme
+: You can select one of the two shipped design themes in the configuration screen or develop your own cascading style sheet (css) based theme and upload it to a github repository.
+
+The default "Home" dashboard has all configured Things displayed.
+
+Things with multiple Thing Channels (like a 2-gang Switch Thing) can be reduced to a single, primary Channel. If multiple render options exist, for example because an Addon provides a custom *Tile* for a Thing, you can select between them. Things can be added multiple times to a dashboard.
+
+## Amazon Alexa, Google Home
+
+Cloud based assistants require a permanent connection between your openHAB X installation and the cloud infrastructures (either Amazon for Alexa or Google for Google Home).
+
+The *Cloud Connector* service does exactly that. To balance the costs for the permanent connection, a subscription is required. Help out if you think that the price tag can be reduced even more with further engineering.
+
+What you need to do:
+
+* Choose at least the "Basic Subscription" (monthly based)
+* Register your openHAB X installation here on https://www.openhabx.com in the login area.
+
+### Amazon Alexa
+
+* Open the Alexa App on your phone or head to the Amazon Alexa Website and install the Alexa App "openHAB X".
+* Pair the "openHAB X Alexa App" to your account on https://www.openhabx.com. Instructions are found within the app.
+
+That's it. Ask Alexa to find devices and she will discover all your (so far) configured Things. Alexa periodically (usually daily) checks for new devices, so even future Things will be available.
