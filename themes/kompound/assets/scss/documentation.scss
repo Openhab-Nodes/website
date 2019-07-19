@@ -22,9 +22,15 @@ h3:not(.nomargin){
     margin-top: 3em;
 }
 
+#singleinlinesearch {
+    position: sticky;
+    top: 20px;
+    z-index: 5;
+}
+
 #doc .navmain {
     display: grid;
-    grid-template-columns: [nav] 1fr [main] get-breakpoints("lg") [aside] 1fr [end];
+    grid-template-columns: [nav] minmax(200px, 1fr) [main] get-breakpoints("lg") [aside] 1fr [end];
     grid-template-areas: "chapters content toc";
     &>.chapters {
         grid-area: chapters;
@@ -35,6 +41,8 @@ h3:not(.nomargin){
     }
     &>.sidemenu {
         ul {
+            position: sticky;
+            top: 70px;
             display: flex;
             flex-direction: column;
             padding-left: 20px;
@@ -59,10 +67,48 @@ h3:not(.nomargin){
             margin-bottom: 0;
             list-style: none;
 
+            li:not(:first-of-type) {
+                margin-top: 10px;
+            }
+
             ul {
                 padding-left: 20px;
             }
         }
+    }
+}
+
+@include media-breakpoint-down(xl) {
+    #doc .navmain {
+        grid-template-columns: [nav] minmax(200px, 1fr) [main] get-breakpoints("md") [aside] 1fr [end];
+    }
+}
+
+@include media-breakpoint-down(lg) {
+    #doc .navmain {
+        grid-template-columns: [nav] minmax(200px, 1fr) [main] get-breakpoints("sm") [aside] 1fr [end];
+    }
+}
+
+@include media-breakpoint-down(md) {
+    #doc .navmain {
+        grid-template-columns: minmax(200px, 1fr) minmax(200px, 80%);
+        grid-template-areas: "chapters content";
+
+        .toc {
+            display: none;
+        }
+        margin-right: 10px;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    #doc .navmain {
+        display: block;
+        .sidemenu {
+            display: none;
+        }
+        margin-left: 10px;
     }
 }
 

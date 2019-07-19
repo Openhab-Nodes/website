@@ -5,42 +5,36 @@ weight = 110
 tags = ["rules"]
 +++
 
-This chapter introduces you to to openHAB X Rules. A Rule, in contrast to a Flow or Flow Graph follows a strict Trigger-Condition-Action schema. Control flow options like if-then-else are not supported.
+This chapter introduces you into the concepts of openHAB X Rules, its limitations and its extensibility via Scripts.
 
-OHX Rules share this "limitation", on purpose.
-Rules do not have the goal to replace complex, control flow driven scripts and are defined in a declarative way. This allows to offer an easy to grasp, graphical Rule Editor and Rule sharing. The provided means, explained throuout this chapter, still allow for powerful, expressive rules.
-
-You can list, create and modify Rules on the <a href="" class="demolink">Rules</a> page.
+Rules do not have the goal to replace complex, control flow driven scripts and are defined in a declarative way. This allows to offer an easy to grasp, graphical Rule Editor and Rule sharing.
+That's why you will not find a step-by-step "how to create a Rule" guide in this chapter.
+It's really self-explanatory, but the <a href="" class="demolink">Rules</a> page also includes context help and assistants for most steps.
 
 Rule Purpose
-: In most cases you are covered with [*Channel Links*](/userguide/linkchannels). If you only want to interconnect devices from different vendors, you will not even need to use Rules. Chose the right tool for the right task! 
+: In most cases you are covered with [*Thing Connections*](/userguide/thing_connections). If you only want to interconnect devices from different vendors, you will not even need to use Rules. Chose the right tool for the right task! 
 
 Examples for Rules are:
 
 * Switch off a specific light bulb, 5 minutes after it has been switched on. But only if no motion sensor movement has been registered.
 * Turn on the garden sprinkler every day at 7 in the morning in the months from May-Oct. Turn it off after 10 mins if the last 3 days had a mid-day temperature above 30°C otherwise after 5 mins.
 
-Non-Rules are:
+The next section talks about Non-Rules and how you would realize certain scenarios in openHAB X in the idiomatic way.
 
-* A complex trigger like "If a USB device from 'Tamahachi' has been connected". This should be implemented as an Addon instead. Addons can be written in a multitude of languages, also script languages like Javascript, check out the [developer page](/developer/addons). 
-* "Turn on all hallway lights". Create a [*Group*](/userguide/linkchannels#groups) instead.
-* 
+## Non-Rules
 
-Efficieny
-: The rule engine is fast and low on memory. 10000 rule executions a second is not an issue; talking about the Raspberry Pi Zero with 1 Ghz single core processor only. You can tune the engine to your needs, configuring the rules executed in parallel (default is 5), default maximum run-time (default: 5 minutes).
+If your rules reads like "Turn on all hallway lights", the easier and more ideomatic approch is to use [*Group*](/userguide/groups). If you don't want those groups to appear in user-interfaces, just tag them as "no-ui" or similar and make use of [*State Filters*](/userguide/thing_connections).
 
-Security
-: All rules are executed in the same process. A malicous Rule Module () The engine and available rule modules are not extendable via addons, but ony by reviewed code contributions to the source code repository.
+A very hardware or service specific trigger or condition like "If a USB device from 'Tamahachi' has been connected" is a candidate for an Addon. Just expose a **Thing** and act on that *Things* state. Addons can be written in a multitude of languages, also script languages like Javascript, check out the [developer page](/developer/addons). 
+
+If you think of an English sentence equivalent of your rule and it contains a lot of "ifs" and "else" and "repeats", it might make sentence to write a scripted solution instead. Find details in the [Scripts Section](#scripts) of this chapter.
 
 ## A Rule
 
 A Rule consists of a **Name**, a unique **ID** and optional **Triggers**, **Conditions** and **Actions**.
-    Rules are the fundament for *Scenes* and *Time based actions*.
+Rules are the fundament for *Scenes* and *Time based actions*.
 
 <img class="tutimage" src="/img/doc/rules.png">
-
-
-
 
 <section class="card border-success p-3 mb-2">
     <h5>Triggers</h5>
@@ -61,9 +55,8 @@ A Rule consists of a **Name**, a unique **ID** and optional **Triggers**, **Cond
     </thead>
     <tbody>
         <tr>
-        <td>A trigger channel fires</td>
-        <td>Triggers a Rule when a Channel trigger fires such as is used in the Dash Button binding or
-            Astro binding for astronomical events. Both the Channel and the event can be defined.</td>
+        <td>An event fires</td>
+        <td>Triggers a Rule when a Thing Event fires.</td>
         </tr>
         <tr>
         <td>An item state changes</td>
@@ -97,7 +90,7 @@ A Rule consists of a **Name**, a unique **ID** and optional **Triggers**, **Cond
     <h5>Conditions</h5>
     
     Defines the conditions under which the Rule will run when triggered.
-    If you define more than one condition, all conditions have to pass.
+    If you define more than one condition, all conditions have to be met.
     
 </section>
 
@@ -135,12 +128,12 @@ A Rule consists of a **Name**, a unique **ID** and optional **Triggers**, **Cond
 
 <section class="card border-danger p-3 mb-2">
     <h5>Actions</h5>
-    
-    Defines what actions the Rule takes when it runs.
-    Actions are performed in the order they are listed in the *Rule*.
-    Actions may have Outputs. You can connect those to Inputs of other Actions, that are executed later in the
-    execution order.
-    
+{{<md>}}
+Defines what actions the Rule takes when it runs.
+Actions are performed in the order they are listed in the *Rule*.
+
+Actions may have Outputs.You can connect those to Inputs of other Actions, that are executed later in the execution order.
+{{</md>}}
 </section>
 
 <details class="mb-4">
@@ -184,30 +177,119 @@ A Rule consists of a **Name**, a unique **ID** and optional **Triggers**, **Cond
     </table>
 </details>
 
+### Text Mode
+
+It is sometimes easier for Copy&amp;Paste purposes or Search&amp;Replace to use the text mode instead of the graphical one.
+
+A Rule is declared like in the following code snippet.
+All futher keys, triggers, conditions, actions are subsidiary to the ID which is `switch_off_after_5_min` in this case.
+
+{{< code-toggle file="rule_example" class="code-toggle-limited" >}}
+switch_off_after_5_min:
+  title: Switch off after 5 Minutes
+  tags: # optional
+    - auto_off_rule 
+  triggers:
+     -  _id: on_state_change
+        type: propertychange
+        source: my_light.brightness
+        equals: "ON"
+  actions:
+     -  _id: a_delay_action
+        type: "delay"
+        delay_in_sec: 360
+     -  _id: turn_off
+        type: propertycommand
+        target: my_light.brightness
+        command: "OFF"
+{{< /code-toggle >}}
+
+There are no `conditions` in this example. `triggers`, `conditions` and `actions` are lists and each item is defined by a rule unique ID like `_id: on_state_change`.
+
+The *type* is unique across the entire rule engine and references the *Rule Module* that should be excuted or used. For `on_state_change` that would be the `type: propertychange` trigger module.
+
+You best explore rules via the graphical editor first and study the generated declarative text later on.
+
 ## Rule Templates
 
-Because of the strict schema, Rules turn out to be more generic.
-A rule that contains *Placeholders* instead of fixed values is called a **Rule Template**. The editor allows to create, modify and share *Rule Templates* with the community. Install **Rule Templates** via this website or find them in the "Rule Templates" sub-page of  <a class="demolink" href="">Rules</a>.
+Because of the strict schema, Rules turn out to be quite generic.
+A rule that contains *Placeholders* instead of fixed values is called a **Rule Template**.
+
+{{< mermaid align="left" context="rule_template">}}
+graph LR;
+  trigger("<b>Trigger</b>: Sunrise")
+  condition("<b>Condition</b>: Month is between May-Oct")
+  action("<b>Action</b>: PLACEHOLDER")
+
+  trigger --> condition
+  condition --> action
+{{< /mermaid >}}
+
+The editor allows to create, modify and share *Rule Templates* with the community. Install **Rule Templates** via this website or find them in the "Rule Templates" sub-page of  <a class="demolink" href="">Rules</a>.
 
 ## Nesting Rules
 
 An *Action* is a *Rule* itself and can carry own *Conditions* and own child *Actions*.
 Child actions are only executed if the conditions match, like with a top level rule.
 
-This way you can implement control flow ("if warmer than 30° today turn on havoc at 7 otherwise at 9" ).
+This way you can implement control flow ("if warmer than 30°C today turn on havoc at max level otherwise use medium for >= 25°C" ).
 
-In the graphical Rule Editor you click on the **Edit Children** link
+{{< mermaid maxwidth="100%" context="rules_nesting">}}
+graph LR;
+  trigger("<b>Trigger</b>: At 7 am")
+  condition("<b>Condition</b>: Weather Forecast says > 25°C")
+  havoc_med("<b>Action</b>: Havoc Medium")
+  subgraph Action: Havoc Max
+  condition_30("<b>Condition</b>: Weather Forecast says > 30°C")
+  end
 
-## Scripts in Rules
+  trigger --> havoc_med
+  havoc_med --> condition_30
+{{< /mermaid >}}
 
-With *Rules*, [*IO Service Filters*](/userguide/control) and [*Channel Links*](/userguide/linkchannels) you can handle about 98% of your automation
-    needs. Very advanced, unusual or complex scenarios might require a scripted solution though.
 
+In the graphical Rule Editor you click on the **Edit Children** link.
 
-A *Script* is more powerful, but also harder to edit, maintain and process for openHAB.
-    Multiple programming languages are supported: Jython (Python 2.6 dialect), JavaScript, or Groovy (Java dialect).
+## Single Instance by Default
 
-Many rules can run in parallel, but only a single instance per each rule is allowed by default.
-You may change that for a specific rule by toggling the "Single Instance" switch to off.
+The engine allows up to 5 rules to be executed in parallel* (can be configured), but only a single instance per each rule. If an already running rule is triggered again, the previous instance is stopped first.
 
-If a rule is triggered again, a previous already running instance is stopped first.
+This limitation is helping to reason about how many and what rules are running at the same time.
+Usually it is sufficient to use [*Thing Connections*](/userguide/thing_connections)
+if you want multiple, same-like actions to happen for instance to animate a different light with a different wall-switch each.
+
+{{< mermaid align="left" context="rules_instance">}}
+graph LR;
+  switch1("Wall-Switch p¹")
+  switch2("Wall-Switch p²")
+  propertylink("Thing Link Processer<div><small>Gradually animate</small></div>")
+  light1("Light L¹")
+  light2("Light L²")
+
+  switch1 -->|"p¹: On/Off"| propertylink
+  propertylink -->|"p¹: dim"| light1
+  switch2 -->|"p²: On/Off"| propertylink
+  propertylink -->|"p²: dim"| light2
+{{< /mermaid >}}
+
+{{< callout type="info" title="*Parallel Running" >}}
+This needs clearification. A "sleeping" as in "delayed" rule does not count towards the limit. Scheduled rules do not count. This is really just the rules that are executing like in doing stuff at the same time. An example could be a rule that uploads a file.
+{{< /callout >}}
+
+## Scripts
+
+With *Rules*, [*State Filters*](/userguide/control) and [*Thing Connections*](/userguide/thing_connections) you can handle about 98% of your automation needs. Very advanced, unusual or complex scenarios with plenty of control flow might require a scripted solution.
+
+The script language of openHAB X is [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and the specific version that is supported is ECMAScript Draft 2020.
+
+External Libraries
+: You can use javascript libraries, as long as those do not expect a browser specific API to be present (like `window` and `DOM` APIs) and use the official javascript module import syntax (as opposed to Nodejs `require` imports). Look out for ES6-Module libraries.
+
+Logging
+: Scripts are bit harder to edit, because you will find out about errors only at runtime. Script errors and script logs are to be found in the *Rule Engines* log.
+
+Performance
+: Scripts can only be executed ("triggered") as part of a *Rule* and require you to specify a maximum execution duration. They are not loaded at start-up. This means that the first time a script is referenced, it will take a bit longer to execute because it needs to be fetched from the configuration storage and needs to be parsed. Scripts are cached in memory though for future executions.
+
+You learn best on how to use scripts, by looking at the examples in https://www.github.com/openhab-nodes/script-examples.
+

@@ -54,7 +54,6 @@ $container-max-widths: (
 @import "_fonts";
 @import "_header";
 @import "_flag-icon.min";
-@import "_alert";
 @import "_breadcrumb";
 @import "_footer";
 @import "_form";
@@ -235,9 +234,9 @@ label {
     margin-bottom: 0;
 }
 
-body>main {
-    margin-top: 76px;
-}
+// body>main {
+//     margin-top: 76px;
+// }
 
 @include media-breakpoint-down(lg) {
     body>main {
@@ -329,7 +328,7 @@ body>main {
         padding-bottom: 50px;
     }
 }
-
+ 
 @include media-breakpoint-down(md) {
     .heading {
         padding-left: 0px;

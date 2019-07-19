@@ -42,7 +42,7 @@ Please note that everything shown here can also be explored and created with the
 * A motion sensor turns on all lights in the hallway. The scheduler turns them off if no motion has been registered for five minutes.
 {{< /callout >}}
 
-There are two ways to archive this. You can either use the "DelayedToggle" Link Processor, as seen in the [Link Channels](/userguide/linkchannels) Chapter or use a Rule with the `delay` *Rule Module*.
+There are two ways to archive this. You can either use the "DelayedToggle" Link Processor, as seen in the [Thing Connections](/userguide/thing_connections) Chapter or use a Rule with the `delay` *Rule Module*.
 
 {{< mermaid align="left" context="turnon_delay_turnoff">}}
 graph LR;
@@ -56,7 +56,7 @@ There are no downsides to either approach. Both both appear in the <a href="" cl
 **Note**: A Rule does not run in multiple instances by default. If the light is switched **on** again within the 5 minutes time, the already running rule will be stopped and restarted.
 
 
-An example rule for a *Thing* `my_light` with the *Channel* `brightness` could be this:
+An example rule for a *Thing* `my_light` with the *Property* `brightness` could be this:
 
 {{< code-toggle file="switch_off_after_5_min">}}
 switch_off_after_5_min:
@@ -65,7 +65,7 @@ switch_off_after_5_min:
     - auto_off_rule 
   triggers:
      -  _id: on_state_change
-        type: channelchange
+        type: propertychange
         source: my_light.brightness
         equals: "ON"
   actions:
@@ -73,7 +73,7 @@ switch_off_after_5_min:
         type: "delay"
         delay_in_sec: 360
      -  _id: turn_off
-        type: channelcommand
+        type: propertycommand
         target: my_light.brightness
         command: "OFF"
 {{< /code-toggle >}}
@@ -109,7 +109,7 @@ perm_switch_on:
   title: Switch lights on permanentely or use automatic mode
   triggers:
      -  _id: perm_switch
-        type: channelchange
+        type: propertychange
         source: my_wall_switch
   actions:
      -  _id: perm_on
@@ -120,12 +120,12 @@ perm_switch_on:
         command: "&perm_switch.value"
      -  _id: lights_action
         title: Switch on/off light
-        type: channelcommand
+        type: propertycommand
         target: my_light.brightness
         command: "&perm_switch.value"
 {{< /code-toggle >}}
 
-**Please note**: You would usually use a [Link Channel](/userguide/linkchannels) to connect a switch to a light bulb and the rule would only be responsible to turn off the motion sensor automatic. The ideomatic way is to link channels whenever possible and use rules to add automation.
+**Please note**: You would usually use a [Thing Connection](/userguide/thing_connections) to connect a switch to a light bulb and the rule would only be responsible to turn off the motion sensor automatic. The ideomatic way is to link properties whenever possible and use rules to add automation.
 
 {{< callout type="warning" >}}
 #### New to the Syntax?
@@ -161,7 +161,7 @@ perm_switch_on:
   actions:
      -  _id: lights_action
         title: Switch night-light
-        type: channelcommand
+        type: propertycommand
         target: my_light.brightness
         command: "&within_time_range.value"
 {{< /code-toggle >}}
@@ -287,7 +287,7 @@ sprinkler_on:
   actions:
      -  _id: turn_on
         title: Turn springler on
-        type: channelcommand
+        type: propertycommand
         target: sprinkler.power
         command: "ON"
      -  _id: a_delay_action
@@ -306,7 +306,7 @@ sprinkler_on:
            value: 30
      -  _id: turn_off
         title: Turn springler off
-        type: channelcommand
+        type: propertycommand
         target: sprinkler.power
         command: "OFF"
 {{< /code-toggle >}}

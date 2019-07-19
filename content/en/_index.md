@@ -109,7 +109,7 @@ Adding your first devices is done in a breath.
         </header>
         <section class="description">
             <small style="white-space: nowrap; text-overflow: ellipsis;">ZWave Addon – #acee30fe</small><br>
-            <span>This Thing contains <a href="">2 fixed</a> channels and <b>no</b> dynamic channels.</span>
+            <span>This Thing consists of <a href="">2 properties</a></span>
         </section>
         <footer>
             <i class="badge badge-info">2019-05-30 11:10</i>
@@ -122,7 +122,7 @@ Adding your first devices is done in a breath.
         </header>
         <section class="description">
             <small style="white-space: nowrap; text-overflow: ellipsis;">Hue Addon – #63be30ca</small><br>
-            <span>This Thing contains <a href="">5 fixed</a> channels and <b>no</b> dynamic channels.</span>
+            <span>This Thing consists of <a href="">5 properties</a>.</span>
         </section>
         <footer>
             <i class="badge badge-info">2019-05-30 12:10</i>
@@ -135,7 +135,7 @@ Adding your first devices is done in a breath.
         </header>
         <section class="description">
             <small style="white-space: nowrap; text-overflow: ellipsis;">Hue Addon – #153430fe</small><br>
-            <span>This Thing contains <a href="">5 fixed</a> channels and <b>no</b> dynamic channels.</span>
+            <span>This Thing consists of <a href="">5 properties</a>.</span>
         </section>
         <footer>
             <i class="badge badge-info">2019-05-30 12:12</i>
@@ -204,8 +204,8 @@ If you want to go all offline, openHAB X also features a [Snips]("https://snips.
     </div>
     <div class="col-md-5" style="align-self: center;">
         <h4>Companion App for Android &amp; iOS</h4>
-        <p>The companion App is not winning a design award, but does render all basic channel types. It allows free
-            channel arrangement per screen, on multiple screens and supports remote control and authentication.</p>
+        <p>The companion App follows a simple design and renders all basic property types. It allows free
+            device arrangement per screen, on multiple screens, and supports control outside of the home network and authentication.</p>
     </div>
 </div>
 
@@ -225,11 +225,11 @@ If you want to go all offline, openHAB X also features a [Snips]("https://snips.
 
 <div class="row mb-4">
     <div class="col-md-5">
-        <h4>Channel Connections</h4>
+        <h4>Thing Connections</h4>
         <p >Imagine you want your ZWave Wall Button to toggle your
             Philips Hue Bulb &hellip;</p>
         <p>&hellip; with a fade animation. Who likes abrupt light level changes, huh?!
-        The channel data flow can be intercepted and altered.</p>
+        The data flow can be intercepted and altered.</p>
         <p>In the interactive Connection Editor to the right a <b>Dimmer</b> Element
         for smooth on / off brightness fading (5 seconds duration) has been added.</p>
         <p>
@@ -275,7 +275,7 @@ If you want to go all offline, openHAB X also features a [Snips]("https://snips.
     <template data-popover="rule_modules">
         <p style="max-width: 500px">OHX comes with a predefined set of modules for dealing with date/time, different
             network protocols like HTTP, MQTT, and for interacting will all OHX concepts like <b>Things</b>,
-            <b>Channels</b>, <b>Channel Connections</b>, User Management and many more.</p>
+            <b>Thing Connections</b>, User Management and many more.</p>
     </template>
     <ui-tooltip target="rule_modules"></ui-tooltip>
     <template data-popover="text_rule">
@@ -372,7 +372,7 @@ triggers:
         <a href="https://homieiot.github.io/" target="_blank" title="Homie (MQTT)" class="card-hover">
             <img src="/img/mqtt_homie.jpg" style="width: 150px" class="m-2">
         </a>
-        <a href="https://www.w3.org/TR/wot-thing-description/" target="_blank" title="W3C WebThings (HTTP)"
+        <a href="https://w3c.github.io/wot-thing-description/" target="_blank" title="W3C WebThings (HTTP)"
             class="card-hover">
             <img src="/img/mozilla_webthings_wordmark.svg" style="width: 150px" class="m-2"></a>
         <p>Find a detailed step by step guide in <a href='{{< relref "/userguide/diy" >}}'>DIY

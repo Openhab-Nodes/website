@@ -26,7 +26,7 @@ Somtimes you cannot change the target. Integrating an HTTP based weather forecas
 <a href="https://homieiot.github.io/" target="_blank" title="Homie (MQTT)" class="card-hover">
 <img src="/img/mqtt_homie.jpg" style="width: 150px" class="m-2">
 </a>
-<a href="https://www.w3.org/TR/wot-thing-description/" target="_blank" title="W3C WebThings (HTTP)"    class="card-hover">
+<a href="https://w3c.github.io/wot-thing-description/" target="_blank" title="W3C WebThings (HTTP)"    class="card-hover">
 <img src="/img/mozilla_webthings_wordmark.svg" style="width: 150px" class="m-2">
 </a>
 </div>
@@ -43,7 +43,7 @@ OHX supports two major initiatives on top of MQTT and HTTP respectively:
 <a href="https://homieiot.github.io/" target="_blank" title="Homie (MQTT)" class="card-hover">
     <img src="/img/mqtt_homie.jpg" style="width: 150px" class="m-2">
 </a>
-<a href="https://www.w3.org/TR/wot-thing-description/" target="_blank" title="W3C WebThings (HTTP)"
+<a href="https://w3c.github.io/wot-thing-description/" target="_blank" title="W3C WebThings (HTTP)"
     class="card-hover">
     <img src="/img/mozilla_webthings_wordmark.svg" style="width: 150px" class="m-2">
 </a>
@@ -63,7 +63,7 @@ There are commercial products using the ESP8266 that can be programmed with your
     <img src="/img/doc/shelly1.jpg" class="p-2 w-100">
     <h3>Shelly.Cloud</h3>
 </a>
-<a href="https://www.w3.org/TR/wot-thing-description/" target="_blank" title="W3C WebThings (HTTP)"
+<a href="https://w3c.github.io/wot-thing-description/" target="_blank" title="W3C WebThings (HTTP)"
     class="card-hover text-center">
     <img src="/img/doc/sonoff.jpg" class="p-2 w-100">
     <h3>Sonoff</h3>

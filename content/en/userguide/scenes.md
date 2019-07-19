@@ -11,15 +11,15 @@ tags = ["scene"]
 
 <split>
 
-A scene is a collection of selected **Thing Channel** states.
+A scene is a collection of selected **Thing Property** states.
 
-When you execute a *Scene*, all affected Thing Channels will be restored to the stored state.
+When you execute a *Scene*, all affected *Properties* will be restored to the stored state.
 
 {{< callout type="info" >}}
 #### Motivation
 A "Cooking" scene turns on all
 your kitchen lights to a dimmed value of 70% except
-the serving cabinet which is on full brightness. The kitchen radio is tuned in to your favorite  jazz channel on a moderate volume.
+the serving cabinet which is on full brightness. The kitchen radio is tuned in to your favorite jazz channel on a moderate volume.
 {{< /callout >}}
 
 {{< /colpic >}}
@@ -49,7 +49,7 @@ This interface also allows to enter and edit a Scene in text form.
 
 {{< /col3md >}}
 
-In all cases you need to select the Thing Channels that should be part of the new *Scene*.
+In all cases you need to select the Thing Properties that should be part of the new *Scene*.
 
 ## Run a Scene
 {{< colpic ratio="70" >}}
@@ -86,7 +86,7 @@ my_kitchen_scene:
         target: kitchenlight
         command: 70
      serving_cabinet_full:
-        type: channelcommand
+        type: propertycommand
         target: kitchen_serving_cabinet
         command: 100
 {{< /code-toggle >}}

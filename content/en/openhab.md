@@ -36,17 +36,17 @@ openHAB developers did good when they designed the concepts. Many concepts are t
   <tr>
     <td>Rule Modules</td>
     <td>openHAB calls Rule Triggers, Conditions and Actions <b>Rule Modules</b>. Those can be added via the Addons system of openHAB.</td>
-    <td>openHAB X also has the same notation of <b>Rule Modules</b>. Additional Rule Modules cannot be installed as this has been recognised as security issue. An additional rule module would need to run in-process with all other rules and would have the same permissions and access levels as the rule engine service itself.</td>
+    <td>openHAB X also has the same notation of <b>Rule Modules</b>. Additional Rule Modules cannot be installed as this has been recognised as security flaw. An additional rule module would need to run in-process with all other rules and would have the same permissions and access levels as the rule engine service itself.</td>
   </tr>
   <tr>
-    <td>IO Service Filter<br></td>
-    <td><b>N/A</b>. OpenHAB does not allow the Hue Emulation, HomeKit, Alexa or any other IO Service to only expose a chunk of all Things (or Items).</td>
-    <td>OHX allow you to setup filters, based on a simple rule syntax. It also allows to restrict filters to specific login accounts ("users"). That way the stereo in your office room can no longer be volumed up to max by your kids.</td>
+    <td>State Filter<br></td>
+    <td><b>N/A</b>. OpenHAB controls which Items are exposed to Hue Emulation, HomeKit and Alexa via Tags. Different users are not considered. Tags are shared across all mentioned services.</td>
+    <td>OHX allow you to setup filters, based on a simple rule syntax. It also allows to restrict filters to specific {{< details title="login accounts">}}That way the stereo in your office room can no longer be volumed up to max by your kids.{{< /details >}} ("users"). Each IO Service has its own <b>State Filters</b>.</td>
   </tr>
   <tr>
     <td>User<br>Management</td>
     <td><b>N/A</b>. There is no user concept in openHAB.</td>
-    <td>There is a rich user management and authentication service included. IO Service filters allow you to setup in a fine grain way what a specific user can control and what admin scopes he has. The actions a user can issue on a service depends on his assigned access scopes.</td>
+    <td>There is a rich user management and authentication service included. State Filters allow you to setup in a fine grain way what a specific user can control and what admin scopes he has. The actions a user can issue on a service depends on his assigned access scopes.</td>
   </tr>
   <tr>
     <td>Thing</td>
@@ -60,23 +60,23 @@ openHAB developers did good when they designed the concepts. Many concepts are t
   </tr>
   <tr>
     <td>Channel</td>
-    <td>A Thing will usually provide at least one channel to control a feature or get data from it.<br><br>Examples:<br><br>* a Hue light bulb will have one channel to control its color, and another channel to control the color temperature,<br>* a smart TV will have several channels for things like volume, channel, input source, picture adjustment or guide interaction.<br></td>
-    <td>Same</td>
+    <td>A Thing will usually provide at least one channel to control a feature or get data from it.<br><br>Examples:<br><br>* a Hue light bulb will have one channel to control its color, and another property to control the color temperature,<br>* a smart TV will have several channels for things like volume, property, input source, picture adjustment or guide interaction.<br></td>
+    <td>This is called "Properties" but is semantically the same.</td>
   </tr>
   <tr>
     <td>Thing<br>Property</td>
     <td>An openHAB Thing can have read-only string based key-values assigned. Those Thing Properties can purely be used status and metrics reporting.</td>
-    <td><b>N/A</b>. OHX supports a full metrics report API and encourages developers to export valueable information as Thing Status or as Channels. Both can be interacted with via Rules in contrast to openHABs Thing Properties.</td>
+    <td><b>N/A</b>. OHX supports a full metrics report API and encourages developers to export valueable information as Thing Status or as Properties. Both can be interacted with via Rules in contrast to openHABs Thing Properties.</td>
   </tr>
   <tr>
     <td>Items, Item Links,<br>Profiles<br></td>
     <td>An Item is an entity of a specific type (Text, Number, Color, Rollershutter, &hellip;) that holds state in openHAB. Bindings, Things and Channels are not allowed to. One or more Thing Channels are usually linked to one or more Items. This is how openHAB archives device and protocol interconnection. Items can exist for Rules only as well, to simulate global variables.<br><br>Items are also used for openHABs persistence system and IO Services. Items do not know about their original Thing or Thing Channel, which makes it impossible for something like the Hue Emulation Service to expose an emulated Hue bulb that can change brightness, color, light temperature on for example a Milight Bulb Thing, which has separate Channels and therefore Items for Brightness, Saturation, Light Temperature.<br><br>openHAB uses <b>Profiles and UOM</b> to alter a channel value (transform Fahrenheit to Celsius for example or , before it is assigned to an Item (and then maybe forwarded to another Thing Channel).<br></td>
-    <td>OHX has abandoned the Item concept. Thing Channel interconnection happens via <b>Channel Links</b>. A Channel Link is basically a data flow from one Channel to another. The flow can be influenced by adding <b>Link Processors</b> (like openHAB Profiles) into it.<br><br>Thing Channel Values are persisted directly if enabled for that particular Channel. IO Services expose Things, not an abstraction of Thing Channels.</td>
+    <td>OHX has abandoned the Item concept. Thing Property interconnection happens via <b>Thing Connections</b>. A Property Link is basically a data flow from one property to another. The flow can be influenced by adding <b>Link Processors</b> (like openHAB Profiles) into it.<br><br>Thing Property Values are persisted directly if enabled for that particular Property. IO Services expose Things, not an abstraction of Thing Properties.</td>
   </tr>
   <tr>
     <td>Item Tags, Item Metadata,<br>Semantic Tags</td>
     <td>openHAB allows you to tag <b>Items</b> and also allows Bindings and Services to attach configuration to items in a more structured way than just tags ("Item Metadata").<br><br>Semantic tags are just String-based Tags like any others, but have translations and, as the name implies, a specific semantic attached to to them.<br>openHAB uses the <a href="https://brickschema.org/">Brick Schema</a>. The ontology defines 4 main types: Location, Property, Point and Equipment, with associated tags for each of them.</td>
-    <td>Instead of tagging items, OHX allows to tag everything. From Things, to Thing Channels, to Rules. Semantic tagging via the Brick Schema is supported and encouraged. Binding developers should semantically pre-tag their exposed Things and Channels ("Light", "Fan" etc) and users can help in this process.<br><br>If all your Things and Channels are semantically tagged, you can without any additional work say "Turn off lights in living room" to the offline voice recognition (Snips AI) service or enter that sentence into the chat bot interface on the Setup&amp;Maintenance interface.</td>
+    <td>Instead of tagging items, OHX allows to tag everything. From Things, to Thing Properties, to Rules. Semantic tagging via the Brick Schema is supported and encouraged. Binding developers should semantically pre-tag their exposed Things and Properties ("Light", "Fan" etc) and users can help in this process.<br><br>If all your Things and Properties are semantically tagged, you can without any additional work say "Turn off lights in living room" to the offline voice recognition (Snips AI) service or enter that sentence into the chat bot interface on the Setup&amp;Maintenance interface.</td>
   </tr>
 </table>
 

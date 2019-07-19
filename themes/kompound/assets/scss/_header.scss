@@ -6,7 +6,7 @@ header#header {
     background: #fff;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
     height: 70px;
-
+ 
     .container-header {
         width: 100%;
         max-width: 100%;
@@ -116,11 +116,9 @@ a.nav-link i {
     }
 
     .navbar-nav {
-        flex-direction: column;
+        flex-wrap: wrap;
     }
-}
 
-@media (max-width: 490px) {
     .navbar-brand {
         display: none;
     }

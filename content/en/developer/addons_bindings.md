@@ -5,9 +5,13 @@ weight = 51
 tags = []
 +++
 
-There are a few helper and tool libraries available to ease mapping http endpoints, mqtt topics and coap endpoints to Things and Thing Channels. 
+This chapter is about developing a Binding for openHAB X. Remember that if your service already exposes Web Things via HTTP or follows the MQTT Homie convention, you don't need to write an Addon.
 
-A binding that binds an mqtt topic to a Thing is written in just 20 lines of code, a http API based weather service binding takes around the same code. Find an mqtt and http binding walkthrough at the end of this chapter.  
+To integrate a service or a device into openHAB X the framework need to know about the Thing topology and Things itself, like the attached properties, events and actions.
+
+{{< img src="/img/doc/addon-binding-thing.svg" >}}
+
+The following sections walks you through defining Things, their properties, events and actions, Thing configuration and how to keep the frameworks knowledge about a Thing and Thing State in sync.
 
 Each supported programming language has a template repository with multiple examples that you can clone, build and play around with. If you haven't checked one out yet, go back to [Setting up the development enviroment](/developer/addons#setting-up-the-development-enviroment).
 
@@ -17,141 +21,499 @@ Examples in this chapter are written in Rust.
 
 ## Things
 
-You have learned about the Things concept in the user guide already.
-Implementation wise, they are composed of three parts.
+You have learned about the [Things concept](/userguide/addons#things) in the user guide already.
+In the developer context, you need to differentiate between a [Thing Description (TD)](https://w3c.github.io/wot-thing-description/) (defined Properties, Actions, Events) and on the other hand a **Thing instance**.
+If a Thing requires configuration, the TD is also accompanied by a [Configuration Description](/developer/addon#configurations-for-addons).
 
-1. A JSonSchema to declare a Thing,
-2. Configuration that defines an actual Thing instance,
-3. and a Thing handler.
+## Thing Description
 
-A Thing has channels. A hifi amplifier Thing for example has a power, mute, volume channel etc. Channels are added during runtime by the Thing handler.
+A Thing Description (TD) is either declared in code, declaratively in a file or as a combination of both. It describes the Properties, Actions and Events and has an ID (ascii "a-zA-Z_" string, unique across the binding), a title and description.
+Titles and descriptions optionally use BCP47 language codes (eg "en" for English) for translations.
+Default keys are omitted (like "readOnly: false", "writeOnly: false").
 
-A user may add a Thing manually, by providing Thing configuration to openHAB X.
+{{< code-toggle file="thing_declarative_example" class="code-toggle-limited" >}}
+'@context':
+  td: https://www.w3.org/2019/wot/td/v1
+  iot: https://iot.mozilla.org/schemas
+  om: http://www.ontology-of-units-of-measure.org/resource/om-2/
+'@type': iot:Lightbulb
+actions:
+  toggle:
+    description: Turn the lamp on or off
+events:
+  overheating:
+    data:
+      type: string
+    description: Lamp reaches a critical temperature (overheating)
+properties:
+  status:
+    description: current status of the lamp (on|off)
+    readOnly: true
+    type: string
+  temperature:
+    description: Lamp temperature
+    readOnly: true
+    type: number
+    minimum: -32.5,
+    maximum: 55.2,
+    unit: "om:degree_Celsius"
+id: lamp_thing
+titles:
+  en: Lamp Thing
+descriptions:
+  en: Lamp Thing description
+{{< /code-toggle >}}
 
-A Thing in openHAB X
+The [Thing Description (TD)](https://w3c.github.io/wot-thing-description/) specifies in detail how Events, Actions and Properties are defined and which keys are available.<br>
+[Specification](https://w3c.github.io/wot-thing-description/#thing)
 
-## Example MQTT Topic to Thing Binding
+The schema is very similar for Events, Actions and Properties. You define such an item by an ID (like "overheating" in the event case) and optionally provide a title and description or a map of translated titles and descriptions.
 
-## Walkthrough: HTTP - A Weather Forecast Binding
+*Actions* usually do not carry any additional data. They are invoked by their ID and if invoked by http, the status code reports a success or failure.<br>[Specification](https://w3c.github.io/wot-thing-description/#actionaffordance)
 
-<a href="https://www.weather.gov/" style="float:right;max-width:50%" target="_blank" class="card-hover"><img src="/img/doc/usa-national-weather-service.png" class="w-100"></a>
+*Events* optionally have "data", that is of `type` boolean, string, integer, number or array.<br>[Specification](https://w3c.github.io/wot-thing-description/#eventaffordance)
 
-In this section we are going to integrate a weather forecast service into OHX via the HTTP to Thing utility libraries.
-The entire development process including initial design questions is handled.
+*Properties* can be "readOnly" (default is false) and "writeOnly" (default is false) and must be of `type` boolean, string, integer, number, array, object, binary.
 
-We are going to use the National Weather Service (USA), because it does not require any form of authorisation.
-Usually you want to register to your favourite, locale weather service and use the API Key in your requests.
+* For the type string you may have a [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) set via the "mediaType" key.
+* You can restrict valid values of the string type via the "enum" key. For example: `"enum": ["On", "Off"],`
+* You can restrict valid values of the array type via the "items" key. For example: `"items": ["item1", "item2"],`. Further restrict the amount of possible selections via "minItems" and "maxItems".
+* For the binary type you must have at least one item in the "links" section.
+  Each item requires a "mediaType" and a "href", that points to a relative or absolute position on where to find the binary data.
+* Numbers and integers can be restricted with "minimum" and "maximum".
+* All types can be annotated with a "unit".
+  You find valid values for units on http://www.ontology-of-units-of-measure.org/resource/om-2/.
 
-### Familiarize with the required HTTP endpoints
+To get an idea, here are some more elaborated examples for properties of the string, array and binary type:
 
-To start with, all the endpoints use the API base https://api.weather.gov (as documented on their website). The basic endpoints are all extensions of that original API base to include latitude and longitude values. 
+{{< code-toggle file="thing_declarative_example1" class="code-toggle-200 mb-4" >}}
+properties:
+  an_array:
+    title: MyArray
+    description: A restricted array
+    type: array
+    items: ["item1", "item2", "item3"]
+    minItems: 1
+    maxItems: 2
+{{< /code-toggle >}}
+{{< code-toggle file="thing_declarative_example2" class="code-toggle-200 mb-4" >}}
+properties:
+  videofeed:
+    title: Video
+    description: A video feed of a camera
+    type: binary
+    links:
+      - href: /addon/url/to/videofeed.mp4
+        mediaType: video/mp4
+{{< /code-toggle >}}
+{{< code-toggle file="thing_declarative_example3" class="code-toggle-200 mb-4" >}}
+properties:
+  an_image:
+    title: Cat image
+    description: Just because
+    type: binary
+    links:
+      - href: /addon/url/to/image.jpg
+        mediaType: image/jpeg
+{{< /code-toggle >}}
+{{< code-toggle file="thing_declarative_example4" class="code-toggle-200 mb-4" >}}
+properties:
+  audio_file_or_stream:
+    title: Audio
+    description: An interface will not auto-play this audio but render a play button
+    type: binary
+    links:
+      - href: /addon/url/to/audio/stream.m3u
+        mediaType: audio/mpeg
+{{< /code-toggle >}}
+{{< code-toggle file="thing_declarative_example5" class="code-toggle-200 mb-4" >}}
+properties:
+  markdown_formatted_text:
+    title: Markdown Text
+    description: A renderer of this property would format the text if supported
+    type: string
+    mediaType: "text/markdown"
+{{< /code-toggle >}}
 
-For this walkthrough, we’re going to get the local weather for Richmond, Va. We’re going to use the following location:
+### Semantic tagging
 
-* latitude = 37.540726
-* longitude = -77.436050
+OHX uses the https://iot.mozilla.org/schemas and [Brick schema](https://brickschema.org/) to add some semantic context to Things.
+It helps user interfaces to know if a Thing is a light bulb or a rollershutter.
+It helps the unit-of-measurement processor to know in which unit your sensor reading is and how to convert it to your region specific unit.
+And it helps the natural language processor to know that a temperature Thing is a sensor for when you ask for all sensor readings of a room.
 
-Lets get the metadata for that location using the metadata endpoint:
+{{< img src="/img/doc/semantic_tags.jpg" maxwidth="100%" >}}
 
-    https://api.weather.gov/points/{<latitude>,<longitude>}
+Set the "@type" for Things and Thing properties. Find available types for Things and Properties here: https://iot.mozilla.org/schemas.
 
-So for the Richmond location, this would look like:
+{{< code-toggle file="thing_with_type" class="code-toggle-200" >}}
+'@type': VideoCamera
+properties:
+  videofeed:
+    "@type": VideoProperty
+{{< /code-toggle >}}
 
-    https://api.weather.gov/points/37.540726,-77.436050
 
-A response contains content like this:
+Tag your Thing and properties with "Equipment" tags from the Brick schema. Tags in that schema follow a hierachy, meaning that tagging a lightbulb with "LED" inherits "Lighting". Find all tags here: https://github.com/BuildSysUniformMetadata/Brick/blob/master/src/Tags.csv.
+
+{{< code-toggle file="thing_with_type" class="code-toggle-100" >}}
+properties:
+  temperature:
+    tags:
+      - HVAC
+{{< /code-toggle >}}
+
+
+### Dynamic TD
+
+The above procedure is very well suited for static Things.
+Like a specific light bulb *Thing* where the light bulb device never changes.
+You will find yourself using the declarative way most often.
+
+But sometimes your Things are actually not fixed, at least not entirely.
+Properties might be added or changed, depending on the capability of a device or service that is mapped to a Thing.
+
+You can also define a TD programmatically, and alter and re-publish a TD at any time.
+
+<div class="mb-2">
+<tab-container>
+  <tab-header>
+    <tab-header-item class="tab-active">Rust</tab-header-item>
+  </tab-header>
+  <tab-body>
+<tab-body-item >{{< md >}}
+```rust
+use ohx::{ThingDesc, ThingRegistry, Property, Property::PropertyType, Action};
+use language_tags::LanguageTag;
+
+fn define_thing(ctx: &AddonContext) {
+  // Define actions ...
+  let action_refresh = Action::new("refresh")
+    //.handler(action_handler) // more on handlers later in this chapter
+    .title(langtag!(en), "Refresh Forecast")
+    .description(langtag!(en), "Updates the forecast");
+
+  // ... and properties 
+  let property_next12 = Property::new("Next12", PropertyType::Number)
+    .type("TemperatureProperty") // optional semantic type, see https://iot.mozilla.org/schemas
+    .unit("degree celsius")
+    //.handler(property_handler) // a writable property would require a handler
+    .title(langtag!(en), "Next 12 hours")
+    .description(langtag!(en), "Shows the next 12 hours forecast");
+
+  // ... and configuration
+
+  // Build the Thing
+  let thing = ThingDesc::new("Forecast12hoursPeriod");
+  thing.putAction(action_refresh);
+  thing.putProperty(property_next12);
+  thing.setTitle(langtag!(en), "Forecast for 12 hours")
+  thing.setDescription(langtag!(en), "Long description");
+  ThingRegistry::publish(ctx, thing);
+}
+
+// You might want to read a thing from file (json, yaml) and just alter it,
+// using the file like a template
+fn define_thing_from_file(ctx: &AddonContext) {
+  let thing = ThingDesc::from_file("things/my-thing-id.json").unwrap();
+  ThingRegistry::publish(ctx, thing).unwrap();
+}
+
+// Read in all files in a directory and publish them
+fn define_things_from_file(ctx: &AddonContext) {
+  ThingRegistry::publish_files(ctx, "things/").unwrap();
+}
+
+fn edit_thing(ctx: &AddonContext) {
+  let thing: ThingDesc = ThingRegistry::get(ctx, "Forecast12hoursPeriod").unwrap();
+  thing.setTitle(langtag!(en), "Forecast for 12 hours");
+  // ...
+  thing.putProperty(property_next12);
+  ThingRegistry::publish(ctx, thing);
+}
+```
+{{< /md >}}
+  </tab-body-item >
+  </tab-body>
+  </tab-container>
+</div>
+
+No matter if declared in code or declaratively specified, `libAddon` will process and push the resulting *Thing Descriptions* to the [Runtime Configuration Storage](/developer/architecture#configuration-storage).
+
+## Thing Instance
+
+An instance internally is nothing more than an object with a unique id (uid), a reference to the thing description (ref), user assigned tags and required configuration.
+Such an object is stored in the [Configuration Database](/developer/architecture#configuration-storage). Let's assume a Weather forecast Thing (id:`mything`) of an addon `myaddon`, that requires no further configuration.
 
 ```json
 {
-  "properties": {
-     "forecast": "https://api.weather.gov/gridpoints/AKQ/45,76/forecast",
-     "forecastHourly": "https://api.weather.gov/gridpoints/AKQ/45,76/forecast/hourly",
-     "forecastGridData": "https://api.weather.gov/gridpoints/AKQ/45,76",
-  }
+  "uid": "my-awesome-thing",
+  "ref": "myaddon-mything",
+  "config": {},
+  "tags": {}
 }
 ```
 
-Evaluating the response we find the link for a 12h-period forecast: "https://api.weather.gov/gridpoints/AKQ/45,76/forecast".
+A user may add a *Thing Instance* manually, by creating a *Thing* in the **Setup &amp; Maintenance** interface for example.
+Another way is to accept a *Thing* from the Inbox.
+Your Addon does not have to manage all of this, you are called back for each created, altered and about-to-be-removed instance.
+How you push ready to consume *Thing instances* to the Inbox is explained in a later section. 
 
-A forecast response, again, contains a *properties* key which contains a list of *periods*.
-```json
-{
-  "properties": {
-    "periods": [
-        {
-            "number": 1,
-            "name": "Today",
-            "startTime": "2019-06-17T11:00:00-04:00",
-            "endTime": "2019-06-17T18:00:00-04:00",
-            "isDaytime": true,
-            "temperature": 93,
-            "temperatureUnit": "F",
-            "temperatureTrend": null,
-            "windSpeed": "6 to 12 mph",
-            "windDirection": "SW",
-            "icon": "https://api.weather.gov/icons/land/day/sct/tsra_hi,40?size=medium",
-            "shortForecast": "Mostly Sunny then Chance Showers And Thunderstorms",
-            "detailedForecast": "A chance of showers and thunderstorms between 2pm and 5pm, ..."
-        },
-    ]
+### Handlers
+
+The framework calls you back on various events. This includes when a thing instance got created, or has been edited (tags or configuration has changed) or when the user expressed his wish to remove a Thing instance. This is similar to the [Addon Handlers](/developer/addon#addon-registration).
+
+When the user, a rule or an IO Service issues a command, the framework will also call you back.
+
+<div class="mb-2">
+	<tab-container>
+		<tab-header>
+			<tab-header-item class="tab-active">Rust</tab-header-item>
+		</tab-header>
+		<tab-body>
+<tab-body-item >{{< highlight rust "linenos=table" >}}
+use ohx::{AddonContext, ProgressStream, Result, Action, Property, Thing, ThingInstance, ThingInstanceData};
+
+struct MyThingInstance {
+  data: ThingInstanceData;
+  private_variables: Option<String>;
+}
+
+impl ThingInstance for MyThingInstance {
+  fn created(data: ThingInstanceData, ctx: &mut AddonContext) -> Option<MyThingInstance> {
+    let &mut instance = MyThingInstance(data: data, private_variables: None);
+    // link actions and property handlers 
+    ctx.on_action(data.thing, "my_action",
+      |action: &Action| instance.action_handler(self, ctx, action) )
+    ctx.on_property_command(data.thing, "brightness",
+      |property: &Property| instance.brightness_handler(self, ctx, property) )
+    Some(instance)
+  }
+
+  fn modified(&mut self, ctx: &AddonContext, thing: &ThingDesc, data: ThingInstanceData) -> Result<()> {
+    self.data = data; // update instance data
+    Ok()
+  }
+
+  fn remove(self, ctx: &AddonContext, thing: &ThingDesc) -> Progress {
+    let progress = Progress::new();
+
+    // other thread; report progress
+    progress.percentage(10);
+    // done
+    progress.done();
+
+    progress
+  }
+
+  fn action_handler(&mut self, ctx: &AddonContext, data: ThingInstanceData) -> Progress {
+    Progress::done()
+  }
+
+  fn brightness_handler(&mut self, ctx: &AddonContext, data: ThingInstanceData) -> Progress {
+    Progress::done()
   }
 }
+
+fn edit_thing(ctx: &mut AddonContext) {
+  let thing: ThingDesc = ThingRegistry::get(ctx, "Forecast12hoursPeriod").unwrap();
+  // ...
+  ctx.on_instance_created(thing, | data: ThingInstanceData, ctx: &mut AddonContext | -> MyThingInstance::created(data, ctx));
+  ThingRegistry::publish(ctx, thing);
+}
+{{< /highlight >}}</tab-body-item >
+		</tab-body>
+    </tab-container>
+</div>
+
+To understand the code snippet, you should now that all handlers are stored in the `AddonContext` object.
+A `Thing` struct contains the Thing ID and Thing Description.
+There can be multiple instances for a specific Thing ID.
+Those are uniquely identified by their unique id ("uid") which is stored in the `ThingInstanceData` object.
+Imagine for example two light bulbs "myaddon-light1" and "myaddon-light2" of the Thing "color-light-thing".
+
+The framework calls `on_instance_created` for a particular Thing ID and expects you to return an object that implements the `ThingInstance` interface (or trait in Rust).
+That interface requires a `modified` and `remove` method to be implemented.
+During the construction of your `ThingInstance` object, you also register all other thing specific handlers for actions and writable properties.
+
+### Populate the Inbox
+
+If you are able to discover handled devices or services automatically, you should push those discovery results back to the framework. Those end up in the Inbox and can be accepted or hidden by the user.
+
+A discovery result can have a time-to-live (TTL) and might require 
+TODO
+
+## Configuration
+
+A Thing might require additional configuration which is described in a *Configuration Description (CD)* JSonSchema file. This is similar to [Addon Configuration](/developer/addon#configurations-for-addons). You need to publish CDs to the [Runtime Configuration Storage](/developer/architecture#configuration-storage), so that editors know how to render a user interface for a Thing configuration.
+
+<div class="mb-2">
+	<tab-container>
+		<tab-header>
+			<tab-header-item class="tab-active">Rust</tab-header-item>
+		</tab-header>
+		<tab-body>
+<tab-body-item >{{< highlight rust "linenos=table" >}}
+use serde::{Serialize, Deserialize};
+use semver::Version;
+use ohx::{Config};
+
+// This will be generated by a tool out of the JSonSchema.
+// Do not manually specify if possible!
+#[derive(Serialize, Deserialize, Debug)]
+struct MyThingConfig {
+    username: String;
+    password: String;
+}
+
+fn upgrade_config_id_cb(...) -> Result<String> {
+  // ... handle configuration schema updates, for instance
+  // if a field got renamed like from "pwd" to "password.
+}
+
+fn main() {
+    // ...
+    // Publish thing 'thingid' config schemas. No optional ui schema is given in this example.
+    Config::schema_publish(ctx, "thingid", "schema/thing_id_schema.json", None).unwrap();
+    // To unpublish, for example when a Thing doesn't exist anymore after an update
+    Config::schema_unpublish(ctx, "thingid").unwrap();
+}
 ```
+{{< /highlight >}}</tab-body-item >
+		</tab-body>
+    </tab-container>
+</div>
 
-For all half-structured, in this case json formatted, responses you can use https://app.quicktype.io/ to generate structures/classes for your desired programming language.
+You reference required configuration in your TD:
 
-### Channel topology
+{{< code-toggle file="thing_config" >}}
+'@context':
+- https://www.w3.org/2019/wot/td/v1
+- https://iot.mozilla.org/schemas
+'@type': Lightbulb
+configuration:
+  - "hue_addon/bridge-config"
+  - lightbulbconfig
+{{< /code-toggle >}}
 
-We now need to decide on the Thing Channel topology.
-One way is to create two Things called **WeatherForecast12hoursPeriod** for a 12hours period and **WeatherForecast1hourPeriod** for a 1h forecast period.
-We then assign channels for today and tomorrow and for now, in 1h, in 2h, in 3h respectively.
+"configuration" expects a list.
+That is because you can split your configuration into smaller pieces (for easier re-use in multiple Things). You can also add configuration descriptions of other addons or core addons. Do this by first name the other addon, append a slash and then the configuration description id like in `hue_addon/bridge-config`. External addons will not automatically be installed though and user-interfaces are not able to render referenced configuration if such addons are not installed.
 
-    [Addon] HTTP -> [Thing] WeatherForecast12hoursPeriod -> [Channel] Today (Number, Unit: °F)
-                                                         -> [Channel] Tonight (Number, Unit: °F)
-                                                         -> [Channel] Tomorrow (Number, Unit: °F)
-                                                         -> [Channel] Tomorrow Night (Number, Unit: °F)
-                 -> [Thing] WeatherForecast1hourPeriod -> [Channel] Now (Number, Unit: °F)
-                                                       -> [Channel] In1h (Number, Unit: °F)
-                                                       -> [Channel] In2h (Number, Unit: °F)
-                                                       -> [Channel] In3h (Number, Unit: °F)
+### Shared Configuration
 
-### Define Things
+You are sometimes in the situation where you like to share configuration between Things.
+Think of light bulbs on an IKEA Tradfri or Philips Hue Bridge where all light Things share information on how to access the bridge.
 
-A Thing in openHAB X
+In OHX this is done via **shared Thing configuration**. 
+Let's think of the Hue bridge example for a moment. What you would do is:
 
-The channel configuration can be performed entirely in the graphical interface.
-For brevity we will only look at the textual representation of the first channel *Today (Number, Unit: °F)* though.
-If you are interested in all channel configuration options of the http addon, check the documentation page out:
-[HTTP Addon](/addons/http).
+1. Create a Hue Bridge Thing which will perform the pairing process via a "pair" action.
+2. Create a configuration description (CD) with the id "bridge-config". This is how the bridge thing stores the access token.
+2. Your Hue Bulb Things reference the "bridge-config" CD in their "configuration" section.
 
-A channel is by default read-only and a http channel in particular is by default a GET request with no additional http headers attached. Have a look at the channel definition:
+No matter if you update that shared configuration on any bulb or in the dedicated bridge Thing, it will affect all other bulbs.
+So technically, you wouldn't even need a dedicated bridge Thing. Usually this pattern helps with discovery though, because most often you will first need to configure some form of access, perform a pairing procedure, before you can discover further Things.
 
-{{< highlight yaml "linenos=table" >}}
-today:
-    context: Temperature
-    image:
-        uri: https://api.weather.gov/icons/land/day/sct/tsra_hi,40?size=medium
-    type: integer
-    unit: °F
-    http_in:
-        cache: 180 # Cache time in minutes
-        uri: https://api.weather.gov/gridpoints/AKQ/45,76/forecast
-    processors_in:
-        - jsonpath:
-            path: $.properties.periods[0].temperature # http://jsonpathfinder.com/ helps here
-{{< / highlight >}}
+## Addon &amp; Thing State
 
-We choose an **image** (can be a statically uploaded image or an internet URL), a type, [unit](/developer/addons#unit-of-measurement) and where to get the data from. For an http channel that is set via the **http_in** configuration.
+An Addon and configured Things of a Binding Addon usually have some form of *State*. Like a light bulb Thing that has a brightness. This state is expected to be kept / cached within your Addon, so that relative commands like "+5%" can be applied.
 
-As we already know the data is a json encoded object. In OHX we use so called *processors* to transform an input to another value. Via **processors_in** we can define one or multiple [processors](/userguide/channellinks#processors). We use the *jsonpath* processor to extract the temperature. 
+openHAB X expects Addons to synchronize their state to the *State Database*. That database is queried to display current Addon, Thing and Thing Property States in user interfaces and is used to trigger *Rules*.
 
-The **context** refers to a specific defined schema, in our case the value represents a "Temperature". This helps user interfaces to render the channel correctly.
-Schema repositories can be found at http://iotschema.org/ and https://iot.mozilla.org/schemas). The graphical interface will show a selection.
+Addons are generally not trusted, that's why they cannot connect to the *State Database* directly.
+You use `libAddon` instead, which talks to a proxy process ("State Proxy"). That proxy only forwards state updates that match your Addon-ID.
 
-### A few notable things
+TODO
 
-That's it for our weather forecast integration. 
+## Helpers for common protocols
 
-A non read-only (writable) http channel would need to have `http_out` and probably a method like *post* and an authorisation header to be defined. You can find all options in the documentation: [HTTP Addon](/addons/http).
- 
-MQTT (and CoAP) speaking devices can be integrated in a very similar fashion, you would just define an *mqtt_subscribe* and *mqtt_publish* topics for retrieving and sending values. See [MQTT Addon](/addons/mqtt) and [CoAP Addon](/addons/coap).
+There are {{< details title="a few">}}Helper libraries for more protocols are welcome.{{< /details>}} helper and tool libraries available to ease mapping http endpoints, mqtt topics and coap endpoints to Things and Thing Properties. 
+
+The following examples are in Rust. For the sake of simplicity we assume the same Thing for all three protocols, defined declaratively:
+
+{{< code-toggle file="thing_declarative_example" >}}
+'@context':
+- https://www.w3.org/2019/wot/td/v1
+- https://iot.mozilla.org/schemas
+'@type': Lightbulb
+actions:
+  toggle:
+    description: Turn the lamp on or off
+events:
+  overheating:
+    description: Lamp reaches a critical temperature (overheating)
+properties:
+  on:
+    type: boolean
+  temperature:
+    readOnly: true
+    type: string
+id: lamp_thing
+{{< /code-toggle >}}
+
+### MQTT
+
+We assume an MQTT **state** topic "*light/123/on*" exists for the "on" state, and we send a "false" or "true" command to an MQTT **command** topic "*light/123/on/set*" to switch the lamp on and off. MQTT only supports strings, so booleans are mapped to "true" and "false" strings implicitely.
+
+We further assume an MQTT state topic on "*light/123/temperature*" and a command topic on "*light/123/toggle"
+
+<div class="mb-2">
+<tab-container>
+  <tab-header>
+    <tab-header-item class="tab-active">Rust</tab-header-item>
+  </tab-header>
+  <tab-body>
+<tab-body-item >{{< md >}}
+```rust
+use ohx::{Thing, ThingBuilder, ThingRegistry, Property, Property::PropertyType, Action};
+use language_tags::LanguageTag;
+
+fn define_thing(ctx: &AddonContext) {
+  // Define actions ...
+  let action_refresh = Action::new("refresh")
+    //.handler(action_handler) // more on handlers later in this chapter
+    .title(langtag!(en), "Refresh Forecast")
+    .description(langtag!(en), "Updates the forecast");
+
+  // ... and properties 
+  let property_next12 = Property::new("Next12", PropertyType::Number)
+    .type("TemperatureProperty") // optional semantic type, see https://iot.mozilla.org/schemas
+    .unit("degree celsius")
+    //.handler(property_handler) // a writable property would require a handler
+    .title(langtag!(en), "Next 12 hours")
+    .description(langtag!(en), "Shows the next 12 hours forecast");
+
+  // ... and configuration
+
+  // Use the Thing builder (builder pattern) and register the Thing
+  let thing = ThingDesc::new("Forecast12hoursPeriod", !vec["https://www.w3.org/2019/wot/td/v1", "https://iot.mozilla.org/schemas"]);
+  thing.putAction(action_refresh);
+  thing.putProperty(property_next12);
+  thing.setTitle(langtag!(en), "Forecast for 12 hours")
+  thing.setDescription(langtag!(en), "Long description");
+  ThingRegistry::publish(ctx, builder.build());
+}
+
+fn edit_thing(ctx: &AddonContext) {
+  let thing: ThingDesc = ThingRegistry::get(ctx, "Forecast12hoursPeriod").unwrap();
+  thing.setTitle(langtag!(en), "Forecast for 12 hours");
+  // ...
+  thing.putProperty(property_next12);
+  ThingRegistry::publish(ctx, thing);
+}
+```
+{{< /md >}}
+  </tab-body-item >
+  </tab-body>
+  </tab-container>
+</div>
+
+
+TODO
+
+### HTTP
+TODO
+
+### CoAP
+
+TODO

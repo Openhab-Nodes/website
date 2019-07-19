@@ -48,7 +48,7 @@ allows a clear design concept with actions/sub-navigation on the left, main cont
 
 
 ### Forms or Text
-Every configuration, ranging from Addons, Thing, Channels, Rules (also Scenes, Scheduled Actions), are editable via forms and dialogs as well as in a textual view mode. The latter allows search &amp; replace, copy &amp; paste batch editing.
+Every configuration, ranging from Addons, Thing, Rules (also Scenes, Scheduled Actions), are editable via forms and dialogs as well as in a textual view mode. The latter allows search &amp; replace, copy &amp; paste batch editing.
 
 All editors have syntax highlighting and validation as well as auto-suggestions. The format can be switched on the fly from YAML, to TOML, to JSON5 (JSON with comments).
 
@@ -83,7 +83,7 @@ Inbox
 Things
 : Configured and Paired Things (like A Hue Bulb, a TV). You may alter configuration on this page, as well as check for the status (Online / Offline / Errors &amp; Logs). You can enter the *Groups* sub-page from here.
 
-Channel Links
+Thing Connections
 : Connect Things together, like your ZWave wall switch to your Hue bulb.
 
 Scheduler

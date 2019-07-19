@@ -17,7 +17,7 @@
     }
 
     .btn {
-        margin-left: 50px !important;
+        margin-left: 50px;
     }
 
     .content {
@@ -108,12 +108,20 @@
     }
 }
 
-@media (max-width:500px) {
+@include media-breakpoint-down(md) {
     .github-corner:hover .octo-arm {
         animation: none
     }
 
     .github-corner .octo-arm {
         animation: octocat-wave 560ms ease-in-out
+    }
+
+    #login-area {
+        margin: 0;
+
+        .btn {
+            margin-left: 10px;
+        }
     }
 }

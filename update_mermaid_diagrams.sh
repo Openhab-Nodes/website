@@ -1,1 +1,1 @@
-npm install mermaid-cli && node ./update_mermaid_diagrams.js
+npm install mermaid.cli && node ./update_mermaid_diagrams.js

@@ -12,6 +12,12 @@
     }
 }
 
+@media (max-width: 840px) {
+    #pageheader {
+        padding-top: 0px;
+    }
+}
+
 #pageheader.beforeRemove>div {
     position: absolute;
 }

@@ -48,10 +48,10 @@ if (cssFile) {
     }
     myCSS = fs.readFileSync(cssFile, 'utf-8')
 } else {
-    myCSS = ".node rect, .node polygon { fill: #ff8a65; stroke: #ff8a65; } .label { color: white; } .edgeLabel { color: black; background-color: white; font-size: small } .label foreignObject { overflow: visible; }";
+    myCSS = ".node rect, rect.actor, .node polygon, polygon.labelBox, line.loopLine { fill: #ff8a65; stroke: #ff8a65; } text.actor, text.labelText>tspan {fill: white;font-size: large;} .label { color: white; } .edgeLabel { color: black; background-color: white; font-size: small } .label foreignObject { overflow: visible; }";
 }
 
-mermaidConfig = Object.assign(mermaidConfig, {themeCSS: myCSS});
+mermaidConfig = Object.assign(mermaidConfig, { themeCSS: myCSS });
 
 // normalize args
 width = parseInt(width)
@@ -63,7 +63,7 @@ if (!fs.existsSync(outputDir)) {
     error(`Output directory "${outputDir}/" doesn't exist`)
 }
 
-async function processDef(browser, definition, output) {
+async function processDef(browser, definition, output, config = {}) {
     const page = await browser.newPage()
     page.setViewport({ width, height })
     await page.goto(`file://${path.join(__dirname, 'node_modules/mermaid.cli/index.html')}`)
@@ -71,11 +71,11 @@ async function processDef(browser, definition, output) {
         await page.evaluate(`document.body.style.background = '${backgroundColor}'`)
 
     page.on('console', consoleObj => console.log(consoleObj.text()));
-    await page.$eval('#container', (container, definition, mermaidConfig, myCSS) => {
+    await page.$eval('#container', (container, definition, config) => {
         container.innerHTML = definition
-        window.mermaid.initialize(mermaidConfig)
+        window.mermaid.initialize(config)
         window.mermaid.init(undefined, container)
-    }, definition, mermaidConfig, myCSS)
+    }, definition, config)
 
     if (output.endsWith('svg')) {
         const svg = await page.$eval('#container', container => container.innerHTML)
@@ -106,15 +106,24 @@ function* walk(dir) {
 }
 
 let regex = /\{\{<\ mermaid([^>]*)>\}\}(.+?)(?=\{\{)/gs
-let regexContext = /context="(.*)"/
+let regexContext = /context="([^"]*)"/
+let regexOptions = /options="([^"]*)"/
 
 async function* getDefinitions() {
     for (let file of walk("./content/en")) {
         const content = fs.readFileSync(file, 'utf-8');
-        while(result = regex.exec(content)) {
-            if (result && result.length>2) {
-                let context = regexContext.exec(result[1]);
-                yield { file: path.basename(file), context: context && context.length>1 ? context[1]:"", definition: result[2] }
+        while (result = regex.exec(content)) {
+            if (result && result.length > 2) {
+                let context = regexContext.exec(result[1]) || "";
+                if (context) context = context.length > 1 ? context[1] : "";
+                let options = regexOptions.exec(result[1]);
+                if (options && options.length > 1) {
+                    // Add quotes around json field keys: {abc:true} -> {"abc":true}
+                    options = options[1].replace(/(['"])?([a-z0-9A-Z_]+)(['"])?:/g, '"$2": ');
+                    // Parse options
+                    options = options && options.length > 1 ? JSON.parse(options) : {};
+                }
+                yield { file: path.basename(file), options, context, definition: result[2] }
             }
         }
     }
@@ -124,9 +133,11 @@ async function main() {
     const browser = await puppeteer.launch(puppeteerConfig);
 
     for await (let d of getDefinitions()) {
-        const out = outputDir+d.file.replace(".md","_")+d.context+".svg";
-        console.log("Definition", out, d.definition);
-        await processDef(browser,d.definition,out);
+        const out = outputDir + d.file.replace(".md", "_") + d.context + ".svg";
+        console.log("Render file", d.file, d.context);
+        let config = Object.assign(mermaidConfig, d.options);
+        config.themeCSS = myCSS;
+        await processDef(browser, d.definition, out, config);
     }
     browser.close();
 }

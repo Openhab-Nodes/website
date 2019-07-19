@@ -45,7 +45,7 @@ allows a clear design concept with actions/sub-navigation on the left, main cont
 {{< /colpic >}}
 
 ### Forms or Text
-Every configuration, ranging from Addons, Thing, Channels, Rules (also Scenes, Scheduled Actions), are editable via forms and dialogs as well as in a textual view mode. The latter allows search &amp; replace, copy &amp; paste batch editing.
+Every configuration, ranging from Addons, Things, Properties, Rules (also Scenes, Scheduled Actions), are editable via forms and dialogs as well as in a textual view mode. The latter allows search &amp; replace, copy &amp; paste batch editing.
 
 If new objects and components are introduced, textual configuration should always be considered! Syntax highlighting and validation happens via the vscode editor support for JsonSchema. Every configuration in openHAB X must reqister a corresponding JsonSchema and that is queried for.
 

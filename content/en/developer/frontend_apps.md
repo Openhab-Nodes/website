@@ -24,13 +24,13 @@ It consists of only 3 html pages, one for the settings, one for logging in and o
 A user can create and switch between multiple dashboards. Those boards are stored on the openHAB X system via the *User-Inferface-Storage IO Service*.
 
 The *Tiles* that a Dashboard consists of are [custom web components](https://developers.google.com/web/fundamentals/web-components/customelements). 
-A custom component is used like any other html tag. The tag for a Switch Thing Channel looks like this for example:
+A custom component is used like any other html tag. The tag for a Switch Thing property looks like this for example:
 
 {{< highlight html >}}
 <dashboard-thing-switch></dashboard-thing-switch>
 {{< /highlight >}}
 
-The app will place those components dynamically whenever it wants to render a dashboard with its Things and Thing Channels. This is explained in a later section. The Dashboard comes with *Tiles* for all common Thing and Thing Channel types.
+The app will place those components dynamically whenever it wants to render a dashboard with its Things and Thing Properties. This is explained in a later section. The Dashboard comes with *Tiles* for all common Thing and Thing property types.
 
 You only need `npm` installed to get started. If you want to &hellip;
 
@@ -42,14 +42,14 @@ You only need `npm` installed to get started. If you want to &hellip;
 
 The dashboard app first requests all Things from the OHX instance. It then needs to decide how to render a "Switch" Thing or a "Light" Thing or a complex Thing like a stereo amplifier Thing.
 
-It does so by maintaining a registry of available *Tiles* and supported Thing or Thing Channel types. For many common Things a Tile is available. Multiple *Tiles* might match a Thing. In this case a priority system is used:
+It does so by maintaining a registry of available *Tiles* and supported Thing or Thing Property types. For many common Things a Tile is available. Multiple *Tiles* might match a Thing. In this case a priority system is used:
 
 Core Tiles (Shipped) << Addon Tiles << External Tiles
 
-So an external *Tile* has always the highest priority. If no *Tile* can be found, the Thing is rendered as a "Grouping Tile" with each Thing Channel rendered on its own. The binary switch, text or numbers fallback *Tiles* are used for those Thing Channels if nothing else matches.
+So an external *Tile* has always the highest priority. If no *Tile* can be found, the Thing is rendered as a "Grouping Tile" with each Thing Property rendered on its own. The binary switch, text or numbers fallback *Tiles* are used for those Thing Properties if nothing else matches.
 
 Addon Tiles
-: Imagine you develop a Spotify&trade; Addon that exposes a Spotify&trade; Control Thing with a volume channel, a playlist next/previous and play command channel and a song title search input channel.
+: Imagine you develop a Spotify&trade; Addon that exposes a Spotify&trade; Control Thing with a volume property, a playlist next/previous and play command property and a song title search input property.
 
 The dashboard app will of course be able to render the thing, as described above with the fallback Tiles, but that will most certainly not win a design award, nor does it present a very usability friendly interface. You can change that by providing your own dashboard tile with your Spotify&trade; Addon.
 
@@ -88,7 +88,7 @@ You find an article that talks about almost every aspect of custom components he
 
 No matter if you have used the `static/dashboard` addon directory or an external github repository, your javascript file will be loaded dynamically by the dashboard and your given `dashboard_tile` is inserted into the *Tile Registry*.
 
-The above Tile would replace the shipped Tile for text Things or Thing Channels and does nothing more than rendering text in bold font.
+The above Tile would replace the shipped Tile for text Things or Thing Properties and does nothing more than rendering text in bold font.
 
 The dashboard expects a few events from a Tile and provides some attributes to a Tile.
 
@@ -98,7 +98,7 @@ Those are always strings.
 For example: `<dashboard-example an-attribute="value"></dashboard-example>`
 
 value
-: A stringified value of the given Thing or Thing Channel
+: A stringified value of the given Thing or Thing Property
 
 You see an example usage in the javascript snippet above (`this.getAttribute("value")`). You can also be notified of attribute changes. You need to return attributes that you want to be notified of in `observedAttributes` and then implement `attributeChangedCallback`.
 
@@ -161,15 +161,18 @@ The mobile App is a Google Flutter application. Flutter does not render via the 
 
 A Flutter app is usually written in Dart which compiles down to native ARM machine code and allows for smooth animations and interaction.
 
-Things are rendered via Flutter Widgets. The OHX App comes with *Widgets* for all common Thing and Thing Channel types.
+Things are rendered via Flutter Widgets. The OHX App comes with *Widgets* for all common Thing and Thing Property types.
 
-If no *Widget* can be found, the Thing is rendered as a "Grouping Widget" with each Thing Channel rendered as its own *Widget*. The binary switch, text or numbers fallback *Widget* are used if nothing else can be found.
+If no *Widget* can be found, the Thing is rendered as a "Grouping Widget" with each Thing Property rendered as its own *Widget*. The binary switch, text or numbers fallback *Widget* are used if nothing else can be found.
 
 As mentioned in the introduction, one of the goals of OHX native apps is that an Addon developer should be able to supply custom "Widgets" for developed Things. This is realized via custom web components and *Tiles* for the dashboard app. This is also possible for the mobile App.
 
+You need the Android Studio and Flutter SDK installed to get started. If you want to &hellip;
+
+*  contribute to the dashboard App you will find the dashboard repository here: https://www.github.com/openhab-nodes/ui-mobile-app
+* develop your own *Widget*, you should check out the *Widget* example repository over here: https://www.github.com/openhab-nodes/ui-mobile-app-widget-example
+
 ### Develop your own Widgets
-
-
 
 For the mobile App the Flutter library [MXFlutter](https://github.com/TGIF-iMatrix/MXFlutter/blob/master/Documentation/readmeEnglish.md) has been used for Thing Widgets. Instead of Dart, you write the UI code in javascript which mimics the dart code style almost 1:1 (meaning all kind of Flutter tuturials are still usefull), but allows to push that code to the app during runtime.
 

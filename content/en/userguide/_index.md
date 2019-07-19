@@ -11,7 +11,7 @@ Welcome to <b>The openHAB X User Guide</b>, an introductory guide about openHAB 
 {{< /callout >}}
 
 ## Who openHAB X Is For
-openHAB X is for people who crave **stability** and **ease to use** in a home automation system and is ideal for many people for a variety of reasons. Let’s look at a few of the most important groups.
+openHAB X is for people who crave **stability** and **ease to use** in a custom home automation system and is ideal for many people for a variety of reasons. Let’s look at a few of the most important groups.
 
 openHAB X is for People Who &hellip;
 
@@ -28,12 +28,12 @@ If you can think it, odds are that you can implement it with openHAB X.
 
 openHAB X offers a user-interface for all kinds of configuration or automation. From the very first start to access management, device or voice control integrations and automation rules.
 
-You do not need to type a single line in any sort of text file or drop to a command line. At the same time you always have the coice to do so, watch out for the {{< advanced >}} badge.
+You do not need to type a single line in any sort of text file or drop to a command line. At the same time you always have the choice to do so, watch out for the {{< advanced >}} badge.
 
 <split>
 ### Value Speed and Stability
 
-By stability, we mean execution efficiency (low, controlled memory usage) of all the different robust, self-healing services that openHAB X is composed of.
+By stability, we mean execution efficiency and long-time robustness of all involved self-healing services that openHAB X is composed of.
 
 Speed is not only measured in processed events per second and overall efficiency (see [Design Principles](/developer/design_principles)), but alse the speed at which openHAB X lets you extend the system.
 

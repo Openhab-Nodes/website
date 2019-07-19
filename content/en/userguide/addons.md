@@ -7,7 +7,7 @@ tags = ["addons"]
 
 {{< scss file="addons" >}}
 
-openHAB X has been developed with extendability in mind. OHX extensions are called **Bindings** if they integrate physical hardware, external systems and web services, and called **Add-ons** if they add *Channel Link Processors* or *Rule Modules*.
+openHAB X has been developed with extendability in mind. OHX extensions are called **Bindings** if they integrate physical hardware, external systems and web services, and called **IO Services** if they expose configured Things.
 
 {{< callout type="danger" title="Security considerations" >}}
 {{< advanced >}} openHAB X addons are isolated containers with no access to the base operating system, a dedicated, limited space for configuration and a user restrictable access to system resources like CPU and main memory.
@@ -118,6 +118,12 @@ Some addons like to have elevated permissions for more CPU time or a larger disk
 
 **Note**: Not every version of every Add-on is reviewed. Check for user ratings, comments, the release date and the open Issues count before installing.
 
+## Things
+
+openHAB X is abstracting devices and services **Things**. A simple example is a lightbulb. A Thing can have related or child Things, like a HiFi amplifier with different control zones and various functionalities. A Thing consists of a Name, a description and Thing Properties.
+
+Specific Things are expected to have specific Properties. The lightbulb Thing for example must have an On/Off property and can have a brightness, a light temperature and a color property.
+
 ## Device Inbox
 
 Newer devices and services have means to perform a discovery on them.
@@ -132,5 +138,3 @@ Some devices require a pairing procedure as part of the approval.
 An Inbox Thing is a pre-configured Thing. You may at any time create a Thing manually and enter the required configuration. This is usually not required or recommended, except for addons that do not support discovery. An example is the KNX addon.
 
 Head to <a class="demolink" href="">Things</a> and find "Add Thing" on the left side menu. You will be asked for the unique *Thing* ID (`uid`) that will be used to identify the *Thing* in Rules, logs and metrics. Additionally the Thing type and a title need to be entered as well as whatever configuration values are required.
-
-Some *Things* want you to also configure (additional) Thing Channels. You will find an "Add Channel" link on the Thing configuration page if that is the case. The respective addon documentation will explain the details.

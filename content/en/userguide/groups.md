@@ -5,15 +5,15 @@ weight = 41
 tags = ["group"]
 +++
 
-A group is a collection of *Things* (*Thing Channels*) that are turned to the same state.
-Groups complements *Scenes*. While a *Scene* turns multiple *Things* (*Thing Channels*) to a predefined state,
+A group is a collection of *Things* that are turned to the same state.
+Groups complements *Scenes*. While a *Scene* turns multiple *Things* to a predefined state,
 a *Group* itself must have a type, like being a Switch, and can hold a state. 
 
 You find *Groups* on the left side menu at the <a class="demolink" href="">Thing</a> page.
 
-A group can receive commands like any other *Thing Channel* and forwards the command to all of its children.
+A group can receive commands like any other *Thing* and forwards the command to all of its children.
 
-A group computes its own state based on the composite Thing (Thing Channel) states.
+A group computes its own state based on the composite Thing states.
 You can assign a function, that determines how that state is computed. 
 
 Without restrictions on the group type, the following functions can be used:

@@ -6,7 +6,7 @@ outputs:
 - json
 ---
 
-{{< readfile file="developer/_partials/authorsnote.inc" markdown="false" >}}
+{{< readfile file="/developer/_partials/authorsnote.inc" markdown="false" >}}
 
 {{< indent >}}
 Welcome to **The openHAB X Developer Documentation**, an introductory guide to make you familiar with design principles, the project philosophy, overall architecture as well component specific architectures.

@@ -130,8 +130,8 @@ enableInlineShortcodes = true
       url = "/developer/addons/"
       weight = 50
     [[languages.en.menu.footer3]]
-      name = "Rule Engine"
-      url = "/developer/ruleengine/"
+      name = "Core Services"
+      url = "/developer/coreservices/"
       weight = 60
 
     [[languages.en.menu.footer1]]
@@ -147,13 +147,17 @@ enableInlineShortcodes = true
       url = "/userguide/addons"
       weight = 30
     [[languages.en.menu.footer1]]
-      name = "Link Channels"
-      url = "/userguide/channellinks"
+      name = "Link Properties"
+      url = "/userguide/thing_connections"
       weight = 40
     [[languages.en.menu.footer1]]
       name = "Groups"
       url = "/userguide/groups"
       weight = 41
+    [[languages.en.menu.footer1]]
+      name = "Tags"
+      url = "/userguide/tags"
+      weight = 42
     [[languages.en.menu.footer1]]
       name = "Backup &amp; Restore"
       url = "/userguide/backup_restore"
@@ -308,8 +312,8 @@ enableInlineShortcodes = true
       url = "/developer/addons/"
       weight = 50
     [[languages.de.menu.footer3]]
-      name = "Automatisierungs-Engine"
-      url = "/developer/ruleengine/"
+      name = "Core-Services"
+      url = "/developer/coreservices/"
       weight = 60
 
     [[languages.de.menu.footer1]]
@@ -325,13 +329,17 @@ enableInlineShortcodes = true
       url = "/userguide/addons"
       weight = 30
     [[languages.de.menu.footer1]]
-      name = "Gerätekanäle verbinden"
-      url = "/userguide/channellinks"
+      name = "Things verbinden"
+      url = "/userguide/thing_connections"
       weight = 40
     [[languages.de.menu.footer1]]
       name = "Gruppen"
       url = "/userguide/groups"
       weight = 41
+    [[languages.de.menu.footer1]]
+      name = "Tags"
+      url = "/userguide/tags"
+      weight = 42
     [[languages.de.menu.footer1]]
       name = "Datensicherung &amp; -Wiederherstellung"
       url = "/userguide/backup_restore"

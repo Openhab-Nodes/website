@@ -12,6 +12,20 @@ This chapter sheds some light on what addons actually are and introduces into ad
 
 This text assumes that you know how to open and operate a terminal, because for brevity reasons only command line instructions are given most of the time.
 
+## Home Automation Framework n+1
+
+There are a few other open source Home Automation software frameworks out there. Most of them don't meet the high stability and performance standards of OHX, still developing an Addon for OHX shouldn't feel like developing for the n+1 framework.
+
+An idiomatic OHX Addon follows standards whenever possible and runs as an autonomous process, making it hopefully easy to integrate it with other frameworks if necessary.
+
+**Configuration Descriptions** are expressed as [JSonSchema](https://json-schema.org/) &amp; [UISchema](https://github.com/mozilla-services/react-jsonschema-form/blob/master/docs/form-customization.md).
+**Things Declaration** happens via [Web Thing Descriptions](https://w3c.github.io/wot-thing-description/).
+{{< details title="More Info">}}
+Some frameworks don't use machine readable descriptions and rely on documentation and key-value text based configuration. Other frameworks use similar, but less powerful and non standardized schemas, like [openHABs ThingTypes](https://www.openhab.org/docs/developer/bindings/thing-xml.html).
+{{< /details >}}
+
+**Addon and Thing States** are by default published via interprocess communication, gRPC to be precise. `libThingState` can be swapped with an implementation that instead publishes to MQTT or via the http and websocket based [Web Things API](https://iot.mozilla.org/wot/) for example.
+
 ## Setting up the development enviroment
 
 This guide assumes that you develop with an Integrated Developer Enviroment (IDE).<br>
@@ -33,7 +47,7 @@ Depending on your your target programming language you need to install the requi
 		<tab-body>
 			<tab-body-item >
 {{< md >}}
-Rust 1.32+ is required. Install via [rustup](https://rustup.rs/) for example.
+Rust 1.34+ is required. Install via [rustup](https://rustup.rs/) for example.
 
 See https://marketplace.visualstudio.com/items?itemName=rust-lang.rust for the Visual Studio Code extension.
 
@@ -99,8 +113,9 @@ That is what the next sections are about.
 
 ### Test without Containers
 
-Usually an Addon and also openHAB X core services are bundled into software containers for distributing. Containers are explained in a later section.
-For local testing, containers are not required though.
+Usually an Addon and also openHAB X core services are bundled into software containers for distribution, but also for local execution. Containers are explained in a later section.
+
+For running a service or an addon in a debug session, containers are not recommended.
 
 1. Execute `sh ./start_all.sh` of the [core repository](https://www.github.com/openhab-nodes/core) on the command line to start openHAB X.
 2. And then start your addon or the example addon via the command line given above, like `cargo run` for a Rust addon or `npm run start` for NodeJS.
@@ -114,10 +129,10 @@ Start your addon with the environment variable `REMOTE_OHX=192.168.1.11` set (ch
 
 The addon should report that it will attempt to connect to a remote instance.
 Please note, that configuration is not shared across devices.
-Depending on the granted permissions you will have access to Things and Thing states, Thing Channel history, the user database etc.
+Depending on the granted permissions you will have access to Things, Thing States, Thing States history, the user database etc.
 
 {{< callout type="info" >}}
-As long as you do not grant full cpu, memory and disk quota permissions, it is generally safe to develop an addon towards your production OHX. It is almost impossible to break anything or render the installation unstable.
+As long as you do not grant full cpu, memory and disk quota permissions, it is generally safe to develop an addon with your production OHX. It is almost impossible to break anything or render the installation unstable.
 {{< /callout >}}
 
 ## Addon Types
@@ -136,21 +151,20 @@ The [Binding](/developer/addons_binding) chapter contains all the details.
 
 {{< imgicon src="fas fa-exchange-alt" height="50px" caption="**IO Service**" >}}
 
-An IO Service is a type of Addon that exposes Things / Thing Channels. May it be via an http interface for mobile Apps or HomeKit or for example the Hue protocol for Hue Apps.
+An IO Service is a type of Addon that exposes Things and Thing States. May it be via an http interface for mobile Apps or HomeKit or for example the Hue protocol for Hue Apps.
 
 The [IO Service](/developer/addons_ioservice) chapter contains all the details.
 
 {{< /colpic >}}
 
-## Registering as Addon
+## Addon Registration
 
-One of the first things you should do is to register your process as an Addon.
+One of the first things you do is to register your process as an Addon.
 The **Addon Manager** will record your process id and container id and the IAM service will use those immutable data for granting further permission based access.
 
 If you have a `static/` directory, that will also be examined during the registration process. See the [User Interfaces](/developer/frontend_apps) chapter for more information on what the static directory is used for.
 
-The example below registers a service with a few callbacks, that are explained in the following sections.
-
+The example below registers a service with some optional callbacks.
 
 <div class="mb-2">
 	<tab-container>
@@ -159,18 +173,101 @@ The example below registers a service with a few callbacks, that are explained i
 		</tab-header>
 		<tab-body>
 <tab-body-item >{{< highlight rust "linenos=table" >}}
-use ohx::{Addon};
+use ohx::{Addon, AddonContext, ProgressReport, Result};
 
-// ...
+// Called when upgraded by the framework
+fn upgraded(ctx: &AddonContext) -> Result<()> {
+    Ok()
+}
+
+// Called when freshly installed
+fn installed(ctx: &AddonContext) -> Result<()> {
+    Ok()
+}
+
+// Called when about to be removed
+fn remove(ctx: &AddonContext, progress: &ProgressReport) -> Result<()> {
+    Ok()
+}
 
 fn main() {
-    // ...
+    // Create registration builder.
+    let builder = Addon::registration_builder::new("");
+    // Set all mandatory and optional arguments.
+    builder = builder.with_upgraded_cb(&upgraded).with_installed_cb(&installed).with_remove_cb(&remove)
+    // Register service
+    let ctx: AddonContext = Addon::register(builder.build()).unwrap();
+}
+{{< /highlight >}}</tab-body-item >
+		</tab-body>
+    </tab-container>
+</div>
+
+The `remove` callback allows you to block the removal process for up to 5 minutes for clean up or backup up purposes. You must post a progress update during that time with no more than 30 seconds between each report. As soon as you have posted a 100% progress update, your addon will be shut down and removed. You cannot dismiss the users removal request.
+
+## Addon Actions & Events
+
+Addons should not expect users to skim through log files to identify issues or require a user interaction.
+
+An Addon should use the *Events* API for user interaction. An Addon should NOT use events to show debug information or everything that rather goes into the log.
+
+**Setup &amp; Maintenance** lists all possible actions of an Addon on the respective Addon page and also displays incoming Addon Events. Events have a lifetime and are stored by openHAB X for that time. Received Evenets can be listed on the <a href="" class="demolink">Addon</a> page.
+
+Events and Actions are registered during the addon registration phase.
+
+<div class="mb-2">
+	<tab-container>
+		<tab-header>
+			<tab-header-item class="tab-active">Rust</tab-header-item>
+		</tab-header>
+		<tab-body>
+<tab-body-item >{{< highlight rust "linenos=table" >}}
+use ohx::{Addon, AddonContext, ProgressReport, Result, Action, Event};
+
+fn do_something_action(ctx: &AddonContext, action: &Thing::Action) {
+}
+
+fn main() {
+    let action_doit = Action::new("do_something")
+      .handler(&do_something_action)
+      .title(langtag!(en), "Amazing Action")
+      .description(langtag!(en), "A description of the amazing action");
+    
+    let event = Event::new(ctx, "ack_event", Some(Duration::from_secs(60)))
+        .title(langtag!(en), "Amazing Action Executed")
+        .message(langtag!(en), "A longer message");
+        .actions(vec!["do_something"]); // Actions be be linked from the event
+
     // Create registration builder.
     let builder = Addon::registration_builder::new();
     // Set all mandatory and optional arguments.
-    // ...
+    builder = builder.add_action(action_doit).add_event(event)
     // Register service
-    Addon::register(builder.build());
+    let ctx: AddonContext = Addon::register(builder.build());
+}
+{{< /highlight >}}</tab-body-item >
+		</tab-body>
+    </tab-container>
+</div>
+
+Addons can communicate with the user via events and actions. You can edit the title and message of such a notification before publishing it, but you can only use events that you have declared during the registration. *Events* optionally have a lifetime, like in the example above (`Duration::from_secs(60)`). A timed out event will disappear from user-interfaces or will never be shown to a user that logs in at a later time.
+
+An event is published like so:
+
+<div class="mb-2">
+	<tab-container>
+		<tab-header>
+			<tab-header-item class="tab-active">Rust</tab-header-item>
+		</tab-header>
+		<tab-body>
+<tab-body-item >{{< highlight rust "linenos=table" >}}
+use ohx::{AddonContext, Event};
+
+fn show_event(ctx: &AddonContext) {
+    let mut event : Event = ctx.event("ack_event").unwrap();
+    event.title(langtag!(en), "The title")
+         .message(langtag!(en), "A longer message")
+         .publish();
 }
 {{< /highlight >}}</tab-body-item >
 		</tab-body>
@@ -265,11 +362,9 @@ And renders into what you see below. Almost*.
 
 {{< /colpic >}}
 
-A longer example is given in the walkthrough section in the [Binding](/developer/addons_binding) chapter.
-
 ### Tools to generate JSONSchema
 
-Some programming languages support to define JSONSchema in code together with the structs that hold the configuration values, like Rust (macros) and Java (annotations). Those languages therefore don't face the problem of desyncing schema and code.
+Some programming languages support to define JSONSchema in code together with the structs that hold the configuration values. Those languages therefore don't face the problem of desyncing schema and code, but others will.
 
 Because this is not supported in all languages, the idiomatic way is the other way round. You define the JSONSchema (and UISchema). That's your source of truth and you always commit them to your source repository as well. You then generate the programming language specific parts using those schemas.
 
@@ -289,7 +384,7 @@ If you register a structure for configuration retrival with `libaddon`, you must
 <tab-body-item >{{< highlight rust "linenos=table" >}}
 use serde::{Serialize, Deserialize};
 use semver::Version;
-use ohx::{Configs};
+use ohx::{Config};
 
 // This is for demonstration only. A code generator like the one
 // mentioned above will create a separate file for configuration structs.
@@ -312,11 +407,10 @@ fn upgrade_config_id_cb(...) -> Result<String> {
 
 fn main() {
     // ...
-    // Publish schemas. No optional ui schema is given in this example.
-    let json_schema = fs::read_to_string("schema/config_id_schema.json").unwrap();
-    Configs::publish(&json_schema, None).unwrap();
+    // Publish schema. No optional ui schema is given in this example.
+    Config::schema_publish(ctx, "schema/config_id_schema.json", None).unwrap();
     // Synchronously request a configuration object. Should only happen on startup.
-    let config : Option<ServiceConfig> = Configs::get("config_id", &upgrade_config_id_cb).unwrap();
+    let config : Option<ServiceConfig> = Config::get(ctx, "config_id", &upgrade_config_id_cb).unwrap();
 }
 ```
 {{< /highlight >}}</tab-body-item >
@@ -334,8 +428,9 @@ All connected user interfaces, including Setup &amp; Maintenance will update the
 Configuration may be altered by the user during runtime.
 It is up to you on how to react to changes.
 
-It is generally a better idea to use this asyncronous API instead of the `get` method.
-The listener callback method will also be called for the inital configuration.
+The idiomatic way is to use the stream API `register_lister` instead of the `get` method.
+The listener callback method will be called for the inital configuration.
+
 Via a computed hash over the configuration you will only be called back for actual changes.
 
 <div class="mb-2">
@@ -357,7 +452,7 @@ fn upgrade_config_id_cb(...) -> Result<String> {
 
 fn main() {
     // ...
-    Config::register_lister("config_id", &config_changed, &upgrade_config_id_cb);
+    Config::register_lister(ctx, "config_id", &config_changed, &upgrade_config_id_cb);
 }
 ```
 {{< /highlight >}}</tab-body-item >
@@ -367,9 +462,9 @@ fn main() {
 
 ### Update-Paths for Configuration
 
-Sometimes you need to restructure your addon and your configuration structure changes. This includes service as well as users Thing configurations.
+Sometimes you need to restructure your addon and your configuration structure changes. This includes service as well as Thing configurations.
 
-As seen in the last example, openHAB X calls you back if your addon version doesn't match your configuration version for a given config_id. You should keep adding migration paths to an `upgrade_cb` function as seen in the following example.
+As seen in the last example, openHAB X calls you back if your addon version doesn't match your configuration version for a given config_id. Add migration paths for each new version to an `upgrade_cb` function as seen in the following example.
 
 <div class="mb-2">
 	<tab-container>
@@ -402,7 +497,7 @@ fn upgrade_cb(config:&str, current_version:Version, new_version:Version) -> Resu
     </tab-container>
 </div>
 
-So far this did not include users Thing configuration. Thing config auto-migration works similar to the concept above. It is absolutely optional to provide a migration method, but your *Binding* users will definitely enjoy that feature.
+So far this did not include users Thing configuration. Thing config auto-migration works similar to the concept above. It is optional to provide a migration method, but your *Binding* users will definitely enjoy that feature.
 
 <div class="mb-2">
 	<tab-container>
@@ -428,14 +523,14 @@ fn main() {
     </tab-container>
 </div>
 
-## Metadata &amp; Prepare For Publishing
+## Prepare For Publishing
 
-OHX uses containers for distributing addons and a [Kubernetes Objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) file that describes how to start your container(s) and that contains all  metadata like addon name, description and so on.
+OHX uses containers for distributing addons and a [Kubernetes Objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) file that describes how to start your container(s).
 
-### Containerize
+### Bundle Addon to Container
 
-A container is your addon executable and all other software, except the operating system kernel, to run your addon.
-A recipe tells a container image creation tool how to bundle your addon. OHX uses the `Dockerfile` format and therefore expect a file with that name in your source code repository.
+Your addon executable and all libraries to execute your Addon binary are bundled into a container.
+A recipe tells a container image creation tool how to bundle your addon. OHX uses the [Dockerfile](https://docs.docker.com/engine/reference/builder/) format and therefore expect a file with that name in your source code repository.
 
 The template repositories already contain `Dockerfile`s.
 Depending on your programming language the recipe looks slightly different.
@@ -446,21 +541,30 @@ FROM rust:1.35-slim
 WORKDIR /usr/src/myapp
 COPY . .
 RUN cargo install --path .
+HEALTHCHECK --interval=30s --timeout=2s --retries=2 CMD grpc_health_probe -addr=localhost:443 -connect-timeout 250ms -rpc-timeout 100ms
+EXPOSE 443
+LABEL version="1.0"
+LABEL description="This text illustrates \
+that label-values can span multiple lines."
+LABEL maintainer="Author name <your-email@addr.com>"
 CMD ["myapp"]
 ```
 
-The template repositories contain a build script `./build.sh`, but you can also manually call `docker build` for example, like: `docker build . -name ohx-addon-name` or `podman build . -name ohx-addon-name`.
+Change the `LABEL version`, `maintainer` and `description` accordingly.
+A few parameters may need to be adjusted for your needs, for example `HEALTHCHECK` and `EXPOSE`.
 
-### Kubernetes Pods File
+The template repositories contain a build script `./build.sh`, but you can also manually call `docker build`: `docker build . -name ohx-addon-name` or `podman build . -name ohx-addon-name`.
 
-The next step is to write the *Kubernetes Objects* file. Although the software Kubernetes itself is not used, the file format is a well understood and documented format for container setups.
+### Pod File
+
+The next step is to write the [Kubernetes Pods](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/) file.
+Although the software Kubernetes itself is not used, the file format is a well understood and documented format for container setups.
 
 Metadata like the addon title, description, author information as well as mandatory and optional permissions are part of this declaration.
 
 The following example for an imaginary addon called "ohx-addon-name" lists two containers. `apiVersion` is always `v1` and `kind` must be set to `Pod` (A pod is a set of containers).
 The first container entry references the addon application (which we named "ohx-addon-name" in the section above) and an mqtt broker container for demonstrational purposes.
 
-You 
 ```yaml
 ---
  apiVersion: v1
@@ -482,7 +586,7 @@ You
       allowPrivilegeEscalation: false
       privileged: false
       readOnlyRootFilesystem: true
-    tty: true
+    tty: false
  metadata:
    name: ohx-addon-name
    uid: "ohx-addon-v1.0"
@@ -560,14 +664,14 @@ A user must accept required permissions during installation, but may deny option
 		</tab-header>
 		<tab-body>
 <tab-body-item >{{< highlight rust "linenos=table" >}}
-use ohx::{Addon};
-
-// ...
+use ohx::{AddonContext, Permissions};
 
 fn main() {
     // ...
-    let list_granted = Addon::granted_permissions().unwrap();
-    let list_denied = Addon::denied_permissions().unwrap();
+    let ctx: AddonContext = register;
+    // ...
+    let list_granted = Permissions::granted(ctx).unwrap();
+    let list_denied = Permissions::denied(ctx).unwrap();
 }
 ```
 {{< /highlight >}}</tab-body-item >

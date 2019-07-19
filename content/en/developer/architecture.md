@@ -5,72 +5,128 @@ weight = 20
 tags = []
 +++
 
-This chapter talks about the general architecture of openHAB X and how services interact with each other. This overview provides an insight on what technologies and protocols are used in which situations and also talks about alternatives when appropriate. openHAB X generally tries to use as much already existing solutions as possible, as long as those somehow fit into the OHX [design principles](/developer/design_principles).
+This chapter talks about the general architecture of openHAB X and how services interact with each other. This overview provides an insight on what technologies and protocols are used in which situations and also talks about alternatives when appropriate.
 
 To get a general idea of all involved components, let's have a look at the following picture.
 
-.................
+TODO
 
-openHAB X makes use of some external services. The state database is a REDIS instance. The historic state database an InfluxDB 2 instance. Users are stored and retrieved via the [LDAP interface](https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol). OHX comes with the lightweight ldap service [GlAuth](https://github.com/glauth/glauth) for this reason. All other services are called OHX Core Services and are introduced in the next few sections. You find in-depth discussions and API usage examples in separate chapters.
+openHAB X follows a microservices architecture, meaning that it is composed of multiple single-purpose processes instead of one monolithic process.
+It makes use of external, well-known and understood solutions and protocols whenever possible, as long as those match with the [design principles](/developer/design_principles):
 
-## IPC / RPC: Interprocess Communication
+* The state database is a REDIS instance.
+* The historic state database an InfluxDB 2 instance.
+* Users are stored and retrieved via the [LDAP protocol](https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol). OHX comes with the lightweight ldap service [GlAuth](https://github.com/glauth/glauth) for this reason, but any other ldap service can be used.
+* The API Gateway is an [envoy](https://www.envoyproxy.io) instance.
+* The container engine is podman and uses the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) on Microsoft Windows&trade;.
 
-openHAB X follows a microservices architecture. Services interact via remote procedure calls with each other. gRPC with protobuf has been chosen as the interprocess protocol and mechanism.
+All other services are called OHX Core Services and are developed by OHX developers and contributors. Main programming languages for Core Services are Rust and Go.
+Services interact with each other via remote procedure calls. gRPC (protobuf on top of http2) has been chosen as the interprocess protocol and mechanism.
 
+protobuf specification files are also used to automatically generate API documentation for each service. Most of the time you want to use the Rust wrapper libraries for Core services or `libAddon` for Addon development.
+
+The next sections introduce some of the components found in the picture above. At the end of this chapter you should have a general understanding of the OHX architecture.
+You find in-depth discussions and API usage examples in dedicated chapters.
+ 
 ## API Gateway / Reverse Proxy
 
-Each service in openHAB X implements its own http based management API as http+websockets.
+You already know that each OHX service offers a gRPC interface.
+Not considering addons like an MQTT broker, the only process that exposes ports to the outside (non-localhost) is the **API Gateway** process. It exposes an http/2 (430) port on a standard installation and proxies calls to the respective service.
 
-The only process however that exposes ports in a standard installation (without an MQTT Broker etc) is the **API Gateway** process. It exposes an http (80), https (430) port supporting http1 and http2 including websockets and proxies calls to the respective service.
+OHX uses [envoy](https://www.envoyproxy.io), an efficient reverse proxy with rate limiting and circuit breaker support. envoy is also used as grpc to grpc-web proxy to make the gRPC APIs of the different services available to the **Setup &amp; Maintenance** interface.
 
-It implements rate limiting to circumvent DDOS attacks. 
+An Addon can register custom http1, https and http/2 endpoints (like for example "/api" for the hue emulation IO Service).
 
-A service, but also an addon, can register an http endpoint (like for example "/api" for the hue emulation IO Service). Services with a higher ranking are preferred for the same endpoint request over services with a lower ranking. The user can influence service rankings, system services have the highest.
+## Static File Server
 
-The API Gateway is also a static file server for web-based user interfaces. It serves interfaces under `/static/ui/{interfacename}`. The **Setup &amp; Maintenance** interface is served as the root http endpoint, but lists all other interfaces on its home page.
+A simple, static file server serves all web-based user interfaces under `/static/ui/{interfacename}`. Addons can provide additional files to be served. The **Setup &amp; Maintenance** interface is served as the root http endpoint and lists all other interfaces on its home page.
 
-## Addons &amp; Addon Manager
+The file server service also has an npm downloader integrated to install additional web-based user interfaces. It allows to list all available user interfaces in the npm organisation namespace "openhabx".
 
-An Addon in OHX may consist of multiple processes (services), but at least one is an isolated process that registers itself to the **AddonsManger** service and implements one or more interfaces ("binding", "IO Service"). Addon processes are untrusted processes. Therefore they do not have direct access to the state database (Redis) or historic state database (InfluxDB) and communicate via a proxy process (**StateProxy**). *StateProxy* allows to install filters to limit Thing and Thing State exposure.
+## Addons
 
-For easy distribution and enhanced resource control as well as enforcing security features, Addon processes are bundled and running as *software containers*. A set of containers is called a *Pod*.
+An Addon in OHX may consist of multiple processes (services). At least one is a process that registers itself to the **AddonsManger** service and usually integrate external web-services or devices ("binding") or exposes openHAB X Things in some form or another ("IO Service").
 
-{{< callout title="Containers" type="info" >}}
+For easy distribution and enhanced resource control as well as enforcing security features, Addon processes are bundled and running as *software containers*.
+
+{{< callout title="Containers & Pods" type="info" >}}
 A **container** is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. Containers are not virtual machines! A container process can be easily restricted in its resource usage, including main memory, cpu time, disk and network access as well as direct hardware control. A known container implementation is {{< details title="Docker" maxwidth="500px" >}}
 Docker is just one of many container engines. OHX uses vendor neutral software containers, defined by the OCI.
 
-The Open Container Initiative (OCI), founded by Docker, is a Linux Foundation project to design open standards for operating-system-level virtualization, most importantly containers.
-{{< /details >}}.
+The Open Container Initiative (OCI), founded by Docker, is a Linux Foundation project to design open standards for operating-system-level virtualization, most importantly containers.{{< /details >}}.
+
+A set of related containers, like an openHAB X Addon, is called a *Pod*.
 {{< /callout >}}
-
-
-A container is first of all like any other executable. It requires enviroment variables, command line arguments and configuration to work properly. openHAB X uses the [Kubernetes Objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) Yaml file format. It is a wide spread file format to describe how to start one or multiple containers in regard to exposed network ports, storage requirements and access to host hardware. The addons chapter, more specifically [Metadata & Prepare For Publishing](/developer/addons/#metadata-amp-prepare-for-publishing) guides through all the details concerning this file. An alternative would have been Docker-Compose, which is not vendor-neutral though.
-
-The addon manager process maintains a list of registered and running addons. It also talks to [podman](https://podman.io/), the daemonless container engine that is used together with openHAB X, for starting installed addons.
 
 In most cases your Addon consists of exactly one container, which runs software that is linked to `libAddon`. Sometimes you might require additional external services, like a database. This is when you have more than one container running.
 
-To understand how an Addon communicates with OHX, have a look at the following figure and focus on the top, left box first.
+Containers do not have direct access to the state database (Redis) or historic state database (InfluxDB) and communicate via a per-Addon proxy process (**StateProxy**). The user can configure filter rules on each proxy to limit Thing and Thing State exposure.
 
-<div class="text-center">
-<img src="/img/doc/addon-container.svg" class="w-100 p-3">
-</div>
+To understand how an Addon communicates with OHX, have a look at the following sequence diagram.
 
-1. Your Addon registers to *AddonsManager*. The *AddonsManager* will in turn request service tokens from the `IAM` service (not shown in the picture).
-2. The *AddonsManager* will start a dedicated process, the *StateProxy* which is equipped with access tokens for the *State Database (Redis)* and the *Historic State Database (InfluxDB)*.
-3. `libAddon` will communicate with the *StateProxy* for querying and listening to Thing and Rule states (current and historic).
-3. `libAddon` will push Thing and Thing Channel state updates to *StateProxy* which in turn pushes changes to Redis and InfluxDB.
-4. `libAddon` will communicate with the *Command Queue* service for issuing commands.
+{{< mermaid options="{sequence:{mirrorActors:false}}" context="addon_sequence">}}
+sequenceDiagram
+    participant A as Addon
+    participant P as Addon Proxy
+    participant M as Addon Manager
+    participant I as IAM
+
+    A->>M: Register
+    M->>P: Start
+    activate P
+    P->>+I: Access tokens for Addon
+    I-->>-P: Tokens
+    P-->>A: Ack
+    deactivate P
+{{< /mermaid >}}
+
+1. Your Addon registers to *AddonsManager*. 
+2. The *AddonsManager* will start a dedicated process, the *StateProxy*. The *StateProxy* will request service tokens for the *State Database (Redis)* and the *Historic State Database (InfluxDB)* from the `IAM` service.
+
+Each Addon runs as its own user on the standalone installation to further restrict access.
+
+The [Addon](/developer/addons) chapter contains all information about Addon development and some more details about the startup and publish process.
+
+## Addon Manager
+
+The addon manager process maintains a list of registered and running addons. It also talks to [podman](https://podman.io/), the daemonless container engine that is used together with openHAB X, for starting installed addons.
+
+{{< mermaid options="{sequence:{mirrorActors:false}}" context="addonmanager_sequence">}}
+sequenceDiagram
+    participant M as Addon Manager
+    participant P as Podman
+    participant A as Addon
+
+    loop For every installed Addon
+        M->>P: Instruct how to start Addon
+        P->A: Start Addon
+        P-->>M: Confirm with process ID
+        M->A: grpc.health.v1 Health Monitor Stream
+    end
+{{< /mermaid >}}
 
 We refine this model in the dedicated sections about binding and IO Service development in the [Addons](/developer/addons) chapter.
 
-Web-based User interfaces, bundled as npm package, are also installed via the Addon Manager, but do not interface with the service at all. They are hosted by the *API Gateway* service as mentioned earlier.
+## Generic Storage
+
+{{< img src="/img/doc/generic-storage.svg" >}}
+
+The generic storage is used by the *Addon Manager* for storing downloaded Addon images, and by the *Static File Server* to store downloaded und extracted npm user-interface bundles. Addons can request to access the generic storage with the different available storage permissions (see [Addons](/developer/addons) chapter).
+
+The generic file storage is [quota](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/ch-disk-quotas) restricted per user on the standalone installation. This is archived via `/etc/fstab` entries with `usrquota` option set. You can use the `quotacheck` tool to examine the generic storage mount point.
 
 ## Configuration Storage
 
-Configuration in openHAB X is Service configuration, Inbox accepted Things, Manually configured Things, Rules, Rule Templates.
+{{< img src="/img/doc/configuration-storage.svg" >}}
 
-Configuration happens in *Namespaces*. Each addon and each service gets its own namespace and has **no** access to configuration in any other namespace. An exception is, if the CONFIG_ALL permission has been acquired by a service.
+{{< colpic ratio="50" >}}
+*Configuration* in openHAB X is Service configuration, Inbox accepted Things, Manually configured Things, Rules, Rule Templates.
+<split>
+*Runtime-Only Documents* are config descriptions (JSonSchemas), Thing descriptions ([WoT TD](https://w3c.github.io/wot-thing-description/)), Inbox Thing instances, Refresh Tokens.
+{{< /colpic >}}
+<br>
+
+Configuration happens in *Namespaces*. Each addon and each service, for example the user-credentials one, get their own namespace and have **no** access to configuration in any other namespace. An exception is, if the CONFIG_ALL permission has been acquired by a service.
 
 This is implemented via software [container volumes](https://docs.docker.com/storage/volumes/), pointing each to a subdirectory of `${OHX_HOME}/config`. Configuration of the namespace "addon-zwave" for instance can be found in `${OHX_HOME}/config/addon-zwave`.
 
@@ -93,45 +149,135 @@ Requirements for this service are:
 * User database, holding user credentials but also permissions, thing & rules filter and potentially other meta data
 * Compatible to an enterprise interface for user management
 
-SAML 2 is too complex and heavy with its big xml SOAP messaging and embedded x509 signatures for openHABs SSO and service authentication. JsonWebTokens (JWT) on top of OAuth 2 are used.
+{{< callout type="info" title="Identity & Access Protocol Evaluation">}}
+SAML 2 was also evaluated, but it is too complex and heavy with its big xml SOAP messaging and embedded x509 signatures for openHABs SSO and service authentication. 
+{{< /callout >}}
 
-OpenHAB X IAM implements [OpenID Connect Discovery](https://openid.net/connect/) for the idenity broker part with an ldap backend as the credentials database.
+OpenHAB X IAM implements [OpenID Connect Discovery](https://openid.net/connect/) for the identity broker part with an ldap backend as the credentials database. OpenID Connect Discovery is based on OAuth2.
 
+Access Tokens in OHX are [Json Web Tokens (JWT)](https://jwt.io/). Such a token can carry additional information, which is used to communicate connection endpoints like the Redis DB URL or an Influx DB username+password).
+
+Access to certain services or information is restricted by *Permissions* in openHAB X. A permission maps to an *OAuth 2 Scope*. Access tokens have all granted *Scopes* encoded and can be verified by a destination service without calling back to IAM. They have a limited life-time of 1 hour.
+
+{{< callout type="danger">}}
 IAM is probably the most powerful service. It is responsible for provisioning tokens to all other services and the entire interprocess communication comes to a halt if no tokens or invalid tokens are issued. An attacker that gained access to IAM has basically full control.
-
-Access Tokens in OHX are jwt's (JSonWebToken), meaning a json object that is base64 encoded. Such a token can carry additional information, which is used to communicate connection endpoints (like the Redis DB URL or an Influx DB username+password).
+{{< /callout >}}
 
 ### Securing Core Services
 
-It is generally assumed that the root filesystem and operating system binaries, especially the supervisior one are not compromised. The supervisior process (systemd on the standalone installation) generates a random one-time access token for each core service and passes it via stdin.
+The root filesystem and operating system binaries are assumed to be immutable, especially the supervisior. 
+It is necessary to create an initial trust between core services.
+This can be archived by a public-private key based token signing where public keys are injected into each service. This is quite a burden for development though.
+
+Instead the supervisior process (systemd on the standalone installation) generates a random one-time access token for each core service and passes it via stdin.
+
+{{< mermaid align="left" height="250px" context="iam1">}}
+graph TD;
+    systemd[Supervisior]
+    p1[Core Service 1]
+    p2[Core Service n]
+    iam[IAM]
+
+    systemd -->|"init_token t¹"| p1
+    systemd -->|"init_token t²"| p2
+    systemd -->|"t¹, t²"| iam
+{{< /mermaid >}}
 
 The supervisior will start IAM and pass all generated access tokens to it. As mentioned each token is valid for exactly one connection attempt. 
 
-If a core service looses connection to IAM or connection is denied it will quit and the supervisior starts it again with a newly generated token, notifying IAM.
+{{< mermaid align="left" height="250px" context="iam2">}}
+graph LR;
+    p1[Core Service 1]
+    p2[Core Service n]
+    iam[IAM]
 
-This procedure prevents 3rd party addon processes or other injected services to pretend being a core service and gain access tokens. This procedure does not help if a core service has been taken over by malicous code during runtime.
+    p1 -->|"t¹"| iam
+    p2 -->|"t²"| iam
+    iam --> |access_token| p1
+    iam --> |access_token| p2
+{{< /mermaid >}}
 
-Each service does only have as much privilege as it needs and runs in a separate software container with limited assigned memory, restricted filesystem access, constant CPU usage and system call monitoring (SELinux).
+If a core service looses connection to IAM or the connection is denied it will quit and the supervisior starts it again with a newly generated token, notifying IAM.
+
+This procedure effectively prevents 3rd party processes to connect to IAM.
+
+This procedure does not help if a core service has been taken over by malicous code.
+That's why a core service only has as much privilege as it needs and runs in a separate software container with limited assigned memory, restricted filesystem access, constant CPU usage and system call monitoring.
 
 ## Rule Engine
 
-The rule engine service is responsible for executing rules. The service caches rules (up to 10 MB) and keeps its cache coherent via filesystem change notifications. It runs a configurable thread pool with a default set of 5 threads, meaning 5 rules can run in parallel. Important to note is that delayed rules are suspended and do not count towards the limit. A *Rule* is generally not assumed to run long, but certain scenarios like a light animation sequence or a file upload might block a rule thread for a good reason.
+The Rule Engine service is responsible for executing rules. The service caches rules (up to 10 MB) and keeps its cache coherent via filesystem change notifications. It runs a configurable thread pool with a default set of 5 threads, meaning 5 rules can run in parallel. Important to note is that delayed rules are suspended and do not count towards the limit. A *Rule* is generally not assumed to run for long, but certain scenarios like a light animation sequence or a file upload might block a rule thread for good reason.
 
-More information about the rule engine implementation can be found in the [Rule Engine](/developer/ruleengine) chapter.
+Because *Scenes* are Rules, the Rule Engine service also implements the Addon Binding interface and exposes button Things per configured *Scene*.
+
+More information about the rule engine implementation can be found in the [Core Services](/developer/coreservices#rule-engine) chapter.
+
+## Command Queue
+
+A *Command* in openHAB X consists of a target (Addon-ID + Thing-ID + Property-ID) and a new state. The state is usually a plain text value like "100%" or "on" or "true" but can also be a complex type depending on the target Addon. A command can target
+
+* an Addon ("Enable Pairing mode for Hue Emulation Addon"),
+* a Thing ("Start self-healing of Zigbee Network"),
+* a Thing Property ("turn light brightness to 50%").
+
+*Commands* originate from &hellip;
+
+* *IO Service Addons* that receive commands themselves (like from a Web user interface or an App),
+* the Rule Engine,
+* an API call.
+
+*Commands* are forwarded to the *Addon Manager* which in turn forwards allowed and filtered commands to respective Addons and to the state database.
+
+{{< mermaid align="left" context="command_queue">}}
+graph LR;
+    service[IO Service] -->|Command| addon_manager(Addon Manager)
+	subgraph Addon Manager
+    addon_manager --> filter[Command Filter]
+	end
+	filter -->|Command| addon(Addon)
+	filter -->|Intermediate State| statedb(State Database)
+	addon -->|State| statedb
+{{< /mermaid >}}
+
+{{< callout type="info" title="Message Bus Evaluation">}}
+In the original design a dedicated message bus process was intended. For that purpose ZeroMQ, nanomsg, NNG and RabbitMQ were evaluated. Solutions like Kafka, ActiveMQ are no options because of Java. NNG was to be found as the most lightweight and modern option. It is the successor of nanomsg and written by the same author than ZeroMQ.
+
+Because the only real consumer of such a message queue is the Addon Manager, and per-process queuing of commands is also already performed in `libAddon`, the message bus process was removed from the overall concept of OHX.
+{{< /callout >}}
 
 ## State: Redis / InfluxDB Databases
 
-The Redis database is configured for 3 concurrent connections. Redis supports "namespacing"  by numbered "databases". Database 0 is used for general key-value storage. Database 1 for Thing and Rule States.
+{{< img src="/img/doc/state-storage.svg" >}}
 
-Because nothing substantial is stored in Redis, persistence is by default turned off.
+State in openHAB X is stored in two different types of databases. All key-value like state data like Thing States (identified by Thing-IDs), Thing Property States (identified by Thing-Property-IDs), IAM Refresh Tokens etc are stored in a Redis Database. Time-Series data is stored in Influx DB. The supervisior passes both database connection urls and credentials to the IAM service. 
 
-InfluxDB 2 has a web interface already integrated. It uses the concept of "Dashboard" for grouping multiple metric visualisation together on one screen. For all existing and new OHX user accounts a matching InfluxDB user is created.
+The Redis database is configured for 3 concurrent connections. Redis supports "namespacing"  by numbered "databases".
 
-IAM additionally maintains temporary users on InfluxDB with restricted table access that it passes on to other services.
+* Database 0 is used for IAM.
+* Database 1 for Thing, Thing Property and Rule States.
+* Database 2 for "Runtime-Only Documents" (see [Configuration Storage](#configuration-storage)).
 
-Certain dashboards are auto-generated by the *Addon Manager* on start for each user. For example the runtime metrics dashboard for memory, CPU usage, Rule invocations etc. The *Setup & Maintenance* interface allows to "observe" a *Thing* or *Thing Channel*. Observing means that the Thing ID / Thing Channel ID is added to the shared **StateProxy** configuration and a dashboard is created for the currently logged in user.
+Redis persistence is by default turned off.
+A Redis restart triggers `libAddon` and other consumers to re-publish states.
 
-The supervisior passes the database connection urls and credentials to the IAM service. All services with the STATE permission will get an access token (jwt) that contains the those information.
+Graphs for time-series runtime metrics or Thing States and Thing Property States are provided by InfluxDB 2. The integrated database web interface and its configurable dashboards for grouping visualisations is used.
+
+InfluxDB has a user management system. This is synchronized with the user account system of OHX by IAM.
+For all existing and new OHX user accounts a matching InfluxDB user is created.
+
+IAM additionally maintains temporary users on InfluxDB with restricted table and no dashboard access. Those are passed to services for runtime metric reporting.
+
+Certain dashboards are auto-generated by the *Addon Manager* on start for each user. For example the runtime metrics dashboard for memory, CPU usage, Rule invocations etc. The *Setup & Maintenance* interface allows to "observe" a *Thing* or *Thing Property*. Observing means that the Thing ID / Thing Property ID is added to the shared **StateProxy** configuration and a dashboard is created for the currently logged in user.
+
+## Runtime metrics
+
+InfluxDB which is used for Thing State History is also used for runtime metrics. It understands the [Prometheus](https://prometheus.io/) format, which makes it compatible to a lot of application monitoring and alerting needs. Find more information in the [Data History / Runtime Metrics](/developer/metrics) chapter.
+
+## Logging
+
+openHAB X services log to the standard output channels. On the standalone installation those outputs are routed to journald, which understands the used logging format and tokens. journald is then used for any log queries, log sorting and filtering.
+
+Addons standard output channels are captured by the addon manager and also routed to journald. If the used logging format is not recognised and log messages cannot be tokenized by journald, log queries are limited to fulltext search.
 
 ## Offline voice recognition
 
@@ -145,7 +291,7 @@ The ecosystem of Snips.Ai also consists of a marketplace for additional "Intents
 
 ## Cloud Connector
 
-The *Cloud Connector* is an "IO Service Addon" that exposes your allowed Things, Thing Channels to a Google Firestore database and listens to Firestore Real-Time changes, extracting commands that are send to the *Command Queue* service.
+The *Cloud Connector* is an "IO Service Addon" that exposes your allowed Things, Thing properties to a Google Firestore database and listens to Firestore Real-Time changes, extracting commands that are send to the *Command Queue* service.
 
 This allows cloud functions on Amazon and Google infrastructure to interact with Amazon Alexa and Google Home in basically real-time.
 

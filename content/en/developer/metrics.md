@@ -5,7 +5,7 @@ weight = 30
 tags = []
 +++
 
-This chapter is about collecting runtime metrics as well as Thing and Thing Channel states over time.
+This chapter is about collecting runtime metrics.
 
 InfluxDB 2 has a web interface already integrated. It uses the concept of "Dashboard" for grouping multiple metric visualisation together on one screen. For all existing and new OHX user accounts a matching InfluxDB user is created.
 

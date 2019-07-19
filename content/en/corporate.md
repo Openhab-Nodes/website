@@ -24,13 +24,13 @@ Feature overview:
 
 * Used for Smart Building Automation, Home Automation Solutions,
 * Compatible to Zigbee, ZWave, KNX, Modbus and many more industry standards,
-* Handles over <button class="btn-link contexthelp" id="benchmark" title="Context help">7000</button> parallel IoT devices on a small single-board computer.
+* Handles over <button class="btn-link contexthelp" id="benchmark" title="Context help">7000</button> parallel IoT devices on a small single-board computer already.
 
 <template data-popover="benchmark">
 <p style="max-width: 500px">
-Based on a p99 50ms response time on a Raspberry PI 3 with the openHAB X Distribution OS 2019-05-30 and simulated http connected WebThings.
+Based on a p99 50ms response time on a Raspberry PI 3B+ with the openHAB X Distribution OS 2019-05-30, 7000 simulated https connected WebThings and 7000 scheduled rules with a rule execution every 1 second.
 </p>
-<p>Perform your own benchmark with the <a href="#">Benchmark Tool</a>.
+<p>Perform your own benchmark with the <a href="{{< relref "/developer/coreservices" >}}#tools">Benchmark Tool</a>.
 </template>
 <ui-tooltip target="benchmark"></ui-tooltip>
 

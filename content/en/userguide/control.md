@@ -26,9 +26,9 @@ Included are:
 
 ### Security
 
-### Restricting access: IO Service Filter
+### Restricting access: State Filter
 
-In a former chapter you have learned about Thing Channel Links and Link Processors to alter data flow between Channels. IO Service Filter are similar. A filter serves as a link between the OHX state (Configured Things, Thing States, Rules etc) and the IO Service. It coodinates data flow and filters data.
+In a former chapter you have learned about *Thing Connections* and Link Processors to alter data flow between Things. State Filter are similar. A filter serves as a link between the OHX state (Configured Things, Thing States, Rules etc) and the IO Service. It coodinates data flow and filters data.
 
 A filter is executed with the access token of the IO Service, inheriting all restrictions put on that access token. Optionally it may be coupled to a user account, inheriting all restrictions put on that account. Incoming commands would then act on behalf of that user. Additionally a filter may contain further restrictive rules.
 
@@ -40,7 +40,7 @@ MULTIPLE FILTER EXAMPLE
 
 ## Hue Apps
 
-You can assign **Channels** to "Rooms", create "Scenes" and use "Timers" and "Rules".
+You can assign **Properties** to "Rooms", create "Scenes" and use "Timers" and "Rules".
 
 Scenes, Timers and Rules created in Hue Apps are also available to the openHAB X Mobile App
 and Dashboard App.
@@ -50,7 +50,7 @@ Hue Apps require a pairing procedure.
 A pairing in openHAB X is user specific. If you login as the administrator and enable Hue App Pairing,
 all connected Apps in that period will act on behalf of the administrator user.
 
-Login as a different user and enable pairing. The Hue App will only see Thing Channels that the specific user is allowed to see and control.
+Login as a different user and enable pairing. The Hue App will only see Thing Properties that the specific user is allowed to see and control.
 {{< /callout >}}
 
 ## openHAB X Mobile App
@@ -61,7 +61,7 @@ Login as a different user and enable pairing. The Hue App will only see Thing Ch
 This application is targeting (Wall-mounted) tablets. 
 
 Create multiple dashboards and synchronize them to other devices easily.
-A *Dashboard* consists of *Tiles* and Things are rendered as *Tiles* that can be placed and also moved around. The Dashboard APP comes with *Tiles* for all common Thing and Thing Channel types. With some knowledge of web technologies you can also create your own *Tiles*.
+A *Dashboard* consists of *Tiles* and Things are rendered as *Tiles* that can be placed and also moved around. The Dashboard APP comes with *Tiles* for all common Thing and Thing Property types. With some knowledge of web technologies you can also create your own *Tiles*.
 
 In the configuration screen you can add additional *Tile* repositories, like a github repository of another user.
 
@@ -70,7 +70,7 @@ Theme
 
 The default "Home" dashboard has all configured Things displayed.
 
-Things with multiple Thing Channels (like a 2-gang Switch Thing) can be reduced to a single, primary Channel. If multiple render options exist, for example because an Addon provides a custom *Tile* for a Thing, you can select between them. Things can be added multiple times to a dashboard.
+Things with multiple Thing Properties (like a 2-gang Switch Thing) can be reduced to a single, primary property. If multiple render options exist, for example because an Addon provides a custom *Tile* for a Thing, you can select between them. Things can be added multiple times to a dashboard.
 
 ## Amazon Alexa, Google Home
 
