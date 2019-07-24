@@ -13,16 +13,22 @@ To integrate a service or a device into openHAB X the framework need to know abo
 
 The following sections walk you through defining Things, their properties, events and actions, Thing configuration and how to keep the frameworks knowledge about a Thing and Thing State in sync.
 
+## Programming language
+
 Each supported programming language has a template repository with multiple examples that you can clone, build and play around with. If you haven't checked one out yet, go back to [Setting up the development enviroment](/developer/addons#setting-up-the-development-enviroment).
 
 Pick the language that you are either familiar with or that helps to solve a problem the easiest way. For instance, because of the project [openzwave](https://github.com/OpenZWave/open-zwave) that is written in C++, it makes sense to pick the C++ SDK for a ZWave based Addon.
+
+Addons are generally assumed to be event-driven (asynchronous).
+The main thread is running an event loop, controlled by `libAddon` which handles various callbacks of the framework.
 
 Examples in this chapter are written in Rust.
 
 ## Things
 
 You have learned about the [Things concept](/userguide/addons#things) in the user guide already.
-In the developer context, you need to differentiate between a [Thing Description (TD)](https://w3c.github.io/wot-thing-description/) (defined Properties, Actions, Events) and on the other hand a **Thing instance**.
+In the developer context, you need to differentiate between a [Thing Description (TD)](https://w3c.github.io/wot-thing-description/) (defined Properties, Actions, Events) and on the other hand a **Thing**, which is an instance of a specific Thing Description. It might help to imagine a TD of being like a model or template.
+
 If a Thing requires configuration, the TD is also accompanied by a [Configuration Description](/developer/addon#configurations-for-addons).
 
 ## Thing Description
@@ -69,7 +75,7 @@ The [Thing Description (TD)](https://w3c.github.io/wot-thing-description/) speci
 
 The schema is very similar for Events, Actions and Properties. You define such an item by an ID (like "overheating" in the event case) and optionally provide a title and description or a map of translated titles and descriptions.
 
-*Actions* usually do not carry any additional data. They are invoked by their ID and if invoked by http, the status code reports a success or failure.<br>[Specification](https://w3c.github.io/wot-thing-description/#actionaffordance)
+*Actions* usually do not carry any additional data. They are invoked by their ID.<br>[Specification](https://w3c.github.io/wot-thing-description/#actionaffordance)
 
 *Events* optionally have "data", that is of `type` boolean, string, integer, number or array.<br>[Specification](https://w3c.github.io/wot-thing-description/#eventaffordance)
 
@@ -79,7 +85,7 @@ The schema is very similar for Events, Actions and Properties. You define such a
 * You can restrict valid values of the string type via the "enum" key. For example: `"enum": ["On", "Off"],`
 * You can restrict valid values of the array type via the "items" key. For example: `"items": ["item1", "item2"],`. Further restrict the amount of possible selections via "minItems" and "maxItems".
 * For the binary type you must have at least one item in the "links" section.
-  Each item requires a "mediaType" and a "href", that points to a relative or absolute position on where to find the binary data.
+  Each item requires a "href", that points to a relative or absolute position on where to find the binary data. The HTTP [Content-Type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type) header must be set for such a binary http endpoint.
 * Numbers and integers can be restricted with "minimum" and "maximum".
 * All types can be annotated with a "unit".
   You find valid values for units on http://www.ontology-of-units-of-measure.org/resource/om-2/.
@@ -104,7 +110,6 @@ properties:
     type: binary
     links:
       - href: /addon/url/to/videofeed.mp4
-        mediaType: video/mp4
 {{< /code-toggle >}}
 {{< code-toggle file="thing_declarative_example3" class="code-toggle-200 mb-4" >}}
 properties:
@@ -114,7 +119,6 @@ properties:
     type: binary
     links:
       - href: /addon/url/to/image.jpg
-        mediaType: image/jpeg
 {{< /code-toggle >}}
 {{< code-toggle file="thing_declarative_example4" class="code-toggle-200 mb-4" >}}
 properties:
@@ -124,7 +128,6 @@ properties:
     type: binary
     links:
       - href: /addon/url/to/audio/stream.m3u
-        mediaType: audio/mpeg
 {{< /code-toggle >}}
 {{< code-toggle file="thing_declarative_example5" class="code-toggle-200 mb-4" >}}
 properties:

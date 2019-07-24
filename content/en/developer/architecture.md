@@ -15,7 +15,7 @@ openHAB X follows a microservices architecture, meaning that it is composed of m
 It makes use of external, well-known and understood solutions and protocols whenever possible, as long as those match with the [design principles](/developer/design_principles):
 
 * The state database is a REDIS instance.
-* The historic state database an InfluxDB 2 instance.
+* The historic state database an InfluxDB instance.
 * Users are stored and retrieved via the [LDAP protocol](https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol). OHX comes with the lightweight ldap service [GlAuth](https://github.com/glauth/glauth) for this reason, but any other ldap service can be used.
 * The API Gateway is an [envoy](https://www.envoyproxy.io) instance.
 * The container engine is podman and uses the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) on Microsoft Windows&trade;.
@@ -140,7 +140,7 @@ This architecture allows to synchronize openHAB X instances. If the periodic git
 
 ## Identity and Access Management (IAM)
 
-There are great, advanced, maintained and open source solutions for identity and access management like [Keycloak](https://www.keycloak.org/). Unfortunately those solutions are not really scaling down to a few megabyes of memory usage with an estimated user count of 1 or 2 per installation. Keycloak for example is a Java application, meaning that a jvm need to be loaded as well.
+There are great, advanced, maintained and open source solutions for identity and access management like [Keycloak](https://www.keycloak.org/). Unfortunately those solutions are not really scaling down to a few megabyes of memory usage with an estimated user count of 1 or 2 per installation and a few dozen access tokens. Keycloak for example is a Java application, meaning that a full jvm need to be loaded as well.
 
 Requirements for this service are:
 
@@ -153,11 +153,11 @@ Requirements for this service are:
 SAML 2 was also evaluated, but it is too complex and heavy with its big xml SOAP messaging and embedded x509 signatures for openHABs SSO and service authentication. 
 {{< /callout >}}
 
-OpenHAB X IAM implements [OpenID Connect Discovery](https://openid.net/connect/) for the identity broker part with an ldap backend as the credentials database. OpenID Connect Discovery is based on OAuth2.
+OpenHAB X IAM implements [OpenID Connect Discovery](https://openid.net/connect/) for the identity broker part via [Konnect](https://github.com/Kopano-dev/konnect) with [GlAuth](https://github.com/glauth/glauth) as ldap backend for the credentials database. OpenID Connect Discovery is based on OAuth2.
 
-Access Tokens in OHX are [Json Web Tokens (JWT)](https://jwt.io/). Such a token can carry additional information, which is used to communicate connection endpoints like the Redis DB URL or an Influx DB username+password).
+Access Tokens and Refresh Tokens in OHX are [Json Web Tokens (JWT)](https://jwt.io/). Such a token can carry additional information, which is used to communicate connection endpoints like the Redis DB URL or an InfluxDB username+password). Refresh Tokens have a limited life-time of 1 hour. Access Tokens can be revoked.
 
-Access to certain services or information is restricted by *Permissions* in openHAB X. A permission maps to an *OAuth 2 Scope*. Access tokens have all granted *Scopes* encoded and can be verified by a destination service without calling back to IAM. They have a limited life-time of 1 hour.
+Access to certain services or information is restricted by *Permissions* in openHAB X. A permission maps to an *OAuth 2 Scope*. Access tokens have all granted *Scopes* encoded and can be verified by a destination service without calling back to IAM. 
 
 {{< callout type="danger">}}
 IAM is probably the most powerful service. It is responsible for provisioning tokens to all other services and the entire interprocess communication comes to a halt if no tokens or invalid tokens are issued. An attacker that gained access to IAM has basically full control.
@@ -249,7 +249,7 @@ Because the only real consumer of such a message queue is the Addon Manager, and
 
 {{< img src="/img/doc/state-storage.svg" >}}
 
-State in openHAB X is stored in two different types of databases. All key-value like state data like Thing States (identified by Thing-IDs), Thing Property States (identified by Thing-Property-IDs), IAM Refresh Tokens etc are stored in a Redis Database. Time-Series data is stored in Influx DB. The supervisior passes both database connection urls and credentials to the IAM service. 
+State in openHAB X is stored in two different types of databases. All key-value like state data like Thing States (identified by Thing-IDs), Thing Property States (identified by Thing-Property-IDs), IAM Refresh Tokens etc are stored in a Redis Database. Time-Series data is stored in InfluxDB. The supervisior passes both database connection urls and credentials to the IAM service. 
 
 The Redis database is configured for 3 concurrent connections. Redis supports "namespacing"  by numbered "databases".
 
