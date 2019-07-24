@@ -7,11 +7,11 @@ tags = []
 
 This chapter is about developing a Binding for openHAB X. Remember that if your service already exposes Web Things via HTTP or follows the MQTT Homie convention, you don't need to write an Addon.
 
-To integrate a service or a device into openHAB X the framework need to know about the Thing topology and Things itself, like the attached properties, events and actions.
+To integrate a service or a device into openHAB X the framework need to know about supported Things including their configuration, attached properties, events and actions.
 
 {{< img src="/img/doc/addon-binding-thing.svg" >}}
 
-The following sections walks you through defining Things, their properties, events and actions, Thing configuration and how to keep the frameworks knowledge about a Thing and Thing State in sync.
+The following sections walk you through defining Things, their properties, events and actions, Thing configuration and how to keep the frameworks knowledge about a Thing and Thing State in sync.
 
 Each supported programming language has a template repository with multiple examples that you can clone, build and play around with. If you haven't checked one out yet, go back to [Setting up the development enviroment](/developer/addons#setting-up-the-development-enviroment).
 
@@ -242,28 +242,130 @@ No matter if declared in code or declaratively specified, `libAddon` will proces
 
 ## Thing Instance
 
-An instance internally is nothing more than an object with a unique id (uid), a reference to the thing description (ref), user assigned tags and required configuration.
-Such an object is stored in the [Configuration Database](/developer/architecture#configuration-storage). Let's assume a Weather forecast Thing (id:`mything`) of an addon `myaddon`, that requires no further configuration.
+Whenever the user accept a *Thing* from the Inbox or creates one manually, for example by creating one in the **Setup &amp; Maintenance** interface,the framework stores a tuple of a unique id (uid), a reference to the thing description (ref), user assigned tags and required configuration
+
+Such a tuple of a Weather forecast Thing (id:`forecast12hour`) of an addon `myweather`, that requires no further configuration would look like this:
 
 ```json
 {
-  "uid": "my-awesome-thing",
-  "ref": "myaddon-mything",
+  "uid": "arbitratry-unique-id",
+  "ref": "myweather-forecast12hour",
   "config": {},
   "tags": {}
 }
 ```
 
-A user may add a *Thing Instance* manually, by creating a *Thing* in the **Setup &amp; Maintenance** interface for example.
-Another way is to accept a *Thing* from the Inbox.
-Your Addon does not have to manage all of this, you are called back for each created, altered and about-to-be-removed instance.
-How you push ready to consume *Thing instances* to the Inbox is explained in a later section. 
+Such an object is stored in the [Configuration Database](/developer/architecture#configuration-storage).
 
-### Handlers
+Of course it is not enough for just the framework to know about *Things*.
+Your addon need to know as well to handle *Thing* specific resources like open network or file handlers and to associate status.
+You might want to report back to the user that a *Thing* configuration is invalid.
 
-The framework calls you back on various events. This includes when a thing instance got created, or has been edited (tags or configuration has changed) or when the user expressed his wish to remove a Thing instance. This is similar to the [Addon Handlers](/developer/addon#addon-registration).
+{{< img src="/img/doc/thing_instance.svg" >}}
+
+That is why you want to model openHAB X Things as structs or classes within your Addon code.
+Those hold the **Thing Data**, as seen above, and your own resources and state.
+
+You instruct the framework to create an object instance of your **Thing class** via an `on_instance_created` handler.
+
+## Handlers &amp; Framework Callbacks
+
+The framework calls you back on various events.
+This includes when a thing instance got created, or has been edited (tags or configuration has changed) or when the user expressed his wish to remove a Thing instance. This is similar to the [Addon Handlers](/developer/addon#addon-registration).
+
+Handlers are stored in the `AddonContext` object and that is where you need to register your handlers for Thing Instances, Thing Actions and Thing Channels.
+
+In the following code snippet an object of the `MyThing` class gets created whenever the user creates a Thing of that specific type.
+That happens because a lambda function creates a `MyThing` instance in the `on_instance_created` callback on line 16.
+
+The framework calls `on_instance_created` (find it in the `edit_thing` method) for a particular Thing Data and expects you to return an object that implements the `Thing` interface.
+That interface requires a `modified` and `remove` method to be implemented.
+
+<div class="mb-2">
+	<tab-container>
+		<tab-header>
+			<tab-header-item class="tab-active">Rust</tab-header-item>
+		</tab-header>
+		<tab-body>
+<tab-body-item >{{< highlight rust "linenos=table" >}}
+use ohx::{AddonContext, ProgressStream, Result, Action, Property, Thing, ThingInstance, ThingData};
+
+struct MyThing {
+  data: ThingData;
+  private_variables: Option<String>;
+}
+
+impl Thing for MyThing {
+  fn new(data: ThingData, ctx: &mut AddonContext) -> Option<MyThing>;
+  fn modified(&mut self, ctx: &AddonContext, thing: &ThingDesc, data: ThingData) -> Result<()>;
+  fn remove(self, ctx: &AddonContext, thing: &ThingDesc) -> Progress;
+}
+
+fn edit_thing(ctx: &mut AddonContext) {
+  // ...
+  ctx.on_instance_created(thing, | data: ThingData, ctx: &mut AddonContext | -> MyThing::new(data, ctx));
+  ThingRegistry::publish(ctx, thing);
+}
+{{< /highlight >}}</tab-body-item >
+		</tab-body>
+    </tab-container>
+</div>
+
+
+A `ThingData` contains (uid, ref, config, tags) with *uid* being a unique-id string, *ref* being of type `ThingDesc`, config is a json string, and tags a list of strings.
 
 When the user, a rule or an IO Service issues a command, the framework will also call you back.
+You would usually register respective Thing property and Thing action callbacks in the constructor / object creation like in the following code snippet.
+
+<div class="mb-2">
+	<tab-container>
+		<tab-header>
+			<tab-header-item class="tab-active">Rust</tab-header-item>
+		</tab-header>
+		<tab-body>
+<tab-body-item >{{< highlight rust "linenos=table" >}}
+use ohx::{AddonContext, ProgressStream, Result, Action, Property, Thing, ThingInstanceData};
+
+impl Thing for MyThing {
+  fn created(data: ThingData, ctx: &mut AddonContext) -> Option<MyThing> {
+    // Create Thing instance
+    let &mut instance = MyThing(data: data, private_variables: None);
+
+    // ... and link actions and property handlers. AddonContext expects 
+    ctx.on_action(data, "my_action",
+      |action: &Action| instance.action_handler(self, ctx, action) )
+
+    ctx.on_property_command(data, "brightness",
+      |property: &Property| instance.brightness_handler(self, ctx, property) )
+    Some(instance)
+  }
+
+  fn action_handler(&mut self, ctx: &AddonContext, data: ThingData) -> Progress;
+  fn brightness_handler(&mut self, ctx: &AddonContext, data: ThingData) -> Progress;
+}
+
+fn edit_thing(ctx: &mut AddonContext) {
+  let thing: ThingDesc = ThingRegistry::get(ctx, "Forecast12hoursPeriod").unwrap();
+  // ...
+  ctx.on_instance_created(thing, | data: ThingData, ctx: &mut AddonContext | -> MyThing::created(data, ctx));
+  ThingRegistry::publish(ctx, thing);
+}
+{{< /highlight >}}</tab-body-item >
+		</tab-body>
+    </tab-container>
+</div>
+
+### Progress Reporting
+
+You might have noticed in the above code snippets, that some function signatures contain a `Progress` instead of a result type.
+
+The framework does not expect you to perform a command or a remove request immediatelly.
+Instead it allows you to return a stream of progress events.
+
+Just be aware that some timing restrictions are put on this asynchronous API.
+You MUST report progress in periods smaller that 30 seconds and you may not take longer than 5 minutes to fulfill a method call and close the `Progress` stream with a `done` call.
+
+It is important to keep those restrictions in mind, because openHAB X will forcefully restart your Addon on missbehaviour.
 
 <div class="mb-2">
 	<tab-container>
@@ -274,74 +376,62 @@ When the user, a rule or an IO Service issues a command, the framework will also
 <tab-body-item >{{< highlight rust "linenos=table" >}}
 use ohx::{AddonContext, ProgressStream, Result, Action, Property, Thing, ThingInstance, ThingInstanceData};
 
-struct MyThingInstance {
-  data: ThingInstanceData;
-  private_variables: Option<String>;
-}
-
 impl ThingInstance for MyThingInstance {
-  fn created(data: ThingInstanceData, ctx: &mut AddonContext) -> Option<MyThingInstance> {
-    let &mut instance = MyThingInstance(data: data, private_variables: None);
-    // link actions and property handlers 
-    ctx.on_action(data.thing, "my_action",
-      |action: &Action| instance.action_handler(self, ctx, action) )
-    ctx.on_property_command(data.thing, "brightness",
-      |property: &Property| instance.brightness_handler(self, ctx, property) )
-    Some(instance)
-  }
-
-  fn modified(&mut self, ctx: &AddonContext, thing: &ThingDesc, data: ThingInstanceData) -> Result<()> {
-    self.data = data; // update instance data
-    Ok()
-  }
-
   fn remove(self, ctx: &AddonContext, thing: &ThingDesc) -> Progress {
-    let progress = Progress::new();
+    let mut progress = Progress::new("progress_id");
 
-    // other thread; report progress
-    progress.percentage(10);
-    // done
-    progress.done();
+    TidyUp::new().reporter( ||
+      // other thread; report progress
+      progress.percentage(10);
+      // done
+      progress.done();
+    );
 
     progress
   }
-
-  fn action_handler(&mut self, ctx: &AddonContext, data: ThingInstanceData) -> Progress {
-    Progress::done()
-  }
-
-  fn brightness_handler(&mut self, ctx: &AddonContext, data: ThingInstanceData) -> Progress {
-    Progress::done()
-  }
-}
-
-fn edit_thing(ctx: &mut AddonContext) {
-  let thing: ThingDesc = ThingRegistry::get(ctx, "Forecast12hoursPeriod").unwrap();
-  // ...
-  ctx.on_instance_created(thing, | data: ThingInstanceData, ctx: &mut AddonContext | -> MyThingInstance::created(data, ctx));
-  ThingRegistry::publish(ctx, thing);
 }
 {{< /highlight >}}</tab-body-item >
 		</tab-body>
     </tab-container>
 </div>
 
-To understand the code snippet, you should now that all handlers are stored in the `AddonContext` object.
-A `Thing` struct contains the Thing ID and Thing Description.
-There can be multiple instances for a specific Thing ID.
-Those are uniquely identified by their unique id ("uid") which is stored in the `ThingInstanceData` object.
-Imagine for example two light bulbs "myaddon-light1" and "myaddon-light2" of the Thing "color-light-thing".
-
-The framework calls `on_instance_created` for a particular Thing ID and expects you to return an object that implements the `ThingInstance` interface (or trait in Rust).
-That interface requires a `modified` and `remove` method to be implemented.
-During the construction of your `ThingInstance` object, you also register all other thing specific handlers for actions and writable properties.
-
 ### Populate the Inbox
 
-If you are able to discover handled devices or services automatically, you should push those discovery results back to the framework. Those end up in the Inbox and can be accepted or hidden by the user.
+If you are able to discover devices or services automatically, you would push those to the openHAB X Inbox.
+A user can easily pick them up and has a hassle free experience with your Addon.
 
-A discovery result can have a time-to-live (TTL) and might require 
-TODO
+A discovery result can have a time-to-live (TTL) value assigned.
+
+<div class="mb-2">
+	<tab-container>
+		<tab-header>
+			<tab-header-item class="tab-active">Rust</tab-header-item>
+		</tab-header>
+		<tab-body>
+<tab-body-item >{{< highlight rust "linenos=table" >}}
+use ohx::{AddonContext, ProgressStream, Result, Action, Property, Thing, ThingInstance, ThingInstanceData};
+
+fn discovery_start(ctx: &mut AddonContext) {
+  let thing: ThingDesc = ThingRegistry::get(ctx, "Forecast12hoursPeriod").unwrap();
+  // ...
+  ctx.on_instance_created(thing, | data: ThingData, ctx: &mut AddonContext | -> MyThing::created(data, ctx));
+  ThingRegistry::publish(ctx, thing);
+}
+
+{{< /highlight >}}</tab-body-item >
+		</tab-body>
+    </tab-container>
+</div>
+
+
+Notice that you can, if necessary, also push Thing Descriptions (TD) to the framework.
+That is required if you need to assemble TDs first, depending on a devices or services discovered capabilities.
+
+Ideally Things that you push to the Inbox are fully configured and usuable as soon as the user has accepted them.
+
+Pairing procedures or only partially discovered Things / Services might require some additional configuration.
+What you would do is to present those devices to the frameworks Inbox anyway, but report a "Configuration Required" Thing status.
+In a later section we talk about the Thing status.
 
 ## Configuration
 
@@ -413,6 +503,73 @@ Let's think of the Hue bridge example for a moment. What you would do is:
 
 No matter if you update that shared configuration on any bulb or in the dedicated bridge Thing, it will affect all other bulbs.
 So technically, you wouldn't even need a dedicated bridge Thing. Usually this pattern helps with discovery though, because most often you will first need to configure some form of access, perform a pairing procedure, before you can discover further Things.
+
+### Type safe configuration
+
+Remember that we get something like this by the framework for a **Thing**:
+
+```json
+{
+  "uid": "arbitratry-unique-id",
+  "ref": "myweather-forecast12hour",
+  "config": {
+    "key": "value",
+    "key2": 123,
+    "bool": true,
+    "complex": {
+      "a":"b"
+    }
+  },
+  "tags": {}
+}
+```
+
+The configuration is accessible as a json string via the object of type `ThingData` that is given to us during object creation and in the `modified` function.
+
+What is not shown in previous sections but would also happen during object creation (for certain languages) is to map the json configuration to a type-safe class object.
+If the configuration is invalid, you return an invalid, None or null value back to the framework.
+
+<div class="mb-2">
+	<tab-container>
+		<tab-header>
+			<tab-header-item class="tab-active">Rust</tab-header-item>
+		</tab-header>
+		<tab-body>
+<tab-body-item >{{< highlight rust "linenos=table" >}}
+use ohx::{AddonContext, ProgressStream, Result, Action, Property, Thing, ThingInstanceData};
+use serde::{Serialize, Deserialize};
+
+#[derive(Serialize, Deserialize, Debug)]
+struct MyConfig {
+  username: String;
+}
+
+struct MyThing {
+  data: ThingData;
+  config: MyConfig;
+}
+
+impl Thing for MyThing {
+  fn created(data: ThingData, ctx: &mut AddonContext) -> Option<MyThing> {
+    // Parse config
+    let config: MyConfig = match serde_json::from_str(&data.config) {
+      Ok(d) => d,
+      Error(e) => {
+        ctx.instance_denied("Configuration invalid".to_own());
+        return None;
+      }
+    };
+
+    // Create Thing instance
+    let instance = MyThing(data: data, config: config);
+    Some(instance)
+  }
+}
+
+{{< /highlight >}}</tab-body-item >
+		</tab-body>
+    </tab-container>
+</div>
 
 ## Addon &amp; Thing State
 
