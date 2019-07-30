@@ -523,11 +523,7 @@ fn main() {
     </tab-container>
 </div>
 
-## Prepare For Publishing
-
-OHX uses containers for distributing addons and a [Kubernetes Objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) file that describes how to start your container(s).
-
-### Bundle Addon to Container
+## Bundle Addon to Container
 
 Your addon executable and all libraries to execute your Addon binary are bundled into a container.
 A recipe tells a container image creation tool how to bundle your addon. OHX uses the [Dockerfile](https://docs.docker.com/engine/reference/builder/) format and therefore expect a file with that name in your source code repository.
@@ -555,83 +551,67 @@ A few parameters may need to be adjusted for your needs, for example `HEALTHCHEC
 
 The template repositories contain a build script `./build.sh`, but you can also manually call `docker build`: `docker build . -name ohx-addon-name` or `podman build . -name ohx-addon-name`.
 
-### Pod File
+## Prepare For Publishing
 
-The next step is to write the [Kubernetes Pods](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/) file.
-Although the software Kubernetes itself is not used, the file format is a well understood and documented format for container setups.
+OHX uses containers for distributing addons and a [Docker Compose](https://docs.docker.com/compose/) file `docker-compose.yml` that describes how to start your container(s).
 
-Metadata like the addon title, description, author information as well as mandatory and optional permissions are part of this declaration.
+Although the software Docker compose itself is not used in the standalone installation, the file format is a well understood, simple and documented format for container setups.
+Metadata like the addon title, description, author information as well as mandatory and optional permissions and network setup are part of this declaration.
 
-The following example for an imaginary addon called "ohx-addon-name" lists two containers. `apiVersion` is always `v1` and `kind` must be set to `Pod` (A pod is a set of containers).
-The first container entry references the addon application (which we named "ohx-addon-name" in the section above) and an mqtt broker container for demonstrational purposes.
+The following example for an imaginary addon called "ohx-addon-name" lists two container services. 
+The first entry references the addon application (which we named "ohx-addon-name" in the section above) and the second service entry an mqtt broker container for demonstrational purposes.
+
+Find the full file specification at https://docs.docker.com/compose/compose-file/.
+
 
 ```yaml
----
- apiVersion: v1
- kind: Pod
- spec:
-   containers:
-     - name: ohx-addon-name
-       image: ohx-addon-name
-       ports:
-         - containerPort: 80
-     - name: mqtt-broker
-       image: eclipse-mosquitto:latest
-       ports:
-        - port: 1883
-          protocol: TCP
-        - containerPort: 9001
-          protocol: TCP
-    securityContext:
-      allowPrivilegeEscalation: false
-      privileged: false
-      readOnlyRootFilesystem: true
-    tty: false
- metadata:
-   name: ohx-addon-name
-   uid: "ohx-addon-v1.0"
-   labels:
-     version: "1.0"
-     category: binding
-     authors: ["your name"]
-     title: "My addon"
-     title_de: "A translated title"
-     description: "A long description that *may* use markdown and \n line breaks"
-     supports:
-       manufacturers: ["Samsong"]
-       products: ["XT-1247"]
-     permissions:
-       mandatory:
-        - id: HW_BLUETOOTH
-          reason: "This addon connects to HW via Bluetooth."
-       optional: []
-     homepage: "https://www.github.com/my/repository"
-     github_releases: "https://www.github.com/my/repository"
-     issues_web: "https://www.github.com/my/repository/issues"
+version: '3.7'
+services:
+  ohx-addon-name:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+    - "5000:5000"
+    volumes:
+    - logvolume01:/var/log
+    depends_on:
+    - mqttbroker
+  mqttbroker:
+    image: eclipse-mosquitto:latest
+    volumes:
+    - logvolume01:/var/log
+    ports:
+    - "1883:1883"
+volumes:
+  logvolume01: {}
+metadata:
+  name: ohx-addon-name
+  version: "1.0"
+  category: binding
+  authors: ["your name"]
+  title: "My addon"
+  titles:
+    de: "A translated title"
+  description: "A long description that *may* use markdown and \n line breaks"
+  supports:
+    manufacturers: ["Samsong"]
+    products: ["XT-1247"]
+  permissions:
+    mandatory:
+    - id: HW_BLUETOOTH
+      reason: "This addon connects to HW via Bluetooth."
+    optional: []
+  homepage: "https://www.github.com/my/repository"
+  github_releases: "https://www.github.com/my/repository"
+  issues_web: "https://www.github.com/my/repository/issues"
 ```
 
-The `image: ohx-addon-name` line points to the image that is created with the local Dockerfile.
+The `ohx-addon-name` entry with the `build` key points to the dockerfile that creates the image. The `build` key is implicit and can be left out if the standard "Dockerfile" name has been used and if that file resides in the same directory as the `docker-compose.yml` file.
 
-Hardware
-: If your addon interacts with hardware like Bluetooth directly (via kernel system calls), you need to set `allowPrivilegeEscalation` and `privileged` to true. This is not necessary for libusb access (but you need the HW_USB permission). The next section talks about permissions and restrictions in more detail.
+All addon metadata sits under "metadata". 
 
-Networking
-: Define `containerPort` if ports should be only opened for the device that is running the container, meaning that only other addons and containers can interact with that service. Use `port` for ports that should be opened on the host operating system. In the example above an mqtt broker is exposed and potentially reachable via the internet.
-
-You can map a containers port to a different host port. Use a structure like this:
-```yaml
-ports:
-- port: 1883
-  hostPort: 8000
-  protocol: TCP
-```
-
-Metadata
-: All addon metadata sits under "metadata->labels". 
-
-.
-
-* `title` and `description` can be translated by appending the 2 or 3 letter language code to the key (eg `title_de` for German).
+* `title` and `description` can be translated by having the 2 or 3 letter language code as subkey to `titles` or `descriptions`. (eg *de* for German).
 * `version` Assign your addon a version. Consider to use semantic versioning.
 * `category` is either "binding" or "ioservice". Leave this key out if none of those are matching.
 * `supports` This object contains to lists `manufacturers` and `products`. Add all matching entries. For an Addon that supports specific Samsung TVs, you would set the keys accordingly. 
@@ -640,13 +620,128 @@ Metadata
 * `github_releases` An optional key to the github releases page. This should be set if Github releases are used for distributing new addon versions. The **AddonsManager** will periodically check for new releases.
 * `issues_web` If this is set, a "Report an Issue" link will appear whenever appropriate in the **Setup &amp; Maintenance** interface.
 
+### Process Management Addon
+
+If your Addon is some form of process management interface, it needs to share the process id namespace and maybe also the {{< details title="IPC (POSIX/SysV IPC)" >}}IPC (POSIX/SysV IPC) namespace provides separation of named shared memory segments, semaphores and message queues.
+
+Shared memory segments are used to accelerate inter-process communication at memory speed, rather than through pipes or through the network stack.{{< /details>}} namespace. Do so with:
+
+```yml
+pid: "host"
+ipc: "host"
+```
+
+### Hardware
+
+If your addon interacts with the host kernel directly for tasks like network hardware management, serial interface configuration and hardware related kernel calls, you have some options.
+
+Add Linux [capabilities](http://man7.org/linux/man-pages/man7/capabilities.7.html). That is possible via the `cap_add` and `cap_drop` keys. See https://docs.docker.com/compose/compose-file/#cap_add-cap_drop.
+
+```yaml
+cap_add:
+  - ALL
+
+cap_drop:
+  - NET_ADMIN
+  - SYS_ADMIN
+```
+
+Use explicit device file mapping. This is not recommended.
+
+```yml
+devices:
+  - "/dev/ttyUSB0:/dev/ttyUSB0"
+```
+
+Use OHX permissions. The supervisior process will make sure that your container gets access to related hardware file nodes. The following permissions are currently supported.
+
+* USB: You need the HW_USB permission
+* Bluetooth: HW_BLUETOOTH
+* I2C: HW_I2C
+* Cameras: HW_CAM. This is most of the time a subset of the USB permission because many cameras are integrated via USB. This permission allows you to access the video4linux (eg `/dev/video*`) device files.
+
+A later section talks about permissions and restrictions in more detail.
+If you forget to declare required hardware in the Kubernetes Pods file, you will **not have access.**
+
+### Networking
+
+By default a single network for your addon is set up. Each container of your addon joins the default network with an own IP address and is both reachable by other containers on that network, and discoverable by them at a hostname identical to the container name.
+
+Let's examine the relevant networking parts of the example from above:
+
+```yaml
+version: '3.7'
+services:
+  mqttbroker:
+    image: eclipse-mosquitto:latest
+    ports:
+    - 1883
+```
+
+Each container can now look up the hostname "mqttbroker" and get back the appropriate container’s IP address. For example, to connect to the mqtt broker you would use the URI `mqtt://username:password@mqttbroker:1883`.
+
+If your addon needs full network host access you can set `network_mode`. This is not recommended and will result in a big warning during addon installation.
+
+```yaml
+network_mode: host
+```
+
+Instead you should explicitely name the ports that you want to be exposed. A few examples:
+
+```yml
+ports:
+ - "3000"
+ - "3000-3005"
+ - "8000:8000"
+ - "9090-9091:8080-8081"
+ - "49100:22"
+ - "127.0.0.1:8001:8001"
+ - "127.0.0.1:5000-5010:5000-5010"
+ - "6060:6060/udp"
+```
+
+As you can see, you can expose single ports (`3000`), a port range (`3000-3005`), map container ports to host ports (`8000:8000`) and restrict ports to specific network interfaces like localhost (`127.0.0.1`). The default port type is TCP, for UDP use a `/udp` suffix.
+
+If you expose a port, without mapping it, that port is only visible to other containers and is not visible to the host network interface. To make the mqtt broker from above potentially accessible from the Internet, you would use a port mapping like so:
+
+```yaml
+version: '3.7'
+services:
+  mqttbroker:
+    image: eclipse-mosquitto:latest
+    ports:
+    - "1883:1883"
+```
+
+TCP Port 8443 is always exported and used for interprocess communication (gRPC).
+UDP Port 5353 is mapped to the same host port for service discovery announcements via mDNS.
+
+#### Access Internet
+
+Outgoing connections (addresses outside of the container network subnet) are by default blocked. If your addon requires certain network services, you must list them under the `firewall_allow` key. A few examples:
+
+```yml
+version: '3.7'
+services:
+  mqttbroker:
+    image: eclipse-mosquitto:latest
+    firewall_allow:
+    - "www.google.com"
+    - "*.example.com"
+    - "8.8.8.8"
+    - "8.8.8.8/24"
+    - "*"
+```
+
 ### Restrictions &amp; Permissions
 
-A pod (set of containers) runs an in isolated, contained environment and is confined to 100 MB of disk quota and 1 MB of configuration data. A pod might request a larger disk quota via the DISK_QUOTA_500 (500 MB), DISK_QUOTA_1000 (1 GB) and DISK_QUOTA_MAX permissions.
+A container runs in an isolated, contained environment and is confined to 100 MB of disk quota and 1 MB of configuration data. A container might request a larger disk quota via the DISK_QUOTA_500 (500 MB), DISK_QUOTA_1000 (1 GB) and DISK_QUOTA_MAX permissions.
 
-CPU Time is limited to 20% for a pod, except if the user has granted the CPU_MAX permission. Main memory is restricted to 200 MB for an Addon, except if the user has granted the MEM_500 (500 MB), MEM_1000 (1GB) or MEM_MAX permission. Access to hardware like Bluetooth and USB is denied. Request for HW_BLUETOOTH, HW_NETWORK, HW_IC2, HW_GPIO, HW_USB to access respective hardware.
+CPU Time is limited to 20% for a container, except if the user has granted the CPU_MAX permission. Main memory is restricted to 200 MB for an Addon, except if the user has granted the MEM_500 (500 MB), MEM_1000 (1GB) or MEM_MAX permission. Access to hardware like Bluetooth and USB is denied. Request for HW_BLUETOOTH, HW_NETWORK, HW_IC2, HW_GPIO, HW_USB to access respective hardware.
 
-The above restrictions make sure that malicous addons cannot just start mining Bit-Coins on a users system (at least not with full power and to the extend that other services are affected) or abuse it in other ways or overheat the hardware.
+A container is restricted in the list of allowed kernel system calls it can make. Linux seccomp and AppArmor profiles are in use.
+
+The above restrictions make sure that malicous addons cannot just raise its allowd CPU time and start mining Bit-Coins (at least not with full power and to the extend that other services are affected) or abuse it in other ways or overheat the hardware.
 
 If you require further access, you may use the `privileged` key. That should be really rare and you rather talk to the core team to add special permissions for your use case. The **Setup &amp; Maintenance** interface will warn a user from accepting a privileged Addon.
 
@@ -679,3 +774,30 @@ fn main() {
     </tab-container>
 </div>
 
+## Publish to Addon Registry
+
+To make your Addon appear in the list of Addons on **Setup &amp; Maintenance** in the <a href="" class="demolink">Addon</a> section or here on the website, you want to publish it. 
+
+Publishing is done via a command line utility.
+
+1. Create an [account](/login) here on the website. Each Addon entry must be associated with an account.
+2. Create an account on https://hub.docker.com/. Your addon containers will be uploaded to the hub.
+2. If you haven't installed Rust yet, you need at least [Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html)
+3. Install the tool with `cargo install ohx-publish`.
+4. If your addon is hosted in a git repository and you are executing the tool in a repository directory, make sure that the workspace is clean and everything is commited.
+4. The utility does not take any arguments and is expected to be executed in the directory that contains the `docker-compose.yml` file: `./ohx-publish`.
+
+Your `docker-compose.yml` file is analysed to find out about your addons name and version. 
+
+Publish for the first time
+: If you haven't published anything yet from your addon directory, the tool opens https://www.openhabx.com and in a second step https://hub.docker.com/ for you to authenticate. If there is no addon from another user with the same name, your addon is build and published.
+
+If there is an older version, that version is archived and replaced with the new version. 
+
+{{< details type="info" >}}
+If your Addon is written in a language that is compiled to machine code (Rust, C++, Go), it needs to be cross compiled to Armv7 and Armv8. This will require about 1 GB disk space for the compiler toolchains. You are expected to build on an x86-64 machine.
+{{< /details >}}
+
+### Addon Reviews
+
+An Addon can get the "reviewed" badge by Addon registry maintainers. The build artifacts are associated with your git revision during build. Your source code at the given git revision will be checked for malicous code, and code quality in terms of resource leakage.

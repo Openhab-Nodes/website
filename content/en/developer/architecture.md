@@ -7,45 +7,54 @@ tags = []
 
 This chapter talks about the general architecture of openHAB X and how services interact with each other. This overview provides an insight on what technologies and protocols are used in which situations and also talks about alternatives when appropriate.
 
-To get a general idea of all involved components, let's have a look at the following picture.
-
-TODO
-
-openHAB X follows a microservices architecture, meaning that it is composed of multiple single-purpose processes instead of one monolithic process.
+openHAB X follows a microservices architecture, meaning that it is composed of multiple single-purpose processes.
 It makes use of external, well-known and understood solutions and protocols whenever possible, as long as those match with the [design principles](/developer/design_principles):
 
 * The state database is a REDIS instance.
-* The historic state database an InfluxDB instance.
-* Users are stored and retrieved via the [LDAP protocol](https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol). OHX comes with the lightweight ldap service [GlAuth](https://github.com/glauth/glauth) for this reason, but any other ldap service can be used.
+* The historic state and time-series database an InfluxDB 2 instance.
+* Users are stored and retrieved via the [LDAP protocol](https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol). OHX comes with the lightweight ldap service [GlAuth](https://github.com/glauth/glauth) by default.
 * The API Gateway is an [envoy](https://www.envoyproxy.io) instance.
 * The container engine is podman and uses the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) on Microsoft Windows&trade;.
 
 All other services are called OHX Core Services and are developed by OHX developers and contributors. Main programming languages for Core Services are Rust and Go.
-Services interact with each other via remote procedure calls. gRPC (protobuf on top of http2) has been chosen as the interprocess protocol and mechanism.
 
-protobuf specification files are also used to automatically generate API documentation for each service. Most of the time you want to use the Rust wrapper libraries for Core services or `libAddon` for Addon development.
+Services interact with each other via remote procedure calls. gRPC (**protobuf** on top of http2) has been chosen as the interprocess protocol and mechanism. The maintenance web interface interacts via the gRPC-web protocol with services. protobuf specification files are used to automatically generate API documentation for each service.
+
+To get a general idea of all involved components, let's have a look at the following picture.
+The picture is divided into a left and right area. Left representing the general network / Internet and to the right all services without Internet exposure are shown. Services that sit on the border are exposing network ports.
+
+{{< img src="/img/doc/openhabx-overview.svg" maxwidth="100%" >}}
 
 The next sections introduce some of the components found in the picture above. At the end of this chapter you should have a general understanding of the OHX architecture.
 You find in-depth discussions and API usage examples in dedicated chapters.
  
 ## API Gateway / Reverse Proxy
 
-You already know that each OHX service offers a gRPC interface.
-Not considering addons like an MQTT broker, the only process that exposes ports to the outside (non-localhost) is the **API Gateway** process. It exposes an http/2 (430) port on a standard installation and proxies calls to the respective service.
+OHX services offer gRPC (remote procedure call) interfaces for interprocess communication.
 
-OHX uses [envoy](https://www.envoyproxy.io), an efficient reverse proxy with rate limiting and circuit breaker support. envoy is also used as grpc to grpc-web proxy to make the gRPC APIs of the different services available to the **Setup &amp; Maintenance** interface.
+Not considering addons like an MQTT broker, the only process that exposes ports to the outside (non-localhost) is the **API Gateway** process. It exposes an http/2 port (430) on a standard installation and proxies calls to the respective service.
 
-An Addon can register custom http1, https and http/2 endpoints (like for example "/api" for the hue emulation IO Service).
+OHX uses [envoy](https://www.envoyproxy.io), an efficient reverse proxy with rate limiting and circuit breaker support which protects against Distributed Denial of Service (DDos) attacks. envoy is also used as grpc to grpc-web proxy to make the gRPC APIs of the different services available to the **Setup &amp; Maintenance** interface. gRPC endpoints require authorisation.
+
+An Addon and also core services can register custom http1, https and http/2 endpoints. The Identity and Access Management (IAM) service for example registers "/token" and "/auth" on https for OAuth2 and the hue emulation IO Service registers the "/api" endpoint on http1 and https.
+
+On a standalone installation the "First Time Setup" service offers a captive portal on http1 for a user to configure WiFi and perform other first-time setup procedures. The captive portal is disabled after that procedure.
 
 ## Static File Server
 
-A simple, static file server serves all web-based user interfaces under `/static/ui/{interfacename}`. Addons can provide additional files to be served. The **Setup &amp; Maintenance** interface is served as the root http endpoint and lists all other interfaces on its home page.
+A static file server serves all files that are found in the file server root directory (by default `./www-server`), including web-technology based user interfaces.
 
-The file server service also has an npm downloader integrated to install additional web-based user interfaces. It allows to list all available user interfaces in the npm organisation namespace "openhabx".
+An Addon container can have a `/static` directory. That one is mounted in the root directory following the pattern `./www-server/{addonid}`. Those files and web applications are accessible via https://openhabx-ip/{addonid}.
+
+The file server service also has an npm downloader integrated and works closely in tandem with the Addon Manager to support npm bundle installation. Web-based user-interfaces like **Setup &amp; Maintenance** are packaged as npm bundle instead of as a container. Those files are accessible via https://openhabx-ip/ui/{bundleid} and files are extracted to `./www-server/ui/{bundleid}`.
+
+If a `package.json` file is present, no matter if in an addon static directory or npm bundle, that file will be analysed and checked for the "management" or "control" user interface marker. Find more details in the [User Interfaces](/developer/frontend_apps) chapter. One of the found interfaces will be served as the root https endpoint. By default this is **Setup &amp; Maintenance**. Detected interfaces are ordered by a priority system.
+
+**Setup &amp; Maintenance** lists all other interfaces on its home page. The static file server API and configuration allows to change the default interface and the API also allows you to enumerate over all detected interfaces.
 
 ## Addons
 
-An Addon in OHX may consist of multiple processes (services). At least one is a process that registers itself to the **AddonsManger** service and usually integrate external web-services or devices ("binding") or exposes openHAB X Things in some form or another ("IO Service").
+An Addon in OHX may consist of multiple processes (services). At least one process registers itself to the **Addons Manger**. An Addon usually integrate external web-services or devices ("binding") or exposes openHAB X Things in some form or another ("IO Service").
 
 For easy distribution and enhanced resource control as well as enforcing security features, Addon processes are bundled and running as *software containers*.
 
@@ -249,18 +258,22 @@ Because the only real consumer of such a message queue is the Addon Manager, and
 
 {{< img src="/img/doc/state-storage.svg" >}}
 
-State in openHAB X is stored in two different types of databases. All key-value like state data like Thing States (identified by Thing-IDs), Thing Property States (identified by Thing-Property-IDs), IAM Refresh Tokens etc are stored in a Redis Database. Time-Series data is stored in InfluxDB. The supervisior passes both database connection urls and credentials to the IAM service. 
+State in openHAB X is stored in two different types of databases. Time-Series data is stored in InfluxDB. State data like Thing States (identified by Thing-IDs), Thing Property States (identified by Thing-Property-IDs), IAM Refresh Tokens etc are stored in Redis. 
 
-The Redis database is configured for 3 concurrent connections. Redis supports "namespacing"  by numbered "databases".
+The Redis database is configured for 3 concurrent connections. Redis supports "namespacing" via numbered "databases".
 
 * Database 0 is used for IAM.
 * Database 1 for Thing, Thing Property and Rule States.
 * Database 2 for "Runtime-Only Documents" (see [Configuration Storage](#configuration-storage)).
 
-Redis persistence is by default turned off.
-A Redis restart triggers `libAddon` and other consumers to re-publish states.
+A key-value database like Redis is exceptionally fast and memory as well as storage efficient for accessing data by key, not so much for querying by other criteria or for paging through all data. Thing State data is never queried though and only ever accessed by the Thing unique ID.
+
+Redis persistence is by default turned off. A restart of OHX therefore causes all Things to not have a current state. A Redis restart triggers `libAddon` and other consumers to re-publish states though.
 
 Graphs for time-series runtime metrics or Thing States and Thing Property States are provided by InfluxDB 2. The integrated database web interface and its configurable dashboards for grouping visualisations is used.
+
+Database Credentials
+: The supervisior passes both database connection urls and credentials to the IAM service. 
 
 InfluxDB has a user management system. This is synchronized with the user account system of OHX by IAM.
 For all existing and new OHX user accounts a matching InfluxDB user is created.

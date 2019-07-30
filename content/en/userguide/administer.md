@@ -20,6 +20,8 @@ You can create a new user via the "New User" link on the left side menu. A user 
 
 **Note**: You must have at least one administrative user.
 
+An administrator can assign permissions to user accounts as well as restrict their view and control on available Things. Those filters follow the syntax explained in the [Control your Smarthome](/userguide/control) chapter in the [State Filter](/userguide/control#state-filter) section.
+
 ## Device &amp; Service Tokens
 
 Devices usually require a form of authorisation, like the Hue bridge with the pairing button or the Ikea Trafri Bridge with a security code on the back. The same is true for external services, like a weather service that requires an API Key.

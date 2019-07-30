@@ -118,6 +118,11 @@ Some addons like to have elevated permissions for more CPU time or a larger disk
 
 **Note**: Not every version of every Add-on is reviewed. Check for user ratings, comments, the release date and the open Issues count before installing.
 
+### Addon Sources
+
+By default the https://www.openhabx.com Addon registry is queried for Addons.
+Addon sources are managed on the <a class="demolink" href="">Addons</a> page in the subsection "Addon Registries".
+
 ## Things
 
 openHAB X is abstracting devices and services **Things**. A simple example is a lightbulb. A Thing can have related or child Things, like a HiFi amplifier with different control zones and various functionalities. A Thing consists of a Name, a description and Thing Properties.
