@@ -1,3 +1,4 @@
+import Swiper from 'swiper';
 
 window.customElements.define('ui-swiper', class extends HTMLElement {
     constructor() {

@@ -1,0 +1,22 @@
+{
+    "binding-hue": {
+        "v":1,
+        "p":4,
+        "d":12
+    },
+    "binding-zwave": {
+        "v":1,
+        "p":5,
+        "d":15
+    },
+    "binding-zigbee": {
+        "v":2,
+        "p":5,
+        "d":17
+    },
+    "binding-amazonechocontrol": {
+        "v":1,
+        "p":5,
+        "d":2
+    }
+}

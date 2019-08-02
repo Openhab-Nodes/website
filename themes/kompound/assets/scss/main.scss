@@ -149,8 +149,7 @@ i.fas {
     display: none;
 }
 
-html,
-body {
+html {
     height: 100%;
 }
 
@@ -160,6 +159,11 @@ body {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+    min-height: -moz-available;
+    min-height: -webkit-fill-available;
+    main {
+        flex: 1 0 auto;
+    }
 }
 
 a[target="_blank"]:not(.noref):after {

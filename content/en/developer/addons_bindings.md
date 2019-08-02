@@ -140,6 +140,8 @@ properties:
 
 ### Semantic tagging
 
+{{< img src="/img/doc/brick_schema.png" style="float:left;margin-right:10px" height="50px" maxwidth="50px" >}}
+
 OHX uses the https://iot.mozilla.org/schemas and [Brick schema](https://brickschema.org/) to add some semantic context to Things.
 It helps user interfaces to know if a Thing is a light bulb or a rollershutter.
 It helps the unit-of-measurement processor to know in which unit your sensor reading is and how to convert it to your region specific unit.

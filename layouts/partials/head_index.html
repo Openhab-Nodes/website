@@ -2,12 +2,12 @@
 <link rel="stylesheet"
 	href='{{- (resources.Get "/scss/index.scss" | toCSS $options | minify).Permalink | safeHTMLAttr -}}'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
-<script defer src="/js/component_swiper.js"></script>
-<script defer type="module" src="/js/cmp_subscription.js"></script>
+<link rel="stylesheet" href="/css/swelte.css">
+<script defer src="/js/cmp/swiper.js"></script>
+<script defer type="module" src="/js/cmp/subscription.js"></script>
 <script defer src="/js/rete.min.js"></script>
 <script src="https://unpkg.com/stage0@0.0.15/dist/keyed.min.js"></script>
 <script src="https://unpkg.com/stage0@0.0.15/dist/index.min.js"></script>
 <script defer src="/js/stage0.js"></script>
 <script defer src="/js/connection-plugin.min.js"></script>
-<script defer type="module" src="/js/cmp_interactive_interconnect.js"></script>
+<script defer type="module" src="/js/cmp/interactive_interconnect.js"></script>

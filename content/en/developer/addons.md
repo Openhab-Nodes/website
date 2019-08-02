@@ -10,7 +10,7 @@ Programming libraries are provided for Rust, C++, Java and NodeJS.
 
 This chapter sheds some light on what addons actually are and introduces into addon development. It starts with how to setup your development environment and refers to the various *template* repositories that allow you to easily clone example code.
 
-This text assumes that you know how to open and operate a terminal, because for brevity reasons only command line instructions are given most of the time.
+This text assumes that you know how to open and operate a terminal, because for brevity reasons only command line instructions are given.
 
 ## Home Automation Framework n+1
 
@@ -18,13 +18,26 @@ There are a few other open source Home Automation software frameworks out there.
 
 An idiomatic OHX Addon follows standards whenever possible and runs as an autonomous process, making it hopefully easy to integrate it with other frameworks if necessary.
 
-**Configuration Descriptions** are expressed as [JSonSchema](https://json-schema.org/) &amp; [UISchema](https://github.com/mozilla-services/react-jsonschema-form/blob/master/docs/form-customization.md).
-**Things Declaration** happens via [Web Thing Descriptions](https://w3c.github.io/wot-thing-description/).
-{{< details title="More Info">}}
-Some frameworks don't use machine readable descriptions and rely on documentation and key-value text based configuration. Other frameworks use similar, but less powerful and non standardized schemas, like [openHABs ThingTypes](https://www.openhab.org/docs/developer/bindings/thing-xml.html).
-{{< /details >}}
 
-**Addon and Thing States** are by default published via interprocess communication, gRPC to be precise. `libThingState` can be swapped with an implementation that instead publishes to MQTT or via the http and websocket based [Web Things API](https://iot.mozilla.org/wot/) for example.
+{{< colpic ratio="50" left="mx-2" right="mx-2" >}}
+
+{{< imgicon src="fas fa-asterisk" height="30px" caption="**Meta Data**" >}}
+
+**Configuration Descriptions** are expressed as [JSonSchema](https://json-schema.org/) &amp; [UISchema](https://github.com/mozilla-services/react-jsonschema-form/blob/master/docs/form-customization.md). Those are used to automatically generate configuration forms.
+
+**Things Declaration** happens via [Web Thing Descriptions](https://w3c.github.io/wot-thing-description/).
+
+This meta data can be transformed into other frameworks formats like [openHABs ThingTypes](https://www.openhab.org/docs/developer/bindings/thing-xml.html).
+
+<split>
+
+{{< imgicon src="fas fa-exchange-alt" height="30px" caption="**Thing States**" >}}
+
+Addon and Thing States are by default published via interprocess communication, gRPC to be precise.
+
+`libThingState` can be swapped with an implementation that instead publishes to MQTT or via the http and websocket based [Web Things API](https://iot.mozilla.org/wot/) for example.
+
+{{< /colpic >}}
 
 ## Setting up the development enviroment
 
@@ -113,23 +126,27 @@ That is what the next sections are about.
 
 ### Test without Containers
 
-Usually an Addon and also openHAB X core services are bundled into software containers for distribution, but also for local execution. Containers are explained in a later section.
+Addons and also openHAB X core services are bundled into software containers for distribution and execution. Containers are explained in a later section.
 
-For running a service or an addon in a debug session, containers are not recommended.
+For running an addon in a debug session, containers are not recommended. The interaction between the debugger and the encapsulated addon container process might be interfered by the operating system. Instead:
 
 1. Execute `sh ./start_all.sh` of the [core repository](https://www.github.com/openhab-nodes/core) on the command line to start openHAB X.
-2. And then start your addon or the example addon via the command line given above, like `cargo run` for a Rust addon or `npm run start` for NodeJS.
+2. Start your Addon (or an example Addon) via the command line given above, like `cargo run` for a Rust addon or `npm run start` for NodeJS orr use the respective debugger to start the process.
 
 ### Test With Production OHX
 
 It is possible to run your addon on your developer machine and have your (production) OHX installation running on a different system.
-For this to work, you first need to create an access token on the <a class="demolink" href="">Maintenance</a> page with the "REMOTE_ADDON" permission. Add additional permissions as needed. You are basically executing the procedure that happens when an addon is installed.
+
+For this to work, you first need to create an access token on the <a class="demolink" href="">Maintenance</a> page with the "REMOTE_ADDON" permission. Add additional permissions as needed. 
 
 Start your addon with the environment variable `REMOTE_OHX=192.168.1.11` set (change the IP accordingly) and the environment variable `REMOTE_OHX_ACCESS` should be set to your token, like `REMOTE_OHX_ACCESS=e5868ebb4445fc2ad9f9...49956c1cb9ddefa0d421`.
 
-The addon should report that it will attempt to connect to a remote instance.
-Please note, that configuration is not shared across devices.
+The addon **should** report that it will attempt to connect to a remote instance.
 Depending on the granted permissions you will have access to Things, Thing States, Thing States history, the user database etc.
+
+{{< callout type="warning" >}}
+Please note, that the configuration and Addon Things are stored on the remote OHX installation.
+{{< /callout >}}
 
 {{< callout type="info" >}}
 As long as you do not grant full cpu, memory and disk quota permissions, it is generally safe to develop an addon with your production OHX. It is almost impossible to break anything or render the installation unstable.
@@ -137,7 +154,7 @@ As long as you do not grant full cpu, memory and disk quota permissions, it is g
 
 ## Addon Types
 
-If you remember the architecture chapter from earlier, openHAB X consists of different core services that are accessible via purpose-specific libraries. Two main types of Addons are especially important for OHX and have utility libaries available for easier implementation and help with common operations.
+Addons can be categorized into two main purposes.
 
 {{< colpic ratio="50" left="mx-2" right="mx-2" >}}
 
@@ -602,9 +619,8 @@ metadata:
     - id: HW_BLUETOOTH
       reason: "This addon connects to HW via Bluetooth."
     optional: []
-  homepage: "https://www.github.com/my/repository"
-  github_releases: "https://www.github.com/my/repository"
-  issues_web: "https://www.github.com/my/repository/issues"
+  homepage: "https://example.com"
+  github: "https://www.github.com/my/repository"
 ```
 
 The `ohx-addon-name` entry with the `build` key points to the dockerfile that creates the image. The `build` key is implicit and can be left out if the standard "Dockerfile" name has been used and if that file resides in the same directory as the `docker-compose.yml` file.
@@ -617,8 +633,8 @@ All addon metadata sits under "metadata".
 * `supports` This object contains to lists `manufacturers` and `products`. Add all matching entries. For an Addon that supports specific Samsung TVs, you would set the keys accordingly. 
 * `permissions` List the mandatory and optional permissions. You may optionally tell the user why a permission is necessary via the `reason` field. See the next section for further information.
 * `homepage` A website for that addon. Might just point to a Github repository.
-* `github_releases` An optional key to the github releases page. This should be set if Github releases are used for distributing new addon versions. The **AddonsManager** will periodically check for new releases.
-* `issues_web` If this is set, a "Report an Issue" link will appear whenever appropriate in the **Setup &amp; Maintenance** interface.
+* `github` An optional key to the github page of your addon. If this is set, a "Report an Issue" link will appear whenever appropriate in the **Setup &amp; Maintenance** interface. The addon registry page will show your repository "stars" and issue count. It will also be used as homepage if no `homepage` has been set. If you use Github releases (you should!) for distributing new addon versions, the **AddonsManager** will notice this and periodically check for new releases.
+* `logo_url` An optional url to a logo graphics file that is display in the addon manager and on the addon registry page. Must be square and ideally it is in 200x200px resolution. If this is not set, your github repostory is checked if it contains a "logo.png" file in the root directory.
 
 ### Process Management Addon
 

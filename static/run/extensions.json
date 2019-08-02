@@ -14,12 +14,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580812537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.airquality/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.airquality/changelog.md"
     },
     {
         "id": "binding-airvisualnode",
@@ -36,12 +37,13 @@
         "description": "Veniam elit occaecat ipsum velit. Dolor qui exercitation labore reprehenderit dolore. Sunt ut nisi commodo irure duis nostrud adipisicing pariatur enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580822537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.airvisualnode/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.airvisualnode/changelog.md"
     },
     {
         "id": "binding-allplay",
@@ -58,12 +60,13 @@
         "description": "Quis cupidatat commodo consequat anim incididunt. Cillum aliqua minim magna amet consectetur labore sint qui nostrud magna nulla eiusmod. Ea exercitation fugiat duis id irure mollit non.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580832537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.allplay/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.allplay/changelog.md"
     },
     {
         "id": "binding-amazondashbutton",
@@ -80,12 +83,13 @@
         "description": "Ipsum proident commodo nulla fugiat adipisicing amet nisi fugiat est eu commodo commodo nulla fugiat. Fugiat commodo duis laborum incididunt incididunt dolore amet reprehenderit officia incididunt ut magna. Occaecat non labore esse qui anim reprehenderit veniam sunt dolor reprehenderit qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580842537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.amazondashbutton/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.amazondashbutton/changelog.md"
     },
     {
         "id": "binding-amazonechocontrol",
@@ -102,12 +106,13 @@
         "description": "Ipsum proident commodo nulla fugiat adipisicing amet nisi fugiat est eu commodo commodo nulla fugiat. Fugiat commodo duis laborum incididunt incididunt dolore amet reprehenderit officia incididunt ut magna. Occaecat non labore esse qui anim reprehenderit veniam sunt dolor reprehenderit qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580852537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.amazonechocontrol/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.amazonechocontrol/changelog.md"
     },
     {
         "id": "binding-astro",
@@ -124,12 +129,13 @@
         "description": "Tempor velit irure in ad laborum ex Lorem. Officia sint velit eu pariatur deserunt labore amet ea est. Deserunt fugiat reprehenderit culpa aliquip velit fugiat do.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580862537,
         "status": {
-            "status": "INSTALLED",
+            "status": "INSTALLED"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.astro/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.astro/changelog.md"
     },
     {
         "id": "binding-atlona",
@@ -146,12 +152,13 @@
         "description": "Esse reprehenderit culpa est ipsum quis adipisicing esse. Lorem quis amet non esse et aliquip elit duis ad qui excepteur. Veniam voluptate officia id laboris do in fugiat laborum duis.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580872537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.atlona/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.atlona/changelog.md"
     },
     {
         "id": "binding-autelis",
@@ -168,12 +175,13 @@
         "description": "Nostrud ullamco exercitation ut tempor non minim laborum. Et non ut aute aliqua nisi aute cupidatat minim incididunt duis et adipisicing. Fugiat exercitation mollit nulla aliqua reprehenderit aute quis ipsum dolore enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580882537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.autelis/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.autelis/changelog.md"
     },
     {
         "id": "binding-avmfritz",
@@ -190,12 +198,13 @@
         "description": "Esse reprehenderit culpa est ipsum quis adipisicing esse. Lorem quis amet non esse et aliquip elit duis ad qui excepteur. Veniam voluptate officia id laboris do in fugiat laborum duis.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580892537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.avmfritz/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.avmfritz/changelog.md"
     },
     {
         "id": "binding-bigassfan",
@@ -212,12 +221,13 @@
         "description": "Ad deserunt proident velit ea velit enim officia elit. Reprehenderit fugiat labore id veniam et. Ea dolor amet ut ipsum incididunt cillum ullamco id sit laboris enim excepteur.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580902537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.bigassfan/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.bigassfan/changelog.md"
     },
     {
         "id": "binding-bluetooth",
@@ -234,12 +244,13 @@
         "description": "Esse reprehenderit culpa est ipsum quis adipisicing esse. Lorem quis amet non esse et aliquip elit duis ad qui excepteur. Veniam voluptate officia id laboris do in fugiat laborum duis.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.bluetooth/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.bluetooth/changelog.md"
     },
     {
         "id": "binding-boschindego",
@@ -256,12 +267,13 @@
         "description": "Esse reprehenderit culpa est ipsum quis adipisicing esse. Lorem quis amet non esse et aliquip elit duis ad qui excepteur. Veniam voluptate officia id laboris do in fugiat laborum duis.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.boschindego/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.boschindego/changelog.md"
     },
     {
         "id": "binding-bosesoundtouch",
@@ -278,12 +290,13 @@
         "description": "Esse reprehenderit culpa est ipsum quis adipisicing esse. Lorem quis amet non esse et aliquip elit duis ad qui excepteur. Veniam voluptate officia id laboris do in fugiat laborum duis.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.bosesoundtouch/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.bosesoundtouch/changelog.md"
     },
     {
         "id": "binding-chromecast",
@@ -300,12 +313,13 @@
         "description": "Lorem nisi quis deserunt deserunt laborum aute occaecat do ad laborum anim aute. Velit ullamco elit quis anim cillum sunt anim duis minim. Est sunt dolor aute qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.chromecast/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.chromecast/changelog.md"
     },
     {
         "id": "binding-cm11a",
@@ -322,12 +336,13 @@
         "description": "Ad deserunt proident velit ea velit enim officia elit. Reprehenderit fugiat labore id veniam et. Ea dolor amet ut ipsum incididunt cillum ullamco id sit laboris enim excepteur.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.cm11a/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.cm11a/changelog.md"
     },
     {
         "id": "binding-coolmasternet",
@@ -344,12 +359,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.coolmasternet/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.coolmasternet/changelog.md"
     },
     {
         "id": "binding-deconz",
@@ -366,12 +382,13 @@
         "description": "Ipsum proident commodo nulla fugiat adipisicing amet nisi fugiat est eu commodo commodo nulla fugiat. Fugiat commodo duis laborum incididunt incididunt dolore amet reprehenderit officia incididunt ut magna. Occaecat non labore esse qui anim reprehenderit veniam sunt dolor reprehenderit qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "INSTALLED",
+            "status": "INSTALLED"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.deconz/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.deconz/changelog.md"
     },
     {
         "id": "binding-denonmarantz",
@@ -388,12 +405,13 @@
         "description": "Tempor velit irure in ad laborum ex Lorem. Officia sint velit eu pariatur deserunt labore amet ea est. Deserunt fugiat reprehenderit culpa aliquip velit fugiat do.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.denonmarantz/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.denonmarantz/changelog.md"
     },
     {
         "id": "binding-digitalstrom",
@@ -410,12 +428,13 @@
         "description": "Ipsum proident commodo nulla fugiat adipisicing amet nisi fugiat est eu commodo commodo nulla fugiat. Fugiat commodo duis laborum incididunt incididunt dolore amet reprehenderit officia incididunt ut magna. Occaecat non labore esse qui anim reprehenderit veniam sunt dolor reprehenderit qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.digitalstrom/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.digitalstrom/changelog.md"
     },
     {
         "id": "binding-dlinksmarthome",
@@ -432,12 +451,13 @@
         "description": "Lorem nisi quis deserunt deserunt laborum aute occaecat do ad laborum anim aute. Velit ullamco elit quis anim cillum sunt anim duis minim. Est sunt dolor aute qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.dlinksmarthome/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.dlinksmarthome/changelog.md"
     },
     {
         "id": "binding-dmx",
@@ -454,12 +474,13 @@
         "description": "Tempor velit irure in ad laborum ex Lorem. Officia sint velit eu pariatur deserunt labore amet ea est. Deserunt fugiat reprehenderit culpa aliquip velit fugiat do.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.dmx/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.dmx/changelog.md"
     },
     {
         "id": "binding-dscalarm",
@@ -476,12 +497,13 @@
         "description": "Ipsum proident commodo nulla fugiat adipisicing amet nisi fugiat est eu commodo commodo nulla fugiat. Fugiat commodo duis laborum incididunt incididunt dolore amet reprehenderit officia incididunt ut magna. Occaecat non labore esse qui anim reprehenderit veniam sunt dolor reprehenderit qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.dscalarm/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.dscalarm/changelog.md"
     },
     {
         "id": "binding-dsmr",
@@ -498,12 +520,13 @@
         "description": "Lorem nisi quis deserunt deserunt laborum aute occaecat do ad laborum anim aute. Velit ullamco elit quis anim cillum sunt anim duis minim. Est sunt dolor aute qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.dsmr/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.dsmr/changelog.md"
     },
     {
         "id": "binding-elerotransmitterstick",
@@ -520,12 +543,13 @@
         "description": "Esse reprehenderit culpa est ipsum quis adipisicing esse. Lorem quis amet non esse et aliquip elit duis ad qui excepteur. Veniam voluptate officia id laboris do in fugiat laborum duis.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.elerotransmitterstick/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.elerotransmitterstick/changelog.md"
     },
     {
         "id": "binding-enocean",
@@ -542,12 +566,13 @@
         "description": "Quis cupidatat commodo consequat anim incididunt. Cillum aliqua minim magna amet consectetur labore sint qui nostrud magna nulla eiusmod. Ea exercitation fugiat duis id irure mollit non.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.enocean/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.enocean/changelog.md"
     },
     {
         "id": "binding-evohome",
@@ -564,12 +589,13 @@
         "description": "Esse reprehenderit culpa est ipsum quis adipisicing esse. Lorem quis amet non esse et aliquip elit duis ad qui excepteur. Veniam voluptate officia id laboris do in fugiat laborum duis.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.evohome/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.evohome/changelog.md"
     },
     {
         "id": "binding-exec",
@@ -586,12 +612,13 @@
         "description": "Ad deserunt proident velit ea velit enim officia elit. Reprehenderit fugiat labore id veniam et. Ea dolor amet ut ipsum incididunt cillum ullamco id sit laboris enim excepteur.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.exec/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.exec/changelog.md"
     },
     {
         "id": "binding-feed",
@@ -608,12 +635,13 @@
         "description": "Tempor velit irure in ad laborum ex Lorem. Officia sint velit eu pariatur deserunt labore amet ea est. Deserunt fugiat reprehenderit culpa aliquip velit fugiat do.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.feed/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.feed/changelog.md"
     },
     {
         "id": "binding-feican",
@@ -630,12 +658,13 @@
         "description": "Veniam elit occaecat ipsum velit. Dolor qui exercitation labore reprehenderit dolore. Sunt ut nisi commodo irure duis nostrud adipisicing pariatur enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.feican/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.feican/changelog.md"
     },
     {
         "id": "binding-folding",
@@ -652,12 +681,13 @@
         "description": "Quis cupidatat commodo consequat anim incididunt. Cillum aliqua minim magna amet consectetur labore sint qui nostrud magna nulla eiusmod. Ea exercitation fugiat duis id irure mollit non.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.folding/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.folding/changelog.md"
     },
     {
         "id": "binding-freebox",
@@ -674,12 +704,13 @@
         "description": "Lorem nisi quis deserunt deserunt laborum aute occaecat do ad laborum anim aute. Velit ullamco elit quis anim cillum sunt anim duis minim. Est sunt dolor aute qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.freebox/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.freebox/changelog.md"
     },
     {
         "id": "binding-fronius",
@@ -696,12 +727,13 @@
         "description": "Ad deserunt proident velit ea velit enim officia elit. Reprehenderit fugiat labore id veniam et. Ea dolor amet ut ipsum incididunt cillum ullamco id sit laboris enim excepteur.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.fronius/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.fronius/changelog.md"
     },
     {
         "id": "binding-fsinternetradio",
@@ -718,12 +750,13 @@
         "description": "Quis cupidatat commodo consequat anim incididunt. Cillum aliqua minim magna amet consectetur labore sint qui nostrud magna nulla eiusmod. Ea exercitation fugiat duis id irure mollit non.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.fsinternetradio/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.fsinternetradio/changelog.md"
     },
     {
         "id": "binding-ftpupload",
@@ -740,12 +773,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.ftpupload/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.ftpupload/changelog.md"
     },
     {
         "id": "binding-gardena",
@@ -762,12 +796,13 @@
         "description": "Veniam elit occaecat ipsum velit. Dolor qui exercitation labore reprehenderit dolore. Sunt ut nisi commodo irure duis nostrud adipisicing pariatur enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.gardena/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.gardena/changelog.md"
     },
     {
         "id": "binding-globalcache",
@@ -784,12 +819,13 @@
         "description": "Lorem nisi quis deserunt deserunt laborum aute occaecat do ad laborum anim aute. Velit ullamco elit quis anim cillum sunt anim duis minim. Est sunt dolor aute qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.globalcache/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.globalcache/changelog.md"
     },
     {
         "id": "binding-gpstracker",
@@ -806,12 +842,13 @@
         "description": "Ipsum proident commodo nulla fugiat adipisicing amet nisi fugiat est eu commodo commodo nulla fugiat. Fugiat commodo duis laborum incididunt incididunt dolore amet reprehenderit officia incididunt ut magna. Occaecat non labore esse qui anim reprehenderit veniam sunt dolor reprehenderit qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.gpstracker/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.gpstracker/changelog.md"
     },
     {
         "id": "binding-groheondus",
@@ -828,12 +865,13 @@
         "description": "Esse reprehenderit culpa est ipsum quis adipisicing esse. Lorem quis amet non esse et aliquip elit duis ad qui excepteur. Veniam voluptate officia id laboris do in fugiat laborum duis.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.groheondus/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.groheondus/changelog.md"
     },
     {
         "id": "binding-harmonyhub",
@@ -850,12 +888,13 @@
         "description": "Esse reprehenderit culpa est ipsum quis adipisicing esse. Lorem quis amet non esse et aliquip elit duis ad qui excepteur. Veniam voluptate officia id laboris do in fugiat laborum duis.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.harmonyhub/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.harmonyhub/changelog.md"
     },
     {
         "id": "binding-hdanywhere",
@@ -872,12 +911,13 @@
         "description": "Ipsum proident commodo nulla fugiat adipisicing amet nisi fugiat est eu commodo commodo nulla fugiat. Fugiat commodo duis laborum incididunt incididunt dolore amet reprehenderit officia incididunt ut magna. Occaecat non labore esse qui anim reprehenderit veniam sunt dolor reprehenderit qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.hdanywhere/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.hdanywhere/changelog.md"
     },
     {
         "id": "binding-hdpowerview",
@@ -894,12 +934,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.hdpowerview/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.hdpowerview/changelog.md"
     },
     {
         "id": "binding-helios",
@@ -916,12 +957,13 @@
         "description": "Veniam elit occaecat ipsum velit. Dolor qui exercitation labore reprehenderit dolore. Sunt ut nisi commodo irure duis nostrud adipisicing pariatur enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.helios/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.helios/changelog.md"
     },
     {
         "id": "binding-homematic",
@@ -938,12 +980,13 @@
         "description": "Ipsum proident commodo nulla fugiat adipisicing amet nisi fugiat est eu commodo commodo nulla fugiat. Fugiat commodo duis laborum incididunt incididunt dolore amet reprehenderit officia incididunt ut magna. Occaecat non labore esse qui anim reprehenderit veniam sunt dolor reprehenderit qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.homematic/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.homematic/changelog.md"
     },
     {
         "id": "binding-hue",
@@ -960,12 +1003,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "INSTALLED",
+            "status": "INSTALLED"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.hue/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.hue/changelog.md"
     },
     {
         "id": "binding-hyperion",
@@ -982,12 +1026,13 @@
         "description": "Quis cupidatat commodo consequat anim incididunt. Cillum aliqua minim magna amet consectetur labore sint qui nostrud magna nulla eiusmod. Ea exercitation fugiat duis id irure mollit non.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.hyperion/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.hyperion/changelog.md"
     },
     {
         "id": "binding-icloud",
@@ -1004,12 +1049,13 @@
         "description": "Nostrud ullamco exercitation ut tempor non minim laborum. Et non ut aute aliqua nisi aute cupidatat minim incididunt duis et adipisicing. Fugiat exercitation mollit nulla aliqua reprehenderit aute quis ipsum dolore enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.icloud/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.icloud/changelog.md"
     },
     {
         "id": "binding-innogysmarthome",
@@ -1026,12 +1072,13 @@
         "description": "Quis cupidatat commodo consequat anim incididunt. Cillum aliqua minim magna amet consectetur labore sint qui nostrud magna nulla eiusmod. Ea exercitation fugiat duis id irure mollit non.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.innogysmarthome/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.innogysmarthome/changelog.md"
     },
     {
         "id": "binding-ipp",
@@ -1048,12 +1095,13 @@
         "description": "Lorem nisi quis deserunt deserunt laborum aute occaecat do ad laborum anim aute. Velit ullamco elit quis anim cillum sunt anim duis minim. Est sunt dolor aute qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.ipp/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.ipp/changelog.md"
     },
     {
         "id": "binding-irtrans",
@@ -1070,12 +1118,13 @@
         "description": "Lorem nisi quis deserunt deserunt laborum aute occaecat do ad laborum anim aute. Velit ullamco elit quis anim cillum sunt anim duis minim. Est sunt dolor aute qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.irtrans/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.irtrans/changelog.md"
     },
     {
         "id": "binding-jeelink",
@@ -1092,12 +1141,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.jeelink/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.jeelink/changelog.md"
     },
     {
         "id": "binding-keba",
@@ -1114,12 +1164,13 @@
         "description": "Ad deserunt proident velit ea velit enim officia elit. Reprehenderit fugiat labore id veniam et. Ea dolor amet ut ipsum incididunt cillum ullamco id sit laboris enim excepteur.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.keba/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.keba/changelog.md"
     },
     {
         "id": "binding-km200",
@@ -1136,12 +1187,13 @@
         "description": "Nostrud ullamco exercitation ut tempor non minim laborum. Et non ut aute aliqua nisi aute cupidatat minim incididunt duis et adipisicing. Fugiat exercitation mollit nulla aliqua reprehenderit aute quis ipsum dolore enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.km200/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.km200/changelog.md"
     },
     {
         "id": "binding-knx",
@@ -1158,12 +1210,13 @@
         "description": "Tempor velit irure in ad laborum ex Lorem. Officia sint velit eu pariatur deserunt labore amet ea est. Deserunt fugiat reprehenderit culpa aliquip velit fugiat do.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.knx/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.knx/changelog.md"
     },
     {
         "id": "binding-kodi",
@@ -1180,12 +1233,13 @@
         "description": "Quis cupidatat commodo consequat anim incididunt. Cillum aliqua minim magna amet consectetur labore sint qui nostrud magna nulla eiusmod. Ea exercitation fugiat duis id irure mollit non.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.kodi/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.kodi/changelog.md"
     },
     {
         "id": "binding-konnected",
@@ -1202,12 +1256,13 @@
         "description": "Nostrud ullamco exercitation ut tempor non minim laborum. Et non ut aute aliqua nisi aute cupidatat minim incididunt duis et adipisicing. Fugiat exercitation mollit nulla aliqua reprehenderit aute quis ipsum dolore enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.konnected/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.konnected/changelog.md"
     },
     {
         "id": "binding-kostalinverter",
@@ -1224,12 +1279,13 @@
         "description": "Ipsum proident commodo nulla fugiat adipisicing amet nisi fugiat est eu commodo commodo nulla fugiat. Fugiat commodo duis laborum incididunt incididunt dolore amet reprehenderit officia incididunt ut magna. Occaecat non labore esse qui anim reprehenderit veniam sunt dolor reprehenderit qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.kostalinverter/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.kostalinverter/changelog.md"
     },
     {
         "id": "binding-lametrictime",
@@ -1246,12 +1302,13 @@
         "description": "Ad deserunt proident velit ea velit enim officia elit. Reprehenderit fugiat labore id veniam et. Ea dolor amet ut ipsum incididunt cillum ullamco id sit laboris enim excepteur.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.lametrictime/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.lametrictime/changelog.md"
     },
     {
         "id": "binding-leapmotion",
@@ -1268,12 +1325,13 @@
         "description": "Tempor velit irure in ad laborum ex Lorem. Officia sint velit eu pariatur deserunt labore amet ea est. Deserunt fugiat reprehenderit culpa aliquip velit fugiat do.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.leapmotion/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.leapmotion/changelog.md"
     },
     {
         "id": "binding-lgtvserial",
@@ -1290,12 +1348,13 @@
         "description": "Lorem nisi quis deserunt deserunt laborum aute occaecat do ad laborum anim aute. Velit ullamco elit quis anim cillum sunt anim duis minim. Est sunt dolor aute qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.lgtvserial/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.lgtvserial/changelog.md"
     },
     {
         "id": "binding-lgwebos",
@@ -1312,12 +1371,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.lgwebos/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.lgwebos/changelog.md"
     },
     {
         "id": "binding-lifx",
@@ -1334,12 +1394,13 @@
         "description": "Ad deserunt proident velit ea velit enim officia elit. Reprehenderit fugiat labore id veniam et. Ea dolor amet ut ipsum incididunt cillum ullamco id sit laboris enim excepteur.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.lifx/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.lifx/changelog.md"
     },
     {
         "id": "binding-lirc",
@@ -1356,12 +1417,13 @@
         "description": "Quis cupidatat commodo consequat anim incididunt. Cillum aliqua minim magna amet consectetur labore sint qui nostrud magna nulla eiusmod. Ea exercitation fugiat duis id irure mollit non.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.lirc/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.lirc/changelog.md"
     },
     {
         "id": "binding-logreader",
@@ -1378,12 +1440,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.logreader/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.logreader/changelog.md"
     },
     {
         "id": "binding-loxone",
@@ -1400,12 +1463,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.loxone/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.loxone/changelog.md"
     },
     {
         "id": "binding-lutron",
@@ -1422,12 +1486,13 @@
         "description": "Veniam elit occaecat ipsum velit. Dolor qui exercitation labore reprehenderit dolore. Sunt ut nisi commodo irure duis nostrud adipisicing pariatur enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.lutron/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.lutron/changelog.md"
     },
     {
         "id": "binding-max",
@@ -1444,12 +1509,13 @@
         "description": "Nostrud ullamco exercitation ut tempor non minim laborum. Et non ut aute aliqua nisi aute cupidatat minim incididunt duis et adipisicing. Fugiat exercitation mollit nulla aliqua reprehenderit aute quis ipsum dolore enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.max/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.max/changelog.md"
     },
     {
         "id": "binding-mcp23017",
@@ -1466,12 +1532,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.mcp23017/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.mcp23017/changelog.md"
     },
     {
         "id": "binding-meteoblue",
@@ -1488,12 +1555,13 @@
         "description": "Ad deserunt proident velit ea velit enim officia elit. Reprehenderit fugiat labore id veniam et. Ea dolor amet ut ipsum incididunt cillum ullamco id sit laboris enim excepteur.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.meteoblue/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.meteoblue/changelog.md"
     },
     {
         "id": "binding-meteostick",
@@ -1510,12 +1578,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.meteostick/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.meteostick/changelog.md"
     },
     {
         "id": "binding-miele",
@@ -1532,12 +1601,13 @@
         "description": "Ad deserunt proident velit ea velit enim officia elit. Reprehenderit fugiat labore id veniam et. Ea dolor amet ut ipsum incididunt cillum ullamco id sit laboris enim excepteur.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.miele/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.miele/changelog.md"
     },
     {
         "id": "binding-mihome",
@@ -1554,12 +1624,13 @@
         "description": "Veniam elit occaecat ipsum velit. Dolor qui exercitation labore reprehenderit dolore. Sunt ut nisi commodo irure duis nostrud adipisicing pariatur enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.mihome/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.mihome/changelog.md"
     },
     {
         "id": "binding-miio",
@@ -1576,12 +1647,13 @@
         "description": "Quis cupidatat commodo consequat anim incididunt. Cillum aliqua minim magna amet consectetur labore sint qui nostrud magna nulla eiusmod. Ea exercitation fugiat duis id irure mollit non.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.miio/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.miio/changelog.md"
     },
     {
         "id": "binding-milight",
@@ -1598,12 +1670,13 @@
         "description": "Ad deserunt proident velit ea velit enim officia elit. Reprehenderit fugiat labore id veniam et. Ea dolor amet ut ipsum incididunt cillum ullamco id sit laboris enim excepteur.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.milight/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.milight/changelog.md"
     },
     {
         "id": "binding-minecraft",
@@ -1620,12 +1693,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.minecraft/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.minecraft/changelog.md"
     },
     {
         "id": "binding-modbus",
@@ -1642,12 +1716,13 @@
         "description": "Tempor velit irure in ad laborum ex Lorem. Officia sint velit eu pariatur deserunt labore amet ea est. Deserunt fugiat reprehenderit culpa aliquip velit fugiat do.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.modbus/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.modbus/changelog.md"
     },
     {
         "id": "binding-mqtt",
@@ -1664,12 +1739,13 @@
         "description": "Ipsum proident commodo nulla fugiat adipisicing amet nisi fugiat est eu commodo commodo nulla fugiat. Fugiat commodo duis laborum incididunt incididunt dolore amet reprehenderit officia incididunt ut magna. Occaecat non labore esse qui anim reprehenderit veniam sunt dolor reprehenderit qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "INSTALLED",
+            "status": "INSTALLED"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.mqtt/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.mqtt/changelog.md"
     },
     {
         "id": "binding-neato",
@@ -1686,12 +1762,13 @@
         "description": "Esse reprehenderit culpa est ipsum quis adipisicing esse. Lorem quis amet non esse et aliquip elit duis ad qui excepteur. Veniam voluptate officia id laboris do in fugiat laborum duis.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.neato/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.neato/changelog.md"
     },
     {
         "id": "binding-neeo",
@@ -1708,12 +1785,13 @@
         "description": "Lorem nisi quis deserunt deserunt laborum aute occaecat do ad laborum anim aute. Velit ullamco elit quis anim cillum sunt anim duis minim. Est sunt dolor aute qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.neeo/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.neeo/changelog.md"
     },
     {
         "id": "binding-nest",
@@ -1730,12 +1808,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.nest/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.nest/changelog.md"
     },
     {
         "id": "binding-netatmo",
@@ -1752,12 +1831,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.netatmo/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.netatmo/changelog.md"
     },
     {
         "id": "binding-network",
@@ -1774,12 +1854,13 @@
         "description": "Veniam elit occaecat ipsum velit. Dolor qui exercitation labore reprehenderit dolore. Sunt ut nisi commodo irure duis nostrud adipisicing pariatur enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "INSTALLED",
+            "status": "INSTALLED"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.network/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.network/changelog.md"
     },
     {
         "id": "binding-nibeheatpump",
@@ -1796,12 +1877,13 @@
         "description": "Esse reprehenderit culpa est ipsum quis adipisicing esse. Lorem quis amet non esse et aliquip elit duis ad qui excepteur. Veniam voluptate officia id laboris do in fugiat laborum duis.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.nibeheatpump/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.nibeheatpump/changelog.md"
     },
     {
         "id": "binding-nibeuplink",
@@ -1818,12 +1900,13 @@
         "description": "Ad deserunt proident velit ea velit enim officia elit. Reprehenderit fugiat labore id veniam et. Ea dolor amet ut ipsum incididunt cillum ullamco id sit laboris enim excepteur.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.nibeuplink/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.nibeuplink/changelog.md"
     },
     {
         "id": "binding-nikohomecontrol",
@@ -1840,12 +1923,13 @@
         "description": "Veniam elit occaecat ipsum velit. Dolor qui exercitation labore reprehenderit dolore. Sunt ut nisi commodo irure duis nostrud adipisicing pariatur enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.nikohomecontrol/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.nikohomecontrol/changelog.md"
     },
     {
         "id": "binding-ntp",
@@ -1862,12 +1946,13 @@
         "description": "Tempor velit irure in ad laborum ex Lorem. Officia sint velit eu pariatur deserunt labore amet ea est. Deserunt fugiat reprehenderit culpa aliquip velit fugiat do.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.ntp/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.ntp/changelog.md"
     },
     {
         "id": "binding-nuki",
@@ -1884,12 +1969,13 @@
         "description": "Quis cupidatat commodo consequat anim incididunt. Cillum aliqua minim magna amet consectetur labore sint qui nostrud magna nulla eiusmod. Ea exercitation fugiat duis id irure mollit non.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.nuki/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.nuki/changelog.md"
     },
     {
         "id": "binding-oceanic",
@@ -1906,12 +1992,13 @@
         "description": "Esse reprehenderit culpa est ipsum quis adipisicing esse. Lorem quis amet non esse et aliquip elit duis ad qui excepteur. Veniam voluptate officia id laboris do in fugiat laborum duis.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.oceanic/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.oceanic/changelog.md"
     },
     {
         "id": "binding-onebusaway",
@@ -1928,12 +2015,13 @@
         "description": "Nostrud ullamco exercitation ut tempor non minim laborum. Et non ut aute aliqua nisi aute cupidatat minim incididunt duis et adipisicing. Fugiat exercitation mollit nulla aliqua reprehenderit aute quis ipsum dolore enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.onebusaway/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.onebusaway/changelog.md"
     },
     {
         "id": "binding-onewire",
@@ -1950,12 +2038,13 @@
         "description": "Quis cupidatat commodo consequat anim incididunt. Cillum aliqua minim magna amet consectetur labore sint qui nostrud magna nulla eiusmod. Ea exercitation fugiat duis id irure mollit non.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.onewire/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.onewire/changelog.md"
     },
     {
         "id": "binding-onewiregpio",
@@ -1972,12 +2061,13 @@
         "description": "Nostrud ullamco exercitation ut tempor non minim laborum. Et non ut aute aliqua nisi aute cupidatat minim incididunt duis et adipisicing. Fugiat exercitation mollit nulla aliqua reprehenderit aute quis ipsum dolore enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.onewiregpio/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.onewiregpio/changelog.md"
     },
     {
         "id": "binding-onkyo",
@@ -1994,12 +2084,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.onkyo/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.onkyo/changelog.md"
     },
     {
         "id": "binding-opensprinkler",
@@ -2016,12 +2107,13 @@
         "description": "Lorem nisi quis deserunt deserunt laborum aute occaecat do ad laborum anim aute. Velit ullamco elit quis anim cillum sunt anim duis minim. Est sunt dolor aute qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.opensprinkler/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.opensprinkler/changelog.md"
     },
     {
         "id": "binding-openuv",
@@ -2038,12 +2130,13 @@
         "description": "Veniam elit occaecat ipsum velit. Dolor qui exercitation labore reprehenderit dolore. Sunt ut nisi commodo irure duis nostrud adipisicing pariatur enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.openuv/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.openuv/changelog.md"
     },
     {
         "id": "binding-openweathermap",
@@ -2060,12 +2153,13 @@
         "description": "Esse reprehenderit culpa est ipsum quis adipisicing esse. Lorem quis amet non esse et aliquip elit duis ad qui excepteur. Veniam voluptate officia id laboris do in fugiat laborum duis.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.openweathermap/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.openweathermap/changelog.md"
     },
     {
         "id": "binding-orvibo",
@@ -2082,12 +2176,13 @@
         "description": "Ad deserunt proident velit ea velit enim officia elit. Reprehenderit fugiat labore id veniam et. Ea dolor amet ut ipsum incididunt cillum ullamco id sit laboris enim excepteur.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.orvibo/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.orvibo/changelog.md"
     },
     {
         "id": "binding-pentair",
@@ -2104,12 +2199,13 @@
         "description": "Ad deserunt proident velit ea velit enim officia elit. Reprehenderit fugiat labore id veniam et. Ea dolor amet ut ipsum incididunt cillum ullamco id sit laboris enim excepteur.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.pentair/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.pentair/changelog.md"
     },
     {
         "id": "binding-phc",
@@ -2126,12 +2222,13 @@
         "description": "Lorem nisi quis deserunt deserunt laborum aute occaecat do ad laborum anim aute. Velit ullamco elit quis anim cillum sunt anim duis minim. Est sunt dolor aute qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.phc/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.phc/changelog.md"
     },
     {
         "id": "binding-pioneeravr",
@@ -2148,12 +2245,13 @@
         "description": "Nostrud ullamco exercitation ut tempor non minim laborum. Et non ut aute aliqua nisi aute cupidatat minim incididunt duis et adipisicing. Fugiat exercitation mollit nulla aliqua reprehenderit aute quis ipsum dolore enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.pioneeravr/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.pioneeravr/changelog.md"
     },
     {
         "id": "binding-plclogo",
@@ -2170,12 +2268,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.plclogo/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.plclogo/changelog.md"
     },
     {
         "id": "binding-plugwise",
@@ -2192,12 +2291,13 @@
         "description": "Ipsum proident commodo nulla fugiat adipisicing amet nisi fugiat est eu commodo commodo nulla fugiat. Fugiat commodo duis laborum incididunt incididunt dolore amet reprehenderit officia incididunt ut magna. Occaecat non labore esse qui anim reprehenderit veniam sunt dolor reprehenderit qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.plugwise/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.plugwise/changelog.md"
     },
     {
         "id": "binding-powermax",
@@ -2214,12 +2314,13 @@
         "description": "Tempor velit irure in ad laborum ex Lorem. Officia sint velit eu pariatur deserunt labore amet ea est. Deserunt fugiat reprehenderit culpa aliquip velit fugiat do.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.powermax/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.powermax/changelog.md"
     },
     {
         "id": "binding-pulseaudio",
@@ -2236,12 +2337,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.pulseaudio/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.pulseaudio/changelog.md"
     },
     {
         "id": "binding-regoheatpump",
@@ -2258,12 +2360,13 @@
         "description": "Veniam elit occaecat ipsum velit. Dolor qui exercitation labore reprehenderit dolore. Sunt ut nisi commodo irure duis nostrud adipisicing pariatur enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.regoheatpump/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.regoheatpump/changelog.md"
     },
     {
         "id": "binding-rfxcom",
@@ -2280,12 +2383,13 @@
         "description": "Nostrud ullamco exercitation ut tempor non minim laborum. Et non ut aute aliqua nisi aute cupidatat minim incididunt duis et adipisicing. Fugiat exercitation mollit nulla aliqua reprehenderit aute quis ipsum dolore enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.rfxcom/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.rfxcom/changelog.md"
     },
     {
         "id": "binding-rme",
@@ -2302,12 +2406,13 @@
         "description": "Ipsum proident commodo nulla fugiat adipisicing amet nisi fugiat est eu commodo commodo nulla fugiat. Fugiat commodo duis laborum incididunt incididunt dolore amet reprehenderit officia incididunt ut magna. Occaecat non labore esse qui anim reprehenderit veniam sunt dolor reprehenderit qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.rme/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.rme/changelog.md"
     },
     {
         "id": "binding-robonect",
@@ -2324,12 +2429,13 @@
         "description": "Esse reprehenderit culpa est ipsum quis adipisicing esse. Lorem quis amet non esse et aliquip elit duis ad qui excepteur. Veniam voluptate officia id laboris do in fugiat laborum duis.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.robonect/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.robonect/changelog.md"
     },
     {
         "id": "binding-rotelra1x",
@@ -2346,12 +2452,13 @@
         "description": "Ipsum proident commodo nulla fugiat adipisicing amet nisi fugiat est eu commodo commodo nulla fugiat. Fugiat commodo duis laborum incididunt incididunt dolore amet reprehenderit officia incididunt ut magna. Occaecat non labore esse qui anim reprehenderit veniam sunt dolor reprehenderit qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.rotelra1x/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.rotelra1x/changelog.md"
     },
     {
         "id": "binding-russound",
@@ -2368,12 +2475,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.russound/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.russound/changelog.md"
     },
     {
         "id": "binding-samsungtv",
@@ -2390,12 +2498,13 @@
         "description": "Ipsum proident commodo nulla fugiat adipisicing amet nisi fugiat est eu commodo commodo nulla fugiat. Fugiat commodo duis laborum incididunt incididunt dolore amet reprehenderit officia incididunt ut magna. Occaecat non labore esse qui anim reprehenderit veniam sunt dolor reprehenderit qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.samsungtv/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.samsungtv/changelog.md"
     },
     {
         "id": "binding-satel",
@@ -2412,12 +2521,13 @@
         "description": "Ipsum proident commodo nulla fugiat adipisicing amet nisi fugiat est eu commodo commodo nulla fugiat. Fugiat commodo duis laborum incididunt incididunt dolore amet reprehenderit officia incididunt ut magna. Occaecat non labore esse qui anim reprehenderit veniam sunt dolor reprehenderit qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.satel/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.satel/changelog.md"
     },
     {
         "id": "binding-seneye",
@@ -2434,12 +2544,13 @@
         "description": "Ad deserunt proident velit ea velit enim officia elit. Reprehenderit fugiat labore id veniam et. Ea dolor amet ut ipsum incididunt cillum ullamco id sit laboris enim excepteur.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.seneye/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.seneye/changelog.md"
     },
     {
         "id": "binding-sensebox",
@@ -2456,12 +2567,13 @@
         "description": "Nostrud ullamco exercitation ut tempor non minim laborum. Et non ut aute aliqua nisi aute cupidatat minim incididunt duis et adipisicing. Fugiat exercitation mollit nulla aliqua reprehenderit aute quis ipsum dolore enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.sensebox/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.sensebox/changelog.md"
     },
     {
         "id": "binding-serialbutton",
@@ -2478,12 +2590,13 @@
         "description": "Ipsum proident commodo nulla fugiat adipisicing amet nisi fugiat est eu commodo commodo nulla fugiat. Fugiat commodo duis laborum incididunt incididunt dolore amet reprehenderit officia incididunt ut magna. Occaecat non labore esse qui anim reprehenderit veniam sunt dolor reprehenderit qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.serialbutton/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.serialbutton/changelog.md"
     },
     {
         "id": "binding-silvercrestwifisocket",
@@ -2500,12 +2613,13 @@
         "description": "Ipsum proident commodo nulla fugiat adipisicing amet nisi fugiat est eu commodo commodo nulla fugiat. Fugiat commodo duis laborum incididunt incididunt dolore amet reprehenderit officia incididunt ut magna. Occaecat non labore esse qui anim reprehenderit veniam sunt dolor reprehenderit qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.silvercrestwifisocket/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.silvercrestwifisocket/changelog.md"
     },
     {
         "id": "binding-sleepiq",
@@ -2522,12 +2636,13 @@
         "description": "Tempor velit irure in ad laborum ex Lorem. Officia sint velit eu pariatur deserunt labore amet ea est. Deserunt fugiat reprehenderit culpa aliquip velit fugiat do.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.sleepiq/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.sleepiq/changelog.md"
     },
     {
         "id": "binding-smaenergymeter",
@@ -2544,12 +2659,13 @@
         "description": "Nostrud ullamco exercitation ut tempor non minim laborum. Et non ut aute aliqua nisi aute cupidatat minim incididunt duis et adipisicing. Fugiat exercitation mollit nulla aliqua reprehenderit aute quis ipsum dolore enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.smaenergymeter/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.smaenergymeter/changelog.md"
     },
     {
         "id": "binding-smartmeter",
@@ -2566,12 +2682,13 @@
         "description": "Nostrud ullamco exercitation ut tempor non minim laborum. Et non ut aute aliqua nisi aute cupidatat minim incididunt duis et adipisicing. Fugiat exercitation mollit nulla aliqua reprehenderit aute quis ipsum dolore enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.smartmeter/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.smartmeter/changelog.md"
     },
     {
         "id": "binding-solaredge",
@@ -2588,12 +2705,13 @@
         "description": "Nostrud ullamco exercitation ut tempor non minim laborum. Et non ut aute aliqua nisi aute cupidatat minim incididunt duis et adipisicing. Fugiat exercitation mollit nulla aliqua reprehenderit aute quis ipsum dolore enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.solaredge/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.solaredge/changelog.md"
     },
     {
         "id": "binding-solarlog",
@@ -2610,12 +2728,13 @@
         "description": "Veniam elit occaecat ipsum velit. Dolor qui exercitation labore reprehenderit dolore. Sunt ut nisi commodo irure duis nostrud adipisicing pariatur enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.solarlog/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.solarlog/changelog.md"
     },
     {
         "id": "binding-somfytahoma",
@@ -2632,12 +2751,13 @@
         "description": "Quis cupidatat commodo consequat anim incididunt. Cillum aliqua minim magna amet consectetur labore sint qui nostrud magna nulla eiusmod. Ea exercitation fugiat duis id irure mollit non.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.somfytahoma/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.somfytahoma/changelog.md"
     },
     {
         "id": "binding-sonos",
@@ -2654,12 +2774,13 @@
         "description": "Veniam elit occaecat ipsum velit. Dolor qui exercitation labore reprehenderit dolore. Sunt ut nisi commodo irure duis nostrud adipisicing pariatur enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.sonos/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.sonos/changelog.md"
     },
     {
         "id": "binding-sonyaudio",
@@ -2676,12 +2797,13 @@
         "description": "Nostrud ullamco exercitation ut tempor non minim laborum. Et non ut aute aliqua nisi aute cupidatat minim incididunt duis et adipisicing. Fugiat exercitation mollit nulla aliqua reprehenderit aute quis ipsum dolore enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.sonyaudio/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.sonyaudio/changelog.md"
     },
     {
         "id": "binding-squeezebox",
@@ -2698,12 +2820,13 @@
         "description": "Esse reprehenderit culpa est ipsum quis adipisicing esse. Lorem quis amet non esse et aliquip elit duis ad qui excepteur. Veniam voluptate officia id laboris do in fugiat laborum duis.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.squeezebox/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.squeezebox/changelog.md"
     },
     {
         "id": "binding-synopanalyzer",
@@ -2720,12 +2843,13 @@
         "description": "Lorem nisi quis deserunt deserunt laborum aute occaecat do ad laborum anim aute. Velit ullamco elit quis anim cillum sunt anim duis minim. Est sunt dolor aute qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.synopanalyzer/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.synopanalyzer/changelog.md"
     },
     {
         "id": "binding-systeminfo",
@@ -2742,12 +2866,13 @@
         "description": "Tempor velit irure in ad laborum ex Lorem. Officia sint velit eu pariatur deserunt labore amet ea est. Deserunt fugiat reprehenderit culpa aliquip velit fugiat do.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.systeminfo/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.systeminfo/changelog.md"
     },
     {
         "id": "binding-tado",
@@ -2764,12 +2889,13 @@
         "description": "Ad deserunt proident velit ea velit enim officia elit. Reprehenderit fugiat labore id veniam et. Ea dolor amet ut ipsum incididunt cillum ullamco id sit laboris enim excepteur.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.tado/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.tado/changelog.md"
     },
     {
         "id": "binding-tankerkoenig",
@@ -2786,12 +2912,13 @@
         "description": "Quis cupidatat commodo consequat anim incididunt. Cillum aliqua minim magna amet consectetur labore sint qui nostrud magna nulla eiusmod. Ea exercitation fugiat duis id irure mollit non.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.tankerkoenig/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.tankerkoenig/changelog.md"
     },
     {
         "id": "binding-tellstick",
@@ -2808,12 +2935,13 @@
         "description": "Esse reprehenderit culpa est ipsum quis adipisicing esse. Lorem quis amet non esse et aliquip elit duis ad qui excepteur. Veniam voluptate officia id laboris do in fugiat laborum duis.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.tellstick/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.tellstick/changelog.md"
     },
     {
         "id": "binding-tesla",
@@ -2830,12 +2958,13 @@
         "description": "Quis cupidatat commodo consequat anim incididunt. Cillum aliqua minim magna amet consectetur labore sint qui nostrud magna nulla eiusmod. Ea exercitation fugiat duis id irure mollit non.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.tesla/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.tesla/changelog.md"
     },
     {
         "id": "binding-toon",
@@ -2852,12 +2981,13 @@
         "description": "Esse reprehenderit culpa est ipsum quis adipisicing esse. Lorem quis amet non esse et aliquip elit duis ad qui excepteur. Veniam voluptate officia id laboris do in fugiat laborum duis.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.toon/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.toon/changelog.md"
     },
     {
         "id": "binding-tplinksmarthome",
@@ -2874,12 +3004,13 @@
         "description": "Nostrud ullamco exercitation ut tempor non minim laborum. Et non ut aute aliqua nisi aute cupidatat minim incididunt duis et adipisicing. Fugiat exercitation mollit nulla aliqua reprehenderit aute quis ipsum dolore enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.tplinksmarthome/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.tplinksmarthome/changelog.md"
     },
     {
         "id": "binding-tradfri",
@@ -2896,12 +3027,13 @@
         "description": "Ipsum proident commodo nulla fugiat adipisicing amet nisi fugiat est eu commodo commodo nulla fugiat. Fugiat commodo duis laborum incididunt incididunt dolore amet reprehenderit officia incididunt ut magna. Occaecat non labore esse qui anim reprehenderit veniam sunt dolor reprehenderit qui.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.tradfri/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.tradfri/changelog.md"
     },
     {
         "id": "binding-unifi",
@@ -2918,12 +3050,13 @@
         "description": "Veniam elit occaecat ipsum velit. Dolor qui exercitation labore reprehenderit dolore. Sunt ut nisi commodo irure duis nostrud adipisicing pariatur enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.unifi/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.unifi/changelog.md"
     },
     {
         "id": "binding-urtsi",
@@ -2940,12 +3073,13 @@
         "description": "Ad deserunt proident velit ea velit enim officia elit. Reprehenderit fugiat labore id veniam et. Ea dolor amet ut ipsum incididunt cillum ullamco id sit laboris enim excepteur.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.urtsi/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.urtsi/changelog.md"
     },
     {
         "id": "binding-valloxmv",
@@ -2962,12 +3096,13 @@
         "description": "Esse reprehenderit culpa est ipsum quis adipisicing esse. Lorem quis amet non esse et aliquip elit duis ad qui excepteur. Veniam voluptate officia id laboris do in fugiat laborum duis.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.valloxmv/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.valloxmv/changelog.md"
     },
     {
         "id": "binding-velbus",
@@ -2984,12 +3119,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.velbus/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.velbus/changelog.md"
     },
     {
         "id": "binding-vitotronic",
@@ -3006,12 +3142,13 @@
         "description": "Veniam elit occaecat ipsum velit. Dolor qui exercitation labore reprehenderit dolore. Sunt ut nisi commodo irure duis nostrud adipisicing pariatur enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.vitotronic/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.vitotronic/changelog.md"
     },
     {
         "id": "binding-weatherunderground",
@@ -3028,12 +3165,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.weatherunderground/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.weatherunderground/changelog.md"
     },
     {
         "id": "binding-wemo",
@@ -3050,12 +3188,13 @@
         "description": "Quis cupidatat commodo consequat anim incididunt. Cillum aliqua minim magna amet consectetur labore sint qui nostrud magna nulla eiusmod. Ea exercitation fugiat duis id irure mollit non.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.wemo/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.wemo/changelog.md"
     },
     {
         "id": "binding-wifiled",
@@ -3072,12 +3211,13 @@
         "description": "Esse reprehenderit culpa est ipsum quis adipisicing esse. Lorem quis amet non esse et aliquip elit duis ad qui excepteur. Veniam voluptate officia id laboris do in fugiat laborum duis.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.wifiled/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.wifiled/changelog.md"
     },
     {
         "id": "binding-windcentrale",
@@ -3094,12 +3234,13 @@
         "description": "Veniam elit occaecat ipsum velit. Dolor qui exercitation labore reprehenderit dolore. Sunt ut nisi commodo irure duis nostrud adipisicing pariatur enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.windcentrale/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.windcentrale/changelog.md"
     },
     {
         "id": "binding-yamahareceiver",
@@ -3116,12 +3257,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.yamahareceiver/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.yamahareceiver/changelog.md"
     },
     {
         "id": "binding-yeelight",
@@ -3138,12 +3280,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.yeelight/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.yeelight/changelog.md"
     },
     {
         "id": "binding-zigbee",
@@ -3160,12 +3303,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.zigbee/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.zigbee/changelog.md"
     },
     {
         "id": "binding-zoneminder",
@@ -3182,12 +3326,13 @@
         "description": "Nostrud ullamco exercitation ut tempor non minim laborum. Et non ut aute aliqua nisi aute cupidatat minim incididunt duis et adipisicing. Fugiat exercitation mollit nulla aliqua reprehenderit aute quis ipsum dolore enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.zoneminder/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.zoneminder/changelog.md"
     },
     {
         "id": "binding-zwave",
@@ -3204,12 +3349,13 @@
         "description": "Ad deserunt proident velit ea velit enim officia elit. Reprehenderit fugiat labore id veniam et. Ea dolor amet ut ipsum incididunt cillum ullamco id sit laboris enim excepteur.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.zwave/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.zwave/changelog.md"
     },
     {
         "id": "binding-zway",
@@ -3226,12 +3372,13 @@
         "description": "Eu culpa magna ut in ad quis consequat quis amet velit enim culpa. Est commodo culpa nulla adipisicing. Commodo exercitation cillum enim consequat veniam irure proident non quis dolore duis et tempor sint.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
+            "status": "AVAILABLE"
         },
         "issues": "",
-        "github": "https://www.github.com/openhab/openhab2-addons",
-        "url_changelog": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.zway/changelog.md"
+        "github": "https://github.com/openhab/openhab2-addons",
+        "changelog_url": "https://raw.githubusercontent.com/openhab/openhab2-addons/master/addons/binding/org.openhab.binding.zway/changelog.md"
     },
     {
         "id": "misc-azureiothub",
@@ -3247,9 +3394,10 @@
         "description": "Nostrud ullamco exercitation ut tempor non minim laborum. Et non ut aute aliqua nisi aute cupidatat minim incididunt duis et adipisicing. Fugiat exercitation mollit nulla aliqua reprehenderit aute quis ipsum dolore enim.",
         "manufacturers": [],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
-        },
+            "status": "AVAILABLE"
+        }
     },
     {
         "id": "misc-homekit",
@@ -3263,10 +3411,13 @@
         ],
         "author": "Kay Mcmahon",
         "description": "Quis cupidatat commodo consequat anim incididunt. Cillum aliqua minim magna amet consectetur labore sint qui nostrud magna nulla eiusmod. Ea exercitation fugiat duis id irure mollit non.",
-        "manufacturers": ["Apple"],
+        "manufacturers": [
+            "Apple"
+        ],
         "products": [],
+        "last_updated": 1564580802537,
         "status": {
-            "status": "AVAILABLE",
-        },
-    },
+            "status": "AVAILABLE"
+        }
+    }
 ]

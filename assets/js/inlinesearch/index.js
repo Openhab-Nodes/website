@@ -79,7 +79,7 @@ window.customElements.define('ui-inlinesearch', class extends HTMLElement {
                     if (foundcontents-1 < startIndex) continue;
                     if (foundcontents > maxresults) continue;
 
-                    console.log("contents",mvalue);
+                    //console.log("contents",mvalue);
                     let resultPart = document.createElement("div");
                     const start = mvalue.indices[0][0] - summaryInclude > 0 ? mvalue.indices[0][0] - summaryInclude : 0;
                     const end = mvalue.indices[0][1] + summaryInclude < entry.item.contents.length ? mvalue.indices[0][1] + summaryInclude : entry.item.contents.length;
@@ -154,7 +154,7 @@ window.customElements.define('ui-inlinesearch', class extends HTMLElement {
             console.warn("Did not find input for ", target.id);
             return;
         }
-        console.log("INIT", input);
+        //console.log("INIT", input);
 
         if (this.popover) this.popover.destroy();
         this.popover = new Popover(target, popoverTemplate, { position: 'bottom' });
