@@ -41,7 +41,7 @@ openHAB developers did good when they designed the concepts. Many concepts are t
   <tr>
     <td>State Filter<br></td>
     <td><b>N/A</b>. OpenHAB controls which Items are exposed to Hue Emulation, HomeKit and Alexa via Tags. Different users are not considered. Tags are shared across all mentioned services.</td>
-    <td>OHX allow you to setup filters, based on a simple rule syntax. It also allows to restrict filters to specific {{< details title="login accounts">}}That way the stereo in your office room can no longer be volumed up to max by your kids.{{< /details >}} ("users"). Each IO Service has its own <b>State Filters</b>.</td>
+    <td>OHX allow you to setup filters, based on a simple rule syntax. It also allows to restrict filters to specific <ui-tooltip maxwidth><button class="btn-link contexthelp" title="login accounts" slot="button">login accounts</button>That way the stereo in your office room can no longer be volumed up to max by your kids.</ui-tooltip> ("users"). Each IO Service has its own <b>State Filters</b>.</td>
   </tr>
   <tr>
     <td>User<br>Management</td>
@@ -138,7 +138,7 @@ The following table reads a bit technical. Some of the aspects are picked up and
     <td>-</td>
   </tr>
   <tr>
-    <td> {{< details title="Required Memory">}}Memory requirements are hard to compare for the two solutions. For one: OHX supports way more features out of the box, like natural language understanding, Hue Emulation for Hue Apps, Web Things Gateway and Cloud assistants via the Cloud Connector. <p>And second openHABs memory can't really be measured, only the java virtual machine (JVM) ones. Also resource leaks in openHAB raises the question on when to measure used memory, as it constantly climbs up until the all of the JVMs assignend memory is used up.</p>{{< /details>}} </td>
+    <td><ui-tooltip maxwidth><button class="btn-link contexthelp" title="Required Memory" slot="button">Required Memory</button><p>Memory requirements are hard to compare for the two solutions. For one: OHX supports way more features out of the box, like natural language understanding, Hue Emulation for Hue Apps, Web Things Gateway and Cloud assistants via the Cloud Connector.</p><p>And second openHABs memory can't really be measured, only the java virtual machine (JVM) ones. Also resource leaks in openHAB raises the question on when to measure used memory, as it constantly climbs up until the all of the JVMs assignend memory is used up.</p></ui-tooltip></td>
     <td>~200 MB<br><br>(InfluxDB-2 50 MB,<br>Redis 20 MB,<br>IAM 15 MB,<br>AddonMgr 10 MB,<br><abbr title="Natural language understanding">NRU</abbr> 25 MB,<br>Rules 20 MB,<br>Hue Emu. + Web Things IO Service 30 MB,<br>Cloud connector 10 MB)</td>
     <td>~550 MB<br><br>(InfluxDB-1 50 MB, JVM 500 MB)</td>
   </tr>
@@ -180,8 +180,7 @@ For Java, you must have the 150 MB weighting runtime installed and parts of it t
 Resources
 : Both languages require you to carefully watch your resource usage to prevent memory and resource leaks.
 Manual memory management brings the huge benefit of being able to free unused parts as soon as you know it's safe. The
-garbage collected Java may cause {{< details title="memory usage spikes">}}Assuming scenarios that are more complex, than
-the Java Bytecode Optimizer can handle.{{< /details >}} instead. Have a look at the following (naïve, exemplary) example:
+garbage collected Java may cause <ui-tooltip maxwidth><button class="btn-link contexthelp" slot="button">memory usage spikes</button>Assuming scenarios that are more complex, than the Java Bytecode Optimizer can handle.</ui-tooltip> instead. Have a look at the following (naïve, exemplary) example:
 
 <div>
 	<tab-container>

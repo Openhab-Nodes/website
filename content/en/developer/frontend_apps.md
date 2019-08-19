@@ -34,8 +34,8 @@ The app will place those components dynamically whenever it wants to render a da
 
 You only need `npm` installed to get started. If you want to &hellip;
 
-*  contribute to the dashboard App you will find the dashboard repository here: https://www.github.com/openhab-nodes/ui-dashboard
-* develop your own *Tile*, you should check out the *Tile* example repository over here: https://www.github.com/openhab-nodes/ui-dashboard-tile-example
+*  contribute to the dashboard App you will find the dashboard repository here: https://github.com/openhab-nodes/ui-dashboard
+* develop your own *Tile*, you should check out the *Tile* example repository over here: https://github.com/openhab-nodes/template-ui-dashboard-tile
 
 
 ### Tile Registry
@@ -169,8 +169,8 @@ As mentioned in the introduction, one of the goals of OHX native apps is that an
 
 You need the Android Studio and Flutter SDK installed to get started. If you want to &hellip;
 
-*  contribute to the dashboard App you will find the dashboard repository here: https://www.github.com/openhab-nodes/ui-mobile-app
-* develop your own *Widget*, you should check out the *Widget* example repository over here: https://www.github.com/openhab-nodes/ui-mobile-app-widget-example
+*  contribute to the dashboard App you will find the dashboard repository here: https://github.com/openhab-nodes/ui-app
+* develop your own *Widget*, you should check out the *Widget* example repository over here: https://github.com/openhab-nodes/template-ui-app-widget
 
 ### Develop your own Widgets
 

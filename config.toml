@@ -1,7 +1,6 @@
 baseURL = "https://www.openhabx.com/"
 languageCode = "en-us"
 title = "openHAB X"
-theme = "kompound"
 canonifyurls = true
 paginate = 10
 copyright = "© 2019 David Graeff"
@@ -53,22 +52,22 @@ enableInlineShortcodes = true
       weight = 1
       name = "Dashboard"
       url = "/dashboard"
-    [[languages.en.menu.dashboard]]
-      weight = 2
-      name = "Manage OHX Installations"
-      url = "/dashboard/installations"
+      pre = "fa-tachometer-alt"
     [[languages.en.menu.dashboard]]
       weight = 3
       name = "Subscription"
       url = "/dashboard/subscription"
+      pre = "fa-envelope-open-text"
     [[languages.en.menu.dashboard]]
       weight = 4
       name = "Access Token"
       url = "/dashboard/tokens"
+      pre = "fa-user-tag"
     [[languages.en.menu.dashboard]]
       weight = 5
       name = "Backups"
       url = "/dashboard/backups"
+      pre = "fa-cloud-upload-alt"
 
     [[languages.en.menu.legal]]
       weight = 3
@@ -195,7 +194,7 @@ enableInlineShortcodes = true
     [[languages.en.menu.social]]
       name = "Github"
       weight = 2
-      url = "https://www.github.com/openhab-nodes/openhabx"
+      url = "https://github.com/openhab-nodes"
       pre = "github"
     [[languages.en.menu.social]]
       name = "Discord Chat"
@@ -235,22 +234,22 @@ enableInlineShortcodes = true
       weight = 1
       name = "Übersicht"
       url = "/dashboard"
-    [[languages.de.menu.dashboard]]
-      weight = 2
-      name = "Verwalte OHX Installationen"
-      url = "/dashboard/installations"
+      pre = "fa-tachometer-alt"
     [[languages.de.menu.dashboard]]
       weight = 3
       name = "Abonnement"
       url = "/dashboard/subscription"
+      pre = "fa-envelope-open-text"
     [[languages.de.menu.dashboard]]
       weight = 4
       name = "Zugriffsschlüssel"
       url = "/dashboard/tokens"
+      pre = "fa-user-tag"
     [[languages.de.menu.dashboard]]
       weight = 5
       name = "Sicherungen"
       url = "/dashboard/backups"
+      pre = "fa-cloud-upload-alt"
 
     [[languages.de.menu.legal]]
       weight = 3
@@ -377,7 +376,7 @@ enableInlineShortcodes = true
     [[languages.de.menu.social]]
       name = "Github"
       weight = 2
-      url = "https://www.github.com/openhab-nodes/openhabx"
+      url = "https://github.com/openhab-nodes"
       pre = "github"
     [[languages.de.menu.social]]
       name = "Discord Chat"
@@ -395,7 +394,7 @@ enableInlineShortcodes = true
   email = "contact@openhabx.com"
   phone_link = "tel:+491632662555"
   phone = "+49 163 266 2555"
-  editURL = "https://github.com/Openhab-Nodes/website/edit/master/content/"
+  editURL = "https://github.com/openhab-nodes/website/edit/master/content/"
 
 # The site's parameters
 [languages.de.params]

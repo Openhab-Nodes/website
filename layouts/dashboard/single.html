@@ -1,0 +1,49 @@
+{{ define "body" }}
+<section id="pageheader"></section>
+{{ $options := (dict "targetPath" "/css/dashboard.css" "outputStyle" "compressed" "enableSourceMap" true) -}}
+<link rel="stylesheet"
+    href='{{- (resources.Get "/scss/dashboard.scss" | toCSS $options | minify | fingerprint).Permalink | safeHTMLAttr -}}'>
+<script defer type="module" src="/js/cmp/checklogin.js"></script>
+<script defer type="module" src="/js/cmp/ui-admin-link.js"></script>
+<script defer type="module" src="/js/cmp/ui-btn-logout.js"></script>
+<script defer type="module" src="/js/cmp/ui-accountdetails.js"></script>
+<script defer type="module" src="/js/cmp/ui-btn-deleteaccount.js"></script>
+<script defer type="module" src="/js/cmp/ui-btn-logout.js"></script>
+<script defer type="module" src="/js/cmp/ui-installations.js"></script>
+<script defer type="module" src="/js/cmp/ui-servicestatus.js"></script>
+<script defer type="module" src="/js/cmp/ui-backups.js"></script>
+<script defer type="module" src="/js/cmp/ui-accesstokens.js"></script>
+<script defer type="module" src="/js/cmp/ui-subscription.js"></script>
+<script defer type="module" src="/js/cmp/ui-sla.js"></script>
+
+<main id="dashboard">
+    <ui-checklogin></ui-checklogin>
+    <nav>
+        <ul>
+            {{ $currentpart := replaceRE "^(.*)/" "$1" $.Page.RelPermalink }}
+            {{- range $p :=  .Site.Menus.dashboard -}}
+            {{ $urlpart := replaceRE "^/.*(/dashboard/.*)" "$1" $p.URL }}
+            {{ $has := eq $currentpart $urlpart }}
+            {{ if $has }}
+            {{ $.Scratch.Set "classactive" "active" }}
+            {{ else }}
+            {{ $.Scratch.Set "classactive" "" }}
+            {{ end }}
+            <li>
+                <a class='btn btn-outline-primary d-block m-2 text-nowrap {{ $.Scratch.Get "classactive" }}'
+                    href="{{ $p.URL }}">
+                    <i style="float: left;" class="fas {{ $p.Pre | safeCSS }}"></i> {{ $p.Name | safeHTML }}</a>
+            </li>
+            {{- end -}}
+            <li>
+                <ui-btn-logout class="btn btn-outline-primary m-2 text-nowrap"></ui-btn-logout>
+                <ui-admin-link href='{{ "/dashboard/admin" }}' class="btn btn-outline-primary m-2 text-nowrap"
+                    style="display:none">Admin</ui-admin-link>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        {{ .Content }}
+    </div>
+</main>
+{{ end }}

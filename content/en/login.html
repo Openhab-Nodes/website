@@ -4,16 +4,5 @@ tinytitle = true
 type = "plain"
 +++
 
-<div style="display: flex;justify-content: center;">
-    <div style="max-width: 500px;" id="firebaseui-auth-container">
-    </div>
-    <div style="max-width: 500px;display:none" class="card" id="firebaseui-not-online">
-        <div class="card-header"><h4>No Internet Connection</h4></div>
-        <div class="card-body">
-            <p>You seem to have connection issues. Please reload and try again.</p>
-            <button class="btn btn-info" onclick="window.location.reload()">Reload</button>
-        </div>
-    </div>
-</div>
-
-<ui-login></ui-login>
+<script defer type="module" src="/js/cmp/ui-login.js"></script>
+<ui-login lang="{{< lang >}}"></ui-login>

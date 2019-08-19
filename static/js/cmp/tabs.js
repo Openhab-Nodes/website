@@ -1,25 +1,2 @@
-class TabContainer extends HTMLElement {
-    constructor() {
-        super();
-
-        this._headerItems = this.querySelectorAll('tab-header-item');
-        this._bodyItems = this.querySelectorAll('tab-body-item');
-        this._index = 0;
-
-		for(let i = 0; i < this._headerItems.length; i++)
-			this._headerItems[i].addEventListener('click', this.select.bind(this, i));
-    }
-    select(index) {
-        if (this._index === index || index < 0 || index > this._headerItems.length - 1)
-            return;
-
-        this._headerItems[this._index].classList.remove('tab-active');
-        this._headerItems[index].classList.add('tab-active');
-        this._index = index;
-
-		for(let item of this._bodyItems)
-        	item.style.transform = `translateX(${(-this._index) * 100}%)`;
-    }
-}
-customElements.define('tab-container', TabContainer);
+customElements.define("tab-container",class extends HTMLElement{constructor(){super()}onConnectedCallback(){this._headerItems=this.querySelectorAll("tab-header-item"),this._bodyItems=this.querySelectorAll("tab-body-item"),this._index=0;for(let e=0;e<this._headerItems.length;e++)this._headerItems[e].addEventListener("click",this.select.bind(this,e));console.log("TABS READY")}select(e){if(!(this._index===e||e<0||e>this._headerItems.length-1)){this._headerItems[this._index].classList.remove("tab-active"),this._headerItems[e].classList.add("tab-active"),this._index=e;for(let e of this._bodyItems)e.style.transform=`translateX(${100*-this._index}%)`}}});
 //# sourceMappingURL=tabs.js.map

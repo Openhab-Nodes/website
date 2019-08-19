@@ -10,11 +10,11 @@ So far you have learned how to administer your installation, install new Addons,
 This chapter talks about different ways on how to control your Smarthome, aside from physical devices like Wall-Switches and buttons. Because openHAB X implements the Philips Hue Bridge API, you can use all Hue compatible apps. The native OHX mobile App and the tablet / browser application are introduced in the next sections.
 
 Digitial assistants like Amazon Alexa and Google Home are a perfect way to control your smarthome. Because speech processing happens on Internet servers and those cannot talk directly to your OHX installation
-({{< details title="Details" maxwidth="500px" >}}
+(<ui-tooltip maxwidth><button class="btn-link contexthelp" slot="button">Details</button>
 The reason is that most of the time your ISP is not assigning you a fixed IP (internet Protocol) address and in some regions of the world multiple connections even share a single IP. Routers use Network-Address-Translations (NAT) on top of that, which again splits traffic between your connected devices at home.
-
+<br><br>
 That's why a connection is usually established the other way round by the application. openHAB X, connects to an internet service with a well known domain name that can be resolved to an IP address.
-{{< /details >}}), the Cloud Connector service is introduced in the following section.
+</ui-tooltip>), the Cloud Connector service is introduced in the following section.
 
 
 Those interfaces, Apps and Digital Assistants have potentially full access to your Things, in contrast to a fixed Wall-Switch. Do you really want your Alexa to have access to your electronic door lock?

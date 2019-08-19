@@ -103,7 +103,7 @@ More complex, reactive components are a bit tedious with just the clumsy html do
 In the future, one option could be [Vue 3](https://medium.com/the-vue-point/plans-for-the-next-iteration-of-vue-js-777ffea6fabf). Thanks
 to tree-shaking and building up on modern standards, it will come with a low footprint, suited for standalone html components.
 
-But even today the Custom Component approach is much more maintainable than settling on any framework or worse, a framework+style combination. You find more information about the technial part in the repository readme file: https://github.com/openhab-nodes/setup_and_maintenance.
+But even today the Custom Component approach is much more maintainable than settling on any framework or worse, a framework+style combination. You find more information about the technial part in the repository readme file: https://github.com/openhab-nodes/ui-maintenance.
 
 ## Getting started
 

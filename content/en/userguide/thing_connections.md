@@ -11,9 +11,9 @@ Connections are a powerful utility. Not only do they allow to interconnect diffe
 
 You will find all Things arranged in the first column, labeled with "Source", in a two column table. You find action buttons to the right of the Things. Click on the "Add Target" action and select a target Thing from the drop down list.
 
-{{< details type="warning">}}
+{{< callout type="warning">}}
 {{< advanced >}} It can be tedious to connect hundreds of wall switches to hundreds of light sources. Because connection configuration can also take place in text mode, it is possible to connect a large quantity of Things by a script generated yaml or json file.
-{{< /details >}}
+{{< /callout >}}
 
 ## Data Flow
 
@@ -51,9 +51,9 @@ You add a link processor by clicking on a link and select a processor from the d
 You can have more than one link processor on one connection link.
 This allows more complex processing, like adding a delay plus playing a fade animation.
 
-{{< details type="warning">}}
+{{< callout type="warning">}}
 {{< advanced >}} Each created link processor has a unique id (uid), that is also shown in the user interface. Via this **uid**, you can stop a link processor from doing whatever it is doing from within rules. A rule can also be triggered by a link processor that got an input or produced an output.
-{{< /details >}}
+{{< /callout >}}
 
 The following link processors are available.
 

@@ -1,0 +1,2 @@
+window.customElements.define("ui-admin-link",class extends HTMLElement{constructor(){super()}async connectedCallback(){let e=await import("../../../../../../../../js/cmp/userdata.js");await e.userdata.ready(),"IocPph06rUWM3ABcIHguR3CIw6v1"==e.userdata.user.uid&&(this.style.display="inline-block");const t=document.createElement("a");t.href=this.getAttribute("href"),t.style.display="none",this.append(t),this.addEventListener("click",()=>t.dispatchEvent(new Event("click")))}});
+//# sourceMappingURL=ui-admin-link.js.map

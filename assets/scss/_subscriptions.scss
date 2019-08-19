@@ -1,0 +1,129 @@
+
+#plans {
+
+    .slidecontainer {
+        width: 100%;
+        /* Width of the outside container */
+    }
+
+    /* The slider itself */
+    .slider {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 80%;
+        height: 25px;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+        display: block;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+
+    /* Mouse-over effects */
+    .slider:hover {
+        opacity: 1;
+        /* Fully shown on mouse-over */
+    }
+
+    /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        /* Override default look */
+        appearance: none;
+        width: 25px;
+        /* Set a specific slider handle width */
+        height: 25px;
+        /* Slider handle height */
+        background: var(--primary);
+        /* Green background */
+        cursor: pointer;
+        /* Cursor on hover */
+    }
+
+    .slider::-moz-range-thumb {
+        width: 25px;
+        /* Set a specific slider handle width */
+        height: 25px;
+        /* Slider handle height */
+        background: var(--primary);
+        /* Green background */
+        cursor: pointer;
+        /* Cursor on hover */
+    }
+
+    &>form:hover {
+        box-shadow: 0 1px 3px 1px rgba(60, 64, 67, .2), 0 2px 8px 4px rgba(60, 64, 67, .1);
+    }
+    &>form.active {
+        box-shadow: 0 1px 3px 1px #cc903633, 0 2px 8px 4px #cc903622;
+        border: 1px solid var(--primary);
+    }
+    &>form {
+        margin: 0 26px 0;
+        padding: 0;
+        border-radius: 4px;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        transition: box-shadow 135ms cubic-bezier(.4, 0, .2, 1), border 235ms cubic-bezier(.4, 0, .2, 1), transform 0.5s;
+        box-shadow: 0px 0px 2px 0 rgba(0, 0, 0, .25);
+        border: 1px solid transparent;
+
+        .header {
+            text-align: center;
+            background-color: #eee;
+            padding-bottom: 10px;
+
+            h4 {
+                font-size: 24px;
+                padding-top: 14px;
+                font-weight: 700;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: 1.42;
+                letter-spacing: normal;
+                text-align: center;
+                color: #666b6f;
+            }
+
+            img,
+            .img {
+                height: 120pt;
+                width: 120pt;
+                border-radius: 50%;
+                margin: auto;
+                background-color: #fafafa;
+            }
+        }
+
+        &>p {
+            min-height: 70px;
+        }
+
+        table {
+
+            td:first-child {
+                padding-right: 10px;
+                font-size: 1.2em;
+                text-align: right;
+            }
+
+            td:last-child {
+                padding-left: 10px;
+                vertical-align: middle;
+            }
+        }
+
+        .table {
+            flex: 1;
+            width: initial;
+        }
+    }
+
+    .plans_feat_compact > span:not(:last-of-type):after {
+        content: ", ";
+    }
+}

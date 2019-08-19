@@ -1,6 +1,6 @@
 {{$file := .Get "file"}}
 {{- if eq (.Get "markdown") "true" -}}
-{{- $file  | readFile | markdownify -}}
+<div style='{{ .Get "style" | safeCSS }}' class='{{ .Get "class" }}'>{{- $file  | readFile | markdownify -}}</div>
 {{- else -}}
 {{ $file  | readFile | safeHTML }}
 {{- end -}}

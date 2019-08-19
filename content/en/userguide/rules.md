@@ -291,5 +291,5 @@ Logging
 Performance
 : Scripts can only be executed ("triggered") as part of a *Rule* and require you to specify a maximum execution duration. They are not loaded at start-up. This means that the first time a script is referenced, it will take a bit longer to execute because it needs to be fetched from the configuration storage and needs to be parsed. Scripts are cached in memory though for future executions.
 
-You learn best on how to use scripts, by looking at the examples in https://www.github.com/openhab-nodes/script-examples.
+You learn best on how to use scripts, by looking at the examples in https://github.com/openhab-nodes/core/ruleengine/examples.
 

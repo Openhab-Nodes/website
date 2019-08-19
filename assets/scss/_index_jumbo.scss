@@ -1,0 +1,259 @@
+
+#jumbo {
+    min-height: calc(100vh - 70px);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .scroll-down {
+        position: absolute;
+        bottom: 2rem;
+        left: 0;
+        transform: translateX(50vw);
+        transform-origin: center center;
+        color: gainsboro;
+
+        .icon {
+            min-width: 1em;
+            display: inline-block;
+            background-repeat: no-repeat;
+            margin-right: .125rem;
+            height: 2.5em;
+            width: 1.5em;
+        }
+    }
+
+
+    @keyframes scrollDownMove {
+        0% {
+            -webkit-transform: translateY(-.15em);
+            transform: translateY(-.15em)
+        }
+
+        to {
+            -webkit-transform: translateY(.65em);
+            transform: translateY(.65em)
+        }
+    }
+
+    img.mainlogo {
+        margin-bottom: 30px;
+        max-width: 100%;
+    }
+
+    .descriptions {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        div {
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+
+        img {
+            max-height: 130px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .block {
+        color: rgb(136, 136, 136);
+
+        h1 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 100;
+            font-size: 45px;
+            line-height: 60px;
+            letter-spacing: 10px;
+            padding-bottom: 45px;
+        }
+
+        p {
+            font-size: 23px;
+            line-height: 40px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    #jumbo-work {
+        padding-top: 100px;
+        padding-bottom: 100px;
+
+        .block {
+            padding-left: 0px;
+
+            h1 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 11px;
+                line-height: 25px;
+            }
+        }
+    }
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    #jumbo-work .block h1 {
+        font-size: 28px;
+    }
+
+    #jumbo-work .block p {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    #jumbo {
+        padding-top: 90px;
+        padding-bottom: 100px;
+
+        .block {
+            padding-left: 0px;
+
+            h1 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 13px;
+            }
+        }
+    }
+}
+
+
+#jumbo_features {
+    .swiper-slide.center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        .title {
+            position: relative;
+        }
+    }
+
+    .swiper-slide.center>.title:before {
+        content: "";
+        position: absolute;
+        left: -5px;
+        right: -5px;
+        top: -5px;
+        bottom: -5px;
+        z-index: -1;
+        box-shadow: inset 0 0 0 200px rgb(255, 255, 255);
+        filter: blur(10px);
+    }
+
+    .swiper-slide-active .wrapper {
+        opacity: 1;
+    }
+
+    .wrapper {
+        position: absolute;
+        opacity: 0;
+        transition: opacity 0.3s;
+
+        .front {
+            transform: matrix3d(0.84, 0, 0.34, -0.0002, 0, 1, 0, 0, -0.34, 0, 0.94, 0, 111, -30, 10, 1);
+        }
+
+        .back {
+            transform: matrix3d(0.94, 0, 0.34, -0.00025, 0, 1, 0, 0, -0.34, 0, 0.94, 0, -80, 80, 10, 1);
+        }
+    }
+
+    .image {
+        transition: transform .2s ease;
+        height: 150px;
+        width: 250px;
+        background-size: cover;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .5);
+    }
+
+    .front {
+        z-index: 1;
+    }
+
+    .back {
+        z-index: 0;
+    }
+
+    .addons_anim {
+        position: absolute;
+        top: 0;
+        height: 700px;
+        width: 700px;
+        background-size: contain;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        background-repeat: no-repeat;
+        transform: translateZ(0);
+        animation: addons_anim 10s ease-in-out 0s infinite alternate;
+        will-change: transform;
+    }
+
+    .addons_anim2 {
+        position: absolute;
+        top: 0;
+        height: 700px;
+        width: 700px;
+        background-size: contain;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        background-repeat: no-repeat;
+        transform: translateZ(0);
+        animation: addons_anim2 10s ease-in-out 0s infinite alternate;
+        will-change: transform;
+    }
+
+
+    @keyframes addons_anim {
+        0% {
+            transform: scale(4) translate(-15%, 40%);
+        }
+
+        20% {
+            transform: scale(4) translate(-15%, 40%);
+        }
+
+        40% {
+            transform: scale(1.2) translate(9%, 4%);
+        }
+
+        60% {
+            transform: scale(1.2) translate(9%, 4%);
+        }
+
+        90% {
+            transform: scale(0.5) translate(-0px, -25%);
+        }
+
+        100% {
+            transform: scale(0.5) translate(-0px, -25%);
+        }
+    }
+
+    @keyframes addons_anim2 {
+        0% {
+            transform: translate(-50%, 50px);
+
+        }
+
+        100% {
+            transform: translate(20%, -90px);
+        }
+    }
+}

@@ -10,51 +10,18 @@ type = "dashboard"
     You will only find cloud related settings and statistics here.
 </div>
 
+<h4>Your Account</h4>
 <div class="card">
-    <div class="card-header">
-        Service Status
-    </div>
-    <div class="card-body">
-        <div class="card-text">
-            Cloud Connector &check; OK<br>
-            Remote Connection &check; OK<br>
-            WebRTC Connection &check; OK<br>
-            Backup System &check; OK<br>
-        </div>
-    </div>
+    <ui-accountdetails class="card-body"></ui-accountdetails>
+</div>
+<div class="text-right card-body">
+    <ui-btn-deleteaccount class="btn btn-outline-danger"></ui-btn-deleteaccount>&nbsp;
+    <ui-btn-logout class="btn btn-outline-primary"></ui-btn-logout>
 </div>
 
-<div class="card">
-    <div class="card-header">
-        Account Details
-    </div>
-    <div class="card-body">
-        <div class="card-text">
-            Name, EMail, Photo, Subscription Status
-        </div>
-    </div>
-</div>
+<h4>Your Installations</h4>
+<p class="small">Register a new Installation in the <b>Setup &amp; Maintenance</b> application.</p>
+<ui-installations></ui-installations>
 
-<div class="card">
-    <div class="card-header">
-        Registered Installations
-    </div>
-    <div class="card-body">
-        sd
-    </div>
-</div>
-
-<div class="card">
-    <div class="card-header">
-        Statistics
-    </div>
-    <div class="card-body">
-        Table: Total commands, Commands last hour, Last response time, Average response time last hour<br>
-        Graph1: Response time per day / 7 days<br>
-        Graph2: Commands per hour / 7 days<br>
-    </div>
-</div>
-
-<div class="text-right">
-    <button class="btn btn-danger">Delete Account</button>
-</div>
+<h4 class="mt-4">Service Status</h4>
+<ui-servicestatus class="mb-4"></ui-servicestatus>

@@ -1,0 +1,101 @@
+{{- $file := getJSON "static/run/subscriptions.json" -}}
+
+<div id="plans" class="row">
+    {{- range $element := $file -}}
+    {{ $scratch := newScratch }}
+    {{ if (isset $element.euro_price "min") }}
+    {{ $scratch.Set "dynprice" true }}
+    {{ $scratch.Set "price" $element.euro_price.min }}
+    {{ else }}
+    {{ $scratch.Set "dynprice" false }}
+    {{ $scratch.Set "price" $element.euro_price }}
+    {{ end }}
+    {{- $price := $scratch.Get "price" -}}
+    {{- $dynprice := $scratch.Get "dynprice" -}}
+
+    <form class="col" method="GET" action="{{ $element.href }}" id="subscriptionPlan{{ $element.id }}">
+        {{ with $dynprice }}
+        <ui-subscription-flexible target="subscriptionPlan{{ $element.id }}"></ui-subscription-flexible>
+        {{ end }}
+        <input type="hidden" name="c" value="{{ $price }}">
+        <input type="hidden" name="p" value="{{ $element.id }}">
+        <div class="header">
+            <h4>{{- $element.title | markdownify -}}</h4>
+            <i class="img {{ $element.icon }}" style="font-size: 60pt;line-height: 120pt;"></i>
+        </div>
+        <p class="text-center p-2">{{- $element.desc | markdownify -}}</p>
+        <div class="mx-4 mb-2 table">
+            <table>
+                <tbody>
+                    {{- range $propid, $prop := $element.properties -}}
+                    <tr>
+                        <td>
+                            <output
+                            {{ with $prop.max -}}
+                            data-min="{{- $prop.base -}}"
+                            data-max="{{- $prop.max -}}"
+                            {{- end }}
+                            data-dynamic="true"
+                            data-round="true"
+                            name="{{ $propid }}">{{- $prop.base -}}</output>
+                            {{- with $prop.suffix -}}
+                            {{- . | markdownify -}}
+                            {{- end -}}
+                        </td>
+                        <td>
+                            {{- if (isset $prop "details_html_tag") -}}
+                            {{- $id := now.UnixNano -}}
+                            {{- $html := (printf "<%s data-dynamic='true' data-min='%f' data-max='%f' value='%f'></%s>" $prop.details_html_tag $prop.base $prop.max $prop.base $prop.details_html_tag )  }}
+                            <ui-tooltip maxwidth>
+                                <button class="btn-link contexthelp" title="Context help" slot="button">{{- $prop.title | markdownify -}}</button>
+                                {{- $html | safeHTML -}}
+                            </ui-tooltip>
+                            {{- else -}}
+                            {{- $prop.title | markdownify -}}
+                            {{- end -}}
+
+                            {{- with $prop.desc -}}
+                            <br><small>{{- . | markdownify -}}</small>
+                            {{- end -}}
+                        </td>
+                    </tr>
+                    {{ end }}
+                    {{- range $feat := $element.features -}}
+                    <tr>
+                        <td>&check;</td>
+                        <td>
+                            {{- if (isset $feat "details") -}}
+                            {{- $id := now.UnixNano -}}
+                            <ui-tooltip maxwidth>
+                                <button class="btn-link contexthelp" title="Context help" slot="button">{{- $feat.title | markdownify -}}</button>
+                                {{- $feat.details | markdownify -}}
+                            </ui-tooltip>
+                            {{- else -}}
+                            {{- $feat.title | markdownify -}}
+                            {{- end -}}
+
+                            {{- with $feat.desc -}}
+                            <br><small>({{- . | markdownify -}})</small>
+                            {{- end -}}
+                        </td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center mb-3">
+            {{ with $dynprice }}
+            <input type="range" min="{{ $element.euro_price.min }}" max="{{ $element.euro_price.max }}"
+                value="{{ $price }}" class="slider" id="subscriptionValue">
+            {{ end }}
+            <button type="submit" class="btn btn-primary btn-impressive">
+                {{- if (isset $element "button_text") -}}
+                <span>{{ $element.button_text }}</span>
+                {{ else }}
+                <span><output name="x" data-dynamic="true" for="subscriptionValue">{{ $price }}</output>€ / Month</span>
+                {{- end -}}
+            </button>
+        </div>
+    </form>
+    {{- end -}}
+</div>

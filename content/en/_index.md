@@ -156,10 +156,11 @@ An approved Thing is by default visible to digital assistants and to any control
 
 {{< small >}}
 \* Some Addons do not support the Inbox.
-{{< details title="Details" maxwidth="500px" >}}
+<ui-tooltip>
+<button class="btn-link contexthelp" title="Context help" slot="button">Details</button>
 Some protocols like KNX do not support auto discovery of connected devices. Things of
 the KNX Addon for example need to be configured manually. All modern standards allow discovery though.
-{{< /details >}}
+</ui-tooltip>
 {{< /small >}}
 
 {{< /colpic >}}
@@ -257,11 +258,10 @@ If you want to go all offline, openHAB X also features a [Snips]("https://snips.
     <div class="col-md-5 offset-md-1">
         <h4>Rules</h4> <button class="btn-link contexthelp" id="rules_advanced" title="Context help"><i
                 class="badge badge-primary" style="pointer-events: none;">ADVANCED</i></button>
-        <template data-popover="rules_advanced">
-            <p style="max-width: 500px">Rules are an advanced concept. If you use OHX only as
+        <ui-tooltip target="rules_advanced">
+        <p style="max-width: 500px">Rules are an advanced concept. If you use OHX only as
                 an interconnection hub, you'll not need them.</p>
-        </template>
-        <ui-tooltip target="rules_advanced"></ui-tooltip>
+        </ui-tooltip>
         <p>Rules consists of Triggers, Conditions and Actions, known as <button class="btn-link contexthelp"
                 id="rule_modules" title="Context help">Rule Modules</button>.
         </p>
@@ -272,14 +272,13 @@ If you want to go all offline, openHAB X also features a [Snips]("https://snips.
             mode via the maintenance user-interface. <button class="btn-link contexthelp" id="text_rule"
                 title="Context help">Example</button>
     </div>
-    <template data-popover="rule_modules">
-        <p style="max-width: 500px">OHX comes with a predefined set of modules for dealing with date/time, different
+    <ui-tooltip target="rule_modules">
+    <p style="max-width: 500px">OHX comes with a predefined set of modules for dealing with date/time, different
             network protocols like HTTP, MQTT, and for interacting will all OHX concepts like <b>Things</b>,
             <b>Thing Connections</b>, User Management and many more.</p>
-    </template>
-    <ui-tooltip target="rule_modules"></ui-tooltip>
-    <template data-popover="text_rule">
-        <div style="max-width: 700px">
+    </ui-tooltip>
+    <ui-tooltip target="text_rule">
+<div style="max-width: 700px">
 {{< highlight yaml "linenos=table" >}}
 triggers:
   - id: '1'
@@ -309,8 +308,7 @@ triggers:
             <li>auto-completion and</li>
             <li>syntax checking.</li>
         </ul>
-    </template>
-    <ui-tooltip target="text_rule"></ui-tooltip>
+    </ui-tooltip>
 </div>
 
 <div class="row mt-4">
@@ -347,16 +345,16 @@ triggers:
 <div class="row">
     <div class="col-md-6">
         <a href='{{< relref "/userguide/diy" >}}' title="DIY Hardware / Service Integration Documentation"
-            class="card-hover"><img src="/img/arduino_esp8266.jpg" style="width: 100%"></a>
+            class="noref card-hover"><img src="/img/arduino_esp8266.jpg" style="width: 100%"></a>
         <div class="d-flex my-2">
             <a href="https://platformio.org/" target="_blank"
-                title="PlatformIO is an open source ecosystem for IoT development" class="card-hover">
+                title="PlatformIO is an open source ecosystem for IoT development" class="noref card-hover">
                 <img src="/img/platformio.png" style="height: 3em;" class="m-2"><span style="font-size: 1.5em"
                     class="mr-2">PlatformIO</span>
             </a>
             <a href="https://esphome.io/" target="_blank"
                 title="ESPHome is a framework that tries to provide the best possible use experience for using ESP8266/ESP32"
-                class="card-hover">
+                class="noref card-hover">
                 <img src="/img/logo-esphome.svg" style="height: 3em;width: 200px" class="m-2">
             </a>
         </div>
@@ -369,21 +367,20 @@ triggers:
                 id="diy_auto_discovery" title="Context help">auto discovery</button> of
             Things straight to your openHAB X Inbox. OHX supports two major initiatives for MQTT and HTTP
             respectively.</p>
-        <a href="https://homieiot.github.io/" target="_blank" title="Homie (MQTT)" class="card-hover">
+        <a href="https://homieiot.github.io/" target="_blank" title="Homie (MQTT)" class="noref card-hover">
             <img src="/img/mqtt_homie.jpg" style="width: 150px" class="m-2">
         </a>
         <a href="https://w3c.github.io/wot-thing-description/" target="_blank" title="W3C WebThings (HTTP)"
-            class="card-hover">
+            class="noref card-hover">
             <img src="/img/mozilla_webthings_wordmark.svg" style="width: 150px" class="m-2"></a>
         <p>Find a detailed step by step guide in <a href='{{< relref "/userguide/diy" >}}'>DIY
                 Hardware / Service Integration</a>.</p>
     </div>
-    <template data-popover="diy_auto_discovery">
+    <ui-tooltip target="diy_auto_discovery">
         <p style="max-width: 500px">It is an ongoing effort to team up with established projects like ESPHome,
             ESPEasy and Tasmota to provide
             out-of-the-box auto discovery experience.</p>
-    </template>
-    <ui-tooltip target="diy_auto_discovery"></ui-tooltip>
+    </ui-tooltip>
 </div>
 
 ## Up &amp; Running in 3 Steps
@@ -396,7 +393,7 @@ triggers:
                 title="Context help">retailer</button>
             and get yourself a <button class="btn-link contexthelp" id="raspberry_detail" title="Context help">Raspberry Pi</button>.
         </p>
-        <template data-popover="hw_partners_tr">
+        <ui-tooltip target="hw_partners_tr">
             <a target="_blank" href="https://core-electronics.com.au/raspberry-pi-3-starter-kit-34285.html"
                 class="btn btn-sm btn-outline-dark my-2">Australia</a>
             <a target="_blank"
@@ -405,9 +402,8 @@ triggers:
             <a target="_blank"
                 href="https://www.amazon.com/CanaKit-Raspberry-Complete-Starter-Kit/dp/B01C6Q2GSY/ref=sr_1_18?keywords=Raspberry+Pi&qid=1559931481&s=gateway&sr=8-18"
                 class="btn btn-sm btn-outline-dark my-2">USA / Canada</a>
-        </template>
-        <ui-tooltip target="hw_partners_tr"></ui-tooltip>
-        <template data-popover="raspberry_detail">
+        </ui-tooltip>
+        <ui-tooltip target="raspberry_detail">
             <div style="max-width: 500px">
                 <p>A small and affordable computer with 4x1.4 GHz 64-bit, 1 GB memory and SD-Card Slot for storage.
                 </p>
@@ -416,8 +412,7 @@ triggers:
                 <p>You need additional USB hardware extensions for ZWave, Zigbee, KNX and other non-IP-network busses and radios.</p>
                 <p>More info in the <a href='{{< relref "/userguide/getting_started" >}}'>Getting started</a> guide.</p>
             </div>
-        </template>
-        <ui-tooltip target="raspberry_detail"></ui-tooltip>
+        </ui-tooltip>
     </div>
     <div class="p-3 card-hover">
         <h3 style="white-space: nowrap">2. Download</h3>
@@ -435,18 +430,16 @@ triggers:
         <br>
         <small class="muted">Version: <button class="btn-link contexthelp" id="version_tr"
                 title="Context help">{{< getversion tag_name >}}</button></small>
-        <template data-popover="download_tr">
-            <dl style="max-width: 500px">
+        <ui-tooltip target="download_tr">
+                    <dl style="max-width: 500px">
                 {{< listofdownloads >}}
             </dl>
-        </template>
-        <ui-tooltip target="download_tr"></ui-to oltip>
-        <template data-popover="version_tr">
+        </ui-tooltip>
+        <ui-tooltip target="version_tr">
             <dl style="max-width: 500px">
                 {{< changelogs >}}
             </dl>
-        </template>
-        <ui-tooltip target="version_tr"></ui-tooltip>
+        </ui-tooltip>
     </div>
     <div class="col-md-4 py-3 card-hover">
         <h3>3. Flash</h3>
@@ -459,186 +452,7 @@ triggers:
 
 ## Subscription
 
-<div id="subscriptions" class="row subscription-plans">
-    <div class="col">
-        <div class="header">
-            <h4>Always Open Source</h4>
-            <i class="img fas fa-heart" style="font-size: 60pt;line-height: 120pt"></i>
-        </div>
-        <p class="text-center p-2">All parts of openHAB X will always be open source! This includes:</p>
-        <div class="mx-4 mb-2 table">
-            <table>
-                <tbody>
-                    <tr>
-                        <td>&check;</td>
-                        <td>The Distribution<br><small>(OS Bundle, Docker Image)</small></td>
-                    </tr>
-                    <tr>
-                        <td>&check;</td>
-                        <td>
-{{< details title="openHAB Addons" maxwidth="500px" >}}
-<a href='https://www.openhab.org/addons' target="_blank">openHAB 2 Addons</a> that are implemented on top of openHAB 2 Core APIs
-{{< /details >}}</td>
-                    </tr>
-                    <tr>
-                        <td>&check;</td>
-                        <td>
-{{< details title="openHAB X Core" maxwidth="500px" >}}
-* OpenHAB Core Shim
-* Automation Engine
-* Identity / Access Management
-* Addon Manager and Supervisior
-* Backup &amp; Restore with Snapshots and Rollbacks
-{{< /details >}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>&check;</td>
-                        <td>
-{{< details title="Cloud Connector" maxwidth="500px" >}}
-* Amazon Alexa
-* Google Home
-* IFTTT
-{{< /details >}}</td>
-                    </tr>
-                    <tr>
-                        <td>&check;</td>
-                        <td>
-{{< details title="User Interfaces" maxwidth="500px" >}}
-* Dashpanel UI for wall mounted tablets
-* Flutter Android/iOS App
-* Management Web UI
-{{< /details >}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>&check;</td>
-                        <td>
-{{< details title="Integrations" maxwidth="500px" >}}
-* Snips Local Voice Recognition Integration
-* InfluxDB Time Series Integration
-{{< /details >}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="text-center mb-3">
-            <a href='{{< relref "/userguide/getting_started" >}}' class="btn btn-primary btn-impressive">
-                <span>Getting started</span>
-            </a>
-        </div>
-    </div>
-    <form class="col" method="GET" action="/dashboard/subscription">
-        <input type="hidden" name="t" value="create">
-        <input type="hidden" name="m" value="3">
-        <input type="hidden" name="type" value="cloud">
-        <div class="header">
-            <h4>Cloud connector</h4>
-            <i class="img fas fa-cloud text-primary" style="font-size: 60pt;line-height: 120pt;"></i>
-        </div>
-        <p class="text-center p-2">A steady connection is required for any kind of cloud based service. The
-            subscription fee is 
-{{< details title="as low as possible" maxwidth="500px" >}}
-The subscription fee is as low as possible and covers bandwidth and connection-time costs, 1/4 is
-taxes and 1/4 is for maintenance.
-
-The price may drop over time with more users and further implemented cost savings.
-{{< /details >}}.</p>
-        <div class="mx-4 mb-2 table">
-            <table>
-                <tbody>
-                    <tr>
-                        <td>3</td>
-                        <td>Roadmap Influence Points</td>
-                    </tr>
-                    <tr>
-                        <td>&check;</td>
-                        <td>Amazon Alexa</td>
-                    </tr>
-                    <tr>
-                        <td>&check;</td>
-                        <td>Google Home</td>
-                    </tr>
-                    <tr>
-                        <td>&check;</td>
-                        <td>IFTTT</td>
-                    </tr>
-                    <tr>
-                        <td>&check;</td>
-                        <td>Online Backups</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="text-center mb-3">
-            <button type="submit" class="btn btn-primary btn-impressive">
-                <span>3€ / Month</span>
-            </button>
-        </div>
-    </form>
-    <form class="col" id="subscriptionSupportPlan" method="GET" action="/dashboard/subscription">
-        <input type="hidden" name="t" value="create">
-        <input type="hidden" name="m">
-        <input type="hidden" name="type" value="support">
-        <div class="header">
-            <h4>Support plan</h4>
-            <i class="img fas fa-headset text-primary" style="font-size: 60pt;line-height: 120pt;"></i>
-        </div>
-        <p class="text-center p-2">This plan funds openHAB X development. It also includes dedicated support time.
-        </p>
-        <div class="mx-4 mb-2 table">
-            <table>
-                <tbody>
-                    <tr>
-                        <td><output name="influencepoints">10</output></td>
-                        <td>Roadmap Influence Points</td>
-                    </tr>
-                    <tr>
-                        <td><output name="supporttime">15</output></td>
-                        <td>Minutes Support Time</td>
-                    </tr>
-                    <tr>
-                        <td><output name="ruletemplates">3</output></td>
-                        <td>Rule Template Requests</td>
-                    </tr>
-                    <tr>
-                        <td>&check;</td>
-                        <td>Remote access via <a target="_blank" href="https://pagekite.net/">Pagekite</a></td>
-                    </tr>
-                    <tr>
-                        <td style="white-space: nowrap;"><output name="sla">95</output>%</td>
-                        <td>
-{{< details title="Software SLA" maxwidth="500px" mount="true" >}}
-<q>A service-level agreement (SLA) is a commitment between a service provider and a client.
-    Particular aspects of the service – quality, availability, responsibilities – are agreed between
-    the service provider and the service user.
-</q>
-
-<output name="sla2">-</output>% means
-<b><output name="sla_hours">-</output>h a day</b> or
-<b><output name="sla_days">-</output> days every 31 days</b>.
-
-The Software-only SLA is limited to:<br>Cloud Connectors, Rule Engine, IAM-Service, Operating
-Sytem, Hue Emulation + API Access.
-Your own services will be limited to 1/4 of the available memory and 20% CPU-time in SLA mode.
-
-Manipulating the supervisior will free the service provider from any SLA obligations with
-immediate effect.
-{{< /details >}}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="text-center mb-3">
-            <input type="range" min="10" max="100" value="10" class="slider" id="subscriptionValue">
-            <button type="submit" class="btn btn-primary btn-impressive">
-                <span><output name="x" for="subscriptionValue">10</output>€ / Month</span>
-            </button>
-        </div>
-    </form>
-</div>
-<ui-subscription target="subscriptionSupportPlan"></ui-subscription>
+{{< subscription_plans >}}
 
 ## For developers
 

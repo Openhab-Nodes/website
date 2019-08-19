@@ -1,0 +1,19 @@
+{{- $file := getJSON "static/run/permissions.json" -}}
+
+<table class="table">
+    <thead><th>Permission</th><th>Standalone<br>Only</th><th>Label</th><th>Description</th></thead>
+    <tbody>
+{{- range $element := $file -}}
+<tr>
+<td>{{ $element.id }}</td>
+{{ if (isset $element "standalone") }}
+<td>&check;</td>
+{{ else }}
+<td>&Cross;</td>
+{{ end }}
+<td>{{ $element.label }}</td>
+<td>{{ $element.description | markdownify }}</td>
+</tr>
+{{- end -}}
+</tbody>    
+</table>

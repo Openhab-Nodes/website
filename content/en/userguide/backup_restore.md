@@ -26,9 +26,9 @@ Snapsnots need a name. Automatically created ones carry the data and time as a n
 
 *Things*, *Rules*, service and Addon configuration are considered to be tightly coupled and are considered as one inseparable unit when it comes to snapshots.
 
-{{< details >}}
+{{< callout >}}
 The time-series database is not included in snapshots. Be aware that frequently using the snapshot and rollback mechanism might render your time-series dataset less usefull on certain conditions. Like when at one time Things are configured and at another they are not.
-{{< /details >}}
+{{< /callout >}}
 
 Only user accounts with the BACKUP permission are allowed to create on-demand snapshots.
 
@@ -83,8 +83,8 @@ A backup is deemed failed if none of the configured providers complete the uploa
 
 On the <a class="demolink" href="">Maintenance</a> page in **Setup &amp; Maintenance** under "Backup Service" you can restore your installation to a previous state. This will take a few minutes to complete, in contrast to snapshot rollbacks, because the external file need to be downloaded and extracted.
 
-{{< details type="warning" >}}
+{{< callout type="warning" >}}
 It is usually no problem to even restore very old backups, because all OHX services have a configuration update procedure included and Addon developers are also encouraged to perform version updates for provided older configuration files or Thing files.
 
 Be aware however that you cannot restore a backup of a new OHX installation to an older OHX version. 
-{{< /details >}}
+{{< /callout >}}

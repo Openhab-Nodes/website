@@ -59,10 +59,10 @@ An Addon in OHX may consist of multiple processes (services). At least one proce
 For easy distribution and enhanced resource control as well as enforcing security features, Addon processes are bundled and running as *software containers*.
 
 {{< callout title="Containers & Pods" type="info" >}}
-A **container** is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. Containers are not virtual machines! A container process can be easily restricted in its resource usage, including main memory, cpu time, disk and network access as well as direct hardware control. A known container implementation is {{< details title="Docker" maxwidth="500px" >}}
+A **container** is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. Containers are not virtual machines! A container process can be easily restricted in its resource usage, including main memory, cpu time, disk and network access as well as direct hardware control. A known container implementation is <ui-tooltip><button class="btn-link contexthelp" title="Docker" slot="button">Docker</button>
 Docker is just one of many container engines. OHX uses vendor neutral software containers, defined by the OCI.
-
-The Open Container Initiative (OCI), founded by Docker, is a Linux Foundation project to design open standards for operating-system-level virtualization, most importantly containers.{{< /details >}}.
+<br><br>
+The Open Container Initiative (OCI), founded by Docker, is a Linux Foundation project to design open standards for operating-system-level virtualization, most importantly containers.</ui-tooltip.
 
 A set of related containers, like an openHAB X Addon, is called a *Pod*.
 {{< /callout >}}
@@ -296,7 +296,7 @@ Addons standard output channels are captured by the addon manager and also route
 
 Integrating an offline voice recognition service is a bit tedious. That's why OHX focuses on Snips.Ai for now although there are other open source and commercial alternatives on the market.
 
-Snips.Ai components are written in C++, Rust and Go and bundled as software containers. To offer fast recognition speed, Snips.Ai containers have the CPU_FULL and MEMORY_500MB permissions set. You should use microphone arrays that already do pre-processing like noise cancelling to offload work from the CPU.
+Snips.Ai components are written in C++, Rust and Go and bundled as software containers. To offer fast recognition speed, Snips.Ai containers have the CPU_MAX and MEM_500 permissions set. You should use microphone arrays that already do pre-processing like noise cancelling to offload work from the CPU.
 
 The home automation "Intents" are installed by default in various languages. The implementation is done via an "IO Service Addon" so that a user can filter and restrict which Things and Rules are exposed to Snips.Ai.
 

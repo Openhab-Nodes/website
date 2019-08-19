@@ -1,0 +1,101 @@
+[
+    {
+        "id": "free",
+        "title": "Always Open Source",
+        "desc": "All parts of openHAB X will always be<br>open source!",
+        "icon": "fas fa-heart",
+        "button_text": "Getting started",
+        "href": "/userguide/getting_started",
+        "properties": {},
+        "features": [
+            {
+                "title": "The Distribution",
+                "desc": "OS Bundle, Docker Image"
+            },
+            {
+                "title": "Addons",
+                "details": "All addons are owned and published by their respective authors and are usually made available under a permissive, open source license.\n\nThis includes the SnipsAI local voice recognition integration, MQTT integration and Hue integration."
+            },
+            {
+                "title": "Core Services",
+                "details": "* OpenHAB Core Shim to make [openHAB 2 Addons](https://www.openhab.org/addons) work\n* Automation Engine\n* Identity / Access Management\n* Addon Manager and Supervisior\n* Backup &amp; Restore with Snapshots and Rollbacks"
+            },
+            {
+                "title": "Cloud Connector",
+                "details": "* Amazon Alexa\n* Google Home\n* If-This-Than-That (IFTTT)\n\nPlease differentiate between the open source cloud connector software and open source Alexa Skill and Google Home Action and the service that is hosted via openhabx.com."
+            },
+            {
+                "title": "User Interfaces",
+                "details": "* Dashpanel UI for wall mounted tablets\n* Flutter Android/iOS App\n* Management Web UI"
+            }
+        ]
+    },
+    {
+        "id": "cloud",
+        "title": "Cloud connector",
+        "desc": "A steady connection is required for easy cloud service integration. See [details](/dashboard/costs).",
+        "icon": "fas fa-cloud text-primary",
+        "href": "/dashboard/subscription",
+        "properties": {
+            "influence_points": {
+                "title": "Roadmap Influence Points",
+                "base": 3
+            }
+        },
+        "euro_price": 3,
+        "features": [
+            {
+                "title": "Amazon Alexa"
+            },
+            {
+                "title": "Google Home"
+            },
+            {
+                "title": "IFTTT"
+            },
+            {
+                "title": "Online Backups"
+            }
+        ]
+    },
+    {
+        "id": "support",
+        "title": "Support plan",
+        "desc": "This plan funds openHAB X development. It also includes dedicated support time.",
+        "icon": "fas fa-headset text-primary",
+        "href": "/dashboard/subscription",
+        "properties": {
+            "influence_points": {
+                "title": "Roadmap Influence Points",
+                "base": 10,
+                "max": 100
+            },
+            "support_time": {
+                "title": "Minutes Support Time",
+                "base": 15,
+                "max": 45
+            },
+            "rule_templates": {
+                "title": "Rule Template Requests",
+                "base": 3,
+                "max": 6
+            },
+            "sla": {
+                "title": "Software SLA",
+                "base": 95,
+                "max": 97,
+                "suffix":"%",
+                "details_html_tag":"ui-sla"
+            }
+        },
+        "euro_price": {
+            "min": 10,
+            "max": 100
+        },
+        "features": [
+            {
+                "title": "Remote access via [Pagekite](https://pagekite.net/)"
+            }
+        ]
+    }
+]

@@ -1,0 +1,14 @@
++++
+title = "Addons"
+type = "addons"
++++
+<section id="pageheader">
+    <div class="d-flex flex-column align-items-center">
+        <ui-addon-search target="addons-list"></ui-addon-search>
+    </div>
+</section>
+<main id="mainContent">
+    <ui-addons-list id="addons-list">
+    </ui-addons-list>
+    <bind-addon-useraccount addonid="addons-list"></bind-addon-useraccount>
+</main>

@@ -9,27 +9,12 @@ function isInViewport(element) {
 }
 
 class Popover {
-  constructor(trigger, popoverTemplate, { position = 'top', className = 'popover' }) {
+  constructor(trigger, popoverTemplate, { position = 'top', className = 'popover' }, doc = document) {
     this.trigger = trigger;
     this.position = position;
     this.className = className;
-    this.isTemplate = false;
     this.orderedPositions = ['top', 'right', 'bottom', 'left'];
-
-    this.isTemplate = popoverTemplate.tagName.toUpperCase() == "TEMPLATE";
-    if (this.isTemplate) {
-      this.popover = document.createElement('div');
-      this.popover.innerHTML = popoverTemplate.innerHTML;
-    } else {
-      this.popover = popoverTemplate;
-    }
-    this.popover.style.zIndex = 100;
-
-    Object.assign(this.popover.style, {
-      position: 'fixed'
-    });
-
-    this.popover.classList.add(className);
+    this.popover = popoverTemplate;
 
     this.handleWindowEvent = () => {
       if (this.isVisible) {
@@ -45,7 +30,7 @@ class Popover {
   }
 
   get isVisible() {
-    return this.isTemplate ? document.body.contains(this.popover) : this.popover.style.visibility !== "hidden";
+    return this.popover.classList.contains(this.className);
   }
 
   show() {
@@ -54,13 +39,6 @@ class Popover {
     document.addEventListener('click', this.handleDocumentEvent);
     window.addEventListener('scroll', this.handleWindowEvent);
     window.addEventListener('resize', this.handleWindowEvent);
-
-    if (this.isTemplate)
-      document.body.appendChild(this.popover);
-    else {
-      this.popover.style.setProperty('visibility', 'visible', 'important');
-    }
-
     this.reposition();
   }
 
@@ -115,13 +93,14 @@ class Popover {
       this.popover.style.left = positions.bottom.left;
       this.popover.classList.add(`${this.className}--bottom`);
     }
+    this.popover.classList.add(this.className);
   }
 
   destroy() {
-    if (this.isTemplate)
-      this.popover.remove();
-    else
-      this.popover.style.setProperty('visibility', 'hidden', 'important');
+    this.orderedPositions.forEach(pos => {
+      this.popover.classList.remove(`${this.className}--${pos}`);
+    });
+    this.popover.classList.remove(`${this.className}`);
 
     document.removeEventListener('click', this.handleDocumentEvent);
     window.removeEventListener('scroll', this.handleWindowEvent);

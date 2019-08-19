@@ -142,7 +142,7 @@ More complex, reactive components are a bit tedious with just the clumsy html do
 In the future, one option could be [Vue 3](https://medium.com/the-vue-point/plans-for-the-next-iteration-of-vue-js-777ffea6fabf). Thanks
 to tree-shaking and building up on modern standards, it will come with a low footprint, suited for standalone html components.
 
-But even today the Custom Component approach is much more maintainable than settling on any framework or worse, a framework+style combination. You find more information about the technial part in the repository readme file: https://github.com/openhab-nodes/setup_and_maintenance.
+But even today the Custom Component approach is much more maintainable than settling on any framework or worse, a framework+style combination. You find more information about the technial part in the repository readme file: https://github.com/openhab-nodes/ui-maintenance.
 
 ## Your opinion matters
 
@@ -156,7 +156,7 @@ Help texts are written in markdown, like the source of this website.
 
 Sometimes it just helps if you tell your user story. What need to be changed to archive certain outcomes faster? How to reduce mouse pointer travel distances?
 
-Open *Issues* [here](https://www.github.com/openhab-nodes/setup_maintenance_interface) and discuss your findings.
+Open *Issues* [here](https://www.github.com/openhab-nodes/ui-maintenance) and discuss your findings.
 
 I hope that **Setup & Maintenance** suits your needs or soon will be.
 

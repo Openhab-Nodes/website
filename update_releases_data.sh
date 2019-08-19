@@ -1,1 +1,1 @@
-wget -O data/downloads.json https://api.github.com/repos/home-assistant/hassos/releases/latest
+wget -O data/downloads.json https://api.github.com/repos/openhab-nodes/ohx-os/releases/latest

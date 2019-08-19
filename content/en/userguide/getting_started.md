@@ -99,28 +99,26 @@ Snips Satelites like the [Snips AIR](https://www.snips.ai) can be used for recor
 {{< /col3md >}}
 
 ### 1. Download Image
-<small class="muted">Latest Version: <button class="btn-link contexthelp" id="version_tr"
-        title="Context help">{{< getversion tag_name >}}</button></small>
+<small class="muted">Latest Version:
+<ui-tooltip maxwidth>
+<button class="btn-link contexthelp" title="Context help" slot="button">{{< getversion tag_name >}}</button>
+    <dl>
+        {{< changelogs >}}
+    </dl>
+</ui-tooltip>
+</small>
 
 <a href="{{< readdata browser_download_url rpi3-64 >}}" title="{{< readdata name rpi3-64 >}}"
     class="btn btn-dwnload">
     <img src="/img/raspberrypi.png" style="height: 1em" class="mr-2">
     <span>RPI 3</span>
 </a>
-<button class="btn btn-dwnload" id="download_tr" title="Context help">Other &#9660;</button>
-<br>
-<template data-popover="download_tr">
-    <dl style="max-width: 500px">
-        {{< listofdownloads >}}
-    </dl>
-</template>
-<ui-tooltip target="download_tr"></ui-to oltip>
-<template data-popover="version_tr">
-    <dl style="max-width: 500px">
-        {{< changelogs >}}
-    </dl>
-</template>
-<ui-tooltip target="version_tr"></ui-tooltip>
+<ui-tooltip maxwidth>
+<button class="btn btn-dwnload" title="Context help" slot="button">Other &#9660;</button>
+<dl>
+    {{< listofdownloads >}}
+</dl>
+</ui-tooltip>
 
 Please uncompress the downloaded file with any tool that can handle `gz` files (7-Zip, WinRar, `tar xfv` etc).
 

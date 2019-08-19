@@ -1,0 +1,11 @@
+{{ define "body" }}
+<link rel="stylesheet" href="/css/addons.min.css" />
+<script defer type="module" src="/js/cmp/bind-addon-useraccount.js"></script>
+<script defer type="module" src="/js/cmp/ui-addons-list.js"></script>
+<script defer type="module" src="/js/cmp/ui-addon-search.js"></script>
+<script defer type="module" src="/js/cmp/ui-addon.js"></script>
+<section id="pageheader"></section>
+<main id="mainContent" class="details container my-4">
+{{ .Content }}
+</main>
+{{ end }}

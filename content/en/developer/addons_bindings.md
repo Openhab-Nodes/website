@@ -589,7 +589,7 @@ TODO
 
 ## Helpers for common protocols
 
-There are {{< details title="a few">}}Helper libraries for more protocols are welcome.{{< /details>}} helper and tool libraries available to ease mapping http endpoints, mqtt topics and coap endpoints to Things and Thing Properties. 
+There are a few helper and tool libraries available to ease mapping http endpoints, mqtt topics and coap endpoints to Things and Thing Properties. 
 
 The following examples are in Rust. For the sake of simplicity we assume the same Thing for all three protocols, defined declaratively:
 

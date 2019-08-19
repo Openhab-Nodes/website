@@ -1,0 +1,2 @@
+If this file is present, the build system will enable a commonjs transpilation for this module.
+This will enable you to use commonjs packaged npm libraries but will also produce highly inefficient bloated code.

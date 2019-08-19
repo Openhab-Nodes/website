@@ -10,9 +10,16 @@
     "rollup-plugin-svelte": "^5.0.3",
     "rollup-plugin-terser": "^4.0.4",
     "rollup-plugin-filesize": "^6.1.1",
-    "svelte": "^3.0.0"
+    "svelte": "^3.8.0",
+    "good-listener": "^1.2.2",
+    "select": "^1.1.2",
+    "tiny-emitter": "^2.0.0"
   },
   "dependencies": {
+    "braintree-web-drop-in": "^1.19.0",
+    "dialog-polyfill": "^0.5.0",
+    "firebase": "^6.3.4",
+    "mermaid.cli": "^0.5.1",
     "sirv-cli": "^0.4.4",
     "swiper": "^4.5.0"
   },

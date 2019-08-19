@@ -173,7 +173,7 @@ If you are looking for an example on how to register an http endpoint to the API
 
 For a cli tool to perform service health checking you can use [grpc-health-probe](https://github.com/grpc-ecosystem/grpc-health-probe). Every core service implements the health grpc interface.
 
-Benchmarking is performed via the benchmark suite, see https://www.github.com/openhab-nodes/benchmark.
+Benchmarking is performed via the benchmark suite, see https://github.com/openhab-nodes/tool-benchmark.
 You first need to create an access token on the <a class="demolink" href="">Maintenance</a> page with the "ADMIN" and "REMOTE" permissions. Do not run the tool on a production environment. A lot of Things and Rules will be created during runtime.
 
 Start the benchmark tool with `REMOTE_OHX_ACCESS=e5868e...0d421 cargo run --release` using your access token from before.

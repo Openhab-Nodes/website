@@ -1,0 +1,24 @@
+@import "subscriptions";
+
+#dashboard {
+    display: flex;
+    min-height: calc(100vh - 100px);
+
+    &>.container {
+        padding-top: 20px;
+    }
+
+    &>nav {
+        padding: 15px;
+        width: 300px;
+        border-right: 1px dashed var(--primary);
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style: none;
+        }
+    }
+}

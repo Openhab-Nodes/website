@@ -1,0 +1,78 @@
+@import "index_jumbo";
+@import "_index_blog";
+@import "index_interactive_connection";
+@import "index_addons";
+@import "subscriptions";
+
+header#header {
+    box-shadow: 0 2px 4px 0 transparent;
+
+    .navbar-brand {
+        display: none;
+    }
+}
+
+#features {
+    .row>div {
+        padding: 40px 40px 0 40px;
+    }
+
+    dt {
+        margin-bottom: 10px;
+    }
+
+    dd {
+        margin-bottom: 20px;
+    }
+
+    .logos {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+
+        img {
+            max-height: 70px;
+            padding: 5px;
+        }
+    }
+}
+
+h2 {
+    font-family: BebasNeueLight;
+    font-weight: initial;
+    font-size: 3em;
+    position: relative;
+    text-align: center;
+    margin-bottom: 0.5em;
+    margin-top: 1.5em;
+}
+
+h2:after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    height: 5px;
+    width: 60px;
+    margin-left: -30px;
+    background-color: #ff8a65;
+}
+
+.developer_link::before {
+    font-weight: 900;
+    font-family: "Font Awesome 5 Free";
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    margin-right: 5px;
+    content: "\f120";
+}
+
+blockquote.blockquote {
+    font-style: italic;
+    text-align: center;
+}

@@ -1,6 +1,7 @@
-const ADDONS_URL = "/run/extensions.json"
-const ADDONS_STATS_URL = "/run/extensions_stats.json"
+const ADDONS_URL = "https://raw.githubusercontent.com/openhab-nodes/addons-registry/master/extensions.json"
+const ADDONS_STATS_URL = "https://raw.githubusercontent.com/openhab-nodes/addons-registry/master/extensions_stats.json"
 const ADDONS_RECOMMENDED_URL = "/run/recommended_extensions.json"
+const ADDONS_PERMISSIONS = "/run/permissions.json"
 
 function sortedIndexDownloads(array, value) {
     var low = 0,
@@ -28,40 +29,47 @@ function sortedIndexLastUpdated(array, value) {
     return array;
 }
 
-window.customElements.define('addons-db', class extends HTMLElement {
+async function from_cache_or_fetch(key, url) {
+    let list = localStorage.getItem(key);
+    if (list) list = JSON.parse(list);
+    if (list && list.valid_until > Date.now()) {
+        // list.valid_until;
+        return list.data;
+    } else {
+        const resData = await fetch(url, { cache: "default" });
+        let result = await resData.json();
+        let d = new Date(Date.now());
+        d.setHours(d.getHours() + 1);
+        localStorage.setItem(key, JSON.stringify({ data: result, valid_until: d.getTime() }));
+        return result;
+    }
+}
+
+function adapt_db(db) {
+    if(!db) return db;
+    for(let entry of db) {
+        // Adapt relative urls to absolute urls
+        if (entry.changelog_url && entry.changelog_url.startsWith("/")) {
+            entry.changelog_url = entry.github + entry.changelog_url;
+        }
+    }
+    return db;
+}
+
+class AddonDB extends EventTarget {
     constructor() {
         super();
         this.db = [];
         this.stats = {};
     }
-
-    async connectedCallback() {
+    async start() {
         this.dispatchEvent(new CustomEvent('loader', { detail: {} }));
 
-        try {
-            const resData = await fetch(ADDONS_URL, { cache: "default" });
-            this.db = await resData.json();
-        } catch (e) {
-            this.dispatchEvent(new CustomEvent('loader', { detail: { err: e } }));
-            return;
-        }
-
-        try {
-            const resData = await fetch(ADDONS_STATS_URL, { cache: "default" });
-            this.stats = await resData.json();
-        } catch (e) {
-            this.dispatchEvent(new CustomEvent('loader', { detail: { err: e } }));
-            return;
-        }
-
         let recommended;
-        try {
-            const resData = await fetch(ADDONS_RECOMMENDED_URL, { cache: "default" });
-            recommended = await resData.json();
-        } catch (e) {
-            this.dispatchEvent(new CustomEvent('loader', { detail: { err: e } }));
-            return;
-        }
+        await Promise.all([from_cache_or_fetch("permissions.json", ADDONS_PERMISSIONS).then(r => this.permissions = r),
+        from_cache_or_fetch("recommended.json", ADDONS_RECOMMENDED_URL).then(r => recommended = r),
+        from_cache_or_fetch("extensions.json", ADDONS_URL).then(r => this.db = adapt_db(r)),
+        from_cache_or_fetch("extensions_stats.json", ADDONS_STATS_URL).then(r => this.stats = r)]);
 
         this.db_by_id = {};
         this.last_updated = [];
@@ -90,10 +98,18 @@ window.customElements.define('addons-db', class extends HTMLElement {
 
         this.searchstr = searchstr;
 
-        console.log("last_updated", this.searchstr.length);
-
         this.dispatchEvent(new CustomEvent('loader', { detail: { ok: this } }));
+        return this;
     }
-    disconnectedCallback() {
+
+    invalidate_cache() {
+        localStorage.removeItem("extensions.json");
+        localStorage.removeItem("extensions_stats.json");
+        this.connectedCallback();
     }
-});
+}
+
+if (!window.addondb) {
+    const db = new AddonDB();
+    window.addondb = db.start();
+}

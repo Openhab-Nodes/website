@@ -1,4 +1,4 @@
-window.customElements.define('ui-subscription', class extends HTMLElement {
+window.customElements.define('ui-subscription-flexible', class extends HTMLElement {
     constructor() {
         super();
         this.initCb = () => this.init();

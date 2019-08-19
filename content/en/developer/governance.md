@@ -24,13 +24,13 @@ openHAB X is a meritocracy. The more that somebody contributes, the more respons
 
 The openHAB X project is a big ecosystem of different components.
 Starting with the operating system bundle, called openHAB X Distribution, 
-While people often think of the runtime + addons when talking about openHAB X, there are other parts like openHAB X Cloud, the mobile apps, the voice skills, etc. - all in all, there are well over [40 different repos](https://github.com/openHAB X) under the openHAB X GitHub organisation.
+While people often think of the runtime + addons when talking about openHAB X, there are other parts like openHAB X Cloud, the mobile apps, the voice skills, etc. - all in all, there are well over [40 different repos](https://github.com/openhab-nodes) under the OHX GitHub organisation.
 
 The different components are mostly maintained independently of each other. Many have their own release cycles and a dedicated maintainer team.
 
 ## Maintainers
 
-The [maintainers of openHAB X](https://github.com/orgs/openHAB X/teams/maintainers) is the superset of [all maintainers of the different code repositories](https://github.com/orgs/openHAB X/teams/maintainers/teams).
+The [maintainers of openHAB X](https://github.com/orgs/openhab-nodes/teams/maintainers) is the superset of [all maintainers of the different code repositories](https://github.com/orgs/openhab-nodes/teams/maintainers/teams).
 This means that the maintainer role is always related to a certain repository/component only and not to the entire project as such.
 
 Every component can (and should!) have more than one maintainer. All maintainers of a given repository build the maintainer team of the component in this repository.
@@ -70,19 +70,3 @@ Nominations must be done on the GitHub team discussion page (as a public post) a
 
 A maintainer can resign from the maintainer role at any time without specifying reasons.
 Maintainers that are inactive for more than 3 months can be excluded from the maintainer team through a vote by the other maintainers which concludes without a veto after one week.
-
-## Architecture Council
-
-The [openHAB X Architecture Council](https://github.com/orgs/openHAB X/teams/architecture-council) (AC) serves the community by identifying and tackling any issues that hinder openHAB X’s continued technological success and innovation, widespread adoption, and future growth.
-This involves technical architecture as well as open source processes and social aspects.
-Comprising the finest technical leaders from all community stake holders, it is the council’s goal to keep the project successful and healthy, the processes simple and smooth, and the communities vibrant and cohesive.
-
-### Responsibilities
-
-The Architecture Council is responsible for all decisions that have a significant impact across different components and which touch any fundamental concepts how openHAB X works and behaves.
-
-Discussions and decisions are done on the [Github team page](https://github.com/orgs/openHAB X/teams/architecture-council).
-Decisions are taken unanimously.
-This is the case if no member of the AC vetos against a proposed resolution within a week of the call for votes on the topic.
-
-The AC is the entity entitled to do changes to the governance rules.

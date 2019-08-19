@@ -13,12 +13,9 @@ openHAB X is a young player on the Home Automation Solutions market.
 
 openHAB X is however also a very efficient and scalable technology, developed with cloud infrastructure expertise in mind. The careful choice of <button class="btn-link contexthelp" id="technology" title="Context help">technology</button> provides industrial grade robustness.
 
-<template data-popover="technology">
-<p style="max-width: 500px">
+<ui-tooltip target="technology" maxwidth>
 OHX Core shoulders on <b>Rust</b>, the modern, efficient, secure system programming language and relies on <b>EXT4</b> for document storage and <b>REDIS</b> for state management. <b>InfluxDB</b> makes up its long term memory.
-</p>
-</template>
-<ui-tooltip target="technology"></ui-tooltip>
+</ui-tooltip>
 
 Feature overview:
 
@@ -26,13 +23,12 @@ Feature overview:
 * Compatible to Zigbee, ZWave, KNX, Modbus and many more industry standards,
 * Handles over <button class="btn-link contexthelp" id="benchmark" title="Context help">7000</button> parallel IoT devices on a small single-board computer already.
 
-<template data-popover="benchmark">
-<p style="max-width: 500px">
+<ui-tooltip target="benchmark" maxwidth>
+<p>
 Based on a p99 50ms response time on a Raspberry PI 3B+ with the openHAB X Distribution OS 2019-05-30, 7000 simulated https connected WebThings and 7000 scheduled rules with a rule execution every 1 second.
 </p>
 <p>Perform your own benchmark with the <a href="{{< relref "/developer/coreservices" >}}#tools">Benchmark Tool</a>.
-</template>
-<ui-tooltip target="benchmark"></ui-tooltip>
+</ui-tooltip>
 
 <div style="clear:both" class="my-4 py-4"></div>
 

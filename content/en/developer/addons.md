@@ -55,6 +55,7 @@ Depending on your your target programming language you need to install the requi
 			<tab-header-item>Go</tab-header-item>
 			<tab-header-item>C++</tab-header-item>
 			<tab-header-item>NodeJS</tab-header-item>
+      <tab-header-item>Python</tab-header-item>
 			<tab-header-item>Java</tab-header-item>
 		</tab-header>
 		<tab-body>
@@ -64,7 +65,7 @@ Rust 1.34+ is required. Install via [rustup](https://rustup.rs/) for example.
 
 See https://marketplace.visualstudio.com/items?itemName=rust-lang.rust for the Visual Studio Code extension.
 
-Clone the repository at https://www.github.com/openhab-nodes/addon-rust.
+Clone the repository at https://github.com/openhab-nodes/template-addon-rust.
 
 Command line: Change to the desired example directory and start with `cargo run`.
 {{< /md >}}
@@ -75,7 +76,7 @@ Command line: Change to the desired example directory and start with `cargo run`
 
 See https://code.visualstudio.com/docs/languages/go for the Visual Studio Code extension.
 
-Clone the repository at https://www.github.com/openhab-nodes/addon-go.
+Clone the repository at https://github.com/openhab-nodes/template-addon-go.
 
 Command line: Change to the desired example directory and start with `go run src/main.go`.
 {{< /md >}}
@@ -87,7 +88,7 @@ Additional libraries like for networking https://github.com/Qihoo360/evpp are do
 
 See https://code.visualstudio.com/docs/languages/cpp for the Visual Studio Code extension.
 
-Clone the repository at https://www.github.com/openhab-nodes/addon-cpp.
+Clone the repository at https://github.com/openhab-nodes/template-addon-cpp.
 
 Command line: Change to the desired example directory and start with `cmake -S . -B build && cmake --build build --target addon --config Debug && ./build/addon`.
 {{< /md >}}
@@ -98,9 +99,19 @@ Command line: Change to the desired example directory and start with `cmake -S .
 
 Visual Studio Code supports Javascript development out of the box.
 
-Clone the repository at https://www.github.com/openhab-nodes/addon-nodejs.
+Clone the repository at https://github.com/openhab-nodes/template-addon-js.
 
 Command line: Change to the desired example directory and start with `npm run start`.
+{{< /md >}}
+			</tab-body-item>
+      <tab-body-item >
+{{< md >}}
+Python 3 Pip is required.
+See https://code.visualstudio.com/docs/languages/python for the Visual Studio Code extension.
+
+Clone the repository at https://github.com/openhab-nodes/template-addon-python.
+
+Command line: Change to the desired example directory and start with `python main.py`.
 {{< /md >}}
 			</tab-body-item>
 			<tab-body-item >
@@ -111,7 +122,7 @@ The Java Development Kit (JDK) 8 or newer is required, for example from Oracle: 
 
 See https://code.visualstudio.com/docs/languages/java for the Visual Studio Code extension.
 
-Clone the repository at https://www.github.com/openhab-nodes/addon-java.
+Clone the repository at https://github.com/openhab-nodes/template-addon-java.
 
 Command line: Change to the desired example directory and start with `gradle && java -jar ./target/addon.jar`.
 {{< /md >}}
@@ -130,19 +141,20 @@ Addons and also openHAB X core services are bundled into software containers for
 
 For running an addon in a debug session, containers are not recommended. The interaction between the debugger and the encapsulated addon container process might be interfered by the operating system. Instead:
 
-1. Execute `sh ./start_all.sh` of the [core repository](https://www.github.com/openhab-nodes/core) on the command line to start openHAB X.
+1. Execute `sh ./start_all.sh` of the [core repository](https://github.com/openhab-nodes/core) on the command line to start openHAB X.
 2. Start your Addon (or an example Addon) via the command line given above, like `cargo run` for a Rust addon or `npm run start` for NodeJS orr use the respective debugger to start the process.
 
 ### Test With Production OHX
 
 It is possible to run your addon on your developer machine and have your (production) OHX installation running on a different system.
 
-For this to work, you first need to create an access token on the <a class="demolink" href="">Maintenance</a> page with the "REMOTE_ADDON" permission. Add additional permissions as needed. 
+For this to work, you need to allow external gRPC connections. Head to the <a class="demolink" href="">Maintenance</a> page and to the configuration subpage of the "API Gateway". Enable "External gRPC Connections (Caution!)" and note down the *access token* that is shown below the option.
+Please remember to disable this option when you have finished developing!
 
-Start your addon with the environment variable `REMOTE_OHX=192.168.1.11` set (change the IP accordingly) and the environment variable `REMOTE_OHX_ACCESS` should be set to your token, like `REMOTE_OHX_ACCESS=e5868ebb4445fc2ad9f9...49956c1cb9ddefa0d421`.
+Start your addon with the environment variable `REMOTE_OHX=192.168.1.11` set (change the IP accordingly) and the environment variable `REMOTE_OHX_ACCESS` should be set to your *access token*, like `REMOTE_OHX_ACCESS=e5868ebb4445fc2ad9f9...49956c1cb9ddefa0d421`.
 
 The addon **should** report that it will attempt to connect to a remote instance.
-Depending on the granted permissions you will have access to Things, Thing States, Thing States history, the user database etc.
+Depending on the granted permissions for the given access token, you will have access to Things, Thing States, Thing States history, the user database etc.
 
 {{< callout type="warning" >}}
 Please note, that the configuration and Addon Things are stored on the remote OHX installation.
@@ -355,7 +367,9 @@ And renders into what you see below. Almost*.
 
 <small>*A second schema <b>UISchema</b> complements JsonSchema. It is used for translations and to further specify on how to render specific fields like the password field.</small>
 
-{{< details title="See a UISchema example for the above form" >}}
+<div><ui-tooltip>
+<button class="btn-link contexthelp" title="UISchema example" slot="button">See a UISchema example for the above form</button>
+{{< md >}}
 ```json
 {
   "credentials": {
@@ -375,7 +389,8 @@ And renders into what you see below. Almost*.
   }
 }
 ```
-{{< /details >}}
+{{< /md >}}
+</ui-tooltip></div>
 
 {{< /colpic >}}
 
@@ -573,21 +588,35 @@ The template repositories contain a build script `./build.sh`, but you can also 
 OHX uses containers for distributing addons and a [Docker Compose](https://docs.docker.com/compose/) file `docker-compose.yml` that describes how to start your container(s).
 
 Although the software Docker compose itself is not used in the standalone installation, the file format is a well understood, simple and documented format for container setups.
-Metadata like the addon title, description, author information as well as mandatory and optional permissions and network setup are part of this declaration.
+Metadata like the addon title, description, author information as well as mandatory and optional permissions and network setup are part of this declaration. The file format is [Yaml](/userguide/administer#the-yaml-format).
+
+### Multi-Architecture
+
+Because containers contain machine architecture bound executables you usually define multiple `docker-compose.yml` files. One with all the meta information and for each supported architecture one more.
+
+The default build scripts understand the following files:
+
+| Architecture 	| Filename                  	| Dockerfile        	|
+|--------------	|---------------------------	|-------------------	|
+| -            	| docker-compose.yml        	| Dockerfile        	|
+| x86-32bit    	| docker-compose-x86.yml    	| Dockerfile-x86    	|
+| x86-64bit    	| docker-compose-x64.yml    	| Dockerfile-x64    	|
+| ARMv7        	| docker-compose-armv70.yml 	| Dockerfile-armv70 	|
+| ARMv8.0-A    	| docker-compose-armv80.yml 	| Dockerfile-armv80 	|
+
+### Example 
 
 The following example for an imaginary addon called "ohx-addon-name" lists two container services. 
 The first entry references the addon application (which we named "ohx-addon-name" in the section above) and the second service entry an mqtt broker container for demonstrational purposes.
 
 Find the full file specification at https://docs.docker.com/compose/compose-file/.
 
+`docker-compose.yml`:
 
 ```yaml
 version: '3.7'
 services:
   ohx-addon-name:
-    build:
-      context: ./
-      dockerfile: Dockerfile
     ports:
     - "5000:5000"
     volumes:
@@ -595,7 +624,6 @@ services:
     depends_on:
     - mqttbroker
   mqttbroker:
-    image: eclipse-mosquitto:latest
     volumes:
     - logvolume01:/var/log
     ports:
@@ -605,42 +633,71 @@ volumes:
 metadata:
   name: ohx-addon-name
   version: "1.0"
-  category: binding
+  type: binding
   authors: ["your name"]
   title: "My addon"
   titles:
     de: "A translated title"
   description: "A long description that *may* use markdown and \n line breaks"
-  supports:
-    manufacturers: ["Samsong"]
-    products: ["XT-1247"]
+  manufacturers: ["Samsong"]
+  products: ["XT-1247"]
   permissions:
-    mandatory:
-    - id: HW_BLUETOOTH
-      reason: "This addon connects to HW via Bluetooth."
+    mandatory: ["HW_BLUETOOTH"]
     optional: []
+  status:
+    code: AVAILABLE
+  estimated_memory_mb:
+    min: 20
+    max: 50
   homepage: "https://example.com"
   github: "https://www.github.com/my/repository"
 ```
 
-The `ohx-addon-name` entry with the `build` key points to the dockerfile that creates the image. The `build` key is implicit and can be left out if the standard "Dockerfile" name has been used and if that file resides in the same directory as the `docker-compose.yml` file.
+An exemplary `docker-compose-x86.yml` file for the x84-32bit architecture follows.
+The two files are merged, so only the machine-dependant bits need to be included.
+That is all build instructions (`build:`) and all referenced images (`image:`).
+
+```yaml
+version: '3.7'
+services:
+  ohx-addon-name:
+    build:
+      context: ./
+      dockerfile: Dockerfile-x86
+  mqttbroker:
+    image: eclipse-mosquitto:latest
+```
+
+### Metadata
+
+The `ohx-addon-name` entry with the `build` key points to the dockerfile that creates the image.
+The `build` key is implicit and can be left out if the standard "Dockerfile" name, as listed in the architecture table above, has been used and if that file resides in the same directory as the `docker-compose.yml` file.
 
 All addon metadata sits under "metadata". 
 
 * `title` and `description` can be translated by having the 2 or 3 letter language code as subkey to `titles` or `descriptions`. (eg *de* for German).
 * `version` Assign your addon a version. Consider to use semantic versioning.
-* `category` is either "binding" or "ioservice". Leave this key out if none of those are matching.
-* `supports` This object contains to lists `manufacturers` and `products`. Add all matching entries. For an Addon that supports specific Samsung TVs, you would set the keys accordingly. 
-* `permissions` List the mandatory and optional permissions. You may optionally tell the user why a permission is necessary via the `reason` field. See the next section for further information.
+* `type` is either "binding" or "ioservice". Leave this key out if none of those are matching.
+* `manufacturers` and `products` List appropriate entries here. Relevant for binding Addons. For an Addon that supports specific Samsung TVs, you would set the keys accordingly. 
+* `permissions` List the mandatory and optional permissions. See further down for further information and a list of available permissions.
 * `homepage` A website for that addon. Might just point to a Github repository.
 * `github` An optional key to the github page of your addon. If this is set, a "Report an Issue" link will appear whenever appropriate in the **Setup &amp; Maintenance** interface. The addon registry page will show your repository "stars" and issue count. It will also be used as homepage if no `homepage` has been set. If you use Github releases (you should!) for distributing new addon versions, the **AddonsManager** will notice this and periodically check for new releases.
 * `logo_url` An optional url to a logo graphics file that is display in the addon manager and on the addon registry page. Must be square and ideally it is in 200x200px resolution. If this is not set, your github repostory is checked if it contains a "logo.png" file in the root directory.
+* `status` The "code" part is an important bit, it states if your addon is available for installation ("AVAILABE"), if it is available but unmaintained ("UNMAINTAINED") or replaced ("REPLACED") or unavailable ("REMOVED"). You can also add a `description` or `descriptions` key to explain any other state than "AVAILABE".
+* `estimated_memory_mb`: The memory budget, expressed as a range between `min` and `max` in megabytes, that your application probably requires.
+  Native code with no or little runtime like Rust, C, C++, Go usually use between 5 and 30 MB.
+  If a runtime is required like for Python you can assume up to 80 MB and if additionally a garbage collector is used like with Java, you can assume from 80 to 160 MB.
+  The range is shown to the user in the Addon registry. The actual value can be queried in the **Setup & Maintenance** interface.
+  An installation will trigger a system warning if your Addon exceeds the budget for a certain time.
 
 ### Process Management Addon
 
-If your Addon is some form of process management interface, it needs to share the process id namespace and maybe also the {{< details title="IPC (POSIX/SysV IPC)" >}}IPC (POSIX/SysV IPC) namespace provides separation of named shared memory segments, semaphores and message queues.
-
-Shared memory segments are used to accelerate inter-process communication at memory speed, rather than through pipes or through the network stack.{{< /details>}} namespace. Do so with:
+If your Addon is some form of process management interface, it needs to share the process id namespace and maybe also the
+<ui-tooltip maxwidth>
+<button class="btn-link contexthelp" title="IPC (POSIX/SysV IPC)" slot="button">IPC (POSIX/SysV IPC)</button>
+IPC (POSIX/SysV IPC) namespace provides separation of named shared memory segments, semaphores and message queues.
+<br><br>
+Shared memory segments are used to accelerate inter-process communication at memory speed, rather than through pipes or through the network stack.</ui-tooltip> namespace. Do so with:
 
 ```yml
 pid: "host"
@@ -751,13 +808,25 @@ services:
 
 ### Restrictions &amp; Permissions
 
-A container runs in an isolated, contained environment and is confined to 100 MB of disk quota and 1 MB of configuration data. A container might request a larger disk quota via the DISK_QUOTA_500 (500 MB), DISK_QUOTA_1000 (1 GB) and DISK_QUOTA_MAX permissions.
+A container runs in an isolated, contained environment and is confined to certain restrictions.
+Access to hardware like Bluetooth and USB is denied by default. Some restrictions are only enforced if the container supervisior is correctly instrumented. This is the case for the standalone installation.
 
-CPU Time is limited to 20% for a container, except if the user has granted the CPU_MAX permission. Main memory is restricted to 200 MB for an Addon, except if the user has granted the MEM_500 (500 MB), MEM_1000 (1GB) or MEM_MAX permission. Access to hardware like Bluetooth and USB is denied. Request for HW_BLUETOOTH, HW_NETWORK, HW_IC2, HW_GPIO, HW_USB to access respective hardware.
+Storage
+: An Addon is confined to 100 MB of disk quota and 1 MB of configuration data. A container might request a larger disk quota via the DISK_QUOTA_500 (500 MB), DISK_QUOTA_1000 (1 GB) and DISK_QUOTA_MAX permissions.
+
+CPU Time
+: CPU Time is limited to 20% for a container, except if the user has granted the CPU_MAX permission.
+
+Main memory
+: Main memory is restricted to 200 MB for an Addon, except if the user has granted the MEM_500 (500 MB), MEM_1000 (1GB) or MEM_MAX permission.
+
+Have a look at the following permissions table to find the correct permissions that you require. As mentioned above, some permissions are only enforced on a standalone installation.
+
+{{< permissions_table >}}
 
 A container is restricted in the list of allowed kernel system calls it can make. Linux seccomp and AppArmor profiles are in use.
 
-The above restrictions make sure that malicous addons cannot just raise its allowd CPU time and start mining Bit-Coins (at least not with full power and to the extend that other services are affected) or abuse it in other ways or overheat the hardware.
+The above restrictions make sure that malicous addons cannot just raise their allowd CPU time and start mining Bit-Coins (at least not with full power and to the extend that other services are affected) or causing abuse in other ways like overheating the hardware.
 
 If you require further access, you may use the `privileged` key. That should be really rare and you rather talk to the core team to add special permissions for your use case. The **Setup &amp; Maintenance** interface will warn a user from accepting a privileged Addon.
 
@@ -784,7 +853,6 @@ fn main() {
     let list_granted = Permissions::granted(ctx).unwrap();
     let list_denied = Permissions::denied(ctx).unwrap();
 }
-```
 {{< /highlight >}}</tab-body-item >
 		</tab-body>
     </tab-container>
@@ -797,7 +865,6 @@ To make your Addon appear in the list of Addons on **Setup &amp; Maintenance** i
 Publishing is done via a command line utility.
 
 1. Create an [account](/login) here on the website. Each Addon entry must be associated with an account.
-2. Create an account on https://hub.docker.com/. Your addon containers will be uploaded to the hub.
 2. If you haven't installed Rust yet, you need at least [Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html)
 3. Install the tool with `cargo install ohx-publish`.
 4. If your addon is hosted in a git repository and you are executing the tool in a repository directory, make sure that the workspace is clean and everything is commited.
@@ -806,13 +873,13 @@ Publishing is done via a command line utility.
 Your `docker-compose.yml` file is analysed to find out about your addons name and version. 
 
 Publish for the first time
-: If you haven't published anything yet from your addon directory, the tool opens https://www.openhabx.com and in a second step https://hub.docker.com/ for you to authenticate. If there is no addon from another user with the same name, your addon is build and published.
+: If you haven't published anything yet from your addon directory, the tool opens https://www.openhabx.com for you to authenticate. If there is no addon from another user with the same name, your addon is build and published.
 
 If there is an older version, that version is archived and replaced with the new version. 
 
-{{< details type="info" >}}
+{{< callout type="info" >}}
 If your Addon is written in a language that is compiled to machine code (Rust, C++, Go), it needs to be cross compiled to Armv7 and Armv8. This will require about 1 GB disk space for the compiler toolchains. You are expected to build on an x86-64 machine.
-{{< /details >}}
+{{< /callout >}}
 
 ### Addon Reviews
 
