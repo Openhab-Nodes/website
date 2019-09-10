@@ -18,6 +18,13 @@
       ok: false,
       timer: null
     },
+    subscriptions: {
+      title: "Subscriptions",
+      test_url: "https://subscription.openhabx.com/",
+      last_checked: 0,
+      ok: false,
+      timer: null
+    },
     backup: {
       title: "Backup Storage",
       test_url: "gs://openhabx-backups",

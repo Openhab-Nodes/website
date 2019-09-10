@@ -36,8 +36,11 @@ window.customElements.define('bind-addon-useraccount', class extends HTMLElement
     }
     async rated(data) {
         try {
-            // Submit to backend
-            await this.fetchWithAuth("https://registry.openhabx.com/rating", "POST", JSON.stringify(data));
+            // Submit to firestore. This will be synced to the backend periodically
+            var db = this._userdata.db();
+            await db.collection("ratings")
+                .doc(user.uid + "_" + data.addonid)
+                .update({ rate: data.rate, is_update: data.is_update, addon_id: data.addonid });
 
             // Update user data
             let upObj = {};
@@ -50,7 +53,7 @@ window.customElements.define('bind-addon-useraccount', class extends HTMLElement
             data.error(err);
         }
     }
-    
+
     async addon_queue(data) {
         try {
             // Submit to backend

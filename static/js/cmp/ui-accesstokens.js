@@ -1,2 +1,730 @@
-function t(){}function e(t,e,n,c,g){t.__svelte_meta={loc:{file:e,line:n,column:c,char:g}}}function n(t){return t()}function c(){return Object.create(null)}function g(t){t.forEach(n)}function s(t){return"function"==typeof t}function o(t,e){return t!=t?e==e:t!==e||t&&"object"==typeof t||"function"==typeof t}function I(t,e){t.appendChild(e)}function l(t,e,n){t.insertBefore(e,n||null)}function i(t){t.parentNode.removeChild(t)}function a(t){return document.createElement(t)}function u(t){return document.createTextNode(t)}function r(){return u(" ")}function d(t,e,n,c){return t.addEventListener(e,n,c),()=>t.removeEventListener(e,n,c)}function C(t,e,n){null==n?t.removeAttribute(e):t.setAttribute(e,n)}function A(t,e){e=""+e,t.data!==e&&(t.data=e)}let b;function m(t){b=t}function X(t){(function(){if(!b)throw new Error("Function called outside component initialization");return b})().$$.on_destroy.push(t)}const G=[],h=[],Z=[],f=[],x=Promise.resolve();let y=!1;function B(t){Z.push(t)}function p(){const t=new Set;do{for(;G.length;){const t=G.shift();m(t),F(t.$$)}for(;h.length;)h.pop()();for(let e=0;e<Z.length;e+=1){const n=Z[e];t.has(n)||(n(),t.add(n))}Z.length=0}while(G.length);for(;f.length;)f.pop()();y=!1}function F(t){t.fragment&&(t.update(t.dirty),g(t.before_update),t.fragment.p(t.dirty,t.ctx),t.dirty=null,t.after_update.forEach(B))}const V=new Set;const W="undefined"!=typeof window?window:global;function N(t,e){t.$$.dirty||(G.push(t),y||(y=!0,x.then(p)),t.$$.dirty=c()),t.$$.dirty[e]=!0}function Y(e,o,I,l,i,a){const u=b;m(e);const r=o.props||{},d=e.$$={fragment:null,ctx:null,props:a,update:t,not_equal:i,bound:c(),on_mount:[],on_destroy:[],before_update:[],after_update:[],context:new Map(u?u.$$.context:[]),callbacks:c(),dirty:null};let C=!1;var A,X,G;d.ctx=I?I(e,r,(t,n)=>{d.ctx&&i(d.ctx[t],d.ctx[t]=n)&&(d.bound[t]&&d.bound[t](n),C&&N(e,t))}):r,d.update(),C=!0,g(d.before_update),d.fragment=l(d.ctx),o.target&&(o.hydrate?d.fragment.l((G=o.target,Array.from(G.childNodes))):d.fragment.c(),o.intro&&((A=e.$$.fragment)&&A.i&&(V.delete(A),A.i(X))),function(t,e,c){const{fragment:o,on_mount:I,on_destroy:l,after_update:i}=t.$$;o.m(e,c),B(()=>{const e=I.map(n).filter(s);l?l.push(...e):g(e),t.$$.on_mount=[]}),i.forEach(B)}(e,o.target,o.anchor),p()),m(u)}class v{$destroy(){var e,n;n=1,(e=this).$$.fragment&&(g(e.$$.on_destroy),e.$$.fragment.d(n),e.$$.on_destroy=e.$$.fragment=null,e.$$.ctx={}),this.$destroy=t}$on(t,e){const n=this.$$.callbacks[t]||(this.$$.callbacks[t]=[]);return n.push(e),()=>{const t=n.indexOf(e);-1!==t&&n.splice(t,1)}}$set(){}}class k extends v{constructor(t){if(!t||!t.target&&!t.$$inline)throw new Error("'target' is a required option");super()}$destroy(){super.$destroy(),this.$destroy=(()=>{console.warn("Component was already destroyed")})}}const{Object:Q}=W,R="assets/js/ui-accesstokens/cmp.svelte";function D(t,e,n){const c=Q.create(t);return c.token=e[n],c}function U(t){var n;return{c:function(){(n=a("p")).textContent="No Access Tokens registered!",e(n,R,121,2,3071)},m:function(t,e){l(t,n,e)},d:function(t){t&&i(n)}}}function L(t){var n,c,g,s,o,b,m,X,G,h,Z,f,x,y,B,p,F,V,W,N,Y,v,k,Q=t.token[1].client_name+"",D=t.token[1].client_id+"",U=t.token[1].scopes.join(", ")+"",L=new t.Date(parseInt(t.token[1].issued_at)).toLocaleString()+"";function w(...e){return t.click_handler(t,...e)}return{c:function(){var t,I;n=a("div"),c=a("div"),g=a("div"),s=a("h4"),o=u(Q),b=r(),m=a("p"),X=u("Client: "),G=u(D),h=r(),Z=a("br"),f=u("\n          Scopes: "),x=u(U),y=r(),B=a("br"),p=u("\n          Issued at: "),F=u(L),V=r(),W=a("div"),(N=a("p")).textContent="It takes up to 60 minutes for a revocation to take affect.",Y=r(),(v=a("button")).textContent="Revoke",e(s,R,99,8,2461),e(Z,R,102,10,2554),e(B,R,104,10,2618),e(m,R,100,8,2501),C(g,"class","svelte-etg4yh"),e(g,R,98,6,2447),C(N,"class","small"),e(N,R,109,8,2787),C(v,"class","btn btn-danger"),e(v,R,112,8,2895),C(W,"class","mr-3 svelte-etg4yh"),t="max-width",I="400px",W.style.setProperty(t,I),e(W,R,108,6,2736),C(c,"class","card-body svelte-etg4yh"),e(c,R,97,4,2417),C(n,"class","card svelte-etg4yh"),e(n,R,96,2,2394),k=d(v,"click",w)},m:function(t,e){l(t,n,e),I(n,c),I(c,g),I(g,s),I(s,o),I(g,b),I(g,m),I(m,X),I(m,G),I(m,h),I(m,Z),I(m,f),I(m,x),I(m,y),I(m,B),I(m,p),I(m,F),I(c,V),I(c,W),I(W,N),I(W,Y),I(W,v)},p:function(e,n){t=n,e.access_tokens&&Q!==(Q=t.token[1].client_name+"")&&A(o,Q),e.access_tokens&&D!==(D=t.token[1].client_id+"")&&A(G,D),e.access_tokens&&U!==(U=t.token[1].scopes.join(", ")+"")&&A(x,U),e.access_tokens&&L!==(L=new t.Date(parseInt(t.token[1].issued_at)).toLocaleString()+"")&&A(F,L)},d:function(t){t&&i(n),k()}}}function w(t){var n,c,g;return{c:function(){n=a("div"),(c=a("button")).textContent="Add Demo Access Token",C(c,"class","btn btn-primary"),e(c,R,126,4,3169),C(n,"class","mt-4 svelte-etg4yh"),e(n,R,125,2,3146),g=d(c,"click",t.add_demo)},m:function(t,e){l(t,n,e),I(n,c)},d:function(t){t&&i(n),g()}}}function z(t){var n,c;return{c:function(){n=a("p"),c=u(t.error_message),e(n,R,133,2,3302)},m:function(t,e){l(t,n,e),I(n,c)},p:function(t,e){t.error_message&&A(c,e.error_message)},d:function(t){t&&i(n)}}}function J(e){for(var n,c,g,s=e.Object.entries(e.access_tokens),o=[],I=0;I<s.length;I+=1)o[I]=L(D(e,s,I));var a=null;s.length||(a=U()).c();var d=e.user&&e.user.is_admin&&w(e),C=e.error_message&&z(e);return{c:function(){for(var t=0;t<o.length;t+=1)o[t].c();n=r(),d&&d.c(),c=r(),C&&C.c(),g=u("")},l:function(t){throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option")},m:function(t,e){for(var s=0;s<o.length;s+=1)o[s].m(t,e);a&&a.m(t,e),l(t,n,e),d&&d.m(t,e),l(t,c,e),C&&C.m(t,e),l(t,g,e)},p:function(t,e){if(t.Date||t.Object||t.access_tokens){s=e.Object.entries(e.access_tokens);for(var I=0;I<s.length;I+=1){const c=D(e,s,I);o[I]?o[I].p(t,c):(o[I]=L(c),o[I].c(),o[I].m(n.parentNode,n))}for(;I<o.length;I+=1)o[I].d(1);o.length=s.length}s.length?a&&(a.d(1),a=null):a||((a=U()).c(),a.m(n.parentNode,n)),e.user&&e.user.is_admin?d||((d=w(e)).c(),d.m(c.parentNode,c)):d&&(d.d(1),d=null),e.error_message?C?C.p(t,e):((C=z(e)).c(),C.m(g.parentNode,g)):C&&(C.d(1),C=null)},i:t,o:t,d:function(t){!function(t,e){for(let n=0;n<t.length;n+=1)t[n]&&t[n].d(e)}(o,t),a&&a.d(t),t&&i(n),d&&d.d(t),t&&i(c),C&&C.d(t),t&&i(g)}}}function j(t,e,n){let c=null,g={},s=null,o={installations:{}},I=null,l=()=>{},i=null;async function a(){return userdata.fetch_collection("access_tokens").then(()=>{const t=g=userdata.access_tokens;return n("access_tokens",g),t}).catch(t=>{n("error_message",c=t.message),console.warn("Writing failed",t)})}function u(t,e,g){t.target.disabled=!0,userdata.remove_from_collection("access_tokens",e).then(()=>{n("error_message",c=null),t.target.disabled=!1}).then(()=>a()).catch(e=>{t.target.disabled=!1,n("error_message",c=e.message),console.warn("Writing failed",e)})}return X(()=>l()),async function(){const t=await import("../../../../../../../../js/cmp/userdata.js");l=t.UserAwareComponent(t=>{const e=s=t;return n("user",s),e},t=>o=Object.assign({installations:{}},t),t=>I=t),i=t.userdata}(),{error_message:c,access_tokens:g,user:s,revoke:u,add_demo:function(t){if(!userdata||!userdata.user)return;t.target.disabled=!0;const e=i.db().collection("access_tokens").doc(userdata.user.uid+"_dummy");e.delete().catch(t=>{}).then(()=>e.set({uid:userdata.user.uid,token:"abcdefghi",client_name:"CLI",client_id:"ohx",scopes:["cloud_connector","addon_registry"],issued_at:Date.now()})).then(()=>{t.target.disabled=!1,a()}).catch(e=>{t.target.disabled=!1,n("error_message",c=e.message),console.warn("Writing failed",e)})},Object,Date,click_handler:function({token:t},e){return u(e,t[0],t[1])}}}class S extends k{constructor(t){var e;super(t),document.getElementById("svelte-etg4yh-style")||((e=a("style")).id="svelte-etg4yh-style",e.textContent=".card.svelte-etg4yh:hover{box-shadow:0 1px 3px 1px rgba(60, 64, 67, 0.2),\n      0 2px 8px 4px rgba(60, 64, 67, 0.1)}.card-body.svelte-etg4yh{display:flex}.card-body.svelte-etg4yh>div.svelte-etg4yh:first-child{flex:1}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY21wLnN2ZWx0ZSIsInNvdXJjZXMiOlsiY21wLnN2ZWx0ZSJdLCJzb3VyY2VzQ29udGVudCI6WyI8c2NyaXB0PlxuICBsZXQgZXJyb3JfbWVzc2FnZSA9IG51bGw7XG4gIGxldCBhY2Nlc3NfdG9rZW5zID0ge307XG5cbiAgLy8vIFVzZXIgQXdhcmUgQ29tcG9uZW50XG4gIGltcG9ydCB7IG9uRGVzdHJveSB9IGZyb20gXCJzdmVsdGVcIjtcbiAgbGV0IHVzZXIgPSBudWxsO1xuICBsZXQgZGF0YSA9IHsgaW5zdGFsbGF0aW9uczoge30gfTtcbiAgbGV0IGFjdGlvbnF1ZXVlID0gbnVsbDtcbiAgbGV0IG9uRGVzdHJveVByb3h5ID0gKCkgPT4ge307XG4gIGxldCB1c2VyZGIgPSBudWxsO1xuICBvbkRlc3Ryb3koKCkgPT4gb25EZXN0cm95UHJveHkoKSk7XG5cbiAgYXN5bmMgZnVuY3Rpb24gc3RhcnQoKSB7XG4gICAgY29uc3QgbW9kdWxlID0gYXdhaXQgaW1wb3J0KFwiL2pzL2NtcC91c2VyZGF0YS5qc1wiKTtcbiAgICBvbkRlc3Ryb3lQcm94eSA9IG1vZHVsZS5Vc2VyQXdhcmVDb21wb25lbnQoXG4gICAgICB1c2VyXyA9PiAodXNlciA9IHVzZXJfKSxcbiAgICAgIGRhdGFfID0+IChkYXRhID0gT2JqZWN0LmFzc2lnbih7IGluc3RhbGxhdGlvbnM6IHt9IH0sIGRhdGFfKSksXG4gICAgICBhcV8gPT4gKGFjdGlvbnF1ZXVlID0gYXFfKVxuICAgICk7XG4gICAgdXNlcmRiID0gbW9kdWxlLnVzZXJkYXRhO1xuICB9XG4gIHN0YXJ0KCk7XG4gIC8vLyBFbmQgLS0gVXNlciBBd2FyZSBDb21wb25lbnRcblxuICBhc3luYyBmdW5jdGlvbiBmZXRjaF90b2tlbnMoKSB7XG4gICAgcmV0dXJuIHVzZXJkYXRhXG4gICAgICAuZmV0Y2hfY29sbGVjdGlvbihcImFjY2Vzc190b2tlbnNcIilcbiAgICAgIC50aGVuKCgpID0+IChhY2Nlc3NfdG9rZW5zID0gdXNlcmRhdGEuYWNjZXNzX3Rva2VucykpXG4gICAgICAuY2F0Y2goZXJyID0+IHtcbiAgICAgICAgZXJyb3JfbWVzc2FnZSA9IGVyci5tZXNzYWdlO1xuICAgICAgICBjb25zb2xlLndhcm4oXCJXcml0aW5nIGZhaWxlZFwiLCBlcnIpO1xuICAgICAgfSk7XG4gIH1cblxuICBmdW5jdGlvbiByZXZva2UoZSwgdG9rZW5faWQsIHRva2VuKSB7XG4gICAgZS50YXJnZXQuZGlzYWJsZWQgPSB0cnVlO1xuICAgIHVzZXJkYXRhXG4gICAgICAucmVtb3ZlX2Zyb21fY29sbGVjdGlvbihcImFjY2Vzc190b2tlbnNcIiwgdG9rZW5faWQpXG4gICAgICAudGhlbigoKSA9PiB7XG4gICAgICAgIGVycm9yX21lc3NhZ2UgPSBudWxsO1xuICAgICAgICBlLnRhcmdldC5kaXNhYmxlZCA9IGZhbHNlO1xuICAgICAgfSlcbiAgICAgIC50aGVuKCgpID0+IGZldGNoX3Rva2VucygpKVxuICAgICAgLmNhdGNoKGVyciA9PiB7XG4gICAgICAgIGUudGFyZ2V0LmRpc2FibGVkID0gZmFsc2U7XG4gICAgICAgIGVycm9yX21lc3NhZ2UgPSBlcnIubWVzc2FnZTtcbiAgICAgICAgY29uc29sZS53YXJuKFwiV3JpdGluZyBmYWlsZWRcIiwgZXJyKTtcbiAgICAgIH0pO1xuICB9XG5cbiAgZnVuY3Rpb24gYWRkX2RlbW8oZSkge1xuICAgIGlmICghdXNlcmRhdGEgfHwgIXVzZXJkYXRhLnVzZXIpIHJldHVybjtcbiAgICBlLnRhcmdldC5kaXNhYmxlZCA9IHRydWU7XG4gICAgY29uc3QgcmVmID0gdXNlcmRiLmRiKClcbiAgICAgIC5jb2xsZWN0aW9uKFwiYWNjZXNzX3Rva2Vuc1wiKVxuICAgICAgLmRvYyh1c2VyZGF0YS51c2VyLnVpZCArIFwiX1wiICsgXCJkdW1teVwiKTtcbiAgICByZWZcbiAgICAgIC5kZWxldGUoKVxuICAgICAgLmNhdGNoKF8gPT4ge30pXG4gICAgICAudGhlbigoKSA9PlxuICAgICAgICByZWYuc2V0KHtcbiAgICAgICAgICB1aWQ6IHVzZXJkYXRhLnVzZXIudWlkLFxuICAgICAgICAgIHRva2VuOiBcImFiY2RlZmdoaVwiLFxuICAgICAgICAgIGNsaWVudF9uYW1lOiBcIkNMSVwiLFxuICAgICAgICAgIGNsaWVudF9pZDogXCJvaHhcIixcbiAgICAgICAgICBzY29wZXM6IFtcImNsb3VkX2Nvbm5lY3RvclwiLCBcImFkZG9uX3JlZ2lzdHJ5XCJdLFxuICAgICAgICAgIGlzc3VlZF9hdDogRGF0ZS5ub3coKVxuICAgICAgICB9KVxuICAgICAgKVxuICAgICAgLnRoZW4oKCkgPT4ge1xuICAgICAgICBlLnRhcmdldC5kaXNhYmxlZCA9IGZhbHNlO1xuICAgICAgICBmZXRjaF90b2tlbnMoKTtcbiAgICAgIH0pXG4gICAgICAuY2F0Y2goZXJyID0+IHtcbiAgICAgICAgZS50YXJnZXQuZGlzYWJsZWQgPSBmYWxzZTtcbiAgICAgICAgZXJyb3JfbWVzc2FnZSA9IGVyci5tZXNzYWdlO1xuICAgICAgICBjb25zb2xlLndhcm4oXCJXcml0aW5nIGZhaWxlZFwiLCBlcnIpO1xuICAgICAgfSk7XG4gIH1cbjwvc2NyaXB0PlxuXG48c3R5bGU+XG4gIC5jYXJkOmhvdmVyIHtcbiAgICBib3gtc2hhZG93OiAwIDFweCAzcHggMXB4IHJnYmEoNjAsIDY0LCA2NywgMC4yKSxcbiAgICAgIDAgMnB4IDhweCA0cHggcmdiYSg2MCwgNjQsIDY3LCAwLjEpO1xuICB9XG4gIC5jYXJkLWJvZHkge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gIH1cbiAgLmNhcmQtYm9keSA+IGRpdjpmaXJzdC1jaGlsZCB7XG4gICAgZmxleDogMTtcbiAgfVxuPC9zdHlsZT5cblxueyNlYWNoIE9iamVjdC5lbnRyaWVzKGFjY2Vzc190b2tlbnMpIGFzIHRva2VufVxuICA8ZGl2IGNsYXNzPVwiY2FyZFwiPlxuICAgIDxkaXYgY2xhc3M9XCJjYXJkLWJvZHlcIj5cbiAgICAgIDxkaXY+XG4gICAgICAgIDxoND57dG9rZW5bMV0uY2xpZW50X25hbWV9PC9oND5cbiAgICAgICAgPHA+XG4gICAgICAgICAgQ2xpZW50OiB7dG9rZW5bMV0uY2xpZW50X2lkfVxuICAgICAgICAgIDxiciAvPlxuICAgICAgICAgIFNjb3Blczoge3Rva2VuWzFdLnNjb3Blcy5qb2luKCcsICcpfVxuICAgICAgICAgIDxiciAvPlxuICAgICAgICAgIElzc3VlZCBhdDoge25ldyBEYXRlKHBhcnNlSW50KHRva2VuWzFdLmlzc3VlZF9hdCkpLnRvTG9jYWxlU3RyaW5nKCl9XG4gICAgICAgIDwvcD5cbiAgICAgIDwvZGl2PlxuICAgICAgPGRpdiBjbGFzcz1cIm1yLTNcIiBzdHlsZT1cIm1heC13aWR0aDo0MDBweFwiPlxuICAgICAgICA8cCBjbGFzcz1cInNtYWxsXCI+XG4gICAgICAgICAgSXQgdGFrZXMgdXAgdG8gNjAgbWludXRlcyBmb3IgYSByZXZvY2F0aW9uIHRvIHRha2UgYWZmZWN0LlxuICAgICAgICA8L3A+XG4gICAgICAgIDxidXR0b25cbiAgICAgICAgICBjbGFzcz1cImJ0biBidG4tZGFuZ2VyXCJcbiAgICAgICAgICBvbjpjbGljaz17ZSA9PiByZXZva2UoZSwgdG9rZW5bMF0sIHRva2VuWzFdKX0+XG4gICAgICAgICAgUmV2b2tlXG4gICAgICAgIDwvYnV0dG9uPlxuICAgICAgPC9kaXY+XG4gICAgPC9kaXY+XG4gIDwvZGl2PlxuezplbHNlfVxuICA8cD5ObyBBY2Nlc3MgVG9rZW5zIHJlZ2lzdGVyZWQhPC9wPlxuey9lYWNofVxuXG57I2lmIHVzZXIgJiYgdXNlci5pc19hZG1pbn1cbiAgPGRpdiBjbGFzcz1cIm10LTRcIj5cbiAgICA8YnV0dG9uIGNsYXNzPVwiYnRuIGJ0bi1wcmltYXJ5XCIgb246Y2xpY2s9e2FkZF9kZW1vfT5cbiAgICAgIEFkZCBEZW1vIEFjY2VzcyBUb2tlblxuICAgIDwvYnV0dG9uPlxuICA8L2Rpdj5cbnsvaWZ9XG5cbnsjaWYgZXJyb3JfbWVzc2FnZX1cbiAgPHA+e2Vycm9yX21lc3NhZ2V9PC9wPlxuey9pZn1cbiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFtRkUsbUJBQUssTUFBTSxBQUFDLENBQUMsQUFDWCxVQUFVLENBQUUsQ0FBQyxDQUFDLEdBQUcsQ0FBQyxHQUFHLENBQUMsR0FBRyxDQUFDLEtBQUssRUFBRSxDQUFDLENBQUMsRUFBRSxDQUFDLENBQUMsRUFBRSxDQUFDLENBQUMsR0FBRyxDQUFDLENBQUM7TUFDOUMsQ0FBQyxDQUFDLEdBQUcsQ0FBQyxHQUFHLENBQUMsR0FBRyxDQUFDLEtBQUssRUFBRSxDQUFDLENBQUMsRUFBRSxDQUFDLENBQUMsRUFBRSxDQUFDLENBQUMsR0FBRyxDQUFDLEFBQ3ZDLENBQUMsQUFDRCxVQUFVLGNBQUMsQ0FBQyxBQUNWLE9BQU8sQ0FBRSxJQUFJLEFBQ2YsQ0FBQyxBQUNELHdCQUFVLENBQUcsaUJBQUcsWUFBWSxBQUFDLENBQUMsQUFDNUIsSUFBSSxDQUFFLENBQUMsQUFDVCxDQUFDIn0= */",I(document.head,e)),Y(this,t,j,J,o,[])}}window.customElements.define("ui-accesstokens",class extends HTMLElement{constructor(){super()}connectedCallback(){this.cmp=new S({target:this,props:{}})}disconnectedCallback(){this.cmp&&this.cmp.$destroy()}});
+function noop() { }
+function run(fn) {
+    return fn();
+}
+function blank_object() {
+    return Object.create(null);
+}
+function run_all(fns) {
+    fns.forEach(run);
+}
+function is_function(thing) {
+    return typeof thing === 'function';
+}
+function safe_not_equal(a, b) {
+    return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+}
+
+function append(target, node) {
+    target.appendChild(node);
+}
+function insert(target, node, anchor) {
+    target.insertBefore(node, anchor || null);
+}
+function detach(node) {
+    node.parentNode.removeChild(node);
+}
+function destroy_each(iterations, detaching) {
+    for (let i = 0; i < iterations.length; i += 1) {
+        if (iterations[i])
+            iterations[i].d(detaching);
+    }
+}
+function element(name) {
+    return document.createElement(name);
+}
+function text(data) {
+    return document.createTextNode(data);
+}
+function space() {
+    return text(' ');
+}
+function empty() {
+    return text('');
+}
+function listen(node, event, handler, options) {
+    node.addEventListener(event, handler, options);
+    return () => node.removeEventListener(event, handler, options);
+}
+function attr(node, attribute, value) {
+    if (value == null)
+        node.removeAttribute(attribute);
+    else
+        node.setAttribute(attribute, value);
+}
+function children(element) {
+    return Array.from(element.childNodes);
+}
+function set_data(text, data) {
+    data = '' + data;
+    if (text.data !== data)
+        text.data = data;
+}
+function set_style(node, key, value, important) {
+    node.style.setProperty(key, value, important ? 'important' : '');
+}
+
+let current_component;
+function set_current_component(component) {
+    current_component = component;
+}
+function get_current_component() {
+    if (!current_component)
+        throw new Error(`Function called outside component initialization`);
+    return current_component;
+}
+function onDestroy(fn) {
+    get_current_component().$$.on_destroy.push(fn);
+}
+
+const dirty_components = [];
+const binding_callbacks = [];
+const render_callbacks = [];
+const flush_callbacks = [];
+const resolved_promise = Promise.resolve();
+let update_scheduled = false;
+function schedule_update() {
+    if (!update_scheduled) {
+        update_scheduled = true;
+        resolved_promise.then(flush);
+    }
+}
+function add_render_callback(fn) {
+    render_callbacks.push(fn);
+}
+function flush() {
+    const seen_callbacks = new Set();
+    do {
+        // first, call beforeUpdate functions
+        // and update components
+        while (dirty_components.length) {
+            const component = dirty_components.shift();
+            set_current_component(component);
+            update(component.$$);
+        }
+        while (binding_callbacks.length)
+            binding_callbacks.pop()();
+        // then, once components are updated, call
+        // afterUpdate functions. This may cause
+        // subsequent updates...
+        for (let i = 0; i < render_callbacks.length; i += 1) {
+            const callback = render_callbacks[i];
+            if (!seen_callbacks.has(callback)) {
+                callback();
+                // ...so guard against infinite loops
+                seen_callbacks.add(callback);
+            }
+        }
+        render_callbacks.length = 0;
+    } while (dirty_components.length);
+    while (flush_callbacks.length) {
+        flush_callbacks.pop()();
+    }
+    update_scheduled = false;
+}
+function update($$) {
+    if ($$.fragment) {
+        $$.update($$.dirty);
+        run_all($$.before_update);
+        $$.fragment.p($$.dirty, $$.ctx);
+        $$.dirty = null;
+        $$.after_update.forEach(add_render_callback);
+    }
+}
+const outroing = new Set();
+function transition_in(block, local) {
+    if (block && block.i) {
+        outroing.delete(block);
+        block.i(local);
+    }
+}
+
+const globals = (typeof window !== 'undefined' ? window : global);
+function mount_component(component, target, anchor) {
+    const { fragment, on_mount, on_destroy, after_update } = component.$$;
+    fragment.m(target, anchor);
+    // onMount happens before the initial afterUpdate
+    add_render_callback(() => {
+        const new_on_destroy = on_mount.map(run).filter(is_function);
+        if (on_destroy) {
+            on_destroy.push(...new_on_destroy);
+        }
+        else {
+            // Edge case - component was destroyed immediately,
+            // most likely as a result of a binding initialising
+            run_all(new_on_destroy);
+        }
+        component.$$.on_mount = [];
+    });
+    after_update.forEach(add_render_callback);
+}
+function destroy_component(component, detaching) {
+    if (component.$$.fragment) {
+        run_all(component.$$.on_destroy);
+        component.$$.fragment.d(detaching);
+        // TODO null out other refs, including component.$$ (but need to
+        // preserve final state?)
+        component.$$.on_destroy = component.$$.fragment = null;
+        component.$$.ctx = {};
+    }
+}
+function make_dirty(component, key) {
+    if (!component.$$.dirty) {
+        dirty_components.push(component);
+        schedule_update();
+        component.$$.dirty = blank_object();
+    }
+    component.$$.dirty[key] = true;
+}
+function init(component, options, instance, create_fragment, not_equal, prop_names) {
+    const parent_component = current_component;
+    set_current_component(component);
+    const props = options.props || {};
+    const $$ = component.$$ = {
+        fragment: null,
+        ctx: null,
+        // state
+        props: prop_names,
+        update: noop,
+        not_equal,
+        bound: blank_object(),
+        // lifecycle
+        on_mount: [],
+        on_destroy: [],
+        before_update: [],
+        after_update: [],
+        context: new Map(parent_component ? parent_component.$$.context : []),
+        // everything else
+        callbacks: blank_object(),
+        dirty: null
+    };
+    let ready = false;
+    $$.ctx = instance
+        ? instance(component, props, (key, ret, value = ret) => {
+            if ($$.ctx && not_equal($$.ctx[key], $$.ctx[key] = value)) {
+                if ($$.bound[key])
+                    $$.bound[key](value);
+                if (ready)
+                    make_dirty(component, key);
+            }
+            return ret;
+        })
+        : props;
+    $$.update();
+    ready = true;
+    run_all($$.before_update);
+    $$.fragment = create_fragment($$.ctx);
+    if (options.target) {
+        if (options.hydrate) {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            $$.fragment.l(children(options.target));
+        }
+        else {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            $$.fragment.c();
+        }
+        if (options.intro)
+            transition_in(component.$$.fragment);
+        mount_component(component, options.target, options.anchor);
+        flush();
+    }
+    set_current_component(parent_component);
+}
+let SvelteElement;
+if (typeof HTMLElement !== 'undefined') {
+    SvelteElement = class extends HTMLElement {
+        constructor() {
+            super();
+            this.attachShadow({ mode: 'open' });
+        }
+        connectedCallback() {
+            // @ts-ignore todo: improve typings
+            for (const key in this.$$.slotted) {
+                // @ts-ignore todo: improve typings
+                this.appendChild(this.$$.slotted[key]);
+            }
+        }
+        attributeChangedCallback(attr, _oldValue, newValue) {
+            this[attr] = newValue;
+        }
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            // TODO should this delegate to addEventListener?
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set() {
+            // overridden by instance, if it has props
+        }
+    };
+}
+class SvelteComponent {
+    $destroy() {
+        destroy_component(this, 1);
+        this.$destroy = noop;
+    }
+    $on(type, callback) {
+        const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+        callbacks.push(callback);
+        return () => {
+            const index = callbacks.indexOf(callback);
+            if (index !== -1)
+                callbacks.splice(index, 1);
+        };
+    }
+    $set() {
+        // overridden by instance, if it has props
+    }
+}
+
+/* assets/js/ui-accesstokens/cmp.svelte generated by Svelte v3.12.0 */
+const { Object: Object_1 } = globals;
+
+function add_css() {
+	var style = element("style");
+	style.id = 'svelte-etg4yh-style';
+	style.textContent = ".card.svelte-etg4yh:hover{box-shadow:0 1px 3px 1px rgba(60, 64, 67, 0.2),\n      0 2px 8px 4px rgba(60, 64, 67, 0.1)}.card-body.svelte-etg4yh{display:flex}.card-body.svelte-etg4yh>div.svelte-etg4yh:first-child{flex:1}";
+	append(document.head, style);
+}
+
+function get_each_context(ctx, list, i) {
+	const child_ctx = Object_1.create(ctx);
+	child_ctx.token = list[i];
+	return child_ctx;
+}
+
+// (121:0) {:else}
+function create_else_block(ctx) {
+	var p;
+
+	return {
+		c() {
+			p = element("p");
+			p.textContent = "No Access Tokens registered!";
+		},
+
+		m(target, anchor) {
+			insert(target, p, anchor);
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(p);
+			}
+		}
+	};
+}
+
+// (96:0) {#each Object.entries(access_tokens) as token}
+function create_each_block(ctx) {
+	var div3, div2, div0, h4, t0_value = ctx.token[1].client_name + "", t0, t1, p0, t2, t3_value = ctx.token[1].client_id + "", t3, t4, br0, t5, t6_value = ctx.token[1].scopes.join(', ') + "", t6, t7, br1, t8, t9_value = new ctx.Date(parseInt(ctx.token[1].issued_at)).toLocaleString() + "", t9, t10, div1, p1, t12, button, dispose;
+
+	function click_handler(...args) {
+		return ctx.click_handler(ctx, ...args);
+	}
+
+	return {
+		c() {
+			div3 = element("div");
+			div2 = element("div");
+			div0 = element("div");
+			h4 = element("h4");
+			t0 = text(t0_value);
+			t1 = space();
+			p0 = element("p");
+			t2 = text("Client: ");
+			t3 = text(t3_value);
+			t4 = space();
+			br0 = element("br");
+			t5 = text("\n          Scopes: ");
+			t6 = text(t6_value);
+			t7 = space();
+			br1 = element("br");
+			t8 = text("\n          Issued at: ");
+			t9 = text(t9_value);
+			t10 = space();
+			div1 = element("div");
+			p1 = element("p");
+			p1.textContent = "It takes up to 60 minutes for a revocation to take affect.";
+			t12 = space();
+			button = element("button");
+			button.textContent = "Revoke";
+			attr(div0, "class", "svelte-etg4yh");
+			attr(p1, "class", "small");
+			attr(button, "class", "btn btn-danger");
+			attr(div1, "class", "mr-3 svelte-etg4yh");
+			set_style(div1, "max-width", "400px");
+			attr(div2, "class", "card-body svelte-etg4yh");
+			attr(div3, "class", "card svelte-etg4yh");
+			dispose = listen(button, "click", click_handler);
+		},
+
+		m(target, anchor) {
+			insert(target, div3, anchor);
+			append(div3, div2);
+			append(div2, div0);
+			append(div0, h4);
+			append(h4, t0);
+			append(div0, t1);
+			append(div0, p0);
+			append(p0, t2);
+			append(p0, t3);
+			append(p0, t4);
+			append(p0, br0);
+			append(p0, t5);
+			append(p0, t6);
+			append(p0, t7);
+			append(p0, br1);
+			append(p0, t8);
+			append(p0, t9);
+			append(div2, t10);
+			append(div2, div1);
+			append(div1, p1);
+			append(div1, t12);
+			append(div1, button);
+		},
+
+		p(changed, new_ctx) {
+			ctx = new_ctx;
+			if ((changed.access_tokens) && t0_value !== (t0_value = ctx.token[1].client_name + "")) {
+				set_data(t0, t0_value);
+			}
+
+			if ((changed.access_tokens) && t3_value !== (t3_value = ctx.token[1].client_id + "")) {
+				set_data(t3, t3_value);
+			}
+
+			if ((changed.access_tokens) && t6_value !== (t6_value = ctx.token[1].scopes.join(', ') + "")) {
+				set_data(t6, t6_value);
+			}
+
+			if ((changed.access_tokens) && t9_value !== (t9_value = new ctx.Date(parseInt(ctx.token[1].issued_at)).toLocaleString() + "")) {
+				set_data(t9, t9_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(div3);
+			}
+
+			dispose();
+		}
+	};
+}
+
+// (125:0) {#if user && user.is_admin}
+function create_if_block_1(ctx) {
+	var div, button, dispose;
+
+	return {
+		c() {
+			div = element("div");
+			button = element("button");
+			button.textContent = "Add Demo Access Token";
+			attr(button, "class", "btn btn-primary");
+			attr(div, "class", "mt-4 svelte-etg4yh");
+			dispose = listen(button, "click", ctx.add_demo);
+		},
+
+		m(target, anchor) {
+			insert(target, div, anchor);
+			append(div, button);
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(div);
+			}
+
+			dispose();
+		}
+	};
+}
+
+// (133:0) {#if error_message}
+function create_if_block(ctx) {
+	var p, t;
+
+	return {
+		c() {
+			p = element("p");
+			t = text(ctx.error_message);
+		},
+
+		m(target, anchor) {
+			insert(target, p, anchor);
+			append(p, t);
+		},
+
+		p(changed, ctx) {
+			if (changed.error_message) {
+				set_data(t, ctx.error_message);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(p);
+			}
+		}
+	};
+}
+
+function create_fragment(ctx) {
+	var t0, t1, if_block1_anchor;
+
+	let each_value = ctx.Object.entries(ctx.access_tokens);
+
+	let each_blocks = [];
+
+	for (let i = 0; i < each_value.length; i += 1) {
+		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+	}
+
+	let each_1_else = null;
+
+	if (!each_value.length) {
+		each_1_else = create_else_block();
+		each_1_else.c();
+	}
+
+	var if_block0 = (ctx.user && ctx.user.is_admin) && create_if_block_1(ctx);
+
+	var if_block1 = (ctx.error_message) && create_if_block(ctx);
+
+	return {
+		c() {
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+
+			t0 = space();
+			if (if_block0) if_block0.c();
+			t1 = space();
+			if (if_block1) if_block1.c();
+			if_block1_anchor = empty();
+		},
+
+		m(target, anchor) {
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].m(target, anchor);
+			}
+
+			if (each_1_else) {
+				each_1_else.m(target, anchor);
+			}
+
+			insert(target, t0, anchor);
+			if (if_block0) if_block0.m(target, anchor);
+			insert(target, t1, anchor);
+			if (if_block1) if_block1.m(target, anchor);
+			insert(target, if_block1_anchor, anchor);
+		},
+
+		p(changed, ctx) {
+			if (changed.Date || changed.Object || changed.access_tokens) {
+				each_value = ctx.Object.entries(ctx.access_tokens);
+
+				let i;
+				for (i = 0; i < each_value.length; i += 1) {
+					const child_ctx = get_each_context(ctx, each_value, i);
+
+					if (each_blocks[i]) {
+						each_blocks[i].p(changed, child_ctx);
+					} else {
+						each_blocks[i] = create_each_block(child_ctx);
+						each_blocks[i].c();
+						each_blocks[i].m(t0.parentNode, t0);
+					}
+				}
+
+				for (; i < each_blocks.length; i += 1) {
+					each_blocks[i].d(1);
+				}
+				each_blocks.length = each_value.length;
+			}
+
+			if (each_value.length) {
+				if (each_1_else) {
+					each_1_else.d(1);
+					each_1_else = null;
+				}
+			} else if (!each_1_else) {
+				each_1_else = create_else_block();
+				each_1_else.c();
+				each_1_else.m(t0.parentNode, t0);
+			}
+
+			if (ctx.user && ctx.user.is_admin) {
+				if (!if_block0) {
+					if_block0 = create_if_block_1(ctx);
+					if_block0.c();
+					if_block0.m(t1.parentNode, t1);
+				}
+			} else if (if_block0) {
+				if_block0.d(1);
+				if_block0 = null;
+			}
+
+			if (ctx.error_message) {
+				if (if_block1) {
+					if_block1.p(changed, ctx);
+				} else {
+					if_block1 = create_if_block(ctx);
+					if_block1.c();
+					if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
+				}
+			} else if (if_block1) {
+				if_block1.d(1);
+				if_block1 = null;
+			}
+		},
+
+		i: noop,
+		o: noop,
+
+		d(detaching) {
+			destroy_each(each_blocks, detaching);
+
+			if (each_1_else) each_1_else.d(detaching);
+
+			if (detaching) {
+				detach(t0);
+			}
+
+			if (if_block0) if_block0.d(detaching);
+
+			if (detaching) {
+				detach(t1);
+			}
+
+			if (if_block1) if_block1.d(detaching);
+
+			if (detaching) {
+				detach(if_block1_anchor);
+			}
+		}
+	};
+}
+
+function instance($$self, $$props, $$invalidate) {
+	let error_message = null;
+  let access_tokens = {};
+  let user = null;
+  let data = { installations: {} };
+  let actionqueue = null;
+  let onDestroyProxy = () => {};
+  let userdb = null;
+  onDestroy(() => onDestroyProxy());
+
+  async function start() {
+    const module = await import('../../../../../../../../js/cmp/userdata.js');
+    onDestroyProxy = module.UserAwareComponent(
+      user_ => ($$invalidate('user', user = user_)),
+      data_ => (data = Object.assign({ installations: {} }, data_)),
+      aq_ => (actionqueue = aq_)
+    );
+    userdb = module.userdata;
+  }
+  start();
+  /// End -- User Aware Component
+
+  async function fetch_tokens() {
+    return userdata
+      .fetch_collection("access_tokens")
+      .then(() => ($$invalidate('access_tokens', access_tokens = userdata.access_tokens)))
+      .catch(err => {
+        $$invalidate('error_message', error_message = err.message);
+        console.warn("Writing failed", err);
+      });
+  }
+
+  function revoke(e, token_id, token) {
+    e.target.disabled = true;
+    userdata
+      .remove_from_collection("access_tokens", token_id)
+      .then(() => {
+        $$invalidate('error_message', error_message = null);
+        e.target.disabled = false;
+      })
+      .then(() => fetch_tokens())
+      .catch(err => {
+        e.target.disabled = false;
+        $$invalidate('error_message', error_message = err.message);
+        console.warn("Writing failed", err);
+      });
+  }
+
+  function add_demo(e) {
+    if (!userdata || !userdata.user) return;
+    e.target.disabled = true;
+    const ref = userdb.db()
+      .collection("access_tokens")
+      .doc(userdata.user.uid + "_" + "dummy");
+    ref
+      .delete()
+      .catch(_ => {})
+      .then(() =>
+        ref.set({
+          uid: userdata.user.uid,
+          token: "abcdefghi",
+          client_name: "CLI",
+          client_id: "ohx",
+          scopes: ["cloud_connector", "addon_registry"],
+          issued_at: Date.now()
+        })
+      )
+      .then(() => {
+        e.target.disabled = false;
+        fetch_tokens();
+      })
+      .catch(err => {
+        e.target.disabled = false;
+        $$invalidate('error_message', error_message = err.message);
+        console.warn("Writing failed", err);
+      });
+  }
+
+	const click_handler = ({ token }, e) => revoke(e, token[0], token[1]);
+
+	return {
+		error_message,
+		access_tokens,
+		user,
+		revoke,
+		add_demo,
+		Object,
+		Date,
+		click_handler
+	};
+}
+
+class Cmp extends SvelteComponent {
+	constructor(options) {
+		super();
+		if (!document.getElementById("svelte-etg4yh-style")) add_css();
+		init(this, options, instance, create_fragment, safe_not_equal, []);
+	}
+}
+
+window.customElements.define('ui-accesstokens', class extends HTMLElement {
+    constructor() {
+        super();
+    }
+    connectedCallback() {
+        this.cmp = new Cmp({ target: this, props: { } });
+    }
+    disconnectedCallback() {
+        if (this.cmp) this.cmp.$destroy();
+    }
+});
 //# sourceMappingURL=ui-accesstokens.js.map

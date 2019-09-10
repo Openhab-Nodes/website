@@ -1,2 +1,1216 @@
-function t(){}function n(e,t,n,c,l){e.__svelte_meta={loc:{file:t,line:n,column:c,char:l}}}function c(e){return e()}function l(){return Object.create(null)}function I(e){e.forEach(c)}function g(e){return"function"==typeof e}function s(e,t){return e!=e?t==t:e!==t||e&&"object"==typeof e||"function"==typeof e}function a(e,t){e.appendChild(t)}function i(e,t,n){e.insertBefore(t,n||null)}function u(e){e.parentNode.removeChild(e)}function d(e){return document.createElement(e)}function C(e){return document.createTextNode(e)}function r(){return C(" ")}function o(e,t,n,c){return e.addEventListener(t,n,c),()=>e.removeEventListener(t,n,c)}function A(e,t,n){null==n?e.removeAttribute(t):e.setAttribute(t,n)}function b(e,t){t=""+t,e.data!==t&&(e.data=t)}let m;function p(e){m=e}function G(e){(function(){if(!m)throw new Error("Function called outside component initialization");return m})().$$.on_destroy.push(e)}const X=[],Z=[],h=[],f=[],w=Promise.resolve();let V=!1;function W(e){h.push(e)}function x(){const e=new Set;do{for(;X.length;){const e=X.shift();p(e),y(e.$$)}for(;Z.length;)Z.pop()();for(let t=0;t<h.length;t+=1){const n=h[t];e.has(n)||(n(),e.add(n))}h.length=0}while(X.length);for(;f.length;)f.pop()();V=!1}function y(e){e.fragment&&(e.update(e.dirty),I(e.before_update),e.fragment.p(e.dirty,e.ctx),e.dirty=null,e.after_update.forEach(W))}const B=new Set;const v="undefined"!=typeof window?window:global;function N(e,t){e.$$.dirty||(X.push(e),V||(V=!0,w.then(x)),e.$$.dirty=l()),e.$$.dirty[t]=!0}function Y(e,n,s,a,i,u){const d=m;p(e);const C=n.props||{},r=e.$$={fragment:null,ctx:null,props:u,update:t,not_equal:i,bound:l(),on_mount:[],on_destroy:[],before_update:[],after_update:[],context:new Map(d?d.$$.context:[]),callbacks:l(),dirty:null};let o=!1;var A,b,G;r.ctx=s?s(e,C,(t,n)=>{r.ctx&&i(r.ctx[t],r.ctx[t]=n)&&(r.bound[t]&&r.bound[t](n),o&&N(e,t))}):C,r.update(),o=!0,I(r.before_update),r.fragment=a(r.ctx),n.target&&(n.hydrate?r.fragment.l((G=n.target,Array.from(G.childNodes))):r.fragment.c(),n.intro&&((A=e.$$.fragment)&&A.i&&(B.delete(A),A.i(b))),function(e,t,n){const{fragment:l,on_mount:s,on_destroy:a,after_update:i}=e.$$;l.m(t,n),W(()=>{const t=s.map(c).filter(g);a?a.push(...t):I(t),e.$$.on_mount=[]}),i.forEach(W)}(e,n.target,n.anchor),x()),p(d)}class F{$destroy(){var e,n;n=1,(e=this).$$.fragment&&(I(e.$$.on_destroy),e.$$.fragment.d(n),e.$$.on_destroy=e.$$.fragment=null,e.$$.ctx={}),this.$destroy=t}$on(e,t){const n=this.$$.callbacks[e]||(this.$$.callbacks[e]=[]);return n.push(t),()=>{const e=n.indexOf(t);-1!==e&&n.splice(e,1)}}$set(){}}class J extends F{constructor(e){if(!e||!e.target&&!e.$$inline)throw new Error("'target' is a required option");super()}$destroy(){super.$destroy(),this.$destroy=(()=>{console.warn("Component was already destroyed")})}}const{Object:z}=v,H="assets/js/ui-accountdetails/cmp.svelte";function R(e){var t,c;return{c:function(){A(t=d("img"),"class","mr-3 svelte-r4sam9"),A(t,"src",c=e.user.photoURL),A(t,"alt","Profile picture"),n(t,H,124,4,2829)},m:function(e,n){i(e,t,n)},p:function(e,n){e.user&&c!==(c=n.user.photoURL)&&A(t,"src",c)},d:function(e){e&&u(t)}}}function P(e){var t,c,l,I,g,s,o,A=e.user?e.user.email:"";return{c:function(){t=d("p"),c=C("Name: "),l=C(e.displayName),I=r(),g=d("br"),s=C("\n        E-Mail: "),o=C(A),n(g,H,168,8,4087),n(t,H,166,6,4047)},m:function(e,n){i(e,t,n),a(t,c),a(t,l),a(t,I),a(t,g),a(t,s),a(t,o)},p:function(e,t){e.displayName&&b(l,t.displayName),e.user&&A!==(A=t.user?t.user.email:"")&&b(o,A)},d:function(e){e&&u(t)}}}function Q(e){var t,c,l,g,s,b,m,p,G,X,Z,h,f,w,V,W,x,y,B,v,N,Y;return{c:function(){t=d("div"),(c=d("label")).textContent="Name:",l=r(),g=d("input"),s=r(),b=d("button"),m=C("Change"),G=r(),X=d("hr"),Z=r(),h=d("div"),(f=d("label")).textContent="Email address:",w=r(),V=d("input"),W=r(),(x=d("small")).textContent="We'll never share your email with anyone else.",y=r(),B=d("button"),v=C("Change"),n(c,H,130,8,3044),A(g,"class","form-control mr-3"),A(g,"id","signupname"),A(g,"placeholder","First & Last Name"),n(g,H,131,8,3073),A(t,"class","form-group"),n(t,H,129,6,3011),A(b,"class","btn"),b.disabled=p=e.displayName===(e.user.displayName||""),n(b,H,137,6,3241),n(X,H,144,6,3403),n(f,H,146,8,3454),A(V,"type","email"),A(V,"class","form-control"),A(V,"autocomplete","email"),A(V,"id","exampleInputEmail1"),A(V,"aria-describedby","emailHelp"),A(V,"placeholder","Enter email"),n(V,H,147,8,3492),A(x,"id","emailHelp"),A(x,"class","form-text text-muted"),n(x,H,155,8,3737),A(h,"class","form-group mt-4"),n(h,H,145,6,3416),A(B,"class","btn"),B.disabled=N=e.new_email===(e.user.email||""),n(B,H,159,6,3882),Y=[o(g,"input",e.input0_input_handler),o(b,"click",e.submit_new_name),o(V,"input",e.input1_input_handler),o(B,"click",e.submit_new_mail)]},m:function(n,I){i(n,t,I),a(t,c),a(t,l),a(t,g),g.value=e.displayName,i(n,s,I),i(n,b,I),a(b,m),i(n,G,I),i(n,X,I),i(n,Z,I),i(n,h,I),a(h,f),a(h,w),a(h,V),V.value=e.new_email,a(h,W),a(h,x),i(n,y,I),i(n,B,I),a(B,v)},p:function(e,t){e.displayName&&g.value!==t.displayName&&(g.value=t.displayName),(e.displayName||e.user)&&p!==(p=t.displayName===(t.user.displayName||""))&&(b.disabled=p),e.new_email&&V.value!==t.new_email&&(V.value=t.new_email),(e.new_email||e.user)&&N!==(N=t.new_email===(t.user.email||""))&&(B.disabled=N)},d:function(e){e&&(u(t),u(s),u(b),u(G),u(X),u(Z),u(h),u(y),u(B)),I(Y)}}}function _(e){var t,c,l,I=!e.verifcation_send&&k(e);return{c:function(){t=d("p"),(c=d("span")).textContent="Your E-Mail Address is not yet verified!",l=r(),I&&I.c(),A(c,"class","text-danger"),n(c,H,175,8,4209),n(t,H,174,6,4197)},m:function(e,n){i(e,t,n),a(t,c),a(t,l),I&&I.m(t,null)},p:function(e,n){n.verifcation_send?I&&(I.d(1),I=null):I||((I=k(n)).c(),I.m(t,null))},d:function(e){e&&u(t),I&&I.d()}}}function k(e){var t,c;return{c:function(){(t=d("button")).textContent="Resend verification E-Mail",A(t,"class","btn-link"),n(t,H,179,10,4345),c=o(t,"click",e.resend_verification)},m:function(e,n){i(e,t,n)},d:function(e){e&&u(t),c()}}}function L(e){var t,c,l,I,g,s,o,A,m,p=new Date(parseInt(e.user.metadata.a)).toLocaleString()+"",G=new Date(parseInt(e.user.metadata.b)).toLocaleString()+"";return{c:function(){t=d("hr"),c=r(),l=d("p"),I=C("Registered: "),g=C(p),s=r(),o=d("br"),A=C("\n        Last login: "),m=C(G),n(t,H,187,6,4535),n(o,H,190,8,4635),n(l,H,188,6,4548)},m:function(e,n){i(e,t,n),i(e,c,n),i(e,l,n),a(l,I),a(l,g),a(l,s),a(l,o),a(l,A),a(l,m)},p:function(e,t){e.user&&p!==(p=new Date(parseInt(t.user.metadata.a)).toLocaleString()+"")&&b(g,p),e.user&&G!==(G=new Date(parseInt(t.user.metadata.b)).toLocaleString()+"")&&b(m,G)},d:function(e){e&&(u(t),u(c),u(l))}}}function S(e){var n;return{c:function(){n=C("Status: Inactive")},m:function(e,t){i(e,n,t)},p:t,d:function(e){e&&u(n)}}}function D(e){var t,c,l,I,g,s,a,o,A,m,p=e.data.subscription.valid?"Enabled":"Payment pending",G=new Date(parseInt(e.data.subscription.ends)).toLocaleString()+"",X=e.data.subscription.renewal?"Enabled":"Disabled";return{c:function(){t=C("Status: "),c=C(p),l=r(),I=d("br"),g=C("\n        Period ends: "),s=C(G),a=r(),o=d("br"),A=C("\n        Automatic renewal: "),m=C(X),n(I,H,200,8,4971),n(o,H,202,8,5069)},m:function(e,n){i(e,t,n),i(e,c,n),i(e,l,n),i(e,I,n),i(e,g,n),i(e,s,n),i(e,a,n),i(e,o,n),i(e,A,n),i(e,m,n)},p:function(e,t){e.data&&p!==(p=t.data.subscription.valid?"Enabled":"Payment pending")&&b(c,p),e.data&&G!==(G=new Date(parseInt(t.data.subscription.ends)).toLocaleString()+"")&&b(s,G),e.data&&X!==(X=t.data.subscription.renewal?"Enabled":"Disabled")&&b(m,X)},d:function(e){e&&(u(t),u(c),u(l),u(I),u(g),u(s),u(a),u(o),u(A),u(m))}}}function j(e){var t;return{c:function(){(t=d("small")).textContent="Your account is queued to be removed. This will happen after your\n        current subscription ends or within 24 hours, whatever comes first.",A(t,"class","text-danger"),n(t,H,208,6,5244)},m:function(e,n){i(e,t,n)},d:function(e){e&&u(t)}}}function U(e){var t,c;return{c:function(){t=d("p"),c=C(e.error_message),A(t,"class","text-danger"),n(t,H,215,6,5478)},m:function(e,n){i(e,t,n),a(t,c)},p:function(e,t){e.error_message&&b(c,t.error_message)},d:function(e){e&&u(t)}}}function E(e){var t,c,l,g,s,b,m,p,G,X,Z,h,f,w,V,W;return{c:function(){(t=d("h4")).textContent="Change Password",c=r(),l=d("div"),(g=d("label")).textContent="Password",s=r(),b=d("input"),m=r(),p=d("div"),(G=d("label")).textContent="Repeat Password",X=r(),Z=d("input"),h=r(),f=d("button"),w=C("Change Password"),n(t,H,221,6,5643),A(g,"for","exampleInputPassword1"),n(g,H,223,8,5707),A(b,"type","password"),A(b,"autocomplete","new-password"),A(b,"class","form-control"),A(b,"id","exampleInputPassword1"),A(b,"placeholder","Password"),n(b,H,224,8,5767),A(l,"class","form-group"),n(l,H,222,6,5674),A(G,"for","exampleInputPassword2"),n(G,H,233,8,6026),A(Z,"type","password"),A(Z,"autocomplete","new-password"),A(Z,"class","form-control"),A(Z,"id","exampleInputPassword2"),A(Z,"placeholder","Password"),n(Z,H,234,8,6093),A(p,"class","form-group"),n(p,H,232,6,5993),A(f,"class","btn"),f.disabled=V=e.password!==e.password_repeat||0===e.password.trim().length,n(f,H,242,6,6326),W=[o(b,"input",e.input0_input_handler_1),o(Z,"input",e.input1_input_handler_1),o(f,"click",e.submit_new_password)]},m:function(n,I){i(n,t,I),i(n,c,I),i(n,l,I),a(l,g),a(l,s),a(l,b),b.value=e.password,i(n,m,I),i(n,p,I),a(p,G),a(p,X),a(p,Z),Z.value=e.password_repeat,i(n,h,I),i(n,f,I),a(f,w)},p:function(e,t){e.password&&b.value!==t.password&&(b.value=t.password),e.password_repeat&&Z.value!==t.password_repeat&&(Z.value=t.password_repeat),(e.password||e.password_repeat)&&V!==(V=t.password!==t.password_repeat||0===t.password.trim().length)&&(f.disabled=V)},d:function(e){e&&(u(t),u(c),u(l),u(m),u(p),u(h),u(f)),I(W)}}}function T(e){var c,l,I,g,s,C,o,b,m,p,G,X,Z,h,f,w,V=e.user&&e.user.photoURL&&R(e);function W(e){return e.user&&e.user.providerData.find(K)?Q:P}var x=W(e),y=x(e),B=e.user&&!e.user.emailVerified&&_(e),v=e.user&&e.user.metadata&&L(e);function N(e){return e.data&&e.data.subscription&&e.data.subscription.ends&&e.data.subscription.ends<Date.now()?D:S}var Y=N(e),F=Y(e),J=e.data&&e.data.queued_remove&&j(),z=e.error_message&&U(e),k=e.user&&e.user.providerData.find($)&&E(e);return{c:function(){c=d("div"),V&&V.c(),l=r(),I=d("div"),y.c(),g=r(),B&&B.c(),s=r(),v&&v.c(),C=r(),o=d("p"),(b=d("b")).textContent="Subscription",m=r(),p=d("br"),G=r(),F.c(),X=r(),J&&J.c(),Z=r(),z&&z.c(),h=r(),f=d("div"),k&&k.c(),n(b,H,196,6,4753),n(p,H,197,6,4779),n(o,H,195,4,4743),A(I,"class","user_details svelte-r4sam9"),n(I,H,126,2,2902),A(f,"class","ml-3"),n(f,H,218,2,5542),A(c,"class",w="img_details "+e.classes+" svelte-r4sam9"),n(c,H,122,0,2759)},l:function(e){throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option")},m:function(e,t){i(e,c,t),V&&V.m(c,null),a(c,l),a(c,I),y.m(I,null),a(I,g),B&&B.m(I,null),a(I,s),v&&v.m(I,null),a(I,C),a(I,o),a(o,b),a(o,m),a(o,p),a(o,G),F.m(o,null),a(I,X),J&&J.m(I,null),a(I,Z),z&&z.m(I,null),a(c,h),a(c,f),k&&k.m(f,null)},p:function(e,t){t.user&&t.user.photoURL?V?V.p(e,t):((V=R(t)).c(),V.m(c,l)):V&&(V.d(1),V=null),x===(x=W(t))&&y?y.p(e,t):(y.d(1),(y=x(t))&&(y.c(),y.m(I,g))),t.user&&!t.user.emailVerified?B?B.p(e,t):((B=_(t)).c(),B.m(I,s)):B&&(B.d(1),B=null),t.user&&t.user.metadata?v?v.p(e,t):((v=L(t)).c(),v.m(I,C)):v&&(v.d(1),v=null),Y===(Y=N(t))&&F?F.p(e,t):(F.d(1),(F=Y(t))&&(F.c(),F.m(o,null))),t.data&&t.data.queued_remove?J||((J=j()).c(),J.m(I,Z)):J&&(J.d(1),J=null),t.error_message?z?z.p(e,t):((z=U(t)).c(),z.m(I,null)):z&&(z.d(1),z=null),t.user&&t.user.providerData.find($)?k?k.p(e,t):((k=E(t)).c(),k.m(f,null)):k&&(k.d(1),k=null),e.classes&&w!==(w="img_details "+t.classes+" svelte-r4sam9")&&A(c,"class",w)},i:t,o:t,d:function(e){e&&u(c),V&&V.d(),y.d(),B&&B.d(),v&&v.d(),F.d(),J&&J.d(),z&&z.d(),k&&k.d()}}}function $(e){return"password"===e.providerId}function K(e){return"password"===e.providerId}function O(t,n,c){let{classes:l=""}=n,I="",g="",s=!1,a=null,i="",u="",d=null,C={installations:{}},r=null,o=()=>{},A=null;G(()=>o()),async function(){const e=await import("../../../../../../../../js/cmp/userdata.js");o=e.UserAwareComponent(e=>{c("user",d=e),c("displayName",I=d&&d.displayName?d.displayName:""),c("new_email",g=d&&d.email?d.email:"")},e=>{const t=C=Object.assign({installations:{}},e);return c("data",C),t},e=>r=e),A=e.userdata}();const b=["classes"];return z.keys(n).forEach(e=>{b.includes(e)||e.startsWith("$$")||console.warn(`<Cmp> was created with unknown prop '${e}'`)}),t.$set=(e=>{"classes"in e&&c("classes",l=e.classes)}),{classes:l,displayName:I,new_email:g,verifcation_send:s,error_message:a,password:i,password_repeat:u,user:d,data:C,resend_verification:function(e){e.preventDefault(),d&&d.sendEmailVerification().then(function(){c("verifcation_send",s=!0)}).catch(function(e){c("error_message",a=e.message)})},submit_new_name:function(){e.preventDefault(),d&&(e.target.disabled=!0,d.updateProfile({displayName:I}).then(function(){e.target.disabled=!1,c("error_message",a=null)}).catch(function(t){e.target.disabled=!1,c("error_message",a=t.message)}))},submit_new_mail:function(e){e.preventDefault(),d&&(e.target.disabled=!0,d.updateEmail(g).then(function(){e.target.disabled=!1,c("error_message",a=null)}).catch(function(t){e.target.disabled=!1,c("error_message",a=t.message)}))},submit_new_password:function(e){e.preventDefault(),d&&(i===u&&0!=i.trim().length?(e.target.disabled=!0,d.updatePassword(i).then(function(){e.target.disabled=!1,c("error_message",a=null),c("password",i=""),c("password_repeat",u="")}).catch(function(t){e.target.disabled=!1,c("error_message",a=t.message)})):c("error_message",a="No password set!"))},input0_input_handler:function(){I=this.value,c("displayName",I)},input1_input_handler:function(){g=this.value,c("new_email",g)},input0_input_handler_1:function(){i=this.value,c("password",i)},input1_input_handler_1:function(){u=this.value,c("password_repeat",u)}}}class M extends J{constructor(e){var t;super(e),document.getElementById("svelte-r4sam9-style")||((t=d("style")).id="svelte-r4sam9-style",t.textContent=".img_details.svelte-r4sam9{display:flex}.img_details.svelte-r4sam9>img.svelte-r4sam9{max-width:200px}.user_details.svelte-r4sam9{max-width:400px;flex:1;justify-content:center}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY21wLnN2ZWx0ZSIsInNvdXJjZXMiOlsiY21wLnN2ZWx0ZSJdLCJzb3VyY2VzQ29udGVudCI6WyI8c2NyaXB0PlxuICBleHBvcnQgbGV0IGNsYXNzZXMgPSBcIlwiO1xuICBsZXQgZGlzcGxheU5hbWUgPSBcIlwiO1xuICBsZXQgbmV3X2VtYWlsID0gXCJcIjtcblxuICBsZXQgZGlzYWJsZWQgPSB0cnVlO1xuICBsZXQgdmVyaWZjYXRpb25fc2VuZCA9IGZhbHNlO1xuICBsZXQgZXJyb3JfbWVzc2FnZSA9IG51bGw7XG5cbiAgbGV0IHBhc3N3b3JkID0gXCJcIjtcbiAgbGV0IHBhc3N3b3JkX3JlcGVhdCA9IFwiXCI7XG5cbiAgLy8vIFVzZXIgQXdhcmUgQ29tcG9uZW50XG4gIGltcG9ydCB7IG9uRGVzdHJveSB9IGZyb20gXCJzdmVsdGVcIjtcbiAgbGV0IHVzZXIgPSBudWxsO1xuICBsZXQgZGF0YSA9IHsgaW5zdGFsbGF0aW9uczoge30gfTtcbiAgbGV0IGFjdGlvbnF1ZXVlID0gbnVsbDtcbiAgbGV0IG9uRGVzdHJveVByb3h5ID0gKCkgPT4ge307XG4gIGxldCB1c2VyZGIgPSBudWxsO1xuICBvbkRlc3Ryb3koKCkgPT4gb25EZXN0cm95UHJveHkoKSk7XG5cbiAgYXN5bmMgZnVuY3Rpb24gc3RhcnQoKSB7XG4gICAgY29uc3QgbW9kdWxlID0gYXdhaXQgaW1wb3J0KFwiL2pzL2NtcC91c2VyZGF0YS5qc1wiKTtcbiAgICBvbkRlc3Ryb3lQcm94eSA9IG1vZHVsZS5Vc2VyQXdhcmVDb21wb25lbnQoXG4gICAgICB1ID0+IHtcbiAgICAgICAgdXNlciA9IHU7XG4gICAgICAgIGRpc3BsYXlOYW1lID0gdXNlciAmJiB1c2VyLmRpc3BsYXlOYW1lID8gdXNlci5kaXNwbGF5TmFtZSA6IFwiXCI7XG4gICAgICAgIG5ld19lbWFpbCA9IHVzZXIgJiYgdXNlci5lbWFpbCA/IHVzZXIuZW1haWwgOiBcIlwiO1xuICAgICAgfSxcbiAgICAgIGRhdGFfID0+IChkYXRhID0gT2JqZWN0LmFzc2lnbih7IGluc3RhbGxhdGlvbnM6IHt9IH0sIGRhdGFfKSksXG4gICAgICBhcV8gPT4gKGFjdGlvbnF1ZXVlID0gYXFfKVxuICAgICk7XG4gICAgdXNlcmRiID0gbW9kdWxlLnVzZXJkYXRhO1xuICAgIGRpc2FibGVkID0gZmFsc2U7XG4gIH1cbiAgc3RhcnQoKTtcbiAgLy8vIEVuZCAtLSBVc2VyIEF3YXJlIENvbXBvbmVudFxuXG4gIGZ1bmN0aW9uIHJlc2VuZF92ZXJpZmljYXRpb24oZSkge1xuICAgIGUucHJldmVudERlZmF1bHQoKTtcbiAgICBpZiAoIXVzZXIpIHJldHVybjtcbiAgICB1c2VyXG4gICAgICAuc2VuZEVtYWlsVmVyaWZpY2F0aW9uKClcbiAgICAgIC50aGVuKGZ1bmN0aW9uKCkge1xuICAgICAgICB2ZXJpZmNhdGlvbl9zZW5kID0gdHJ1ZTtcbiAgICAgIH0pXG4gICAgICAuY2F0Y2goZnVuY3Rpb24oZXJyb3IpIHtcbiAgICAgICAgZXJyb3JfbWVzc2FnZSA9IGVycm9yLm1lc3NhZ2U7XG4gICAgICB9KTtcbiAgfVxuXG4gIGZ1bmN0aW9uIHN1Ym1pdF9uZXdfbmFtZSgpIHtcbiAgICBlLnByZXZlbnREZWZhdWx0KCk7XG4gICAgaWYgKCF1c2VyKSByZXR1cm47XG4gICAgZS50YXJnZXQuZGlzYWJsZWQgPSB0cnVlO1xuICAgIHVzZXJcbiAgICAgIC51cGRhdGVQcm9maWxlKHtcbiAgICAgICAgZGlzcGxheU5hbWVcbiAgICAgIH0pXG4gICAgICAudGhlbihmdW5jdGlvbigpIHtcbiAgICAgICAgZS50YXJnZXQuZGlzYWJsZWQgPSBmYWxzZTtcbiAgICAgICAgZXJyb3JfbWVzc2FnZSA9IG51bGw7XG4gICAgICB9KVxuICAgICAgLmNhdGNoKGZ1bmN0aW9uKGVycm9yKSB7XG4gICAgICAgIGUudGFyZ2V0LmRpc2FibGVkID0gZmFsc2U7XG4gICAgICAgIGVycm9yX21lc3NhZ2UgPSBlcnJvci5tZXNzYWdlO1xuICAgICAgfSk7XG4gIH1cblxuICBmdW5jdGlvbiBzdWJtaXRfbmV3X21haWwoZSkge1xuICAgIGUucHJldmVudERlZmF1bHQoKTtcbiAgICBpZiAoIXVzZXIpIHJldHVybjtcbiAgICBlLnRhcmdldC5kaXNhYmxlZCA9IHRydWU7XG4gICAgdXNlclxuICAgICAgLnVwZGF0ZUVtYWlsKG5ld19lbWFpbClcbiAgICAgIC50aGVuKGZ1bmN0aW9uKCkge1xuICAgICAgICBlLnRhcmdldC5kaXNhYmxlZCA9IGZhbHNlO1xuICAgICAgICBlcnJvcl9tZXNzYWdlID0gbnVsbDtcbiAgICAgIH0pXG4gICAgICAuY2F0Y2goZnVuY3Rpb24oZXJyb3IpIHtcbiAgICAgICAgZS50YXJnZXQuZGlzYWJsZWQgPSBmYWxzZTtcbiAgICAgICAgZXJyb3JfbWVzc2FnZSA9IGVycm9yLm1lc3NhZ2U7XG4gICAgICB9KTtcbiAgfVxuXG4gIGZ1bmN0aW9uIHN1Ym1pdF9uZXdfcGFzc3dvcmQoZSkge1xuICAgIGUucHJldmVudERlZmF1bHQoKTtcbiAgICBpZiAoIXVzZXIpIHJldHVybjtcbiAgICBpZiAocGFzc3dvcmQgIT09IHBhc3N3b3JkX3JlcGVhdCB8fCBwYXNzd29yZC50cmltKCkubGVuZ3RoID09IDApIHtcbiAgICAgIGVycm9yX21lc3NhZ2UgPSBcIk5vIHBhc3N3b3JkIHNldCFcIjtcbiAgICAgIHJldHVybjtcbiAgICB9XG4gICAgZS50YXJnZXQuZGlzYWJsZWQgPSB0cnVlO1xuICAgIHVzZXJcbiAgICAgIC51cGRhdGVQYXNzd29yZChwYXNzd29yZClcbiAgICAgIC50aGVuKGZ1bmN0aW9uKCkge1xuICAgICAgICBlLnRhcmdldC5kaXNhYmxlZCA9IGZhbHNlO1xuICAgICAgICBlcnJvcl9tZXNzYWdlID0gbnVsbDtcbiAgICAgICAgcGFzc3dvcmQgPSBcIlwiO1xuICAgICAgICBwYXNzd29yZF9yZXBlYXQgPSBcIlwiO1xuICAgICAgfSlcbiAgICAgIC5jYXRjaChmdW5jdGlvbihlcnJvcikge1xuICAgICAgICBlLnRhcmdldC5kaXNhYmxlZCA9IGZhbHNlO1xuICAgICAgICBlcnJvcl9tZXNzYWdlID0gZXJyb3IubWVzc2FnZTtcbiAgICAgIH0pO1xuICB9XG48L3NjcmlwdD5cblxuPHN0eWxlPlxuICAuaW1nX2RldGFpbHMge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gIH1cbiAgLmltZ19kZXRhaWxzID4gaW1nIHtcbiAgICBtYXgtd2lkdGg6IDIwMHB4O1xuICB9XG4gIC51c2VyX2RldGFpbHMge1xuICAgIG1heC13aWR0aDogNDAwcHg7XG4gICAgZmxleDogMTtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgfVxuPC9zdHlsZT5cblxuPGRpdiBjbGFzcz1cImltZ19kZXRhaWxzIHtjbGFzc2VzfVwiPlxuICB7I2lmIHVzZXIgJiYgdXNlci5waG90b1VSTH1cbiAgICA8aW1nIGNsYXNzPVwibXItM1wiIHNyYz17dXNlci5waG90b1VSTH0gYWx0PVwiUHJvZmlsZSBwaWN0dXJlXCIgLz5cbiAgey9pZn1cbiAgPGRpdiBjbGFzcz1cInVzZXJfZGV0YWlsc1wiPlxuXG4gICAgeyNpZiB1c2VyICYmIHVzZXIucHJvdmlkZXJEYXRhLmZpbmQoZSA9PiBlLnByb3ZpZGVySWQgPT09ICdwYXNzd29yZCcpfVxuICAgICAgPGRpdiBjbGFzcz1cImZvcm0tZ3JvdXBcIj5cbiAgICAgICAgPGxhYmVsPk5hbWU6PC9sYWJlbD5cbiAgICAgICAgPGlucHV0XG4gICAgICAgICAgYmluZDp2YWx1ZT17ZGlzcGxheU5hbWV9XG4gICAgICAgICAgY2xhc3M9XCJmb3JtLWNvbnRyb2wgbXItM1wiXG4gICAgICAgICAgaWQ9XCJzaWdudXBuYW1lXCJcbiAgICAgICAgICBwbGFjZWhvbGRlcj1cIkZpcnN0ICYgTGFzdCBOYW1lXCIgLz5cbiAgICAgIDwvZGl2PlxuICAgICAgPGJ1dHRvblxuICAgICAgICBjbGFzcz1cImJ0blwiXG4gICAgICAgIGRpc2FibGVkPXtkaXNwbGF5TmFtZSA9PT0gKHVzZXIuZGlzcGxheU5hbWUgfHwgJycpfVxuICAgICAgICBvbjpjbGljaz17c3VibWl0X25ld19uYW1lfT5cbiAgICAgICAgQ2hhbmdlXG4gICAgICA8L2J1dHRvbj5cblxuICAgICAgPGhyIC8+XG4gICAgICA8ZGl2IGNsYXNzPVwiZm9ybS1ncm91cCBtdC00XCI+XG4gICAgICAgIDxsYWJlbD5FbWFpbCBhZGRyZXNzOjwvbGFiZWw+XG4gICAgICAgIDxpbnB1dFxuICAgICAgICAgIGJpbmQ6dmFsdWU9e25ld19lbWFpbH1cbiAgICAgICAgICB0eXBlPVwiZW1haWxcIlxuICAgICAgICAgIGNsYXNzPVwiZm9ybS1jb250cm9sXCJcbiAgICAgICAgICBhdXRvY29tcGxldGU9XCJlbWFpbFwiXG4gICAgICAgICAgaWQ9XCJleGFtcGxlSW5wdXRFbWFpbDFcIlxuICAgICAgICAgIGFyaWEtZGVzY3JpYmVkYnk9XCJlbWFpbEhlbHBcIlxuICAgICAgICAgIHBsYWNlaG9sZGVyPVwiRW50ZXIgZW1haWxcIiAvPlxuICAgICAgICA8c21hbGwgaWQ9XCJlbWFpbEhlbHBcIiBjbGFzcz1cImZvcm0tdGV4dCB0ZXh0LW11dGVkXCI+XG4gICAgICAgICAgV2UnbGwgbmV2ZXIgc2hhcmUgeW91ciBlbWFpbCB3aXRoIGFueW9uZSBlbHNlLlxuICAgICAgICA8L3NtYWxsPlxuICAgICAgPC9kaXY+XG4gICAgICA8YnV0dG9uXG4gICAgICAgIGNsYXNzPVwiYnRuXCJcbiAgICAgICAgZGlzYWJsZWQ9e25ld19lbWFpbCA9PT0gKHVzZXIuZW1haWwgfHwgJycpfVxuICAgICAgICBvbjpjbGljaz17c3VibWl0X25ld19tYWlsfT5cbiAgICAgICAgQ2hhbmdlXG4gICAgICA8L2J1dHRvbj5cbiAgICB7OmVsc2V9XG4gICAgICA8cD5cbiAgICAgICAgTmFtZToge2Rpc3BsYXlOYW1lfVxuICAgICAgICA8YnIgLz5cbiAgICAgICAgRS1NYWlsOiB7dXNlcj91c2VyLmVtYWlsOlwiXCJ9XG4gICAgICA8L3A+XG4gICAgey9pZn1cblxuICAgIHsjaWYgdXNlciAmJiAhdXNlci5lbWFpbFZlcmlmaWVkfVxuICAgICAgPHA+XG4gICAgICAgIDxzcGFuIGNsYXNzPVwidGV4dC1kYW5nZXJcIj5cbiAgICAgICAgICBZb3VyIEUtTWFpbCBBZGRyZXNzIGlzIG5vdCB5ZXQgdmVyaWZpZWQhXG4gICAgICAgIDwvc3Bhbj5cbiAgICAgICAgeyNpZiAhdmVyaWZjYXRpb25fc2VuZH1cbiAgICAgICAgICA8YnV0dG9uIGNsYXNzPVwiYnRuLWxpbmtcIiBvbjpjbGljaz17cmVzZW5kX3ZlcmlmaWNhdGlvbn0+XG4gICAgICAgICAgICBSZXNlbmQgdmVyaWZpY2F0aW9uIEUtTWFpbFxuICAgICAgICAgIDwvYnV0dG9uPlxuICAgICAgICB7L2lmfVxuICAgICAgPC9wPlxuICAgIHsvaWZ9XG5cbiAgICB7I2lmIHVzZXIgJiYgdXNlci5tZXRhZGF0YX1cbiAgICAgIDxociAvPlxuICAgICAgPHA+XG4gICAgICAgIFJlZ2lzdGVyZWQ6IHtuZXcgRGF0ZShwYXJzZUludCh1c2VyLm1ldGFkYXRhLmEpKS50b0xvY2FsZVN0cmluZygpfVxuICAgICAgICA8YnIgLz5cbiAgICAgICAgTGFzdCBsb2dpbjoge25ldyBEYXRlKHBhcnNlSW50KHVzZXIubWV0YWRhdGEuYikpLnRvTG9jYWxlU3RyaW5nKCl9XG4gICAgICA8L3A+XG4gICAgey9pZn1cblxuICAgIDxwPlxuICAgICAgPGI+U3Vic2NyaXB0aW9uPC9iPlxuICAgICAgPGJyIC8+XG4gICAgICB7I2lmIGRhdGEgJiYgZGF0YS5zdWJzY3JpcHRpb24gJiYgZGF0YS5zdWJzY3JpcHRpb24uZW5kcyAmJiBkYXRhLnN1YnNjcmlwdGlvbi5lbmRzIDwgRGF0ZS5ub3coKX1cbiAgICAgICAgU3RhdHVzOiB7ZGF0YS5zdWJzY3JpcHRpb24udmFsaWQgPyAnRW5hYmxlZCcgOiAnUGF5bWVudCBwZW5kaW5nJ31cbiAgICAgICAgPGJyIC8+XG4gICAgICAgIFBlcmlvZCBlbmRzOiB7bmV3IERhdGUocGFyc2VJbnQoZGF0YS5zdWJzY3JpcHRpb24uZW5kcykpLnRvTG9jYWxlU3RyaW5nKCl9XG4gICAgICAgIDxiciAvPlxuICAgICAgICBBdXRvbWF0aWMgcmVuZXdhbDoge2RhdGEuc3Vic2NyaXB0aW9uLnJlbmV3YWwgPyAnRW5hYmxlZCcgOiAnRGlzYWJsZWQnfVxuICAgICAgezplbHNlfVN0YXR1czogSW5hY3RpdmV7L2lmfVxuICAgIDwvcD5cblxuICAgIHsjaWYgZGF0YSAmJiBkYXRhLnF1ZXVlZF9yZW1vdmV9XG4gICAgICA8c21hbGwgY2xhc3M9XCJ0ZXh0LWRhbmdlclwiPlxuICAgICAgICBZb3VyIGFjY291bnQgaXMgcXVldWVkIHRvIGJlIHJlbW92ZWQuIFRoaXMgd2lsbCBoYXBwZW4gYWZ0ZXIgeW91clxuICAgICAgICBjdXJyZW50IHN1YnNjcmlwdGlvbiBlbmRzIG9yIHdpdGhpbiAyNCBob3Vycywgd2hhdGV2ZXIgY29tZXMgZmlyc3QuXG4gICAgICA8L3NtYWxsPlxuICAgIHsvaWZ9XG5cbiAgICB7I2lmIGVycm9yX21lc3NhZ2V9XG4gICAgICA8cCBjbGFzcz1cInRleHQtZGFuZ2VyXCI+e2Vycm9yX21lc3NhZ2V9PC9wPlxuICAgIHsvaWZ9XG4gIDwvZGl2PlxuICA8ZGl2IGNsYXNzPVwibWwtM1wiPlxuXG4gICAgeyNpZiB1c2VyICYmIHVzZXIucHJvdmlkZXJEYXRhLmZpbmQoZSA9PiBlLnByb3ZpZGVySWQgPT09ICdwYXNzd29yZCcpfVxuICAgICAgPGg0PkNoYW5nZSBQYXNzd29yZDwvaDQ+XG4gICAgICA8ZGl2IGNsYXNzPVwiZm9ybS1ncm91cFwiPlxuICAgICAgICA8bGFiZWwgZm9yPVwiZXhhbXBsZUlucHV0UGFzc3dvcmQxXCI+UGFzc3dvcmQ8L2xhYmVsPlxuICAgICAgICA8aW5wdXRcbiAgICAgICAgICBiaW5kOnZhbHVlPXtwYXNzd29yZH1cbiAgICAgICAgICB0eXBlPVwicGFzc3dvcmRcIlxuICAgICAgICAgIGF1dG9jb21wbGV0ZT1cIm5ldy1wYXNzd29yZFwiXG4gICAgICAgICAgY2xhc3M9XCJmb3JtLWNvbnRyb2xcIlxuICAgICAgICAgIGlkPVwiZXhhbXBsZUlucHV0UGFzc3dvcmQxXCJcbiAgICAgICAgICBwbGFjZWhvbGRlcj1cIlBhc3N3b3JkXCIgLz5cbiAgICAgIDwvZGl2PlxuICAgICAgPGRpdiBjbGFzcz1cImZvcm0tZ3JvdXBcIj5cbiAgICAgICAgPGxhYmVsIGZvcj1cImV4YW1wbGVJbnB1dFBhc3N3b3JkMlwiPlJlcGVhdCBQYXNzd29yZDwvbGFiZWw+XG4gICAgICAgIDxpbnB1dFxuICAgICAgICAgIGJpbmQ6dmFsdWU9e3Bhc3N3b3JkX3JlcGVhdH1cbiAgICAgICAgICB0eXBlPVwicGFzc3dvcmRcIlxuICAgICAgICAgIGF1dG9jb21wbGV0ZT1cIm5ldy1wYXNzd29yZFwiXG4gICAgICAgICAgY2xhc3M9XCJmb3JtLWNvbnRyb2xcIlxuICAgICAgICAgIGlkPVwiZXhhbXBsZUlucHV0UGFzc3dvcmQyXCJcbiAgICAgICAgICBwbGFjZWhvbGRlcj1cIlBhc3N3b3JkXCIgLz5cbiAgICAgIDwvZGl2PlxuICAgICAgPGJ1dHRvblxuICAgICAgICBjbGFzcz1cImJ0blwiXG4gICAgICAgIGRpc2FibGVkPXtwYXNzd29yZCAhPT0gcGFzc3dvcmRfcmVwZWF0IHx8IHBhc3N3b3JkLnRyaW0oKS5sZW5ndGggPT09IDB9XG4gICAgICAgIG9uOmNsaWNrPXtzdWJtaXRfbmV3X3Bhc3N3b3JkfT5cbiAgICAgICAgQ2hhbmdlIFBhc3N3b3JkXG4gICAgICA8L2J1dHRvbj5cbiAgICB7L2lmfVxuXG4gIDwvZGl2PlxuPC9kaXY+XG4iXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBNkdFLFlBQVksY0FBQyxDQUFDLEFBQ1osT0FBTyxDQUFFLElBQUksQUFDZixDQUFDLEFBQ0QsMEJBQVksQ0FBRyxHQUFHLGNBQUMsQ0FBQyxBQUNsQixTQUFTLENBQUUsS0FBSyxBQUNsQixDQUFDLEFBQ0QsYUFBYSxjQUFDLENBQUMsQUFDYixTQUFTLENBQUUsS0FBSyxDQUNoQixJQUFJLENBQUUsQ0FBQyxDQUNQLGVBQWUsQ0FBRSxNQUFNLEFBQ3pCLENBQUMifQ== */",a(document.head,t)),Y(this,e,O,T,s,["classes"])}get classes(){throw new Error("<Cmp>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set classes(e){throw new Error("<Cmp>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}}window.customElements.define("ui-accountdetails",class extends HTMLElement{constructor(){super()}connectedCallback(){const e=this.getAttribute("class");this.removeAttribute("class"),this.cmp=new M({target:this,props:{classes:e}})}disconnectedCallback(){this.cmp&&this.cmp.$destroy()}});
+function noop() { }
+function run(fn) {
+    return fn();
+}
+function blank_object() {
+    return Object.create(null);
+}
+function run_all(fns) {
+    fns.forEach(run);
+}
+function is_function(thing) {
+    return typeof thing === 'function';
+}
+function safe_not_equal(a, b) {
+    return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+}
+
+function append(target, node) {
+    target.appendChild(node);
+}
+function insert(target, node, anchor) {
+    target.insertBefore(node, anchor || null);
+}
+function detach(node) {
+    node.parentNode.removeChild(node);
+}
+function element(name) {
+    return document.createElement(name);
+}
+function text(data) {
+    return document.createTextNode(data);
+}
+function space() {
+    return text(' ');
+}
+function listen(node, event, handler, options) {
+    node.addEventListener(event, handler, options);
+    return () => node.removeEventListener(event, handler, options);
+}
+function attr(node, attribute, value) {
+    if (value == null)
+        node.removeAttribute(attribute);
+    else
+        node.setAttribute(attribute, value);
+}
+function children(element) {
+    return Array.from(element.childNodes);
+}
+function set_data(text, data) {
+    data = '' + data;
+    if (text.data !== data)
+        text.data = data;
+}
+function set_input_value(input, value) {
+    if (value != null || input.value) {
+        input.value = value;
+    }
+}
+
+let current_component;
+function set_current_component(component) {
+    current_component = component;
+}
+function get_current_component() {
+    if (!current_component)
+        throw new Error(`Function called outside component initialization`);
+    return current_component;
+}
+function onDestroy(fn) {
+    get_current_component().$$.on_destroy.push(fn);
+}
+
+const dirty_components = [];
+const binding_callbacks = [];
+const render_callbacks = [];
+const flush_callbacks = [];
+const resolved_promise = Promise.resolve();
+let update_scheduled = false;
+function schedule_update() {
+    if (!update_scheduled) {
+        update_scheduled = true;
+        resolved_promise.then(flush);
+    }
+}
+function add_render_callback(fn) {
+    render_callbacks.push(fn);
+}
+function flush() {
+    const seen_callbacks = new Set();
+    do {
+        // first, call beforeUpdate functions
+        // and update components
+        while (dirty_components.length) {
+            const component = dirty_components.shift();
+            set_current_component(component);
+            update(component.$$);
+        }
+        while (binding_callbacks.length)
+            binding_callbacks.pop()();
+        // then, once components are updated, call
+        // afterUpdate functions. This may cause
+        // subsequent updates...
+        for (let i = 0; i < render_callbacks.length; i += 1) {
+            const callback = render_callbacks[i];
+            if (!seen_callbacks.has(callback)) {
+                callback();
+                // ...so guard against infinite loops
+                seen_callbacks.add(callback);
+            }
+        }
+        render_callbacks.length = 0;
+    } while (dirty_components.length);
+    while (flush_callbacks.length) {
+        flush_callbacks.pop()();
+    }
+    update_scheduled = false;
+}
+function update($$) {
+    if ($$.fragment) {
+        $$.update($$.dirty);
+        run_all($$.before_update);
+        $$.fragment.p($$.dirty, $$.ctx);
+        $$.dirty = null;
+        $$.after_update.forEach(add_render_callback);
+    }
+}
+const outroing = new Set();
+function transition_in(block, local) {
+    if (block && block.i) {
+        outroing.delete(block);
+        block.i(local);
+    }
+}
+function mount_component(component, target, anchor) {
+    const { fragment, on_mount, on_destroy, after_update } = component.$$;
+    fragment.m(target, anchor);
+    // onMount happens before the initial afterUpdate
+    add_render_callback(() => {
+        const new_on_destroy = on_mount.map(run).filter(is_function);
+        if (on_destroy) {
+            on_destroy.push(...new_on_destroy);
+        }
+        else {
+            // Edge case - component was destroyed immediately,
+            // most likely as a result of a binding initialising
+            run_all(new_on_destroy);
+        }
+        component.$$.on_mount = [];
+    });
+    after_update.forEach(add_render_callback);
+}
+function destroy_component(component, detaching) {
+    if (component.$$.fragment) {
+        run_all(component.$$.on_destroy);
+        component.$$.fragment.d(detaching);
+        // TODO null out other refs, including component.$$ (but need to
+        // preserve final state?)
+        component.$$.on_destroy = component.$$.fragment = null;
+        component.$$.ctx = {};
+    }
+}
+function make_dirty(component, key) {
+    if (!component.$$.dirty) {
+        dirty_components.push(component);
+        schedule_update();
+        component.$$.dirty = blank_object();
+    }
+    component.$$.dirty[key] = true;
+}
+function init(component, options, instance, create_fragment, not_equal, prop_names) {
+    const parent_component = current_component;
+    set_current_component(component);
+    const props = options.props || {};
+    const $$ = component.$$ = {
+        fragment: null,
+        ctx: null,
+        // state
+        props: prop_names,
+        update: noop,
+        not_equal,
+        bound: blank_object(),
+        // lifecycle
+        on_mount: [],
+        on_destroy: [],
+        before_update: [],
+        after_update: [],
+        context: new Map(parent_component ? parent_component.$$.context : []),
+        // everything else
+        callbacks: blank_object(),
+        dirty: null
+    };
+    let ready = false;
+    $$.ctx = instance
+        ? instance(component, props, (key, ret, value = ret) => {
+            if ($$.ctx && not_equal($$.ctx[key], $$.ctx[key] = value)) {
+                if ($$.bound[key])
+                    $$.bound[key](value);
+                if (ready)
+                    make_dirty(component, key);
+            }
+            return ret;
+        })
+        : props;
+    $$.update();
+    ready = true;
+    run_all($$.before_update);
+    $$.fragment = create_fragment($$.ctx);
+    if (options.target) {
+        if (options.hydrate) {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            $$.fragment.l(children(options.target));
+        }
+        else {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            $$.fragment.c();
+        }
+        if (options.intro)
+            transition_in(component.$$.fragment);
+        mount_component(component, options.target, options.anchor);
+        flush();
+    }
+    set_current_component(parent_component);
+}
+let SvelteElement;
+if (typeof HTMLElement !== 'undefined') {
+    SvelteElement = class extends HTMLElement {
+        constructor() {
+            super();
+            this.attachShadow({ mode: 'open' });
+        }
+        connectedCallback() {
+            // @ts-ignore todo: improve typings
+            for (const key in this.$$.slotted) {
+                // @ts-ignore todo: improve typings
+                this.appendChild(this.$$.slotted[key]);
+            }
+        }
+        attributeChangedCallback(attr, _oldValue, newValue) {
+            this[attr] = newValue;
+        }
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            // TODO should this delegate to addEventListener?
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set() {
+            // overridden by instance, if it has props
+        }
+    };
+}
+class SvelteComponent {
+    $destroy() {
+        destroy_component(this, 1);
+        this.$destroy = noop;
+    }
+    $on(type, callback) {
+        const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+        callbacks.push(callback);
+        return () => {
+            const index = callbacks.indexOf(callback);
+            if (index !== -1)
+                callbacks.splice(index, 1);
+        };
+    }
+    $set() {
+        // overridden by instance, if it has props
+    }
+}
+
+/* assets/js/ui-accountdetails/cmp.svelte generated by Svelte v3.12.0 */
+
+function add_css() {
+	var style = element("style");
+	style.id = 'svelte-r4sam9-style';
+	style.textContent = ".img_details.svelte-r4sam9{display:flex}.img_details.svelte-r4sam9>img.svelte-r4sam9{max-width:200px}.user_details.svelte-r4sam9{max-width:400px;flex:1;justify-content:center}";
+	append(document.head, style);
+}
+
+// (124:2) {#if user && user.photoURL}
+function create_if_block_8(ctx) {
+	var img, img_src_value;
+
+	return {
+		c() {
+			img = element("img");
+			attr(img, "class", "mr-3 svelte-r4sam9");
+			attr(img, "src", img_src_value = ctx.user.photoURL);
+			attr(img, "alt", "Profile picture");
+		},
+
+		m(target, anchor) {
+			insert(target, img, anchor);
+		},
+
+		p(changed, ctx) {
+			if ((changed.user) && img_src_value !== (img_src_value = ctx.user.photoURL)) {
+				attr(img, "src", img_src_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(img);
+			}
+		}
+	};
+}
+
+// (166:4) {:else}
+function create_else_block_1(ctx) {
+	var p, t0, t1, t2, br, t3, t4_value = ctx.user?ctx.user.email:"" + "", t4;
+
+	return {
+		c() {
+			p = element("p");
+			t0 = text("Name: ");
+			t1 = text(ctx.displayName);
+			t2 = space();
+			br = element("br");
+			t3 = text("\n        E-Mail: ");
+			t4 = text(t4_value);
+		},
+
+		m(target, anchor) {
+			insert(target, p, anchor);
+			append(p, t0);
+			append(p, t1);
+			append(p, t2);
+			append(p, br);
+			append(p, t3);
+			append(p, t4);
+		},
+
+		p(changed, ctx) {
+			if (changed.displayName) {
+				set_data(t1, ctx.displayName);
+			}
+
+			if ((changed.user) && t4_value !== (t4_value = ctx.user?ctx.user.email:"" + "")) {
+				set_data(t4, t4_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(p);
+			}
+		}
+	};
+}
+
+// (129:4) {#if user && user.providerData.find(e => e.providerId === 'password')}
+function create_if_block_7(ctx) {
+	var div0, label0, t1, input0, t2, button0, t3, button0_disabled_value, t4, hr, t5, div1, label1, t7, input1, t8, small, t10, button1, t11, button1_disabled_value, dispose;
+
+	return {
+		c() {
+			div0 = element("div");
+			label0 = element("label");
+			label0.textContent = "Name:";
+			t1 = space();
+			input0 = element("input");
+			t2 = space();
+			button0 = element("button");
+			t3 = text("Change");
+			t4 = space();
+			hr = element("hr");
+			t5 = space();
+			div1 = element("div");
+			label1 = element("label");
+			label1.textContent = "Email address:";
+			t7 = space();
+			input1 = element("input");
+			t8 = space();
+			small = element("small");
+			small.textContent = "We'll never share your email with anyone else.";
+			t10 = space();
+			button1 = element("button");
+			t11 = text("Change");
+			attr(input0, "class", "form-control mr-3");
+			attr(input0, "id", "signupname");
+			attr(input0, "placeholder", "First & Last Name");
+			attr(div0, "class", "form-group");
+			attr(button0, "class", "btn");
+			button0.disabled = button0_disabled_value = ctx.displayName === (ctx.user.displayName || '');
+			attr(input1, "type", "email");
+			attr(input1, "class", "form-control");
+			attr(input1, "autocomplete", "email");
+			attr(input1, "id", "exampleInputEmail1");
+			attr(input1, "aria-describedby", "emailHelp");
+			attr(input1, "placeholder", "Enter email");
+			attr(small, "id", "emailHelp");
+			attr(small, "class", "form-text text-muted");
+			attr(div1, "class", "form-group mt-4");
+			attr(button1, "class", "btn");
+			button1.disabled = button1_disabled_value = ctx.new_email === (ctx.user.email || '');
+
+			dispose = [
+				listen(input0, "input", ctx.input0_input_handler),
+				listen(button0, "click", ctx.submit_new_name),
+				listen(input1, "input", ctx.input1_input_handler),
+				listen(button1, "click", ctx.submit_new_mail)
+			];
+		},
+
+		m(target, anchor) {
+			insert(target, div0, anchor);
+			append(div0, label0);
+			append(div0, t1);
+			append(div0, input0);
+
+			set_input_value(input0, ctx.displayName);
+
+			insert(target, t2, anchor);
+			insert(target, button0, anchor);
+			append(button0, t3);
+			insert(target, t4, anchor);
+			insert(target, hr, anchor);
+			insert(target, t5, anchor);
+			insert(target, div1, anchor);
+			append(div1, label1);
+			append(div1, t7);
+			append(div1, input1);
+
+			set_input_value(input1, ctx.new_email);
+
+			append(div1, t8);
+			append(div1, small);
+			insert(target, t10, anchor);
+			insert(target, button1, anchor);
+			append(button1, t11);
+		},
+
+		p(changed, ctx) {
+			if (changed.displayName && (input0.value !== ctx.displayName)) set_input_value(input0, ctx.displayName);
+
+			if ((changed.displayName || changed.user) && button0_disabled_value !== (button0_disabled_value = ctx.displayName === (ctx.user.displayName || ''))) {
+				button0.disabled = button0_disabled_value;
+			}
+
+			if (changed.new_email && (input1.value !== ctx.new_email)) set_input_value(input1, ctx.new_email);
+
+			if ((changed.new_email || changed.user) && button1_disabled_value !== (button1_disabled_value = ctx.new_email === (ctx.user.email || ''))) {
+				button1.disabled = button1_disabled_value;
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(div0);
+				detach(t2);
+				detach(button0);
+				detach(t4);
+				detach(hr);
+				detach(t5);
+				detach(div1);
+				detach(t10);
+				detach(button1);
+			}
+
+			run_all(dispose);
+		}
+	};
+}
+
+// (174:4) {#if user && !user.emailVerified}
+function create_if_block_5(ctx) {
+	var p, span, t_1;
+
+	var if_block = (!ctx.verifcation_send) && create_if_block_6(ctx);
+
+	return {
+		c() {
+			p = element("p");
+			span = element("span");
+			span.textContent = "Your E-Mail Address is not yet verified!";
+			t_1 = space();
+			if (if_block) if_block.c();
+			attr(span, "class", "text-danger");
+		},
+
+		m(target, anchor) {
+			insert(target, p, anchor);
+			append(p, span);
+			append(p, t_1);
+			if (if_block) if_block.m(p, null);
+		},
+
+		p(changed, ctx) {
+			if (!ctx.verifcation_send) {
+				if (!if_block) {
+					if_block = create_if_block_6(ctx);
+					if_block.c();
+					if_block.m(p, null);
+				}
+			} else if (if_block) {
+				if_block.d(1);
+				if_block = null;
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(p);
+			}
+
+			if (if_block) if_block.d();
+		}
+	};
+}
+
+// (179:8) {#if !verifcation_send}
+function create_if_block_6(ctx) {
+	var button, dispose;
+
+	return {
+		c() {
+			button = element("button");
+			button.textContent = "Resend verification E-Mail";
+			attr(button, "class", "btn-link");
+			dispose = listen(button, "click", ctx.resend_verification);
+		},
+
+		m(target, anchor) {
+			insert(target, button, anchor);
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(button);
+			}
+
+			dispose();
+		}
+	};
+}
+
+// (187:4) {#if user && user.metadata}
+function create_if_block_4(ctx) {
+	var hr, t0, p, t1, t2_value = new Date(parseInt(ctx.user.metadata.a)).toLocaleString() + "", t2, t3, br, t4, t5_value = new Date(parseInt(ctx.user.metadata.b)).toLocaleString() + "", t5;
+
+	return {
+		c() {
+			hr = element("hr");
+			t0 = space();
+			p = element("p");
+			t1 = text("Registered: ");
+			t2 = text(t2_value);
+			t3 = space();
+			br = element("br");
+			t4 = text("\n        Last login: ");
+			t5 = text(t5_value);
+		},
+
+		m(target, anchor) {
+			insert(target, hr, anchor);
+			insert(target, t0, anchor);
+			insert(target, p, anchor);
+			append(p, t1);
+			append(p, t2);
+			append(p, t3);
+			append(p, br);
+			append(p, t4);
+			append(p, t5);
+		},
+
+		p(changed, ctx) {
+			if ((changed.user) && t2_value !== (t2_value = new Date(parseInt(ctx.user.metadata.a)).toLocaleString() + "")) {
+				set_data(t2, t2_value);
+			}
+
+			if ((changed.user) && t5_value !== (t5_value = new Date(parseInt(ctx.user.metadata.b)).toLocaleString() + "")) {
+				set_data(t5, t5_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(hr);
+				detach(t0);
+				detach(p);
+			}
+		}
+	};
+}
+
+// (205:6) {:else}
+function create_else_block(ctx) {
+	var t;
+
+	return {
+		c() {
+			t = text("Status: Inactive");
+		},
+
+		m(target, anchor) {
+			insert(target, t, anchor);
+		},
+
+		p: noop,
+
+		d(detaching) {
+			if (detaching) {
+				detach(t);
+			}
+		}
+	};
+}
+
+// (199:6) {#if data && data.subscription && data.subscription.ends && data.subscription.ends < Date.now()}
+function create_if_block_3(ctx) {
+	var t0, t1_value = ctx.data.subscription.valid ? 'Enabled' : 'Payment pending' + "", t1, t2, br0, t3, t4_value = new Date(parseInt(ctx.data.subscription.ends)).toLocaleString() + "", t4, t5, br1, t6, t7_value = ctx.data.subscription.renewal ? 'Enabled' : 'Disabled' + "", t7;
+
+	return {
+		c() {
+			t0 = text("Status: ");
+			t1 = text(t1_value);
+			t2 = space();
+			br0 = element("br");
+			t3 = text("\n        Period ends: ");
+			t4 = text(t4_value);
+			t5 = space();
+			br1 = element("br");
+			t6 = text("\n        Automatic renewal: ");
+			t7 = text(t7_value);
+		},
+
+		m(target, anchor) {
+			insert(target, t0, anchor);
+			insert(target, t1, anchor);
+			insert(target, t2, anchor);
+			insert(target, br0, anchor);
+			insert(target, t3, anchor);
+			insert(target, t4, anchor);
+			insert(target, t5, anchor);
+			insert(target, br1, anchor);
+			insert(target, t6, anchor);
+			insert(target, t7, anchor);
+		},
+
+		p(changed, ctx) {
+			if ((changed.data) && t1_value !== (t1_value = ctx.data.subscription.valid ? 'Enabled' : 'Payment pending' + "")) {
+				set_data(t1, t1_value);
+			}
+
+			if ((changed.data) && t4_value !== (t4_value = new Date(parseInt(ctx.data.subscription.ends)).toLocaleString() + "")) {
+				set_data(t4, t4_value);
+			}
+
+			if ((changed.data) && t7_value !== (t7_value = ctx.data.subscription.renewal ? 'Enabled' : 'Disabled' + "")) {
+				set_data(t7, t7_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(t0);
+				detach(t1);
+				detach(t2);
+				detach(br0);
+				detach(t3);
+				detach(t4);
+				detach(t5);
+				detach(br1);
+				detach(t6);
+				detach(t7);
+			}
+		}
+	};
+}
+
+// (208:4) {#if data && data.queued_remove}
+function create_if_block_2(ctx) {
+	var small;
+
+	return {
+		c() {
+			small = element("small");
+			small.textContent = "Your account is queued to be removed. This will happen after your\n        current subscription ends or within 24 hours, whatever comes first.";
+			attr(small, "class", "text-danger");
+		},
+
+		m(target, anchor) {
+			insert(target, small, anchor);
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(small);
+			}
+		}
+	};
+}
+
+// (215:4) {#if error_message}
+function create_if_block_1(ctx) {
+	var p, t;
+
+	return {
+		c() {
+			p = element("p");
+			t = text(ctx.error_message);
+			attr(p, "class", "text-danger");
+		},
+
+		m(target, anchor) {
+			insert(target, p, anchor);
+			append(p, t);
+		},
+
+		p(changed, ctx) {
+			if (changed.error_message) {
+				set_data(t, ctx.error_message);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(p);
+			}
+		}
+	};
+}
+
+// (221:4) {#if user && user.providerData.find(e => e.providerId === 'password')}
+function create_if_block(ctx) {
+	var h4, t1, div0, label0, t3, input0, t4, div1, label1, t6, input1, t7, button, t8, button_disabled_value, dispose;
+
+	return {
+		c() {
+			h4 = element("h4");
+			h4.textContent = "Change Password";
+			t1 = space();
+			div0 = element("div");
+			label0 = element("label");
+			label0.textContent = "Password";
+			t3 = space();
+			input0 = element("input");
+			t4 = space();
+			div1 = element("div");
+			label1 = element("label");
+			label1.textContent = "Repeat Password";
+			t6 = space();
+			input1 = element("input");
+			t7 = space();
+			button = element("button");
+			t8 = text("Change Password");
+			attr(label0, "for", "exampleInputPassword1");
+			attr(input0, "type", "password");
+			attr(input0, "autocomplete", "new-password");
+			attr(input0, "class", "form-control");
+			attr(input0, "id", "exampleInputPassword1");
+			attr(input0, "placeholder", "Password");
+			attr(div0, "class", "form-group");
+			attr(label1, "for", "exampleInputPassword2");
+			attr(input1, "type", "password");
+			attr(input1, "autocomplete", "new-password");
+			attr(input1, "class", "form-control");
+			attr(input1, "id", "exampleInputPassword2");
+			attr(input1, "placeholder", "Password");
+			attr(div1, "class", "form-group");
+			attr(button, "class", "btn");
+			button.disabled = button_disabled_value = ctx.password !== ctx.password_repeat || ctx.password.trim().length === 0;
+
+			dispose = [
+				listen(input0, "input", ctx.input0_input_handler_1),
+				listen(input1, "input", ctx.input1_input_handler_1),
+				listen(button, "click", ctx.submit_new_password)
+			];
+		},
+
+		m(target, anchor) {
+			insert(target, h4, anchor);
+			insert(target, t1, anchor);
+			insert(target, div0, anchor);
+			append(div0, label0);
+			append(div0, t3);
+			append(div0, input0);
+
+			set_input_value(input0, ctx.password);
+
+			insert(target, t4, anchor);
+			insert(target, div1, anchor);
+			append(div1, label1);
+			append(div1, t6);
+			append(div1, input1);
+
+			set_input_value(input1, ctx.password_repeat);
+
+			insert(target, t7, anchor);
+			insert(target, button, anchor);
+			append(button, t8);
+		},
+
+		p(changed, ctx) {
+			if (changed.password && (input0.value !== ctx.password)) set_input_value(input0, ctx.password);
+			if (changed.password_repeat && (input1.value !== ctx.password_repeat)) set_input_value(input1, ctx.password_repeat);
+
+			if ((changed.password || changed.password_repeat) && button_disabled_value !== (button_disabled_value = ctx.password !== ctx.password_repeat || ctx.password.trim().length === 0)) {
+				button.disabled = button_disabled_value;
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(h4);
+				detach(t1);
+				detach(div0);
+				detach(t4);
+				detach(div1);
+				detach(t7);
+				detach(button);
+			}
+
+			run_all(dispose);
+		}
+	};
+}
+
+function create_fragment(ctx) {
+	var div2, t0, div0, show_if_2, t1, t2, t3, p, b, t5, br, t6, show_if_1, t7, t8, t9, div1, show_if = ctx.user && ctx.user.providerData.find(func), div2_class_value;
+
+	var if_block0 = (ctx.user && ctx.user.photoURL) && create_if_block_8(ctx);
+
+	function select_block_type(changed, ctx) {
+		if ((show_if_2 == null) || changed.user) show_if_2 = !!(ctx.user && ctx.user.providerData.find(func_1));
+		if (show_if_2) return create_if_block_7;
+		return create_else_block_1;
+	}
+
+	var current_block_type = select_block_type(null, ctx);
+	var if_block1 = current_block_type(ctx);
+
+	var if_block2 = (ctx.user && !ctx.user.emailVerified) && create_if_block_5(ctx);
+
+	var if_block3 = (ctx.user && ctx.user.metadata) && create_if_block_4(ctx);
+
+	function select_block_type_1(changed, ctx) {
+		if ((show_if_1 == null) || changed.data) show_if_1 = !!(ctx.data && ctx.data.subscription && ctx.data.subscription.ends && ctx.data.subscription.ends < Date.now());
+		if (show_if_1) return create_if_block_3;
+		return create_else_block;
+	}
+
+	var current_block_type_1 = select_block_type_1(null, ctx);
+	var if_block4 = current_block_type_1(ctx);
+
+	var if_block5 = (ctx.data && ctx.data.queued_remove) && create_if_block_2();
+
+	var if_block6 = (ctx.error_message) && create_if_block_1(ctx);
+
+	var if_block7 = (show_if) && create_if_block(ctx);
+
+	return {
+		c() {
+			div2 = element("div");
+			if (if_block0) if_block0.c();
+			t0 = space();
+			div0 = element("div");
+			if_block1.c();
+			t1 = space();
+			if (if_block2) if_block2.c();
+			t2 = space();
+			if (if_block3) if_block3.c();
+			t3 = space();
+			p = element("p");
+			b = element("b");
+			b.textContent = "Subscription";
+			t5 = space();
+			br = element("br");
+			t6 = space();
+			if_block4.c();
+			t7 = space();
+			if (if_block5) if_block5.c();
+			t8 = space();
+			if (if_block6) if_block6.c();
+			t9 = space();
+			div1 = element("div");
+			if (if_block7) if_block7.c();
+			attr(div0, "class", "user_details svelte-r4sam9");
+			attr(div1, "class", "ml-3");
+			attr(div2, "class", div2_class_value = "img_details " + ctx.classes + " svelte-r4sam9");
+		},
+
+		m(target, anchor) {
+			insert(target, div2, anchor);
+			if (if_block0) if_block0.m(div2, null);
+			append(div2, t0);
+			append(div2, div0);
+			if_block1.m(div0, null);
+			append(div0, t1);
+			if (if_block2) if_block2.m(div0, null);
+			append(div0, t2);
+			if (if_block3) if_block3.m(div0, null);
+			append(div0, t3);
+			append(div0, p);
+			append(p, b);
+			append(p, t5);
+			append(p, br);
+			append(p, t6);
+			if_block4.m(p, null);
+			append(div0, t7);
+			if (if_block5) if_block5.m(div0, null);
+			append(div0, t8);
+			if (if_block6) if_block6.m(div0, null);
+			append(div2, t9);
+			append(div2, div1);
+			if (if_block7) if_block7.m(div1, null);
+		},
+
+		p(changed, ctx) {
+			if (ctx.user && ctx.user.photoURL) {
+				if (if_block0) {
+					if_block0.p(changed, ctx);
+				} else {
+					if_block0 = create_if_block_8(ctx);
+					if_block0.c();
+					if_block0.m(div2, t0);
+				}
+			} else if (if_block0) {
+				if_block0.d(1);
+				if_block0 = null;
+			}
+
+			if (current_block_type === (current_block_type = select_block_type(changed, ctx)) && if_block1) {
+				if_block1.p(changed, ctx);
+			} else {
+				if_block1.d(1);
+				if_block1 = current_block_type(ctx);
+				if (if_block1) {
+					if_block1.c();
+					if_block1.m(div0, t1);
+				}
+			}
+
+			if (ctx.user && !ctx.user.emailVerified) {
+				if (if_block2) {
+					if_block2.p(changed, ctx);
+				} else {
+					if_block2 = create_if_block_5(ctx);
+					if_block2.c();
+					if_block2.m(div0, t2);
+				}
+			} else if (if_block2) {
+				if_block2.d(1);
+				if_block2 = null;
+			}
+
+			if (ctx.user && ctx.user.metadata) {
+				if (if_block3) {
+					if_block3.p(changed, ctx);
+				} else {
+					if_block3 = create_if_block_4(ctx);
+					if_block3.c();
+					if_block3.m(div0, t3);
+				}
+			} else if (if_block3) {
+				if_block3.d(1);
+				if_block3 = null;
+			}
+
+			if (current_block_type_1 === (current_block_type_1 = select_block_type_1(changed, ctx)) && if_block4) {
+				if_block4.p(changed, ctx);
+			} else {
+				if_block4.d(1);
+				if_block4 = current_block_type_1(ctx);
+				if (if_block4) {
+					if_block4.c();
+					if_block4.m(p, null);
+				}
+			}
+
+			if (ctx.data && ctx.data.queued_remove) {
+				if (!if_block5) {
+					if_block5 = create_if_block_2();
+					if_block5.c();
+					if_block5.m(div0, t8);
+				}
+			} else if (if_block5) {
+				if_block5.d(1);
+				if_block5 = null;
+			}
+
+			if (ctx.error_message) {
+				if (if_block6) {
+					if_block6.p(changed, ctx);
+				} else {
+					if_block6 = create_if_block_1(ctx);
+					if_block6.c();
+					if_block6.m(div0, null);
+				}
+			} else if (if_block6) {
+				if_block6.d(1);
+				if_block6 = null;
+			}
+
+			if (changed.user) show_if = ctx.user && ctx.user.providerData.find(func);
+
+			if (show_if) {
+				if (if_block7) {
+					if_block7.p(changed, ctx);
+				} else {
+					if_block7 = create_if_block(ctx);
+					if_block7.c();
+					if_block7.m(div1, null);
+				}
+			} else if (if_block7) {
+				if_block7.d(1);
+				if_block7 = null;
+			}
+
+			if ((changed.classes) && div2_class_value !== (div2_class_value = "img_details " + ctx.classes + " svelte-r4sam9")) {
+				attr(div2, "class", div2_class_value);
+			}
+		},
+
+		i: noop,
+		o: noop,
+
+		d(detaching) {
+			if (detaching) {
+				detach(div2);
+			}
+
+			if (if_block0) if_block0.d();
+			if_block1.d();
+			if (if_block2) if_block2.d();
+			if (if_block3) if_block3.d();
+			if_block4.d();
+			if (if_block5) if_block5.d();
+			if (if_block6) if_block6.d();
+			if (if_block7) if_block7.d();
+		}
+	};
+}
+
+const func = (e) => e.providerId === 'password';
+
+const func_1 = (e) => e.providerId === 'password';
+
+function instance($$self, $$props, $$invalidate) {
+	let { classes = "" } = $$props;
+  let displayName = "";
+  let new_email = "";
+  let verifcation_send = false;
+  let error_message = null;
+
+  let password = "";
+  let password_repeat = "";
+  let user = null;
+  let data = { installations: {} };
+  let actionqueue = null;
+  let onDestroyProxy = () => {};
+  let userdb = null;
+  onDestroy(() => onDestroyProxy());
+
+  async function start() {
+    const module = await import('../../../../../../../../js/cmp/userdata.js');
+    onDestroyProxy = module.UserAwareComponent(
+      u => {
+        $$invalidate('user', user = u);
+        $$invalidate('displayName', displayName = user && user.displayName ? user.displayName : "");
+        $$invalidate('new_email', new_email = user && user.email ? user.email : "");
+      },
+      data_ => ($$invalidate('data', data = Object.assign({ installations: {} }, data_))),
+      aq_ => (actionqueue = aq_)
+    );
+    userdb = module.userdata;
+  }
+  start();
+  /// End -- User Aware Component
+
+  function resend_verification(e) {
+    e.preventDefault();
+    if (!user) return;
+    user
+      .sendEmailVerification()
+      .then(function() {
+        $$invalidate('verifcation_send', verifcation_send = true);
+      })
+      .catch(function(error) {
+        $$invalidate('error_message', error_message = error.message);
+      });
+  }
+
+  function submit_new_name() {
+    e.preventDefault();
+    if (!user) return;
+    e.target.disabled = true;
+    user
+      .updateProfile({
+        displayName
+      })
+      .then(function() {
+        e.target.disabled = false;
+        $$invalidate('error_message', error_message = null);
+      })
+      .catch(function(error) {
+        e.target.disabled = false;
+        $$invalidate('error_message', error_message = error.message);
+      });
+  }
+
+  function submit_new_mail(e) {
+    e.preventDefault();
+    if (!user) return;
+    e.target.disabled = true;
+    user
+      .updateEmail(new_email)
+      .then(function() {
+        e.target.disabled = false;
+        $$invalidate('error_message', error_message = null);
+      })
+      .catch(function(error) {
+        e.target.disabled = false;
+        $$invalidate('error_message', error_message = error.message);
+      });
+  }
+
+  function submit_new_password(e) {
+    e.preventDefault();
+    if (!user) return;
+    if (password !== password_repeat || password.trim().length == 0) {
+      $$invalidate('error_message', error_message = "No password set!");
+      return;
+    }
+    e.target.disabled = true;
+    user
+      .updatePassword(password)
+      .then(function() {
+        e.target.disabled = false;
+        $$invalidate('error_message', error_message = null);
+        $$invalidate('password', password = "");
+        $$invalidate('password_repeat', password_repeat = "");
+      })
+      .catch(function(error) {
+        e.target.disabled = false;
+        $$invalidate('error_message', error_message = error.message);
+      });
+  }
+
+	function input0_input_handler() {
+		displayName = this.value;
+		$$invalidate('displayName', displayName);
+	}
+
+	function input1_input_handler() {
+		new_email = this.value;
+		$$invalidate('new_email', new_email);
+	}
+
+	function input0_input_handler_1() {
+		password = this.value;
+		$$invalidate('password', password);
+	}
+
+	function input1_input_handler_1() {
+		password_repeat = this.value;
+		$$invalidate('password_repeat', password_repeat);
+	}
+
+	$$self.$set = $$props => {
+		if ('classes' in $$props) $$invalidate('classes', classes = $$props.classes);
+	};
+
+	return {
+		classes,
+		displayName,
+		new_email,
+		verifcation_send,
+		error_message,
+		password,
+		password_repeat,
+		user,
+		data,
+		resend_verification,
+		submit_new_name,
+		submit_new_mail,
+		submit_new_password,
+		input0_input_handler,
+		input1_input_handler,
+		input0_input_handler_1,
+		input1_input_handler_1
+	};
+}
+
+class Cmp extends SvelteComponent {
+	constructor(options) {
+		super();
+		if (!document.getElementById("svelte-r4sam9-style")) add_css();
+		init(this, options, instance, create_fragment, safe_not_equal, ["classes"]);
+	}
+}
+
+window.customElements.define('ui-accountdetails', class extends HTMLElement {
+    constructor() {
+        super();
+    }
+    connectedCallback() {
+        const classes = this.getAttribute("class");
+        this.removeAttribute("class");
+        this.cmp = new Cmp({ target: this, props: { classes } });
+    }
+    disconnectedCallback() {
+        if (this.cmp) this.cmp.$destroy();
+    }
+});
 //# sourceMappingURL=ui-accountdetails.js.map

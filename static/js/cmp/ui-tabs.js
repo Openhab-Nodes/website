@@ -1,2 +1,38 @@
-customElements.define("tab-container",class extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}).innerHTML='<slot id="main"></slot>'}connectedCallback(){const e=this.shadowRoot.querySelector("slot");e.addEventListener("slotchange",t=>{const s=e.assignedNodes();this._headerItems=s.filter(e=>"TAB-HEADER"===e.nodeName).map(e=>e.querySelectorAll("tab-header-item")).pop(),this._bodyItems=s.filter(e=>"TAB-BODY"===e.nodeName).map(e=>e.querySelectorAll("tab-body-item")).pop(),this._index=0;for(let e=0;e<this._headerItems.length;e++)this._headerItems[e].clickevent=(()=>this.select(e)),this._headerItems[e].addEventListener("click",this._headerItems[e].clickevent)})}disconnectedCallback(){if(this._headerItems)for(let e=0;e<this._headerItems.length;e++)this._headerItems[e].removeEventListener("click",this._headerItems[e].clickevent)}select(e){this._headerItems[this._index].classList.remove("tab-active"),this._headerItems[e].classList.add("tab-active"),this._index=e;for(let e of this._bodyItems)e.style.transform=`translateX(${100*-this._index}%)`}});
+class TabContainer extends HTMLElement {
+    constructor() {
+        super();
+        const shadowRoot = this.attachShadow({ mode: 'open' });
+        shadowRoot.innerHTML = `<slot id="main"></slot>`;
+    }
+
+    connectedCallback() {
+        const slot = this.shadowRoot.querySelector('slot');
+        slot.addEventListener('slotchange', (e) => {
+            const nodes = slot.assignedNodes();
+            this._headerItems = nodes.filter(n => n.nodeName === "TAB-HEADER").map(n => n.querySelectorAll('tab-header-item')).pop();
+            this._bodyItems = nodes.filter(n => n.nodeName === "TAB-BODY").map(n => n.querySelectorAll('tab-body-item')).pop();
+            this._index = 0;
+
+            for (let i = 0; i < this._headerItems.length; i++) {
+                this._headerItems[i].clickevent = () => this.select(i);
+                this._headerItems[i].addEventListener('click', this._headerItems[i].clickevent);
+            }
+        });
+    }
+    disconnectedCallback() {
+        if (!this._headerItems) return;
+        for (let i = 0; i < this._headerItems.length; i++) {
+            this._headerItems[i].removeEventListener('click', this._headerItems[i].clickevent);
+        }
+    }
+    select(index) {
+        this._headerItems[this._index].classList.remove('tab-active');
+        this._headerItems[index].classList.add('tab-active');
+        this._index = index;
+
+        for (let item of this._bodyItems)
+            item.style.transform = `translateX(${(-this._index) * 100}%)`;
+    }
+}
+customElements.define('tab-container', TabContainer);
 //# sourceMappingURL=ui-tabs.js.map

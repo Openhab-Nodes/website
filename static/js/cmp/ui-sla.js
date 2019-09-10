@@ -1,2 +1,427 @@
-function t(){}function e(t,e,n,r,a){t.__svelte_meta={loc:{file:e,line:n,column:r,char:a}}}function n(t){return t()}function r(){return Object.create(null)}function a(t){t.forEach(n)}function s(t){return"function"==typeof t}function o(t,e){return t!=t?e==e:t!==e||t&&"object"==typeof t||"function"==typeof t}function i(t,e){t.appendChild(e)}function c(t,e,n){t.insertBefore(e,n||null)}function l(t){t.parentNode.removeChild(t)}function u(t){return document.createElement(t)}function d(t){return document.createTextNode(t)}function f(){return d(" ")}function h(t,e){e=""+e,t.data!==e&&(t.data=e)}let p;function $(t){p=t}const m=[],g=[],y=[],b=[],v=Promise.resolve();let w=!1;function x(t){y.push(t)}function _(){const t=new Set;do{for(;m.length;){const t=m.shift();$(t),A(t.$$)}for(;g.length;)g.pop()();for(let e=0;e<y.length;e+=1){const n=y[e];t.has(n)||(n(),t.add(n))}y.length=0}while(m.length);for(;b.length;)b.pop()();w=!1}function A(t){t.fragment&&(t.update(t.dirty),a(t.before_update),t.fragment.p(t.dirty,t.ctx),t.dirty=null,t.after_update.forEach(x))}const C=new Set;function E(t,e){t.$$.dirty||(m.push(t),w||(w=!0,v.then(_)),t.$$.dirty=r()),t.$$.dirty[e]=!0}function k(e,o,i,c,l,u){const d=p;$(e);const f=o.props||{},h=e.$$={fragment:null,ctx:null,props:u,update:t,not_equal:l,bound:r(),on_mount:[],on_destroy:[],before_update:[],after_update:[],context:new Map(d?d.$$.context:[]),callbacks:r(),dirty:null};let m=!1;var g,y,b;h.ctx=i?i(e,f,(t,n)=>{h.ctx&&l(h.ctx[t],h.ctx[t]=n)&&(h.bound[t]&&h.bound[t](n),m&&E(e,t))}):f,h.update(),m=!0,a(h.before_update),h.fragment=c(h.ctx),o.target&&(o.hydrate?h.fragment.l((b=o.target,Array.from(b.childNodes))):h.fragment.c(),o.intro&&((g=e.$$.fragment)&&g.i&&(C.delete(g),g.i(y))),function(t,e,r){const{fragment:o,on_mount:i,on_destroy:c,after_update:l}=t.$$;o.m(e,r),x(()=>{const e=i.map(n).filter(s);c?c.push(...e):a(e),t.$$.on_mount=[]}),l.forEach(x)}(e,o.target,o.anchor),_()),$(d)}class S{$destroy(){var e,n;n=1,(e=this).$$.fragment&&(a(e.$$.on_destroy),e.$$.fragment.d(n),e.$$.on_destroy=e.$$.fragment=null,e.$$.ctx={}),this.$destroy=t}$on(t,e){const n=this.$$.callbacks[t]||(this.$$.callbacks[t]=[]);return n.push(e),()=>{const t=n.indexOf(e);-1!==t&&n.splice(t,1)}}$set(){}}class F extends S{constructor(t){if(!t||!t.target&&!t.$$inline)throw new Error("'target' is a required option");super()}$destroy(){super.$destroy(),this.$destroy=(()=>{console.warn("Component was already destroyed")})}}const L="assets/js/ui-sla/cmp.svelte";function j(n){var r,a,s,o,p,$,m,g,y,b,v,w,x,_,A,C,E,k,S,F,j;return{c:function(){r=u("p"),(a=u("q")).textContent="A service-level agreement (SLA) is a commitment between a service provider\n    and a client. Particular aspects of the service – quality, availability,\n    responsibilities – are agreed between the service provider and the service\n    user.",s=f(),o=u("p"),p=d(n.sla_str),$=d("% means:\n  "),m=u("b"),g=d(n.hours),y=d("h a day"),b=d("\n  or\n  "),v=u("b"),w=d(n.days),x=d(" days every 31 days"),_=d("\n  ."),A=f(),C=u("p"),E=d("The Software-only SLA is limited to:\n  "),k=u("br"),S=d("\n  Cloud Connectors, Rule Engine, IAM-Service, Operating Sytem, Hue Emulation +\n  API Access. Your own services will be limited to 1/4 of the available memory\n  and 20% CPU-time in SLA mode."),F=f(),(j=u("p")).textContent="Manipulating the supervisior will free the service provider from any SLA\n  obligations with immediate effect.",e(a,L,10,2,236),e(r,L,9,0,230),e(m,L,20,2,524),e(v,L,22,2,553),e(o,L,18,0,498),e(k,L,28,2,641),e(C,L,26,0,596),e(j,L,34,0,844)},l:function(t){throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option")},m:function(t,e){c(t,r,e),i(r,a),c(t,s,e),c(t,o,e),i(o,p),i(o,$),i(o,m),i(m,g),i(m,y),i(o,b),i(o,v),i(v,w),i(v,x),i(o,_),c(t,A,e),c(t,C,e),i(C,E),i(C,k),i(C,S),c(t,F,e),c(t,j,e)},p:function(t,e){t.sla_str&&h(p,e.sla_str),t.hours&&h(g,e.hours),t.days&&h(w,e.days)},i:t,o:t,d:function(t){t&&(l(r),l(s),l(o),l(A),l(C),l(F),l(j))}}}function q(t,e,n){let{sla:r=0,range:a=100}=e;const s=["sla","range"];let o,i,c;return Object.keys(e).forEach(t=>{s.includes(t)||t.startsWith("$$")||console.warn(`<Cmp> was created with unknown prop '${t}'`)}),t.$set=(t=>{"sla"in t&&n("sla",r=t.sla),"range"in t&&n("range",a=t.range)}),t.$$.update=((t={sla:1})=>{t.sla&&n("hours",o=(24*r/100).toFixed(2)),t.sla&&n("days",i=(31*r/100).toFixed(2)),t.sla&&n("sla_str",c=parseFloat(r).toFixed(2))}),{sla:r,range:a,hours:o,days:i,sla_str:c}}class M extends F{constructor(t){super(t),k(this,t,q,j,o,["sla","range"])}get sla(){return this.$$.ctx.sla}set sla(t){this.$set({sla:t}),_()}get range(){return this.$$.ctx.range}set range(t){this.$set({range:t}),_()}}window.customElements.define("ui-sla",class extends HTMLElement{constructor(){super()}connectedCallback(){this.cmp=new M({target:this,props:{sla:this.hasAttribute("value")?this.getAttribute("value"):0,range:this.hasAttribute("range")?this.getAttribute("range"):0}})}static get observedAttributes(){return["value","range"]}attributeChangedCallback(t,e,n){switch(t){case"value":this.value=n;break;case"range":this.range=n}}set value(t){this.cmp&&(this.cmp.sla=parseFloat(t))}set range(t){this.cmp.range=parseFloat(t)}disconnectedCallback(){this.cmp&&this.cmp.$destroy()}});
+function noop() { }
+function run(fn) {
+    return fn();
+}
+function blank_object() {
+    return Object.create(null);
+}
+function run_all(fns) {
+    fns.forEach(run);
+}
+function is_function(thing) {
+    return typeof thing === 'function';
+}
+function safe_not_equal(a, b) {
+    return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+}
+
+function append(target, node) {
+    target.appendChild(node);
+}
+function insert(target, node, anchor) {
+    target.insertBefore(node, anchor || null);
+}
+function detach(node) {
+    node.parentNode.removeChild(node);
+}
+function element(name) {
+    return document.createElement(name);
+}
+function text(data) {
+    return document.createTextNode(data);
+}
+function space() {
+    return text(' ');
+}
+function children(element) {
+    return Array.from(element.childNodes);
+}
+function set_data(text, data) {
+    data = '' + data;
+    if (text.data !== data)
+        text.data = data;
+}
+
+let current_component;
+function set_current_component(component) {
+    current_component = component;
+}
+
+const dirty_components = [];
+const binding_callbacks = [];
+const render_callbacks = [];
+const flush_callbacks = [];
+const resolved_promise = Promise.resolve();
+let update_scheduled = false;
+function schedule_update() {
+    if (!update_scheduled) {
+        update_scheduled = true;
+        resolved_promise.then(flush);
+    }
+}
+function add_render_callback(fn) {
+    render_callbacks.push(fn);
+}
+function flush() {
+    const seen_callbacks = new Set();
+    do {
+        // first, call beforeUpdate functions
+        // and update components
+        while (dirty_components.length) {
+            const component = dirty_components.shift();
+            set_current_component(component);
+            update(component.$$);
+        }
+        while (binding_callbacks.length)
+            binding_callbacks.pop()();
+        // then, once components are updated, call
+        // afterUpdate functions. This may cause
+        // subsequent updates...
+        for (let i = 0; i < render_callbacks.length; i += 1) {
+            const callback = render_callbacks[i];
+            if (!seen_callbacks.has(callback)) {
+                callback();
+                // ...so guard against infinite loops
+                seen_callbacks.add(callback);
+            }
+        }
+        render_callbacks.length = 0;
+    } while (dirty_components.length);
+    while (flush_callbacks.length) {
+        flush_callbacks.pop()();
+    }
+    update_scheduled = false;
+}
+function update($$) {
+    if ($$.fragment) {
+        $$.update($$.dirty);
+        run_all($$.before_update);
+        $$.fragment.p($$.dirty, $$.ctx);
+        $$.dirty = null;
+        $$.after_update.forEach(add_render_callback);
+    }
+}
+const outroing = new Set();
+function transition_in(block, local) {
+    if (block && block.i) {
+        outroing.delete(block);
+        block.i(local);
+    }
+}
+function mount_component(component, target, anchor) {
+    const { fragment, on_mount, on_destroy, after_update } = component.$$;
+    fragment.m(target, anchor);
+    // onMount happens before the initial afterUpdate
+    add_render_callback(() => {
+        const new_on_destroy = on_mount.map(run).filter(is_function);
+        if (on_destroy) {
+            on_destroy.push(...new_on_destroy);
+        }
+        else {
+            // Edge case - component was destroyed immediately,
+            // most likely as a result of a binding initialising
+            run_all(new_on_destroy);
+        }
+        component.$$.on_mount = [];
+    });
+    after_update.forEach(add_render_callback);
+}
+function destroy_component(component, detaching) {
+    if (component.$$.fragment) {
+        run_all(component.$$.on_destroy);
+        component.$$.fragment.d(detaching);
+        // TODO null out other refs, including component.$$ (but need to
+        // preserve final state?)
+        component.$$.on_destroy = component.$$.fragment = null;
+        component.$$.ctx = {};
+    }
+}
+function make_dirty(component, key) {
+    if (!component.$$.dirty) {
+        dirty_components.push(component);
+        schedule_update();
+        component.$$.dirty = blank_object();
+    }
+    component.$$.dirty[key] = true;
+}
+function init(component, options, instance, create_fragment, not_equal, prop_names) {
+    const parent_component = current_component;
+    set_current_component(component);
+    const props = options.props || {};
+    const $$ = component.$$ = {
+        fragment: null,
+        ctx: null,
+        // state
+        props: prop_names,
+        update: noop,
+        not_equal,
+        bound: blank_object(),
+        // lifecycle
+        on_mount: [],
+        on_destroy: [],
+        before_update: [],
+        after_update: [],
+        context: new Map(parent_component ? parent_component.$$.context : []),
+        // everything else
+        callbacks: blank_object(),
+        dirty: null
+    };
+    let ready = false;
+    $$.ctx = instance
+        ? instance(component, props, (key, ret, value = ret) => {
+            if ($$.ctx && not_equal($$.ctx[key], $$.ctx[key] = value)) {
+                if ($$.bound[key])
+                    $$.bound[key](value);
+                if (ready)
+                    make_dirty(component, key);
+            }
+            return ret;
+        })
+        : props;
+    $$.update();
+    ready = true;
+    run_all($$.before_update);
+    $$.fragment = create_fragment($$.ctx);
+    if (options.target) {
+        if (options.hydrate) {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            $$.fragment.l(children(options.target));
+        }
+        else {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            $$.fragment.c();
+        }
+        if (options.intro)
+            transition_in(component.$$.fragment);
+        mount_component(component, options.target, options.anchor);
+        flush();
+    }
+    set_current_component(parent_component);
+}
+let SvelteElement;
+if (typeof HTMLElement !== 'undefined') {
+    SvelteElement = class extends HTMLElement {
+        constructor() {
+            super();
+            this.attachShadow({ mode: 'open' });
+        }
+        connectedCallback() {
+            // @ts-ignore todo: improve typings
+            for (const key in this.$$.slotted) {
+                // @ts-ignore todo: improve typings
+                this.appendChild(this.$$.slotted[key]);
+            }
+        }
+        attributeChangedCallback(attr, _oldValue, newValue) {
+            this[attr] = newValue;
+        }
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            // TODO should this delegate to addEventListener?
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set() {
+            // overridden by instance, if it has props
+        }
+    };
+}
+class SvelteComponent {
+    $destroy() {
+        destroy_component(this, 1);
+        this.$destroy = noop;
+    }
+    $on(type, callback) {
+        const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+        callbacks.push(callback);
+        return () => {
+            const index = callbacks.indexOf(callback);
+            if (index !== -1)
+                callbacks.splice(index, 1);
+        };
+    }
+    $set() {
+        // overridden by instance, if it has props
+    }
+}
+
+/* assets/js/ui-sla/cmp.svelte generated by Svelte v3.12.0 */
+
+function create_fragment(ctx) {
+	var p0, t1, p1, t2, t3, b0, t4, t5, t6, b1, t7, t8, t9, t10, p2, t13, p3;
+
+	return {
+		c() {
+			p0 = element("p");
+			p0.innerHTML = `<q>
+			    A service-level agreement (SLA) is a commitment between a service provider
+			    and a client. Particular aspects of the service – quality, availability,
+			    responsibilities – are agreed between the service provider and the service
+			    user.
+			  </q>`;
+			t1 = space();
+			p1 = element("p");
+			t2 = text(ctx.sla_str);
+			t3 = text("% means:\n  ");
+			b0 = element("b");
+			t4 = text(ctx.hours);
+			t5 = text("h a day");
+			t6 = text("\n  or\n  ");
+			b1 = element("b");
+			t7 = text(ctx.days);
+			t8 = text(" days every 31 days");
+			t9 = text("\n  .");
+			t10 = space();
+			p2 = element("p");
+			p2.innerHTML = `
+			  The Software-only SLA is limited to:
+			  <br>
+			  Cloud Connectors, Rule Engine, IAM-Service, Operating Sytem, Hue Emulation +
+			  API Access. Your own services will be limited to 1/4 of the available memory
+			  and 20% CPU-time in SLA mode.
+			`;
+			t13 = space();
+			p3 = element("p");
+			p3.textContent = "Manipulating the supervisior will free the service provider from any SLA\n  obligations with immediate effect.";
+		},
+
+		m(target, anchor) {
+			insert(target, p0, anchor);
+			insert(target, t1, anchor);
+			insert(target, p1, anchor);
+			append(p1, t2);
+			append(p1, t3);
+			append(p1, b0);
+			append(b0, t4);
+			append(b0, t5);
+			append(p1, t6);
+			append(p1, b1);
+			append(b1, t7);
+			append(b1, t8);
+			append(p1, t9);
+			insert(target, t10, anchor);
+			insert(target, p2, anchor);
+			insert(target, t13, anchor);
+			insert(target, p3, anchor);
+		},
+
+		p(changed, ctx) {
+			if (changed.sla_str) {
+				set_data(t2, ctx.sla_str);
+			}
+
+			if (changed.hours) {
+				set_data(t4, ctx.hours);
+			}
+
+			if (changed.days) {
+				set_data(t7, ctx.days);
+			}
+		},
+
+		i: noop,
+		o: noop,
+
+		d(detaching) {
+			if (detaching) {
+				detach(p0);
+				detach(t1);
+				detach(p1);
+				detach(t10);
+				detach(p2);
+				detach(t13);
+				detach(p3);
+			}
+		}
+	};
+}
+
+function instance($$self, $$props, $$invalidate) {
+	let { sla = 0, range = 100 } = $$props;
+
+	$$self.$set = $$props => {
+		if ('sla' in $$props) $$invalidate('sla', sla = $$props.sla);
+		if ('range' in $$props) $$invalidate('range', range = $$props.range);
+	};
+
+	let hours, days, sla_str;
+
+	$$self.$$.update = ($$dirty = { sla: 1 }) => {
+		if ($$dirty.sla) { $$invalidate('hours', hours = ((sla * 24) / 100.0).toFixed(2)); }
+		if ($$dirty.sla) { $$invalidate('days', days = ((sla * 31) / 100.0).toFixed(2)); }
+		if ($$dirty.sla) { $$invalidate('sla_str', sla_str = parseFloat(sla).toFixed(2)); }
+	};
+
+	return { sla, range, hours, days, sla_str };
+}
+
+class Cmp extends SvelteComponent {
+	constructor(options) {
+		super();
+		init(this, options, instance, create_fragment, safe_not_equal, ["sla", "range"]);
+	}
+
+	get sla() {
+		return this.$$.ctx.sla;
+	}
+
+	set sla(sla) {
+		this.$set({ sla });
+		flush();
+	}
+
+	get range() {
+		return this.$$.ctx.range;
+	}
+
+	set range(range) {
+		this.$set({ range });
+		flush();
+	}
+}
+
+window.customElements.define('ui-sla', class extends HTMLElement {
+    constructor() {
+        super();
+    }
+    connectedCallback() {
+        this.cmp = new Cmp({
+            target: this, props: {
+                sla: this.hasAttribute("value") ? this.getAttribute("value") : 0,
+                range: this.hasAttribute("range") ?this.getAttribute("range"):0
+        } });
+    }
+
+    static get observedAttributes() {
+        return ['value', 'range'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        switch (name) {
+            case "value": { this.value = newValue; break; }
+            case "range": { this.range = newValue; break; }
+        }
+    }
+
+    set value(v) {
+        if (!this.cmp) return;
+        this.cmp.sla = parseFloat(v);
+    }
+
+    set range(v) {
+        this.cmp.range = parseFloat(v);
+    }
+
+    disconnectedCallback() {
+        if (this.cmp) this.cmp.$destroy();
+    }
+});
 //# sourceMappingURL=ui-sla.js.map

@@ -1,4 +1,8 @@
 <script>
+  // You must have called ./update_oauth_clients.sh to download/update those files first.
+  import oauth_clients from "./oauth_clients.json";
+  import oauth_scopes from "./oauth_scopes.json";
+
   export let classes = "";
 
   let firebase;
@@ -7,14 +11,8 @@
   let user = {};
   let disabled = true;
   let error_messages = null;
-  let client = {
-    title: "&hellip;",
-    author: "&hellip;",
-    logo_url: "",
-    redirect_uri: "&hellip;",
-    disabled: true
-  };
-  let client_invalid = false;
+  let done_without_redirect = false;
+  let limited_access = false;
 
   import { onDestroy } from "svelte";
   let unsubscribe_user_listener = () => {};
@@ -24,34 +22,29 @@
     unsubscribe_user_listener = () => {};
   });
 
+  // Extract everything from the URL. We are redirected from `oauth.openhabx.com/authorize`
+  // and additionally to the normal oauth arguments (client_id etc) there's also "code"
+  // and "unsigned" which are required to call `oauth.openhabx.com/grant_scopes`.
   const url = new URL(window.location);
   const redirect_uri = url.searchParams.get("redirect_uri");
   const client_id = url.searchParams.get("client_id");
   const client_secret = url.searchParams.get("client_secret");
   const client_name = url.searchParams.get("client_name");
-  const state = url.searchParams.get("client_name");
-  const scope = url.searchParams.get("scope").split(",");
+  const response_type = url.searchParams.get("response_type");
+  const code = url.searchParams.get("code");
+  const unsigned = url.searchParams.get("unsigned");
+  const state = url.searchParams.get("state");
+  const scope = (() => {
+    let scope = url.searchParams.get("scope");
+    if (scope) scope = scope.split(" ");
+    return scope || "";
+  })();
+
+  const client = oauth_clients[client_id];
+  const client_invalid = !oauth_clients[client_id];
 
   function userdata_changed(data_event) {
     data = data_event.detail;
-  }
-
-  async function start_client_load() {
-    const response = await fetch("/run/oauth_clients.json");
-    if (response.status !== 200)
-      throw new Error("oauth_clients.json not found!");
-    const json = await response.json();
-
-    if (!json[client_id]) {
-      client_invalid = true;
-      return;
-    }
-
-    client = json[client_id];
-    if (client.requires_state && !state) {
-      error_messages = "State not defined, but required!";
-      client.disabled = true;
-    }
   }
 
   async function start_user_login() {
@@ -76,52 +69,51 @@
     error_messages = err.message;
     console.warn("OAuth Dialog", err, error_messages);
   });
-  start_client_load().catch(err => {
-    error_messages = err.message;
-    console.warn("OAuth Dialog", err, error_messages);
-  });
 
   async function authorize() {
     client.disabled = true;
 
-    let uri = redirect_uri
-      ? decodeURIComponent(redirect_uri)
-      : client.redirect_uri[0];
-    if (uri.startsWith("/"))
-      uri = window.location.origin + decodeURIComponent(redirect_uri);
-    if (!client.redirect_uri.includes(uri)) {
-      error_messages = `Redirect URI ${uri} invalid!`;
-      return;
+    let uri = null;
+    if (redirect_uri) {
+      uri = redirect_uri
+        ? decodeURIComponent(redirect_uri)
+        : client.redirect_uri[0];
+      if (uri.startsWith("/"))
+        uri = window.location.origin + decodeURIComponent(redirect_uri);
+      if (!client.redirect_uri.includes(uri)) {
+        error_messages = `Redirect URI ${uri} invalid!`;
+        return;
+      }
+      uri = new URL(uri);
+      if (state) uri.searchParams.append("tag", state);
+      console.log(uri, user.ra);
     }
-    let target = new URL(uri);
-    if (state) target.searchParams.append("tag", state);
-
-    console.log(target, user.ra);
 
     try {
       const response = await userdata.fetchWithAuth(
-        "oauth.openhabx.com/generate_token",
+        "oauth.openhabx.com/grant_scopes",
         "POST",
         JSON.stringify({
-          client_id,
-          client_secret,
-          scope,
-          state
+          unsigned,
+          code,
+          scopes: scope
         })
       );
       if (response.status !== 200)
-        throw new Error("oauth.openhabx.com/auth not reachable!");
-      const json = await response.json();
-      if (!json.refreshToken) throw new Error("No refresh token in response!");
-      target.searchParams.append("code", json.refreshToken);
+        throw new Error("oauth.openhabx.com/grant_scopes not reachable!");
+      const oauth_code = await response.text();
+      
+      if (uri) uri.searchParams.append("code", oauth_code);
     } catch (err) {
       error_messages = `Failed to fetch authorisation code: ${err.message}`;
       return;
     }
 
-    console.log(target, user);
-    return;
-    setTimeout(() => window.location.assign(target), 500);
+    if (uri) {
+      setTimeout(() => window.location.assign(target), 500);
+    } else {
+      done_without_redirect = true;
+    }
   }
 </script>
 
@@ -199,50 +191,45 @@
           </div>
         </div>
       </div>
-      <div class="entry">
-        <i class="fas fa-globe-europe" />
-        <div>
-          Only Public Data
-          <div>Limited access to your public data (Name, E-Mail).</div>
-        </div>
-      </div>
-      {#if scope.includes('cloud_connector')}
+      {#each oauth_scopes as scope_entry}
         <div class="entry">
-          <i class="fas fa-cloud" />
+          <i class={scope_entry['fa-class']} />
           <div>
-            Cloud Connector Access
-            <div>
-              Potential access to all configured Things and Thing States.
-            </div>
+            {scope_entry.title}
+            <div>{scope_entry.description}</div>
           </div>
         </div>
-      {/if}
-      {#if scope.includes('addon_registry')}
-        <div class="entry">
-          <i class="fas fa-sitemap" />
-          <div>
-            Addon Registry
-            <div>Allows adding, altering Addon Registry entries.</div>
-          </div>
-        </div>
-      {/if}
-
+      {/each}
     </div>
     <hr />
     <div class="card-body">
+      <div class="custom-control custom-checkbox">
+        <input
+          type="checkbox"
+          class="custom-control-input"
+          name="binding"
+          bind:checked={limited_access} />
+        <label class="custom-control-label" for="chkBindings">
+          Limited Access (60 minutes)*
+        </label>
+      </div>
+      <div class="text-center small">
+        You can revoke unlimited authorisations in your account settings.
+      </div>
       <button
         class="btn btn-success w-100 mb-2"
         disabled={client.disabled || !user.uid}
         on:click={authorize}>
         Authorize {client_name || client.title}
       </button>
-      <div class="text-center">
-        Authorizing will redirect to
-        <div>
-          <b>{client.redirect_uri}</b>
+      {#if client.redirect_uri}
+        <div class="text-center">
+          Authorizing will redirect to
+          <div>
+            <b>{client.redirect_uri}</b>
+          </div>
         </div>
-      </div>
-
+      {/if}
     </div>
   </div>
   <div class="small text-center">
@@ -252,4 +239,10 @@
 {/if}
 {#if error_messages}
   <p>{error_messages}</p>
+{/if}
+{#if done_without_redirect}
+  <div style="max-width: 500px;margin:auto">
+    Device or Addon Registry Command Line Tool authorisation confirmed. You can
+    close this window now.
+  </div>
 {/if}

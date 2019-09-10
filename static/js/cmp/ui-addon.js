@@ -1,2 +1,2953 @@
-function n(){}function t(n,t,e,o,s){n.__svelte_meta={loc:{file:t,line:e,column:o,char:s}}}function e(n){return n()}function o(){return Object.create(null)}function s(n){n.forEach(e)}function i(n){return"function"==typeof n}function c(n,t){return n!=n?t==t:n!==t||n&&"object"==typeof n||"function"==typeof n}function a(n,t){n.appendChild(t)}function d(n,t,e){n.insertBefore(t,e||null)}function r(n){n.parentNode.removeChild(n)}function l(n,t){for(let e=0;e<n.length;e+=1)n[e]&&n[e].d(t)}function g(n){return document.createElement(n)}function u(n){return document.createTextNode(n)}function I(){return u(" ")}function C(){return u("")}function A(n,t,e,o){return n.addEventListener(t,e,o),()=>n.removeEventListener(t,e,o)}function b(n){return function(t){return t.stopPropagation(),n.call(this,t)}}function h(n,t,e){null==e?n.removeAttribute(t):n.setAttribute(t,e)}function m(n,t,e){t in n?n[t]=e:h(n,t,e)}function p(n,t){t=""+t,n.data!==t&&(n.data=t)}function f(n,t,e){n.style.setProperty(t,e)}class G{constructor(n,t=null){this.e=g("div"),this.a=t,this.u(n)}m(n,t=null){for(let e=0;e<this.n.length;e+=1)d(n,this.n[e],t);this.t=n}u(n){this.e.innerHTML=n,this.n=Array.from(this.e.childNodes)}p(n){this.d(),this.u(n),this.m(this.t,this.a)}d(){this.n.forEach(r)}}let v;function w(n){v=n}function X(n){(function(){if(!v)throw new Error("Function called outside component initialization");return v})().$$.on_destroy.push(n)}function Z(){const n=v;return(t,e)=>{const o=n.$$.callbacks[t];if(o){const s=function(n,t){const e=document.createEvent("CustomEvent");return e.initCustomEvent(n,!1,!1,t),e}(t,e);o.slice().forEach(t=>{t.call(n,s)})}}}const x=[],y=[],B=[],_=[],V=Promise.resolve();let R=!1;function Y(n){B.push(n)}function W(){const n=new Set;do{for(;x.length;){const n=x.shift();w(n),k(n.$$)}for(;y.length;)y.pop()();for(let t=0;t<B.length;t+=1){const e=B[t];n.has(e)||(e(),n.add(e))}B.length=0}while(x.length);for(;_.length;)_.pop()();R=!1}function k(n){n.fragment&&(n.update(n.dirty),s(n.before_update),n.fragment.p(n.dirty,n.ctx),n.dirty=null,n.after_update.forEach(Y))}const F=new Set;let N;function P(n,t){n&&n.i&&(F.delete(n),n.i(t))}function J(n,t,e,o){if(n&&n.o){if(F.has(n))return;F.add(n),N.c.push(()=>{F.delete(n),o&&(e&&n.d(1),o())}),n.o(t)}}const L="undefined"!=typeof window?window:global;function z(n,t,o){const{fragment:c,on_mount:a,on_destroy:d,after_update:r}=n.$$;c.m(t,o),Y(()=>{const t=a.map(e).filter(i);d?d.push(...t):s(t),n.$$.on_mount=[]}),r.forEach(Y)}function H(n,t){n.$$.fragment&&(s(n.$$.on_destroy),n.$$.fragment.d(t),n.$$.on_destroy=n.$$.fragment=null,n.$$.ctx={})}function U(n,t){n.$$.dirty||(x.push(n),R||(R=!0,V.then(W)),n.$$.dirty=o()),n.$$.dirty[t]=!0}function E(t,e,i,c,a,d){const r=v;w(t);const l=e.props||{},g=t.$$={fragment:null,ctx:null,props:d,update:n,not_equal:a,bound:o(),on_mount:[],on_destroy:[],before_update:[],after_update:[],context:new Map(r?r.$$.context:[]),callbacks:o(),dirty:null};let u=!1;var I;g.ctx=i?i(t,l,(n,e)=>{g.ctx&&a(g.ctx[n],g.ctx[n]=e)&&(g.bound[n]&&g.bound[n](e),u&&U(t,n))}):l,g.update(),u=!0,s(g.before_update),g.fragment=c(g.ctx),e.target&&(e.hydrate?g.fragment.l((I=e.target,Array.from(I.childNodes))):g.fragment.c(),e.intro&&P(t.$$.fragment),z(t,e.target,e.anchor),W()),w(r)}class D{$destroy(){H(this,1),this.$destroy=n}$on(n,t){const e=this.$$.callbacks[n]||(this.$$.callbacks[n]=[]);return e.push(t),()=>{const n=e.indexOf(t);-1!==n&&e.splice(n,1)}}$set(){}}class S extends D{constructor(n){if(!n||!n.target&&!n.$$inline)throw new Error("'target' is a required option");super()}$destroy(){super.$destroy(),this.$destroy=(()=>{console.warn("Component was already destroyed")})}}const j=["far","fa-star"],$=["fas","fa-star-half-alt"],Q=["fas","fa-star"];customElements.define("ui-star-rating",class extends HTMLElement{get value(){return parseFloat(this.getAttribute("value"))||0}set value(n){this.setAttribute("value",n),this.val=n,this.stars&&this.render(n)}get disabled(){return this.hasAttribute("disabled")}set disabled(n){n?this.setAttribute("disabled",!0):this.removeAttribute("disabled")}set highlight(n){this._highlight=parseInt(n),this.setAttribute("highlight",this._highlight),this.stars&&this.mark(this._highlight-1)}render(n){this.stars.forEach((t,e)=>{t.classList.remove(j[0],$[0],$[1],Q[1]),e<n&&e+1>n?t.classList.add($[0],$[1]):e<n?t.classList.add(Q[0],Q[1]):t.classList.add(j[0],j[1])})}mark(n){this.stars.forEach((t,e)=>{t.classList.toggle("text-primary",e<=n)})}connectedCallback(){for(this.stars=[],this._highlight=parseInt(this.getAttribute("highlight"))||0;this.firstChild;)this.removeChild(this.firstChild);for(let n=0;n<5;n++){let n=document.createElement("i");n.classList.add(j[0],j[1]),this.appendChild(n),this.stars.push(n)}this.render(this.value)}constructor(){super(),this.addEventListener("mousemove",n=>{let t=this.getBoundingClientRect(),e=Math.floor((n.pageX-t.left)/t.width*this.stars.length);this.mark(e)}),this.addEventListener("mouseout",()=>{this.mark(this._highlight-1)}),this.addEventListener("click",n=>{if(n.preventDefault(),n.stopPropagation(),this.disabled)return void this.dispatchEvent(new CustomEvent("invalid"));let t=this.getBoundingClientRect(),e=Math.floor((n.pageX-t.left)/t.width*this.stars.length);this.highlight=e+1;let o=new CustomEvent("rate",{detail:{value:this.val,rate:this._highlight}});this.dispatchEvent(o)})}});const{Object:O}=L,T="assets/js/ui-addon/permissions_install.svelte";function M(n,t,e){const o=O.create(n);return o.installment=t[e][0],o.thisaddon=t[e][1],o.queue=t[e][2],o}function q(n,t,e){const o=O.create(n);return o.rule=t[e],o}function K(n,t,e){const o=O.create(n);return o.rule=t[e],o}function nn(n,t,e){const o=O.create(n);return o.cap=t[e],o}function tn(n,t,e){const o=O.create(n);return o.permission=t[e],o}function en(n){var e;return{c:function(){(e=g("p")).textContent="No permissions required",t(e,T,133,2,4226)},m:function(n,t){d(n,e,t)},d:function(n){n&&r(e)}}}function on(n){var e,o,s,i,c,l,I,C,A=n.permission.label+"",b=n.permission.id+"",h=n.permission.description+"";return{c:function(){e=g("dl"),o=g("dt"),s=u(A),i=u(" ("),c=u(b),l=u(")"),I=g("dd"),C=u(h),t(o,T,129,4,4124),t(I,T,130,4,4174),t(e,T,128,2,4115)},m:function(n,t){d(n,e,t),a(e,o),a(o,s),a(o,i),a(o,c),a(o,l),a(e,I),a(I,C)},p:function(n,t){n.perm&&A!==(A=t.permission.label+"")&&p(s,A),n.perm&&b!==(b=t.permission.id+"")&&p(c,b),n.perm&&h!==(h=t.permission.description+"")&&p(C,h)},d:function(n){n&&r(e)}}}function sn(n){for(var e,o,s,i=n.addon.linux_capabilities,c=[],a=0;a<i.length;a+=1)c[a]=cn(nn(n,i,a));return{c:function(){(e=g("h4")).textContent="Linux capabilities",o=I();for(var n=0;n<c.length;n+=1)c[n].c();s=C(),t(e,T,136,2,4298)},m:function(n,t){d(n,e,t),d(n,o,t);for(var i=0;i<c.length;i+=1)c[i].m(n,t);d(n,s,t)},p:function(n,t){if(n.cap_description||n.addon){i=t.addon.linux_capabilities;for(var e=0;e<i.length;e+=1){const o=nn(t,i,e);c[e]?c[e].p(n,o):(c[e]=cn(o),c[e].c(),c[e].m(s.parentNode,s))}for(;e<c.length;e+=1)c[e].d(1);c.length=i.length}},d:function(n){n&&(r(e),r(o)),l(c,n),n&&r(s)}}}function cn(n){var e,o,s,i,c,l,C=n.cap+"",A=Xn(n.cap)+"";return{c:function(){e=g("dl"),o=g("dt"),s=u(C),i=g("dd"),l=I(),t(o,T,139,6,4383),c=new G(A,l),t(i,T,140,6,4404),t(e,T,138,4,4372)},m:function(n,t){d(n,e,t),a(e,o),a(o,s),a(e,i),c.m(i),a(i,l)},p:function(n,t){n.addon&&C!==(C=t.cap+"")&&p(s,C),n.addon&&A!==(A=Xn(t.cap)+"")&&c.p(A)},d:function(n){n&&r(e)}}}function an(n){var e,o,s,i;function c(n){return n.addon.firewall_allow&&n.addon.firewall_allow.includes("*")?rn:n.addon.firewall_allow?dn:void 0}var a=c(n),l=a&&a(n),u=n.addon.ports&&gn(n);return{c:function(){(e=g("h4")).textContent="Networking",o=I(),l&&l.c(),s=I(),u&&u.c(),i=C(),t(e,T,147,2,4528)},m:function(n,t){d(n,e,t),d(n,o,t),l&&l.m(n,t),d(n,s,t),u&&u.m(n,t),d(n,i,t)},p:function(n,t){a===(a=c(t))&&l?l.p(n,t):(l&&l.d(1),(l=a&&a(t))&&(l.c(),l.m(s.parentNode,s))),t.addon.ports?u?u.p(n,t):((u=gn(t)).c(),u.m(i.parentNode,i)):u&&(u.d(1),u=null)},d:function(n){n&&(r(e),r(o)),l&&l.d(n),n&&r(s),u&&u.d(n),n&&r(i)}}}function dn(n){for(var e,o,s=n.addon.firewall_allow,i=[],c=0;c<s.length;c+=1)i[c]=ln(K(n,s,c));return{c:function(){e=u("Allow Internet Access to\n    "),o=g("ul");for(var n=0;n<i.length;n+=1)i[n].c();t(o,T,154,4,4840)},m:function(n,t){d(n,e,t),d(n,o,t);for(var s=0;s<i.length;s+=1)i[s].m(o,null)},p:function(n,t){if(n.addon){s=t.addon.firewall_allow;for(var e=0;e<s.length;e+=1){const c=K(t,s,e);i[e]?i[e].p(n,c):(i[e]=ln(c),i[e].c(),i[e].m(o,null))}for(;e<i.length;e+=1)i[e].d(1);i.length=s.length}},d:function(n){n&&(r(e),r(o)),l(i,n)}}}function rn(e){var o,s;return{c:function(){(o=g("span")).textContent="FULL Internet access!",s=u("\n    . An Addon developer should usually restrict this to a set of required\n    internet addresses!"),h(o,"class","text-danger"),t(o,T,149,4,4619)},m:function(n,t){d(n,o,t),d(n,s,t)},p:n,d:function(n){n&&(r(o),r(s))}}}function ln(n){var e,o,s=n.rule+"";return{c:function(){e=g("li"),o=u(s),t(e,T,156,8,4896)},m:function(n,t){d(n,e,t),a(e,o)},p:function(n,t){n.addon&&s!==(s=t.rule+"")&&p(o,s)},d:function(n){n&&r(e)}}}function gn(n){for(var t,e,o=n.addon.ports,s=[],i=0;i<o.length;i+=1)s[i]=un(q(n,o,i));return{c:function(){t=u("Expose ports to Internet:\n    ");for(var n=0;n<s.length;n+=1)s[n].c();e=C()},m:function(n,o){d(n,t,o);for(var i=0;i<s.length;i+=1)s[i].m(n,o);d(n,e,o)},p:function(n,t){if(n.addon){o=t.addon.ports;for(var i=0;i<o.length;i+=1){const c=q(t,o,i);s[i]?s[i].p(n,c):(s[i]=un(c),s[i].c(),s[i].m(e.parentNode,e))}for(;i<s.length;i+=1)s[i].d(1);s.length=o.length}},d:function(n){n&&r(t),l(s,n),n&&r(e)}}}function un(n){var t,e,o=n.rule+"";return{c:function(){t=u(o),e=u("; ")},m:function(n,o){d(n,t,o),d(n,e,o)},p:function(n,e){n.addon&&o!==(o=e.rule+"")&&p(t,o)},d:function(n){n&&(r(t),r(e))}}}function In(n){var e,o,s,i;return{c:function(){e=g("p"),o=u("No Installations registered! Log into\n    "),(s=g("b")).textContent="Setup & Maintenance",i=u('\n    and click on "Register this installation on openhabx.com".\n  '),t(s,T,217,4,6892),t(e,T,215,2,6842)},m:function(n,t){d(n,e,t),a(e,o),a(e,s),a(e,i)},d:function(n){n&&r(e)}}}function Cn(n){var e,o,s,i;function c(...t){return n.click_handler_2(n,...t)}return{c:function(){e=g("button"),o=u("Install"),h(e,"class","btn btn-outline-success"),e.disabled=s=n.queue&&"install"==n.queue.c,t(e,T,197,6,6371),i=A(e,"click",c)},m:function(n,t){d(n,e,t),a(e,o)},p:function(t,o){n=o,(t.data||t.actionqueue)&&s!==(s=n.queue&&"install"==n.queue.c)&&(e.disabled=s)},d:function(n){n&&r(e),i()}}}function An(n){var e,o,s,i=n.thisaddon.d+"";return{c:function(){e=g("p"),o=u("An error occured: "),s=u(i),t(e,T,195,6,6314)},m:function(n,t){d(n,e,t),a(e,o),a(e,s)},p:function(n,t){(n.data||n.actionqueue)&&i!==(i=t.thisaddon.d+"")&&p(s,i)},d:function(n){n&&r(e)}}}function bn(n){var e,o,i,c,l,C,b,m,f,G,v,w,X,Z,x=n.thisaddon.v+"",y=n.addon.version+"";function B(...t){return n.click_handler(n,...t)}function _(...t){return n.click_handler_1(n,...t)}return{c:function(){(e=g("small")).textContent="This Addon is already installed",o=I(),i=g("div"),c=g("button"),l=u("Uninstall"),b=I(),m=g("button"),f=u("Update "),G=u(x),v=u(" to "),w=u(y),h(e,"class","mb-2"),t(e,T,179,6,5690),h(c,"class","btn btn-outline-danger mr-3"),c.disabled=C=n.queue&&"uninstall"==n.queue.c,t(c,T,181,8,5788),h(m,"class","btn btn-outline-warning"),m.disabled=X=n.is_old_version(n.thisaddon)||n.queue&&"update"==n.queue.c,t(m,T,187,8,6002),h(i,"class","btn-group"),t(i,T,180,6,5756),Z=[A(c,"click",B),A(m,"click",_)]},m:function(n,t){d(n,e,t),d(n,o,t),d(n,i,t),a(i,c),a(c,l),a(i,b),a(i,m),a(m,f),a(m,G),a(m,v),a(m,w)},p:function(t,e){n=e,(t.data||t.actionqueue)&&C!==(C=n.queue&&"uninstall"==n.queue.c)&&(c.disabled=C),(t.data||t.actionqueue)&&x!==(x=n.thisaddon.v+"")&&p(G,x),t.addon&&y!==(y=n.addon.version+"")&&p(w,y),(t.data||t.actionqueue)&&X!==(X=n.is_old_version(n.thisaddon)||n.queue&&"update"==n.queue.c)&&(m.disabled=X)},d:function(n){n&&(r(e),r(o),r(i)),s(Z)}}}function hn(e){var o;return{c:function(){(o=g("button")).textContent="Uninstalling …",o.disabled=!0,h(o,"class","btn btn-outline-info"),t(o,T,175,6,5549)},m:function(n,t){d(n,o,t)},p:n,d:function(n){n&&r(o)}}}function mn(e){var o;return{c:function(){(o=g("button")).textContent="Installing …",o.disabled=!0,h(o,"class","btn btn-outline-info"),t(o,T,173,6,5423)},m:function(n,t){d(n,o,t)},p:n,d:function(n){n&&r(o)}}}function pn(n){var e,o,s,i,c=100*n.thisaddon.d+"";return{c:function(){e=g("button"),o=u("Downloading Addon: "),s=u(c),i=u("%"),e.disabled=!0,h(e,"class","btn btn-outline-info"),t(e,T,169,6,5263)},m:function(n,t){d(n,e,t),a(e,o),a(e,s),a(e,i)},p:function(n,t){(n.data||n.actionqueue)&&c!==(c=100*t.thisaddon.d+"")&&p(s,c)},d:function(n){n&&r(e)}}}function fn(n){var e,o,s,i,c,l=n.queue.c+"";return{c:function(){e=g("small"),(o=g("b")).textContent="Queued!",s=u('\n        The queued Addon task "'),i=u(l),c=u('" will be performed soon by the Addon-Manager.'),t(o,T,206,8,6605),t(e,T,205,6,6589)},m:function(n,t){d(n,e,t),a(e,o),a(e,s),a(e,i),a(e,c)},p:function(n,t){(n.data||n.actionqueue)&&l!==(l=t.queue.c+"")&&p(i,l)},d:function(n){n&&r(e)}}}function Gn(n){var e,o;return{c:function(){e=g("small"),o=u(n.error_message),h(e,"class","text-danger"),t(e,T,211,6,6762)},m:function(n,t){d(n,e,t),a(e,o)},p:function(n,t){n.error_message&&p(o,t.error_message)},d:function(n){n&&r(e)}}}function vn(n){var e,o,s,i,c,l,C,A=n.installment.title+"";function b(n){return"downloading"==n.thisaddon.s?pn:"installing"==n.thisaddon.s?mn:"uninstalling"==n.thisaddon.s?hn:"installed"==n.thisaddon.s?bn:"error"==n.thisaddon.s?An:Cn}var m=b(n),f=m(n),G=n.queue&&fn(n),v=n.error_message&&Gn(n);return{c:function(){e=g("div"),o=g("h5"),s=u(A),i=I(),f.c(),c=I(),G&&G.c(),l=I(),v&&v.c(),C=I(),t(o,T,167,4,5189),h(e,"class","card m-3 p-3"),t(e,T,166,2,5158)},m:function(n,t){d(n,e,t),a(e,o),a(o,s),a(e,i),f.m(e,null),a(e,c),G&&G.m(e,null),a(e,l),v&&v.m(e,null),a(e,C)},p:function(n,t){(n.data||n.actionqueue)&&A!==(A=t.installment.title+"")&&p(s,A),m===(m=b(t))&&f?f.p(n,t):(f.d(1),(f=m(t))&&(f.c(),f.m(e,c))),t.queue?G?G.p(n,t):((G=fn(t)).c(),G.m(e,l)):G&&(G.d(1),G=null),t.error_message?v?v.p(n,t):((v=Gn(t)).c(),v.m(e,C)):v&&(v.d(1),v=null)},d:function(n){n&&r(e),f.d(),G&&G.d(),v&&v.d()}}}function wn(e){for(var o,s,i,c,a,u,A=e.perm,b=[],h=0;h<A.length;h+=1)b[h]=on(tn(e,A,h));var m=null;A.length||(m=en()).c();var p=e.addon.linux_capabilities&&sn(e),f=(e.addon.firewall_allow||e.addon.ports)&&an(e),G=e.installs_with_addon(e.data.installations,e.actionqueue),v=[];for(h=0;h<G.length;h+=1)v[h]=vn(M(e,G,h));var w=null;return G.length||(w=In()).c(),{c:function(){(o=g("h4")).textContent="Permissions",s=I();for(var n=0;n<b.length;n+=1)b[n].c();i=I(),p&&p.c(),c=I(),f&&f.c(),a=I();for(n=0;n<v.length;n+=1)v[n].c();u=C(),t(o,T,126,0,4065)},l:function(n){throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option")},m:function(n,t){d(n,o,t),d(n,s,t);for(var e=0;e<b.length;e+=1)b[e].m(n,t);m&&m.m(n,t),d(n,i,t),p&&p.m(n,t),d(n,c,t),f&&f.m(n,t),d(n,a,t);for(e=0;e<v.length;e+=1)v[e].m(n,t);d(n,u,t),w&&w.m(n,t)},p:function(n,t){if(n.perm){A=t.perm;for(var e=0;e<A.length;e+=1){const o=tn(t,A,e);b[e]?b[e].p(n,o):(b[e]=on(o),b[e].c(),b[e].m(i.parentNode,i))}for(;e<b.length;e+=1)b[e].d(1);b.length=A.length}if(A.length?m&&(m.d(1),m=null):m||((m=en()).c(),m.m(i.parentNode,i)),t.addon.linux_capabilities?p?p.p(n,t):((p=sn(t)).c(),p.m(c.parentNode,c)):p&&(p.d(1),p=null),t.addon.firewall_allow||t.addon.ports?f?f.p(n,t):((f=an(t)).c(),f.m(a.parentNode,a)):f&&(f.d(1),f=null),n.error_message||n.installs_with_addon||n.data||n.actionqueue||n.is_old_version||n.addon){G=t.installs_with_addon(t.data.installations,t.actionqueue);for(e=0;e<G.length;e+=1){const o=M(t,G,e);v[e]?v[e].p(n,o):(v[e]=vn(o),v[e].c(),v[e].m(u.parentNode,u))}for(;e<v.length;e+=1)v[e].d(1);v.length=G.length}G.length?w&&(w.d(1),w=null):w||((w=In()).c(),w.m(u.parentNode,u))},i:n,o:n,d:function(n){n&&(r(o),r(s)),l(b,n),m&&m.d(n),n&&r(i),p&&p.d(n),n&&r(c),f&&f.d(n),n&&r(a),l(v,n),n&&r(u),w&&w.d(n)}}}function Xn(n){switch(n){case"CHOWN":case"DAC_OVERRIDE":case"DAC_READ_SEARCH":case"FOWNER":case"FSETID":return"<span class='text-danger'>Bypass any process permission checks</span>";case"BLOCK_SUSPEND":case"SYS_BOOT":case"CAP_WAKE_ALARM":return"Allows to block system suspend, reboot and set wakeup timers.";case"NET_ADMIN":return"<span class='text-danger'>Full access to the host networking, including potential traffic sniffing and man in the middle attacks</span>";case"NET_BIND_SERVICE":return"Allows to bind to a privileged port (port number less than 1024)";case"NET_RAW":return"Allows to use RAW and PACKET sockets. Allows transparent proxing. <span class='text-danger'>Might be abused for traffic sniffing and man in the middle attacks.</span>";case"SYS_ADMIN":case"SYS_MODULE":case"SYS_RAWIO":case"SYS_PTRACE":return"<span class='text-danger'>Full system access, loading of arbitrary kernel modules, access other processes memory!</span>";case"SYS_TIME":return"Allows to set the system clock. Might be abused to attack time based encryption.";case"SYS_RESOURCE":return"Allows to override disk quota limits. Allows to use reserved disk space.";case"SYSLOG":return"System log access";default:return"Unknown"}}function Zn(n,t,e){const o=Z();let s,{permissions:i,addon:c={permissions:{mandatory:[],optional:[]}},UserAwareComponent:a}=t,d=null,r={installations:{}},l=null;function g(n,t,s){n.target.disabled=!0,e("error_message",d=null),o("install",{installid:t.id,addonid:c.id,code:s,confirm:()=>{},error:t=>{n.target.disabled=!1,e("error_message",d=t.message)}})}X(()=>{s&&s()});const u=["permissions","addon","UserAwareComponent"];let I;return O.keys(t).forEach(n=>{u.includes(n)||n.startsWith("$$")||console.warn(`<Permissions_install> was created with unknown prop '${n}'`)}),n.$set=(n=>{"permissions"in n&&e("permissions",i=n.permissions),"addon"in n&&e("addon",c=n.addon),"UserAwareComponent"in n&&e("UserAwareComponent",a=n.UserAwareComponent)}),n.$$.update=((n={onDestroyProxy:1,UserAwareComponent:1,addon:1,permissions:1})=>{(n.onDestroyProxy||n.UserAwareComponent)&&!s&&a&&e("onDestroyProxy",s=a(n=>{},n=>{e("data",r=n)},n=>{e("actionqueue",l=n)})),(n.addon||n.permissions)&&e("perm",I=c.permissions.mandatory.map(n=>Object.assign({mandatory:!0},i[n])).concat(c.permissions.optional.map(n=>Object.assign({mandatory:!1},i[n]))))}),{permissions:i,addon:c,UserAwareComponent:a,error_message:d,data:r,actionqueue:l,installs_with_addon:function(n,t){return Object.values(n).map(n=>{let e=n.addons[c.id]||{};e.s||(e.s=null);const o=t[n.id];return[n,e,o?o[c.id]:null]})},is_old_version:function(n){try{const t=n.v,e=c.version;t=t.split("."),e=e.split(".");const o=Math.min(t.length,e.length);for(let n=0;n<o;++n){if(t[n]=parseInt(t[n],10),e[n]=parseInt(e[n],10),t[n]>e[n])return 1;if(t[n]<e[n])return-1}t.length,e.length}catch(n){return!1}},action:g,perm:I,click_handler:function({installment:n},t){return g(t,n,"uninstall")},click_handler_1:function({installment:n},t){return g(t,n,"update")},click_handler_2:function({installment:n},t){return g(t,n,"install")}}}class xn extends S{constructor(n){super(n),E(this,n,Zn,wn,c,["permissions","addon","UserAwareComponent"]);const{ctx:t}=this.$$,e=n.props||{};void 0!==t.permissions||"permissions"in e||console.warn("<Permissions_install> was created without expected prop 'permissions'"),void 0!==t.UserAwareComponent||"UserAwareComponent"in e||console.warn("<Permissions_install> was created without expected prop 'UserAwareComponent'")}get permissions(){throw new Error("<Permissions_install>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set permissions(n){throw new Error("<Permissions_install>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}get addon(){throw new Error("<Permissions_install>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set addon(n){throw new Error("<Permissions_install>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}get UserAwareComponent(){throw new Error("<Permissions_install>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set UserAwareComponent(n){throw new Error("<Permissions_install>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}}const yn="assets/js/ui-addon/cmp.svelte";function Bn(n){var e,o=n.suggest_logo_url&&Vn(n);return{c:function(){e=g("div"),o&&o.c(),t(e,yn,125,6,3306)},m:function(n,t){d(n,e,t),o&&o.m(e,null)},p:function(n,t){t.suggest_logo_url?o?o.p(n,t):((o=Vn(t)).c(),o.m(e,null)):o&&(o.d(1),o=null)},d:function(n){n&&r(e),o&&o.d()}}}function _n(n){var e,o;return{c:function(){h(e=g("img"),"src",n.logo_url),h(e,"alt","Logo"),t(e,yn,123,6,3220),o=A(e,"error",n.error_handler)},m:function(n,t){d(n,e,t)},p:function(n,t){n.logo_url&&h(e,"src",t.logo_url)},d:function(n){n&&r(e),o()}}}function Vn(n){var e,o;return{c:function(){e=g("a"),o=u("Suggest Logo"),h(e,"href",n.suggest_logo_url),t(e,yn,127,10,3353)},m:function(n,t){d(n,e,t),a(e,o)},p:function(n,t){n.suggest_logo_url&&h(e,"href",t.suggest_logo_url)},d:function(n){n&&r(e)}}}function Rn(e){var o,s,i=e.addon.description+"";return{c:function(){o=g("p"),s=u(i),t(o,yn,202,6,5686)},m:function(n,t){d(n,o,t),a(o,s)},p:function(n,t){n.addon&&i!==(i=t.addon.description+"")&&p(s,i)},i:n,o:n,d:function(n){n&&r(o)}}}function Yn(e){var o,s,i,c,l,C,m,G,v,w,X,Z,x,y,B,_,V,R,Y,W,k,F,N,P,J,L,z,H,U,E,D,S,j,$,Q,O,T,M,q=new Date(e.addon.last_updated).toLocaleString()+"",K=Hn(e.addon.status.code)+"",nn=Number.parseFloat(e.addon.size/1024/1024).toFixed(2)+"",tn=e.addon.reviewed_by&&e.addon.reviewed_by.length>0?"Yes":"No",en=e.addon.changelog_url&&kn(e),on=e.addon.estimated_mem&&Fn(e),sn=e.addon.stat&&e.addon.stat.license&&e.addon.stat.license.name&&Nn(e);return{c:function(){o=g("table"),s=g("tr"),(i=g("th")).textContent="Updated",c=I(),l=g("td"),C=u(q),m=I(),en&&en.c(),G=I(),v=g("tr"),(w=g("th")).textContent="Maintenance",X=I(),Z=g("td"),x=I(),y=g("tr"),(B=g("th")).textContent="Install Size",_=I(),V=g("td"),R=u(nn),Y=u(" MB"),k=I(),F=g("tr"),(N=g("th")).textContent="Est. Mem Usage",P=I(),J=g("td"),on&&on.c(),L=I(),z=g("tr"),(H=g("th")).textContent="Reviewed",U=I(),E=g("td"),D=u(tn),S=I(),sn&&sn.c(),j=I(),$=g("button"),Q=u("Check Permissions & Install"),h(i,"scope","row"),f(i,"width","1px"),f(i,"white-space","nowrap"),h(i,"class","svelte-1vx0blb"),t(i,yn,147,10,3920),t(l,yn,148,10,3999),t(s,yn,146,8,3905),h(w,"scope","row"),h(w,"class","svelte-1vx0blb"),t(w,yn,156,10,4231),t(Z,yn,157,10,4274),t(v,yn,155,8,4216),h(B,"scope","row"),h(B,"class","svelte-1vx0blb"),t(B,yn,162,10,4392),h(V,"title",W=e.addon.size+" bytes"),t(V,yn,163,10,4436),t(y,yn,161,8,4377),h(N,"scope","row"),h(N,"title","Estimated Memory Usage. This is an Addon developer provided\n            value."),h(N,"class","svelte-1vx0blb"),t(N,yn,168,10,4596),t(J,yn,174,10,4777),t(F,yn,167,8,4581),h(H,"scope","row"),h(H,"class","svelte-1vx0blb"),t(H,yn,182,10,5036),t(E,yn,183,10,5076),t(z,yn,181,8,5021),h(o,"class","table table-hover table-sm property-table svelte-1vx0blb"),t(o,yn,145,6,3839),h($,"class","btn btn-outline-success"),$.disabled=O=!e.loggedin,h($,"title",T=e.loggedin?"":"You need to login!"),t($,yn,194,6,5418),M=A($,"click",b(e.click_handler_1))},m:function(n,t){d(n,o,t),a(o,s),a(s,i),a(s,c),a(s,l),a(l,C),a(l,m),en&&en.m(l,null),a(o,G),a(o,v),a(v,w),a(v,X),a(v,Z),Z.innerHTML=K,a(o,x),a(o,y),a(y,B),a(y,_),a(y,V),a(V,R),a(V,Y),a(o,k),a(o,F),a(F,N),a(F,P),a(F,J),on&&on.m(J,null),a(o,L),a(o,z),a(z,H),a(z,U),a(z,E),a(E,D),a(o,S),sn&&sn.m(o,null),d(n,j,t),d(n,$,t),a($,Q)},p:function(n,t){n.addon&&q!==(q=new Date(t.addon.last_updated).toLocaleString()+"")&&p(C,q),t.addon.changelog_url?en?en.p(n,t):((en=kn(t)).c(),en.m(l,null)):en&&(en.d(1),en=null),n.addon&&K!==(K=Hn(t.addon.status.code)+"")&&(Z.innerHTML=K),n.addon&&nn!==(nn=Number.parseFloat(t.addon.size/1024/1024).toFixed(2)+"")&&p(R,nn),n.addon&&W!==(W=t.addon.size+" bytes")&&h(V,"title",W),t.addon.estimated_mem?on?on.p(n,t):((on=Fn(t)).c(),on.m(J,null)):on&&(on.d(1),on=null),n.addon&&tn!==(tn=t.addon.reviewed_by&&t.addon.reviewed_by.length>0?"Yes":"No")&&p(D,tn),t.addon.stat&&t.addon.stat.license&&t.addon.stat.license.name?sn?sn.p(n,t):((sn=Nn(t)).c(),sn.m(o,null)):sn&&(sn.d(1),sn=null),n.loggedin&&O!==(O=!t.loggedin)&&($.disabled=O),n.loggedin&&T!==(T=t.loggedin?"":"You need to login!")&&h($,"title",T)},i:n,o:n,d:function(n){n&&r(o),en&&en.d(),on&&on.d(),sn&&sn.d(),n&&(r(j),r($)),M()}}}function Wn(n){var e,o,s,i,c=new xn({props:{addon:n.addon,UserAwareComponent:n.UserAwareComponent,permissions:n.addondb.permissions},$$inline:!0});return c.$on("install",n.install_handler),{c:function(){c.$$.fragment.c(),e=I(),(o=g("button")).textContent="Back to description",h(o,"class","btn btn-primary-success"),t(o,yn,139,6,3652),i=A(o,"click",b(n.click_handler))},m:function(n,t){z(c,n,t),d(n,e,t),d(n,o,t),s=!0},p:function(n,t){var e={};n.addon&&(e.addon=t.addon),n.UserAwareComponent&&(e.UserAwareComponent=t.UserAwareComponent),n.addondb&&(e.permissions=t.addondb.permissions),c.$set(e)},i:function(n){s||(P(c.$$.fragment,n),s=!0)},o:function(n){J(c.$$.fragment,n),s=!1},d:function(n){H(c,n),n&&(r(e),r(o)),i()}}}function kn(n){var e,o,s;return{c:function(){e=g("a"),o=u("Changelog"),h(e,"href",s=n.addon.changelog_url),t(e,yn,151,14,4116)},m:function(n,t){d(n,e,t),a(e,o)},p:function(n,t){n.addon&&s!==(s=t.addon.changelog_url)&&h(e,"href",s)},d:function(n){n&&r(e)}}}function Fn(n){var t,e,o,s,i=Number.parseFloat(n.addon.estimated_mem.min).toFixed(2)+"",c=Number.parseFloat(n.addon.estimated_mem.max).toFixed(2)+"";return{c:function(){t=u(i),e=u(" - "),o=u(c),s=u("\n              MB")},m:function(n,i){d(n,t,i),d(n,e,i),d(n,o,i),d(n,s,i)},p:function(n,e){n.addon&&i!==(i=Number.parseFloat(e.addon.estimated_mem.min).toFixed(2)+"")&&p(t,i),n.addon&&c!==(c=Number.parseFloat(e.addon.estimated_mem.max).toFixed(2)+"")&&p(o,c)},d:function(n){n&&(r(t),r(e),r(o),r(s))}}}function Nn(n){var e,o,s,i,c,l=n.addon.stat.license.name+"";return{c:function(){e=g("tr"),(o=g("th")).textContent="License",s=I(),i=g("td"),c=u(l),h(o,"scope","row"),h(o,"class","svelte-1vx0blb"),t(o,yn,189,12,5291),t(i,yn,190,12,5332),t(e,yn,188,10,5274)},m:function(n,t){d(n,e,t),a(e,o),a(e,s),a(e,i),a(i,c)},p:function(n,t){n.addon&&l!==(l=t.addon.stat.license.name+"")&&p(c,l)},d:function(n){n&&r(e)}}}function Pn(n){var e,o,s,i;return{c:function(){e=g("a"),o=u("Homepage / Repository"),h(e,"class","mr-2"),h(e,"href",s=n.addon.homepage),h(e,"target","_blank"),h(e,"title",i=n.addon.homepage),t(e,yn,222,6,6179)},m:function(n,t){d(n,e,t),a(e,o)},p:function(n,t){n.addon&&s!==(s=t.addon.homepage)&&h(e,"href",s),n.addon&&i!==(i=t.addon.homepage)&&h(e,"title",i)},d:function(n){n&&r(e)}}}function Jn(n){var e,o,s,i,c,l,C,A,b,m,f,G,v,w,X=n.addon.stat.s+"",Z=n.addon.stat.iss+"";return{c:function(){e=g("a"),o=g("span"),s=g("i"),i=I(),c=u(X),l=u(" Stars"),C=I(),A=g("span"),b=g("i"),m=I(),f=u(Z),G=u(" Issues"),h(s,"class","fas fa-star"),t(s,yn,213,10,5956),h(o,"class","mr-2"),t(o,yn,212,8,5926),h(b,"class","fas fa-info-circle"),t(b,yn,217,10,6067),h(A,"class","mr-2"),t(A,yn,216,8,6037),h(e,"class","mr-2 noref"),h(e,"href",v=n.addon.github),h(e,"target","_blank"),h(e,"title",w=n.addon.github),t(e,yn,207,6,5806)},m:function(n,t){d(n,e,t),a(e,o),a(o,s),a(o,i),a(o,c),a(o,l),a(e,C),a(e,A),a(A,b),a(A,m),a(A,f),a(A,G)},p:function(n,t){n.addon&&X!==(X=t.addon.stat.s+"")&&p(c,X),n.addon&&Z!==(Z=t.addon.stat.iss+"")&&p(f,Z),n.addon&&v!==(v=t.addon.github)&&h(e,"href",v),n.addon&&w!==(w=t.addon.github)&&h(e,"title",w)},d:function(n){n&&r(e)}}}function Ln(n){var e,o,i,c,l,C,b,f,G,v,w=n.addon.stat.d+"";return{c:function(){e=g("span"),o=g("i"),i=I(),c=u(w),l=u(" Downloads"),C=I(),b=g("ui-star-rating"),h(o,"class","fas fa-download"),t(o,yn,232,8,6395),h(e,"class","mr-2"),t(e,yn,231,6,6367),m(b,"class","ml-auto"),m(b,"title",f=n.loggedin?"Rate this Addon":"You need to login to rate"),m(b,"value",n.item_rating),m(b,"disabled",G=!n.loggedin),m(b,"highlight",n.user_item_rating),t(b,yn,235,6,6478),v=[A(b,"rate",n.submit_rate),A(b,"invalid",n.invalid_handler)]},m:function(n,t){d(n,e,t),a(e,o),a(e,i),a(e,c),a(e,l),d(n,C,t),d(n,b,t)},p:function(n,t){n.addon&&w!==(w=t.addon.stat.d+"")&&p(c,w),n.loggedin&&f!==(f=t.loggedin?"Rate this Addon":"You need to login to rate")&&m(b,"title",f),n.item_rating&&m(b,"value",t.item_rating),n.loggedin&&G!==(G=!t.loggedin)&&m(b,"disabled",G),n.user_item_rating&&m(b,"highlight",t.user_item_rating)},d:function(n){n&&(r(e),r(C),r(b)),s(v)}}}function zn(n){var e,o,i,c,l,C,b,G,v,w,X,Z,x,y,B,_,V,R,Y,W,k,F,L,z,H,U,E,D,S=n.addon.label+"",j=n.addon.version+"",$=n.addon.author+"";function Q(n){return n.logo_url?_n:Bn}var O=Q(n),T=O(n),M=[Wn,Yn,Rn],q=[];function K(n){return"permissions"==n.mode?0:!1!==n.standalone?1:2}function nn(n){return n.addon.github&&n.addon.stat&&n.addon.stat.s?Jn:Pn}W=K(n),k=q[W]=M[W](n);var tn=nn(n),en=tn(n),on=n.addon.stat&&Ln(n);return{c:function(){e=g("article"),o=g("ui-tooltip"),i=u(n.error_message),c=I(),l=g("header"),C=g("span"),b=u(S),G=I(),v=g("small"),w=u(j),X=I(),Z=g("small"),x=u("– By "),y=u($),_=I(),V=g("section"),T.c(),R=I(),Y=g("section"),k.c(),F=I(),L=g("footer"),en.c(),z=I(),on&&on.c(),m(o,"nobutton",""),t(o,yn,113,2,2869),t(C,yn,115,4,2969),h(v,"class","ml-2"),t(v,yn,116,4,3e3),h(Z,"class",""),f(Z,"white-space","nowrap"),f(Z,"text-overflow","ellipsis"),t(Z,yn,117,4,3048),h(l,"title",B=n.addon.id),t(l,yn,114,2,2939),h(V,"class","logo"),t(V,yn,121,2,3172),h(Y,"class","description"),t(Y,yn,132,2,3449),t(L,yn,205,2,5738),h(e,"id",H=n.addon.id),h(e,"class",U="addon mb-3 "+n.addon.status.code),t(e,yn,109,0,2746),D=A(e,"click",n.click_handler_2)},l:function(n){throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option")},m:function(t,s){d(t,e,s),a(e,o),a(o,i),n.ui_tooltip_binding(o),a(e,c),a(e,l),a(l,C),a(C,b),a(l,G),a(l,v),a(v,w),a(l,X),a(l,Z),a(Z,x),a(Z,y),a(e,_),a(e,V),T.m(V,null),a(e,R),a(e,Y),q[W].m(Y,null),a(e,F),a(e,L),en.m(L,null),a(L,z),on&&on.m(L,null),E=!0},p:function(n,t){E&&!n.error_message||p(i,t.error_message),E&&!n.addon||S===(S=t.addon.label+"")||p(b,S),E&&!n.addon||j===(j=t.addon.version+"")||p(w,j),E&&!n.addon||$===($=t.addon.author+"")||p(y,$),E&&!n.addon||B===(B=t.addon.id)||h(l,"title",B),O===(O=Q(t))&&T?T.p(n,t):(T.d(1),(T=O(t))&&(T.c(),T.m(V,null)));var o=W;(W=K(t))===o?q[W].p(n,t):(N={r:0,c:[],p:N},J(q[o],1,1,()=>{q[o]=null}),N.r||s(N.c),N=N.p,(k=q[W])||(k=q[W]=M[W](t)).c(),P(k,1),k.m(Y,null)),tn===(tn=nn(t))&&en?en.p(n,t):(en.d(1),(en=tn(t))&&(en.c(),en.m(L,z))),t.addon.stat?on?on.p(n,t):((on=Ln(t)).c(),on.m(L,null)):on&&(on.d(1),on=null),E&&!n.addon||H===(H=t.addon.id)||h(e,"id",H),E&&!n.addon||U===(U="addon mb-3 "+t.addon.status.code)||h(e,"class",U)},i:function(n){E||(P(k),E=!0)},o:function(n){J(k),E=!1},d:function(t){t&&r(e),n.ui_tooltip_binding(null),T.d(),q[W].d(),en.d(),on&&on.d(),D()}}}function Hn(n){switch(n){case"AVAILABLE":return"Maintained &amp; Available";case"UNMAINTAINED":return"<span class='text-danger'>Unmaintained</span>";case"REPLACED":return"<span class='text-danger'>Replaced</span> by another Addon!";case"REMOVED":return"<span class='text-danger'>Removed</span>";default:return n}}function Un(n,t,e){const o=Z();let s,i,c,a,d,{addondb:r,addon:l={status:{}},UserAwareComponent:g,standalone:u=!1}=t,I="",C=0,A=0,b=!1,h=null;function m(){e("error_message",s="Not logged in!"),i.click()}X(()=>{d&&d()});const p=["addondb","addon","UserAwareComponent","standalone"];return Object.keys(t).forEach(n=>{p.includes(n)||n.startsWith("$$")||console.warn(`<Cmp> was created with unknown prop '${n}'`)}),n.$set=(n=>{"addondb"in n&&e("addondb",r=n.addondb),"addon"in n&&e("addon",l=n.addon),"UserAwareComponent"in n&&e("UserAwareComponent",g=n.UserAwareComponent),"standalone"in n&&e("standalone",u=n.standalone)}),{dispatch:o,addondb:r,addon:l,UserAwareComponent:g,standalone:u,error_message:s,popup:i,mode:I,user_item_rating:C,item_rating:A,loggedin:b,logo_url:c,suggest_logo_url:a,start:async function(){if(!l.id){const n=new URL(window.location).searchParams.get("id");e("addon",l=r.db_by_id[n])}d||(d=g(n=>{e("loggedin",b=n&&n.uid)},n=>{e("user_item_rating",C=n&&n.ratings&&n.ratings[l.id]?n.ratings[l.id]:0)},n=>h=n)),e("item_rating",A=l.stat?l.stat.p/l.stat.v:0),e("logo_url",c=l.logo_url),!c&&l.github&&e("logo_url",c=l.github.replace("https://github.com/","https://raw.githubusercontent.com/")+"/master/logo.png"),e("suggest_logo_url",a=l.homepage?l.homepage:l.github)},submit_rate:function(n){n.stopPropagation();const t=n.target;t.disabled=!0,o("rate",{addonid:l.id,rate:n.detail.rate,confirm:()=>t.disabled=!1,error:n=>{t.disabled=!1,e("error_message",s=n.message),i.click()}})},not_logged_in:m,install_handler:function(t){!function(n,t){const e=n.$$.callbacks[t.type];e&&e.slice().forEach(n=>n(t))}(n,t)},ui_tooltip_binding:function(n){y[n?"unshift":"push"](()=>{e("popup",i=n)})},error_handler:function(n){const t=c=null;return e("logo_url",c),t},click_handler:function(n){const t=I="";return e("mode",I),t},click_handler_1:function(n){const t=I="permissions";return e("mode",I),t},invalid_handler:function(n){return m()},click_handler_2:function(n){return o("click",{id:l.id})}}}class En extends S{constructor(n){var t;super(n),document.getElementById("svelte-1vx0blb-style")||((t=g("style")).id="svelte-1vx0blb-style",t.textContent="table.property-table.svelte-1vx0blb th.svelte-1vx0blb{width:1px;white-space:nowrap}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY21wLnN2ZWx0ZSIsInNvdXJjZXMiOlsiY21wLnN2ZWx0ZSJdLCJzb3VyY2VzQ29udGVudCI6WyI8c2NyaXB0PlxuICBpbXBvcnQgXCIuL3N0YXJyYXRpbmcuanNcIjtcbiAgaW1wb3J0IFBlcm1pc3Npb25zSW5zdGFsbCBmcm9tIFwiLi9wZXJtaXNzaW9uc19pbnN0YWxsLnN2ZWx0ZVwiO1xuXG4gIGltcG9ydCB7IGNyZWF0ZUV2ZW50RGlzcGF0Y2hlciwgZ2V0Q29udGV4dCB9IGZyb20gXCJzdmVsdGVcIjtcbiAgY29uc3QgZGlzcGF0Y2ggPSBjcmVhdGVFdmVudERpc3BhdGNoZXIoKTtcblxuICBleHBvcnQgbGV0IGFkZG9uZGI7XG4gIGV4cG9ydCBsZXQgYWRkb24gPSB7IHN0YXR1czoge30gfTtcbiAgZXhwb3J0IGxldCBVc2VyQXdhcmVDb21wb25lbnQ7XG4gIGV4cG9ydCBsZXQgc3RhbmRhbG9uZSA9IGZhbHNlO1xuXG4gIGxldCBlcnJvcl9tZXNzYWdlO1xuICBsZXQgcG9wdXA7XG5cbiAgbGV0IG1vZGUgPSBcIlwiO1xuICBsZXQgdXNlcl9pdGVtX3JhdGluZyA9IDA7XG4gIGxldCBpdGVtX3JhdGluZyA9IDA7XG4gIGxldCBsb2dnZWRpbiA9IGZhbHNlO1xuICBsZXQgbG9nb191cmw7XG4gIGxldCBzdWdnZXN0X2xvZ29fdXJsO1xuXG4gIC8vLyBVc2VyIEF3YXJlIENvbXBvbmVudFxuICBpbXBvcnQgeyBvbkRlc3Ryb3kgfSBmcm9tIFwic3ZlbHRlXCI7XG4gIGxldCB1c2VyID0gbnVsbDtcbiAgbGV0IGRhdGEgPSB7IGluc3RhbGxhdGlvbnM6IHt9IH07XG4gIGxldCBhY3Rpb25xdWV1ZSA9IG51bGw7XG4gIGxldCBvbkRlc3Ryb3lQcm94eTtcbiAgb25EZXN0cm95KCgpID0+IHtcbiAgICBpZiAob25EZXN0cm95UHJveHkpIG9uRGVzdHJveVByb3h5KCk7XG4gIH0pO1xuXG4gIGV4cG9ydCBhc3luYyBmdW5jdGlvbiBzdGFydCgpIHtcbiAgICBpZiAoIWFkZG9uLmlkKSB7XG4gICAgICBjb25zdCBhZGRvbl9pZCA9IG5ldyBVUkwod2luZG93LmxvY2F0aW9uKS5zZWFyY2hQYXJhbXMuZ2V0KFwiaWRcIik7XG4gICAgICBhZGRvbiA9IGFkZG9uZGIuZGJfYnlfaWRbYWRkb25faWRdO1xuICAgIH1cbiAgICBpZiAoIW9uRGVzdHJveVByb3h5KSB7XG4gICAgICBvbkRlc3Ryb3lQcm94eSA9IFVzZXJBd2FyZUNvbXBvbmVudChcbiAgICAgICAgdXNlcl8gPT4ge1xuICAgICAgICAgIHVzZXIgPSB1c2VyXztcbiAgICAgICAgICBsb2dnZWRpbiA9IHVzZXJfICYmIHVzZXJfLnVpZDtcbiAgICAgICAgfSxcbiAgICAgICAgZGF0YV8gPT4ge1xuICAgICAgICAgIHVzZXJfaXRlbV9yYXRpbmcgPVxuICAgICAgICAgICAgZGF0YV8gJiYgZGF0YV8ucmF0aW5ncyAmJiBkYXRhXy5yYXRpbmdzW2FkZG9uLmlkXVxuICAgICAgICAgICAgICA/IGRhdGFfLnJhdGluZ3NbYWRkb24uaWRdXG4gICAgICAgICAgICAgIDogMDtcbiAgICAgICAgICBkYXRhID0gZGF0YV87XG4gICAgICAgIH0sXG4gICAgICAgIGFxXyA9PiAoYWN0aW9ucXVldWUgPSBhcV8pXG4gICAgICApO1xuICAgIH1cbiAgICBpdGVtX3JhdGluZyA9IGFkZG9uLnN0YXQgPyBhZGRvbi5zdGF0LnAgLyBhZGRvbi5zdGF0LnYgOiAwLjA7XG4gICAgbG9nb191cmwgPSBhZGRvbi5sb2dvX3VybDtcbiAgICBpZiAoIWxvZ29fdXJsICYmIGFkZG9uLmdpdGh1YilcbiAgICAgIGxvZ29fdXJsID1cbiAgICAgICAgYWRkb24uZ2l0aHViLnJlcGxhY2UoXG4gICAgICAgICAgXCJodHRwczovL2dpdGh1Yi5jb20vXCIsXG4gICAgICAgICAgXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vXCJcbiAgICAgICAgKSArIFwiL21hc3Rlci9sb2dvLnBuZ1wiO1xuICAgIHN1Z2dlc3RfbG9nb191cmwgPSBhZGRvbi5ob21lcGFnZSA/IGFkZG9uLmhvbWVwYWdlIDogYWRkb24uZ2l0aHViO1xuICB9XG4gIC8vLyBFbmQgLS0gVXNlciBBd2FyZSBDb21wb25lbnRcblxuICBmdW5jdGlvbiBzdWJtaXRfcmF0ZShlKSB7XG4gICAgZS5zdG9wUHJvcGFnYXRpb24oKTtcbiAgICBjb25zdCB0YXJnZXQgPSBlLnRhcmdldDtcbiAgICB0YXJnZXQuZGlzYWJsZWQgPSB0cnVlO1xuICAgIGRpc3BhdGNoKFwicmF0ZVwiLCB7XG4gICAgICBhZGRvbmlkOiBhZGRvbi5pZCxcbiAgICAgIHJhdGU6IGUuZGV0YWlsLnJhdGUsXG4gICAgICBjb25maXJtOiAoKSA9PiAodGFyZ2V0LmRpc2FibGVkID0gZmFsc2UpLFxuICAgICAgZXJyb3I6IGVyciA9PiB7XG4gICAgICAgIHRhcmdldC5kaXNhYmxlZCA9IGZhbHNlO1xuICAgICAgICBlcnJvcl9tZXNzYWdlID0gZXJyLm1lc3NhZ2U7XG4gICAgICAgIHBvcHVwLmNsaWNrKCk7XG4gICAgICB9XG4gICAgfSk7XG4gIH1cblxuICBmdW5jdGlvbiBub3RfbG9nZ2VkX2luKCkge1xuICAgIGVycm9yX21lc3NhZ2UgPSBcIk5vdCBsb2dnZWQgaW4hXCI7XG4gICAgcG9wdXAuY2xpY2soKTtcbiAgfVxuXG4gIGZ1bmN0aW9uIG1haW50ZW5hbmNlX2NvZGVfc3RyKGNvZGUpIHtcbiAgICBzd2l0Y2ggKGNvZGUpIHtcbiAgICAgIGNhc2UgXCJBVkFJTEFCTEVcIjpcbiAgICAgICAgcmV0dXJuIFwiTWFpbnRhaW5lZCAmYW1wOyBBdmFpbGFibGVcIjtcbiAgICAgIGNhc2UgXCJVTk1BSU5UQUlORURcIjpcbiAgICAgICAgcmV0dXJuIFwiPHNwYW4gY2xhc3M9J3RleHQtZGFuZ2VyJz5Vbm1haW50YWluZWQ8L3NwYW4+XCI7XG4gICAgICBjYXNlIFwiUkVQTEFDRURcIjpcbiAgICAgICAgcmV0dXJuIFwiPHNwYW4gY2xhc3M9J3RleHQtZGFuZ2VyJz5SZXBsYWNlZDwvc3Bhbj4gYnkgYW5vdGhlciBBZGRvbiFcIjtcbiAgICAgIGNhc2UgXCJSRU1PVkVEXCI6XG4gICAgICAgIHJldHVybiBcIjxzcGFuIGNsYXNzPSd0ZXh0LWRhbmdlcic+UmVtb3ZlZDwvc3Bhbj5cIjtcbiAgICAgIGRlZmF1bHQ6XG4gICAgICAgIHJldHVybiBjb2RlO1xuICAgIH1cbiAgfVxuPC9zY3JpcHQ+XG5cbjxzdHlsZT5cbiAgdGFibGUucHJvcGVydHktdGFibGUgdGgge1xuICAgIHdpZHRoOiAxcHg7XG4gICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgfVxuPC9zdHlsZT5cblxuPGFydGljbGVcbiAgaWQ9e2FkZG9uLmlkfVxuICBjbGFzcz1cImFkZG9uIG1iLTMge2FkZG9uLnN0YXR1cy5jb2RlfVwiXG4gIG9uOmNsaWNrPXtlID0+IGRpc3BhdGNoKCdjbGljaycsIHsgaWQ6IGFkZG9uLmlkIH0pfT5cbiAgPHVpLXRvb2x0aXAgbm9idXR0b24gYmluZDp0aGlzPXtwb3B1cH0+e2Vycm9yX21lc3NhZ2V9PC91aS10b29sdGlwPlxuICA8aGVhZGVyIHRpdGxlPXthZGRvbi5pZH0+XG4gICAgPHNwYW4+e2FkZG9uLmxhYmVsfTwvc3Bhbj5cbiAgICA8c21hbGwgY2xhc3M9XCJtbC0yXCI+e2FkZG9uLnZlcnNpb259PC9zbWFsbD5cbiAgICA8c21hbGwgY2xhc3M9XCJcIiBzdHlsZT1cIndoaXRlLXNwYWNlOiBub3dyYXA7IHRleHQtb3ZlcmZsb3c6IGVsbGlwc2lzO1wiPlxuICAgICAg4oCTIEJ5IHthZGRvbi5hdXRob3J9XG4gICAgPC9zbWFsbD5cbiAgPC9oZWFkZXI+XG4gIDxzZWN0aW9uIGNsYXNzPVwibG9nb1wiPlxuICAgIHsjaWYgbG9nb191cmx9XG4gICAgICA8aW1nIHNyYz17bG9nb191cmx9IGFsdD1cIkxvZ29cIiBvbjplcnJvcj17ZSA9PiAobG9nb191cmwgPSBudWxsKX0gLz5cbiAgICB7OmVsc2V9XG4gICAgICA8ZGl2PlxuICAgICAgICB7I2lmIHN1Z2dlc3RfbG9nb191cmx9XG4gICAgICAgICAgPGEgaHJlZj17c3VnZ2VzdF9sb2dvX3VybH0+U3VnZ2VzdCBMb2dvPC9hPlxuICAgICAgICB7L2lmfVxuICAgICAgPC9kaXY+XG4gICAgey9pZn1cbiAgPC9zZWN0aW9uPlxuICA8c2VjdGlvbiBjbGFzcz1cImRlc2NyaXB0aW9uXCI+XG4gICAgeyNpZiBtb2RlID09ICdwZXJtaXNzaW9ucyd9XG4gICAgICA8UGVybWlzc2lvbnNJbnN0YWxsXG4gICAgICAgIHthZGRvbn1cbiAgICAgICAge1VzZXJBd2FyZUNvbXBvbmVudH1cbiAgICAgICAgcGVybWlzc2lvbnM9e2FkZG9uZGIucGVybWlzc2lvbnN9XG4gICAgICAgIG9uOmluc3RhbGwgLz5cbiAgICAgIDxidXR0b25cbiAgICAgICAgY2xhc3M9XCJidG4gYnRuLXByaW1hcnktc3VjY2Vzc1wiXG4gICAgICAgIG9uOmNsaWNrfHN0b3BQcm9wYWdhdGlvbj17ZSA9PiAobW9kZSA9ICcnKX0+XG4gICAgICAgIEJhY2sgdG8gZGVzY3JpcHRpb25cbiAgICAgIDwvYnV0dG9uPlxuICAgIHs6ZWxzZSBpZiBzdGFuZGFsb25lICE9PSBmYWxzZX1cbiAgICAgIDx0YWJsZSBjbGFzcz1cInRhYmxlIHRhYmxlLWhvdmVyIHRhYmxlLXNtIHByb3BlcnR5LXRhYmxlXCI+XG4gICAgICAgIDx0cj5cbiAgICAgICAgICA8dGggc2NvcGU9XCJyb3dcIiBzdHlsZT1cIndpZHRoOiAxcHg7d2hpdGUtc3BhY2U6IG5vd3JhcDtcIj5VcGRhdGVkPC90aD5cbiAgICAgICAgICA8dGQ+XG4gICAgICAgICAgICB7bmV3IERhdGUoYWRkb24ubGFzdF91cGRhdGVkKS50b0xvY2FsZVN0cmluZygpfVxuICAgICAgICAgICAgeyNpZiBhZGRvbi5jaGFuZ2Vsb2dfdXJsfVxuICAgICAgICAgICAgICA8YSBocmVmPXthZGRvbi5jaGFuZ2Vsb2dfdXJsfT5DaGFuZ2Vsb2c8L2E+XG4gICAgICAgICAgICB7L2lmfVxuICAgICAgICAgIDwvdGQ+XG4gICAgICAgIDwvdHI+XG4gICAgICAgIDx0cj5cbiAgICAgICAgICA8dGggc2NvcGU9XCJyb3dcIj5NYWludGVuYW5jZTwvdGg+XG4gICAgICAgICAgPHRkPlxuICAgICAgICAgICAge0BodG1sIG1haW50ZW5hbmNlX2NvZGVfc3RyKGFkZG9uLnN0YXR1cy5jb2RlKX1cbiAgICAgICAgICA8L3RkPlxuICAgICAgICA8L3RyPlxuICAgICAgICA8dHI+XG4gICAgICAgICAgPHRoIHNjb3BlPVwicm93XCI+SW5zdGFsbCBTaXplPC90aD5cbiAgICAgICAgICA8dGQgdGl0bGU9e2FkZG9uLnNpemUgKyAnIGJ5dGVzJ30+XG4gICAgICAgICAgICB7TnVtYmVyLnBhcnNlRmxvYXQoYWRkb24uc2l6ZSAvIDEwMjQgLyAxMDI0KS50b0ZpeGVkKDIpfSBNQlxuICAgICAgICAgIDwvdGQ+XG4gICAgICAgIDwvdHI+XG4gICAgICAgIDx0cj5cbiAgICAgICAgICA8dGhcbiAgICAgICAgICAgIHNjb3BlPVwicm93XCJcbiAgICAgICAgICAgIHRpdGxlPVwiRXN0aW1hdGVkIE1lbW9yeSBVc2FnZS4gVGhpcyBpcyBhbiBBZGRvbiBkZXZlbG9wZXIgcHJvdmlkZWRcbiAgICAgICAgICAgIHZhbHVlLlwiPlxuICAgICAgICAgICAgRXN0LiBNZW0gVXNhZ2VcbiAgICAgICAgICA8L3RoPlxuICAgICAgICAgIDx0ZD5cbiAgICAgICAgICAgIHsjaWYgYWRkb24uZXN0aW1hdGVkX21lbX1cbiAgICAgICAgICAgICAge051bWJlci5wYXJzZUZsb2F0KGFkZG9uLmVzdGltYXRlZF9tZW0ubWluKS50b0ZpeGVkKDIpfSAtIHtOdW1iZXIucGFyc2VGbG9hdChhZGRvbi5lc3RpbWF0ZWRfbWVtLm1heCkudG9GaXhlZCgyKX1cbiAgICAgICAgICAgICAgTUJcbiAgICAgICAgICAgIHsvaWZ9XG4gICAgICAgICAgPC90ZD5cbiAgICAgICAgPC90cj5cbiAgICAgICAgPHRyPlxuICAgICAgICAgIDx0aCBzY29wZT1cInJvd1wiPlJldmlld2VkPC90aD5cbiAgICAgICAgICA8dGQ+XG4gICAgICAgICAgICB7YWRkb24ucmV2aWV3ZWRfYnkgJiYgYWRkb24ucmV2aWV3ZWRfYnkubGVuZ3RoID4gMCA/ICdZZXMnIDogJ05vJ31cbiAgICAgICAgICA8L3RkPlxuICAgICAgICA8L3RyPlxuICAgICAgICB7I2lmIGFkZG9uLnN0YXQgJiYgYWRkb24uc3RhdC5saWNlbnNlICYmIGFkZG9uLnN0YXQubGljZW5zZS5uYW1lfVxuICAgICAgICAgIDx0cj5cbiAgICAgICAgICAgIDx0aCBzY29wZT1cInJvd1wiPkxpY2Vuc2U8L3RoPlxuICAgICAgICAgICAgPHRkPnthZGRvbi5zdGF0LmxpY2Vuc2UubmFtZX08L3RkPlxuICAgICAgICAgIDwvdHI+XG4gICAgICAgIHsvaWZ9XG4gICAgICA8L3RhYmxlPlxuICAgICAgPGJ1dHRvblxuICAgICAgICBjbGFzcz1cImJ0biBidG4tb3V0bGluZS1zdWNjZXNzXCJcbiAgICAgICAgZGlzYWJsZWQ9eyFsb2dnZWRpbn1cbiAgICAgICAgdGl0bGU9e2xvZ2dlZGluID8gJycgOiAnWW91IG5lZWQgdG8gbG9naW4hJ31cbiAgICAgICAgb246Y2xpY2t8c3RvcFByb3BhZ2F0aW9uPXtlID0+IChtb2RlID0gJ3Blcm1pc3Npb25zJyl9PlxuICAgICAgICBDaGVjayBQZXJtaXNzaW9ucyAmYW1wOyBJbnN0YWxsXG4gICAgICA8L2J1dHRvbj5cbiAgICB7OmVsc2V9XG4gICAgICA8cD57YWRkb24uZGVzY3JpcHRpb259PC9wPlxuICAgIHsvaWZ9XG4gIDwvc2VjdGlvbj5cbiAgPGZvb3Rlcj5cbiAgICB7I2lmIGFkZG9uLmdpdGh1YiAmJiBhZGRvbi5zdGF0ICYmIGFkZG9uLnN0YXQuc31cbiAgICAgIDxhXG4gICAgICAgIGNsYXNzPVwibXItMiBub3JlZlwiXG4gICAgICAgIGhyZWY9e2FkZG9uLmdpdGh1Yn1cbiAgICAgICAgdGFyZ2V0PVwiX2JsYW5rXCJcbiAgICAgICAgdGl0bGU9e2FkZG9uLmdpdGh1Yn0+XG4gICAgICAgIDxzcGFuIGNsYXNzPVwibXItMlwiPlxuICAgICAgICAgIDxpIGNsYXNzPVwiZmFzIGZhLXN0YXJcIiAvPlxuICAgICAgICAgIHthZGRvbi5zdGF0LnN9IFN0YXJzXG4gICAgICAgIDwvc3Bhbj5cbiAgICAgICAgPHNwYW4gY2xhc3M9XCJtci0yXCI+XG4gICAgICAgICAgPGkgY2xhc3M9XCJmYXMgZmEtaW5mby1jaXJjbGVcIiAvPlxuICAgICAgICAgIHthZGRvbi5zdGF0Lmlzc30gSXNzdWVzXG4gICAgICAgIDwvc3Bhbj5cbiAgICAgIDwvYT5cbiAgICB7OmVsc2V9XG4gICAgICA8YVxuICAgICAgICBjbGFzcz1cIm1yLTJcIlxuICAgICAgICBocmVmPXthZGRvbi5ob21lcGFnZX1cbiAgICAgICAgdGFyZ2V0PVwiX2JsYW5rXCJcbiAgICAgICAgdGl0bGU9e2FkZG9uLmhvbWVwYWdlfT5cbiAgICAgICAgSG9tZXBhZ2UgLyBSZXBvc2l0b3J5XG4gICAgICA8L2E+XG4gICAgey9pZn1cbiAgICB7I2lmIGFkZG9uLnN0YXR9XG4gICAgICA8c3BhbiBjbGFzcz1cIm1yLTJcIj5cbiAgICAgICAgPGkgY2xhc3M9XCJmYXMgZmEtZG93bmxvYWRcIiAvPlxuICAgICAgICB7YWRkb24uc3RhdC5kfSBEb3dubG9hZHNcbiAgICAgIDwvc3Bhbj5cbiAgICAgIDx1aS1zdGFyLXJhdGluZ1xuICAgICAgICBjbGFzcz1cIm1sLWF1dG9cIlxuICAgICAgICB0aXRsZT17bG9nZ2VkaW4gPyAnUmF0ZSB0aGlzIEFkZG9uJyA6ICdZb3UgbmVlZCB0byBsb2dpbiB0byByYXRlJ31cbiAgICAgICAgdmFsdWU9e2l0ZW1fcmF0aW5nfVxuICAgICAgICBkaXNhYmxlZD17IWxvZ2dlZGlufVxuICAgICAgICBoaWdobGlnaHQ9e3VzZXJfaXRlbV9yYXRpbmd9XG4gICAgICAgIG9uOnJhdGU9e3N1Ym1pdF9yYXRlfVxuICAgICAgICBvbjppbnZhbGlkPXtlID0+IG5vdF9sb2dnZWRfaW4oKX0gLz5cbiAgICB7L2lmfVxuICA8L2Zvb3Rlcj5cbjwvYXJ0aWNsZT5cbiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUF1R0UsS0FBSyw4QkFBZSxDQUFDLEVBQUUsZUFBQyxDQUFDLEFBQ3ZCLEtBQUssQ0FBRSxHQUFHLENBQ1YsV0FBVyxDQUFFLE1BQU0sQUFDckIsQ0FBQyJ9 */",a(document.head,t)),E(this,n,Un,zn,c,["addondb","addon","UserAwareComponent","standalone","start"]);const{ctx:e}=this.$$,o=n.props||{};void 0!==e.addondb||"addondb"in o||console.warn("<Cmp> was created without expected prop 'addondb'"),void 0!==e.UserAwareComponent||"UserAwareComponent"in o||console.warn("<Cmp> was created without expected prop 'UserAwareComponent'"),void 0!==e.start||"start"in o||console.warn("<Cmp> was created without expected prop 'start'")}get addondb(){throw new Error("<Cmp>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set addondb(n){throw new Error("<Cmp>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}get addon(){throw new Error("<Cmp>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set addon(n){throw new Error("<Cmp>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}get UserAwareComponent(){throw new Error("<Cmp>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set UserAwareComponent(n){throw new Error("<Cmp>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}get standalone(){throw new Error("<Cmp>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set standalone(n){throw new Error("<Cmp>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}get start(){return this.$$.ctx.start}set start(n){throw new Error("<Cmp>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}}window.customElements.define("ui-addon",class extends HTMLElement{constructor(){super(),this.unreg=[]}connectedCallback(){this._ok=!0,this.check()}async check(){if(this.cmp)return;const n=this.hasAttribute("standalone");this._ok&&this._addondb&&(n||this._addon)&&this._userawarecomponent&&(this.cmp=new En({target:this,props:{UserAwareComponent:this._userawarecomponent,addondb:this._addondb,addon:this._addon,standalone:n}}),this.cmp.start(),this.unreg.push(this.cmp.$on("install",n=>this.dispatchEvent(n))),this.unreg.push(this.cmp.$on("rate",n=>this.dispatchEvent(n))))}set userawarecomponent(n){this._userawarecomponent=n,this.check()}set addondb(n){this._addondb=n,this.check()}set addon(n){this._addon=n,this.check()}disconnectedCallback(){for(let n of this.unreg)n();this.unreg=[],this.cmp&&this.cmp.$destroy()}});
+function noop() { }
+function run(fn) {
+    return fn();
+}
+function blank_object() {
+    return Object.create(null);
+}
+function run_all(fns) {
+    fns.forEach(run);
+}
+function is_function(thing) {
+    return typeof thing === 'function';
+}
+function safe_not_equal(a, b) {
+    return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+}
+
+function append(target, node) {
+    target.appendChild(node);
+}
+function insert(target, node, anchor) {
+    target.insertBefore(node, anchor || null);
+}
+function detach(node) {
+    node.parentNode.removeChild(node);
+}
+function destroy_each(iterations, detaching) {
+    for (let i = 0; i < iterations.length; i += 1) {
+        if (iterations[i])
+            iterations[i].d(detaching);
+    }
+}
+function element(name) {
+    return document.createElement(name);
+}
+function text(data) {
+    return document.createTextNode(data);
+}
+function space() {
+    return text(' ');
+}
+function empty() {
+    return text('');
+}
+function listen(node, event, handler, options) {
+    node.addEventListener(event, handler, options);
+    return () => node.removeEventListener(event, handler, options);
+}
+function stop_propagation(fn) {
+    return function (event) {
+        event.stopPropagation();
+        // @ts-ignore
+        return fn.call(this, event);
+    };
+}
+function attr(node, attribute, value) {
+    if (value == null)
+        node.removeAttribute(attribute);
+    else
+        node.setAttribute(attribute, value);
+}
+function set_custom_element_data(node, prop, value) {
+    if (prop in node) {
+        node[prop] = value;
+    }
+    else {
+        attr(node, prop, value);
+    }
+}
+function children(element) {
+    return Array.from(element.childNodes);
+}
+function set_data(text, data) {
+    data = '' + data;
+    if (text.data !== data)
+        text.data = data;
+}
+function set_style(node, key, value, important) {
+    node.style.setProperty(key, value, important ? 'important' : '');
+}
+function custom_event(type, detail) {
+    const e = document.createEvent('CustomEvent');
+    e.initCustomEvent(type, false, false, detail);
+    return e;
+}
+class HtmlTag {
+    constructor(html, anchor = null) {
+        this.e = element('div');
+        this.a = anchor;
+        this.u(html);
+    }
+    m(target, anchor = null) {
+        for (let i = 0; i < this.n.length; i += 1) {
+            insert(target, this.n[i], anchor);
+        }
+        this.t = target;
+    }
+    u(html) {
+        this.e.innerHTML = html;
+        this.n = Array.from(this.e.childNodes);
+    }
+    p(html) {
+        this.d();
+        this.u(html);
+        this.m(this.t, this.a);
+    }
+    d() {
+        this.n.forEach(detach);
+    }
+}
+
+let current_component;
+function set_current_component(component) {
+    current_component = component;
+}
+function get_current_component() {
+    if (!current_component)
+        throw new Error(`Function called outside component initialization`);
+    return current_component;
+}
+function onDestroy(fn) {
+    get_current_component().$$.on_destroy.push(fn);
+}
+function createEventDispatcher() {
+    const component = current_component;
+    return (type, detail) => {
+        const callbacks = component.$$.callbacks[type];
+        if (callbacks) {
+            // TODO are there situations where events could be dispatched
+            // in a server (non-DOM) environment?
+            const event = custom_event(type, detail);
+            callbacks.slice().forEach(fn => {
+                fn.call(component, event);
+            });
+        }
+    };
+}
+// TODO figure out if we still want to support
+// shorthand events, or if we want to implement
+// a real bubbling mechanism
+function bubble(component, event) {
+    const callbacks = component.$$.callbacks[event.type];
+    if (callbacks) {
+        callbacks.slice().forEach(fn => fn(event));
+    }
+}
+
+const dirty_components = [];
+const binding_callbacks = [];
+const render_callbacks = [];
+const flush_callbacks = [];
+const resolved_promise = Promise.resolve();
+let update_scheduled = false;
+function schedule_update() {
+    if (!update_scheduled) {
+        update_scheduled = true;
+        resolved_promise.then(flush);
+    }
+}
+function add_render_callback(fn) {
+    render_callbacks.push(fn);
+}
+function flush() {
+    const seen_callbacks = new Set();
+    do {
+        // first, call beforeUpdate functions
+        // and update components
+        while (dirty_components.length) {
+            const component = dirty_components.shift();
+            set_current_component(component);
+            update(component.$$);
+        }
+        while (binding_callbacks.length)
+            binding_callbacks.pop()();
+        // then, once components are updated, call
+        // afterUpdate functions. This may cause
+        // subsequent updates...
+        for (let i = 0; i < render_callbacks.length; i += 1) {
+            const callback = render_callbacks[i];
+            if (!seen_callbacks.has(callback)) {
+                callback();
+                // ...so guard against infinite loops
+                seen_callbacks.add(callback);
+            }
+        }
+        render_callbacks.length = 0;
+    } while (dirty_components.length);
+    while (flush_callbacks.length) {
+        flush_callbacks.pop()();
+    }
+    update_scheduled = false;
+}
+function update($$) {
+    if ($$.fragment) {
+        $$.update($$.dirty);
+        run_all($$.before_update);
+        $$.fragment.p($$.dirty, $$.ctx);
+        $$.dirty = null;
+        $$.after_update.forEach(add_render_callback);
+    }
+}
+const outroing = new Set();
+let outros;
+function group_outros() {
+    outros = {
+        r: 0,
+        c: [],
+        p: outros // parent group
+    };
+}
+function check_outros() {
+    if (!outros.r) {
+        run_all(outros.c);
+    }
+    outros = outros.p;
+}
+function transition_in(block, local) {
+    if (block && block.i) {
+        outroing.delete(block);
+        block.i(local);
+    }
+}
+function transition_out(block, local, detach, callback) {
+    if (block && block.o) {
+        if (outroing.has(block))
+            return;
+        outroing.add(block);
+        outros.c.push(() => {
+            outroing.delete(block);
+            if (callback) {
+                if (detach)
+                    block.d(1);
+                callback();
+            }
+        });
+        block.o(local);
+    }
+}
+
+const globals = (typeof window !== 'undefined' ? window : global);
+function mount_component(component, target, anchor) {
+    const { fragment, on_mount, on_destroy, after_update } = component.$$;
+    fragment.m(target, anchor);
+    // onMount happens before the initial afterUpdate
+    add_render_callback(() => {
+        const new_on_destroy = on_mount.map(run).filter(is_function);
+        if (on_destroy) {
+            on_destroy.push(...new_on_destroy);
+        }
+        else {
+            // Edge case - component was destroyed immediately,
+            // most likely as a result of a binding initialising
+            run_all(new_on_destroy);
+        }
+        component.$$.on_mount = [];
+    });
+    after_update.forEach(add_render_callback);
+}
+function destroy_component(component, detaching) {
+    if (component.$$.fragment) {
+        run_all(component.$$.on_destroy);
+        component.$$.fragment.d(detaching);
+        // TODO null out other refs, including component.$$ (but need to
+        // preserve final state?)
+        component.$$.on_destroy = component.$$.fragment = null;
+        component.$$.ctx = {};
+    }
+}
+function make_dirty(component, key) {
+    if (!component.$$.dirty) {
+        dirty_components.push(component);
+        schedule_update();
+        component.$$.dirty = blank_object();
+    }
+    component.$$.dirty[key] = true;
+}
+function init(component, options, instance, create_fragment, not_equal, prop_names) {
+    const parent_component = current_component;
+    set_current_component(component);
+    const props = options.props || {};
+    const $$ = component.$$ = {
+        fragment: null,
+        ctx: null,
+        // state
+        props: prop_names,
+        update: noop,
+        not_equal,
+        bound: blank_object(),
+        // lifecycle
+        on_mount: [],
+        on_destroy: [],
+        before_update: [],
+        after_update: [],
+        context: new Map(parent_component ? parent_component.$$.context : []),
+        // everything else
+        callbacks: blank_object(),
+        dirty: null
+    };
+    let ready = false;
+    $$.ctx = instance
+        ? instance(component, props, (key, ret, value = ret) => {
+            if ($$.ctx && not_equal($$.ctx[key], $$.ctx[key] = value)) {
+                if ($$.bound[key])
+                    $$.bound[key](value);
+                if (ready)
+                    make_dirty(component, key);
+            }
+            return ret;
+        })
+        : props;
+    $$.update();
+    ready = true;
+    run_all($$.before_update);
+    $$.fragment = create_fragment($$.ctx);
+    if (options.target) {
+        if (options.hydrate) {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            $$.fragment.l(children(options.target));
+        }
+        else {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            $$.fragment.c();
+        }
+        if (options.intro)
+            transition_in(component.$$.fragment);
+        mount_component(component, options.target, options.anchor);
+        flush();
+    }
+    set_current_component(parent_component);
+}
+let SvelteElement;
+if (typeof HTMLElement !== 'undefined') {
+    SvelteElement = class extends HTMLElement {
+        constructor() {
+            super();
+            this.attachShadow({ mode: 'open' });
+        }
+        connectedCallback() {
+            // @ts-ignore todo: improve typings
+            for (const key in this.$$.slotted) {
+                // @ts-ignore todo: improve typings
+                this.appendChild(this.$$.slotted[key]);
+            }
+        }
+        attributeChangedCallback(attr, _oldValue, newValue) {
+            this[attr] = newValue;
+        }
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            // TODO should this delegate to addEventListener?
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set() {
+            // overridden by instance, if it has props
+        }
+    };
+}
+class SvelteComponent {
+    $destroy() {
+        destroy_component(this, 1);
+        this.$destroy = noop;
+    }
+    $on(type, callback) {
+        const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+        callbacks.push(callback);
+        return () => {
+            const index = callbacks.indexOf(callback);
+            if (index !== -1)
+                callbacks.splice(index, 1);
+        };
+    }
+    $set() {
+        // overridden by instance, if it has props
+    }
+}
+
+const empty_star = ["far", "fa-star"];
+const half_star = ["fas", "fa-star-half-alt"];
+const full_star = ["fas", "fa-star"];
+
+class StarRating extends HTMLElement {
+    get value() {
+        return parseFloat(this.getAttribute('value')) || 0.0;
+    }
+
+    set value(val) {
+        this.setAttribute('value', val);
+        this.val = val;
+        if (!this.stars) return;
+        this.render(val);
+    }
+
+    get disabled() {
+        return this.hasAttribute('disabled');
+    }
+    
+    set disabled(val) {
+        if (val) this.setAttribute('disabled', true);
+        else this.removeAttribute("disabled");
+    }
+
+    /**
+     * value between 1-5. 0 for removing the highlight
+     */
+    set highlight(val) {
+        this._highlight = parseInt(val);
+        this.setAttribute('highlight', this._highlight);
+        if (!this.stars) return;
+        this.mark(this._highlight-1);
+    }
+
+    render(index) {
+        this.stars.forEach((star, i) => {
+            star.classList.remove(empty_star[0], half_star[0], half_star[1], full_star[1]);
+            if (i < index && i + 1 > index) { // 0 < 0.2 < 1
+                star.classList.add(half_star[0],half_star[1]);
+            } else if (i < index) { // 0 < 1
+                star.classList.add(full_star[0],full_star[1]);
+            } else {
+                star.classList.add(empty_star[0],empty_star[1]);
+            }
+        });
+    }
+
+    mark(index) {
+        this.stars.forEach((star, i) => {
+            star.classList.toggle('text-primary', i <= index);
+        });
+    }
+
+    connectedCallback() {
+        this.stars = [];
+        this._highlight = parseInt(this.getAttribute("highlight"))||0;
+
+        while (this.firstChild) {
+            this.removeChild(this.firstChild);
+        }
+
+        for (let i = 0; i < 5; i++) {
+            let s = document.createElement('i');
+            s.classList.add(empty_star[0], empty_star[1]);
+            this.appendChild(s);
+            this.stars.push(s);
+        }
+
+        this.render(this.value);
+    }
+
+    constructor() {
+        super();
+
+        this.addEventListener('mousemove', e => {
+            let box = this.getBoundingClientRect(),
+                starIndex = Math.floor((e.pageX - box.left) / box.width * this.stars.length);
+
+            this.mark(starIndex);
+        });
+
+        this.addEventListener('mouseout', () => {
+            this.mark(this._highlight-1);
+        });
+
+        this.addEventListener('click', e => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            if (this.disabled) {
+                this.dispatchEvent(new CustomEvent('invalid'));
+                return;
+            }
+            let box = this.getBoundingClientRect(),
+                starIndex = Math.floor((e.pageX - box.left) / box.width * this.stars.length);
+
+            this.highlight = starIndex+1;
+
+            let rateEvent = new CustomEvent('rate', { detail: { value: this.val, rate: this._highlight } });
+            this.dispatchEvent(rateEvent);
+        });
+    }
+}
+
+customElements.define('ui-star-rating', StarRating);
+
+/* assets/js/ui-addon/permissions_install.svelte generated by Svelte v3.12.0 */
+const { Object: Object_1 } = globals;
+
+function get_each_context(ctx, list, i) {
+	const child_ctx = Object_1.create(ctx);
+	child_ctx.installment = list[i][0];
+	child_ctx.thisaddon = list[i][1];
+	child_ctx.queue = list[i][2];
+	return child_ctx;
+}
+
+function get_each_context_1(ctx, list, i) {
+	const child_ctx = Object_1.create(ctx);
+	child_ctx.rule = list[i];
+	return child_ctx;
+}
+
+function get_each_context_2(ctx, list, i) {
+	const child_ctx = Object_1.create(ctx);
+	child_ctx.rule = list[i];
+	return child_ctx;
+}
+
+function get_each_context_3(ctx, list, i) {
+	const child_ctx = Object_1.create(ctx);
+	child_ctx.cap = list[i];
+	return child_ctx;
+}
+
+function get_each_context_4(ctx, list, i) {
+	const child_ctx = Object_1.create(ctx);
+	child_ctx.permission = list[i];
+	return child_ctx;
+}
+
+// (133:0) {:else}
+function create_else_block_2(ctx) {
+	var p;
+
+	return {
+		c() {
+			p = element("p");
+			p.textContent = "No permissions required";
+		},
+
+		m(target, anchor) {
+			insert(target, p, anchor);
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(p);
+			}
+		}
+	};
+}
+
+// (128:0) {#each perm as permission}
+function create_each_block_4(ctx) {
+	var dl, dt, t0_value = ctx.permission.label + "", t0, t1, t2_value = ctx.permission.id + "", t2, t3, dd, t4_value = ctx.permission.description + "", t4;
+
+	return {
+		c() {
+			dl = element("dl");
+			dt = element("dt");
+			t0 = text(t0_value);
+			t1 = text(" (");
+			t2 = text(t2_value);
+			t3 = text(")");
+			dd = element("dd");
+			t4 = text(t4_value);
+		},
+
+		m(target, anchor) {
+			insert(target, dl, anchor);
+			append(dl, dt);
+			append(dt, t0);
+			append(dt, t1);
+			append(dt, t2);
+			append(dt, t3);
+			append(dl, dd);
+			append(dd, t4);
+		},
+
+		p(changed, ctx) {
+			if ((changed.perm) && t0_value !== (t0_value = ctx.permission.label + "")) {
+				set_data(t0, t0_value);
+			}
+
+			if ((changed.perm) && t2_value !== (t2_value = ctx.permission.id + "")) {
+				set_data(t2, t2_value);
+			}
+
+			if ((changed.perm) && t4_value !== (t4_value = ctx.permission.description + "")) {
+				set_data(t4, t4_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(dl);
+			}
+		}
+	};
+}
+
+// (136:0) {#if addon.linux_capabilities}
+function create_if_block_11(ctx) {
+	var h4, t_1, each_1_anchor;
+
+	let each_value_3 = ctx.addon.linux_capabilities;
+
+	let each_blocks = [];
+
+	for (let i = 0; i < each_value_3.length; i += 1) {
+		each_blocks[i] = create_each_block_3(get_each_context_3(ctx, each_value_3, i));
+	}
+
+	return {
+		c() {
+			h4 = element("h4");
+			h4.textContent = "Linux capabilities";
+			t_1 = space();
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+
+			each_1_anchor = empty();
+		},
+
+		m(target, anchor) {
+			insert(target, h4, anchor);
+			insert(target, t_1, anchor);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].m(target, anchor);
+			}
+
+			insert(target, each_1_anchor, anchor);
+		},
+
+		p(changed, ctx) {
+			if (changed.cap_description || changed.addon) {
+				each_value_3 = ctx.addon.linux_capabilities;
+
+				let i;
+				for (i = 0; i < each_value_3.length; i += 1) {
+					const child_ctx = get_each_context_3(ctx, each_value_3, i);
+
+					if (each_blocks[i]) {
+						each_blocks[i].p(changed, child_ctx);
+					} else {
+						each_blocks[i] = create_each_block_3(child_ctx);
+						each_blocks[i].c();
+						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+					}
+				}
+
+				for (; i < each_blocks.length; i += 1) {
+					each_blocks[i].d(1);
+				}
+				each_blocks.length = each_value_3.length;
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(h4);
+				detach(t_1);
+			}
+
+			destroy_each(each_blocks, detaching);
+
+			if (detaching) {
+				detach(each_1_anchor);
+			}
+		}
+	};
+}
+
+// (138:2) {#each addon.linux_capabilities as cap}
+function create_each_block_3(ctx) {
+	var dl, dt, t0_value = ctx.cap + "", t0, dd, html_tag, raw_value = cap_description(ctx.cap) + "", t1;
+
+	return {
+		c() {
+			dl = element("dl");
+			dt = element("dt");
+			t0 = text(t0_value);
+			dd = element("dd");
+			t1 = space();
+			html_tag = new HtmlTag(raw_value, t1);
+		},
+
+		m(target, anchor) {
+			insert(target, dl, anchor);
+			append(dl, dt);
+			append(dt, t0);
+			append(dl, dd);
+			html_tag.m(dd);
+			append(dd, t1);
+		},
+
+		p(changed, ctx) {
+			if ((changed.addon) && t0_value !== (t0_value = ctx.cap + "")) {
+				set_data(t0, t0_value);
+			}
+
+			if ((changed.addon) && raw_value !== (raw_value = cap_description(ctx.cap) + "")) {
+				html_tag.p(raw_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(dl);
+			}
+		}
+	};
+}
+
+// (147:0) {#if addon.firewall_allow || addon.ports}
+function create_if_block_7(ctx) {
+	var h4, t1, show_if, t2, if_block1_anchor;
+
+	function select_block_type(changed, ctx) {
+		if ((show_if == null) || changed.addon) show_if = !!(ctx.addon.firewall_allow && ctx.addon.firewall_allow.includes('*'));
+		if (show_if) return create_if_block_9;
+		if (ctx.addon.firewall_allow) return create_if_block_10;
+	}
+
+	var current_block_type = select_block_type(null, ctx);
+	var if_block0 = current_block_type && current_block_type(ctx);
+
+	var if_block1 = (ctx.addon.ports) && create_if_block_8(ctx);
+
+	return {
+		c() {
+			h4 = element("h4");
+			h4.textContent = "Networking";
+			t1 = space();
+			if (if_block0) if_block0.c();
+			t2 = space();
+			if (if_block1) if_block1.c();
+			if_block1_anchor = empty();
+		},
+
+		m(target, anchor) {
+			insert(target, h4, anchor);
+			insert(target, t1, anchor);
+			if (if_block0) if_block0.m(target, anchor);
+			insert(target, t2, anchor);
+			if (if_block1) if_block1.m(target, anchor);
+			insert(target, if_block1_anchor, anchor);
+		},
+
+		p(changed, ctx) {
+			if (current_block_type === (current_block_type = select_block_type(changed, ctx)) && if_block0) {
+				if_block0.p(changed, ctx);
+			} else {
+				if (if_block0) if_block0.d(1);
+				if_block0 = current_block_type && current_block_type(ctx);
+				if (if_block0) {
+					if_block0.c();
+					if_block0.m(t2.parentNode, t2);
+				}
+			}
+
+			if (ctx.addon.ports) {
+				if (if_block1) {
+					if_block1.p(changed, ctx);
+				} else {
+					if_block1 = create_if_block_8(ctx);
+					if_block1.c();
+					if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
+				}
+			} else if (if_block1) {
+				if_block1.d(1);
+				if_block1 = null;
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(h4);
+				detach(t1);
+			}
+
+			if (if_block0) if_block0.d(detaching);
+
+			if (detaching) {
+				detach(t2);
+			}
+
+			if (if_block1) if_block1.d(detaching);
+
+			if (detaching) {
+				detach(if_block1_anchor);
+			}
+		}
+	};
+}
+
+// (153:33) 
+function create_if_block_10(ctx) {
+	var t, ul;
+
+	let each_value_2 = ctx.addon.firewall_allow;
+
+	let each_blocks = [];
+
+	for (let i = 0; i < each_value_2.length; i += 1) {
+		each_blocks[i] = create_each_block_2(get_each_context_2(ctx, each_value_2, i));
+	}
+
+	return {
+		c() {
+			t = text("Allow Internet Access to\n    ");
+			ul = element("ul");
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+		},
+
+		m(target, anchor) {
+			insert(target, t, anchor);
+			insert(target, ul, anchor);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].m(ul, null);
+			}
+		},
+
+		p(changed, ctx) {
+			if (changed.addon) {
+				each_value_2 = ctx.addon.firewall_allow;
+
+				let i;
+				for (i = 0; i < each_value_2.length; i += 1) {
+					const child_ctx = get_each_context_2(ctx, each_value_2, i);
+
+					if (each_blocks[i]) {
+						each_blocks[i].p(changed, child_ctx);
+					} else {
+						each_blocks[i] = create_each_block_2(child_ctx);
+						each_blocks[i].c();
+						each_blocks[i].m(ul, null);
+					}
+				}
+
+				for (; i < each_blocks.length; i += 1) {
+					each_blocks[i].d(1);
+				}
+				each_blocks.length = each_value_2.length;
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(t);
+				detach(ul);
+			}
+
+			destroy_each(each_blocks, detaching);
+		}
+	};
+}
+
+// (149:2) {#if addon.firewall_allow && addon.firewall_allow.includes('*')}
+function create_if_block_9(ctx) {
+	var span, t_1;
+
+	return {
+		c() {
+			span = element("span");
+			span.textContent = "FULL Internet access!";
+			t_1 = text("\n    . An Addon developer should usually restrict this to a set of required\n    internet addresses!");
+			attr(span, "class", "text-danger");
+		},
+
+		m(target, anchor) {
+			insert(target, span, anchor);
+			insert(target, t_1, anchor);
+		},
+
+		p: noop,
+
+		d(detaching) {
+			if (detaching) {
+				detach(span);
+				detach(t_1);
+			}
+		}
+	};
+}
+
+// (156:6) {#each addon.firewall_allow as rule}
+function create_each_block_2(ctx) {
+	var li, t_value = ctx.rule + "", t;
+
+	return {
+		c() {
+			li = element("li");
+			t = text(t_value);
+		},
+
+		m(target, anchor) {
+			insert(target, li, anchor);
+			append(li, t);
+		},
+
+		p(changed, ctx) {
+			if ((changed.addon) && t_value !== (t_value = ctx.rule + "")) {
+				set_data(t, t_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(li);
+			}
+		}
+	};
+}
+
+// (161:2) {#if addon.ports}
+function create_if_block_8(ctx) {
+	var t, each_1_anchor;
+
+	let each_value_1 = ctx.addon.ports;
+
+	let each_blocks = [];
+
+	for (let i = 0; i < each_value_1.length; i += 1) {
+		each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+	}
+
+	return {
+		c() {
+			t = text("Expose ports to Internet:\n    ");
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+
+			each_1_anchor = empty();
+		},
+
+		m(target, anchor) {
+			insert(target, t, anchor);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].m(target, anchor);
+			}
+
+			insert(target, each_1_anchor, anchor);
+		},
+
+		p(changed, ctx) {
+			if (changed.addon) {
+				each_value_1 = ctx.addon.ports;
+
+				let i;
+				for (i = 0; i < each_value_1.length; i += 1) {
+					const child_ctx = get_each_context_1(ctx, each_value_1, i);
+
+					if (each_blocks[i]) {
+						each_blocks[i].p(changed, child_ctx);
+					} else {
+						each_blocks[i] = create_each_block_1(child_ctx);
+						each_blocks[i].c();
+						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+					}
+				}
+
+				for (; i < each_blocks.length; i += 1) {
+					each_blocks[i].d(1);
+				}
+				each_blocks.length = each_value_1.length;
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(t);
+			}
+
+			destroy_each(each_blocks, detaching);
+
+			if (detaching) {
+				detach(each_1_anchor);
+			}
+		}
+	};
+}
+
+// (163:4) {#each addon.ports as rule}
+function create_each_block_1(ctx) {
+	var t0_value = ctx.rule + "", t0, t1;
+
+	return {
+		c() {
+			t0 = text(t0_value);
+			t1 = text("; ");
+		},
+
+		m(target, anchor) {
+			insert(target, t0, anchor);
+			insert(target, t1, anchor);
+		},
+
+		p(changed, ctx) {
+			if ((changed.addon) && t0_value !== (t0_value = ctx.rule + "")) {
+				set_data(t0, t0_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(t0);
+				detach(t1);
+			}
+		}
+	};
+}
+
+// (215:0) {:else}
+function create_else_block_1(ctx) {
+	var p;
+
+	return {
+		c() {
+			p = element("p");
+			p.innerHTML = `
+			    No Installations registered! Log into
+			    <b>Setup &amp; Maintenance</b>
+			    and click on "Register this installation on openhabx.com".
+			  `;
+		},
+
+		m(target, anchor) {
+			insert(target, p, anchor);
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(p);
+			}
+		}
+	};
+}
+
+// (197:4) {:else}
+function create_else_block(ctx) {
+	var button, t, button_disabled_value, dispose;
+
+	function click_handler_2(...args) {
+		return ctx.click_handler_2(ctx, ...args);
+	}
+
+	return {
+		c() {
+			button = element("button");
+			t = text("Install");
+			attr(button, "class", "btn btn-outline-success");
+			button.disabled = button_disabled_value = ctx.queue && ctx.queue.c=='install';
+			dispose = listen(button, "click", click_handler_2);
+		},
+
+		m(target, anchor) {
+			insert(target, button, anchor);
+			append(button, t);
+		},
+
+		p(changed, new_ctx) {
+			ctx = new_ctx;
+			if ((changed.data || changed.actionqueue) && button_disabled_value !== (button_disabled_value = ctx.queue && ctx.queue.c=='install')) {
+				button.disabled = button_disabled_value;
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(button);
+			}
+
+			dispose();
+		}
+	};
+}
+
+// (195:37) 
+function create_if_block_6(ctx) {
+	var p, t0, t1_value = ctx.thisaddon.d + "", t1;
+
+	return {
+		c() {
+			p = element("p");
+			t0 = text("An error occured: ");
+			t1 = text(t1_value);
+		},
+
+		m(target, anchor) {
+			insert(target, p, anchor);
+			append(p, t0);
+			append(p, t1);
+		},
+
+		p(changed, ctx) {
+			if ((changed.data || changed.actionqueue) && t1_value !== (t1_value = ctx.thisaddon.d + "")) {
+				set_data(t1, t1_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(p);
+			}
+		}
+	};
+}
+
+// (179:41) 
+function create_if_block_5(ctx) {
+	var small, t1, div, button0, t2, button0_disabled_value, t3, button1, t4, t5_value = ctx.thisaddon.v + "", t5, t6, t7_value = ctx.addon.version + "", t7, button1_disabled_value, dispose;
+
+	function click_handler(...args) {
+		return ctx.click_handler(ctx, ...args);
+	}
+
+	function click_handler_1(...args) {
+		return ctx.click_handler_1(ctx, ...args);
+	}
+
+	return {
+		c() {
+			small = element("small");
+			small.textContent = "This Addon is already installed";
+			t1 = space();
+			div = element("div");
+			button0 = element("button");
+			t2 = text("Uninstall");
+			t3 = space();
+			button1 = element("button");
+			t4 = text("Update ");
+			t5 = text(t5_value);
+			t6 = text(" to ");
+			t7 = text(t7_value);
+			attr(small, "class", "mb-2");
+			attr(button0, "class", "btn btn-outline-danger mr-3");
+			button0.disabled = button0_disabled_value = ctx.queue && ctx.queue.c=='uninstall';
+			attr(button1, "class", "btn btn-outline-warning");
+			button1.disabled = button1_disabled_value = ctx.is_old_version(ctx.thisaddon) || ctx.queue && ctx.queue.c=='update';
+			attr(div, "class", "btn-group");
+
+			dispose = [
+				listen(button0, "click", click_handler),
+				listen(button1, "click", click_handler_1)
+			];
+		},
+
+		m(target, anchor) {
+			insert(target, small, anchor);
+			insert(target, t1, anchor);
+			insert(target, div, anchor);
+			append(div, button0);
+			append(button0, t2);
+			append(div, t3);
+			append(div, button1);
+			append(button1, t4);
+			append(button1, t5);
+			append(button1, t6);
+			append(button1, t7);
+		},
+
+		p(changed, new_ctx) {
+			ctx = new_ctx;
+			if ((changed.data || changed.actionqueue) && button0_disabled_value !== (button0_disabled_value = ctx.queue && ctx.queue.c=='uninstall')) {
+				button0.disabled = button0_disabled_value;
+			}
+
+			if ((changed.data || changed.actionqueue) && t5_value !== (t5_value = ctx.thisaddon.v + "")) {
+				set_data(t5, t5_value);
+			}
+
+			if ((changed.addon) && t7_value !== (t7_value = ctx.addon.version + "")) {
+				set_data(t7, t7_value);
+			}
+
+			if ((changed.data || changed.actionqueue) && button1_disabled_value !== (button1_disabled_value = ctx.is_old_version(ctx.thisaddon) || ctx.queue && ctx.queue.c=='update')) {
+				button1.disabled = button1_disabled_value;
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(small);
+				detach(t1);
+				detach(div);
+			}
+
+			run_all(dispose);
+		}
+	};
+}
+
+// (175:44) 
+function create_if_block_4(ctx) {
+	var button;
+
+	return {
+		c() {
+			button = element("button");
+			button.textContent = "Uninstalling …";
+			button.disabled = true;
+			attr(button, "class", "btn btn-outline-info");
+		},
+
+		m(target, anchor) {
+			insert(target, button, anchor);
+		},
+
+		p: noop,
+
+		d(detaching) {
+			if (detaching) {
+				detach(button);
+			}
+		}
+	};
+}
+
+// (173:42) 
+function create_if_block_3(ctx) {
+	var button;
+
+	return {
+		c() {
+			button = element("button");
+			button.textContent = "Installing …";
+			button.disabled = true;
+			attr(button, "class", "btn btn-outline-info");
+		},
+
+		m(target, anchor) {
+			insert(target, button, anchor);
+		},
+
+		p: noop,
+
+		d(detaching) {
+			if (detaching) {
+				detach(button);
+			}
+		}
+	};
+}
+
+// (169:4) {#if thisaddon.s == 'downloading'}
+function create_if_block_2(ctx) {
+	var button, t0, t1_value = ctx.thisaddon.d * 100 + "", t1, t2;
+
+	return {
+		c() {
+			button = element("button");
+			t0 = text("Downloading Addon: ");
+			t1 = text(t1_value);
+			t2 = text("%");
+			button.disabled = true;
+			attr(button, "class", "btn btn-outline-info");
+		},
+
+		m(target, anchor) {
+			insert(target, button, anchor);
+			append(button, t0);
+			append(button, t1);
+			append(button, t2);
+		},
+
+		p(changed, ctx) {
+			if ((changed.data || changed.actionqueue) && t1_value !== (t1_value = ctx.thisaddon.d * 100 + "")) {
+				set_data(t1, t1_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(button);
+			}
+		}
+	};
+}
+
+// (205:4) {#if queue}
+function create_if_block_1(ctx) {
+	var small, b, t1, t2_value = ctx.queue.c + "", t2, t3;
+
+	return {
+		c() {
+			small = element("small");
+			b = element("b");
+			b.textContent = "Queued!";
+			t1 = text("\n        The queued Addon task \"");
+			t2 = text(t2_value);
+			t3 = text("\" will be performed soon by the Addon-Manager.");
+		},
+
+		m(target, anchor) {
+			insert(target, small, anchor);
+			append(small, b);
+			append(small, t1);
+			append(small, t2);
+			append(small, t3);
+		},
+
+		p(changed, ctx) {
+			if ((changed.data || changed.actionqueue) && t2_value !== (t2_value = ctx.queue.c + "")) {
+				set_data(t2, t2_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(small);
+			}
+		}
+	};
+}
+
+// (211:4) {#if error_message}
+function create_if_block(ctx) {
+	var small, t;
+
+	return {
+		c() {
+			small = element("small");
+			t = text(ctx.error_message);
+			attr(small, "class", "text-danger");
+		},
+
+		m(target, anchor) {
+			insert(target, small, anchor);
+			append(small, t);
+		},
+
+		p(changed, ctx) {
+			if (changed.error_message) {
+				set_data(t, ctx.error_message);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(small);
+			}
+		}
+	};
+}
+
+// (166:0) {#each installs_with_addon(data.installations, actionqueue) as [installment, thisaddon, queue]}
+function create_each_block(ctx) {
+	var div, h5, t0_value = ctx.installment.title + "", t0, t1, t2, t3, t4;
+
+	function select_block_type_1(changed, ctx) {
+		if (ctx.thisaddon.s == 'downloading') return create_if_block_2;
+		if (ctx.thisaddon.s == 'installing') return create_if_block_3;
+		if (ctx.thisaddon.s == 'uninstalling') return create_if_block_4;
+		if (ctx.thisaddon.s == 'installed') return create_if_block_5;
+		if (ctx.thisaddon.s == 'error') return create_if_block_6;
+		return create_else_block;
+	}
+
+	var current_block_type = select_block_type_1(null, ctx);
+	var if_block0 = current_block_type(ctx);
+
+	var if_block1 = (ctx.queue) && create_if_block_1(ctx);
+
+	var if_block2 = (ctx.error_message) && create_if_block(ctx);
+
+	return {
+		c() {
+			div = element("div");
+			h5 = element("h5");
+			t0 = text(t0_value);
+			t1 = space();
+			if_block0.c();
+			t2 = space();
+			if (if_block1) if_block1.c();
+			t3 = space();
+			if (if_block2) if_block2.c();
+			t4 = space();
+			attr(div, "class", "card m-3 p-3");
+		},
+
+		m(target, anchor) {
+			insert(target, div, anchor);
+			append(div, h5);
+			append(h5, t0);
+			append(div, t1);
+			if_block0.m(div, null);
+			append(div, t2);
+			if (if_block1) if_block1.m(div, null);
+			append(div, t3);
+			if (if_block2) if_block2.m(div, null);
+			append(div, t4);
+		},
+
+		p(changed, ctx) {
+			if ((changed.data || changed.actionqueue) && t0_value !== (t0_value = ctx.installment.title + "")) {
+				set_data(t0, t0_value);
+			}
+
+			if (current_block_type === (current_block_type = select_block_type_1(changed, ctx)) && if_block0) {
+				if_block0.p(changed, ctx);
+			} else {
+				if_block0.d(1);
+				if_block0 = current_block_type(ctx);
+				if (if_block0) {
+					if_block0.c();
+					if_block0.m(div, t2);
+				}
+			}
+
+			if (ctx.queue) {
+				if (if_block1) {
+					if_block1.p(changed, ctx);
+				} else {
+					if_block1 = create_if_block_1(ctx);
+					if_block1.c();
+					if_block1.m(div, t3);
+				}
+			} else if (if_block1) {
+				if_block1.d(1);
+				if_block1 = null;
+			}
+
+			if (ctx.error_message) {
+				if (if_block2) {
+					if_block2.p(changed, ctx);
+				} else {
+					if_block2 = create_if_block(ctx);
+					if_block2.c();
+					if_block2.m(div, t4);
+				}
+			} else if (if_block2) {
+				if_block2.d(1);
+				if_block2 = null;
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(div);
+			}
+
+			if_block0.d();
+			if (if_block1) if_block1.d();
+			if (if_block2) if_block2.d();
+		}
+	};
+}
+
+function create_fragment(ctx) {
+	var h4, t1, t2, t3, t4, each1_anchor;
+
+	let each_value_4 = ctx.perm;
+
+	let each_blocks_1 = [];
+
+	for (let i = 0; i < each_value_4.length; i += 1) {
+		each_blocks_1[i] = create_each_block_4(get_each_context_4(ctx, each_value_4, i));
+	}
+
+	let each0_else = null;
+
+	if (!each_value_4.length) {
+		each0_else = create_else_block_2();
+		each0_else.c();
+	}
+
+	var if_block0 = (ctx.addon.linux_capabilities) && create_if_block_11(ctx);
+
+	var if_block1 = (ctx.addon.firewall_allow || ctx.addon.ports) && create_if_block_7(ctx);
+
+	let each_value = ctx.installs_with_addon(ctx.data.installations, ctx.actionqueue);
+
+	let each_blocks = [];
+
+	for (let i = 0; i < each_value.length; i += 1) {
+		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+	}
+
+	let each1_else = null;
+
+	if (!each_value.length) {
+		each1_else = create_else_block_1();
+		each1_else.c();
+	}
+
+	return {
+		c() {
+			h4 = element("h4");
+			h4.textContent = "Permissions";
+			t1 = space();
+
+			for (let i = 0; i < each_blocks_1.length; i += 1) {
+				each_blocks_1[i].c();
+			}
+
+			t2 = space();
+			if (if_block0) if_block0.c();
+			t3 = space();
+			if (if_block1) if_block1.c();
+			t4 = space();
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+
+			each1_anchor = empty();
+		},
+
+		m(target, anchor) {
+			insert(target, h4, anchor);
+			insert(target, t1, anchor);
+
+			for (let i = 0; i < each_blocks_1.length; i += 1) {
+				each_blocks_1[i].m(target, anchor);
+			}
+
+			if (each0_else) {
+				each0_else.m(target, anchor);
+			}
+
+			insert(target, t2, anchor);
+			if (if_block0) if_block0.m(target, anchor);
+			insert(target, t3, anchor);
+			if (if_block1) if_block1.m(target, anchor);
+			insert(target, t4, anchor);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].m(target, anchor);
+			}
+
+			insert(target, each1_anchor, anchor);
+
+			if (each1_else) {
+				each1_else.m(target, anchor);
+			}
+		},
+
+		p(changed, ctx) {
+			if (changed.perm) {
+				each_value_4 = ctx.perm;
+
+				let i;
+				for (i = 0; i < each_value_4.length; i += 1) {
+					const child_ctx = get_each_context_4(ctx, each_value_4, i);
+
+					if (each_blocks_1[i]) {
+						each_blocks_1[i].p(changed, child_ctx);
+					} else {
+						each_blocks_1[i] = create_each_block_4(child_ctx);
+						each_blocks_1[i].c();
+						each_blocks_1[i].m(t2.parentNode, t2);
+					}
+				}
+
+				for (; i < each_blocks_1.length; i += 1) {
+					each_blocks_1[i].d(1);
+				}
+				each_blocks_1.length = each_value_4.length;
+			}
+
+			if (each_value_4.length) {
+				if (each0_else) {
+					each0_else.d(1);
+					each0_else = null;
+				}
+			} else if (!each0_else) {
+				each0_else = create_else_block_2();
+				each0_else.c();
+				each0_else.m(t2.parentNode, t2);
+			}
+
+			if (ctx.addon.linux_capabilities) {
+				if (if_block0) {
+					if_block0.p(changed, ctx);
+				} else {
+					if_block0 = create_if_block_11(ctx);
+					if_block0.c();
+					if_block0.m(t3.parentNode, t3);
+				}
+			} else if (if_block0) {
+				if_block0.d(1);
+				if_block0 = null;
+			}
+
+			if (ctx.addon.firewall_allow || ctx.addon.ports) {
+				if (if_block1) {
+					if_block1.p(changed, ctx);
+				} else {
+					if_block1 = create_if_block_7(ctx);
+					if_block1.c();
+					if_block1.m(t4.parentNode, t4);
+				}
+			} else if (if_block1) {
+				if_block1.d(1);
+				if_block1 = null;
+			}
+
+			if (changed.error_message || changed.installs_with_addon || changed.data || changed.actionqueue || changed.is_old_version || changed.addon) {
+				each_value = ctx.installs_with_addon(ctx.data.installations, ctx.actionqueue);
+
+				let i;
+				for (i = 0; i < each_value.length; i += 1) {
+					const child_ctx = get_each_context(ctx, each_value, i);
+
+					if (each_blocks[i]) {
+						each_blocks[i].p(changed, child_ctx);
+					} else {
+						each_blocks[i] = create_each_block(child_ctx);
+						each_blocks[i].c();
+						each_blocks[i].m(each1_anchor.parentNode, each1_anchor);
+					}
+				}
+
+				for (; i < each_blocks.length; i += 1) {
+					each_blocks[i].d(1);
+				}
+				each_blocks.length = each_value.length;
+			}
+
+			if (each_value.length) {
+				if (each1_else) {
+					each1_else.d(1);
+					each1_else = null;
+				}
+			} else if (!each1_else) {
+				each1_else = create_else_block_1();
+				each1_else.c();
+				each1_else.m(each1_anchor.parentNode, each1_anchor);
+			}
+		},
+
+		i: noop,
+		o: noop,
+
+		d(detaching) {
+			if (detaching) {
+				detach(h4);
+				detach(t1);
+			}
+
+			destroy_each(each_blocks_1, detaching);
+
+			if (each0_else) each0_else.d(detaching);
+
+			if (detaching) {
+				detach(t2);
+			}
+
+			if (if_block0) if_block0.d(detaching);
+
+			if (detaching) {
+				detach(t3);
+			}
+
+			if (if_block1) if_block1.d(detaching);
+
+			if (detaching) {
+				detach(t4);
+			}
+
+			destroy_each(each_blocks, detaching);
+
+			if (detaching) {
+				detach(each1_anchor);
+			}
+
+			if (each1_else) each1_else.d(detaching);
+		}
+	};
+}
+
+function cap_description(cap) {
+  switch (cap) {
+    case "CHOWN":
+    case "DAC_OVERRIDE":
+    case "DAC_READ_SEARCH":
+    case "FOWNER":
+    case "FSETID":
+      return "<span class='text-danger'>Bypass any process permission checks</span>";
+    case "BLOCK_SUSPEND":
+    case "SYS_BOOT":
+    case "CAP_WAKE_ALARM":
+      return "Allows to block system suspend, reboot and set wakeup timers.";
+    case "NET_ADMIN":
+      return "<span class='text-danger'>Full access to the host networking, including potential traffic sniffing and man in the middle attacks</span>";
+    case "NET_BIND_SERVICE":
+      return "Allows to bind to a privileged port (port number less than 1024)";
+    case "NET_RAW":
+      return "Allows to use RAW and PACKET sockets. Allows transparent proxing. <span class='text-danger'>Might be abused for traffic sniffing and man in the middle attacks.</span>";
+    case "SYS_ADMIN":
+    case "SYS_MODULE":
+    case "SYS_RAWIO":
+    case "SYS_PTRACE":
+      return "<span class='text-danger'>Full system access, loading of arbitrary kernel modules, access other processes memory!</span>";
+    case "SYS_TIME":
+      return "Allows to set the system clock. Might be abused to attack time based encryption.";
+    case "SYS_RESOURCE":
+      return "Allows to override disk quota limits. Allows to use reserved disk space.";
+    case "SYSLOG":
+      return "System log access";
+    default:
+      return "Unknown";
+  }
+}
+
+function instance($$self, $$props, $$invalidate) {
+	const dispatch = createEventDispatcher();
+
+  let { permissions, addon = { permissions: { mandatory: [], optional: [] } }, UserAwareComponent } = $$props;
+
+  let error_message = null;
+  let data = { installations: {} };
+  let actionqueue = null;
+  let onDestroyProxy;
+  onDestroy(() => {
+    if (onDestroyProxy) onDestroyProxy();
+  });
+
+/**
+ * Returns a tuple (array) with (installation_details, addon_installation_details, command_queue_entry)
+ * This methods result is used to render the installations list and is recomputed whenever the action queue or installations change.
+ */
+  function installs_with_addon(installs, aq) {
+    return Object.values(installs).map(item => {
+      let thisaddon = item.addons[addon.id] || {};
+      if (!thisaddon.s) thisaddon.s = null;
+      const aq_install = aq[item.id];
+      return [item, thisaddon, aq_install?aq_install[addon.id]:null];
+    });
+  }
+
+  function is_old_version(install_addon) {
+    //console.log("IS_CURRENT", install_addon.v, addon.version);
+    try {
+      const v1 = install_addon.v;
+      const v2 = addon.version;
+      v1 = v1.split(".");
+      v2 = v2.split(".");
+      const k = Math.min(v1.length, v2.length);
+      for (let i = 0; i < k; ++i) {
+        v1[i] = parseInt(v1[i], 10);
+        v2[i] = parseInt(v2[i], 10);
+        if (v1[i] > v2[i]) return 1;
+        if (v1[i] < v2[i]) return -1;
+      }
+      //return v1.length == v2.length ? 0 : v1.length < v2.length ? -1 : 1;
+      if (v1.length < v2.length);
+    } catch (_) {
+      return false;
+    }
+  }
+  function action(e, installation, code) {
+    e.target.disabled = true;
+    $$invalidate('error_message', error_message = null);
+    dispatch("install", {
+      installid: installation.id,
+      addonid: addon.id,
+      code,
+      confirm: () => {
+      },
+      error: err => {
+        e.target.disabled = false;
+        $$invalidate('error_message', error_message = err.message);
+      }
+    });
+  }
+
+	const click_handler = ({ installment }, e) => action(e, installment, 'uninstall');
+
+	const click_handler_1 = ({ installment }, e) => action(e, installment, 'update');
+
+	const click_handler_2 = ({ installment }, e) => action(e, installment, 'install');
+
+	$$self.$set = $$props => {
+		if ('permissions' in $$props) $$invalidate('permissions', permissions = $$props.permissions);
+		if ('addon' in $$props) $$invalidate('addon', addon = $$props.addon);
+		if ('UserAwareComponent' in $$props) $$invalidate('UserAwareComponent', UserAwareComponent = $$props.UserAwareComponent);
+	};
+
+	let perm;
+
+	$$self.$$.update = ($$dirty = { onDestroyProxy: 1, UserAwareComponent: 1, addon: 1, permissions: 1 }) => {
+		if ($$dirty.onDestroyProxy || $$dirty.UserAwareComponent) { if (!onDestroyProxy && UserAwareComponent)
+        $$invalidate('onDestroyProxy', onDestroyProxy = UserAwareComponent(
+          user_ => {
+          },
+          data_ => {
+            $$invalidate('data', data = data_);
+          },
+          aq_ => {
+            $$invalidate('actionqueue', actionqueue = aq_);
+          }
+        )); }
+		if ($$dirty.addon || $$dirty.permissions) { $$invalidate('perm', perm = addon.permissions.mandatory
+        .map(key => Object.assign({ mandatory: true }, permissions[key]))
+        .concat(
+          addon.permissions.optional.map(key =>
+            Object.assign({ mandatory: false }, permissions[key])
+          )
+        )); }
+	};
+
+	return {
+		permissions,
+		addon,
+		UserAwareComponent,
+		error_message,
+		data,
+		actionqueue,
+		installs_with_addon,
+		is_old_version,
+		action,
+		perm,
+		click_handler,
+		click_handler_1,
+		click_handler_2
+	};
+}
+
+class Permissions_install extends SvelteComponent {
+	constructor(options) {
+		super();
+		init(this, options, instance, create_fragment, safe_not_equal, ["permissions", "addon", "UserAwareComponent"]);
+	}
+}
+
+/* assets/js/ui-addon/cmp.svelte generated by Svelte v3.12.0 */
+
+function add_css() {
+	var style = element("style");
+	style.id = 'svelte-1vx0blb-style';
+	style.textContent = "table.property-table.svelte-1vx0blb th.svelte-1vx0blb{width:1px;white-space:nowrap}";
+	append(document.head, style);
+}
+
+// (126:4) {:else}
+function create_else_block_2$1(ctx) {
+	var div;
+
+	var if_block = (ctx.suggest_logo_url) && create_if_block_8$1(ctx);
+
+	return {
+		c() {
+			div = element("div");
+			if (if_block) if_block.c();
+		},
+
+		m(target, anchor) {
+			insert(target, div, anchor);
+			if (if_block) if_block.m(div, null);
+		},
+
+		p(changed, ctx) {
+			if (ctx.suggest_logo_url) {
+				if (if_block) {
+					if_block.p(changed, ctx);
+				} else {
+					if_block = create_if_block_8$1(ctx);
+					if_block.c();
+					if_block.m(div, null);
+				}
+			} else if (if_block) {
+				if_block.d(1);
+				if_block = null;
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(div);
+			}
+
+			if (if_block) if_block.d();
+		}
+	};
+}
+
+// (124:4) {#if logo_url}
+function create_if_block_7$1(ctx) {
+	var img, dispose;
+
+	return {
+		c() {
+			img = element("img");
+			attr(img, "src", ctx.logo_url);
+			attr(img, "alt", "Logo");
+			dispose = listen(img, "error", ctx.error_handler);
+		},
+
+		m(target, anchor) {
+			insert(target, img, anchor);
+		},
+
+		p(changed, ctx) {
+			if (changed.logo_url) {
+				attr(img, "src", ctx.logo_url);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(img);
+			}
+
+			dispose();
+		}
+	};
+}
+
+// (128:8) {#if suggest_logo_url}
+function create_if_block_8$1(ctx) {
+	var a, t;
+
+	return {
+		c() {
+			a = element("a");
+			t = text("Suggest Logo");
+			attr(a, "href", ctx.suggest_logo_url);
+		},
+
+		m(target, anchor) {
+			insert(target, a, anchor);
+			append(a, t);
+		},
+
+		p(changed, ctx) {
+			if (changed.suggest_logo_url) {
+				attr(a, "href", ctx.suggest_logo_url);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(a);
+			}
+		}
+	};
+}
+
+// (203:4) {:else}
+function create_else_block_1$1(ctx) {
+	var p, t_value = ctx.addon.description + "", t;
+
+	return {
+		c() {
+			p = element("p");
+			t = text(t_value);
+		},
+
+		m(target, anchor) {
+			insert(target, p, anchor);
+			append(p, t);
+		},
+
+		p(changed, ctx) {
+			if ((changed.addon) && t_value !== (t_value = ctx.addon.description + "")) {
+				set_data(t, t_value);
+			}
+		},
+
+		i: noop,
+		o: noop,
+
+		d(detaching) {
+			if (detaching) {
+				detach(p);
+			}
+		}
+	};
+}
+
+// (146:35) 
+function create_if_block_3$1(ctx) {
+	var table, tr0, th0, t1, td0, t2_value = new Date(ctx.addon.last_updated).toLocaleString() + "", t2, t3, t4, tr1, th1, t6, td1, raw_value = maintenance_code_str(ctx.addon.status.code) + "", t7, tr2, th2, t9, td2, t10_value = Number.parseFloat(ctx.addon.size / 1024 / 1024).toFixed(2) + "", t10, t11, td2_title_value, t12, tr3, th3, t14, td3, t15, tr4, th4, t17, td4, t18_value = ctx.addon.reviewed_by && ctx.addon.reviewed_by.length > 0 ? 'Yes' : 'No' + "", t18, t19, t20, button, t21, button_disabled_value, button_title_value, dispose;
+
+	var if_block0 = (ctx.addon.changelog_url) && create_if_block_6$1(ctx);
+
+	var if_block1 = (ctx.addon.estimated_mem) && create_if_block_5$1(ctx);
+
+	var if_block2 = (ctx.addon.stat && ctx.addon.stat.license && ctx.addon.stat.license.name) && create_if_block_4$1(ctx);
+
+	return {
+		c() {
+			table = element("table");
+			tr0 = element("tr");
+			th0 = element("th");
+			th0.textContent = "Updated";
+			t1 = space();
+			td0 = element("td");
+			t2 = text(t2_value);
+			t3 = space();
+			if (if_block0) if_block0.c();
+			t4 = space();
+			tr1 = element("tr");
+			th1 = element("th");
+			th1.textContent = "Maintenance";
+			t6 = space();
+			td1 = element("td");
+			t7 = space();
+			tr2 = element("tr");
+			th2 = element("th");
+			th2.textContent = "Install Size";
+			t9 = space();
+			td2 = element("td");
+			t10 = text(t10_value);
+			t11 = text(" MB");
+			t12 = space();
+			tr3 = element("tr");
+			th3 = element("th");
+			th3.textContent = "Est. Mem Usage";
+			t14 = space();
+			td3 = element("td");
+			if (if_block1) if_block1.c();
+			t15 = space();
+			tr4 = element("tr");
+			th4 = element("th");
+			th4.textContent = "Reviewed";
+			t17 = space();
+			td4 = element("td");
+			t18 = text(t18_value);
+			t19 = space();
+			if (if_block2) if_block2.c();
+			t20 = space();
+			button = element("button");
+			t21 = text("Check Permissions & Install");
+			attr(th0, "scope", "row");
+			set_style(th0, "width", "1px");
+			set_style(th0, "white-space", "nowrap");
+			attr(th0, "class", "svelte-1vx0blb");
+			attr(th1, "scope", "row");
+			attr(th1, "class", "svelte-1vx0blb");
+			attr(th2, "scope", "row");
+			attr(th2, "class", "svelte-1vx0blb");
+			attr(td2, "title", td2_title_value = ctx.addon.size + ' bytes');
+			attr(th3, "scope", "row");
+			attr(th3, "title", "Estimated Memory Usage. This is an Addon developer provided\n            value.");
+			attr(th3, "class", "svelte-1vx0blb");
+			attr(th4, "scope", "row");
+			attr(th4, "class", "svelte-1vx0blb");
+			attr(table, "class", "table table-hover table-sm property-table svelte-1vx0blb");
+			attr(button, "class", "btn btn-outline-success");
+			button.disabled = button_disabled_value = !ctx.loggedin;
+			attr(button, "title", button_title_value = ctx.loggedin ? '' : 'You need to login!');
+			dispose = listen(button, "click", stop_propagation(ctx.click_handler_1));
+		},
+
+		m(target, anchor) {
+			insert(target, table, anchor);
+			append(table, tr0);
+			append(tr0, th0);
+			append(tr0, t1);
+			append(tr0, td0);
+			append(td0, t2);
+			append(td0, t3);
+			if (if_block0) if_block0.m(td0, null);
+			append(table, t4);
+			append(table, tr1);
+			append(tr1, th1);
+			append(tr1, t6);
+			append(tr1, td1);
+			td1.innerHTML = raw_value;
+			append(table, t7);
+			append(table, tr2);
+			append(tr2, th2);
+			append(tr2, t9);
+			append(tr2, td2);
+			append(td2, t10);
+			append(td2, t11);
+			append(table, t12);
+			append(table, tr3);
+			append(tr3, th3);
+			append(tr3, t14);
+			append(tr3, td3);
+			if (if_block1) if_block1.m(td3, null);
+			append(table, t15);
+			append(table, tr4);
+			append(tr4, th4);
+			append(tr4, t17);
+			append(tr4, td4);
+			append(td4, t18);
+			append(table, t19);
+			if (if_block2) if_block2.m(table, null);
+			insert(target, t20, anchor);
+			insert(target, button, anchor);
+			append(button, t21);
+		},
+
+		p(changed, ctx) {
+			if ((changed.addon) && t2_value !== (t2_value = new Date(ctx.addon.last_updated).toLocaleString() + "")) {
+				set_data(t2, t2_value);
+			}
+
+			if (ctx.addon.changelog_url) {
+				if (if_block0) {
+					if_block0.p(changed, ctx);
+				} else {
+					if_block0 = create_if_block_6$1(ctx);
+					if_block0.c();
+					if_block0.m(td0, null);
+				}
+			} else if (if_block0) {
+				if_block0.d(1);
+				if_block0 = null;
+			}
+
+			if ((changed.addon) && raw_value !== (raw_value = maintenance_code_str(ctx.addon.status.code) + "")) {
+				td1.innerHTML = raw_value;
+			}
+
+			if ((changed.addon) && t10_value !== (t10_value = Number.parseFloat(ctx.addon.size / 1024 / 1024).toFixed(2) + "")) {
+				set_data(t10, t10_value);
+			}
+
+			if ((changed.addon) && td2_title_value !== (td2_title_value = ctx.addon.size + ' bytes')) {
+				attr(td2, "title", td2_title_value);
+			}
+
+			if (ctx.addon.estimated_mem) {
+				if (if_block1) {
+					if_block1.p(changed, ctx);
+				} else {
+					if_block1 = create_if_block_5$1(ctx);
+					if_block1.c();
+					if_block1.m(td3, null);
+				}
+			} else if (if_block1) {
+				if_block1.d(1);
+				if_block1 = null;
+			}
+
+			if ((changed.addon) && t18_value !== (t18_value = ctx.addon.reviewed_by && ctx.addon.reviewed_by.length > 0 ? 'Yes' : 'No' + "")) {
+				set_data(t18, t18_value);
+			}
+
+			if (ctx.addon.stat && ctx.addon.stat.license && ctx.addon.stat.license.name) {
+				if (if_block2) {
+					if_block2.p(changed, ctx);
+				} else {
+					if_block2 = create_if_block_4$1(ctx);
+					if_block2.c();
+					if_block2.m(table, null);
+				}
+			} else if (if_block2) {
+				if_block2.d(1);
+				if_block2 = null;
+			}
+
+			if ((changed.loggedin) && button_disabled_value !== (button_disabled_value = !ctx.loggedin)) {
+				button.disabled = button_disabled_value;
+			}
+
+			if ((changed.loggedin) && button_title_value !== (button_title_value = ctx.loggedin ? '' : 'You need to login!')) {
+				attr(button, "title", button_title_value);
+			}
+		},
+
+		i: noop,
+		o: noop,
+
+		d(detaching) {
+			if (detaching) {
+				detach(table);
+			}
+
+			if (if_block0) if_block0.d();
+			if (if_block1) if_block1.d();
+			if (if_block2) if_block2.d();
+
+			if (detaching) {
+				detach(t20);
+				detach(button);
+			}
+
+			dispose();
+		}
+	};
+}
+
+// (135:4) {#if mode == 'permissions'}
+function create_if_block_2$1(ctx) {
+	var t, button, current, dispose;
+
+	var permissionsinstall = new Permissions_install({
+		props: {
+		addon: ctx.addon,
+		UserAwareComponent: ctx.UserAwareComponent,
+		permissions: ctx.addondb.permissions
+	}
+	});
+	permissionsinstall.$on("install", ctx.install_handler);
+
+	return {
+		c() {
+			permissionsinstall.$$.fragment.c();
+			t = space();
+			button = element("button");
+			button.textContent = "Back to description";
+			attr(button, "class", "btn btn-primary-success");
+			dispose = listen(button, "click", stop_propagation(ctx.click_handler));
+		},
+
+		m(target, anchor) {
+			mount_component(permissionsinstall, target, anchor);
+			insert(target, t, anchor);
+			insert(target, button, anchor);
+			current = true;
+		},
+
+		p(changed, ctx) {
+			var permissionsinstall_changes = {};
+			if (changed.addon) permissionsinstall_changes.addon = ctx.addon;
+			if (changed.UserAwareComponent) permissionsinstall_changes.UserAwareComponent = ctx.UserAwareComponent;
+			if (changed.addondb) permissionsinstall_changes.permissions = ctx.addondb.permissions;
+			permissionsinstall.$set(permissionsinstall_changes);
+		},
+
+		i(local) {
+			if (current) return;
+			transition_in(permissionsinstall.$$.fragment, local);
+
+			current = true;
+		},
+
+		o(local) {
+			transition_out(permissionsinstall.$$.fragment, local);
+			current = false;
+		},
+
+		d(detaching) {
+			destroy_component(permissionsinstall, detaching);
+
+			if (detaching) {
+				detach(t);
+				detach(button);
+			}
+
+			dispose();
+		}
+	};
+}
+
+// (152:12) {#if addon.changelog_url}
+function create_if_block_6$1(ctx) {
+	var a, t, a_href_value;
+
+	return {
+		c() {
+			a = element("a");
+			t = text("Changelog");
+			attr(a, "href", a_href_value = ctx.addon.changelog_url);
+		},
+
+		m(target, anchor) {
+			insert(target, a, anchor);
+			append(a, t);
+		},
+
+		p(changed, ctx) {
+			if ((changed.addon) && a_href_value !== (a_href_value = ctx.addon.changelog_url)) {
+				attr(a, "href", a_href_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(a);
+			}
+		}
+	};
+}
+
+// (177:12) {#if addon.estimated_mem}
+function create_if_block_5$1(ctx) {
+	var t0_value = Number.parseFloat(ctx.addon.estimated_mem.min).toFixed(2) + "", t0, t1, t2_value = Number.parseFloat(ctx.addon.estimated_mem.max).toFixed(2) + "", t2, t3;
+
+	return {
+		c() {
+			t0 = text(t0_value);
+			t1 = text(" - ");
+			t2 = text(t2_value);
+			t3 = text("\n              MB");
+		},
+
+		m(target, anchor) {
+			insert(target, t0, anchor);
+			insert(target, t1, anchor);
+			insert(target, t2, anchor);
+			insert(target, t3, anchor);
+		},
+
+		p(changed, ctx) {
+			if ((changed.addon) && t0_value !== (t0_value = Number.parseFloat(ctx.addon.estimated_mem.min).toFixed(2) + "")) {
+				set_data(t0, t0_value);
+			}
+
+			if ((changed.addon) && t2_value !== (t2_value = Number.parseFloat(ctx.addon.estimated_mem.max).toFixed(2) + "")) {
+				set_data(t2, t2_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(t0);
+				detach(t1);
+				detach(t2);
+				detach(t3);
+			}
+		}
+	};
+}
+
+// (189:8) {#if addon.stat && addon.stat.license && addon.stat.license.name}
+function create_if_block_4$1(ctx) {
+	var tr, th, t1, td, t2_value = ctx.addon.stat.license.name + "", t2;
+
+	return {
+		c() {
+			tr = element("tr");
+			th = element("th");
+			th.textContent = "License";
+			t1 = space();
+			td = element("td");
+			t2 = text(t2_value);
+			attr(th, "scope", "row");
+			attr(th, "class", "svelte-1vx0blb");
+		},
+
+		m(target, anchor) {
+			insert(target, tr, anchor);
+			append(tr, th);
+			append(tr, t1);
+			append(tr, td);
+			append(td, t2);
+		},
+
+		p(changed, ctx) {
+			if ((changed.addon) && t2_value !== (t2_value = ctx.addon.stat.license.name + "")) {
+				set_data(t2, t2_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(tr);
+			}
+		}
+	};
+}
+
+// (223:4) {:else}
+function create_else_block$1(ctx) {
+	var a, t, a_href_value, a_title_value;
+
+	return {
+		c() {
+			a = element("a");
+			t = text("Homepage / Repository");
+			attr(a, "class", "mr-2");
+			attr(a, "href", a_href_value = ctx.addon.homepage);
+			attr(a, "target", "_blank");
+			attr(a, "title", a_title_value = ctx.addon.homepage);
+		},
+
+		m(target, anchor) {
+			insert(target, a, anchor);
+			append(a, t);
+		},
+
+		p(changed, ctx) {
+			if ((changed.addon) && a_href_value !== (a_href_value = ctx.addon.homepage)) {
+				attr(a, "href", a_href_value);
+			}
+
+			if ((changed.addon) && a_title_value !== (a_title_value = ctx.addon.homepage)) {
+				attr(a, "title", a_title_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(a);
+			}
+		}
+	};
+}
+
+// (208:4) {#if addon.github && addon.stat && addon.stat.s}
+function create_if_block_1$1(ctx) {
+	var a, span0, i0, t0, t1_value = ctx.addon.stat.s + "", t1, t2, t3, span1, i1, t4, t5_value = ctx.addon.stat.iss + "", t5, t6, a_href_value, a_title_value;
+
+	return {
+		c() {
+			a = element("a");
+			span0 = element("span");
+			i0 = element("i");
+			t0 = space();
+			t1 = text(t1_value);
+			t2 = text(" Stars");
+			t3 = space();
+			span1 = element("span");
+			i1 = element("i");
+			t4 = space();
+			t5 = text(t5_value);
+			t6 = text(" Issues");
+			attr(i0, "class", "fas fa-star");
+			attr(span0, "class", "mr-2");
+			attr(i1, "class", "fas fa-info-circle");
+			attr(span1, "class", "mr-2");
+			attr(a, "class", "mr-2 noref");
+			attr(a, "href", a_href_value = ctx.addon.github);
+			attr(a, "target", "_blank");
+			attr(a, "title", a_title_value = ctx.addon.github);
+		},
+
+		m(target, anchor) {
+			insert(target, a, anchor);
+			append(a, span0);
+			append(span0, i0);
+			append(span0, t0);
+			append(span0, t1);
+			append(span0, t2);
+			append(a, t3);
+			append(a, span1);
+			append(span1, i1);
+			append(span1, t4);
+			append(span1, t5);
+			append(span1, t6);
+		},
+
+		p(changed, ctx) {
+			if ((changed.addon) && t1_value !== (t1_value = ctx.addon.stat.s + "")) {
+				set_data(t1, t1_value);
+			}
+
+			if ((changed.addon) && t5_value !== (t5_value = ctx.addon.stat.iss + "")) {
+				set_data(t5, t5_value);
+			}
+
+			if ((changed.addon) && a_href_value !== (a_href_value = ctx.addon.github)) {
+				attr(a, "href", a_href_value);
+			}
+
+			if ((changed.addon) && a_title_value !== (a_title_value = ctx.addon.github)) {
+				attr(a, "title", a_title_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(a);
+			}
+		}
+	};
+}
+
+// (232:4) {#if addon.stat}
+function create_if_block$1(ctx) {
+	var span, i, t0, t1_value = ctx.addon.stat.d + "", t1, t2, t3, ui_star_rating, ui_star_rating_title_value, ui_star_rating_disabled_value, dispose;
+
+	return {
+		c() {
+			span = element("span");
+			i = element("i");
+			t0 = space();
+			t1 = text(t1_value);
+			t2 = text(" Downloads");
+			t3 = space();
+			ui_star_rating = element("ui-star-rating");
+			attr(i, "class", "fas fa-download");
+			attr(span, "class", "mr-2");
+			set_custom_element_data(ui_star_rating, "class", "ml-auto");
+			set_custom_element_data(ui_star_rating, "title", ui_star_rating_title_value = ctx.loggedin ? 'Rate this Addon' : 'You need to login to rate');
+			set_custom_element_data(ui_star_rating, "value", ctx.item_rating);
+			set_custom_element_data(ui_star_rating, "disabled", ui_star_rating_disabled_value = !ctx.loggedin);
+			set_custom_element_data(ui_star_rating, "highlight", ctx.user_item_rating);
+
+			dispose = [
+				listen(ui_star_rating, "rate", ctx.submit_rate),
+				listen(ui_star_rating, "invalid", ctx.invalid_handler)
+			];
+		},
+
+		m(target, anchor) {
+			insert(target, span, anchor);
+			append(span, i);
+			append(span, t0);
+			append(span, t1);
+			append(span, t2);
+			insert(target, t3, anchor);
+			insert(target, ui_star_rating, anchor);
+		},
+
+		p(changed, ctx) {
+			if ((changed.addon) && t1_value !== (t1_value = ctx.addon.stat.d + "")) {
+				set_data(t1, t1_value);
+			}
+
+			if ((changed.loggedin) && ui_star_rating_title_value !== (ui_star_rating_title_value = ctx.loggedin ? 'Rate this Addon' : 'You need to login to rate')) {
+				set_custom_element_data(ui_star_rating, "title", ui_star_rating_title_value);
+			}
+
+			if (changed.item_rating) {
+				set_custom_element_data(ui_star_rating, "value", ctx.item_rating);
+			}
+
+			if ((changed.loggedin) && ui_star_rating_disabled_value !== (ui_star_rating_disabled_value = !ctx.loggedin)) {
+				set_custom_element_data(ui_star_rating, "disabled", ui_star_rating_disabled_value);
+			}
+
+			if (changed.user_item_rating) {
+				set_custom_element_data(ui_star_rating, "highlight", ctx.user_item_rating);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(span);
+				detach(t3);
+				detach(ui_star_rating);
+			}
+
+			run_all(dispose);
+		}
+	};
+}
+
+function create_fragment$1(ctx) {
+	var article, ui_tooltip, t0, t1, header, span, t2_value = ctx.addon.label + "", t2, t3, small0, t4_value = ctx.addon.version + "", t4, t5, small1, t6, t7_value = ctx.addon.author + "", t7, header_title_value, t8, section0, t9, section1, current_block_type_index, if_block1, t10, footer, t11, article_id_value, article_class_value, current, dispose;
+
+	function select_block_type(changed, ctx) {
+		if (ctx.logo_url) return create_if_block_7$1;
+		return create_else_block_2$1;
+	}
+
+	var current_block_type = select_block_type(null, ctx);
+	var if_block0 = current_block_type(ctx);
+
+	var if_block_creators = [
+		create_if_block_2$1,
+		create_if_block_3$1,
+		create_else_block_1$1
+	];
+
+	var if_blocks = [];
+
+	function select_block_type_1(changed, ctx) {
+		if (ctx.mode == 'permissions') return 0;
+		if (ctx.standalone !== false) return 1;
+		return 2;
+	}
+
+	current_block_type_index = select_block_type_1(null, ctx);
+	if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+
+	function select_block_type_2(changed, ctx) {
+		if (ctx.addon.github && ctx.addon.stat && ctx.addon.stat.s) return create_if_block_1$1;
+		return create_else_block$1;
+	}
+
+	var current_block_type_1 = select_block_type_2(null, ctx);
+	var if_block2 = current_block_type_1(ctx);
+
+	var if_block3 = (ctx.addon.stat) && create_if_block$1(ctx);
+
+	return {
+		c() {
+			article = element("article");
+			ui_tooltip = element("ui-tooltip");
+			t0 = text(ctx.error_message);
+			t1 = space();
+			header = element("header");
+			span = element("span");
+			t2 = text(t2_value);
+			t3 = space();
+			small0 = element("small");
+			t4 = text(t4_value);
+			t5 = space();
+			small1 = element("small");
+			t6 = text("– By ");
+			t7 = text(t7_value);
+			t8 = space();
+			section0 = element("section");
+			if_block0.c();
+			t9 = space();
+			section1 = element("section");
+			if_block1.c();
+			t10 = space();
+			footer = element("footer");
+			if_block2.c();
+			t11 = space();
+			if (if_block3) if_block3.c();
+			set_custom_element_data(ui_tooltip, "nobutton", "");
+			attr(small0, "class", "ml-2");
+			attr(small1, "class", "");
+			set_style(small1, "white-space", "nowrap");
+			set_style(small1, "text-overflow", "ellipsis");
+			attr(header, "title", header_title_value = ctx.addon.id);
+			attr(section0, "class", "logo");
+			attr(section1, "class", "description");
+			attr(article, "id", article_id_value = ctx.addon.id);
+			attr(article, "class", article_class_value = "addon mb-3 " + ctx.addon.status.code);
+			dispose = listen(article, "click", ctx.click_handler_2);
+		},
+
+		m(target, anchor) {
+			insert(target, article, anchor);
+			append(article, ui_tooltip);
+			append(ui_tooltip, t0);
+			ctx.ui_tooltip_binding(ui_tooltip);
+			append(article, t1);
+			append(article, header);
+			append(header, span);
+			append(span, t2);
+			append(header, t3);
+			append(header, small0);
+			append(small0, t4);
+			append(header, t5);
+			append(header, small1);
+			append(small1, t6);
+			append(small1, t7);
+			append(article, t8);
+			append(article, section0);
+			if_block0.m(section0, null);
+			append(article, t9);
+			append(article, section1);
+			if_blocks[current_block_type_index].m(section1, null);
+			append(article, t10);
+			append(article, footer);
+			if_block2.m(footer, null);
+			append(footer, t11);
+			if (if_block3) if_block3.m(footer, null);
+			current = true;
+		},
+
+		p(changed, ctx) {
+			if (!current || changed.error_message) {
+				set_data(t0, ctx.error_message);
+			}
+
+			if ((!current || changed.addon) && t2_value !== (t2_value = ctx.addon.label + "")) {
+				set_data(t2, t2_value);
+			}
+
+			if ((!current || changed.addon) && t4_value !== (t4_value = ctx.addon.version + "")) {
+				set_data(t4, t4_value);
+			}
+
+			if ((!current || changed.addon) && t7_value !== (t7_value = ctx.addon.author + "")) {
+				set_data(t7, t7_value);
+			}
+
+			if ((!current || changed.addon) && header_title_value !== (header_title_value = ctx.addon.id)) {
+				attr(header, "title", header_title_value);
+			}
+
+			if (current_block_type === (current_block_type = select_block_type(changed, ctx)) && if_block0) {
+				if_block0.p(changed, ctx);
+			} else {
+				if_block0.d(1);
+				if_block0 = current_block_type(ctx);
+				if (if_block0) {
+					if_block0.c();
+					if_block0.m(section0, null);
+				}
+			}
+
+			var previous_block_index = current_block_type_index;
+			current_block_type_index = select_block_type_1(changed, ctx);
+			if (current_block_type_index === previous_block_index) {
+				if_blocks[current_block_type_index].p(changed, ctx);
+			} else {
+				group_outros();
+				transition_out(if_blocks[previous_block_index], 1, 1, () => {
+					if_blocks[previous_block_index] = null;
+				});
+				check_outros();
+
+				if_block1 = if_blocks[current_block_type_index];
+				if (!if_block1) {
+					if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+					if_block1.c();
+				}
+				transition_in(if_block1, 1);
+				if_block1.m(section1, null);
+			}
+
+			if (current_block_type_1 === (current_block_type_1 = select_block_type_2(changed, ctx)) && if_block2) {
+				if_block2.p(changed, ctx);
+			} else {
+				if_block2.d(1);
+				if_block2 = current_block_type_1(ctx);
+				if (if_block2) {
+					if_block2.c();
+					if_block2.m(footer, t11);
+				}
+			}
+
+			if (ctx.addon.stat) {
+				if (if_block3) {
+					if_block3.p(changed, ctx);
+				} else {
+					if_block3 = create_if_block$1(ctx);
+					if_block3.c();
+					if_block3.m(footer, null);
+				}
+			} else if (if_block3) {
+				if_block3.d(1);
+				if_block3 = null;
+			}
+
+			if ((!current || changed.addon) && article_id_value !== (article_id_value = ctx.addon.id)) {
+				attr(article, "id", article_id_value);
+			}
+
+			if ((!current || changed.addon) && article_class_value !== (article_class_value = "addon mb-3 " + ctx.addon.status.code)) {
+				attr(article, "class", article_class_value);
+			}
+		},
+
+		i(local) {
+			if (current) return;
+			transition_in(if_block1);
+			current = true;
+		},
+
+		o(local) {
+			transition_out(if_block1);
+			current = false;
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(article);
+			}
+
+			ctx.ui_tooltip_binding(null);
+			if_block0.d();
+			if_blocks[current_block_type_index].d();
+			if_block2.d();
+			if (if_block3) if_block3.d();
+			dispose();
+		}
+	};
+}
+
+function maintenance_code_str(code) {
+  switch (code) {
+    case "AVAILABLE":
+      return "Maintained &amp; Available";
+    case "UNMAINTAINED":
+      return "<span class='text-danger'>Unmaintained</span>";
+    case "REPLACED":
+      return "<span class='text-danger'>Replaced</span> by another Addon!";
+    case "REMOVED":
+      return "<span class='text-danger'>Removed</span>";
+    default:
+      return code;
+  }
+}
+
+function instance$1($$self, $$props, $$invalidate) {
+	
+  const dispatch = createEventDispatcher();
+
+  let { addondb, addon = { status: {} }, UserAwareComponent, standalone = false } = $$props;
+
+  let error_message;
+  let popup;
+
+  let mode = "";
+  let user_item_rating = 0;
+  let item_rating = 0;
+  let loggedin = false;
+  let logo_url;
+  let suggest_logo_url;
+  let actionqueue = null;
+  let onDestroyProxy;
+  onDestroy(() => {
+    if (onDestroyProxy) onDestroyProxy();
+  });
+
+  async function start() {
+    if (!addon.id) {
+      const addon_id = new URL(window.location).searchParams.get("id");
+      $$invalidate('addon', addon = addondb.db_by_id[addon_id]);
+    }
+    if (!onDestroyProxy) {
+      onDestroyProxy = UserAwareComponent(
+        user_ => {
+          $$invalidate('loggedin', loggedin = user_ && user_.uid);
+        },
+        data_ => {
+          $$invalidate('user_item_rating', user_item_rating =
+            data_ && data_.ratings && data_.ratings[addon.id]
+              ? data_.ratings[addon.id]
+              : 0);
+        },
+        aq_ => (actionqueue = aq_)
+      );
+    }
+    $$invalidate('item_rating', item_rating = addon.stat ? addon.stat.p / addon.stat.v : 0.0);
+    $$invalidate('logo_url', logo_url = addon.logo_url);
+    if (!logo_url && addon.github)
+      $$invalidate('logo_url', logo_url =
+        addon.github.replace(
+          "https://github.com/",
+          "https://raw.githubusercontent.com/"
+        ) + "/master/logo.png");
+    $$invalidate('suggest_logo_url', suggest_logo_url = addon.homepage ? addon.homepage : addon.github);
+  }
+  /// End -- User Aware Component
+
+  function submit_rate(e) {
+    e.stopPropagation();
+    const target = e.target;
+    target.disabled = true;
+    dispatch("rate", {
+      addonid: addon.id,
+      rate: e.detail.rate,
+      last_rating: user_item_rating,
+      confirm: () => (target.disabled = false),
+      error: err => {
+        target.disabled = false;
+        $$invalidate('error_message', error_message = err.message);
+        popup.click();
+      }
+    });
+  }
+
+  function not_logged_in() {
+    $$invalidate('error_message', error_message = "Not logged in!");
+    popup.click();
+  }
+
+	function install_handler(event) {
+		bubble($$self, event);
+	}
+
+	function ui_tooltip_binding($$value) {
+		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
+			$$invalidate('popup', popup = $$value);
+		});
+	}
+
+	const error_handler = (e) => ($$invalidate('logo_url', logo_url = null));
+
+	const click_handler = (e) => ($$invalidate('mode', mode = ''));
+
+	const click_handler_1 = (e) => ($$invalidate('mode', mode = 'permissions'));
+
+	const invalid_handler = (e) => not_logged_in();
+
+	const click_handler_2 = (e) => dispatch('click', { id: addon.id });
+
+	$$self.$set = $$props => {
+		if ('addondb' in $$props) $$invalidate('addondb', addondb = $$props.addondb);
+		if ('addon' in $$props) $$invalidate('addon', addon = $$props.addon);
+		if ('UserAwareComponent' in $$props) $$invalidate('UserAwareComponent', UserAwareComponent = $$props.UserAwareComponent);
+		if ('standalone' in $$props) $$invalidate('standalone', standalone = $$props.standalone);
+	};
+
+	return {
+		dispatch,
+		addondb,
+		addon,
+		UserAwareComponent,
+		standalone,
+		error_message,
+		popup,
+		mode,
+		user_item_rating,
+		item_rating,
+		loggedin,
+		logo_url,
+		suggest_logo_url,
+		start,
+		submit_rate,
+		not_logged_in,
+		install_handler,
+		ui_tooltip_binding,
+		error_handler,
+		click_handler,
+		click_handler_1,
+		invalid_handler,
+		click_handler_2
+	};
+}
+
+class Cmp extends SvelteComponent {
+	constructor(options) {
+		super();
+		if (!document.getElementById("svelte-1vx0blb-style")) add_css();
+		init(this, options, instance$1, create_fragment$1, safe_not_equal, ["addondb", "addon", "UserAwareComponent", "standalone", "start"]);
+	}
+
+	get start() {
+		return this.$$.ctx.start;
+	}
+}
+
+window.customElements.define('ui-addon', class extends HTMLElement {
+    constructor() {
+        super();
+        this.unreg=[];
+    }
+    connectedCallback() {
+        this._ok = true;
+        this.check();
+    }
+    async check() {
+        if (this.cmp) return;
+        const standalone = this.hasAttribute("standalone");
+        if (this._ok && this._addondb && (standalone||this._addon) && this._userawarecomponent) {
+            this.cmp = new Cmp({
+                target: this, props: {
+                    UserAwareComponent: this._userawarecomponent,
+                    addondb: this._addondb,
+                    addon: this._addon,
+                    standalone
+                }
+            });
+            this.cmp.start();
+            this.unreg.push(this.cmp.$on("install",e=>this.dispatchEvent(e)));
+            this.unreg.push(this.cmp.$on("rate",e=>this.dispatchEvent(e)));
+        }
+    }
+    set userawarecomponent(val) {
+        this._userawarecomponent = val;
+        this.check();
+    }
+    set addondb(val) {
+        this._addondb = val;
+        this.check();
+    }
+    set addon(val) {
+        this._addon = val;
+        this.check();
+    }
+    disconnectedCallback() {
+        for (let a of this.unreg) a();
+        this.unreg=[];
+        if (this.cmp) this.cmp.$destroy();
+    }
+});
 //# sourceMappingURL=ui-addon.js.map

@@ -70,6 +70,7 @@
     dispatch("rate", {
       addonid: addon.id,
       rate: e.detail.rate,
+      last_rating: user_item_rating,
       confirm: () => (target.disabled = false),
       error: err => {
         target.disabled = false;

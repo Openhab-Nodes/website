@@ -1,2 +1,505 @@
-function t(){}function e(t,e,n,r,o){t.__svelte_meta={loc:{file:e,line:n,column:r,char:o}}}function n(t){return t()}function r(){return Object.create(null)}function o(t){t.forEach(n)}function c(t){return"function"==typeof t}function s(t,e){return t!=t?e==e:t!==e||t&&"object"==typeof t||"function"==typeof t}function i(t,e){t.appendChild(e)}function a(t){return document.createElement(t)}function u(){return t=" ",document.createTextNode(t);var t}function l(t,e,n,r){return t.addEventListener(e,n,r),()=>t.removeEventListener(e,n,r)}function d(t){return function(e){return e.stopPropagation(),t.call(this,e)}}function f(t,e,n){null==n?t.removeAttribute(e):t.setAttribute(e,n)}let p;function h(t){p=t}const m=[],g=[],$=[],b=[],y=Promise.resolve();let _=!1;function v(t){$.push(t)}function x(){const t=new Set;do{for(;m.length;){const t=m.shift();h(t),w(t.$$)}for(;g.length;)g.pop()();for(let e=0;e<$.length;e+=1){const n=$[e];t.has(n)||(n(),t.add(n))}$.length=0}while(m.length);for(;b.length;)b.pop()();_=!1}function w(t){t.fragment&&(t.update(t.dirty),o(t.before_update),t.fragment.p(t.dirty,t.ctx),t.dirty=null,t.after_update.forEach(v))}const k=new Set;const E="undefined"!=typeof window?window:global;function C(t,e){t.$$.dirty||(m.push(t),_||(_=!0,y.then(x)),t.$$.dirty=r()),t.$$.dirty[e]=!0}function I(e,s,i,a,u,l){const d=p;h(e);const f=s.props||{},m=e.$$={fragment:null,ctx:null,props:l,update:t,not_equal:u,bound:r(),on_mount:[],on_destroy:[],before_update:[],after_update:[],context:new Map(d?d.$$.context:[]),callbacks:r(),dirty:null};let g=!1;var $,b,y;m.ctx=i?i(e,f,(t,n)=>{m.ctx&&u(m.ctx[t],m.ctx[t]=n)&&(m.bound[t]&&m.bound[t](n),g&&C(e,t))}):f,m.update(),g=!0,o(m.before_update),m.fragment=a(m.ctx),s.target&&(s.hydrate?m.fragment.l((y=s.target,Array.from(y.childNodes))):m.fragment.c(),s.intro&&(($=e.$$.fragment)&&$.i&&(k.delete($),$.i(b))),function(t,e,r){const{fragment:s,on_mount:i,on_destroy:a,after_update:u}=t.$$;s.m(e,r),v(()=>{const e=i.map(n).filter(c);a?a.push(...e):o(e),t.$$.on_mount=[]}),u.forEach(v)}(e,s.target,s.anchor),x()),h(d)}class S{$destroy(){var e,n;n=1,(e=this).$$.fragment&&(o(e.$$.on_destroy),e.$$.fragment.d(n),e.$$.on_destroy=e.$$.fragment=null,e.$$.ctx={}),this.$destroy=t}$on(t,e){const n=this.$$.callbacks[t]||(this.$$.callbacks[t]=[]);return n.push(e),()=>{const t=n.indexOf(e);-1!==t&&n.splice(t,1)}}$set(){}}class T extends S{constructor(t){if(!t||!t.target&&!t.$$inline)throw new Error("'target' is a required option");super()}$destroy(){super.$destroy(),this.$destroy=(()=>{console.warn("Component was already destroyed")})}}const{Error:A,console:B}=E,L="assets/js/ui-addon-search/cmp.svelte";function O(n){var r,c,s,p,h,m,g,$,b,y,_,v,x,w,k,E,C,I,S,T,B,O;return{c:function(){var t;r=a("form"),c=a("div"),s=a("input"),p=u(),h=a("button"),m=u(),g=a("div"),$=a("div"),b=a("input"),y=u(),(_=a("label")).textContent="Bindings",v=u(),x=a("div"),w=a("input"),k=u(),(E=a("label")).textContent="IO Services",C=u(),I=a("div"),S=a("input"),T=u(),(B=a("label")).textContent="Rule Templates",f(s,"class","form-control"),s.autofocus="true",s.required=!0,f(s,"type","search"),e(s,L,45,4,961),f(h,"class","close-icon"),f(h,"type","reset"),e(h,L,52,4,1132),f(c,"class","form-group search-group"),e(c,L,44,2,919),f(b,"type","checkbox"),f(b,"class","custom-control-input"),f(b,"name","binding"),f(b,"id","chkBindings"),e(b,L,56,6,1296),f(_,"class","custom-control-label"),f(_,"for","chkBindings"),e(_,L,62,6,1460),f($,"class","custom-control custom-checkbox"),e($,L,55,4,1245),f(w,"type","checkbox"),f(w,"class","custom-control-input"),f(w,"name","ioservice"),f(w,"id","chkIOServices"),e(w,L,65,6,1597),f(E,"class","custom-control-label"),f(E,"for","chkIOServices"),e(E,L,71,6,1766),f(x,"class","custom-control custom-checkbox"),e(x,L,64,4,1546),f(S,"type","checkbox"),f(S,"class","custom-control-input"),f(S,"name","ruletemplate"),f(S,"id","chkRuleTemplates"),e(S,L,76,6,1924),f(B,"class","custom-control-label"),f(B,"for","chkRuleTemplates"),e(B,L,82,6,2102),f(I,"class","custom-control custom-checkbox"),e(I,L,75,4,1873),f(g,"class","form-group d-flex justify-content-around"),e(g,L,54,2,1186),f(r,"id","addonsearchform"),f(r,"action","#"),f(r,"onsubmit","event.preventDefault();return false;"),e(r,L,39,0,767),O=[l(s,"input",n.input_handler),l(b,"change",n.input1_change_handler),l(w,"change",n.input2_change_handler),l(S,"change",n.input3_change_handler),l(r,"reset",d((t=n.reset_handler,function(e){return e.preventDefault(),t.call(this,e)})))]},l:function(t){throw new A("options.hydrate only works if the component was compiled with the `hydratable: true` option")},m:function(t,e){!function(t,e,n){t.insertBefore(e,n||null)}(t,r,e),i(r,c),i(c,s),n.input0_binding(s),i(c,p),i(c,h),i(r,m),i(r,g),i(g,$),i($,b),b.checked=n.filters.binding,i($,y),i($,_),i(g,v),i(g,x),i(x,w),w.checked=n.filters.ioservice,i(x,k),i(x,E),i(g,C),i(g,I),i(I,S),S.checked=n.filters.ruletemplate,i(I,T),i(I,B)},p:function(t,e){t.filters&&(b.checked=e.filters.binding),t.filters&&(w.checked=e.filters.ioservice),t.filters&&(S.checked=e.filters.ruletemplate)},i:t,o:t,d:function(t){var e;t&&(e=r).parentNode.removeChild(e),n.input0_binding(null),o(O)}}}function j(t,e,n){let r,o,c={binding:!0,ioservice:!0,ruletemplate:!0};function s(t){o.placeholder=`Search ${t} entries`,n("textInput",o)}function i(t){r.searchstring=t,n("target",r)}function a(){i(""),o.value="",n("textInput",o)}return t.$$.update=((t={target:1,filters:1})=>{(t.target||t.filters)&&r&&function(t){r.filters=t,n("target",r),console.log("SET FILTERS in updateFilters"),s(r.count)}(c)}),{textInput:o,filters:c,input:i,reset:a,start:function(t){if(!t)throw new Error("Target not set!");n("target",r=t),r.addEventListener("ready",t=>s(t.detail.count),{once:!0})},input0_binding:function(t){g[t?"unshift":"push"](()=>{n("textInput",o=t)})},input_handler:function(t){return i(t.target.value)},input1_change_handler:function(){c.binding=this.checked,n("filters",c)},input2_change_handler:function(){c.ioservice=this.checked,n("filters",c)},input3_change_handler:function(){c.ruletemplate=this.checked,n("filters",c)},reset_handler:function(t){return a()}}}class q extends T{constructor(t){super(t),I(this,t,j,O,s,["start"]);const{ctx:e}=this.$$,n=t.props||{};void 0!==e.start||"start"in n||B.warn("<Cmp> was created without expected prop 'start'")}get start(){return this.$$.ctx.start}set start(t){throw new A("<Cmp>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}}window.customElements.define("ui-addon-search",class extends HTMLElement{constructor(){super()}connectedCallback(){this.cmp=new q({target:this,props:{}}),window.requestAnimationFrame(()=>this.cmp.start(document.getElementById(this.getAttribute("target"))))}disconnectedCallback(){this.cmp&&this.cmp.$destroy()}});
+function noop() { }
+function run(fn) {
+    return fn();
+}
+function blank_object() {
+    return Object.create(null);
+}
+function run_all(fns) {
+    fns.forEach(run);
+}
+function is_function(thing) {
+    return typeof thing === 'function';
+}
+function safe_not_equal(a, b) {
+    return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+}
+
+function append(target, node) {
+    target.appendChild(node);
+}
+function insert(target, node, anchor) {
+    target.insertBefore(node, anchor || null);
+}
+function detach(node) {
+    node.parentNode.removeChild(node);
+}
+function element(name) {
+    return document.createElement(name);
+}
+function text(data) {
+    return document.createTextNode(data);
+}
+function space() {
+    return text(' ');
+}
+function listen(node, event, handler, options) {
+    node.addEventListener(event, handler, options);
+    return () => node.removeEventListener(event, handler, options);
+}
+function prevent_default(fn) {
+    return function (event) {
+        event.preventDefault();
+        // @ts-ignore
+        return fn.call(this, event);
+    };
+}
+function stop_propagation(fn) {
+    return function (event) {
+        event.stopPropagation();
+        // @ts-ignore
+        return fn.call(this, event);
+    };
+}
+function attr(node, attribute, value) {
+    if (value == null)
+        node.removeAttribute(attribute);
+    else
+        node.setAttribute(attribute, value);
+}
+function children(element) {
+    return Array.from(element.childNodes);
+}
+
+let current_component;
+function set_current_component(component) {
+    current_component = component;
+}
+
+const dirty_components = [];
+const binding_callbacks = [];
+const render_callbacks = [];
+const flush_callbacks = [];
+const resolved_promise = Promise.resolve();
+let update_scheduled = false;
+function schedule_update() {
+    if (!update_scheduled) {
+        update_scheduled = true;
+        resolved_promise.then(flush);
+    }
+}
+function add_render_callback(fn) {
+    render_callbacks.push(fn);
+}
+function flush() {
+    const seen_callbacks = new Set();
+    do {
+        // first, call beforeUpdate functions
+        // and update components
+        while (dirty_components.length) {
+            const component = dirty_components.shift();
+            set_current_component(component);
+            update(component.$$);
+        }
+        while (binding_callbacks.length)
+            binding_callbacks.pop()();
+        // then, once components are updated, call
+        // afterUpdate functions. This may cause
+        // subsequent updates...
+        for (let i = 0; i < render_callbacks.length; i += 1) {
+            const callback = render_callbacks[i];
+            if (!seen_callbacks.has(callback)) {
+                callback();
+                // ...so guard against infinite loops
+                seen_callbacks.add(callback);
+            }
+        }
+        render_callbacks.length = 0;
+    } while (dirty_components.length);
+    while (flush_callbacks.length) {
+        flush_callbacks.pop()();
+    }
+    update_scheduled = false;
+}
+function update($$) {
+    if ($$.fragment) {
+        $$.update($$.dirty);
+        run_all($$.before_update);
+        $$.fragment.p($$.dirty, $$.ctx);
+        $$.dirty = null;
+        $$.after_update.forEach(add_render_callback);
+    }
+}
+const outroing = new Set();
+function transition_in(block, local) {
+    if (block && block.i) {
+        outroing.delete(block);
+        block.i(local);
+    }
+}
+function mount_component(component, target, anchor) {
+    const { fragment, on_mount, on_destroy, after_update } = component.$$;
+    fragment.m(target, anchor);
+    // onMount happens before the initial afterUpdate
+    add_render_callback(() => {
+        const new_on_destroy = on_mount.map(run).filter(is_function);
+        if (on_destroy) {
+            on_destroy.push(...new_on_destroy);
+        }
+        else {
+            // Edge case - component was destroyed immediately,
+            // most likely as a result of a binding initialising
+            run_all(new_on_destroy);
+        }
+        component.$$.on_mount = [];
+    });
+    after_update.forEach(add_render_callback);
+}
+function destroy_component(component, detaching) {
+    if (component.$$.fragment) {
+        run_all(component.$$.on_destroy);
+        component.$$.fragment.d(detaching);
+        // TODO null out other refs, including component.$$ (but need to
+        // preserve final state?)
+        component.$$.on_destroy = component.$$.fragment = null;
+        component.$$.ctx = {};
+    }
+}
+function make_dirty(component, key) {
+    if (!component.$$.dirty) {
+        dirty_components.push(component);
+        schedule_update();
+        component.$$.dirty = blank_object();
+    }
+    component.$$.dirty[key] = true;
+}
+function init(component, options, instance, create_fragment, not_equal, prop_names) {
+    const parent_component = current_component;
+    set_current_component(component);
+    const props = options.props || {};
+    const $$ = component.$$ = {
+        fragment: null,
+        ctx: null,
+        // state
+        props: prop_names,
+        update: noop,
+        not_equal,
+        bound: blank_object(),
+        // lifecycle
+        on_mount: [],
+        on_destroy: [],
+        before_update: [],
+        after_update: [],
+        context: new Map(parent_component ? parent_component.$$.context : []),
+        // everything else
+        callbacks: blank_object(),
+        dirty: null
+    };
+    let ready = false;
+    $$.ctx = instance
+        ? instance(component, props, (key, ret, value = ret) => {
+            if ($$.ctx && not_equal($$.ctx[key], $$.ctx[key] = value)) {
+                if ($$.bound[key])
+                    $$.bound[key](value);
+                if (ready)
+                    make_dirty(component, key);
+            }
+            return ret;
+        })
+        : props;
+    $$.update();
+    ready = true;
+    run_all($$.before_update);
+    $$.fragment = create_fragment($$.ctx);
+    if (options.target) {
+        if (options.hydrate) {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            $$.fragment.l(children(options.target));
+        }
+        else {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            $$.fragment.c();
+        }
+        if (options.intro)
+            transition_in(component.$$.fragment);
+        mount_component(component, options.target, options.anchor);
+        flush();
+    }
+    set_current_component(parent_component);
+}
+let SvelteElement;
+if (typeof HTMLElement !== 'undefined') {
+    SvelteElement = class extends HTMLElement {
+        constructor() {
+            super();
+            this.attachShadow({ mode: 'open' });
+        }
+        connectedCallback() {
+            // @ts-ignore todo: improve typings
+            for (const key in this.$$.slotted) {
+                // @ts-ignore todo: improve typings
+                this.appendChild(this.$$.slotted[key]);
+            }
+        }
+        attributeChangedCallback(attr, _oldValue, newValue) {
+            this[attr] = newValue;
+        }
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            // TODO should this delegate to addEventListener?
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set() {
+            // overridden by instance, if it has props
+        }
+    };
+}
+class SvelteComponent {
+    $destroy() {
+        destroy_component(this, 1);
+        this.$destroy = noop;
+    }
+    $on(type, callback) {
+        const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+        callbacks.push(callback);
+        return () => {
+            const index = callbacks.indexOf(callback);
+            if (index !== -1)
+                callbacks.splice(index, 1);
+        };
+    }
+    $set() {
+        // overridden by instance, if it has props
+    }
+}
+
+/* assets/js/ui-addon-search/cmp.svelte generated by Svelte v3.12.0 */
+
+function create_fragment(ctx) {
+	var form, div0, input0, t0, button, t1, div4, div1, input1, t2, label0, t4, div2, input2, t5, label1, t7, div3, input3, t8, label2, dispose;
+
+	return {
+		c() {
+			form = element("form");
+			div0 = element("div");
+			input0 = element("input");
+			t0 = space();
+			button = element("button");
+			t1 = space();
+			div4 = element("div");
+			div1 = element("div");
+			input1 = element("input");
+			t2 = space();
+			label0 = element("label");
+			label0.textContent = "Bindings";
+			t4 = space();
+			div2 = element("div");
+			input2 = element("input");
+			t5 = space();
+			label1 = element("label");
+			label1.textContent = "IO Services";
+			t7 = space();
+			div3 = element("div");
+			input3 = element("input");
+			t8 = space();
+			label2 = element("label");
+			label2.textContent = "Rule Templates";
+			attr(input0, "class", "form-control");
+			input0.autofocus = "true";
+			input0.required = true;
+			attr(input0, "type", "search");
+			attr(button, "class", "close-icon");
+			attr(button, "type", "reset");
+			attr(div0, "class", "form-group search-group");
+			attr(input1, "type", "checkbox");
+			attr(input1, "class", "custom-control-input");
+			attr(input1, "name", "binding");
+			attr(input1, "id", "chkBindings");
+			attr(label0, "class", "custom-control-label");
+			attr(label0, "for", "chkBindings");
+			attr(div1, "class", "custom-control custom-checkbox");
+			attr(input2, "type", "checkbox");
+			attr(input2, "class", "custom-control-input");
+			attr(input2, "name", "ioservice");
+			attr(input2, "id", "chkIOServices");
+			attr(label1, "class", "custom-control-label");
+			attr(label1, "for", "chkIOServices");
+			attr(div2, "class", "custom-control custom-checkbox");
+			attr(input3, "type", "checkbox");
+			attr(input3, "class", "custom-control-input");
+			attr(input3, "name", "ruletemplate");
+			attr(input3, "id", "chkRuleTemplates");
+			attr(label2, "class", "custom-control-label");
+			attr(label2, "for", "chkRuleTemplates");
+			attr(div3, "class", "custom-control custom-checkbox");
+			attr(div4, "class", "form-group d-flex justify-content-around");
+			attr(form, "id", "addonsearchform");
+			attr(form, "action", "#");
+			attr(form, "onsubmit", "event.preventDefault();return false;");
+
+			dispose = [
+				listen(input0, "input", ctx.input_handler),
+				listen(input1, "change", ctx.input1_change_handler),
+				listen(input2, "change", ctx.input2_change_handler),
+				listen(input3, "change", ctx.input3_change_handler),
+				listen(form, "reset", stop_propagation(prevent_default(ctx.reset_handler)))
+			];
+		},
+
+		m(target_1, anchor) {
+			insert(target_1, form, anchor);
+			append(form, div0);
+			append(div0, input0);
+			ctx.input0_binding(input0);
+			append(div0, t0);
+			append(div0, button);
+			append(form, t1);
+			append(form, div4);
+			append(div4, div1);
+			append(div1, input1);
+
+			input1.checked = ctx.filters.binding;
+
+			append(div1, t2);
+			append(div1, label0);
+			append(div4, t4);
+			append(div4, div2);
+			append(div2, input2);
+
+			input2.checked = ctx.filters.ioservice;
+
+			append(div2, t5);
+			append(div2, label1);
+			append(div4, t7);
+			append(div4, div3);
+			append(div3, input3);
+
+			input3.checked = ctx.filters.ruletemplate;
+
+			append(div3, t8);
+			append(div3, label2);
+		},
+
+		p(changed, ctx) {
+			if (changed.filters) input1.checked = ctx.filters.binding;
+			if (changed.filters) input2.checked = ctx.filters.ioservice;
+			if (changed.filters) input3.checked = ctx.filters.ruletemplate;
+		},
+
+		i: noop,
+		o: noop,
+
+		d(detaching) {
+			if (detaching) {
+				detach(form);
+			}
+
+			ctx.input0_binding(null);
+			run_all(dispose);
+		}
+	};
+}
+
+function instance($$self, $$props, $$invalidate) {
+	let target;
+  let textInput;
+  let filters = {
+    binding: true,
+    ioservice: true,
+    ruletemplate: true
+  };
+
+  function updateFilters(f) {
+    $$invalidate('target', target.filters = f, target);
+    console.log("SET FILTERS in updateFilters");
+    updatePlaceholder(target.count);
+  }
+
+  function updatePlaceholder(c) {
+    $$invalidate('textInput', textInput.placeholder = `Search ${c} entries`, textInput);
+  }
+
+  function input(val) {
+    $$invalidate('target', target.searchstring = val, target);
+  }
+
+  function reset() {
+    input("");
+    $$invalidate('textInput', textInput.value = "", textInput);
+  }
+
+  function start(target_) {
+    if (!target_) {
+      throw new Error("Target not set!");
+    }
+    $$invalidate('target', target = target_);
+    target.addEventListener("ready", (e) => updatePlaceholder(e.detail.count), { once: true });
+  }
+
+	function input0_binding($$value) {
+		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
+			$$invalidate('textInput', textInput = $$value);
+		});
+	}
+
+	const input_handler = (e) => input(e.target.value);
+
+	function input1_change_handler() {
+		filters.binding = this.checked;
+		$$invalidate('filters', filters);
+	}
+
+	function input2_change_handler() {
+		filters.ioservice = this.checked;
+		$$invalidate('filters', filters);
+	}
+
+	function input3_change_handler() {
+		filters.ruletemplate = this.checked;
+		$$invalidate('filters', filters);
+	}
+
+	const reset_handler = (e) => reset();
+
+	$$self.$$.update = ($$dirty = { target: 1, filters: 1 }) => {
+		if ($$dirty.target || $$dirty.filters) { if (target) updateFilters(filters); }
+	};
+
+	return {
+		textInput,
+		filters,
+		input,
+		reset,
+		start,
+		input0_binding,
+		input_handler,
+		input1_change_handler,
+		input2_change_handler,
+		input3_change_handler,
+		reset_handler
+	};
+}
+
+class Cmp extends SvelteComponent {
+	constructor(options) {
+		super();
+		init(this, options, instance, create_fragment, safe_not_equal, ["start"]);
+	}
+
+	get start() {
+		return this.$$.ctx.start;
+	}
+}
+
+window.customElements.define('ui-addon-search', class extends HTMLElement {
+    constructor() {
+        super();
+    }
+    connectedCallback() {
+        this.cmp = new Cmp({ target: this, props: {} });
+        window.requestAnimationFrame(()=>this.cmp.start(document.getElementById(this.getAttribute("target"))));
+    }
+    disconnectedCallback() {
+        if (this.cmp) this.cmp.$destroy();
+    }
+});
 //# sourceMappingURL=ui-addon-search.js.map

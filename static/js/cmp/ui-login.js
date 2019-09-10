@@ -1,2 +1,1164 @@
-function e(){}function t(e,t,g,c,i){e.__svelte_meta={loc:{file:t,line:g,column:c,char:i}}}function g(e){return e()}function c(){return Object.create(null)}function i(e){e.forEach(g)}function l(e){return"function"==typeof e}function n(e,t){return e!=e?t==t:e!==t||e&&"object"==typeof e||"function"==typeof e}function a(e,t){e.appendChild(t)}function I(e,t,g){e.insertBefore(t,g||null)}function s(e){e.parentNode.removeChild(e)}function o(e){return document.createElement(e)}function d(e){return document.createTextNode(e)}function r(){return d(" ")}function u(e,t,g,c){return e.addEventListener(t,g,c),()=>e.removeEventListener(t,g,c)}function b(e,t,g){null==g?e.removeAttribute(t):e.setAttribute(t,g)}function C(e,t){t=""+t,e.data!==t&&(e.data=t)}let m;function p(e){m=e}function A(e){(function(){if(!m)throw new Error("Function called outside component initialization");return m})().$$.on_destroy.push(e)}const X=[],G=[],Z=[],F=[],B=Promise.resolve();let h=!1;function x(e){Z.push(e)}function W(){const e=new Set;do{for(;X.length;){const e=X.shift();p(e),V(e.$$)}for(;G.length;)G.pop()();for(let t=0;t<Z.length;t+=1){const g=Z[t];e.has(g)||(g(),e.add(g))}Z.length=0}while(X.length);for(;F.length;)F.pop()();h=!1}function V(e){e.fragment&&(e.update(e.dirty),i(e.before_update),e.fragment.p(e.dirty,e.ctx),e.dirty=null,e.after_update.forEach(x))}const v=new Set;const Q="undefined"!=typeof window?window:global;function w(e,t){e.$$.dirty||(X.push(e),h||(h=!0,B.then(W)),e.$$.dirty=c()),e.$$.dirty[t]=!0}function y(t,n,a,I,s,o){const d=m;p(t);const r=n.props||{},u=t.$$={fragment:null,ctx:null,props:o,update:e,not_equal:s,bound:c(),on_mount:[],on_destroy:[],before_update:[],after_update:[],context:new Map(d?d.$$.context:[]),callbacks:c(),dirty:null};let b=!1;var C,A,X;u.ctx=a?a(t,r,(e,g)=>{u.ctx&&s(u.ctx[e],u.ctx[e]=g)&&(u.bound[e]&&u.bound[e](g),b&&w(t,e))}):r,u.update(),b=!0,i(u.before_update),u.fragment=I(u.ctx),n.target&&(n.hydrate?u.fragment.l((X=n.target,Array.from(X.childNodes))):u.fragment.c(),n.intro&&((C=t.$$.fragment)&&C.i&&(v.delete(C),C.i(A))),function(e,t,c){const{fragment:n,on_mount:a,on_destroy:I,after_update:s}=e.$$;n.m(t,c),x(()=>{const t=a.map(g).filter(l);I?I.push(...t):i(t),e.$$.on_mount=[]}),s.forEach(x)}(t,n.target,n.anchor),W()),p(d)}class f{$destroy(){var t,g;g=1,(t=this).$$.fragment&&(i(t.$$.on_destroy),t.$$.fragment.d(g),t.$$.on_destroy=t.$$.fragment=null,t.$$.ctx={}),this.$destroy=e}$on(e,t){const g=this.$$.callbacks[e]||(this.$$.callbacks[e]=[]);return g.push(t),()=>{const e=g.indexOf(t);-1!==e&&g.splice(e,1)}}$set(){}}class Y extends f{constructor(e){if(!e||!e.target&&!e.$$inline)throw new Error("'target' is a required option");super()}$destroy(){super.$destroy(),this.$destroy=(()=>{console.warn("Component was already destroyed")})}}const{console:U}=Q,N="assets/js/ui-login/cmp.svelte";function J(e,t,g){const c=Object.create(e);return c.item=t[g],c}function L(e){for(var g,c,i,l,n,u,C,m,p,A,X,G,Z,F=e.signInOptions,B=[],h=0;h<F.length;h+=1)B[h]=z(J(e,F,h));var x=e.error_message&&D(e);return{c:function(){g=o("form");for(var a=0;a<B.length;a+=1)B[a].c();c=r(),x&&x.c(),i=r(),l=o("small"),n=d("By continuing, you are indicating that you accept our\n      "),u=o("a"),C=d("Terms of Service"),p=d("\n      and\n      "),A=o("a"),X=d("Privacy Policy"),Z=d("\n      ."),b(u,"href",e.tosUrl),b(u,"target",m=e.legal_link_new_tab?"_blank":""),t(u,N,356,6,9527),b(A,"href",e.privacyPolicyUrl),b(A,"target",G=e.legal_link_new_tab?"_blank":""),t(A,N,360,6,9641),t(l,N,354,4,9453),b(g,"onsubmit","return false;"),b(g,"class","container svelte-aggp9g"),t(g,N,341,2,9017)},m:function(e,t){I(e,g,t);for(var s=0;s<B.length;s+=1)B[s].m(g,null);a(g,c),x&&x.m(g,null),a(g,i),a(g,l),a(l,n),a(l,u),a(u,C),a(l,p),a(l,A),a(A,X),a(l,Z)},p:function(e,t){if(e.loading||e.signInOptions){F=t.signInOptions;for(var l=0;l<F.length;l+=1){const i=J(t,F,l);B[l]?B[l].p(e,i):(B[l]=z(i),B[l].c(),B[l].m(g,c))}for(;l<B.length;l+=1)B[l].d(1);B.length=F.length}t.error_message?x?x.p(e,t):((x=D(t)).c(),x.m(g,i)):x&&(x.d(1),x=null),e.tosUrl&&b(u,"href",t.tosUrl),e.legal_link_new_tab&&m!==(m=t.legal_link_new_tab?"_blank":"")&&b(u,"target",m),e.privacyPolicyUrl&&b(A,"href",t.privacyPolicyUrl),e.legal_link_new_tab&&G!==(G=t.legal_link_new_tab?"_blank":"")&&b(A,"target",G)},d:function(e){e&&s(g),function(e,t){for(let g=0;g<e.length;g+=1)e[g]&&e[g].d(t)}(B,e),x&&x.d()}}}function R(e){var g,c,l,n,d,C,m,p,A,X,G,Z,F,B,h,x,W,V,v,Q,w,y,f,Y,U,J,L,R,k=e.error_message&&_(e);return{c:function(){g=o("form"),c=o("div"),(l=o("label")).textContent="Email address",n=r(),d=o("input"),C=r(),(m=o("small")).textContent="We'll never share your email with anyone else.",p=r(),A=o("div"),(X=o("label")).textContent="Password",G=r(),Z=o("input"),F=r(),B=o("div"),(h=o("label")).textContent="Repeat Password",x=r(),W=o("input"),V=r(),v=o("div"),(Q=o("label")).textContent="First & Last Name",w=r(),y=o("input"),f=r(),(Y=o("button")).textContent="Create Account",U=r(),(J=o("a")).textContent="Back",L=r(),k&&k.c(),b(l,"for","exampleInputEmail1"),t(l,N,288,6,7435),b(d,"type","email"),b(d,"class","form-control"),b(d,"autocomplete","email"),b(d,"id","exampleInputEmail1"),b(d,"aria-describedby","emailHelp"),b(d,"placeholder","Enter email"),t(d,N,289,6,7495),b(m,"id","emailHelp"),b(m,"class","form-text text-muted"),t(m,N,297,6,7720),b(c,"class","form-group"),t(c,N,287,4,7404),b(X,"for","exampleInputPassword1"),t(X,N,302,6,7888),b(Z,"type","password"),b(Z,"autocomplete","new-password"),b(Z,"class","form-control"),b(Z,"id","exampleInputPassword1"),b(Z,"placeholder","Password"),t(Z,N,303,6,7946),b(A,"class","form-group"),t(A,N,301,4,7857),b(h,"for","exampleInputPassword2"),t(h,N,312,6,8187),b(W,"type","password"),b(W,"autocomplete","new-password"),b(W,"class","form-control"),b(W,"id","exampleInputPassword2"),b(W,"placeholder","Password"),t(W,N,313,6,8252),b(B,"class","form-group"),t(B,N,311,4,8156),b(Q,"for","signupname"),t(Q,N,322,6,8500),b(y,"class","form-control"),b(y,"id","signupname"),b(y,"placeholder","First & Last Name"),t(y,N,323,6,8556),b(v,"class","form-group"),t(v,N,321,4,8469),b(Y,"type","submit"),b(Y,"class","btn btn-primary mr-3"),t(Y,N,329,4,8710),b(J,"href","/login#"),t(J,N,335,4,8851),b(g,"class","centered svelte-aggp9g"),t(g,N,286,2,7376),R=[u(d,"input",e.input0_input_handler_1),u(Z,"input",e.input1_input_handler_1),u(W,"input",e.input2_input_handler),u(y,"input",e.input3_input_handler),u(Y,"click",e.email_create_account),u(J,"click",e.back_to_sign_in)]},m:function(t,i){I(t,g,i),a(g,c),a(c,l),a(c,n),a(c,d),d.value=e.email,a(c,C),a(c,m),a(g,p),a(g,A),a(A,X),a(A,G),a(A,Z),Z.value=e.password,a(g,F),a(g,B),a(B,h),a(B,x),a(B,W),W.value=e.password_repeat,a(g,V),a(g,v),a(v,Q),a(v,w),a(v,y),y.value=e.first_lastname,a(g,f),a(g,Y),a(g,U),a(g,J),a(g,L),k&&k.m(g,null)},p:function(e,t){e.email&&d.value!==t.email&&(d.value=t.email),e.password&&Z.value!==t.password&&(Z.value=t.password),e.password_repeat&&W.value!==t.password_repeat&&(W.value=t.password_repeat),e.first_lastname&&y.value!==t.first_lastname&&(y.value=t.first_lastname),t.error_message?k?k.p(e,t):((k=_(t)).c(),k.m(g,null)):k&&(k.d(1),k=null)},d:function(e){e&&s(g),k&&k.d(),i(R)}}}function k(e){var g,c,l,n,C,m,p,A,X,G,Z,F,B,h,x,W,V,v,Q=e.error_message&&H(e);return{c:function(){g=o("form"),c=o("div"),(l=o("label")).textContent="Email address",n=r(),C=o("input"),m=r(),(p=o("small")).textContent="We'll never share your email with anyone else.",A=r(),X=o("div"),(G=o("label")).textContent="Password",Z=r(),F=o("input"),B=r(),(h=o("button")).textContent="Sign In",x=d("\n    No account yet?\n    "),(W=o("a")).textContent="Sign Up",V=r(),Q&&Q.c(),b(l,"for","exampleInputEmail1"),t(l,N,250,6,6309),b(C,"type","email"),b(C,"autocomplete","email"),b(C,"class","form-control"),b(C,"id","exampleInputEmail1"),b(C,"aria-describedby","emailHelp"),b(C,"placeholder","Enter email"),t(C,N,251,6,6369),b(p,"id","emailHelp"),b(p,"class","form-text text-muted"),t(p,N,259,6,6594),b(c,"class","form-group"),t(c,N,249,4,6278),b(G,"for","exampleInputPassword1"),t(G,N,264,6,6762),b(F,"type","password"),b(F,"class","form-control"),b(F,"autocomplete","current-password"),b(F,"id","exampleInputPassword1"),b(F,"placeholder","Password"),t(F,N,265,6,6820),b(X,"class","form-group"),t(X,N,263,4,6731),b(h,"type","submit"),b(h,"class","btn btn-primary mr-3"),t(h,N,273,4,7034),b(W,"href","/login#"),t(W,N,280,4,7185),b(g,"class","centered svelte-aggp9g"),t(g,N,248,2,6250),v=[u(C,"input",e.input0_input_handler),u(F,"input",e.input1_input_handler),u(h,"click",e.signin_with_email),u(W,"click",e.emailsignup)]},m:function(t,i){I(t,g,i),a(g,c),a(c,l),a(c,n),a(c,C),C.value=e.email,a(c,m),a(c,p),a(g,A),a(g,X),a(X,G),a(X,Z),a(X,F),F.value=e.password,a(g,B),a(g,h),a(g,x),a(g,W),a(g,V),Q&&Q.m(g,null)},p:function(e,t){e.email&&C.value!==t.email&&(C.value=t.email),e.password&&F.value!==t.password&&(F.value=t.password),t.error_message?Q?Q.p(e,t):((Q=H(t)).c(),Q.m(g,null)):Q&&(Q.d(1),Q=null)},d:function(e){e&&s(g),Q&&Q.d(),i(v)}}}function z(e){var g,c,i,l,n,m,p,A,X,G=e.item.t+"";function Z(...t){return e.click_handler(e,...t)}return{c:function(){g=o("button"),c=o("img"),l=r(),n=o("span"),m=d("Sign in with "),p=d(G),b(c,"alt",""),b(c,"src",i=e.item.i),b(c,"class","svelte-aggp9g"),t(c,N,347,8,9258),b(n,"class","svelte-aggp9g"),t(n,N,348,8,9294),g.disabled=e.loading,b(g,"class",A="btn btn-primary firebaseui-idp-"+e.item.c+" mb-3 w-100 svelte-aggp9g"),t(g,N,343,6,9107),X=u(g,"click",Z)},m:function(e,t){I(e,g,t),a(g,c),a(g,l),a(g,n),a(n,m),a(n,p)},p:function(t,l){e=l,t.signInOptions&&i!==(i=e.item.i)&&b(c,"src",i),t.signInOptions&&G!==(G=e.item.t+"")&&C(p,G),t.loading&&(g.disabled=e.loading),t.signInOptions&&A!==(A="btn btn-primary firebaseui-idp-"+e.item.c+" mb-3 w-100 svelte-aggp9g")&&b(g,"class",A)},d:function(e){e&&s(g),X()}}}function D(e){var g,c;return{c:function(){g=o("div"),c=d(e.error_message),b(g,"class","text-danger mt-3"),t(g,N,352,6,9387)},m:function(e,t){I(e,g,t),a(g,c)},p:function(e,t){e.error_message&&C(c,t.error_message)},d:function(e){e&&s(g)}}}function _(e){var g,c;return{c:function(){g=o("div"),c=d(e.error_message),b(g,"class","text-danger mt-3"),t(g,N,337,6,8935)},m:function(e,t){I(e,g,t),a(g,c)},p:function(e,t){e.error_message&&C(c,t.error_message)},d:function(e){e&&s(g)}}}function H(e){var g,c;return{c:function(){g=o("div"),c=d(e.error_message),b(g,"class","text-danger mt-3"),t(g,N,282,6,7268)},m:function(e,t){I(e,g,t),a(g,c)},p:function(e,t){e.error_message&&C(c,t.error_message)},d:function(e){e&&s(g)}}}function P(t){var g;function c(e){return"email_signin"==e.mode?k:"email_signup"==e.mode?R:L}var i=c(t),l=i(t);return{c:function(){l.c(),g=d("")},l:function(e){throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option")},m:function(e,t){l.m(e,t),I(e,g,t)},p:function(e,t){i===(i=c(t))&&l?l.p(e,t):(l.d(1),(l=i(t))&&(l.c(),l.m(g.parentNode,g)))},i:e,o:e,d:function(e){l.d(e),e&&s(g)}}}let j=!1;function S(e,t,g){let c,i,{lang:l,redirect_url:n=""}=t,a="",I="",s="",o="",d=null,r=!1,u="",{legal_link_new_tab:b=!1}=t;A(()=>{i&&i(),i=null});const C=new URL(window.location).searchParams.get("redirect");function m(){if(!B)return;const e=new URL(window.location).searchParams;let t=new URL(B);for(let g of e.entries())"redirect"===g[0]&&t.searchParams.append(g[0],g[1]);window.location.assign(t)}function p(e,t){e.stopPropagation(),e.preventDefault(),"email"===t.c?g("mode",u="email_signin"):(g("loading",r=!0),c.auth().signInWithPopup(new t.p).catch(e=>{g("loading",r=!1),g("error_message",d=e.message)}))}!async function(){let e=await import("../../../../../../../../js/cmp/userdata.js");g("firebase",c=e.firebase),i&&i(),i=c.auth().onAuthStateChanged(e=>{e&&!j&&setTimeout(m,200)},e=>{console.log(e),g("error_message",d=e.message)})}();const X=["lang","redirect_url","legal_link_new_tab"];let G,Z,F,B,h;return Object.keys(t).forEach(e=>{X.includes(e)||e.startsWith("$$")||U.warn(`<Cmp> was created with unknown prop '${e}'`)}),e.$set=(e=>{"lang"in e&&g("lang",l=e.lang),"redirect_url"in e&&g("redirect_url",n=e.redirect_url),"legal_link_new_tab"in e&&g("legal_link_new_tab",b=e.legal_link_new_tab)}),e.$$.update=((e={lang:1,langpath:1,redirect_url:1,firebase:1})=>{e.lang&&g("langpath",G="en"==l?"":"/"+l),e.langpath&&g("tosUrl",Z=G+"/terms"),e.langpath&&g("privacyPolicyUrl",F=G+"/privacy"),e.redirect_url&&(B=function(e){return C?window.location.origin+decodeURIComponent(C):null!=e?e.startsWith("/dashboard")?window.location.origin+G+decodeURIComponent(e):window.location.origin+decodeURIComponent(e):e}(n)),e.firebase&&g("signInOptions",h=[{p:c?c.auth.GoogleAuthProvider:null,i:"https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg",c:"google",t:"Google"},{p:c?c.auth.GithubAuthProvider:null,i:"https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/github.svg",c:"github",t:"Github"},{p:c?c.auth.EmailAuthProvider:null,i:"https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/mail.svg",c:"email",t:"email"}])}),{lang:l,redirect_url:n,email:a,password:I,password_repeat:s,first_lastname:o,error_message:d,loading:r,mode:u,legal_link_new_tab:b,email_create_account:function(e){e.preventDefault(),0!=o.trim().length?I==s?(g("loading",r=!0),c.auth().createUserWithEmailAndPassword(a,I).then(e=>e.updateProfile({displayName:o})).then(m).catch(e=>{g("loading",r=!1),g("error_message",d=e.message)})):g("error_message",d="Your passwords don't match."):g("error_message",d="No first and lastname set. We will only use your name to write you nice to read email greeting lines.")},signin_with_email:function(e){e.preventDefault(),g("loading",r=!0),c.auth().signInWithEmailAndPassword(a,I).catch(e=>{g("loading",r=!1),g("error_message",d=e.message)})},signin:p,emailsignup:function(e){e.stopPropagation(),e.preventDefault(),g("loading",r=!1),g("mode",u="email_signup"),g("error_message",d=null)},back_to_sign_in:function(){g("loading",r=!1),g("mode",u="email_signin"),g("error_message",d=null)},tosUrl:Z,privacyPolicyUrl:F,signInOptions:h,input0_input_handler:function(){a=this.value,g("email",a)},input1_input_handler:function(){I=this.value,g("password",I)},input0_input_handler_1:function(){a=this.value,g("email",a)},input1_input_handler_1:function(){I=this.value,g("password",I)},input2_input_handler:function(){s=this.value,g("password_repeat",s)},input3_input_handler:function(){o=this.value,g("first_lastname",o)},click_handler:function({item:e},t){return p(t,e)}}}class E extends Y{constructor(e){var t;super(e),document.getElementById("svelte-aggp9g-style")||((t=o("style")).id="svelte-aggp9g-style",t.textContent=".firebaseui-idp-email.svelte-aggp9g,.firebaseui-idp-email.svelte-aggp9g:hover,.firebaseui-idp-email.svelte-aggp9g:active,.firebaseui-idp-email.svelte-aggp9g:focus{background-color:#db4437;color:white}.firebaseui-idp-phone.svelte-aggp9g,.firebaseui-idp-phone.svelte-aggp9g:hover,.firebaseui-idp-phone.svelte-aggp9g:active,.firebaseui-idp-phone.svelte-aggp9g:focus{background-color:#02bd7e;color:white}.firebaseui-idp-google.svelte-aggp9g,.firebaseui-idp-google.svelte-aggp9g:hover,.firebaseui-idp-google.svelte-aggp9g:active,.firebaseui-idp-google.svelte-aggp9g:focus{background-color:#fff;color:black}.firebaseui-idp-github.svelte-aggp9g,.firebaseui-idp-github.svelte-aggp9g:hover,.firebaseui-idp-github.svelte-aggp9g:active,.firebaseui-idp-github.svelte-aggp9g:focus{background-color:#333;color:white}.firebaseui-idp-facebook.svelte-aggp9g,.firebaseui-idp-facebook.svelte-aggp9g:hover,.firebaseui-idp-facebook.svelte-aggp9g:active,.firebaseui-idp-facebook.svelte-aggp9g:focus{background-color:#3b5998}.firebaseui-idp-twitter.svelte-aggp9g,.firebaseui-idp-twitter.svelte-aggp9g:hover,.firebaseui-idp-twitter.svelte-aggp9g:active,.firebaseui-idp-twitter.svelte-aggp9g:focus{background-color:#55acee}.firebaseui-idp-anonymous.svelte-aggp9g,.firebaseui-idp-anonymous.svelte-aggp9g:hover,.firebaseui-idp-anonymous.svelte-aggp9g:active,.firebaseui-idp-anonymous.svelte-aggp9g:focus{background-color:#f4b400}.centered.svelte-aggp9g{margin:auto;max-width:300px}.container.svelte-aggp9g{display:flex;justify-content:center;flex-direction:column;max-width:300px;align-items:center;margin:auto}.container.svelte-aggp9g button img.svelte-aggp9g{max-width:20px}.container.svelte-aggp9g button.svelte-aggp9g{display:flex;align-items:center}.container.svelte-aggp9g button span.svelte-aggp9g{flex:1}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY21wLnN2ZWx0ZSIsInNvdXJjZXMiOlsiY21wLnN2ZWx0ZSJdLCJzb3VyY2VzQ29udGVudCI6WyI8c2NyaXB0PlxuICBleHBvcnQgbGV0IGxhbmc7XG4gIGV4cG9ydCBsZXQgcmVkaXJlY3RfdXJsID0gXCJcIjtcbiAgbGV0IGZpcmViYXNlO1xuICBsZXQgZW1haWxfc2lnbmluID0gZmFsc2U7XG4gIGxldCBlbWFpbF9zaWdudXAgPSBmYWxzZTtcbiAgbGV0IGVtYWlsID0gXCJcIjtcbiAgbGV0IHBhc3N3b3JkID0gXCJcIjtcbiAgbGV0IHBhc3N3b3JkX3JlcGVhdCA9IFwiXCI7XG4gIGxldCBmaXJzdF9sYXN0bmFtZSA9IFwiXCI7XG4gIGxldCBlcnJvcl9tZXNzYWdlID0gbnVsbDtcbiAgbGV0IGxvYWRpbmcgPSBmYWxzZTtcbiAgbGV0IG1vZGUgPSBcIlwiO1xuICBsZXQgbG9ja2VkX3JlZGlyZWN0ID0gZmFsc2U7XG4gIGxldCB1bnJlZ19hdXRoX2xpc3RlbmVyO1xuICBleHBvcnQgbGV0IGxlZ2FsX2xpbmtfbmV3X3RhYiA9IGZhbHNlO1xuXG4gIGltcG9ydCB7IG9uRGVzdHJveSB9IGZyb20gXCJzdmVsdGVcIjtcbiAgb25EZXN0cm95KCgpID0+IHtcbiAgIGlmICh1bnJlZ19hdXRoX2xpc3RlbmVyKSB1bnJlZ19hdXRoX2xpc3RlbmVyKCk7XG4gICAgICB1bnJlZ19hdXRoX2xpc3RlbmVyID0gbnVsbDtcbiAgfSk7XG5cbiAgJDogbGFuZ3BhdGggPSBsYW5nID09IFwiZW5cIiA/IFwiXCIgOiBcIi9cIiArIGxhbmc7XG4gICQ6IHRvc1VybCA9IGxhbmdwYXRoICsgXCIvdGVybXNcIjtcbiAgJDogcHJpdmFjeVBvbGljeVVybCA9IGxhbmdwYXRoICsgXCIvcHJpdmFjeVwiO1xuXG4gIGNvbnN0IHJlZGlyZWN0ID0gbmV3IFVSTCh3aW5kb3cubG9jYXRpb24pLnNlYXJjaFBhcmFtcy5nZXQoXCJyZWRpcmVjdFwiKTtcblxuICBmdW5jdGlvbiBkZXRlcm1pbmVfcmVkaXJlY3RfdXJsKHJlZGlyZWN0X3VybCkge1xuICAgIGlmIChyZWRpcmVjdCkgcmV0dXJuIHdpbmRvdy5sb2NhdGlvbi5vcmlnaW4gKyBkZWNvZGVVUklDb21wb25lbnQocmVkaXJlY3QpO1xuICAgIGlmIChyZWRpcmVjdF91cmwgIT0gbnVsbCkge1xuICAgICAgaWYgKHJlZGlyZWN0X3VybC5zdGFydHNXaXRoKFwiL2Rhc2hib2FyZFwiKSkge1xuICAgICAgICByZXR1cm4gKFxuICAgICAgICAgIHdpbmRvdy5sb2NhdGlvbi5vcmlnaW4gKyBsYW5ncGF0aCArIGRlY29kZVVSSUNvbXBvbmVudChyZWRpcmVjdF91cmwpXG4gICAgICAgICk7XG4gICAgICB9IGVsc2Uge1xuICAgICAgICByZXR1cm4gd2luZG93LmxvY2F0aW9uLm9yaWdpbiArIGRlY29kZVVSSUNvbXBvbmVudChyZWRpcmVjdF91cmwpO1xuICAgICAgfVxuICAgIH1cbiAgICByZXR1cm4gcmVkaXJlY3RfdXJsO1xuICB9XG5cbiAgJDogc3VjY2Vzc1VSTCA9IGRldGVybWluZV9yZWRpcmVjdF91cmwocmVkaXJlY3RfdXJsKTtcbiAgJDogc2lnbkluT3B0aW9ucyA9IFtcbiAgICB7XG4gICAgICBwOiBmaXJlYmFzZSA/IGZpcmViYXNlLmF1dGguR29vZ2xlQXV0aFByb3ZpZGVyIDogbnVsbCxcbiAgICAgIGk6IFwiaHR0cHM6Ly93d3cuZ3N0YXRpYy5jb20vZmlyZWJhc2Vqcy91aS8yLjAuMC9pbWFnZXMvYXV0aC9nb29nbGUuc3ZnXCIsXG4gICAgICBjOiBcImdvb2dsZVwiLFxuICAgICAgdDogXCJHb29nbGVcIlxuICAgIH0sXG4gICAge1xuICAgICAgcDogZmlyZWJhc2UgPyBmaXJlYmFzZS5hdXRoLkdpdGh1YkF1dGhQcm92aWRlciA6IG51bGwsXG4gICAgICBpOiBcImh0dHBzOi8vd3d3LmdzdGF0aWMuY29tL2ZpcmViYXNlanMvdWkvMi4wLjAvaW1hZ2VzL2F1dGgvZ2l0aHViLnN2Z1wiLFxuICAgICAgYzogXCJnaXRodWJcIixcbiAgICAgIHQ6IFwiR2l0aHViXCJcbiAgICB9LFxuICAgIHtcbiAgICAgIHA6IGZpcmViYXNlID8gZmlyZWJhc2UuYXV0aC5FbWFpbEF1dGhQcm92aWRlciA6IG51bGwsXG4gICAgICBpOiBcImh0dHBzOi8vd3d3LmdzdGF0aWMuY29tL2ZpcmViYXNlanMvdWkvMi4wLjAvaW1hZ2VzL2F1dGgvbWFpbC5zdmdcIixcbiAgICAgIGM6IFwiZW1haWxcIixcbiAgICAgIHQ6IFwiZW1haWxcIlxuICAgIH1cbiAgXTtcbiAgLy8ge3A6ZmlyZWJhc2UuYXV0aC5Hb29nbGVBdXRoUHJvdmlkZXIuUFJPVklERVJfSUQsaTpcImh0dHBzOi8vd3d3LmdzdGF0aWMuY29tL2ZpcmViYXNlanMvdWkvMi4wLjAvaW1hZ2VzL2F1dGgvZmFjZWJvb2suc3ZnXCJ9LFxuICAvLyB7cDpmaXJlYmFzZS5hdXRoLkdvb2dsZUF1dGhQcm92aWRlci5QUk9WSURFUl9JRCxpOlwiaHR0cHM6Ly93d3cuZ3N0YXRpYy5jb20vZmlyZWJhc2Vqcy91aS8yLjAuMC9pbWFnZXMvYXV0aC90d2l0dGVyLnN2Z1wifSxcblxuICBhc3luYyBmdW5jdGlvbiBzdGFydCgpIHtcbiAgICBsZXQgbW9kdWxlID0gYXdhaXQgaW1wb3J0KFwiL2pzL2NtcC91c2VyZGF0YS5qc1wiKTtcbiAgICBmaXJlYmFzZSA9IG1vZHVsZS5maXJlYmFzZTtcbiAgICBpZiAodW5yZWdfYXV0aF9saXN0ZW5lcikgdW5yZWdfYXV0aF9saXN0ZW5lcigpO1xuICAgIHVucmVnX2F1dGhfbGlzdGVuZXIgPSBmaXJlYmFzZS5hdXRoKCkub25BdXRoU3RhdGVDaGFuZ2VkKFxuICAgICAgdXNlciA9PiB7XG4gICAgICAgIGlmICh1c2VyICYmICFsb2NrZWRfcmVkaXJlY3QpIHtcbiAgICAgICAgICBzZXRUaW1lb3V0KHBlcmZvcm1fcmVkaXJlY3QsIDIwMCk7XG4gICAgICAgIH1cbiAgICAgIH0sXG4gICAgICBlcnJvciA9PiB7XG4gICAgICAgIGNvbnNvbGUubG9nKGVycm9yKTtcbiAgICAgICAgZXJyb3JfbWVzc2FnZSA9IGVycm9yLm1lc3NhZ2U7XG4gICAgICB9XG4gICAgKTtcbiAgfVxuICBzdGFydCgpO1xuXG4gIGZ1bmN0aW9uIHBlcmZvcm1fcmVkaXJlY3QoKSB7XG4gICAgaWYgKCFzdWNjZXNzVVJMKSByZXR1cm47XG5cbiAgICAvLyBDcmVhdGUgcmVkaXJlY3QgdXJsLiBVc2Ugc3VjY2Vzc1VSTCBhcyBiYXNlIGFuZCBjb3B5IG92ZXIgb3RoZXIgc2VhcmNoIHBhcmFtZXRlcnNcbiAgICBjb25zdCBwYXJhbXMgPSBuZXcgVVJMKHdpbmRvdy5sb2NhdGlvbikuc2VhcmNoUGFyYW1zO1xuICAgIGxldCB0YXJnZXQgPSBuZXcgVVJMKHN1Y2Nlc3NVUkwpO1xuICAgIGZvciAobGV0IHAgb2YgcGFyYW1zLmVudHJpZXMoKSkge1xuICAgICAgaWYgKHBbMF0gIT09IFwicmVkaXJlY3RcIikgY29udGludWU7XG4gICAgICB0YXJnZXQuc2VhcmNoUGFyYW1zLmFwcGVuZChwWzBdLCBwWzFdKTtcbiAgICB9XG4gICAgd2luZG93LmxvY2F0aW9uLmFzc2lnbih0YXJnZXQpO1xuICB9XG5cbiAgZnVuY3Rpb24gZW1haWxfY3JlYXRlX2FjY291bnQoZSkge1xuICAgIGUucHJldmVudERlZmF1bHQoKTtcbiAgICBpZiAoZmlyc3RfbGFzdG5hbWUudHJpbSgpLmxlbmd0aCA9PSAwKSB7XG4gICAgICBlcnJvcl9tZXNzYWdlID1cbiAgICAgICAgXCJObyBmaXJzdCBhbmQgbGFzdG5hbWUgc2V0LiBXZSB3aWxsIG9ubHkgdXNlIHlvdXIgbmFtZSB0byB3cml0ZSB5b3UgbmljZSB0byByZWFkIGVtYWlsIGdyZWV0aW5nIGxpbmVzLlwiO1xuICAgICAgcmV0dXJuO1xuICAgIH1cbiAgICBpZiAocGFzc3dvcmQgIT0gcGFzc3dvcmRfcmVwZWF0KSB7XG4gICAgICBlcnJvcl9tZXNzYWdlID0gXCJZb3VyIHBhc3N3b3JkcyBkb24ndCBtYXRjaC5cIjtcbiAgICAgIHJldHVybjtcbiAgICB9XG4gICAgbG9hZGluZyA9IHRydWU7XG4gICAgZmlyZWJhc2VcbiAgICAgIC5hdXRoKClcbiAgICAgIC5jcmVhdGVVc2VyV2l0aEVtYWlsQW5kUGFzc3dvcmQoZW1haWwsIHBhc3N3b3JkKVxuICAgICAgLnRoZW4odXNlciA9PiB7XG4gICAgICAgIHJldHVybiB1c2VyLnVwZGF0ZVByb2ZpbGUoe1xuICAgICAgICAgIGRpc3BsYXlOYW1lOiBmaXJzdF9sYXN0bmFtZVxuICAgICAgICB9KTtcbiAgICAgIH0pXG4gICAgICAudGhlbihwZXJmb3JtX3JlZGlyZWN0KVxuICAgICAgLmNhdGNoKGVycm9yID0+IHtcbiAgICAgICAgbG9hZGluZyA9IGZhbHNlO1xuICAgICAgICBlcnJvcl9tZXNzYWdlID0gZXJyb3IubWVzc2FnZTsgLy8gLmNvZGVcbiAgICAgIH0pO1xuICB9XG4gIGZ1bmN0aW9uIHNpZ25pbl93aXRoX2VtYWlsKGUpIHtcbiAgICBlLnByZXZlbnREZWZhdWx0KCk7XG4gICAgbG9hZGluZyA9IHRydWU7XG4gICAgZmlyZWJhc2VcbiAgICAgIC5hdXRoKClcbiAgICAgIC5zaWduSW5XaXRoRW1haWxBbmRQYXNzd29yZChlbWFpbCwgcGFzc3dvcmQpXG4gICAgICAuY2F0Y2goZXJyb3IgPT4ge1xuICAgICAgICBsb2FkaW5nID0gZmFsc2U7XG4gICAgICAgIGVycm9yX21lc3NhZ2UgPSBlcnJvci5tZXNzYWdlO1xuICAgICAgfSk7XG4gIH1cbiAgZnVuY3Rpb24gc2lnbmluKGUsIGl0ZW0pIHtcbiAgICBlLnN0b3BQcm9wYWdhdGlvbigpO1xuICAgIGUucHJldmVudERlZmF1bHQoKTtcbiAgICBpZiAoaXRlbS5jID09PSBcImVtYWlsXCIpIHtcbiAgICAgIG1vZGUgPSBcImVtYWlsX3NpZ25pblwiO1xuICAgIH0gZWxzZSB7XG4gICAgICBsb2FkaW5nID0gdHJ1ZTtcbiAgICAgIGZpcmViYXNlXG4gICAgICAgIC5hdXRoKClcbiAgICAgICAgLnNpZ25JbldpdGhQb3B1cChuZXcgaXRlbS5wKCkpXG4gICAgICAgIC5jYXRjaChlcnJvciA9PiB7XG4gICAgICAgICAgbG9hZGluZyA9IGZhbHNlO1xuICAgICAgICAgIGVycm9yX21lc3NhZ2UgPSBlcnJvci5tZXNzYWdlO1xuICAgICAgICB9KTtcbiAgICB9XG4gIH1cbiAgZnVuY3Rpb24gZW1haWxzaWdudXAoZSkge1xuICAgIGUuc3RvcFByb3BhZ2F0aW9uKCk7XG4gICAgZS5wcmV2ZW50RGVmYXVsdCgpO1xuICAgIGxvYWRpbmcgPSBmYWxzZTtcbiAgICBtb2RlID0gXCJlbWFpbF9zaWdudXBcIjtcbiAgICBlcnJvcl9tZXNzYWdlID0gbnVsbDtcbiAgfVxuICBmdW5jdGlvbiBiYWNrX3RvX3NpZ25faW4oKSB7XG4gICAgbG9hZGluZyA9IGZhbHNlO1xuICAgIG1vZGUgPSBcImVtYWlsX3NpZ25pblwiO1xuICAgIGVycm9yX21lc3NhZ2UgPSBudWxsO1xuICB9XG48L3NjcmlwdD5cblxuPHN0eWxlPlxuICAuZmlyZWJhc2V1aS1pZHAtZW1haWwsXG4gIC5maXJlYmFzZXVpLWlkcC1lbWFpbDpob3ZlcixcbiAgLmZpcmViYXNldWktaWRwLWVtYWlsOmFjdGl2ZSxcbiAgLmZpcmViYXNldWktaWRwLWVtYWlsOmZvY3VzIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZGI0NDM3O1xuICAgIGNvbG9yOiB3aGl0ZTtcbiAgfVxuXG4gIC5maXJlYmFzZXVpLWlkcC1waG9uZSxcbiAgLmZpcmViYXNldWktaWRwLXBob25lOmhvdmVyLFxuICAuZmlyZWJhc2V1aS1pZHAtcGhvbmU6YWN0aXZlLFxuICAuZmlyZWJhc2V1aS1pZHAtcGhvbmU6Zm9jdXMge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICMwMmJkN2U7XG4gICAgY29sb3I6IHdoaXRlO1xuICB9XG5cbiAgLmZpcmViYXNldWktaWRwLWdvb2dsZSxcbiAgLmZpcmViYXNldWktaWRwLWdvb2dsZTpob3ZlcixcbiAgLmZpcmViYXNldWktaWRwLWdvb2dsZTphY3RpdmUsXG4gIC5maXJlYmFzZXVpLWlkcC1nb29nbGU6Zm9jdXMge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICNmZmY7XG4gICAgY29sb3I6IGJsYWNrO1xuICB9XG5cbiAgLmZpcmViYXNldWktaWRwLWdpdGh1YixcbiAgLmZpcmViYXNldWktaWRwLWdpdGh1Yjpob3ZlcixcbiAgLmZpcmViYXNldWktaWRwLWdpdGh1YjphY3RpdmUsXG4gIC5maXJlYmFzZXVpLWlkcC1naXRodWI6Zm9jdXMge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICMzMzM7XG4gICAgY29sb3I6IHdoaXRlO1xuICB9XG5cbiAgLmZpcmViYXNldWktaWRwLWZhY2Vib29rLFxuICAuZmlyZWJhc2V1aS1pZHAtZmFjZWJvb2s6aG92ZXIsXG4gIC5maXJlYmFzZXVpLWlkcC1mYWNlYm9vazphY3RpdmUsXG4gIC5maXJlYmFzZXVpLWlkcC1mYWNlYm9vazpmb2N1cyB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzNiNTk5ODtcbiAgfVxuXG4gIC5maXJlYmFzZXVpLWlkcC10d2l0dGVyLFxuICAuZmlyZWJhc2V1aS1pZHAtdHdpdHRlcjpob3ZlcixcbiAgLmZpcmViYXNldWktaWRwLXR3aXR0ZXI6YWN0aXZlLFxuICAuZmlyZWJhc2V1aS1pZHAtdHdpdHRlcjpmb2N1cyB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzU1YWNlZTtcbiAgfVxuXG4gIC5maXJlYmFzZXVpLWlkcC1hbm9ueW1vdXMsXG4gIC5maXJlYmFzZXVpLWlkcC1hbm9ueW1vdXM6aG92ZXIsXG4gIC5maXJlYmFzZXVpLWlkcC1hbm9ueW1vdXM6YWN0aXZlLFxuICAuZmlyZWJhc2V1aS1pZHAtYW5vbnltb3VzOmZvY3VzIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjRiNDAwO1xuICB9XG5cbiAgLmNlbnRlcmVkIHtcbiAgICBtYXJnaW46IGF1dG87XG4gICAgbWF4LXdpZHRoOiAzMDBweDtcbiAgfVxuXG4gIC5jb250YWluZXIge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICBtYXgtd2lkdGg6IDMwMHB4O1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgbWFyZ2luOiBhdXRvO1xuICB9XG5cbiAgLmNvbnRhaW5lciBidXR0b24gaW1nIHtcbiAgICBtYXgtd2lkdGg6IDIwcHg7XG4gIH1cblxuICAuY29udGFpbmVyIGJ1dHRvbiB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICB9XG5cbiAgLmNvbnRhaW5lciBidXR0b24gc3BhbiB7XG4gICAgZmxleDogMTtcbiAgfVxuPC9zdHlsZT5cblxueyNpZiBtb2RlID09ICdlbWFpbF9zaWduaW4nfVxuICA8Zm9ybSBjbGFzcz1cImNlbnRlcmVkXCI+XG4gICAgPGRpdiBjbGFzcz1cImZvcm0tZ3JvdXBcIj5cbiAgICAgIDxsYWJlbCBmb3I9XCJleGFtcGxlSW5wdXRFbWFpbDFcIj5FbWFpbCBhZGRyZXNzPC9sYWJlbD5cbiAgICAgIDxpbnB1dFxuICAgICAgICBiaW5kOnZhbHVlPXtlbWFpbH1cbiAgICAgICAgdHlwZT1cImVtYWlsXCJcbiAgICAgICAgYXV0b2NvbXBsZXRlPVwiZW1haWxcIlxuICAgICAgICBjbGFzcz1cImZvcm0tY29udHJvbFwiXG4gICAgICAgIGlkPVwiZXhhbXBsZUlucHV0RW1haWwxXCJcbiAgICAgICAgYXJpYS1kZXNjcmliZWRieT1cImVtYWlsSGVscFwiXG4gICAgICAgIHBsYWNlaG9sZGVyPVwiRW50ZXIgZW1haWxcIiAvPlxuICAgICAgPHNtYWxsIGlkPVwiZW1haWxIZWxwXCIgY2xhc3M9XCJmb3JtLXRleHQgdGV4dC1tdXRlZFwiPlxuICAgICAgICBXZSdsbCBuZXZlciBzaGFyZSB5b3VyIGVtYWlsIHdpdGggYW55b25lIGVsc2UuXG4gICAgICA8L3NtYWxsPlxuICAgIDwvZGl2PlxuICAgIDxkaXYgY2xhc3M9XCJmb3JtLWdyb3VwXCI+XG4gICAgICA8bGFiZWwgZm9yPVwiZXhhbXBsZUlucHV0UGFzc3dvcmQxXCI+UGFzc3dvcmQ8L2xhYmVsPlxuICAgICAgPGlucHV0XG4gICAgICAgIGJpbmQ6dmFsdWU9e3Bhc3N3b3JkfVxuICAgICAgICB0eXBlPVwicGFzc3dvcmRcIlxuICAgICAgICBjbGFzcz1cImZvcm0tY29udHJvbFwiXG4gICAgICAgIGF1dG9jb21wbGV0ZT1cImN1cnJlbnQtcGFzc3dvcmRcIlxuICAgICAgICBpZD1cImV4YW1wbGVJbnB1dFBhc3N3b3JkMVwiXG4gICAgICAgIHBsYWNlaG9sZGVyPVwiUGFzc3dvcmRcIiAvPlxuICAgIDwvZGl2PlxuICAgIDxidXR0b25cbiAgICAgIHR5cGU9XCJzdWJtaXRcIlxuICAgICAgY2xhc3M9XCJidG4gYnRuLXByaW1hcnkgbXItM1wiXG4gICAgICBvbjpjbGljaz17c2lnbmluX3dpdGhfZW1haWx9PlxuICAgICAgU2lnbiBJblxuICAgIDwvYnV0dG9uPlxuICAgIE5vIGFjY291bnQgeWV0P1xuICAgIDxhIGhyZWY9XCIvbG9naW4jXCIgb246Y2xpY2s9e2VtYWlsc2lnbnVwfT5TaWduIFVwPC9hPlxuICAgIHsjaWYgZXJyb3JfbWVzc2FnZX1cbiAgICAgIDxkaXYgY2xhc3M9XCJ0ZXh0LWRhbmdlciBtdC0zXCI+e2Vycm9yX21lc3NhZ2V9PC9kaXY+XG4gICAgey9pZn1cbiAgPC9mb3JtPlxuezplbHNlIGlmIG1vZGUgPT0gJ2VtYWlsX3NpZ251cCd9XG4gIDxmb3JtIGNsYXNzPVwiY2VudGVyZWRcIj5cbiAgICA8ZGl2IGNsYXNzPVwiZm9ybS1ncm91cFwiPlxuICAgICAgPGxhYmVsIGZvcj1cImV4YW1wbGVJbnB1dEVtYWlsMVwiPkVtYWlsIGFkZHJlc3M8L2xhYmVsPlxuICAgICAgPGlucHV0XG4gICAgICAgIGJpbmQ6dmFsdWU9e2VtYWlsfVxuICAgICAgICB0eXBlPVwiZW1haWxcIlxuICAgICAgICBjbGFzcz1cImZvcm0tY29udHJvbFwiXG4gICAgICAgIGF1dG9jb21wbGV0ZT1cImVtYWlsXCJcbiAgICAgICAgaWQ9XCJleGFtcGxlSW5wdXRFbWFpbDFcIlxuICAgICAgICBhcmlhLWRlc2NyaWJlZGJ5PVwiZW1haWxIZWxwXCJcbiAgICAgICAgcGxhY2Vob2xkZXI9XCJFbnRlciBlbWFpbFwiIC8+XG4gICAgICA8c21hbGwgaWQ9XCJlbWFpbEhlbHBcIiBjbGFzcz1cImZvcm0tdGV4dCB0ZXh0LW11dGVkXCI+XG4gICAgICAgIFdlJ2xsIG5ldmVyIHNoYXJlIHlvdXIgZW1haWwgd2l0aCBhbnlvbmUgZWxzZS5cbiAgICAgIDwvc21hbGw+XG4gICAgPC9kaXY+XG4gICAgPGRpdiBjbGFzcz1cImZvcm0tZ3JvdXBcIj5cbiAgICAgIDxsYWJlbCBmb3I9XCJleGFtcGxlSW5wdXRQYXNzd29yZDFcIj5QYXNzd29yZDwvbGFiZWw+XG4gICAgICA8aW5wdXRcbiAgICAgICAgYmluZDp2YWx1ZT17cGFzc3dvcmR9XG4gICAgICAgIHR5cGU9XCJwYXNzd29yZFwiXG4gICAgICAgIGF1dG9jb21wbGV0ZT1cIm5ldy1wYXNzd29yZFwiXG4gICAgICAgIGNsYXNzPVwiZm9ybS1jb250cm9sXCJcbiAgICAgICAgaWQ9XCJleGFtcGxlSW5wdXRQYXNzd29yZDFcIlxuICAgICAgICBwbGFjZWhvbGRlcj1cIlBhc3N3b3JkXCIgLz5cbiAgICA8L2Rpdj5cbiAgICA8ZGl2IGNsYXNzPVwiZm9ybS1ncm91cFwiPlxuICAgICAgPGxhYmVsIGZvcj1cImV4YW1wbGVJbnB1dFBhc3N3b3JkMlwiPlJlcGVhdCBQYXNzd29yZDwvbGFiZWw+XG4gICAgICA8aW5wdXRcbiAgICAgICAgYmluZDp2YWx1ZT17cGFzc3dvcmRfcmVwZWF0fVxuICAgICAgICB0eXBlPVwicGFzc3dvcmRcIlxuICAgICAgICBhdXRvY29tcGxldGU9XCJuZXctcGFzc3dvcmRcIlxuICAgICAgICBjbGFzcz1cImZvcm0tY29udHJvbFwiXG4gICAgICAgIGlkPVwiZXhhbXBsZUlucHV0UGFzc3dvcmQyXCJcbiAgICAgICAgcGxhY2Vob2xkZXI9XCJQYXNzd29yZFwiIC8+XG4gICAgPC9kaXY+XG4gICAgPGRpdiBjbGFzcz1cImZvcm0tZ3JvdXBcIj5cbiAgICAgIDxsYWJlbCBmb3I9XCJzaWdudXBuYW1lXCI+Rmlyc3QgJiBMYXN0IE5hbWU8L2xhYmVsPlxuICAgICAgPGlucHV0XG4gICAgICAgIGJpbmQ6dmFsdWU9e2ZpcnN0X2xhc3RuYW1lfVxuICAgICAgICBjbGFzcz1cImZvcm0tY29udHJvbFwiXG4gICAgICAgIGlkPVwic2lnbnVwbmFtZVwiXG4gICAgICAgIHBsYWNlaG9sZGVyPVwiRmlyc3QgJiBMYXN0IE5hbWVcIiAvPlxuICAgIDwvZGl2PlxuICAgIDxidXR0b25cbiAgICAgIHR5cGU9XCJzdWJtaXRcIlxuICAgICAgY2xhc3M9XCJidG4gYnRuLXByaW1hcnkgbXItM1wiXG4gICAgICBvbjpjbGljaz17ZW1haWxfY3JlYXRlX2FjY291bnR9PlxuICAgICAgQ3JlYXRlIEFjY291bnRcbiAgICA8L2J1dHRvbj5cbiAgICA8YSBocmVmPVwiL2xvZ2luI1wiIG9uOmNsaWNrPXtiYWNrX3RvX3NpZ25faW59PkJhY2s8L2E+XG4gICAgeyNpZiBlcnJvcl9tZXNzYWdlfVxuICAgICAgPGRpdiBjbGFzcz1cInRleHQtZGFuZ2VyIG10LTNcIj57ZXJyb3JfbWVzc2FnZX08L2Rpdj5cbiAgICB7L2lmfVxuICA8L2Zvcm0+XG57OmVsc2V9XG4gIDxmb3JtIG9uc3VibWl0PVwicmV0dXJuIGZhbHNlO1wiIGNsYXNzPVwiY29udGFpbmVyXCI+XG4gICAgeyNlYWNoIHNpZ25Jbk9wdGlvbnMgYXMgaXRlbX1cbiAgICAgIDxidXR0b25cbiAgICAgICAgZGlzYWJsZWQ9e2xvYWRpbmd9XG4gICAgICAgIGNsYXNzPVwiYnRuIGJ0bi1wcmltYXJ5IGZpcmViYXNldWktaWRwLXtpdGVtLmN9IG1iLTMgdy0xMDBcIlxuICAgICAgICBvbjpjbGljaz17ZSA9PiBzaWduaW4oZSwgaXRlbSl9PlxuICAgICAgICA8aW1nIGFsdD1cIlwiIHNyYz17aXRlbS5pfSAvPlxuICAgICAgICA8c3Bhbj5TaWduIGluIHdpdGgge2l0ZW0udH08L3NwYW4+XG4gICAgICA8L2J1dHRvbj5cbiAgICB7L2VhY2h9XG4gICAgeyNpZiBlcnJvcl9tZXNzYWdlfVxuICAgICAgPGRpdiBjbGFzcz1cInRleHQtZGFuZ2VyIG10LTNcIj57ZXJyb3JfbWVzc2FnZX08L2Rpdj5cbiAgICB7L2lmfVxuICAgIDxzbWFsbD5cbiAgICAgIEJ5IGNvbnRpbnVpbmcsIHlvdSBhcmUgaW5kaWNhdGluZyB0aGF0IHlvdSBhY2NlcHQgb3VyXG4gICAgICA8YSBocmVmPXt0b3NVcmx9IHRhcmdldD17bGVnYWxfbGlua19uZXdfdGFiID8gJ19ibGFuaycgOiAnJ30+XG4gICAgICAgIFRlcm1zIG9mIFNlcnZpY2VcbiAgICAgIDwvYT5cbiAgICAgIGFuZFxuICAgICAgPGEgaHJlZj17cHJpdmFjeVBvbGljeVVybH0gdGFyZ2V0PXtsZWdhbF9saW5rX25ld190YWIgPyAnX2JsYW5rJyA6ICcnfT5cbiAgICAgICAgUHJpdmFjeSBQb2xpY3lcbiAgICAgIDwvYT5cbiAgICAgIC5cbiAgICA8L3NtYWxsPlxuICA8L2Zvcm0+XG57L2lmfVxuIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQXNLRSxtQ0FBcUIsQ0FDckIsbUNBQXFCLE1BQU0sQ0FDM0IsbUNBQXFCLE9BQU8sQ0FDNUIsbUNBQXFCLE1BQU0sQUFBQyxDQUFDLEFBQzNCLGdCQUFnQixDQUFFLE9BQU8sQ0FDekIsS0FBSyxDQUFFLEtBQUssQUFDZCxDQUFDLEFBRUQsbUNBQXFCLENBQ3JCLG1DQUFxQixNQUFNLENBQzNCLG1DQUFxQixPQUFPLENBQzVCLG1DQUFxQixNQUFNLEFBQUMsQ0FBQyxBQUMzQixnQkFBZ0IsQ0FBRSxPQUFPLENBQ3pCLEtBQUssQ0FBRSxLQUFLLEFBQ2QsQ0FBQyxBQUVELG9DQUFzQixDQUN0QixvQ0FBc0IsTUFBTSxDQUM1QixvQ0FBc0IsT0FBTyxDQUM3QixvQ0FBc0IsTUFBTSxBQUFDLENBQUMsQUFDNUIsZ0JBQWdCLENBQUUsSUFBSSxDQUN0QixLQUFLLENBQUUsS0FBSyxBQUNkLENBQUMsQUFFRCxvQ0FBc0IsQ0FDdEIsb0NBQXNCLE1BQU0sQ0FDNUIsb0NBQXNCLE9BQU8sQ0FDN0Isb0NBQXNCLE1BQU0sQUFBQyxDQUFDLEFBQzVCLGdCQUFnQixDQUFFLElBQUksQ0FDdEIsS0FBSyxDQUFFLEtBQUssQUFDZCxDQUFDLEFBRUQsc0NBQXdCLENBQ3hCLHNDQUF3QixNQUFNLENBQzlCLHNDQUF3QixPQUFPLENBQy9CLHNDQUF3QixNQUFNLEFBQUMsQ0FBQyxBQUM5QixnQkFBZ0IsQ0FBRSxPQUFPLEFBQzNCLENBQUMsQUFFRCxxQ0FBdUIsQ0FDdkIscUNBQXVCLE1BQU0sQ0FDN0IscUNBQXVCLE9BQU8sQ0FDOUIscUNBQXVCLE1BQU0sQUFBQyxDQUFDLEFBQzdCLGdCQUFnQixDQUFFLE9BQU8sQUFDM0IsQ0FBQyxBQUVELHVDQUF5QixDQUN6Qix1Q0FBeUIsTUFBTSxDQUMvQix1Q0FBeUIsT0FBTyxDQUNoQyx1Q0FBeUIsTUFBTSxBQUFDLENBQUMsQUFDL0IsZ0JBQWdCLENBQUUsT0FBTyxBQUMzQixDQUFDLEFBRUQsU0FBUyxjQUFDLENBQUMsQUFDVCxNQUFNLENBQUUsSUFBSSxDQUNaLFNBQVMsQ0FBRSxLQUFLLEFBQ2xCLENBQUMsQUFFRCxVQUFVLGNBQUMsQ0FBQyxBQUNWLE9BQU8sQ0FBRSxJQUFJLENBQ2IsZUFBZSxDQUFFLE1BQU0sQ0FDdkIsY0FBYyxDQUFFLE1BQU0sQ0FDdEIsU0FBUyxDQUFFLEtBQUssQ0FDaEIsV0FBVyxDQUFFLE1BQU0sQ0FDbkIsTUFBTSxDQUFFLElBQUksQUFDZCxDQUFDLEFBRUQsd0JBQVUsQ0FBQyxNQUFNLENBQUMsR0FBRyxjQUFDLENBQUMsQUFDckIsU0FBUyxDQUFFLElBQUksQUFDakIsQ0FBQyxBQUVELHdCQUFVLENBQUMsTUFBTSxjQUFDLENBQUMsQUFDakIsT0FBTyxDQUFFLElBQUksQ0FDYixXQUFXLENBQUUsTUFBTSxBQUNyQixDQUFDLEFBRUQsd0JBQVUsQ0FBQyxNQUFNLENBQUMsSUFBSSxjQUFDLENBQUMsQUFDdEIsSUFBSSxDQUFFLENBQUMsQUFDVCxDQUFDIn0= */",a(document.head,t)),y(this,e,S,P,n,["lang","redirect_url","legal_link_new_tab"]);const{ctx:g}=this.$$,c=e.props||{};void 0!==g.lang||"lang"in c||U.warn("<Cmp> was created without expected prop 'lang'")}get lang(){throw new Error("<Cmp>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set lang(e){throw new Error("<Cmp>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}get redirect_url(){throw new Error("<Cmp>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set redirect_url(e){throw new Error("<Cmp>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}get legal_link_new_tab(){throw new Error("<Cmp>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set legal_link_new_tab(e){throw new Error("<Cmp>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}}window.customElements.define("ui-login",class extends HTMLElement{constructor(){super()}connectedCallback(){this.cmp=new E({target:this,props:{redirect_url:this.hasAttribute("no-redirect")?null:this.getAttribute("redirecturl")||"/dashboard",lang:this.hasAttribute("lang")?this.getAttribute("lang"):"en",legal_link_new_tab:this.hasAttribute("legal-link-new-tab")}})}disconnectedCallback(){this.cmp&&this.cmp.$destroy()}});
+function noop() { }
+function run(fn) {
+    return fn();
+}
+function blank_object() {
+    return Object.create(null);
+}
+function run_all(fns) {
+    fns.forEach(run);
+}
+function is_function(thing) {
+    return typeof thing === 'function';
+}
+function safe_not_equal(a, b) {
+    return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+}
+
+function append(target, node) {
+    target.appendChild(node);
+}
+function insert(target, node, anchor) {
+    target.insertBefore(node, anchor || null);
+}
+function detach(node) {
+    node.parentNode.removeChild(node);
+}
+function destroy_each(iterations, detaching) {
+    for (let i = 0; i < iterations.length; i += 1) {
+        if (iterations[i])
+            iterations[i].d(detaching);
+    }
+}
+function element(name) {
+    return document.createElement(name);
+}
+function text(data) {
+    return document.createTextNode(data);
+}
+function space() {
+    return text(' ');
+}
+function empty() {
+    return text('');
+}
+function listen(node, event, handler, options) {
+    node.addEventListener(event, handler, options);
+    return () => node.removeEventListener(event, handler, options);
+}
+function attr(node, attribute, value) {
+    if (value == null)
+        node.removeAttribute(attribute);
+    else
+        node.setAttribute(attribute, value);
+}
+function children(element) {
+    return Array.from(element.childNodes);
+}
+function set_data(text, data) {
+    data = '' + data;
+    if (text.data !== data)
+        text.data = data;
+}
+function set_input_value(input, value) {
+    if (value != null || input.value) {
+        input.value = value;
+    }
+}
+
+let current_component;
+function set_current_component(component) {
+    current_component = component;
+}
+function get_current_component() {
+    if (!current_component)
+        throw new Error(`Function called outside component initialization`);
+    return current_component;
+}
+function onDestroy(fn) {
+    get_current_component().$$.on_destroy.push(fn);
+}
+
+const dirty_components = [];
+const binding_callbacks = [];
+const render_callbacks = [];
+const flush_callbacks = [];
+const resolved_promise = Promise.resolve();
+let update_scheduled = false;
+function schedule_update() {
+    if (!update_scheduled) {
+        update_scheduled = true;
+        resolved_promise.then(flush);
+    }
+}
+function add_render_callback(fn) {
+    render_callbacks.push(fn);
+}
+function flush() {
+    const seen_callbacks = new Set();
+    do {
+        // first, call beforeUpdate functions
+        // and update components
+        while (dirty_components.length) {
+            const component = dirty_components.shift();
+            set_current_component(component);
+            update(component.$$);
+        }
+        while (binding_callbacks.length)
+            binding_callbacks.pop()();
+        // then, once components are updated, call
+        // afterUpdate functions. This may cause
+        // subsequent updates...
+        for (let i = 0; i < render_callbacks.length; i += 1) {
+            const callback = render_callbacks[i];
+            if (!seen_callbacks.has(callback)) {
+                callback();
+                // ...so guard against infinite loops
+                seen_callbacks.add(callback);
+            }
+        }
+        render_callbacks.length = 0;
+    } while (dirty_components.length);
+    while (flush_callbacks.length) {
+        flush_callbacks.pop()();
+    }
+    update_scheduled = false;
+}
+function update($$) {
+    if ($$.fragment) {
+        $$.update($$.dirty);
+        run_all($$.before_update);
+        $$.fragment.p($$.dirty, $$.ctx);
+        $$.dirty = null;
+        $$.after_update.forEach(add_render_callback);
+    }
+}
+const outroing = new Set();
+function transition_in(block, local) {
+    if (block && block.i) {
+        outroing.delete(block);
+        block.i(local);
+    }
+}
+function mount_component(component, target, anchor) {
+    const { fragment, on_mount, on_destroy, after_update } = component.$$;
+    fragment.m(target, anchor);
+    // onMount happens before the initial afterUpdate
+    add_render_callback(() => {
+        const new_on_destroy = on_mount.map(run).filter(is_function);
+        if (on_destroy) {
+            on_destroy.push(...new_on_destroy);
+        }
+        else {
+            // Edge case - component was destroyed immediately,
+            // most likely as a result of a binding initialising
+            run_all(new_on_destroy);
+        }
+        component.$$.on_mount = [];
+    });
+    after_update.forEach(add_render_callback);
+}
+function destroy_component(component, detaching) {
+    if (component.$$.fragment) {
+        run_all(component.$$.on_destroy);
+        component.$$.fragment.d(detaching);
+        // TODO null out other refs, including component.$$ (but need to
+        // preserve final state?)
+        component.$$.on_destroy = component.$$.fragment = null;
+        component.$$.ctx = {};
+    }
+}
+function make_dirty(component, key) {
+    if (!component.$$.dirty) {
+        dirty_components.push(component);
+        schedule_update();
+        component.$$.dirty = blank_object();
+    }
+    component.$$.dirty[key] = true;
+}
+function init(component, options, instance, create_fragment, not_equal, prop_names) {
+    const parent_component = current_component;
+    set_current_component(component);
+    const props = options.props || {};
+    const $$ = component.$$ = {
+        fragment: null,
+        ctx: null,
+        // state
+        props: prop_names,
+        update: noop,
+        not_equal,
+        bound: blank_object(),
+        // lifecycle
+        on_mount: [],
+        on_destroy: [],
+        before_update: [],
+        after_update: [],
+        context: new Map(parent_component ? parent_component.$$.context : []),
+        // everything else
+        callbacks: blank_object(),
+        dirty: null
+    };
+    let ready = false;
+    $$.ctx = instance
+        ? instance(component, props, (key, ret, value = ret) => {
+            if ($$.ctx && not_equal($$.ctx[key], $$.ctx[key] = value)) {
+                if ($$.bound[key])
+                    $$.bound[key](value);
+                if (ready)
+                    make_dirty(component, key);
+            }
+            return ret;
+        })
+        : props;
+    $$.update();
+    ready = true;
+    run_all($$.before_update);
+    $$.fragment = create_fragment($$.ctx);
+    if (options.target) {
+        if (options.hydrate) {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            $$.fragment.l(children(options.target));
+        }
+        else {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            $$.fragment.c();
+        }
+        if (options.intro)
+            transition_in(component.$$.fragment);
+        mount_component(component, options.target, options.anchor);
+        flush();
+    }
+    set_current_component(parent_component);
+}
+let SvelteElement;
+if (typeof HTMLElement !== 'undefined') {
+    SvelteElement = class extends HTMLElement {
+        constructor() {
+            super();
+            this.attachShadow({ mode: 'open' });
+        }
+        connectedCallback() {
+            // @ts-ignore todo: improve typings
+            for (const key in this.$$.slotted) {
+                // @ts-ignore todo: improve typings
+                this.appendChild(this.$$.slotted[key]);
+            }
+        }
+        attributeChangedCallback(attr, _oldValue, newValue) {
+            this[attr] = newValue;
+        }
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            // TODO should this delegate to addEventListener?
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set() {
+            // overridden by instance, if it has props
+        }
+    };
+}
+class SvelteComponent {
+    $destroy() {
+        destroy_component(this, 1);
+        this.$destroy = noop;
+    }
+    $on(type, callback) {
+        const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+        callbacks.push(callback);
+        return () => {
+            const index = callbacks.indexOf(callback);
+            if (index !== -1)
+                callbacks.splice(index, 1);
+        };
+    }
+    $set() {
+        // overridden by instance, if it has props
+    }
+}
+
+/* assets/js/ui-login/cmp.svelte generated by Svelte v3.12.0 */
+
+function add_css() {
+	var style = element("style");
+	style.id = 'svelte-aggp9g-style';
+	style.textContent = ".firebaseui-idp-email.svelte-aggp9g,.firebaseui-idp-email.svelte-aggp9g:hover,.firebaseui-idp-email.svelte-aggp9g:active,.firebaseui-idp-email.svelte-aggp9g:focus{background-color:#db4437;color:white}.firebaseui-idp-phone.svelte-aggp9g,.firebaseui-idp-phone.svelte-aggp9g:hover,.firebaseui-idp-phone.svelte-aggp9g:active,.firebaseui-idp-phone.svelte-aggp9g:focus{background-color:#02bd7e;color:white}.firebaseui-idp-google.svelte-aggp9g,.firebaseui-idp-google.svelte-aggp9g:hover,.firebaseui-idp-google.svelte-aggp9g:active,.firebaseui-idp-google.svelte-aggp9g:focus{background-color:#fff;color:black}.firebaseui-idp-github.svelte-aggp9g,.firebaseui-idp-github.svelte-aggp9g:hover,.firebaseui-idp-github.svelte-aggp9g:active,.firebaseui-idp-github.svelte-aggp9g:focus{background-color:#333;color:white}.firebaseui-idp-facebook.svelte-aggp9g,.firebaseui-idp-facebook.svelte-aggp9g:hover,.firebaseui-idp-facebook.svelte-aggp9g:active,.firebaseui-idp-facebook.svelte-aggp9g:focus{background-color:#3b5998}.firebaseui-idp-twitter.svelte-aggp9g,.firebaseui-idp-twitter.svelte-aggp9g:hover,.firebaseui-idp-twitter.svelte-aggp9g:active,.firebaseui-idp-twitter.svelte-aggp9g:focus{background-color:#55acee}.firebaseui-idp-anonymous.svelte-aggp9g,.firebaseui-idp-anonymous.svelte-aggp9g:hover,.firebaseui-idp-anonymous.svelte-aggp9g:active,.firebaseui-idp-anonymous.svelte-aggp9g:focus{background-color:#f4b400}.centered.svelte-aggp9g{margin:auto;max-width:300px}.container.svelte-aggp9g{display:flex;justify-content:center;flex-direction:column;max-width:300px;align-items:center;margin:auto}.container.svelte-aggp9g button img.svelte-aggp9g{max-width:20px}.container.svelte-aggp9g button.svelte-aggp9g{display:flex;align-items:center}.container.svelte-aggp9g button span.svelte-aggp9g{flex:1}";
+	append(document.head, style);
+}
+
+function get_each_context(ctx, list, i) {
+	const child_ctx = Object.create(ctx);
+	child_ctx.item = list[i];
+	return child_ctx;
+}
+
+// (341:0) {:else}
+function create_else_block(ctx) {
+	var form, t0, t1, small, t2, a0, t3, a0_target_value, t4, a1, t5, a1_target_value, t6;
+
+	let each_value = ctx.signInOptions;
+
+	let each_blocks = [];
+
+	for (let i = 0; i < each_value.length; i += 1) {
+		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+	}
+
+	var if_block = (ctx.error_message) && create_if_block_4(ctx);
+
+	return {
+		c() {
+			form = element("form");
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+
+			t0 = space();
+			if (if_block) if_block.c();
+			t1 = space();
+			small = element("small");
+			t2 = text("By continuing, you are indicating that you accept our\n      ");
+			a0 = element("a");
+			t3 = text("Terms of Service");
+			t4 = text("\n      and\n      ");
+			a1 = element("a");
+			t5 = text("Privacy Policy");
+			t6 = text("\n      .");
+			attr(a0, "href", ctx.tosUrl);
+			attr(a0, "target", a0_target_value = ctx.legal_link_new_tab ? '_blank' : '');
+			attr(a1, "href", ctx.privacyPolicyUrl);
+			attr(a1, "target", a1_target_value = ctx.legal_link_new_tab ? '_blank' : '');
+			attr(form, "onsubmit", "return false;");
+			attr(form, "class", "container svelte-aggp9g");
+		},
+
+		m(target, anchor) {
+			insert(target, form, anchor);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].m(form, null);
+			}
+
+			append(form, t0);
+			if (if_block) if_block.m(form, null);
+			append(form, t1);
+			append(form, small);
+			append(small, t2);
+			append(small, a0);
+			append(a0, t3);
+			append(small, t4);
+			append(small, a1);
+			append(a1, t5);
+			append(small, t6);
+		},
+
+		p(changed, ctx) {
+			if (changed.loading || changed.signInOptions) {
+				each_value = ctx.signInOptions;
+
+				let i;
+				for (i = 0; i < each_value.length; i += 1) {
+					const child_ctx = get_each_context(ctx, each_value, i);
+
+					if (each_blocks[i]) {
+						each_blocks[i].p(changed, child_ctx);
+					} else {
+						each_blocks[i] = create_each_block(child_ctx);
+						each_blocks[i].c();
+						each_blocks[i].m(form, t0);
+					}
+				}
+
+				for (; i < each_blocks.length; i += 1) {
+					each_blocks[i].d(1);
+				}
+				each_blocks.length = each_value.length;
+			}
+
+			if (ctx.error_message) {
+				if (if_block) {
+					if_block.p(changed, ctx);
+				} else {
+					if_block = create_if_block_4(ctx);
+					if_block.c();
+					if_block.m(form, t1);
+				}
+			} else if (if_block) {
+				if_block.d(1);
+				if_block = null;
+			}
+
+			if (changed.tosUrl) {
+				attr(a0, "href", ctx.tosUrl);
+			}
+
+			if ((changed.legal_link_new_tab) && a0_target_value !== (a0_target_value = ctx.legal_link_new_tab ? '_blank' : '')) {
+				attr(a0, "target", a0_target_value);
+			}
+
+			if (changed.privacyPolicyUrl) {
+				attr(a1, "href", ctx.privacyPolicyUrl);
+			}
+
+			if ((changed.legal_link_new_tab) && a1_target_value !== (a1_target_value = ctx.legal_link_new_tab ? '_blank' : '')) {
+				attr(a1, "target", a1_target_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(form);
+			}
+
+			destroy_each(each_blocks, detaching);
+
+			if (if_block) if_block.d();
+		}
+	};
+}
+
+// (286:33) 
+function create_if_block_2(ctx) {
+	var form, div0, label0, t1, input0, t2, small, t4, div1, label1, t6, input1, t7, div2, label2, t9, input2, t10, div3, label3, t12, input3, t13, button, t15, a, t17, dispose;
+
+	var if_block = (ctx.error_message) && create_if_block_3(ctx);
+
+	return {
+		c() {
+			form = element("form");
+			div0 = element("div");
+			label0 = element("label");
+			label0.textContent = "Email address";
+			t1 = space();
+			input0 = element("input");
+			t2 = space();
+			small = element("small");
+			small.textContent = "We'll never share your email with anyone else.";
+			t4 = space();
+			div1 = element("div");
+			label1 = element("label");
+			label1.textContent = "Password";
+			t6 = space();
+			input1 = element("input");
+			t7 = space();
+			div2 = element("div");
+			label2 = element("label");
+			label2.textContent = "Repeat Password";
+			t9 = space();
+			input2 = element("input");
+			t10 = space();
+			div3 = element("div");
+			label3 = element("label");
+			label3.textContent = "First & Last Name";
+			t12 = space();
+			input3 = element("input");
+			t13 = space();
+			button = element("button");
+			button.textContent = "Create Account";
+			t15 = space();
+			a = element("a");
+			a.textContent = "Back";
+			t17 = space();
+			if (if_block) if_block.c();
+			attr(label0, "for", "exampleInputEmail1");
+			attr(input0, "type", "email");
+			attr(input0, "class", "form-control");
+			attr(input0, "autocomplete", "email");
+			attr(input0, "id", "exampleInputEmail1");
+			attr(input0, "aria-describedby", "emailHelp");
+			attr(input0, "placeholder", "Enter email");
+			attr(small, "id", "emailHelp");
+			attr(small, "class", "form-text text-muted");
+			attr(div0, "class", "form-group");
+			attr(label1, "for", "exampleInputPassword1");
+			attr(input1, "type", "password");
+			attr(input1, "autocomplete", "new-password");
+			attr(input1, "class", "form-control");
+			attr(input1, "id", "exampleInputPassword1");
+			attr(input1, "placeholder", "Password");
+			attr(div1, "class", "form-group");
+			attr(label2, "for", "exampleInputPassword2");
+			attr(input2, "type", "password");
+			attr(input2, "autocomplete", "new-password");
+			attr(input2, "class", "form-control");
+			attr(input2, "id", "exampleInputPassword2");
+			attr(input2, "placeholder", "Password");
+			attr(div2, "class", "form-group");
+			attr(label3, "for", "signupname");
+			attr(input3, "class", "form-control");
+			attr(input3, "id", "signupname");
+			attr(input3, "placeholder", "First & Last Name");
+			attr(div3, "class", "form-group");
+			attr(button, "type", "submit");
+			attr(button, "class", "btn btn-primary mr-3");
+			attr(a, "href", "/login#");
+			attr(form, "class", "centered svelte-aggp9g");
+
+			dispose = [
+				listen(input0, "input", ctx.input0_input_handler_1),
+				listen(input1, "input", ctx.input1_input_handler_1),
+				listen(input2, "input", ctx.input2_input_handler),
+				listen(input3, "input", ctx.input3_input_handler),
+				listen(button, "click", ctx.email_create_account),
+				listen(a, "click", ctx.back_to_sign_in)
+			];
+		},
+
+		m(target, anchor) {
+			insert(target, form, anchor);
+			append(form, div0);
+			append(div0, label0);
+			append(div0, t1);
+			append(div0, input0);
+
+			set_input_value(input0, ctx.email);
+
+			append(div0, t2);
+			append(div0, small);
+			append(form, t4);
+			append(form, div1);
+			append(div1, label1);
+			append(div1, t6);
+			append(div1, input1);
+
+			set_input_value(input1, ctx.password);
+
+			append(form, t7);
+			append(form, div2);
+			append(div2, label2);
+			append(div2, t9);
+			append(div2, input2);
+
+			set_input_value(input2, ctx.password_repeat);
+
+			append(form, t10);
+			append(form, div3);
+			append(div3, label3);
+			append(div3, t12);
+			append(div3, input3);
+
+			set_input_value(input3, ctx.first_lastname);
+
+			append(form, t13);
+			append(form, button);
+			append(form, t15);
+			append(form, a);
+			append(form, t17);
+			if (if_block) if_block.m(form, null);
+		},
+
+		p(changed, ctx) {
+			if (changed.email && (input0.value !== ctx.email)) set_input_value(input0, ctx.email);
+			if (changed.password && (input1.value !== ctx.password)) set_input_value(input1, ctx.password);
+			if (changed.password_repeat && (input2.value !== ctx.password_repeat)) set_input_value(input2, ctx.password_repeat);
+			if (changed.first_lastname && (input3.value !== ctx.first_lastname)) set_input_value(input3, ctx.first_lastname);
+
+			if (ctx.error_message) {
+				if (if_block) {
+					if_block.p(changed, ctx);
+				} else {
+					if_block = create_if_block_3(ctx);
+					if_block.c();
+					if_block.m(form, null);
+				}
+			} else if (if_block) {
+				if_block.d(1);
+				if_block = null;
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(form);
+			}
+
+			if (if_block) if_block.d();
+			run_all(dispose);
+		}
+	};
+}
+
+// (248:0) {#if mode == 'email_signin'}
+function create_if_block(ctx) {
+	var form, div0, label0, t1, input0, t2, small, t4, div1, label1, t6, input1, t7, button, t9, a, t11, dispose;
+
+	var if_block = (ctx.error_message) && create_if_block_1(ctx);
+
+	return {
+		c() {
+			form = element("form");
+			div0 = element("div");
+			label0 = element("label");
+			label0.textContent = "Email address";
+			t1 = space();
+			input0 = element("input");
+			t2 = space();
+			small = element("small");
+			small.textContent = "We'll never share your email with anyone else.";
+			t4 = space();
+			div1 = element("div");
+			label1 = element("label");
+			label1.textContent = "Password";
+			t6 = space();
+			input1 = element("input");
+			t7 = space();
+			button = element("button");
+			button.textContent = "Sign In";
+			t9 = text("\n    No account yet?\n    ");
+			a = element("a");
+			a.textContent = "Sign Up";
+			t11 = space();
+			if (if_block) if_block.c();
+			attr(label0, "for", "exampleInputEmail1");
+			attr(input0, "type", "email");
+			attr(input0, "autocomplete", "email");
+			attr(input0, "class", "form-control");
+			attr(input0, "id", "exampleInputEmail1");
+			attr(input0, "aria-describedby", "emailHelp");
+			attr(input0, "placeholder", "Enter email");
+			attr(small, "id", "emailHelp");
+			attr(small, "class", "form-text text-muted");
+			attr(div0, "class", "form-group");
+			attr(label1, "for", "exampleInputPassword1");
+			attr(input1, "type", "password");
+			attr(input1, "class", "form-control");
+			attr(input1, "autocomplete", "current-password");
+			attr(input1, "id", "exampleInputPassword1");
+			attr(input1, "placeholder", "Password");
+			attr(div1, "class", "form-group");
+			attr(button, "type", "submit");
+			attr(button, "class", "btn btn-primary mr-3");
+			attr(a, "href", "/login#");
+			attr(form, "class", "centered svelte-aggp9g");
+
+			dispose = [
+				listen(input0, "input", ctx.input0_input_handler),
+				listen(input1, "input", ctx.input1_input_handler),
+				listen(button, "click", ctx.signin_with_email),
+				listen(a, "click", ctx.emailsignup)
+			];
+		},
+
+		m(target, anchor) {
+			insert(target, form, anchor);
+			append(form, div0);
+			append(div0, label0);
+			append(div0, t1);
+			append(div0, input0);
+
+			set_input_value(input0, ctx.email);
+
+			append(div0, t2);
+			append(div0, small);
+			append(form, t4);
+			append(form, div1);
+			append(div1, label1);
+			append(div1, t6);
+			append(div1, input1);
+
+			set_input_value(input1, ctx.password);
+
+			append(form, t7);
+			append(form, button);
+			append(form, t9);
+			append(form, a);
+			append(form, t11);
+			if (if_block) if_block.m(form, null);
+		},
+
+		p(changed, ctx) {
+			if (changed.email && (input0.value !== ctx.email)) set_input_value(input0, ctx.email);
+			if (changed.password && (input1.value !== ctx.password)) set_input_value(input1, ctx.password);
+
+			if (ctx.error_message) {
+				if (if_block) {
+					if_block.p(changed, ctx);
+				} else {
+					if_block = create_if_block_1(ctx);
+					if_block.c();
+					if_block.m(form, null);
+				}
+			} else if (if_block) {
+				if_block.d(1);
+				if_block = null;
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(form);
+			}
+
+			if (if_block) if_block.d();
+			run_all(dispose);
+		}
+	};
+}
+
+// (343:4) {#each signInOptions as item}
+function create_each_block(ctx) {
+	var button, img, img_src_value, t0, span, t1, t2_value = ctx.item.t + "", t2, button_class_value, dispose;
+
+	function click_handler(...args) {
+		return ctx.click_handler(ctx, ...args);
+	}
+
+	return {
+		c() {
+			button = element("button");
+			img = element("img");
+			t0 = space();
+			span = element("span");
+			t1 = text("Sign in with ");
+			t2 = text(t2_value);
+			attr(img, "alt", "");
+			attr(img, "src", img_src_value = ctx.item.i);
+			attr(img, "class", "svelte-aggp9g");
+			attr(span, "class", "svelte-aggp9g");
+			button.disabled = ctx.loading;
+			attr(button, "class", button_class_value = "btn btn-primary firebaseui-idp-" + ctx.item.c + " mb-3 w-100" + " svelte-aggp9g");
+			dispose = listen(button, "click", click_handler);
+		},
+
+		m(target, anchor) {
+			insert(target, button, anchor);
+			append(button, img);
+			append(button, t0);
+			append(button, span);
+			append(span, t1);
+			append(span, t2);
+		},
+
+		p(changed, new_ctx) {
+			ctx = new_ctx;
+			if ((changed.signInOptions) && img_src_value !== (img_src_value = ctx.item.i)) {
+				attr(img, "src", img_src_value);
+			}
+
+			if ((changed.signInOptions) && t2_value !== (t2_value = ctx.item.t + "")) {
+				set_data(t2, t2_value);
+			}
+
+			if (changed.loading) {
+				button.disabled = ctx.loading;
+			}
+
+			if ((changed.signInOptions) && button_class_value !== (button_class_value = "btn btn-primary firebaseui-idp-" + ctx.item.c + " mb-3 w-100" + " svelte-aggp9g")) {
+				attr(button, "class", button_class_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(button);
+			}
+
+			dispose();
+		}
+	};
+}
+
+// (352:4) {#if error_message}
+function create_if_block_4(ctx) {
+	var div, t;
+
+	return {
+		c() {
+			div = element("div");
+			t = text(ctx.error_message);
+			attr(div, "class", "text-danger mt-3");
+		},
+
+		m(target, anchor) {
+			insert(target, div, anchor);
+			append(div, t);
+		},
+
+		p(changed, ctx) {
+			if (changed.error_message) {
+				set_data(t, ctx.error_message);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(div);
+			}
+		}
+	};
+}
+
+// (337:4) {#if error_message}
+function create_if_block_3(ctx) {
+	var div, t;
+
+	return {
+		c() {
+			div = element("div");
+			t = text(ctx.error_message);
+			attr(div, "class", "text-danger mt-3");
+		},
+
+		m(target, anchor) {
+			insert(target, div, anchor);
+			append(div, t);
+		},
+
+		p(changed, ctx) {
+			if (changed.error_message) {
+				set_data(t, ctx.error_message);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(div);
+			}
+		}
+	};
+}
+
+// (282:4) {#if error_message}
+function create_if_block_1(ctx) {
+	var div, t;
+
+	return {
+		c() {
+			div = element("div");
+			t = text(ctx.error_message);
+			attr(div, "class", "text-danger mt-3");
+		},
+
+		m(target, anchor) {
+			insert(target, div, anchor);
+			append(div, t);
+		},
+
+		p(changed, ctx) {
+			if (changed.error_message) {
+				set_data(t, ctx.error_message);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(div);
+			}
+		}
+	};
+}
+
+function create_fragment(ctx) {
+	var if_block_anchor;
+
+	function select_block_type(changed, ctx) {
+		if (ctx.mode == 'email_signin') return create_if_block;
+		if (ctx.mode == 'email_signup') return create_if_block_2;
+		return create_else_block;
+	}
+
+	var current_block_type = select_block_type(null, ctx);
+	var if_block = current_block_type(ctx);
+
+	return {
+		c() {
+			if_block.c();
+			if_block_anchor = empty();
+		},
+
+		m(target, anchor) {
+			if_block.m(target, anchor);
+			insert(target, if_block_anchor, anchor);
+		},
+
+		p(changed, ctx) {
+			if (current_block_type === (current_block_type = select_block_type(changed, ctx)) && if_block) {
+				if_block.p(changed, ctx);
+			} else {
+				if_block.d(1);
+				if_block = current_block_type(ctx);
+				if (if_block) {
+					if_block.c();
+					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+				}
+			}
+		},
+
+		i: noop,
+		o: noop,
+
+		d(detaching) {
+			if_block.d(detaching);
+
+			if (detaching) {
+				detach(if_block_anchor);
+			}
+		}
+	};
+}
+
+let locked_redirect = false;
+
+function instance($$self, $$props, $$invalidate) {
+	let { lang, redirect_url = "" } = $$props;
+  let firebase;
+  let email = "";
+  let password = "";
+  let password_repeat = "";
+  let first_lastname = "";
+  let error_message = null;
+  let loading = false;
+  let mode = "";
+  let unreg_auth_listener;
+  let { legal_link_new_tab = false } = $$props;
+  onDestroy(() => {
+   if (unreg_auth_listener) unreg_auth_listener();
+      unreg_auth_listener = null;
+  });
+
+  const redirect = new URL(window.location).searchParams.get("redirect");
+
+  function determine_redirect_url(redirect_url) {
+    if (redirect) return window.location.origin + decodeURIComponent(redirect);
+    if (redirect_url != null) {
+      if (redirect_url.startsWith("/dashboard")) {
+        return (
+          window.location.origin + langpath + decodeURIComponent(redirect_url)
+        );
+      } else {
+        return window.location.origin + decodeURIComponent(redirect_url);
+      }
+    }
+    return redirect_url;
+  }
+  // {p:firebase.auth.GoogleAuthProvider.PROVIDER_ID,i:"https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/facebook.svg"},
+  // {p:firebase.auth.GoogleAuthProvider.PROVIDER_ID,i:"https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/twitter.svg"},
+
+  async function start() {
+    let module = await import('../../../../../../../../js/cmp/userdata.js');
+    $$invalidate('firebase', firebase = module.firebase);
+    if (unreg_auth_listener) unreg_auth_listener();
+    unreg_auth_listener = firebase.auth().onAuthStateChanged(
+      user => {
+        if (user && !locked_redirect) {
+          setTimeout(perform_redirect, 200);
+        }
+      },
+      error => {
+        console.log(error);
+        $$invalidate('error_message', error_message = error.message);
+      }
+    );
+  }
+  start();
+
+  function perform_redirect() {
+    if (!successURL) return;
+
+    // Create redirect url. Use successURL as base and copy over other search parameters
+    const params = new URL(window.location).searchParams;
+    let target = new URL(successURL);
+    for (let p of params.entries()) {
+      if (p[0] !== "redirect") continue;
+      target.searchParams.append(p[0], p[1]);
+    }
+    window.location.assign(target);
+  }
+
+  function email_create_account(e) {
+    e.preventDefault();
+    if (first_lastname.trim().length == 0) {
+      $$invalidate('error_message', error_message =
+        "No first and lastname set. We will only use your name to write you nice to read email greeting lines.");
+      return;
+    }
+    if (password != password_repeat) {
+      $$invalidate('error_message', error_message = "Your passwords don't match.");
+      return;
+    }
+    $$invalidate('loading', loading = true);
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(user => {
+        return user.updateProfile({
+          displayName: first_lastname
+        });
+      })
+      .then(perform_redirect)
+      .catch(error => {
+        $$invalidate('loading', loading = false);
+        $$invalidate('error_message', error_message = error.message); // .code
+      });
+  }
+  function signin_with_email(e) {
+    e.preventDefault();
+    $$invalidate('loading', loading = true);
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch(error => {
+        $$invalidate('loading', loading = false);
+        $$invalidate('error_message', error_message = error.message);
+      });
+  }
+  function signin(e, item) {
+    e.stopPropagation();
+    e.preventDefault();
+    if (item.c === "email") {
+      $$invalidate('mode', mode = "email_signin");
+    } else {
+      $$invalidate('loading', loading = true);
+      firebase
+        .auth()
+        .signInWithPopup(new item.p())
+        .catch(error => {
+          $$invalidate('loading', loading = false);
+          $$invalidate('error_message', error_message = error.message);
+        });
+    }
+  }
+  function emailsignup(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    $$invalidate('loading', loading = false);
+    $$invalidate('mode', mode = "email_signup");
+    $$invalidate('error_message', error_message = null);
+  }
+  function back_to_sign_in() {
+    $$invalidate('loading', loading = false);
+    $$invalidate('mode', mode = "email_signin");
+    $$invalidate('error_message', error_message = null);
+  }
+
+	function input0_input_handler() {
+		email = this.value;
+		$$invalidate('email', email);
+	}
+
+	function input1_input_handler() {
+		password = this.value;
+		$$invalidate('password', password);
+	}
+
+	function input0_input_handler_1() {
+		email = this.value;
+		$$invalidate('email', email);
+	}
+
+	function input1_input_handler_1() {
+		password = this.value;
+		$$invalidate('password', password);
+	}
+
+	function input2_input_handler() {
+		password_repeat = this.value;
+		$$invalidate('password_repeat', password_repeat);
+	}
+
+	function input3_input_handler() {
+		first_lastname = this.value;
+		$$invalidate('first_lastname', first_lastname);
+	}
+
+	const click_handler = ({ item }, e) => signin(e, item);
+
+	$$self.$set = $$props => {
+		if ('lang' in $$props) $$invalidate('lang', lang = $$props.lang);
+		if ('redirect_url' in $$props) $$invalidate('redirect_url', redirect_url = $$props.redirect_url);
+		if ('legal_link_new_tab' in $$props) $$invalidate('legal_link_new_tab', legal_link_new_tab = $$props.legal_link_new_tab);
+	};
+
+	let langpath, tosUrl, privacyPolicyUrl, successURL, signInOptions;
+
+	$$self.$$.update = ($$dirty = { lang: 1, langpath: 1, redirect_url: 1, firebase: 1 }) => {
+		if ($$dirty.lang) { $$invalidate('langpath', langpath = lang == "en" ? "" : "/" + lang); }
+		if ($$dirty.langpath) { $$invalidate('tosUrl', tosUrl = langpath + "/terms"); }
+		if ($$dirty.langpath) { $$invalidate('privacyPolicyUrl', privacyPolicyUrl = langpath + "/privacy"); }
+		if ($$dirty.redirect_url) { successURL = determine_redirect_url(redirect_url); }
+		if ($$dirty.firebase) { $$invalidate('signInOptions', signInOptions = [
+        {
+          p: firebase ? firebase.auth.GoogleAuthProvider : null,
+          i: "https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg",
+          c: "google",
+          t: "Google"
+        },
+        {
+          p: firebase ? firebase.auth.GithubAuthProvider : null,
+          i: "https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/github.svg",
+          c: "github",
+          t: "Github"
+        },
+        {
+          p: firebase ? firebase.auth.EmailAuthProvider : null,
+          i: "https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/mail.svg",
+          c: "email",
+          t: "email"
+        }
+      ]); }
+	};
+
+	return {
+		lang,
+		redirect_url,
+		email,
+		password,
+		password_repeat,
+		first_lastname,
+		error_message,
+		loading,
+		mode,
+		legal_link_new_tab,
+		email_create_account,
+		signin_with_email,
+		signin,
+		emailsignup,
+		back_to_sign_in,
+		tosUrl,
+		privacyPolicyUrl,
+		signInOptions,
+		input0_input_handler,
+		input1_input_handler,
+		input0_input_handler_1,
+		input1_input_handler_1,
+		input2_input_handler,
+		input3_input_handler,
+		click_handler
+	};
+}
+
+class Cmp extends SvelteComponent {
+	constructor(options) {
+		super();
+		if (!document.getElementById("svelte-aggp9g-style")) add_css();
+		init(this, options, instance, create_fragment, safe_not_equal, ["lang", "redirect_url", "legal_link_new_tab"]);
+	}
+}
+
+window.customElements.define('ui-login', class extends HTMLElement {
+    constructor() {
+        super();
+    }
+    connectedCallback() {
+        this.cmp = new Cmp({
+            target: this, props: {
+                redirect_url: this.hasAttribute("no-redirect") ? null : (this.getAttribute("redirecturl") || "/dashboard"),
+                lang: this.hasAttribute("lang") ? this.getAttribute("lang") : "en",
+                legal_link_new_tab: this.hasAttribute("legal-link-new-tab")
+            }
+        });
+    }
+    disconnectedCallback() {
+        if (this.cmp) this.cmp.$destroy();
+    }
+});
 //# sourceMappingURL=ui-login.js.map

@@ -1,2 +1,3467 @@
-function e(){}function n(e,n,t,c,r){e.__svelte_meta={loc:{file:n,line:t,column:c,char:r}}}function t(e){return e()}function c(){return Object.create(null)}function r(e){e.forEach(t)}function i(e){return"function"==typeof e}function l(e,n){return e!=e?n==n:e!==n||e&&"object"==typeof e||"function"==typeof e}function o(e,n){e.appendChild(n)}function a(e,n,t){e.insertBefore(n,t||null)}function u(e){e.parentNode.removeChild(e)}function s(e,n){for(let t=0;t<e.length;t+=1)e[t]&&e[t].d(n)}function g(e){return document.createElement(e)}function I(e){return document.createTextNode(e)}function C(){return I(" ")}function d(){return I("")}function A(e,n,t,c){return e.addEventListener(n,t,c),()=>e.removeEventListener(n,t,c)}function p(e,n,t){null==t?e.removeAttribute(n):e.setAttribute(n,t)}function b(e,n,t){n in e?e[n]=t:p(e,n,t)}function m(e,n){n=""+n,e.data!==n&&(e.data=n)}function h(e,n,t){e.style.setProperty(n,t)}function G(e,n){for(let t=0;t<e.options.length;t+=1){const c=e.options[t];if(c.__value===n)return void(c.selected=!0)}}function f(e,n,t){e.classList[t?"add":"remove"](n)}class y{constructor(e,n=null){this.e=g("div"),this.a=n,this.u(e)}m(e,n=null){for(let t=0;t<this.n.length;t+=1)a(e,this.n[t],n);this.t=e}u(e){this.e.innerHTML=e,this.n=Array.from(this.e.childNodes)}p(e){this.d(),this.u(e),this.m(this.t,this.a)}d(){this.n.forEach(u)}}let X;function v(e){X=e}function x(e){(function(){if(!X)throw new Error("Function called outside component initialization");return X})().$$.on_destroy.push(e)}function W(){const e=X;return(n,t)=>{const c=e.$$.callbacks[n];if(c){const r=function(e,n){const t=document.createEvent("CustomEvent");return t.initCustomEvent(e,!1,!1,n),t}(n,t);c.slice().forEach(n=>{n.call(e,r)})}}}const Z=[],w=[],B=[],Y=[],V=Promise.resolve();let _=!1;function F(e){B.push(e)}function N(e){Y.push(e)}function R(){const e=new Set;do{for(;Z.length;){const e=Z.shift();v(e),J(e.$$)}for(;w.length;)w.pop()();for(let n=0;n<B.length;n+=1){const t=B[n];e.has(t)||(t(),e.add(t))}B.length=0}while(Z.length);for(;Y.length;)Y.pop()();_=!1}function J(e){e.fragment&&(e.update(e.dirty),r(e.before_update),e.fragment.p(e.dirty,e.ctx),e.dirty=null,e.after_update.forEach(F))}const H=new Set;let P;function $(){P={r:0,c:[],p:P}}function k(){P.r||r(P.c),P=P.p}function j(e,n){e&&e.i&&(H.delete(e),e.i(n))}function D(e,n,t,c){if(e&&e.o){if(H.has(e))return;H.add(e),P.c.push(()=>{H.delete(e),c&&(t&&e.d(1),c())}),e.o(n)}}const S="undefined"!=typeof window?window:global;function L(e,n,t){-1!==e.$$.props.indexOf(n)&&(e.$$.bound[n]=t,t(e.$$.ctx[n]))}function z(e,n,c){const{fragment:l,on_mount:o,on_destroy:a,after_update:u}=e.$$;l.m(n,c),F(()=>{const n=o.map(t).filter(i);a?a.push(...n):r(n),e.$$.on_mount=[]}),u.forEach(F)}function U(e,n){e.$$.fragment&&(r(e.$$.on_destroy),e.$$.fragment.d(n),e.$$.on_destroy=e.$$.fragment=null,e.$$.ctx={})}function Q(e,n){e.$$.dirty||(Z.push(e),_||(_=!0,V.then(R)),e.$$.dirty=c()),e.$$.dirty[n]=!0}function E(n,t,i,l,o,a){const u=X;v(n);const s=t.props||{},g=n.$$={fragment:null,ctx:null,props:a,update:e,not_equal:o,bound:c(),on_mount:[],on_destroy:[],before_update:[],after_update:[],context:new Map(u?u.$$.context:[]),callbacks:c(),dirty:null};let I=!1;var C;g.ctx=i?i(n,s,(e,t)=>{g.ctx&&o(g.ctx[e],g.ctx[e]=t)&&(g.bound[e]&&g.bound[e](t),I&&Q(n,e))}):s,g.update(),I=!0,r(g.before_update),g.fragment=l(g.ctx),t.target&&(t.hydrate?g.fragment.l((C=t.target,Array.from(C.childNodes))):g.fragment.c(),t.intro&&j(n.$$.fragment),z(n,t.target,t.anchor),R()),v(u)}class T{$destroy(){U(this,1),this.$destroy=e}$on(e,n){const t=this.$$.callbacks[e]||(this.$$.callbacks[e]=[]);return t.push(n),()=>{const e=t.indexOf(n);-1!==e&&t.splice(e,1)}}$set(){}}class O extends T{constructor(e){if(!e||!e.target&&!e.$$inline)throw new Error("'target' is a required option");super()}$destroy(){super.$destroy(),this.$destroy=(()=>{console.warn("Component was already destroyed")})}}const{console:M}=S,K="assets/js/ui-subscription/currency.svelte";function q(e,n,t){const c=Object.create(e);return c.title=n[t],c}function ee(e){var t,c,r,i,l=e.title+"";return{c:function(){t=g("option"),c=I(l),t.__value=r=e.title,t.value=t.__value,t.selected=i=e.currency==e.title,n(t,K,42,4,1257)},m:function(e,n){a(e,t,n),o(t,c)},p:function(e,n){e.currencies&&l!==(l=n.title+"")&&m(c,l),e.currencies&&r!==(r=n.title)&&(t.__value=r),t.value=t.__value,(e.currency||e.currencies)&&i!==(i=n.currency==n.title)&&(t.selected=i)},d:function(e){e&&u(t)}}}function ne(t){for(var c,i,l,d,b,f,y,X=Object.keys(t.currencies),v=[],x=0;x<X.length;x+=1)v[x]=ee(q(t,X,x));return{c:function(){c=g("output"),i=I(t.result),d=C(),b=g("select");for(var e=0;e<v.length;e+=1)v[e].c();p(c,"title",l="Cached from "+t.cache_date),n(c,K,34,0,972),void 0===t.currency&&F(()=>t.select_change_handler.call(b)),p(b,"title",f="Cached from "+t.cache_date),p(b,"class","custom-select custom-select-sm"),h(b,"width","100px"),n(b,K,35,0,1031),y=[A(b,"change",t.select_change_handler),A(b,"change",t.change_handler)]},l:function(e){throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option")},m:function(e,n){a(e,c,n),o(c,i),a(e,d,n),a(e,b,n);for(var r=0;r<v.length;r+=1)v[r].m(b,null);G(b,t.currency)},p:function(e,n){if(e.result&&m(i,n.result),e.cache_date&&l!==(l="Cached from "+n.cache_date)&&p(c,"title",l),e.currencies||e.currency){X=Object.keys(n.currencies);for(var t=0;t<X.length;t+=1){const c=q(n,X,t);v[t]?v[t].p(e,c):(v[t]=ee(c),v[t].c(),v[t].m(b,null))}for(;t<v.length;t+=1)v[t].d(1);v.length=X.length}e.currency&&G(b,n.currency),e.cache_date&&f!==(f="Cached from "+n.cache_date)&&p(b,"title",f)},i:e,o:e,d:function(e){e&&(u(c),u(d),u(b)),s(v,e),r(y)}}}function te(e,n,t){let{value:c=0,currency:r="€"}=n,i={"€":1},l=null;const o=W();!async function(){let e=localStorage.getItem("currency_rates");e&&(e=JSON.parse(e)),(!e||Date.parse(e.date)<Date.now()-864e5)&&(console.log("Fetch currency rates"),(e=await(await fetch("https://api.exchangeratesapi.io/latest")).json()).rates["€"]=1,localStorage.setItem("currency_rates",JSON.stringify(e))),t("cache_date",l=e.date),e.rates["€"]=1,delete e.rates.EUR,t("currencies",i=e.rates)}();const a=["value","currency"];let u;return Object.keys(n).forEach(e=>{a.includes(e)||e.startsWith("$$")||M.warn(`<Currency> was created with unknown prop '${e}'`)}),e.$set=(e=>{"value"in e&&t("value",c=e.value),"currency"in e&&t("currency",r=e.currency)}),e.$$.update=((e={currencies:1,currency:1,value:1})=>{(e.currencies||e.currency||e.value)&&t("result",u=(i[r]*c).toFixed(2)),(e.currencies||e.currency||e.value)&&o("output",i[r]*c)}),{value:c,currency:r,currencies:i,cache_date:l,dispatch:o,result:u,select_change_handler:function(){r=function(e){const n=e.querySelector(":checked")||e.options[0];return n&&n.__value}(this),t("currency",r),t("currencies",i)},change_handler:function(e){return o("currency",r)}}}class ce extends O{constructor(e){super(e),E(this,e,te,ne,l,["value","currency"])}get value(){throw new Error("<Currency>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set value(e){throw new Error("<Currency>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}get currency(){throw new Error("<Currency>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set currency(e){throw new Error("<Currency>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}}const re="assets/js/ui-subscription/iban.svelte";function ie(e){var t,c,r,i,l,s,d,A,b,h,G,f,y,X,v,x,W,Z,B,Y,V,_,F,R,J,H,P,$,k;function S(n){e.currencyconverter_currency_binding.call(null,n),$=!0,N(()=>$=!1)}let Q={value:e.value};void 0!==e.currency&&(Q.currency=e.currency);var E=new ce({props:Q,$$inline:!0});return w.push(()=>L(E,"currency",S)),E.$on("output",e.output_handler),{c:function(){t=g("samp"),c=g("table"),r=g("tr"),(i=g("td")).textContent="Account Holder: ",l=C(),(s=g("td")).textContent="David Graeff",d=C(),A=g("tr"),(b=g("td")).textContent="IBAN:",h=C(),(G=g("td")).textContent="DE78 2004 1155 0841 2900 00",f=C(),y=g("tr"),(X=g("td")).textContent="BIC:",v=C(),(x=g("td")).textContent="COBADEHD055",W=C(),Z=g("tr"),(B=g("td")).textContent="Reference Code:",Y=C(),V=g("td"),_=I(e.refcode),F=C(),R=g("tr"),(J=g("td")).textContent="Amount:",H=C(),P=g("td"),E.$$.fragment.c(),n(i,re,13,6,297),n(s,re,14,6,334),n(r,re,12,4,286),n(b,re,17,6,381),n(G,re,18,6,402),n(A,re,16,4,370),n(X,re,21,6,464),n(x,re,22,6,484),n(y,re,20,4,453),n(B,re,25,6,530),n(V,re,26,6,561),n(Z,re,24,4,519),n(J,re,29,6,605),n(P,re,30,6,628),n(R,re,28,4,594),n(c,re,11,2,274),p(t,"class","card p-3 mb-4"),n(t,re,10,0,243)},l:function(e){throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option")},m:function(e,n){a(e,t,n),o(t,c),o(c,r),o(r,i),o(r,l),o(r,s),o(c,d),o(c,A),o(A,b),o(A,h),o(A,G),o(c,f),o(c,y),o(y,X),o(y,v),o(y,x),o(c,W),o(c,Z),o(Z,B),o(Z,Y),o(Z,V),o(V,_),o(c,F),o(c,R),o(R,J),o(R,H),o(R,P),z(E,P,null),k=!0},p:function(e,n){k&&!e.refcode||m(_,n.refcode);var t={};e.value&&(t.value=n.value),!$&&e.currency&&(t.currency=n.currency),E.$set(t)},i:function(e){k||(j(E.$$.fragment,e),k=!0)},o:function(e){D(E.$$.fragment,e),k=!1},d:function(e){e&&u(t),U(E)}}}function le(e,n,t){const c=W();let{value:r=0,currency:i="€",refcode:l}=n;const o=["value","currency","refcode"];return Object.keys(n).forEach(e=>{o.includes(e)||e.startsWith("$$")||console.warn(`<Iban> was created with unknown prop '${e}'`)}),e.$set=(e=>{"value"in e&&t("value",r=e.value),"currency"in e&&t("currency",i=e.currency),"refcode"in e&&t("refcode",l=e.refcode)}),{dispatch:c,value:r,currency:i,refcode:l,currencyconverter_currency_binding:function(e){t("currency",i=e)},output_handler:function(e){return c("output",e.detail)}}}class oe extends O{constructor(e){super(e),E(this,e,le,ie,l,["value","currency","refcode"]);const{ctx:n}=this.$$,t=e.props||{};void 0!==n.refcode||"refcode"in t||console.warn("<Iban> was created without expected prop 'refcode'")}get value(){throw new Error("<Iban>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set value(e){throw new Error("<Iban>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}get currency(){throw new Error("<Iban>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set currency(e){throw new Error("<Iban>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}get refcode(){throw new Error("<Iban>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set refcode(e){throw new Error("<Iban>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}}function ae(e,n){return`OHX-${e.email.replace("@","/")}-${Math.floor(n.getFullYear()/100)}${(""+n.getMonth()).padStart(2,"0")}`}const{Object:ue,console:se}=S,ge="assets/js/ui-subscription/invoices.svelte";function Ie(e,n,t){const c=ue.create(e);return c.bill=n[t],c}function Ce(e){var t,c,r;return{c:function(){t=I("|\n      "),(c=g("a")).textContent="Add Demo Invoice",p(c,"href","#top"),n(c,ge,109,6,3143),r=A(c,"click",e.demoadd)},m:function(e,n){a(e,t,n),a(e,c,n)},d:function(e){e&&(u(t),u(c)),r()}}}function de(e){var t,c,r,i=new oe({props:{value:e.last_pm.amount_euro,currency:"€",refcode:ae(e.user,new e.Date(e.last_pm.start))},$$inline:!0});return{c:function(){(t=g("p")).textContent="Your last invoice balance is negative. The IBAN details are printed below.",c=C(),i.$$.fragment.c(),n(t,ge,115,0,3239)},m:function(e,n){a(e,t,n),a(e,c,n),z(i,e,n),r=!0},p:function(e,n){var t={};e.last_pm&&(t.value=n.last_pm.amount_euro),(e.RefCode||e.user||e.Date||e.last_pm)&&(t.refcode=ae(n.user,new n.Date(n.last_pm.start))),i.$set(t)},i:function(e){r||(j(i.$$.fragment,e),r=!0)},o:function(e){D(i.$$.fragment,e),r=!1},d:function(e){e&&(u(t),u(c)),U(i,e)}}}function Ae(e){var t,c,r;return{c:function(){t=g("tr"),(c=g("td")).textContent="No entry",r=C(),p(c,"colspan","6"),n(c,ge,156,8,4440),n(t,ge,155,6,4427)},m:function(e,n){a(e,t,n),o(t,c),o(t,r)},d:function(e){e&&u(t)}}}function pe(e){var n,t=new e.Date(parseInt(e.bill.status_date)).toLocaleString()+"";return{c:function(){n=I(t)},m:function(e,t){a(e,n,t)},p:function(e,c){e.invoices&&t!==(t=new c.Date(parseInt(c.bill.status_date)).toLocaleString()+"")&&m(n,t)},d:function(e){e&&u(n)}}}function be(e){var t,c,r,i,l,s,d,b,h,G,y,X,v,x,W,Z,w,B,Y,V,_,F,N,R,J,H,P,$=e.bill.id+"",k=e.bill.type+"",j=new e.Date(parseInt(e.bill.start)).toLocaleString()+"",D=new e.Date(parseInt(e.bill.end)).toLocaleString()+"",S=e.bill.payment_method+"",L=e.bill.payment_lastdigits+"",z=he(e.bill.status)+"",U=e.bill.amount_euro+"";function Q(...n){return e.click_handler(e,...n)}var E=e.bill.status_date&&pe(e);return{c:function(){t=g("tr"),c=g("td"),r=g("a"),i=I("#"),l=I($),s=C(),d=g("td"),b=I(k),h=C(),G=g("td"),y=I(j),X=I(" - "),v=I(D),x=C(),W=g("td"),Z=I(S),w=I(" …"),B=I(L),Y=C(),V=g("td"),_=I(z),F=C(),E&&E.c(),N=C(),R=g("td"),J=I(U),H=C(),p(r,"href","#top"),p(r,"title","Download Invoice"),n(r,ge,134,10,3717),n(c,ge,133,8,3702),n(d,ge,141,8,3901),n(G,ge,142,8,3930),n(W,ge,145,8,4067),f(V,"text-danger","PENDING"==e.bill.status),n(V,ge,146,8,4140),n(R,ge,152,8,4369),n(t,ge,132,6,3689),P=A(r,"click",Q)},m:function(e,n){a(e,t,n),o(t,c),o(c,r),o(r,i),o(r,l),o(t,s),o(t,d),o(d,b),o(t,h),o(t,G),o(G,y),o(G,X),o(G,v),o(t,x),o(t,W),o(W,Z),o(W,w),o(W,B),o(t,Y),o(t,V),o(V,_),o(V,F),E&&E.m(V,null),o(t,N),o(t,R),o(R,J),o(t,H)},p:function(n,t){e=t,n.invoices&&$!==($=e.bill.id+"")&&m(l,$),n.invoices&&k!==(k=e.bill.type+"")&&m(b,k),n.invoices&&j!==(j=new e.Date(parseInt(e.bill.start)).toLocaleString()+"")&&m(y,j),n.invoices&&D!==(D=new e.Date(parseInt(e.bill.end)).toLocaleString()+"")&&m(v,D),n.invoices&&S!==(S=e.bill.payment_method+"")&&m(Z,S),n.invoices&&L!==(L=e.bill.payment_lastdigits+"")&&m(B,L),n.invoices&&z!==(z=he(e.bill.status)+"")&&m(_,z),e.bill.status_date?E?E.p(n,e):((E=pe(e)).c(),E.m(V,null)):E&&(E.d(1),E=null),n.invoices&&f(V,"text-danger","PENDING"==e.bill.status),n.invoices&&U!==(U=e.bill.amount_euro+"")&&m(J,U)},d:function(e){e&&u(t),E&&E.d(),P()}}}function me(e){for(var t,c,r,i,l,d,b,m,h,G,f,y,X,v,x,W,Z,w,B,Y,V,_,F,N,R,J=e.user&&e.user.is_admin&&Ce(e),H=e.last_pm&&de(e),P=e.invoices,S=[],L=0;L<P.length;L+=1)S[L]=be(Ie(e,P,L));var z=null;return P.length||(z=Ae()).c(),{c:function(){t=g("h4"),c=I("Invoice History\n  "),r=g("span"),(i=g("a")).textContent="Refresh",l=C(),J&&J.c(),d=C(),H&&H.c(),b=C(),m=g("table"),h=g("thead"),G=g("tr"),(f=g("th")).textContent="No",y=C(),(X=g("th")).textContent="Type",v=C(),(x=g("th")).textContent="Access Period",W=C(),(Z=g("th")).textContent="Payment Method",w=C(),(B=g("th")).textContent="Status",Y=C(),(V=g("th")).textContent="Amount",_=C(),F=g("tbody");for(var o=0;o<S.length;o+=1)S[o].c();p(i,"href","#top"),n(i,ge,106,4,3045),p(r,"class","h6"),n(r,ge,105,2,3023),p(t,"class","mt-4"),n(t,ge,103,0,2985),n(f,ge,122,6,3488),n(X,ge,123,6,3506),n(x,ge,124,6,3526),n(Z,ge,125,6,3555),n(B,ge,126,6,3585),n(V,ge,127,6,3607),n(G,ge,121,4,3477),n(h,ge,120,2,3465),n(F,ge,130,2,3646),p(m,"class","table table-hover"),n(m,ge,119,0,3429),R=A(i,"click",e.refresh_cache)},l:function(e){throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option")},m:function(e,n){a(e,t,n),o(t,c),o(t,r),o(r,i),o(r,l),J&&J.m(r,null),a(e,d,n),H&&H.m(e,n),a(e,b,n),a(e,m,n),o(m,h),o(h,G),o(G,f),o(G,y),o(G,X),o(G,v),o(G,x),o(G,W),o(G,Z),o(G,w),o(G,B),o(G,Y),o(G,V),o(m,_),o(m,F);for(var u=0;u<S.length;u+=1)S[u].m(F,null);z&&z.m(F,null),N=!0},p:function(e,n){if(n.user&&n.user.is_admin?J||((J=Ce(n)).c(),J.m(r,null)):J&&(J.d(1),J=null),n.last_pm?H?(H.p(e,n),j(H,1)):((H=de(n)).c(),j(H,1),H.m(b.parentNode,b)):H&&($(),D(H,1,1,()=>{H=null}),k()),e.invoices||e.Date||e.bill_status_text){P=n.invoices;for(var t=0;t<P.length;t+=1){const c=Ie(n,P,t);S[t]?S[t].p(e,c):(S[t]=be(c),S[t].c(),S[t].m(F,null))}for(;t<S.length;t+=1)S[t].d(1);S.length=P.length}P.length?z&&(z.d(1),z=null):z||((z=Ae()).c(),z.m(F,null))},i:function(e){N||(j(H),N=!0)},o:function(e){D(H),N=!1},d:function(e){e&&u(t),J&&J.d(),e&&u(d),H&&H.d(e),e&&(u(b),u(m)),s(S,e),z&&z.d(),R()}}}function he(e){switch(e){case"PENDING":return"Waiting for Payment";case"RECEIVED":return"Received";case"SCHEDULED":return"Recurring Payment scheduled";default:return e}}function Ge(e,n,t){let{userdata:c,user:r}=n,i=null,l=[],o=null;const a=W();function u(e,n){if("#top"!=new URL(e.target.href).hash)return;e.preventDefault(),I.refFromURL(c.BUCKET_BILLING+"/"+r.uid+"/"+n.id).getDownloadURL().then(n=>{e.target.href=n,e.target.click()}).catch(e=>{"storage/object-not-found"==e.code?a("error",`PDF for Invoice #${n.id} not found!`):(console.warn("Failed to create download link",e),a("error","Failed to create download link "+e.message))})}async function s(){let e=localStorage.getItem("invoices");if(e&&(e=JSON.parse(e)),e&&e.valid_until>Date.now())return i=e.valid_until,void t("invoices",l=Object.values(e.data));await c.fetch_collection(c.COLL_INVOICES).then(()=>{const e=c[c.COLL_INVOICES]||[];let n=new Date(Date.now());n.setDate(n.getDate()+1),localStorage.setItem("invoices",JSON.stringify({data:e,valid_until:n.getTime()})),t("invoices",l=Object.values(e))}).catch(e=>{a("error",`Failed to refresh invoice list: ${e.message}`)});const n=l.length?l[l.length-1]:null;n&&"IBAN"==n.payment_method&&"PENDING"==n.status&&t("last_pm",o=n)}const g=["userdata","user"];let I;return ue.keys(n).forEach(e=>{g.includes(e)||e.startsWith("$$")||se.warn(`<Invoices> was created with unknown prop '${e}'`)}),e.$set=(e=>{"userdata"in e&&t("userdata",c=e.userdata),"user"in e&&t("user",r=e.user)}),e.$$.update=((e={userdata:1,user:1})=>{e.userdata&&(I=c?c.storage(c.BUCKET_BILLING):null),e.user&&r&&s()}),{userdata:c,user:r,invoices:l,last_pm:o,prepare_download_link:u,refresh_cache:function(){i=null,localStorage.removeItem("invoices"),s()},demoadd:function(e){e.preventDefault(),l.push({id:"12",type:"cloud",start:Date.now(),end:Date.now(),payment_method:"IBAN",payment_lastdigits:"0879",status:"PENDING",status_date:Date.now(),amount_euro:"3"}),t("invoices",l);const n=l.length?l[l.length-1]:null;n&&"IBAN"==n.payment_method&&"PENDING"==n.status&&t("last_pm",o=n)},Date,click_handler:function({bill:e},n){return u(n,e)}}}class fe extends O{constructor(e){super(e),E(this,e,Ge,me,l,["userdata","user"]);const{ctx:n}=this.$$,t=e.props||{};void 0!==n.userdata||"userdata"in t||se.warn("<Invoices> was created without expected prop 'userdata'"),void 0!==n.user||"user"in t||se.warn("<Invoices> was created without expected prop 'user'")}get userdata(){throw new Error("<Invoices>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set userdata(e){throw new Error("<Invoices>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}get user(){throw new Error("<Invoices>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set user(e){throw new Error("<Invoices>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}}const ye={"":["<em>","</em>"],_:["<strong>","</strong>"],"~":["<s>","</s>"],"\n":["<br />"]," ":["<br />"],"-":["<hr />"]};function Xe(e){return e.replace(RegExp("^"+(e.match(/^(\t| )+/)||"")[0],"gm"),"")}function ve(e){return(e+"").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}function xe(e,n){let t,c,r,i,l,o=/((?:^|\n+)(?:\n---+|\* \*(?: \*)+)\n)|(?:^``` *(\w*)\n([\s\S]*?)\n```$)|((?:(?:^|\n+)(?:\t|  {2,}).+)+\n*)|((?:(?:^|\n)([>*+-]|\d+\.)\s+.*)+)|(?:\!\[([^\]]*?)\]\(([^\)]+?)\))|(\[)|(\](?:\(([^\)]+?)\))?)|(?:(?:^|\n+)([^\s].*)\n(\-{3,}|={3,})(?:\n+|$))|(?:(?:^|\n+)(#{1,6})\s*(.+)(?:\n+|$))|(?:`([^`].*?)`)|(  \n\n*|\n{2,}|__|\*\*|[_*]|~~)/gm,a=[],u="",s=n||{},g=0;function I(e){var n=ye[e.replace(/\*/g,"_")[1]||""],t=a[a.length-1]==e;return n?n[1]?(a[t?"pop":"push"](e),n[0|t]):n[0]:e}function C(){let e="";for(;a.length;)e+=I(a[a.length-1]);return e}for(e=e.replace(/^\[(.+?)\]:\s*(.+)$/gm,(e,n,t)=>(s[n.toLowerCase()]=t,"")).replace(/^\n+|\n+$/g,"");r=o.exec(e);)c=e.substring(g,r.index),g=o.lastIndex,t=r[0],c.match(/[^\\](\\\\)*\\$/)||(r[3]||r[4]?t='<pre class="code '+(r[4]?"poetry":r[2].toLowerCase())+'">'+Xe(ve(r[3]||r[4]).replace(/^\n+|\n+$/g,""))+"</pre>":r[6]?((l=r[6]).match(/\./)&&(r[5]=r[5].replace(/^\d+/gm,"")),i=xe(Xe(r[5].replace(/^\s*[>*+.-]/gm,""))),">"===l?l="blockquote":(l=l.match(/\./)?"ol":"ul",i=i.replace(/^(.*)(\n|$)/gm,"<li>$1</li>")),t="<"+l+">"+i+"</"+l+">"):r[8]?t=`<img src="${ve(r[8])}" alt="${ve(r[7])}">`:r[10]?(u=u.replace("<a>",`<a href="${ve(r[11]||s[c.toLowerCase()])}">`),t=C()+"</a>"):r[9]?t="<a>":r[12]||r[14]?t="<"+(l="h"+(r[14]?r[14].length:"="===r[13][0]?1:2))+">"+xe(r[12]||r[15],s)+"</"+l+">":r[16]?t="<code>"+ve(r[16])+"</code>":(r[17]||r[1])&&(t=I(r[17]||"--"))),u+=c,u+=t;return(u+e.substring(g)+C()).trim()}const We="assets/js/ui-subscription/subscription_plan.svelte";function Ze(e,n,t){const c=Object.create(e);return c.$feat=n[t],c.$featid=t,c}function we(e,n,t){const c=Object.create(e);return c.$propid=n[t][0],c.$prop=n[t][1],c}function Be(e){var t,c;return{c:function(){b(t=g("ui-subscription-flexible"),"target",c="subscriptionPlan"+e.plan.id),n(t,We,37,4,929)},m:function(e,n){a(e,t,n)},p:function(e,n){e.plan&&c!==(c="subscriptionPlan"+n.plan.id)&&b(t,"target",c)},d:function(e){e&&u(t)}}}function Ye(e){var n,t=e.$prop.suffix+"";return{c:function(){n=I(t)},m:function(e,t){a(e,n,t)},p:function(e,c){e.plan&&t!==(t=c.$prop.suffix+"")&&m(n,t)},d:function(e){e&&u(n)}}}function Ve(e){var n,t=xe(e.$prop.title)+"";return{c:function(){n=new y(t,null)},m:function(e,t){n.m(e,t)},p:function(e,c){e.plan&&t!==(t=xe(c.$prop.title)+"")&&n.p(t)},d:function(e){e&&n.d()}}}function _e(e){var t,c,r,i,l=xe(e.$prop.title)+"",s=`<${e.$prop.details_html_tag} value=${Se(e.$prop,e.plan.euro_price,e.plan.euro_price_value)}></${e.$prop.details_html_tag}>`+"";return{c:function(){t=g("ui-tooltip"),c=g("button"),r=C(),p(c,"class","btn-link contexthelp"),p(c,"title","Context help"),p(c,"slot","button"),n(c,We,67,18,1936),i=new y(s,null),b(t,"maxwidth",""),n(t,We,66,16,1896)},m:function(e,n){a(e,t,n),o(t,c),c.innerHTML=l,o(t,r),i.m(t)},p:function(e,n){e.plan&&l!==(l=xe(n.$prop.title)+"")&&(c.innerHTML=l),e.plan&&s!==(s=`<${n.$prop.details_html_tag} value=${Se(n.$prop,n.plan.euro_price,n.plan.euro_price_value)}></${n.$prop.details_html_tag}>`+"")&&i.p(s)},d:function(e){e&&u(t)}}}function Fe(e){var t,c,r,i=xe(e.$prop.desc)+"";return{c:function(){t=g("br"),c=C(),r=g("small"),n(t,We,79,16,2465),n(r,We,80,16,2488)},m:function(e,n){a(e,t,n),a(e,c,n),a(e,r,n),r.innerHTML=i},p:function(e,n){e.plan&&i!==(i=xe(n.$prop.desc)+"")&&(r.innerHTML=i)},d:function(e){e&&(u(t),u(c),u(r))}}}function Ne(e){var t,c,r,i,l,s,d,A,b,h,G,f=Se(e.$prop,e.plan.euro_price,e.plan.euro_price_value)+"",y=e.$prop.suffix&&Ye(e);function X(e){return e.$prop.details_html_tag?_e:Ve}var v=X(e),x=v(e),W=e.$prop.desc&&Fe(e);return{c:function(){t=g("tr"),c=g("td"),r=g("output"),i=I(f),A=C(),y&&y.c(),b=C(),h=g("td"),x.c(),G=C(),W&&W.c(),p(r,"data-min",l=e.$prop.base),p(r,"data-max",s=e.$prop.max),p(r,"name",d=e.$propid),n(r,We,59,14,1583),n(c,We,58,12,1564),n(h,We,64,12,1832),n(t,We,57,10,1547)},m:function(e,n){a(e,t,n),o(t,c),o(c,r),o(r,i),o(c,A),y&&y.m(c,null),o(t,b),o(t,h),x.m(h,null),o(h,G),W&&W.m(h,null)},p:function(e,n){e.plan&&f!==(f=Se(n.$prop,n.plan.euro_price,n.plan.euro_price_value)+"")&&m(i,f),e.plan&&l!==(l=n.$prop.base)&&p(r,"data-min",l),e.plan&&s!==(s=n.$prop.max)&&p(r,"data-max",s),e.plan&&d!==(d=n.$propid)&&p(r,"name",d),n.$prop.suffix?y?y.p(e,n):((y=Ye(n)).c(),y.m(c,null)):y&&(y.d(1),y=null),v===(v=X(n))&&x?x.p(e,n):(x.d(1),(x=v(n))&&(x.c(),x.m(h,G))),n.$prop.desc?W?W.p(e,n):((W=Fe(n)).c(),W.m(h,null)):W&&(W.d(1),W=null)},d:function(e){e&&u(t),y&&y.d(),x.d(),W&&W.d()}}}function Re(e){var t,c,r,i,l=xe(e.$feat.title)+"",s=e.$feat.desc&&He(e);return{c:function(){t=g("span"),r=C(),s&&s.c(),i=C(),c=new y(l,r),n(t,We,102,16,3194)},m:function(e,n){a(e,t,n),c.m(t),o(t,r),s&&s.m(t,null),o(t,i)},p:function(e,n){e.plan&&l!==(l=xe(n.$feat.title)+"")&&c.p(l),n.$feat.desc?s?s.p(e,n):((s=He(n)).c(),s.m(t,i)):s&&(s.d(1),s=null)},d:function(e){e&&u(t),s&&s.d()}}}function Je(e){var t,c,r,i,l,s=xe(e.$feat.title)+"",I=xe(e.$feat.details)+"";return{c:function(){t=g("ui-tooltip"),c=g("button"),r=C(),l=C(),p(c,"class","btn-link contexthelp"),p(c,"title","Context help"),p(c,"slot","button"),n(c,We,93,18,2863),i=new y(I,l),b(t,"maxwidth",""),n(t,We,92,16,2823)},m:function(e,n){a(e,t,n),o(t,c),c.innerHTML=s,o(t,r),i.m(t),o(t,l)},p:function(e,n){e.plan&&s!==(s=xe(n.$feat.title)+"")&&(c.innerHTML=s),e.plan&&I!==(I=xe(n.$feat.details)+"")&&i.p(I)},d:function(e){e&&u(t)}}}function He(e){var n,t,c="("+xe(e.$feat.desc)+")";return{c:function(){n=I(" \n                    "),t=new y(c,null)},m:function(e,c){a(e,n,c),t.m(e,c)},p:function(e,n){e.plan&&c!==(c="("+xe(n.$feat.desc)+")")&&t.p(c)},d:function(e){e&&(u(n),t.d())}}}function Pe(e){var n;function t(e){return e.$feat.details?Je:Re}var c=t(e),r=c(e);return{c:function(){r.c(),n=d()},m:function(e,t){r.m(e,t),a(e,n,t)},p:function(e,i){c===(c=t(i))&&r?r.p(e,i):(r.d(1),(r=c(i))&&(r.c(),r.m(n.parentNode,n)))},d:function(e){r.d(e),e&&u(n)}}}function $e(e){var t,c,i,l;return{c:function(){p(t=g("input"),"type","range"),p(t,"min",c=e.plan.euro_price.min),p(t,"max",i=e.plan.euro_price.max),p(t,"class","slider"),p(t,"id","subscriptionValue"),n(t,We,118,6,3598),l=[A(t,"change",e.input_change_input_handler),A(t,"input",e.input_change_input_handler)]},m:function(n,c){a(n,t,c),t.value=e.plan.euro_price_value},p:function(e,n){e.plan&&(t.value=n.plan.euro_price_value),e.plan&&c!==(c=n.plan.euro_price.min)&&p(t,"min",c),e.plan&&i!==(i=n.plan.euro_price.max)&&p(t,"max",i)},d:function(e){e&&u(t),r(l)}}}function ke(e){var t,c,r;return{c:function(){t=g("button"),c=I(e.button_text),p(t,"class","btn btn-primary btn-impressive"),n(t,We,131,6,3942),r=A(t,"click",e.click_handler)},m:function(e,n){a(e,t,n),o(t,c)},p:function(e,n){e.button_text&&m(c,n.button_text)},d:function(e){e&&u(t),r()}}}function je(e){var t,c;return{c:function(){t=g("button"),c=I(e.button_text),t.disabled=!0,p(t,"class","btn btn-success btn-impressive"),n(t,We,127,6,3829)},m:function(e,n){a(e,t,n),o(t,c)},p:function(e,n){e.button_text&&m(c,n.button_text)},d:function(e){e&&u(t)}}}function De(t){for(var c,r,i,l,I,d,A,b,m,G,y,X,v,x,W,Z,w,B,Y,V,_,F,N,R,J,H,P,$,k=xe(t.plan.title)+"",j=xe(t.plan.desc)+"",D=t.plan.euro_price.min&&Be(t),S=Object.entries(t.plan.properties),L=[],z=0;z<S.length;z+=1)L[z]=Ne(we(t,S,z));var U=t.plan.features,Q=[];for(z=0;z<U.length;z+=1)Q[z]=Pe(Ze(t,U,z));var E=t.plan.euro_price.min&&$e(t);function T(e){return e.selected?je:ke}var O=T(t),M=O(t);return{c:function(){c=g("form"),D&&D.c(),r=C(),i=g("input"),I=C(),d=g("input"),b=C(),m=g("div"),G=g("h4"),y=C(),X=g("i"),x=C(),W=g("p"),Z=C(),w=g("div"),B=g("table"),Y=g("tbody");for(var e=0;e<L.length;e+=1)L[e].c();V=C(),_=g("tr"),(F=g("td")).textContent="✓",N=C(),R=g("td");for(e=0;e<Q.length;e+=1)Q[e].c();J=C(),H=g("div"),E&&E.c(),P=C(),M.c(),p(i,"type","hidden"),p(i,"name","c"),i.value=l=t.plan.euro_price.min?t.plan.euro_price.min:t.plan.euro_price,n(i,We,39,2,1003),p(d,"type","hidden"),p(d,"name","p"),d.value=A=t.plan.id,n(d,We,43,2,1118),n(G,We,45,4,1194),p(X,"class",v="img "+t.plan.icon+" svelte-rlyv7c"),h(X,"font-size","60pt"),h(X,"line-height","120pt"),n(X,We,48,4,1249),p(m,"class","header"),n(m,We,44,2,1169),p(W,"class","text-center p-2"),n(W,We,50,2,1334),n(F,We,88,10,2662),p(R,"class","plans_feat_compact"),n(R,We,89,10,2689),n(_,We,87,8,2647),n(Y,We,55,6,1461),n(B,We,54,4,1447),p(w,"class","mx-4 mb-2 table table-sm"),n(w,We,53,2,1404),p(H,"class","text-center mb-3"),n(H,We,116,2,3531),p(c,"class","col"),p(c,"id",$="subscriptionPlan"+t.plan.id),f(c,"active",t.selected),n(c,We,35,0,823)},l:function(e){throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option")},m:function(e,n){a(e,c,n),D&&D.m(c,null),o(c,r),o(c,i),o(c,I),o(c,d),o(c,b),o(c,m),o(m,G),G.innerHTML=k,o(m,y),o(m,X),o(c,x),o(c,W),W.innerHTML=j,o(c,Z),o(c,w),o(w,B),o(B,Y);for(var t=0;t<L.length;t+=1)L[t].m(Y,null);o(Y,V),o(Y,_),o(_,F),o(_,N),o(_,R);for(t=0;t<Q.length;t+=1)Q[t].m(R,null);o(c,J),o(c,H),E&&E.m(H,null),o(H,P),M.m(H,null)},p:function(e,n){if(n.plan.euro_price.min?D?D.p(e,n):((D=Be(n)).c(),D.m(c,r)):D&&(D.d(1),D=null),e.plan&&l!==(l=n.plan.euro_price.min?n.plan.euro_price.min:n.plan.euro_price)&&(i.value=l),e.plan&&A!==(A=n.plan.id)&&(d.value=A),e.plan&&k!==(k=xe(n.plan.title)+"")&&(G.innerHTML=k),e.plan&&v!==(v="img "+n.plan.icon+" svelte-rlyv7c")&&p(X,"class",v),e.plan&&j!==(j=xe(n.plan.desc)+"")&&(W.innerHTML=j),e.plan||e.snarkdown||e.prop_value){S=Object.entries(n.plan.properties);for(var t=0;t<S.length;t+=1){const c=we(n,S,t);L[t]?L[t].p(e,c):(L[t]=Ne(c),L[t].c(),L[t].m(Y,V))}for(;t<L.length;t+=1)L[t].d(1);L.length=S.length}if(e.plan||e.snarkdown){U=n.plan.features;for(t=0;t<U.length;t+=1){const c=Ze(n,U,t);Q[t]?Q[t].p(e,c):(Q[t]=Pe(c),Q[t].c(),Q[t].m(R,null))}for(;t<Q.length;t+=1)Q[t].d(1);Q.length=U.length}n.plan.euro_price.min?E?E.p(e,n):((E=$e(n)).c(),E.m(H,P)):E&&(E.d(1),E=null),O===(O=T(n))&&M?M.p(e,n):(M.d(1),(M=O(n))&&(M.c(),M.m(H,null))),e.plan&&$!==($="subscriptionPlan"+n.plan.id)&&p(c,"id",$),e.selected&&f(c,"active",n.selected)},i:e,o:e,d:function(e){e&&u(c),D&&D.d(),s(L,e),s(Q,e),E&&E.d(),M.d()}}}function Se(e,n,t){if(!n.min)return e.base;const c=n.max-n.min,r=e.max-e.base;return e.base+Math.floor(r*((t-n.min)/c))}function Le(e,n,t){let{plan:c={},user:r={},selected:i=!1}=n;const l=W();function o(e,n){e.target.disabled=!0,e.preventDefault(),l("select",n)}const a=["plan","user","selected"];let u;return Object.keys(n).forEach(e=>{a.includes(e)||e.startsWith("$$")||console.warn(`<Subscription_plan> was created with unknown prop '${e}'`)}),e.$set=(e=>{"plan"in e&&t("plan",c=e.plan),"user"in e&&t("user",r=e.user),"selected"in e&&t("selected",i=e.selected)}),e.$$.update=((e={plan:1})=>{e.plan&&t("button_text",u=c.euro_price_value?c.euro_price_value+" € / Month":"Free")}),{plan:c,user:r,selected:i,select_plan:o,button_text:u,input_change_input_handler:function(){var e;c.euro_price_value=""===(e=this.value)?void 0:+e,t("plan",c)},click_handler:function(e){return o(e,c.id)}}}class ze extends O{constructor(e){var n;super(e),document.getElementById("svelte-rlyv7c-style")||((n=g("style")).id="svelte-rlyv7c-style",n.textContent=".plans.svelte-rlyv7c{display:grid;grid-template-columns:33% 33% 33%;grid-gap:10px}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic3Vic2NyaXB0aW9uX3BsYW4uc3ZlbHRlIiwic291cmNlcyI6WyJzdWJzY3JpcHRpb25fcGxhbi5zdmVsdGUiXSwic291cmNlc0NvbnRlbnQiOlsiPHNjcmlwdD5cbiAgZXhwb3J0IGxldCBwbGFuID0ge307XG4gIGV4cG9ydCBsZXQgdXNlciA9IHt9O1xuICBleHBvcnQgbGV0IHNlbGVjdGVkID0gZmFsc2U7XG4gIGltcG9ydCBzbmFya2Rvd24gZnJvbSBcIi4vbWFya2Rvd24uanNcIjtcblxuICBpbXBvcnQgeyBjcmVhdGVFdmVudERpc3BhdGNoZXIgfSBmcm9tIFwic3ZlbHRlXCI7XG4gIGNvbnN0IGRpc3BhdGNoID0gY3JlYXRlRXZlbnREaXNwYXRjaGVyKCk7XG5cbiAgJDogYnV0dG9uX3RleHQgPSAhcGxhbi5ldXJvX3ByaWNlX3ZhbHVlXG4gICAgPyBcIkZyZWVcIlxuICAgIDogcGxhbi5ldXJvX3ByaWNlX3ZhbHVlICsgXCIg4oKsIC8gTW9udGhcIjtcblxuICBmdW5jdGlvbiBwcm9wX3ZhbHVlKHByb3AsIG1pbm1heCwgY29zdCkge1xuICAgIGlmICghbWlubWF4Lm1pbikgcmV0dXJuIHByb3AuYmFzZTtcbiAgICBjb25zdCByYW5nZSA9IG1pbm1heC5tYXggLSBtaW5tYXgubWluO1xuICAgIGNvbnN0IGxyYW5nZSA9IHByb3AubWF4IC0gcHJvcC5iYXNlO1xuICAgIHJldHVybiBwcm9wLmJhc2UgKyBNYXRoLmZsb29yKGxyYW5nZSAqICgoY29zdCAtIG1pbm1heC5taW4pIC8gcmFuZ2UpKTtcbiAgfVxuXG4gIGZ1bmN0aW9uIHNlbGVjdF9wbGFuKGUsIHBsYW5faWQpIHtcbiAgICBlLnRhcmdldC5kaXNhYmxlZCA9IHRydWU7XG4gICAgZS5wcmV2ZW50RGVmYXVsdCgpO1xuICAgIGRpc3BhdGNoKFwic2VsZWN0XCIsIHBsYW5faWQpO1xuICB9XG48L3NjcmlwdD5cblxuPHN0eWxlPlxuICAucGxhbnMge1xuICAgIGRpc3BsYXk6IGdyaWQ7XG4gICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiAzMyUgMzMlIDMzJTtcbiAgICBncmlkLWdhcDogMTBweDtcbiAgfVxuPC9zdHlsZT5cblxuPGZvcm0gY2xhc3M9XCJjb2xcIiBpZD1cInN1YnNjcmlwdGlvblBsYW57cGxhbi5pZH1cIiBjbGFzczphY3RpdmU9e3NlbGVjdGVkfT5cbiAgeyNpZiBwbGFuLmV1cm9fcHJpY2UubWlufVxuICAgIDx1aS1zdWJzY3JpcHRpb24tZmxleGlibGUgdGFyZ2V0PVwic3Vic2NyaXB0aW9uUGxhbntwbGFuLmlkfVwiIC8+XG4gIHsvaWZ9XG4gIDxpbnB1dFxuICAgIHR5cGU9XCJoaWRkZW5cIlxuICAgIG5hbWU9XCJjXCJcbiAgICB2YWx1ZT17cGxhbi5ldXJvX3ByaWNlLm1pbiA/IHBsYW4uZXVyb19wcmljZS5taW4gOiBwbGFuLmV1cm9fcHJpY2V9IC8+XG4gIDxpbnB1dCB0eXBlPVwiaGlkZGVuXCIgbmFtZT1cInBcIiB2YWx1ZT17cGxhbi5pZH0gLz5cbiAgPGRpdiBjbGFzcz1cImhlYWRlclwiPlxuICAgIDxoND5cbiAgICAgIHtAaHRtbCBzbmFya2Rvd24ocGxhbi50aXRsZSl9XG4gICAgPC9oND5cbiAgICA8aSBjbGFzcz1cImltZyB7cGxhbi5pY29ufVwiIHN0eWxlPVwiZm9udC1zaXplOiA2MHB0O2xpbmUtaGVpZ2h0OiAxMjBwdDtcIiAvPlxuICA8L2Rpdj5cbiAgPHAgY2xhc3M9XCJ0ZXh0LWNlbnRlciBwLTJcIj5cbiAgICB7QGh0bWwgc25hcmtkb3duKHBsYW4uZGVzYyl9XG4gIDwvcD5cbiAgPGRpdiBjbGFzcz1cIm14LTQgbWItMiB0YWJsZSB0YWJsZS1zbVwiPlxuICAgIDx0YWJsZT5cbiAgICAgIDx0Ym9keT5cbiAgICAgICAgeyNlYWNoIE9iamVjdC5lbnRyaWVzKHBsYW4ucHJvcGVydGllcykgYXMgWyRwcm9waWQsICRwcm9wXX1cbiAgICAgICAgICA8dHI+XG4gICAgICAgICAgICA8dGQ+XG4gICAgICAgICAgICAgIDxvdXRwdXQgZGF0YS1taW49eyRwcm9wLmJhc2V9IGRhdGEtbWF4PXskcHJvcC5tYXh9IG5hbWU9eyRwcm9waWR9PlxuICAgICAgICAgICAgICAgIHtwcm9wX3ZhbHVlKCRwcm9wLCBwbGFuLmV1cm9fcHJpY2UsIHBsYW4uZXVyb19wcmljZV92YWx1ZSl9XG4gICAgICAgICAgICAgIDwvb3V0cHV0PlxuICAgICAgICAgICAgICB7I2lmICRwcm9wLnN1ZmZpeH17JHByb3Auc3VmZml4fXsvaWZ9XG4gICAgICAgICAgICA8L3RkPlxuICAgICAgICAgICAgPHRkPlxuICAgICAgICAgICAgICB7I2lmICRwcm9wLmRldGFpbHNfaHRtbF90YWd9XG4gICAgICAgICAgICAgICAgPHVpLXRvb2x0aXAgbWF4d2lkdGg+XG4gICAgICAgICAgICAgICAgICA8YnV0dG9uXG4gICAgICAgICAgICAgICAgICAgIGNsYXNzPVwiYnRuLWxpbmsgY29udGV4dGhlbHBcIlxuICAgICAgICAgICAgICAgICAgICB0aXRsZT1cIkNvbnRleHQgaGVscFwiXG4gICAgICAgICAgICAgICAgICAgIHNsb3Q9XCJidXR0b25cIj5cbiAgICAgICAgICAgICAgICAgICAge0BodG1sIHNuYXJrZG93bigkcHJvcC50aXRsZSl9XG4gICAgICAgICAgICAgICAgICA8L2J1dHRvbj5cbiAgICAgICAgICAgICAgICAgIHtAaHRtbCBgPCR7JHByb3AuZGV0YWlsc19odG1sX3RhZ30gdmFsdWU9JHtwcm9wX3ZhbHVlKCRwcm9wLCBwbGFuLmV1cm9fcHJpY2UsIHBsYW4uZXVyb19wcmljZV92YWx1ZSl9PjwvJHskcHJvcC5kZXRhaWxzX2h0bWxfdGFnfT5gfVxuICAgICAgICAgICAgICAgIDwvdWktdG9vbHRpcD5cbiAgICAgICAgICAgICAgezplbHNlfVxuICAgICAgICAgICAgICAgIHtAaHRtbCBzbmFya2Rvd24oJHByb3AudGl0bGUpfVxuICAgICAgICAgICAgICB7L2lmfVxuICAgICAgICAgICAgICB7I2lmICRwcm9wLmRlc2N9XG4gICAgICAgICAgICAgICAgPGJyIC8+XG4gICAgICAgICAgICAgICAgPHNtYWxsPlxuICAgICAgICAgICAgICAgICAge0BodG1sIHNuYXJrZG93bigkcHJvcC5kZXNjKX1cbiAgICAgICAgICAgICAgICA8L3NtYWxsPlxuICAgICAgICAgICAgICB7L2lmfVxuICAgICAgICAgICAgPC90ZD5cbiAgICAgICAgICA8L3RyPlxuICAgICAgICB7L2VhY2h9XG4gICAgICAgIDx0cj5cbiAgICAgICAgICA8dGQ+JmNoZWNrOzwvdGQ+XG4gICAgICAgICAgPHRkIGNsYXNzPVwicGxhbnNfZmVhdF9jb21wYWN0XCI+XG4gICAgICAgICAgICB7I2VhY2ggcGxhbi5mZWF0dXJlcyBhcyAkZmVhdCwgJGZlYXRpZH1cbiAgICAgICAgICAgICAgeyNpZiAkZmVhdC5kZXRhaWxzfVxuICAgICAgICAgICAgICAgIDx1aS10b29sdGlwIG1heHdpZHRoPlxuICAgICAgICAgICAgICAgICAgPGJ1dHRvblxuICAgICAgICAgICAgICAgICAgICBjbGFzcz1cImJ0bi1saW5rIGNvbnRleHRoZWxwXCJcbiAgICAgICAgICAgICAgICAgICAgdGl0bGU9XCJDb250ZXh0IGhlbHBcIlxuICAgICAgICAgICAgICAgICAgICBzbG90PVwiYnV0dG9uXCI+XG4gICAgICAgICAgICAgICAgICAgIHtAaHRtbCBzbmFya2Rvd24oJGZlYXQudGl0bGUpfVxuICAgICAgICAgICAgICAgICAgPC9idXR0b24+XG4gICAgICAgICAgICAgICAgICB7QGh0bWwgc25hcmtkb3duKCRmZWF0LmRldGFpbHMpfVxuICAgICAgICAgICAgICAgIDwvdWktdG9vbHRpcD5cbiAgICAgICAgICAgICAgezplbHNlfVxuICAgICAgICAgICAgICAgIDxzcGFuPlxuICAgICAgICAgICAgICAgICAge0BodG1sIHNuYXJrZG93bigkZmVhdC50aXRsZSl9XG4gICAgICAgICAgICAgICAgICB7I2lmICRmZWF0LmRlc2N9XG4gICAgICAgICAgICAgICAgICAgICZuYnNwO1xuICAgICAgICAgICAgICAgICAgICB7QGh0bWwgJygnICsgc25hcmtkb3duKCRmZWF0LmRlc2MpICsgJyknfVxuICAgICAgICAgICAgICAgICAgey9pZn1cbiAgICAgICAgICAgICAgICA8L3NwYW4+XG4gICAgICAgICAgICAgIHsvaWZ9XG4gICAgICAgICAgICB7L2VhY2h9XG4gICAgICAgICAgPC90ZD5cbiAgICAgICAgPC90cj5cbiAgICAgIDwvdGJvZHk+XG4gICAgPC90YWJsZT5cbiAgPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJ0ZXh0LWNlbnRlciBtYi0zXCI+XG4gICAgeyNpZiBwbGFuLmV1cm9fcHJpY2UubWlufVxuICAgICAgPGlucHV0XG4gICAgICAgIHR5cGU9XCJyYW5nZVwiXG4gICAgICAgIG1pbj17cGxhbi5ldXJvX3ByaWNlLm1pbn1cbiAgICAgICAgbWF4PXtwbGFuLmV1cm9fcHJpY2UubWF4fVxuICAgICAgICBiaW5kOnZhbHVlPXtwbGFuLmV1cm9fcHJpY2VfdmFsdWV9XG4gICAgICAgIGNsYXNzPVwic2xpZGVyXCJcbiAgICAgICAgaWQ9XCJzdWJzY3JpcHRpb25WYWx1ZVwiIC8+XG4gICAgey9pZn1cbiAgICB7I2lmIHNlbGVjdGVkfVxuICAgICAgPGJ1dHRvbiBkaXNhYmxlZCBjbGFzcz1cImJ0biBidG4tc3VjY2VzcyBidG4taW1wcmVzc2l2ZVwiPlxuICAgICAgICB7YnV0dG9uX3RleHR9XG4gICAgICA8L2J1dHRvbj5cbiAgICB7OmVsc2V9XG4gICAgICA8YnV0dG9uXG4gICAgICAgIGNsYXNzPVwiYnRuIGJ0bi1wcmltYXJ5IGJ0bi1pbXByZXNzaXZlXCJcbiAgICAgICAgb246Y2xpY2s9e2UgPT4gc2VsZWN0X3BsYW4oZSwgcGxhbi5pZCl9PlxuICAgICAgICB7YnV0dG9uX3RleHR9XG4gICAgICA8L2J1dHRvbj5cbiAgICB7L2lmfVxuICA8L2Rpdj5cbjwvZm9ybT5cbiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUE0QkUsTUFBTSxjQUFDLENBQUMsQUFDTixPQUFPLENBQUUsSUFBSSxDQUNiLHFCQUFxQixDQUFFLEdBQUcsQ0FBQyxHQUFHLENBQUMsR0FBRyxDQUNsQyxRQUFRLENBQUUsSUFBSSxBQUNoQixDQUFDIn0= */",o(document.head,n)),E(this,e,Le,De,l,["plan","user","selected"])}get plan(){throw new Error("<Subscription_plan>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set plan(e){throw new Error("<Subscription_plan>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}get user(){throw new Error("<Subscription_plan>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set user(e){throw new Error("<Subscription_plan>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}get selected(){throw new Error("<Subscription_plan>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set selected(e){throw new Error("<Subscription_plan>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}}const{Error:Ue,console:Qe}=S,Ee="assets/js/ui-subscription/cmp.svelte";function Te(e,n,t){const c=Object.create(e);return c.plan=n[t],c}function Oe(e){for(var t,c,r,i,l,d,A,b,h,G,f,y,X=e.data&&e.data.influence_points?e.data.influence_points:"0",v=e.plans,x=[],W=0;W<v.length;W+=1)x[W]=en(Te(e,v,W));const Z=e=>D(x[e],1,1,()=>{x[e]=null});var w=new fe({props:{userdata:e.userdb,user:e.user},$$inline:!0});return w.$on("error",e.error_handler),{c:function(){t=g("div");for(var e=0;e<x.length;e+=1)x[e].c();c=C(),(r=g("h4")).textContent="Account",i=C(),l=g("div"),d=g("div"),(A=g("span")).textContent="Accumulated Influence Points",b=C(),h=g("span"),G=I(X),f=C(),w.$$.fragment.c(),p(t,"id","plans"),p(t,"class","row"),n(t,Ee,276,2,8188),p(r,"class","mt-4"),n(r,Ee,286,2,8483),n(A,Ee,289,6,8579),n(h,Ee,290,6,8627),p(d,"class","card-body stats svelte-u8hewo"),n(d,Ee,288,4,8543),p(l,"class","card mt-4"),n(l,Ee,287,2,8515)},m:function(e,n){a(e,t,n);for(var u=0;u<x.length;u+=1)x[u].m(t,null);a(e,c,n),a(e,r,n),a(e,i,n),a(e,l,n),o(l,d),o(d,A),o(d,b),o(d,h),o(h,G),a(e,f,n),z(w,e,n),y=!0},p:function(e,n){if(e.plans||e.user||e.data){v=n.plans;for(var c=0;c<v.length;c+=1){const r=Te(n,v,c);x[c]?(x[c].p(e,r),j(x[c],1)):(x[c]=en(r),x[c].c(),j(x[c],1),x[c].m(t,null))}for($(),c=v.length;c<x.length;c+=1)Z(c);k()}y&&!e.data||X===(X=n.data&&n.data.influence_points?n.data.influence_points:"0")||m(G,X);var r={};e.userdb&&(r.userdata=n.userdb),e.user&&(r.user=n.user),w.$set(r)},i:function(e){if(!y){for(var n=0;n<v.length;n+=1)j(x[n]);j(w.$$.fragment,e),y=!0}},o:function(e){x=x.filter(Boolean);for(let e=0;e<x.length;e+=1)D(x[e]);D(w.$$.fragment,e),y=!1},d:function(e){e&&u(t),s(x,e),e&&(u(c),u(r),u(i),u(l),u(f)),U(w,e)}}}function Me(e){var t,c,i,l,s,d,b,G,f,y,X,v,x,W,Z,B,Y,V,_,F,R,J,H,P,$,k,S,Q,E,T,O,M,K,q,ee,ne,te,re,ie,le,oe,ae,ue,se,ge,Ie,Ce,de,Ae,pe,be,me,he,Ge,fe,ye,Xe,ve,xe=e.summary.plan?e.summary.plan.title:"",We=e.summary.user_currency_value.toFixed(2)+"",Ze=e.summary.user_currency+"",we=new e.Date(parseInt(e.summary.start)).toLocaleDateString()+"",Be=new e.Date(parseInt(e.summary.end)).toLocaleDateString()+"",Ye=e.summary.user_currency_value.toFixed(2)+"",Ve=e.summary.user_currency+"",_e=new e.Date(parseInt(e.summary.start)).toLocaleDateString()+"";function Fe(n){e.currencyconverter_currency_binding.call(null,n),oe=!0,N(()=>oe=!1)}let Ne={value:e.summary.plan.euro_price_value};void 0!==e.summary.user_currency&&(Ne.currency=e.summary.user_currency);var Re=new ce({props:Ne,$$inline:!0});w.push(()=>L(Re,"currency",Fe)),Re.$on("output",e.output_handler_1);var Je=e.summary.plan.euro_price_value>3&&nn();return{c:function(){t=g("div"),c=g("div"),i=g("p"),l=I("Subscription Type: "),s=I(xe),d=C(),b=g("div"),G=g("label"),f=g("input"),y=I("\n          One Month -\n          "),X=g("b"),v=I(We),x=I(Ze),W=C(),Z=g("br"),B=C(),Y=g("small"),V=I("Period: "),_=I(we),F=I(" - "),R=I(Be),J=C(),H=g("label"),P=g("input"),$=I("\n          Recurring* -\n          "),k=g("b"),S=I(Ye),Q=I(Ve),E=I(" /\n            month"),T=C(),O=g("br"),M=C(),K=g("small"),q=I("Start: "),ee=I(_e),ne=C(),(te=g("p")).textContent="* You can cancel the subscription on a monthly base.",re=C(),ie=g("p"),le=I("(~\n        "),Re.$$.fragment.c(),ae=I("\n        )"),ue=C(),Je&&Je.c(),se=C(),ge=g("p"),Ie=g("label"),Ce=g("input"),de=I("\n          You accept our\n          "),(Ae=g("a")).textContent="Terms Of Service",pe=C(),be=g("div"),(me=g("button")).textContent="Back",he=C(),Ge=g("button"),fe=I("Continue to Checkout"),n(i,Ee,205,6,5982),e.$$binding_groups[0].push(f),p(f,"type","radio"),p(f,"name","options"),f.__value=!1,f.value=f.__value,n(f,Ee,210,10,6188),n(X,Ee,216,10,6351),n(Z,Ee,217,10,6432),n(Y,Ee,218,10,6449),n(G,Ee,209,8,6170),e.$$binding_groups[0].push(P),p(P,"type","radio"),p(P,"name","options"),P.__value=!0,P.value=P.__value,n(P,Ee,223,10,6653),n(k,Ee,229,10,6816),n(O,Ee,233,10,6941),n(K,Ee,234,10,6958),n(H,Ee,222,8,6635),h(b,"display","grid"),h(b,"grid-auto-flow","column"),h(b,"grid-auto-columns","300px"),h(b,"grid-gap","20px"),n(b,Ee,206,6,6055),p(te,"class","small"),n(te,Ee,239,6,7097),n(ie,Ee,240,6,7177),p(Ce,"type","checkbox"),p(Ce,"name","agb"),n(Ce,Ee,257,10,7644),p(Ae,"href","/terms"),p(Ae,"target","_blank"),n(Ae,Ee,259,10,7743),n(Ie,Ee,256,8,7626),n(ge,Ee,255,6,7614),p(me,"class","btn btn-secondary"),n(me,Ee,263,8,7845),p(Ge,"class","btn btn-primary"),Ge.disabled=ye=!e.summary.agb,n(Ge,Ee,266,8,7954),n(be,Ee,262,6,7831),p(c,"class","card-body"),n(c,Ee,204,4,5952),p(t,"class","card"),n(t,Ee,203,2,5929),ve=[A(f,"change",e.input0_change_handler),A(P,"change",e.input1_change_handler),A(Ce,"change",e.input2_change_handler),A(me,"click",e.click_handler_2),A(Ge,"click",e.click_handler_3)]},m:function(n,r){a(n,t,r),o(t,c),o(c,i),o(i,l),o(i,s),o(c,d),o(c,b),o(b,G),o(G,f),f.checked=f.__value===e.summary.recurring,o(G,y),o(G,X),o(X,v),o(X,x),o(G,W),o(G,Z),o(G,B),o(G,Y),o(Y,V),o(Y,_),o(Y,F),o(Y,R),o(b,J),o(b,H),o(H,P),P.checked=P.__value===e.summary.recurring,o(H,$),o(H,k),o(k,S),o(k,Q),o(k,E),o(H,T),o(H,O),o(H,M),o(H,K),o(K,q),o(K,ee),o(c,ne),o(c,te),o(c,re),o(c,ie),o(ie,le),z(Re,ie,null),o(ie,ae),o(c,ue),Je&&Je.m(c,null),o(c,se),o(c,ge),o(ge,Ie),o(Ie,Ce),Ce.checked=e.summary.agb,o(Ie,de),o(Ie,Ae),o(c,pe),o(c,be),o(be,me),o(be,he),o(be,Ge),o(Ge,fe),Xe=!0},p:function(e,n){Xe&&!e.summary||xe===(xe=n.summary.plan?n.summary.plan.title:"")||m(s,xe),e.summary&&(f.checked=f.__value===n.summary.recurring),Xe&&!e.summary||We===(We=n.summary.user_currency_value.toFixed(2)+"")||m(v,We),Xe&&!e.summary||Ze===(Ze=n.summary.user_currency+"")||m(x,Ze),Xe&&!e.summary||we===(we=new n.Date(parseInt(n.summary.start)).toLocaleDateString()+"")||m(_,we),Xe&&!e.summary||Be===(Be=new n.Date(parseInt(n.summary.end)).toLocaleDateString()+"")||m(R,Be),e.summary&&(P.checked=P.__value===n.summary.recurring),Xe&&!e.summary||Ye===(Ye=n.summary.user_currency_value.toFixed(2)+"")||m(S,Ye),Xe&&!e.summary||Ve===(Ve=n.summary.user_currency+"")||m(Q,Ve),Xe&&!e.summary||_e===(_e=new n.Date(parseInt(n.summary.start)).toLocaleDateString()+"")||m(ee,_e);var t={};e.summary&&(t.value=n.summary.plan.euro_price_value),!oe&&e.summary&&(t.currency=n.summary.user_currency),Re.$set(t),n.summary.plan.euro_price_value>3?Je||((Je=nn()).c(),Je.m(c,se)):Je&&(Je.d(1),Je=null),e.summary&&(Ce.checked=n.summary.agb),Xe&&!e.summary||ye===(ye=!n.summary.agb)||(Ge.disabled=ye)},i:function(e){Xe||(j(Re.$$.fragment,e),Xe=!0)},o:function(e){D(Re.$$.fragment,e),Xe=!1},d:function(n){n&&u(t),e.$$binding_groups[0].splice(e.$$binding_groups[0].indexOf(f),1),e.$$binding_groups[0].splice(e.$$binding_groups[0].indexOf(P),1),U(Re),Je&&Je.d(),r(ve)}}}function Ke(e){var t,c,i,l,s,d,m,h,G,f,y,X,v,x,W,Z,B,Y,V,_,F,R,J,H,P,$,k,S,Q,E,T,O,M,K,q,ee;function ne(n){e.iban_currency_binding.call(null,n),V=!0,N(()=>V=!1)}let te={value:e.summary.plan.euro_price_value,refcode:e.summary.refcode};void 0!==e.summary.user_currency&&(te.currency=e.summary.user_currency);var ce=new oe({props:te,$$inline:!0});w.push(()=>L(ce,"currency",ne)),ce.$on("output",e.output_handler);var re=e.error_message_braintree&&tn(e);return{c:function(){t=g("tab-container"),c=g("tab-header"),(i=g("tab-header-item")).textContent="IBAN Bank Account Transfer",l=C(),(s=g("tab-header-item")).textContent="PayPal, Credit Card",d=C(),m=g("tab-body"),h=g("tab-body-item"),G=g("p"),f=I("An IBAN (Swift) transaction usually takes about 1 and up to 3 business\n          days, but will save transaction and payment gateway fees. To\n          compensate for the non-instant IBAN experience, your subscription\n          status will still be upgraded\n          "),(y=g("b")).textContent="immediately",X=I("\n          as with other payment options."),v=C(),x=g("p"),W=I("Please perform the bank transfer in the near future though. The\n          account is automatically checked every 24 hours (\n          "),(Z=g("a")).textContent="check the source code",B=I("\n          )."),Y=C(),ce.$$.fragment.c(),_=C(),F=g("div"),(R=g("button")).textContent="Back",J=C(),(H=g("button")).textContent="Finish Checkout & Send confirmation Mail",P=C(),$=g("tab-body-item"),k=g("div"),Q=C(),re&&re.c(),E=C(),T=g("div"),(O=g("button")).textContent="Back",M=C(),(K=g("button")).textContent="Finish Checkout & Send confirmation Mail",b(i,"class","tab-active"),n(i,Ee,146,6,3908),n(s,Ee,149,6,4011),n(c,Ee,145,4,3889),n(y,Ee,158,10,4411),n(G,Ee,153,8,4129),p(Z,"href","https://github.com/openhab-nodes/cloud-subscriptions"),p(Z,"target","_blank"),n(Z,Ee,164,10,4640),n(x,Ee,161,8,4492),p(R,"class","btn btn-secondary"),n(R,Ee,177,10,5060),p(H,"class","btn btn-primary"),n(H,Ee,180,10,5177),n(F,Ee,176,8,5044),n(h,Ee,152,6,4105),n(k,Ee,186,8,5379),p(O,"class","btn btn-secondary"),n(O,Ee,192,10,5579),p(K,"class","btn btn-primary"),n(K,Ee,195,10,5696),n(T,Ee,191,8,5563),n($,Ee,185,6,5355),n(m,Ee,151,4,4088),n(t,Ee,144,2,3869),ee=[A(R,"click",e.click_handler),A(H,"click",e.confirm_iban),A(O,"click",e.click_handler_1),A(K,"click",e.confirm)]},m:function(n,r){a(n,t,r),o(t,c),o(c,i),o(c,l),o(c,s),o(t,d),o(t,m),o(m,h),o(h,G),o(G,f),o(G,y),o(G,X),o(h,v),o(h,x),o(x,W),o(x,Z),o(x,B),o(h,Y),z(ce,h,null),o(h,_),o(h,F),o(F,R),o(F,J),o(F,H),o(m,P),o(m,$),o($,k),e.div1_binding(k),S=e.start_braintree.call(null,k)||{},o($,Q),re&&re.m($,null),o($,E),o($,T),o(T,O),o(T,M),o(T,K),q=!0},p:function(e,n){var t={};e.summary&&(t.value=n.summary.plan.euro_price_value),e.summary&&(t.refcode=n.summary.refcode),!V&&e.summary&&(t.currency=n.summary.user_currency),ce.$set(t),n.error_message_braintree?re?re.p(e,n):((re=tn(n)).c(),re.m($,E)):re&&(re.d(1),re=null)},i:function(e){q||(j(ce.$$.fragment,e),q=!0)},o:function(e){D(ce.$$.fragment,e),q=!1},d:function(n){n&&u(t),U(ce),e.div1_binding(null),S&&"function"==typeof S.destroy&&S.destroy(),re&&re.d(),r(ee)}}}function qe(n){var t;return{c:function(){t=I("asd")},m:function(e,n){a(e,t,n)},p:e,i:e,o:e,d:function(e){e&&u(t)}}}function en(e){var n,t=new ze({props:{plan:e.plan,user:e.user,selected:e.data&&e.data.subscription&&e.data.subscription.plan?e.data.subscription.plan==e.plan.id:"free"==e.plan.id},$$inline:!0});return t.$on("select",e.select_plan),{c:function(){t.$$.fragment.c()},m:function(e,c){z(t,e,c),n=!0},p:function(e,n){var c={};e.plans&&(c.plan=n.plan),e.user&&(c.user=n.user),(e.data||e.plans)&&(c.selected=n.data&&n.data.subscription&&n.data.subscription.plan?n.data.subscription.plan==n.plan.id:"free"==n.plan.id),t.$set(c)},i:function(e){n||(j(t.$$.fragment,e),n=!0)},o:function(e){D(t.$$.fragment,e),n=!1},d:function(e){U(t,e)}}}function nn(e){var t;return{c:function(){(t=g("p")).textContent="Your financial contribution will greatly help to add more exiting\n          stuff to this project. Thanks.",n(t,Ee,250,8,7462)},m:function(e,n){a(e,t,n)},d:function(e){e&&u(t)}}}function tn(e){var t,c;return{c:function(){t=g("p"),c=I(e.error_message_braintree),p(t,"class","text-danger"),n(t,Ee,188,10,5487)},m:function(e,n){a(e,t,n),o(t,c)},p:function(e,n){e.error_message_braintree&&m(c,n.error_message_braintree)},d:function(e){e&&u(t)}}}function cn(e){var t,c;return{c:function(){t=g("p"),c=I(e.error_message),p(t,"class","text-danger"),n(t,Ee,301,2,8845)},m:function(e,n){a(e,t,n),o(t,c)},p:function(e,n){e.error_message&&m(c,n.error_message)},d:function(e){e&&u(t)}}}function rn(e){var n,t,c,r,i,l=[qe,Ke,Me,Oe],o=[];function s(e){return"confirmation"==e.mode?0:"checkout"==e.mode?1:"options"==e.mode?2:"plans"==e.mode?3:-1}~(n=s(e))&&(t=o[n]=l[n](e));var g=e.error_message&&cn(e);return{c:function(){t&&t.c(),c=C(),g&&g.c(),r=d()},l:function(e){throw new Ue("options.hydrate only works if the component was compiled with the `hydratable: true` option")},m:function(e,t){~n&&o[n].m(e,t),a(e,c,t),g&&g.m(e,t),a(e,r,t),i=!0},p:function(e,i){var a=n;(n=s(i))===a?~n&&o[n].p(e,i):(t&&($(),D(o[a],1,1,()=>{o[a]=null}),k()),~n?((t=o[n])||(t=o[n]=l[n](i)).c(),j(t,1),t.m(c.parentNode,c)):t=null),i.error_message?g?g.p(e,i):((g=cn(i)).c(),g.m(r.parentNode,r)):g&&(g.d(1),g=null)},i:function(e){i||(j(t),i=!0)},o:function(e){D(t),i=!1},d:function(e){~n&&o[n].d(e),e&&u(c),g&&g.d(e),e&&u(r)}}}function ln(e,n,t){let c,r,i,l=null,o=null,a="plans",u=[],s={recurring:!1},{classes:g=""}=n,I=null,C={},d=null,A=()=>{},p=null;x(()=>A()),async function(){const e=await(await fetch("/run/subscriptions.json")).json();for(let n of e)n.euro_price||(n.euro_price=0),n.euro_price_value=n.euro_price.min?n.euro_price.min:n.euro_price;t("plans",u=e);const n=await import("../../../../../../../../js/cmp/userdata.js");A=n.UserAwareComponent(e=>{const n=I=e;return t("user",I),n},e=>{const n=C=e;return t("data",C),n},e=>d=e),t("userdb",p=n.userdata),c=n.fetchWithAuth}().catch(e=>{console.warn("Failed to request client token!",e),t("error_message",l="Failed to request client token! "+e.message)});const b=["classes"];Object.keys(n).forEach(e=>{b.includes(e)||e.startsWith("$$")||Qe.warn(`<Cmp> was created with unknown prop '${e}'`)});return e.$set=(e=>{"classes"in e&&t("classes",g=e.classes)}),{error_message:l,error_message_braintree:o,mode:a,plans:u,summary:s,braintree_container:i,classes:g,user:I,data:C,userdb:p,start_braintree:async function(e){let n=(await import("../../../../../../../../js/cmp/payment.js")).braintree;return c("subscription.openhabx.com/clienttoken").then(e=>{if(!e.client_token)throw new Error("Response does not contain a client token!");const c={authorization:e.client_token,container:i,paypal:{flow:"vault"},preselectVaultedPaymentMethod:!0};n.create(c,(e,n)=>{if(e)return t("error_message_braintree",o=e.message),void console.error(e);r=n})}).catch(e=>{console.warn("Failed to request client token!",e),t("error_message_braintree",o="Failed to request client token! "+e.message)}),{destroy(){}}},confirm_iban:function(e){t("mode",a="confirmation")},confirm:function(e){r.requestPaymentMethod((e,n)=>{if(e)return t("error_message",l=e.message),void console.error(e);c("subscription.openhabx.com/confirm","POST",JSON.stringify(n)).catch(e=>{console.warn("Failed to request client token!",e),t("error_message",l="Failed to request client token! "+e.message)})})},select_plan:function(e){let n=u.find(n=>n.id==e.detail);s.plan=n,t("summary",s),s.start=C.subscription&&C.subscription.ends?C.subscription.ends:Date.now(),t("summary",s);const c=new Date;c.setDate(c.getDate()+30),s.end=c.getTime(),t("summary",s),s.user_currency="€",t("summary",s),s.user_currency_value=n.euro_price_value,t("summary",s);const r=new Date(s.start);s.refcode=ae(I,r),t("summary",s),t("mode",a="options")},Date,iban_currency_binding:function(e){s.user_currency=e,t("summary",s)},output_handler:function(e){const n=s.user_currency_value=e.detail;return t("summary",s),n},click_handler:function(e){const n=a="options";return t("mode",a),n},div1_binding:function(e){w[e?"unshift":"push"](()=>{t("braintree_container",i=e)})},click_handler_1:function(e){const n=a="options";return t("mode",a),n},input0_change_handler:function(){s.recurring=this.__value,t("summary",s)},input1_change_handler:function(){s.recurring=this.__value,t("summary",s)},currencyconverter_currency_binding:function(e){s.user_currency=e,t("summary",s)},output_handler_1:function(e){const n=s.user_currency_value=e.detail;return t("summary",s),n},input2_change_handler:function(){s.agb=this.checked,t("summary",s)},click_handler_2:function(e){const n=a="plans";return t("mode",a),n},click_handler_3:function(e){const n=a="checkout";return t("mode",a),n},error_handler:function(e){const n=l=e.detail;return t("error_message",l),n},$$binding_groups:[[]]}}class on extends O{constructor(e){var n;super(e),document.getElementById("svelte-u8hewo-style")||((n=g("style")).id="svelte-u8hewo-style",n.textContent=".stats.svelte-u8hewo{display:grid;grid-template-columns:minmax(100px, 300px) 1fr;grid-gap:10px}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY21wLnN2ZWx0ZSIsInNvdXJjZXMiOlsiY21wLnN2ZWx0ZSJdLCJzb3VyY2VzQ29udGVudCI6WyI8c2NyaXB0PlxuICBpbXBvcnQgSW52b2ljZXMgZnJvbSBcIi4vaW52b2ljZXMuc3ZlbHRlXCI7XG4gIGltcG9ydCBDdXJyZW5jeUNvbnZlcnRlciBmcm9tIFwiLi9jdXJyZW5jeS5zdmVsdGVcIjtcbiAgaW1wb3J0IFN1YnNjcmlwdGlvblBsYW4gZnJvbSBcIi4vc3Vic2NyaXB0aW9uX3BsYW4uc3ZlbHRlXCI7XG4gIGltcG9ydCBJYmFuIGZyb20gXCIuL2liYW4uc3ZlbHRlXCI7XG5cbiAgbGV0IGVycm9yX21lc3NhZ2UgPSBudWxsO1xuICBsZXQgZXJyb3JfbWVzc2FnZV9icmFpbnRyZWUgPSBudWxsO1xuICBsZXQgZmV0Y2hXaXRoQXV0aDtcbiAgbGV0IG1vZGUgPSBcInBsYW5zXCI7XG4gIGxldCBwbGFucyA9IFtdO1xuICBsZXQgc3VtbWFyeSA9IHsgcmVjdXJyaW5nOiBmYWxzZSB9O1xuXG4gIC8vIEJyYWludHJlZVxuICBsZXQgcGF5bWVudF9pbnN0YW5jZTtcbiAgbGV0IGJyYWludHJlZV9jb250YWluZXI7XG5cbiAgZXhwb3J0IGxldCBjbGFzc2VzID0gXCJcIjtcblxuICAvLy8gVXNlciBBd2FyZSBDb21wb25lbnRcbiAgaW1wb3J0IHsgb25EZXN0cm95IH0gZnJvbSBcInN2ZWx0ZVwiO1xuICBsZXQgdXNlciA9IG51bGw7XG4gIGxldCBkYXRhID0ge307XG4gIGxldCBhY3Rpb25xdWV1ZSA9IG51bGw7XG4gIGxldCBvbkRlc3Ryb3lQcm94eSA9ICgpID0+IHt9O1xuICBsZXQgdXNlcmRiID0gbnVsbDtcbiAgb25EZXN0cm95KCgpID0+IG9uRGVzdHJveVByb3h5KCkpO1xuXG4gIGFzeW5jIGZ1bmN0aW9uIHN0YXJ0KCkge1xuICAgIGNvbnN0IHRlbXAgPSBhd2FpdCAoYXdhaXQgZmV0Y2goXCIvcnVuL3N1YnNjcmlwdGlvbnMuanNvblwiKSkuanNvbigpO1xuICAgIGZvciAobGV0IHBsYW4gb2YgdGVtcCkge1xuICAgICAgaWYgKCFwbGFuLmV1cm9fcHJpY2UpIHBsYW4uZXVyb19wcmljZSA9IDA7XG4gICAgICBwbGFuLmV1cm9fcHJpY2VfdmFsdWUgPSBwbGFuLmV1cm9fcHJpY2UubWluXG4gICAgICAgID8gcGxhbi5ldXJvX3ByaWNlLm1pblxuICAgICAgICA6IHBsYW4uZXVyb19wcmljZTtcbiAgICB9XG4gICAgcGxhbnMgPSB0ZW1wO1xuXG4gICAgY29uc3QgbW9kdWxlID0gYXdhaXQgaW1wb3J0KFwiL2pzL2NtcC91c2VyZGF0YS5qc1wiKTtcbiAgICBvbkRlc3Ryb3lQcm94eSA9IG1vZHVsZS5Vc2VyQXdhcmVDb21wb25lbnQoXG4gICAgICB1c2VyXyA9PiAodXNlciA9IHVzZXJfKSxcbiAgICAgIGRhdGFfID0+IChkYXRhID0gZGF0YV8pLFxuICAgICAgYXFfID0+IChhY3Rpb25xdWV1ZSA9IGFxXylcbiAgICApO1xuICAgIHVzZXJkYiA9IG1vZHVsZS51c2VyZGF0YTtcbiAgICBmZXRjaFdpdGhBdXRoID0gbW9kdWxlLmZldGNoV2l0aEF1dGg7XG4gIH1cbiAgc3RhcnQoKS5jYXRjaChlcnIgPT4ge1xuICAgIGNvbnNvbGUud2FybihcIkZhaWxlZCB0byByZXF1ZXN0IGNsaWVudCB0b2tlbiFcIiwgZXJyKTtcbiAgICBlcnJvcl9tZXNzYWdlID0gXCJGYWlsZWQgdG8gcmVxdWVzdCBjbGllbnQgdG9rZW4hIFwiICsgZXJyLm1lc3NhZ2U7XG4gIH0pO1xuICAvLy8gRW5kIC0tIFVzZXIgQXdhcmUgQ29tcG9uZW50XG5cbiAgYXN5bmMgZnVuY3Rpb24gc3RhcnRfYnJhaW50cmVlKGNoYW5nZV9wbGFuKSB7XG4gICAgY29uc3QgbW9kdWxlID0gYXdhaXQgaW1wb3J0KFwiL2pzL2NtcC9wYXltZW50LmpzXCIpO1xuICAgIGxldCBicmFpbnRyZWUgPSBtb2R1bGUuYnJhaW50cmVlO1xuICAgIGZldGNoV2l0aEF1dGgoXCJzdWJzY3JpcHRpb24ub3BlbmhhYnguY29tL2NsaWVudHRva2VuXCIpXG4gICAgICAudGhlbihqc29uID0+IHtcbiAgICAgICAgaWYgKCFqc29uLmNsaWVudF90b2tlbilcbiAgICAgICAgICB0aHJvdyBuZXcgRXJyb3IoXCJSZXNwb25zZSBkb2VzIG5vdCBjb250YWluIGEgY2xpZW50IHRva2VuIVwiKTtcbiAgICAgICAgY29uc3Qgb3B0cyA9IHtcbiAgICAgICAgICBhdXRob3JpemF0aW9uOiBqc29uLmNsaWVudF90b2tlbixcbiAgICAgICAgICBjb250YWluZXI6IGJyYWludHJlZV9jb250YWluZXIsXG4gICAgICAgICAgcGF5cGFsOiB7XG4gICAgICAgICAgICBmbG93OiBcInZhdWx0XCJcbiAgICAgICAgICB9LFxuICAgICAgICAgIHByZXNlbGVjdFZhdWx0ZWRQYXltZW50TWV0aG9kOiB0cnVlXG4gICAgICAgIH07XG4gICAgICAgIGJyYWludHJlZS5jcmVhdGUob3B0cywgKGVyciwgZHJvcGluSW5zdGFuY2UpID0+IHtcbiAgICAgICAgICBpZiAoZXJyKSB7XG4gICAgICAgICAgICBlcnJvcl9tZXNzYWdlX2JyYWludHJlZSA9IGVyci5tZXNzYWdlO1xuICAgICAgICAgICAgY29uc29sZS5lcnJvcihlcnIpO1xuICAgICAgICAgICAgcmV0dXJuO1xuICAgICAgICAgIH1cbiAgICAgICAgICBwYXltZW50X2luc3RhbmNlID0gZHJvcGluSW5zdGFuY2U7XG4gICAgICAgIH0pO1xuICAgICAgfSlcbiAgICAgIC5jYXRjaChlcnIgPT4ge1xuICAgICAgICBjb25zb2xlLndhcm4oXCJGYWlsZWQgdG8gcmVxdWVzdCBjbGllbnQgdG9rZW4hXCIsIGVycik7XG4gICAgICAgIGVycm9yX21lc3NhZ2VfYnJhaW50cmVlID1cbiAgICAgICAgICBcIkZhaWxlZCB0byByZXF1ZXN0IGNsaWVudCB0b2tlbiEgXCIgKyBlcnIubWVzc2FnZTtcbiAgICAgIH0pO1xuXG4gICAgcmV0dXJuIHtcbiAgICAgIGRlc3Ryb3koKSB7fVxuICAgIH07XG4gIH1cblxuICBmdW5jdGlvbiBjb25maXJtX2liYW4oZSkge1xuICAgIG1vZGUgPSBcImNvbmZpcm1hdGlvblwiO1xuICB9XG5cbiAgZnVuY3Rpb24gY29uZmlybShlKSB7XG4gICAgcGF5bWVudF9pbnN0YW5jZS5yZXF1ZXN0UGF5bWVudE1ldGhvZCgoZXJyLCBwYXlsb2FkKSA9PiB7XG4gICAgICBpZiAoZXJyKSB7XG4gICAgICAgIGVycm9yX21lc3NhZ2UgPSBlcnIubWVzc2FnZTtcbiAgICAgICAgY29uc29sZS5lcnJvcihlcnIpO1xuICAgICAgICByZXR1cm47XG4gICAgICB9XG4gICAgICBmZXRjaFdpdGhBdXRoKFxuICAgICAgICBcInN1YnNjcmlwdGlvbi5vcGVuaGFieC5jb20vY29uZmlybVwiLFxuICAgICAgICBcIlBPU1RcIixcbiAgICAgICAgSlNPTi5zdHJpbmdpZnkocGF5bG9hZClcbiAgICAgICkuY2F0Y2goZXJyID0+IHtcbiAgICAgICAgY29uc29sZS53YXJuKFwiRmFpbGVkIHRvIHJlcXVlc3QgY2xpZW50IHRva2VuIVwiLCBlcnIpO1xuICAgICAgICBlcnJvcl9tZXNzYWdlID0gXCJGYWlsZWQgdG8gcmVxdWVzdCBjbGllbnQgdG9rZW4hIFwiICsgZXJyLm1lc3NhZ2U7XG4gICAgICB9KTtcbiAgICB9KTtcbiAgfVxuXG4gIGltcG9ydCBSZWZDb2RlIGZyb20gXCIuL3JlZmNvZGUuanNcIjtcblxuICBmdW5jdGlvbiBzZWxlY3RfcGxhbihlKSB7XG4gICAgbGV0IHBsYW4gPSBwbGFucy5maW5kKHAgPT4gcC5pZCA9PSBlLmRldGFpbCk7XG4gICAgc3VtbWFyeS5wbGFuID0gcGxhbjtcbiAgICBzdW1tYXJ5LnN0YXJ0ID1cbiAgICAgIGRhdGEuc3Vic2NyaXB0aW9uICYmIGRhdGEuc3Vic2NyaXB0aW9uLmVuZHNcbiAgICAgICAgPyBkYXRhLnN1YnNjcmlwdGlvbi5lbmRzXG4gICAgICAgIDogRGF0ZS5ub3coKTtcbiAgICBjb25zdCBkID0gbmV3IERhdGUoKTtcbiAgICBkLnNldERhdGUoZC5nZXREYXRlKCkgKyAzMCk7XG4gICAgc3VtbWFyeS5lbmQgPSBkLmdldFRpbWUoKTtcbiAgICBzdW1tYXJ5LnVzZXJfY3VycmVuY3kgPSBcIuKCrFwiO1xuICAgIHN1bW1hcnkudXNlcl9jdXJyZW5jeV92YWx1ZSA9IHBsYW4uZXVyb19wcmljZV92YWx1ZTtcbiAgICBjb25zdCBzdGFydF9kYXRlID0gbmV3IERhdGUoc3VtbWFyeS5zdGFydCk7XG4gICAgc3VtbWFyeS5yZWZjb2RlID0gUmVmQ29kZSh1c2VyLCBzdGFydF9kYXRlKTtcblxuICAgIG1vZGUgPSBcIm9wdGlvbnNcIjtcbiAgfVxuXG4gIGZ1bmN0aW9uIGRlbW9fc3Vic2NyaWJlZCgpIHt9XG48L3NjcmlwdD5cblxuPHN0eWxlPlxuICAuc3RhdHMge1xuICAgIGRpc3BsYXk6IGdyaWQ7XG4gICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiBtaW5tYXgoMTAwcHgsIDMwMHB4KSAxZnI7XG4gICAgZ3JpZC1nYXA6IDEwcHg7XG4gIH1cbjwvc3R5bGU+XG5cbnsjaWYgbW9kZSA9PSAnY29uZmlybWF0aW9uJ31cbiAgYXNkXG57OmVsc2UgaWYgbW9kZSA9PSAnY2hlY2tvdXQnfVxuICA8dGFiLWNvbnRhaW5lcj5cbiAgICA8dGFiLWhlYWRlcj5cbiAgICAgIDx0YWItaGVhZGVyLWl0ZW0gY2xhc3M9XCJ0YWItYWN0aXZlXCI+XG4gICAgICAgIElCQU4gQmFuayBBY2NvdW50IFRyYW5zZmVyXG4gICAgICA8L3RhYi1oZWFkZXItaXRlbT5cbiAgICAgIDx0YWItaGVhZGVyLWl0ZW0+UGF5UGFsLCBDcmVkaXQgQ2FyZDwvdGFiLWhlYWRlci1pdGVtPlxuICAgIDwvdGFiLWhlYWRlcj5cbiAgICA8dGFiLWJvZHk+XG4gICAgICA8dGFiLWJvZHktaXRlbT5cbiAgICAgICAgPHA+XG4gICAgICAgICAgQW4gSUJBTiAoU3dpZnQpIHRyYW5zYWN0aW9uIHVzdWFsbHkgdGFrZXMgYWJvdXQgMSBhbmQgdXAgdG8gMyBidXNpbmVzc1xuICAgICAgICAgIGRheXMsIGJ1dCB3aWxsIHNhdmUgdHJhbnNhY3Rpb24gYW5kIHBheW1lbnQgZ2F0ZXdheSBmZWVzLiBUb1xuICAgICAgICAgIGNvbXBlbnNhdGUgZm9yIHRoZSBub24taW5zdGFudCBJQkFOIGV4cGVyaWVuY2UsIHlvdXIgc3Vic2NyaXB0aW9uXG4gICAgICAgICAgc3RhdHVzIHdpbGwgc3RpbGwgYmUgdXBncmFkZWRcbiAgICAgICAgICA8Yj5pbW1lZGlhdGVseTwvYj5cbiAgICAgICAgICBhcyB3aXRoIG90aGVyIHBheW1lbnQgb3B0aW9ucy5cbiAgICAgICAgPC9wPlxuICAgICAgICA8cD5cbiAgICAgICAgICBQbGVhc2UgcGVyZm9ybSB0aGUgYmFuayB0cmFuc2ZlciBpbiB0aGUgbmVhciBmdXR1cmUgdGhvdWdoLiBUaGVcbiAgICAgICAgICBhY2NvdW50IGlzIGF1dG9tYXRpY2FsbHkgY2hlY2tlZCBldmVyeSAyNCBob3VycyAoXG4gICAgICAgICAgPGFcbiAgICAgICAgICAgIGhyZWY9XCJodHRwczovL2dpdGh1Yi5jb20vb3BlbmhhYi1ub2Rlcy9jbG91ZC1zdWJzY3JpcHRpb25zXCJcbiAgICAgICAgICAgIHRhcmdldD1cIl9ibGFua1wiPlxuICAgICAgICAgICAgY2hlY2sgdGhlIHNvdXJjZSBjb2RlXG4gICAgICAgICAgPC9hPlxuICAgICAgICAgICkuXG4gICAgICAgIDwvcD5cbiAgICAgICAgPEliYW5cbiAgICAgICAgICB2YWx1ZT17c3VtbWFyeS5wbGFuLmV1cm9fcHJpY2VfdmFsdWV9XG4gICAgICAgICAgcmVmY29kZT17c3VtbWFyeS5yZWZjb2RlfVxuICAgICAgICAgIGJpbmQ6Y3VycmVuY3k9e3N1bW1hcnkudXNlcl9jdXJyZW5jeX1cbiAgICAgICAgICBvbjpvdXRwdXQ9e2UgPT4gKHN1bW1hcnkudXNlcl9jdXJyZW5jeV92YWx1ZSA9IGUuZGV0YWlsKX0gLz5cbiAgICAgICAgPGRpdj5cbiAgICAgICAgICA8YnV0dG9uIGNsYXNzPVwiYnRuIGJ0bi1zZWNvbmRhcnlcIiBvbjpjbGljaz17ZSA9PiAobW9kZSA9ICdvcHRpb25zJyl9PlxuICAgICAgICAgICAgQmFja1xuICAgICAgICAgIDwvYnV0dG9uPlxuICAgICAgICAgIDxidXR0b24gY2xhc3M9XCJidG4gYnRuLXByaW1hcnlcIiBvbjpjbGljaz17Y29uZmlybV9pYmFufT5cbiAgICAgICAgICAgIEZpbmlzaCBDaGVja291dCAmYW1wOyBTZW5kIGNvbmZpcm1hdGlvbiBNYWlsXG4gICAgICAgICAgPC9idXR0b24+XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC90YWItYm9keS1pdGVtPlxuICAgICAgPHRhYi1ib2R5LWl0ZW0+XG4gICAgICAgIDxkaXYgYmluZDp0aGlzPXticmFpbnRyZWVfY29udGFpbmVyfSB1c2U6c3RhcnRfYnJhaW50cmVlIC8+XG4gICAgICAgIHsjaWYgZXJyb3JfbWVzc2FnZV9icmFpbnRyZWV9XG4gICAgICAgICAgPHAgY2xhc3M9XCJ0ZXh0LWRhbmdlclwiPntlcnJvcl9tZXNzYWdlX2JyYWludHJlZX08L3A+XG4gICAgICAgIHsvaWZ9XG5cbiAgICAgICAgPGRpdj5cbiAgICAgICAgICA8YnV0dG9uIGNsYXNzPVwiYnRuIGJ0bi1zZWNvbmRhcnlcIiBvbjpjbGljaz17ZSA9PiAobW9kZSA9ICdvcHRpb25zJyl9PlxuICAgICAgICAgICAgQmFja1xuICAgICAgICAgIDwvYnV0dG9uPlxuICAgICAgICAgIDxidXR0b24gY2xhc3M9XCJidG4gYnRuLXByaW1hcnlcIiBvbjpjbGljaz17Y29uZmlybX0+XG4gICAgICAgICAgICBGaW5pc2ggQ2hlY2tvdXQgJmFtcDsgU2VuZCBjb25maXJtYXRpb24gTWFpbFxuICAgICAgICAgIDwvYnV0dG9uPlxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvdGFiLWJvZHktaXRlbT5cbiAgICA8L3RhYi1ib2R5PlxuICA8L3RhYi1jb250YWluZXI+XG57OmVsc2UgaWYgbW9kZSA9PSAnb3B0aW9ucyd9XG4gIDxkaXYgY2xhc3M9XCJjYXJkXCI+XG4gICAgPGRpdiBjbGFzcz1cImNhcmQtYm9keVwiPlxuICAgICAgPHA+U3Vic2NyaXB0aW9uIFR5cGU6IHtzdW1tYXJ5LnBsYW4gPyBzdW1tYXJ5LnBsYW4udGl0bGUgOiAnJ308L3A+XG4gICAgICA8ZGl2XG4gICAgICAgIHN0eWxlPVwiZGlzcGxheTogZ3JpZDtncmlkLWF1dG8tZmxvdzogY29sdW1uOyBncmlkLWF1dG8tY29sdW1uczpcbiAgICAgICAgMzAwcHg7Z3JpZC1nYXA6MjBweFwiPlxuICAgICAgICA8bGFiZWw+XG4gICAgICAgICAgPGlucHV0XG4gICAgICAgICAgICB0eXBlPVwicmFkaW9cIlxuICAgICAgICAgICAgbmFtZT1cIm9wdGlvbnNcIlxuICAgICAgICAgICAgYmluZDpncm91cD17c3VtbWFyeS5yZWN1cnJpbmd9XG4gICAgICAgICAgICB2YWx1ZT17ZmFsc2V9IC8+XG4gICAgICAgICAgT25lIE1vbnRoIC1cbiAgICAgICAgICA8Yj57c3VtbWFyeS51c2VyX2N1cnJlbmN5X3ZhbHVlLnRvRml4ZWQoMil9e3N1bW1hcnkudXNlcl9jdXJyZW5jeX08L2I+XG4gICAgICAgICAgPGJyIC8+XG4gICAgICAgICAgPHNtYWxsPlxuICAgICAgICAgICAgUGVyaW9kOiB7bmV3IERhdGUocGFyc2VJbnQoc3VtbWFyeS5zdGFydCkpLnRvTG9jYWxlRGF0ZVN0cmluZygpfSAtIHtuZXcgRGF0ZShwYXJzZUludChzdW1tYXJ5LmVuZCkpLnRvTG9jYWxlRGF0ZVN0cmluZygpfVxuICAgICAgICAgIDwvc21hbGw+XG4gICAgICAgIDwvbGFiZWw+XG4gICAgICAgIDxsYWJlbD5cbiAgICAgICAgICA8aW5wdXRcbiAgICAgICAgICAgIHR5cGU9XCJyYWRpb1wiXG4gICAgICAgICAgICBuYW1lPVwib3B0aW9uc1wiXG4gICAgICAgICAgICBiaW5kOmdyb3VwPXtzdW1tYXJ5LnJlY3VycmluZ31cbiAgICAgICAgICAgIHZhbHVlPXt0cnVlfSAvPlxuICAgICAgICAgIFJlY3VycmluZyogLVxuICAgICAgICAgIDxiPlxuICAgICAgICAgICAge3N1bW1hcnkudXNlcl9jdXJyZW5jeV92YWx1ZS50b0ZpeGVkKDIpfXtzdW1tYXJ5LnVzZXJfY3VycmVuY3l9IC9cbiAgICAgICAgICAgIG1vbnRoXG4gICAgICAgICAgPC9iPlxuICAgICAgICAgIDxiciAvPlxuICAgICAgICAgIDxzbWFsbD5cbiAgICAgICAgICAgIFN0YXJ0OiB7bmV3IERhdGUocGFyc2VJbnQoc3VtbWFyeS5zdGFydCkpLnRvTG9jYWxlRGF0ZVN0cmluZygpfVxuICAgICAgICAgIDwvc21hbGw+XG4gICAgICAgIDwvbGFiZWw+XG4gICAgICA8L2Rpdj5cbiAgICAgIDxwIGNsYXNzPVwic21hbGxcIj4qIFlvdSBjYW4gY2FuY2VsIHRoZSBzdWJzY3JpcHRpb24gb24gYSBtb250aGx5IGJhc2UuPC9wPlxuICAgICAgPHA+XG4gICAgICAgICh+XG4gICAgICAgIDxDdXJyZW5jeUNvbnZlcnRlclxuICAgICAgICAgIHZhbHVlPXtzdW1tYXJ5LnBsYW4uZXVyb19wcmljZV92YWx1ZX1cbiAgICAgICAgICBiaW5kOmN1cnJlbmN5PXtzdW1tYXJ5LnVzZXJfY3VycmVuY3l9XG4gICAgICAgICAgb246b3V0cHV0PXtlID0+IChzdW1tYXJ5LnVzZXJfY3VycmVuY3lfdmFsdWUgPSBlLmRldGFpbCl9IC8+XG4gICAgICAgIClcbiAgICAgIDwvcD5cblxuICAgICAgeyNpZiBzdW1tYXJ5LnBsYW4uZXVyb19wcmljZV92YWx1ZSA+IDN9XG4gICAgICAgIDxwPlxuICAgICAgICAgIFlvdXIgZmluYW5jaWFsIGNvbnRyaWJ1dGlvbiB3aWxsIGdyZWF0bHkgaGVscCB0byBhZGQgbW9yZSBleGl0aW5nXG4gICAgICAgICAgc3R1ZmYgdG8gdGhpcyBwcm9qZWN0LiBUaGFua3MuXG4gICAgICAgIDwvcD5cbiAgICAgIHsvaWZ9XG4gICAgICA8cD5cbiAgICAgICAgPGxhYmVsPlxuICAgICAgICAgIDxpbnB1dCB0eXBlPVwiY2hlY2tib3hcIiBuYW1lPVwiYWdiXCIgYmluZDpjaGVja2VkPXtzdW1tYXJ5LmFnYn0gLz5cbiAgICAgICAgICBZb3UgYWNjZXB0IG91clxuICAgICAgICAgIDxhIGhyZWY9XCIvdGVybXNcIiB0YXJnZXQ9XCJfYmxhbmtcIj5UZXJtcyBPZiBTZXJ2aWNlPC9hPlxuICAgICAgICA8L2xhYmVsPlxuICAgICAgPC9wPlxuICAgICAgPGRpdj5cbiAgICAgICAgPGJ1dHRvbiBjbGFzcz1cImJ0biBidG4tc2Vjb25kYXJ5XCIgb246Y2xpY2s9e2UgPT4gKG1vZGUgPSAncGxhbnMnKX0+XG4gICAgICAgICAgQmFja1xuICAgICAgICA8L2J1dHRvbj5cbiAgICAgICAgPGJ1dHRvblxuICAgICAgICAgIGNsYXNzPVwiYnRuIGJ0bi1wcmltYXJ5XCJcbiAgICAgICAgICBvbjpjbGljaz17ZSA9PiAobW9kZSA9ICdjaGVja291dCcpfVxuICAgICAgICAgIGRpc2FibGVkPXshc3VtbWFyeS5hZ2J9PlxuICAgICAgICAgIENvbnRpbnVlIHRvIENoZWNrb3V0XG4gICAgICAgIDwvYnV0dG9uPlxuICAgICAgPC9kaXY+XG4gICAgPC9kaXY+XG4gIDwvZGl2PlxuezplbHNlIGlmIG1vZGUgPT0gJ3BsYW5zJ31cbiAgPGRpdiBpZD1cInBsYW5zXCIgY2xhc3M9XCJyb3dcIj5cbiAgICB7I2VhY2ggcGxhbnMgYXMgcGxhbn1cbiAgICAgIDxTdWJzY3JpcHRpb25QbGFuXG4gICAgICAgIHtwbGFufVxuICAgICAgICB7dXNlcn1cbiAgICAgICAgb246c2VsZWN0PXtzZWxlY3RfcGxhbn1cbiAgICAgICAgc2VsZWN0ZWQ9e2RhdGEgJiYgZGF0YS5zdWJzY3JpcHRpb24gJiYgZGF0YS5zdWJzY3JpcHRpb24ucGxhbiA/IGRhdGEuc3Vic2NyaXB0aW9uLnBsYW4gPT0gcGxhbi5pZCA6IHBsYW4uaWQgPT0gJ2ZyZWUnfSAvPlxuICAgIHsvZWFjaH1cbiAgPC9kaXY+XG5cbiAgPGg0IGNsYXNzPVwibXQtNFwiPkFjY291bnQ8L2g0PlxuICA8ZGl2IGNsYXNzPVwiY2FyZCBtdC00XCI+XG4gICAgPGRpdiBjbGFzcz1cImNhcmQtYm9keSBzdGF0c1wiPlxuICAgICAgPHNwYW4+QWNjdW11bGF0ZWQgSW5mbHVlbmNlIFBvaW50czwvc3Bhbj5cbiAgICAgIDxzcGFuPntkYXRhICYmIGRhdGEuaW5mbHVlbmNlX3BvaW50cyA/IGRhdGEuaW5mbHVlbmNlX3BvaW50cyA6IDB9PC9zcGFuPlxuICAgIDwvZGl2PlxuICA8L2Rpdj5cblxuICA8SW52b2ljZXNcbiAgICB1c2VyZGF0YT17dXNlcmRifVxuICAgIHt1c2VyfVxuICAgIG9uOmVycm9yPXtlID0+IChlcnJvcl9tZXNzYWdlID0gZS5kZXRhaWwpfSAvPlxuey9pZn1cblxueyNpZiBlcnJvcl9tZXNzYWdlfVxuICA8cCBjbGFzcz1cInRleHQtZGFuZ2VyXCI+e2Vycm9yX21lc3NhZ2V9PC9wPlxuey9pZn1cbiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFzSUUsTUFBTSxjQUFDLENBQUMsQUFDTixPQUFPLENBQUUsSUFBSSxDQUNiLHFCQUFxQixDQUFFLE9BQU8sS0FBSyxDQUFDLENBQUMsS0FBSyxDQUFDLENBQUMsR0FBRyxDQUMvQyxRQUFRLENBQUUsSUFBSSxBQUNoQixDQUFDIn0= */",o(document.head,n)),E(this,e,ln,rn,l,["classes"])}get classes(){throw new Ue("<Cmp>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set classes(e){throw new Ue("<Cmp>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}}window.customElements.define("ui-subscription",class extends HTMLElement{constructor(){super()}connectedCallback(){const e=this.getAttribute("class");this.removeAttribute("class"),this.cmp=new on({target:this,props:{classes:e}})}disconnectedCallback(){this.cmp&&this.cmp.$destroy()}});
+function noop() { }
+function run(fn) {
+    return fn();
+}
+function blank_object() {
+    return Object.create(null);
+}
+function run_all(fns) {
+    fns.forEach(run);
+}
+function is_function(thing) {
+    return typeof thing === 'function';
+}
+function safe_not_equal(a, b) {
+    return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+}
+
+function append(target, node) {
+    target.appendChild(node);
+}
+function insert(target, node, anchor) {
+    target.insertBefore(node, anchor || null);
+}
+function detach(node) {
+    node.parentNode.removeChild(node);
+}
+function destroy_each(iterations, detaching) {
+    for (let i = 0; i < iterations.length; i += 1) {
+        if (iterations[i])
+            iterations[i].d(detaching);
+    }
+}
+function element(name) {
+    return document.createElement(name);
+}
+function text(data) {
+    return document.createTextNode(data);
+}
+function space() {
+    return text(' ');
+}
+function empty() {
+    return text('');
+}
+function listen(node, event, handler, options) {
+    node.addEventListener(event, handler, options);
+    return () => node.removeEventListener(event, handler, options);
+}
+function attr(node, attribute, value) {
+    if (value == null)
+        node.removeAttribute(attribute);
+    else
+        node.setAttribute(attribute, value);
+}
+function set_custom_element_data(node, prop, value) {
+    if (prop in node) {
+        node[prop] = value;
+    }
+    else {
+        attr(node, prop, value);
+    }
+}
+function to_number(value) {
+    return value === '' ? undefined : +value;
+}
+function children(element) {
+    return Array.from(element.childNodes);
+}
+function set_data(text, data) {
+    data = '' + data;
+    if (text.data !== data)
+        text.data = data;
+}
+function set_input_value(input, value) {
+    if (value != null || input.value) {
+        input.value = value;
+    }
+}
+function set_style(node, key, value, important) {
+    node.style.setProperty(key, value, important ? 'important' : '');
+}
+function select_option(select, value) {
+    for (let i = 0; i < select.options.length; i += 1) {
+        const option = select.options[i];
+        if (option.__value === value) {
+            option.selected = true;
+            return;
+        }
+    }
+}
+function select_value(select) {
+    const selected_option = select.querySelector(':checked') || select.options[0];
+    return selected_option && selected_option.__value;
+}
+function toggle_class(element, name, toggle) {
+    element.classList[toggle ? 'add' : 'remove'](name);
+}
+function custom_event(type, detail) {
+    const e = document.createEvent('CustomEvent');
+    e.initCustomEvent(type, false, false, detail);
+    return e;
+}
+class HtmlTag {
+    constructor(html, anchor = null) {
+        this.e = element('div');
+        this.a = anchor;
+        this.u(html);
+    }
+    m(target, anchor = null) {
+        for (let i = 0; i < this.n.length; i += 1) {
+            insert(target, this.n[i], anchor);
+        }
+        this.t = target;
+    }
+    u(html) {
+        this.e.innerHTML = html;
+        this.n = Array.from(this.e.childNodes);
+    }
+    p(html) {
+        this.d();
+        this.u(html);
+        this.m(this.t, this.a);
+    }
+    d() {
+        this.n.forEach(detach);
+    }
+}
+
+let current_component;
+function set_current_component(component) {
+    current_component = component;
+}
+function get_current_component() {
+    if (!current_component)
+        throw new Error(`Function called outside component initialization`);
+    return current_component;
+}
+function onDestroy(fn) {
+    get_current_component().$$.on_destroy.push(fn);
+}
+function createEventDispatcher() {
+    const component = current_component;
+    return (type, detail) => {
+        const callbacks = component.$$.callbacks[type];
+        if (callbacks) {
+            // TODO are there situations where events could be dispatched
+            // in a server (non-DOM) environment?
+            const event = custom_event(type, detail);
+            callbacks.slice().forEach(fn => {
+                fn.call(component, event);
+            });
+        }
+    };
+}
+
+const dirty_components = [];
+const binding_callbacks = [];
+const render_callbacks = [];
+const flush_callbacks = [];
+const resolved_promise = Promise.resolve();
+let update_scheduled = false;
+function schedule_update() {
+    if (!update_scheduled) {
+        update_scheduled = true;
+        resolved_promise.then(flush);
+    }
+}
+function add_render_callback(fn) {
+    render_callbacks.push(fn);
+}
+function add_flush_callback(fn) {
+    flush_callbacks.push(fn);
+}
+function flush() {
+    const seen_callbacks = new Set();
+    do {
+        // first, call beforeUpdate functions
+        // and update components
+        while (dirty_components.length) {
+            const component = dirty_components.shift();
+            set_current_component(component);
+            update(component.$$);
+        }
+        while (binding_callbacks.length)
+            binding_callbacks.pop()();
+        // then, once components are updated, call
+        // afterUpdate functions. This may cause
+        // subsequent updates...
+        for (let i = 0; i < render_callbacks.length; i += 1) {
+            const callback = render_callbacks[i];
+            if (!seen_callbacks.has(callback)) {
+                callback();
+                // ...so guard against infinite loops
+                seen_callbacks.add(callback);
+            }
+        }
+        render_callbacks.length = 0;
+    } while (dirty_components.length);
+    while (flush_callbacks.length) {
+        flush_callbacks.pop()();
+    }
+    update_scheduled = false;
+}
+function update($$) {
+    if ($$.fragment) {
+        $$.update($$.dirty);
+        run_all($$.before_update);
+        $$.fragment.p($$.dirty, $$.ctx);
+        $$.dirty = null;
+        $$.after_update.forEach(add_render_callback);
+    }
+}
+const outroing = new Set();
+let outros;
+function group_outros() {
+    outros = {
+        r: 0,
+        c: [],
+        p: outros // parent group
+    };
+}
+function check_outros() {
+    if (!outros.r) {
+        run_all(outros.c);
+    }
+    outros = outros.p;
+}
+function transition_in(block, local) {
+    if (block && block.i) {
+        outroing.delete(block);
+        block.i(local);
+    }
+}
+function transition_out(block, local, detach, callback) {
+    if (block && block.o) {
+        if (outroing.has(block))
+            return;
+        outroing.add(block);
+        outros.c.push(() => {
+            outroing.delete(block);
+            if (callback) {
+                if (detach)
+                    block.d(1);
+                callback();
+            }
+        });
+        block.o(local);
+    }
+}
+
+const globals = (typeof window !== 'undefined' ? window : global);
+
+function bind(component, name, callback) {
+    if (component.$$.props.indexOf(name) === -1)
+        return;
+    component.$$.bound[name] = callback;
+    callback(component.$$.ctx[name]);
+}
+function mount_component(component, target, anchor) {
+    const { fragment, on_mount, on_destroy, after_update } = component.$$;
+    fragment.m(target, anchor);
+    // onMount happens before the initial afterUpdate
+    add_render_callback(() => {
+        const new_on_destroy = on_mount.map(run).filter(is_function);
+        if (on_destroy) {
+            on_destroy.push(...new_on_destroy);
+        }
+        else {
+            // Edge case - component was destroyed immediately,
+            // most likely as a result of a binding initialising
+            run_all(new_on_destroy);
+        }
+        component.$$.on_mount = [];
+    });
+    after_update.forEach(add_render_callback);
+}
+function destroy_component(component, detaching) {
+    if (component.$$.fragment) {
+        run_all(component.$$.on_destroy);
+        component.$$.fragment.d(detaching);
+        // TODO null out other refs, including component.$$ (but need to
+        // preserve final state?)
+        component.$$.on_destroy = component.$$.fragment = null;
+        component.$$.ctx = {};
+    }
+}
+function make_dirty(component, key) {
+    if (!component.$$.dirty) {
+        dirty_components.push(component);
+        schedule_update();
+        component.$$.dirty = blank_object();
+    }
+    component.$$.dirty[key] = true;
+}
+function init(component, options, instance, create_fragment, not_equal, prop_names) {
+    const parent_component = current_component;
+    set_current_component(component);
+    const props = options.props || {};
+    const $$ = component.$$ = {
+        fragment: null,
+        ctx: null,
+        // state
+        props: prop_names,
+        update: noop,
+        not_equal,
+        bound: blank_object(),
+        // lifecycle
+        on_mount: [],
+        on_destroy: [],
+        before_update: [],
+        after_update: [],
+        context: new Map(parent_component ? parent_component.$$.context : []),
+        // everything else
+        callbacks: blank_object(),
+        dirty: null
+    };
+    let ready = false;
+    $$.ctx = instance
+        ? instance(component, props, (key, ret, value = ret) => {
+            if ($$.ctx && not_equal($$.ctx[key], $$.ctx[key] = value)) {
+                if ($$.bound[key])
+                    $$.bound[key](value);
+                if (ready)
+                    make_dirty(component, key);
+            }
+            return ret;
+        })
+        : props;
+    $$.update();
+    ready = true;
+    run_all($$.before_update);
+    $$.fragment = create_fragment($$.ctx);
+    if (options.target) {
+        if (options.hydrate) {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            $$.fragment.l(children(options.target));
+        }
+        else {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            $$.fragment.c();
+        }
+        if (options.intro)
+            transition_in(component.$$.fragment);
+        mount_component(component, options.target, options.anchor);
+        flush();
+    }
+    set_current_component(parent_component);
+}
+let SvelteElement;
+if (typeof HTMLElement !== 'undefined') {
+    SvelteElement = class extends HTMLElement {
+        constructor() {
+            super();
+            this.attachShadow({ mode: 'open' });
+        }
+        connectedCallback() {
+            // @ts-ignore todo: improve typings
+            for (const key in this.$$.slotted) {
+                // @ts-ignore todo: improve typings
+                this.appendChild(this.$$.slotted[key]);
+            }
+        }
+        attributeChangedCallback(attr, _oldValue, newValue) {
+            this[attr] = newValue;
+        }
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            // TODO should this delegate to addEventListener?
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set() {
+            // overridden by instance, if it has props
+        }
+    };
+}
+class SvelteComponent {
+    $destroy() {
+        destroy_component(this, 1);
+        this.$destroy = noop;
+    }
+    $on(type, callback) {
+        const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+        callbacks.push(callback);
+        return () => {
+            const index = callbacks.indexOf(callback);
+            if (index !== -1)
+                callbacks.splice(index, 1);
+        };
+    }
+    $set() {
+        // overridden by instance, if it has props
+    }
+}
+
+/* assets/js/ui-subscription/currency.svelte generated by Svelte v3.12.0 */
+
+function get_each_context(ctx, list, i) {
+	const child_ctx = Object.create(ctx);
+	child_ctx.title = list[i];
+	return child_ctx;
+}
+
+// (42:2) {#each Object.keys(currencies) as title}
+function create_each_block(ctx) {
+	var option, t_value = ctx.title + "", t, option_value_value, option_selected_value;
+
+	return {
+		c() {
+			option = element("option");
+			t = text(t_value);
+			option.__value = option_value_value = ctx.title;
+			option.value = option.__value;
+			option.selected = option_selected_value = ctx.currency == ctx.title;
+		},
+
+		m(target, anchor) {
+			insert(target, option, anchor);
+			append(option, t);
+		},
+
+		p(changed, ctx) {
+			if ((changed.currencies) && t_value !== (t_value = ctx.title + "")) {
+				set_data(t, t_value);
+			}
+
+			if ((changed.currencies) && option_value_value !== (option_value_value = ctx.title)) {
+				option.__value = option_value_value;
+			}
+
+			option.value = option.__value;
+
+			if ((changed.currency || changed.currencies) && option_selected_value !== (option_selected_value = ctx.currency == ctx.title)) {
+				option.selected = option_selected_value;
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(option);
+			}
+		}
+	};
+}
+
+function create_fragment(ctx) {
+	var output_1, t0, output_1_title_value, t1, select, select_title_value, dispose;
+
+	let each_value = Object.keys(ctx.currencies);
+
+	let each_blocks = [];
+
+	for (let i = 0; i < each_value.length; i += 1) {
+		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+	}
+
+	return {
+		c() {
+			output_1 = element("output");
+			t0 = text(ctx.result);
+			t1 = space();
+			select = element("select");
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+			attr(output_1, "title", output_1_title_value = "Cached from " + ctx.cache_date);
+			if (ctx.currency === void 0) add_render_callback(() => ctx.select_change_handler.call(select));
+			attr(select, "title", select_title_value = "Cached from " + ctx.cache_date);
+			attr(select, "class", "custom-select custom-select-sm");
+			set_style(select, "width", "100px");
+
+			dispose = [
+				listen(select, "change", ctx.select_change_handler),
+				listen(select, "change", ctx.change_handler)
+			];
+		},
+
+		m(target, anchor) {
+			insert(target, output_1, anchor);
+			append(output_1, t0);
+			insert(target, t1, anchor);
+			insert(target, select, anchor);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].m(select, null);
+			}
+
+			select_option(select, ctx.currency);
+		},
+
+		p(changed, ctx) {
+			if (changed.result) {
+				set_data(t0, ctx.result);
+			}
+
+			if ((changed.cache_date) && output_1_title_value !== (output_1_title_value = "Cached from " + ctx.cache_date)) {
+				attr(output_1, "title", output_1_title_value);
+			}
+
+			if (changed.currencies || changed.currency) {
+				each_value = Object.keys(ctx.currencies);
+
+				let i;
+				for (i = 0; i < each_value.length; i += 1) {
+					const child_ctx = get_each_context(ctx, each_value, i);
+
+					if (each_blocks[i]) {
+						each_blocks[i].p(changed, child_ctx);
+					} else {
+						each_blocks[i] = create_each_block(child_ctx);
+						each_blocks[i].c();
+						each_blocks[i].m(select, null);
+					}
+				}
+
+				for (; i < each_blocks.length; i += 1) {
+					each_blocks[i].d(1);
+				}
+				each_blocks.length = each_value.length;
+			}
+
+			if (changed.currency) select_option(select, ctx.currency);
+
+			if ((changed.cache_date) && select_title_value !== (select_title_value = "Cached from " + ctx.cache_date)) {
+				attr(select, "title", select_title_value);
+			}
+		},
+
+		i: noop,
+		o: noop,
+
+		d(detaching) {
+			if (detaching) {
+				detach(output_1);
+				detach(t1);
+				detach(select);
+			}
+
+			destroy_each(each_blocks, detaching);
+
+			run_all(dispose);
+		}
+	};
+}
+
+function instance($$self, $$props, $$invalidate) {
+	let { value = 0, currency = "€" } = $$props;
+  let currencies = { "€": 1.0 };
+  let cache_date = null;
+  const dispatch = createEventDispatcher();
+
+  async function fetchRates() {
+    let rates = localStorage.getItem("currency_rates");
+    if (rates) rates = JSON.parse(rates);
+    // Older than a day
+    if (!rates || Date.parse(rates.date) < Date.now() - 3600 * 24 * 1000) {
+      console.log("Fetch currency rates");
+      rates = await (await fetch(
+        "https://api.exchangeratesapi.io/latest"
+      )).json();
+      rates.rates["€"] = 1.0;
+      localStorage.setItem("currency_rates", JSON.stringify(rates));
+    }
+    $$invalidate('cache_date', cache_date = rates.date);
+    rates.rates["€"] = 1.0;
+    delete rates.rates.EUR;
+    $$invalidate('currencies', currencies = rates.rates);
+  }
+
+  fetchRates();
+
+	function select_change_handler() {
+		currency = select_value(this);
+		$$invalidate('currency', currency);
+		$$invalidate('currencies', currencies);
+	}
+
+	const change_handler = (e) => dispatch('currency', currency);
+
+	$$self.$set = $$props => {
+		if ('value' in $$props) $$invalidate('value', value = $$props.value);
+		if ('currency' in $$props) $$invalidate('currency', currency = $$props.currency);
+	};
+
+	let result;
+
+	$$self.$$.update = ($$dirty = { currencies: 1, currency: 1, value: 1 }) => {
+		if ($$dirty.currencies || $$dirty.currency || $$dirty.value) { $$invalidate('result', result = (currencies[currency] * value).toFixed(2)); }
+		if ($$dirty.currencies || $$dirty.currency || $$dirty.value) { dispatch('output', currencies[currency] * value); }
+	};
+
+	return {
+		value,
+		currency,
+		currencies,
+		cache_date,
+		dispatch,
+		result,
+		select_change_handler,
+		change_handler
+	};
+}
+
+class Currency extends SvelteComponent {
+	constructor(options) {
+		super();
+		init(this, options, instance, create_fragment, safe_not_equal, ["value", "currency"]);
+	}
+}
+
+/* assets/js/ui-subscription/iban.svelte generated by Svelte v3.12.0 */
+
+function create_fragment$1(ctx) {
+	var samp, table, tr0, t3, tr1, t7, tr2, t11, tr3, td6, t13, td7, t14, t15, tr4, td8, t17, td9, updating_currency, current;
+
+	function currencyconverter_currency_binding(value_1) {
+		ctx.currencyconverter_currency_binding.call(null, value_1);
+		updating_currency = true;
+		add_flush_callback(() => updating_currency = false);
+	}
+
+	let currencyconverter_props = { value: ctx.value };
+	if (ctx.currency !== void 0) {
+		currencyconverter_props.currency = ctx.currency;
+	}
+	var currencyconverter = new Currency({ props: currencyconverter_props });
+
+	binding_callbacks.push(() => bind(currencyconverter, 'currency', currencyconverter_currency_binding));
+	currencyconverter.$on("output", ctx.output_handler);
+
+	return {
+		c() {
+			samp = element("samp");
+			table = element("table");
+			tr0 = element("tr");
+			tr0.innerHTML = `<td>Account Holder: </td> <td>David Graeff</td>`;
+			t3 = space();
+			tr1 = element("tr");
+			tr1.innerHTML = `<td>IBAN:</td> <td>DE78 2004 1155 0841 2900 00</td>`;
+			t7 = space();
+			tr2 = element("tr");
+			tr2.innerHTML = `<td>BIC:</td> <td>COBADEHD055</td>`;
+			t11 = space();
+			tr3 = element("tr");
+			td6 = element("td");
+			td6.textContent = "Reference Code:";
+			t13 = space();
+			td7 = element("td");
+			t14 = text(ctx.refcode);
+			t15 = space();
+			tr4 = element("tr");
+			td8 = element("td");
+			td8.textContent = "Amount:";
+			t17 = space();
+			td9 = element("td");
+			currencyconverter.$$.fragment.c();
+			attr(samp, "class", "card p-3 mb-4");
+		},
+
+		m(target, anchor) {
+			insert(target, samp, anchor);
+			append(samp, table);
+			append(table, tr0);
+			append(table, t3);
+			append(table, tr1);
+			append(table, t7);
+			append(table, tr2);
+			append(table, t11);
+			append(table, tr3);
+			append(tr3, td6);
+			append(tr3, t13);
+			append(tr3, td7);
+			append(td7, t14);
+			append(table, t15);
+			append(table, tr4);
+			append(tr4, td8);
+			append(tr4, t17);
+			append(tr4, td9);
+			mount_component(currencyconverter, td9, null);
+			current = true;
+		},
+
+		p(changed, ctx) {
+			if (!current || changed.refcode) {
+				set_data(t14, ctx.refcode);
+			}
+
+			var currencyconverter_changes = {};
+			if (changed.value) currencyconverter_changes.value = ctx.value;
+			if (!updating_currency && changed.currency) {
+				currencyconverter_changes.currency = ctx.currency;
+			}
+			currencyconverter.$set(currencyconverter_changes);
+		},
+
+		i(local) {
+			if (current) return;
+			transition_in(currencyconverter.$$.fragment, local);
+
+			current = true;
+		},
+
+		o(local) {
+			transition_out(currencyconverter.$$.fragment, local);
+			current = false;
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(samp);
+			}
+
+			destroy_component(currencyconverter);
+		}
+	};
+}
+
+function instance$1($$self, $$props, $$invalidate) {
+	const dispatch = createEventDispatcher();
+  let { value = 0, currency = "€", refcode } = $$props;
+
+	function currencyconverter_currency_binding(value_1) {
+		currency = value_1;
+		$$invalidate('currency', currency);
+	}
+
+	const output_handler = (e) => dispatch('output', e.detail);
+
+	$$self.$set = $$props => {
+		if ('value' in $$props) $$invalidate('value', value = $$props.value);
+		if ('currency' in $$props) $$invalidate('currency', currency = $$props.currency);
+		if ('refcode' in $$props) $$invalidate('refcode', refcode = $$props.refcode);
+	};
+
+	return {
+		dispatch,
+		value,
+		currency,
+		refcode,
+		currencyconverter_currency_binding,
+		output_handler
+	};
+}
+
+class Iban extends SvelteComponent {
+	constructor(options) {
+		super();
+		init(this, options, instance$1, create_fragment$1, safe_not_equal, ["value", "currency", "refcode"]);
+	}
+}
+
+function refcode(user, start_date) {
+    return `OHX-${user.email.replace("@", "/")}-${Math.floor(
+        start_date.getFullYear() / 100
+      )}${("" + start_date.getMonth()).padStart(2, "0")}`;
+}
+
+/* assets/js/ui-subscription/invoices.svelte generated by Svelte v3.12.0 */
+const { Object: Object_1 } = globals;
+
+function get_each_context$1(ctx, list, i) {
+	const child_ctx = Object_1.create(ctx);
+	child_ctx.bill = list[i];
+	return child_ctx;
+}
+
+// (108:4) {#if user && user.is_admin}
+function create_if_block_2(ctx) {
+	var t, a, dispose;
+
+	return {
+		c() {
+			t = text("|\n      ");
+			a = element("a");
+			a.textContent = "Add Demo Invoice";
+			attr(a, "href", "#top");
+			dispose = listen(a, "click", ctx.demoadd);
+		},
+
+		m(target, anchor) {
+			insert(target, t, anchor);
+			insert(target, a, anchor);
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(t);
+				detach(a);
+			}
+
+			dispose();
+		}
+	};
+}
+
+// (115:0) {#if last_pm}
+function create_if_block_1(ctx) {
+	var p, t_1, current;
+
+	var iban = new Iban({
+		props: {
+		value: ctx.last_pm.amount_euro,
+		currency: "€",
+		refcode: refcode(ctx.user, new ctx.Date(ctx.last_pm.start))
+	}
+	});
+
+	return {
+		c() {
+			p = element("p");
+			p.textContent = "Your last invoice balance is negative. The IBAN details are printed below.";
+			t_1 = space();
+			iban.$$.fragment.c();
+		},
+
+		m(target, anchor) {
+			insert(target, p, anchor);
+			insert(target, t_1, anchor);
+			mount_component(iban, target, anchor);
+			current = true;
+		},
+
+		p(changed, ctx) {
+			var iban_changes = {};
+			if (changed.last_pm) iban_changes.value = ctx.last_pm.amount_euro;
+			if (changed.user || changed.last_pm) iban_changes.refcode = refcode(ctx.user, new ctx.Date(ctx.last_pm.start));
+			iban.$set(iban_changes);
+		},
+
+		i(local) {
+			if (current) return;
+			transition_in(iban.$$.fragment, local);
+
+			current = true;
+		},
+
+		o(local) {
+			transition_out(iban.$$.fragment, local);
+			current = false;
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(p);
+				detach(t_1);
+			}
+
+			destroy_component(iban, detaching);
+		}
+	};
+}
+
+// (155:4) {:else}
+function create_else_block(ctx) {
+	var tr;
+
+	return {
+		c() {
+			tr = element("tr");
+			tr.innerHTML = `<td colspan="6">No entry</td> `;
+		},
+
+		m(target, anchor) {
+			insert(target, tr, anchor);
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(tr);
+			}
+		}
+	};
+}
+
+// (149:10) {#if bill.status_date}
+function create_if_block(ctx) {
+	var t_value = new ctx.Date(parseInt(ctx.bill.status_date)).toLocaleString() + "", t;
+
+	return {
+		c() {
+			t = text(t_value);
+		},
+
+		m(target, anchor) {
+			insert(target, t, anchor);
+		},
+
+		p(changed, ctx) {
+			if ((changed.invoices) && t_value !== (t_value = new ctx.Date(parseInt(ctx.bill.status_date)).toLocaleString() + "")) {
+				set_data(t, t_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(t);
+			}
+		}
+	};
+}
+
+// (132:4) {#each invoices as bill}
+function create_each_block$1(ctx) {
+	var tr, td0, a, t0, t1_value = ctx.bill.id + "", t1, t2, td1, t3_value = ctx.bill.type + "", t3, t4, td2, t5_value = new ctx.Date(parseInt(ctx.bill.start)).toLocaleString() + "", t5, t6, t7_value = new ctx.Date(parseInt(ctx.bill.end)).toLocaleString() + "", t7, t8, td3, t9_value = ctx.bill.payment_method + "", t9, t10, t11_value = ctx.bill.payment_lastdigits + "", t11, t12, td4, t13_value = bill_status_text(ctx.bill.status) + "", t13, t14, t15, td5, t16_value = ctx.bill.amount_euro + "", t16, t17, dispose;
+
+	function click_handler(...args) {
+		return ctx.click_handler(ctx, ...args);
+	}
+
+	var if_block = (ctx.bill.status_date) && create_if_block(ctx);
+
+	return {
+		c() {
+			tr = element("tr");
+			td0 = element("td");
+			a = element("a");
+			t0 = text("#");
+			t1 = text(t1_value);
+			t2 = space();
+			td1 = element("td");
+			t3 = text(t3_value);
+			t4 = space();
+			td2 = element("td");
+			t5 = text(t5_value);
+			t6 = text(" - ");
+			t7 = text(t7_value);
+			t8 = space();
+			td3 = element("td");
+			t9 = text(t9_value);
+			t10 = text(" …");
+			t11 = text(t11_value);
+			t12 = space();
+			td4 = element("td");
+			t13 = text(t13_value);
+			t14 = space();
+			if (if_block) if_block.c();
+			t15 = space();
+			td5 = element("td");
+			t16 = text(t16_value);
+			t17 = space();
+			attr(a, "href", "#top");
+			attr(a, "title", "Download Invoice");
+			toggle_class(td4, "text-danger", ctx.bill.status=="PENDING");
+			dispose = listen(a, "click", click_handler);
+		},
+
+		m(target, anchor) {
+			insert(target, tr, anchor);
+			append(tr, td0);
+			append(td0, a);
+			append(a, t0);
+			append(a, t1);
+			append(tr, t2);
+			append(tr, td1);
+			append(td1, t3);
+			append(tr, t4);
+			append(tr, td2);
+			append(td2, t5);
+			append(td2, t6);
+			append(td2, t7);
+			append(tr, t8);
+			append(tr, td3);
+			append(td3, t9);
+			append(td3, t10);
+			append(td3, t11);
+			append(tr, t12);
+			append(tr, td4);
+			append(td4, t13);
+			append(td4, t14);
+			if (if_block) if_block.m(td4, null);
+			append(tr, t15);
+			append(tr, td5);
+			append(td5, t16);
+			append(tr, t17);
+		},
+
+		p(changed, new_ctx) {
+			ctx = new_ctx;
+			if ((changed.invoices) && t1_value !== (t1_value = ctx.bill.id + "")) {
+				set_data(t1, t1_value);
+			}
+
+			if ((changed.invoices) && t3_value !== (t3_value = ctx.bill.type + "")) {
+				set_data(t3, t3_value);
+			}
+
+			if ((changed.invoices) && t5_value !== (t5_value = new ctx.Date(parseInt(ctx.bill.start)).toLocaleString() + "")) {
+				set_data(t5, t5_value);
+			}
+
+			if ((changed.invoices) && t7_value !== (t7_value = new ctx.Date(parseInt(ctx.bill.end)).toLocaleString() + "")) {
+				set_data(t7, t7_value);
+			}
+
+			if ((changed.invoices) && t9_value !== (t9_value = ctx.bill.payment_method + "")) {
+				set_data(t9, t9_value);
+			}
+
+			if ((changed.invoices) && t11_value !== (t11_value = ctx.bill.payment_lastdigits + "")) {
+				set_data(t11, t11_value);
+			}
+
+			if ((changed.invoices) && t13_value !== (t13_value = bill_status_text(ctx.bill.status) + "")) {
+				set_data(t13, t13_value);
+			}
+
+			if (ctx.bill.status_date) {
+				if (if_block) {
+					if_block.p(changed, ctx);
+				} else {
+					if_block = create_if_block(ctx);
+					if_block.c();
+					if_block.m(td4, null);
+				}
+			} else if (if_block) {
+				if_block.d(1);
+				if_block = null;
+			}
+
+			if (changed.invoices) {
+				toggle_class(td4, "text-danger", ctx.bill.status=="PENDING");
+			}
+
+			if ((changed.invoices) && t16_value !== (t16_value = ctx.bill.amount_euro + "")) {
+				set_data(t16, t16_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(tr);
+			}
+
+			if (if_block) if_block.d();
+			dispose();
+		}
+	};
+}
+
+function create_fragment$2(ctx) {
+	var h4, t0, span, a, t2, t3, t4, table, thead, t16, tbody, current, dispose;
+
+	var if_block0 = (ctx.user && ctx.user.is_admin) && create_if_block_2(ctx);
+
+	var if_block1 = (ctx.last_pm) && create_if_block_1(ctx);
+
+	let each_value = ctx.invoices;
+
+	let each_blocks = [];
+
+	for (let i = 0; i < each_value.length; i += 1) {
+		each_blocks[i] = create_each_block$1(get_each_context$1(ctx, each_value, i));
+	}
+
+	let each_1_else = null;
+
+	if (!each_value.length) {
+		each_1_else = create_else_block();
+		each_1_else.c();
+	}
+
+	return {
+		c() {
+			h4 = element("h4");
+			t0 = text("Invoice History\n  ");
+			span = element("span");
+			a = element("a");
+			a.textContent = "Refresh";
+			t2 = space();
+			if (if_block0) if_block0.c();
+			t3 = space();
+			if (if_block1) if_block1.c();
+			t4 = space();
+			table = element("table");
+			thead = element("thead");
+			thead.innerHTML = `<tr><th>No</th> <th>Type</th> <th>Access Period</th> <th>Payment Method</th> <th>Status</th> <th>Amount</th></tr>`;
+			t16 = space();
+			tbody = element("tbody");
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+			attr(a, "href", "#top");
+			attr(span, "class", "h6");
+			attr(h4, "class", "mt-4");
+			attr(table, "class", "table table-hover");
+			dispose = listen(a, "click", ctx.refresh_cache);
+		},
+
+		m(target, anchor) {
+			insert(target, h4, anchor);
+			append(h4, t0);
+			append(h4, span);
+			append(span, a);
+			append(span, t2);
+			if (if_block0) if_block0.m(span, null);
+			insert(target, t3, anchor);
+			if (if_block1) if_block1.m(target, anchor);
+			insert(target, t4, anchor);
+			insert(target, table, anchor);
+			append(table, thead);
+			append(table, t16);
+			append(table, tbody);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].m(tbody, null);
+			}
+
+			if (each_1_else) {
+				each_1_else.m(tbody, null);
+			}
+
+			current = true;
+		},
+
+		p(changed, ctx) {
+			if (ctx.user && ctx.user.is_admin) {
+				if (!if_block0) {
+					if_block0 = create_if_block_2(ctx);
+					if_block0.c();
+					if_block0.m(span, null);
+				}
+			} else if (if_block0) {
+				if_block0.d(1);
+				if_block0 = null;
+			}
+
+			if (ctx.last_pm) {
+				if (if_block1) {
+					if_block1.p(changed, ctx);
+					transition_in(if_block1, 1);
+				} else {
+					if_block1 = create_if_block_1(ctx);
+					if_block1.c();
+					transition_in(if_block1, 1);
+					if_block1.m(t4.parentNode, t4);
+				}
+			} else if (if_block1) {
+				group_outros();
+				transition_out(if_block1, 1, 1, () => {
+					if_block1 = null;
+				});
+				check_outros();
+			}
+
+			if (changed.invoices || changed.Date || changed.bill_status_text) {
+				each_value = ctx.invoices;
+
+				let i;
+				for (i = 0; i < each_value.length; i += 1) {
+					const child_ctx = get_each_context$1(ctx, each_value, i);
+
+					if (each_blocks[i]) {
+						each_blocks[i].p(changed, child_ctx);
+					} else {
+						each_blocks[i] = create_each_block$1(child_ctx);
+						each_blocks[i].c();
+						each_blocks[i].m(tbody, null);
+					}
+				}
+
+				for (; i < each_blocks.length; i += 1) {
+					each_blocks[i].d(1);
+				}
+				each_blocks.length = each_value.length;
+			}
+
+			if (each_value.length) {
+				if (each_1_else) {
+					each_1_else.d(1);
+					each_1_else = null;
+				}
+			} else if (!each_1_else) {
+				each_1_else = create_else_block();
+				each_1_else.c();
+				each_1_else.m(tbody, null);
+			}
+		},
+
+		i(local) {
+			if (current) return;
+			transition_in(if_block1);
+			current = true;
+		},
+
+		o(local) {
+			transition_out(if_block1);
+			current = false;
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(h4);
+			}
+
+			if (if_block0) if_block0.d();
+
+			if (detaching) {
+				detach(t3);
+			}
+
+			if (if_block1) if_block1.d(detaching);
+
+			if (detaching) {
+				detach(t4);
+				detach(table);
+			}
+
+			destroy_each(each_blocks, detaching);
+
+			if (each_1_else) each_1_else.d();
+
+			dispose();
+		}
+	};
+}
+
+function bill_status_text(status_code) {
+  switch (status_code) {
+    case "PENDING":
+      return "Waiting for Payment";
+    case "RECEIVED":
+      return "Received";
+    case "SCHEDULED":
+      return "Recurring Payment scheduled";
+    default:
+      return status_code;
+  }
+}
+
+function instance$2($$self, $$props, $$invalidate) {
+	
+
+  let { userdata, user } = $$props;
+  let cache_valid_until = null;
+  let invoices = [];
+  let last_pm = null;
+  const dispatch = createEventDispatcher();
+
+  function prepare_download_link(e, bill) {
+    if (new URL(e.target.href).hash != "#top") return;
+    e.preventDefault();
+    const gsReference = storage.refFromURL(
+      userdata.BUCKET_BILLING + "/" + user.uid + "/" + bill.id
+    );
+    gsReference
+      .getDownloadURL()
+      .then(link => {
+        e.target.href = link;
+        e.target.click();
+      })
+      .catch(err => {
+        if (err.code == "storage/object-not-found") {
+          dispatch("error", `PDF for Invoice #${bill.id} not found!`);
+        } else {
+          console.warn("Failed to create download link", err);
+          dispatch("error", "Failed to create download link " + err.message);
+        }
+      });
+  }
+
+  async function get_invoice_list() {
+    let list = localStorage.getItem("invoices");
+    if (list) list = JSON.parse(list);
+    if (list && list.valid_until > Date.now()) {
+      cache_valid_until = list.valid_until;
+      $$invalidate('invoices', invoices = Object.values(list.data));
+      return;
+    }
+    await userdata
+      .fetch_collection(userdata.COLL_INVOICES)
+      .then(() => {
+        const list = userdata[userdata.COLL_INVOICES] || [];
+        let d = new Date(Date.now());
+        d.setDate(d.getDate() + 1);
+        localStorage.setItem(
+          "invoices",
+          JSON.stringify({ data: list, valid_until: d.getTime() })
+        );
+        $$invalidate('invoices', invoices = Object.values(list));
+      })
+      .catch(err => {
+        dispatch("error", `Failed to refresh invoice list: ${err.message}`);
+      });
+    const pm = invoices.length ? invoices[invoices.length - 1] : null;
+    if (pm && pm.payment_method == "IBAN" && pm.status == "PENDING") $$invalidate('last_pm', last_pm = pm);
+  }
+
+  function refresh_cache() {
+    cache_valid_until = null;
+    localStorage.removeItem("invoices");
+    get_invoice_list();
+  }
+
+  function demoadd(e) {
+    e.preventDefault();
+    invoices.push({
+      id: "12",
+      type: "cloud",
+      start: Date.now(),
+      end: Date.now(),
+      payment_method: "IBAN",
+      payment_lastdigits: "0879",
+      status: "PENDING",
+      status_date: Date.now(),
+      amount_euro: "3"
+    });
+    $$invalidate('invoices', invoices);
+    const pm = invoices.length ? invoices[invoices.length - 1] : null;
+    if (pm && pm.payment_method == "IBAN" && pm.status == "PENDING") $$invalidate('last_pm', last_pm = pm);
+  }
+
+	const click_handler = ({ bill }, e) => prepare_download_link(e, bill);
+
+	$$self.$set = $$props => {
+		if ('userdata' in $$props) $$invalidate('userdata', userdata = $$props.userdata);
+		if ('user' in $$props) $$invalidate('user', user = $$props.user);
+	};
+
+	let storage;
+
+	$$self.$$.update = ($$dirty = { userdata: 1, user: 1 }) => {
+		if ($$dirty.userdata) { storage = userdata ? userdata.storage(userdata.BUCKET_BILLING) : null; }
+		if ($$dirty.user) { if (user) get_invoice_list(); }
+	};
+
+	return {
+		userdata,
+		user,
+		invoices,
+		last_pm,
+		prepare_download_link,
+		refresh_cache,
+		demoadd,
+		Date,
+		click_handler
+	};
+}
+
+class Invoices extends SvelteComponent {
+	constructor(options) {
+		super();
+		init(this, options, instance$2, create_fragment$2, safe_not_equal, ["userdata", "user"]);
+	}
+}
+
+/**
+ * https://github.com/developit/snarkdown
+ * License: MIT, Author: Jason Miller
+ */
+const TAGS = {
+	'' : ['<em>','</em>'],
+	_ : ['<strong>','</strong>'],
+	'~' : ['<s>','</s>'],
+	'\n' : ['<br />'],
+	' ' : ['<br />'],
+	'-': ['<hr />']
+};
+
+/** Outdent a string based on the first indented line's leading whitespace
+ *	@private
+ */
+function outdent(str) {
+	return str.replace(RegExp('^'+(str.match(/^(\t| )+/) || '')[0], 'gm'), '');
+}
+
+/** Encode special attribute characters to HTML entities in a String.
+ *	@private
+ */
+function encodeAttr(str) {
+	return (str+'').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+/** Parse Markdown into an HTML String. */
+function parse(md, prevLinks) {
+	let tokenizer = /((?:^|\n+)(?:\n---+|\* \*(?: \*)+)\n)|(?:^``` *(\w*)\n([\s\S]*?)\n```$)|((?:(?:^|\n+)(?:\t|  {2,}).+)+\n*)|((?:(?:^|\n)([>*+-]|\d+\.)\s+.*)+)|(?:\!\[([^\]]*?)\]\(([^\)]+?)\))|(\[)|(\](?:\(([^\)]+?)\))?)|(?:(?:^|\n+)([^\s].*)\n(\-{3,}|={3,})(?:\n+|$))|(?:(?:^|\n+)(#{1,6})\s*(.+)(?:\n+|$))|(?:`([^`].*?)`)|(  \n\n*|\n{2,}|__|\*\*|[_*]|~~)/gm,
+		context = [],
+		out = '',
+		links = prevLinks || {},
+		last = 0,
+		chunk, prev, token, inner, t;
+
+	function tag(token) {
+		var desc = TAGS[token.replace(/\*/g,'_')[1] || ''],
+			end = context[context.length-1]==token;
+		if (!desc) return token;
+		if (!desc[1]) return desc[0];
+		context[end?'pop':'push'](token);
+		return desc[end|0];
+	}
+
+	function flush() {
+		let str = '';
+		while (context.length) str += tag(context[context.length-1]);
+		return str;
+	}
+
+	md = md.replace(/^\[(.+?)\]:\s*(.+)$/gm, (s, name, url) => {
+		links[name.toLowerCase()] = url;
+		return '';
+	}).replace(/^\n+|\n+$/g, '');
+
+	while ( (token=tokenizer.exec(md)) ) {
+		prev = md.substring(last, token.index);
+		last = tokenizer.lastIndex;
+		chunk = token[0];
+		if (prev.match(/[^\\](\\\\)*\\$/)) ;
+		// Code/Indent blocks:
+		else if (token[3] || token[4]) {
+			chunk = '<pre class="code '+(token[4]?'poetry':token[2].toLowerCase())+'">'+outdent(encodeAttr(token[3] || token[4]).replace(/^\n+|\n+$/g, ''))+'</pre>';
+		}
+		// > Quotes, -* lists:
+		else if (token[6]) {
+			t = token[6];
+			if (t.match(/\./)) {
+				token[5] = token[5].replace(/^\d+/gm, '');
+			}
+			inner = parse(outdent(token[5].replace(/^\s*[>*+.-]/gm, '')));
+			if (t==='>') t = 'blockquote';
+			else {
+				t = t.match(/\./) ? 'ol' : 'ul';
+				inner = inner.replace(/^(.*)(\n|$)/gm, '<li>$1</li>');
+			}
+			chunk = '<'+t+'>' + inner + '</'+t+'>';
+		}
+		// Images:
+		else if (token[8]) {
+			chunk = `<img src="${encodeAttr(token[8])}" alt="${encodeAttr(token[7])}">`;
+		}
+		// Links:
+		else if (token[10]) {
+			out = out.replace('<a>', `<a href="${encodeAttr(token[11] || links[prev.toLowerCase()])}">`);
+			chunk = flush() + '</a>';
+		}
+		else if (token[9]) {
+			chunk = '<a>';
+		}
+		// Headings:
+		else if (token[12] || token[14]) {
+			t = 'h' + (token[14] ? token[14].length : (token[13][0]==='='?1:2));
+			chunk = '<'+t+'>' + parse(token[12] || token[15], links) + '</'+t+'>';
+		}
+		// `code`:
+		else if (token[16]) {
+			chunk = '<code>'+encodeAttr(token[16])+'</code>';
+		}
+		// Inline formatting: *em*, **strong** & friends
+		else if (token[17] || token[1]) {
+			chunk = tag(token[17] || '--');
+		}
+		out += prev;
+		out += chunk;
+	}
+
+	return (out + md.substring(last) + flush()).trim();
+}
+
+/* assets/js/ui-subscription/subscription_plan.svelte generated by Svelte v3.12.0 */
+
+function add_css() {
+	var style = element("style");
+	style.id = 'svelte-rlyv7c-style';
+	style.textContent = ".plans.svelte-rlyv7c{display:grid;grid-template-columns:33% 33% 33%;grid-gap:10px}";
+	append(document.head, style);
+}
+
+function get_each_context$2(ctx, list, i) {
+	const child_ctx = Object.create(ctx);
+	child_ctx.$feat = list[i];
+	child_ctx.$featid = i;
+	return child_ctx;
+}
+
+function get_each_context_1(ctx, list, i) {
+	const child_ctx = Object.create(ctx);
+	child_ctx.$propid = list[i][0];
+	child_ctx.$prop = list[i][1];
+	return child_ctx;
+}
+
+// (37:2) {#if plan.euro_price.min}
+function create_if_block_7(ctx) {
+	var ui_subscription_flexible, ui_subscription_flexible_target_value;
+
+	return {
+		c() {
+			ui_subscription_flexible = element("ui-subscription-flexible");
+			set_custom_element_data(ui_subscription_flexible, "target", ui_subscription_flexible_target_value = "subscriptionPlan" + ctx.plan.id);
+		},
+
+		m(target, anchor) {
+			insert(target, ui_subscription_flexible, anchor);
+		},
+
+		p(changed, ctx) {
+			if ((changed.plan) && ui_subscription_flexible_target_value !== (ui_subscription_flexible_target_value = "subscriptionPlan" + ctx.plan.id)) {
+				set_custom_element_data(ui_subscription_flexible, "target", ui_subscription_flexible_target_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(ui_subscription_flexible);
+			}
+		}
+	};
+}
+
+// (63:14) {#if $prop.suffix}
+function create_if_block_6(ctx) {
+	var t_value = ctx.$prop.suffix + "", t;
+
+	return {
+		c() {
+			t = text(t_value);
+		},
+
+		m(target, anchor) {
+			insert(target, t, anchor);
+		},
+
+		p(changed, ctx) {
+			if ((changed.plan) && t_value !== (t_value = ctx.$prop.suffix + "")) {
+				set_data(t, t_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(t);
+			}
+		}
+	};
+}
+
+// (76:14) {:else}
+function create_else_block_2(ctx) {
+	var html_tag, raw_value = parse(ctx.$prop.title) + "";
+
+	return {
+		c() {
+			html_tag = new HtmlTag(raw_value, null);
+		},
+
+		m(target, anchor) {
+			html_tag.m(target, anchor);
+		},
+
+		p(changed, ctx) {
+			if ((changed.plan) && raw_value !== (raw_value = parse(ctx.$prop.title) + "")) {
+				html_tag.p(raw_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				html_tag.d();
+			}
+		}
+	};
+}
+
+// (66:14) {#if $prop.details_html_tag}
+function create_if_block_5(ctx) {
+	var ui_tooltip, button, raw0_value = parse(ctx.$prop.title) + "", t, html_tag, raw1_value = `<${ctx.$prop.details_html_tag} value=${prop_value(ctx.$prop, ctx.plan.euro_price, ctx.plan.euro_price_value)}></${ctx.$prop.details_html_tag}>` + "";
+
+	return {
+		c() {
+			ui_tooltip = element("ui-tooltip");
+			button = element("button");
+			t = space();
+			attr(button, "class", "btn-link contexthelp");
+			attr(button, "title", "Context help");
+			attr(button, "slot", "button");
+			html_tag = new HtmlTag(raw1_value, null);
+			set_custom_element_data(ui_tooltip, "maxwidth", "");
+		},
+
+		m(target, anchor) {
+			insert(target, ui_tooltip, anchor);
+			append(ui_tooltip, button);
+			button.innerHTML = raw0_value;
+			append(ui_tooltip, t);
+			html_tag.m(ui_tooltip);
+		},
+
+		p(changed, ctx) {
+			if ((changed.plan) && raw0_value !== (raw0_value = parse(ctx.$prop.title) + "")) {
+				button.innerHTML = raw0_value;
+			}
+
+			if ((changed.plan) && raw1_value !== (raw1_value = `<${ctx.$prop.details_html_tag} value=${prop_value(ctx.$prop, ctx.plan.euro_price, ctx.plan.euro_price_value)}></${ctx.$prop.details_html_tag}>` + "")) {
+				html_tag.p(raw1_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(ui_tooltip);
+			}
+		}
+	};
+}
+
+// (79:14) {#if $prop.desc}
+function create_if_block_4(ctx) {
+	var br, t, small, raw_value = parse(ctx.$prop.desc) + "";
+
+	return {
+		c() {
+			br = element("br");
+			t = space();
+			small = element("small");
+		},
+
+		m(target, anchor) {
+			insert(target, br, anchor);
+			insert(target, t, anchor);
+			insert(target, small, anchor);
+			small.innerHTML = raw_value;
+		},
+
+		p(changed, ctx) {
+			if ((changed.plan) && raw_value !== (raw_value = parse(ctx.$prop.desc) + "")) {
+				small.innerHTML = raw_value;
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(br);
+				detach(t);
+				detach(small);
+			}
+		}
+	};
+}
+
+// (57:8) {#each Object.entries(plan.properties) as [$propid, $prop]}
+function create_each_block_1(ctx) {
+	var tr, td0, output, t0_value = prop_value(ctx.$prop, ctx.plan.euro_price, ctx.plan.euro_price_value) + "", t0, output_data_min_value, output_data_max_value, output_name_value, t1, t2, td1, t3;
+
+	var if_block0 = (ctx.$prop.suffix) && create_if_block_6(ctx);
+
+	function select_block_type(changed, ctx) {
+		if (ctx.$prop.details_html_tag) return create_if_block_5;
+		return create_else_block_2;
+	}
+
+	var current_block_type = select_block_type(null, ctx);
+	var if_block1 = current_block_type(ctx);
+
+	var if_block2 = (ctx.$prop.desc) && create_if_block_4(ctx);
+
+	return {
+		c() {
+			tr = element("tr");
+			td0 = element("td");
+			output = element("output");
+			t0 = text(t0_value);
+			t1 = space();
+			if (if_block0) if_block0.c();
+			t2 = space();
+			td1 = element("td");
+			if_block1.c();
+			t3 = space();
+			if (if_block2) if_block2.c();
+			attr(output, "data-min", output_data_min_value = ctx.$prop.base);
+			attr(output, "data-max", output_data_max_value = ctx.$prop.max);
+			attr(output, "name", output_name_value = ctx.$propid);
+		},
+
+		m(target, anchor) {
+			insert(target, tr, anchor);
+			append(tr, td0);
+			append(td0, output);
+			append(output, t0);
+			append(td0, t1);
+			if (if_block0) if_block0.m(td0, null);
+			append(tr, t2);
+			append(tr, td1);
+			if_block1.m(td1, null);
+			append(td1, t3);
+			if (if_block2) if_block2.m(td1, null);
+		},
+
+		p(changed, ctx) {
+			if ((changed.plan) && t0_value !== (t0_value = prop_value(ctx.$prop, ctx.plan.euro_price, ctx.plan.euro_price_value) + "")) {
+				set_data(t0, t0_value);
+			}
+
+			if ((changed.plan) && output_data_min_value !== (output_data_min_value = ctx.$prop.base)) {
+				attr(output, "data-min", output_data_min_value);
+			}
+
+			if ((changed.plan) && output_data_max_value !== (output_data_max_value = ctx.$prop.max)) {
+				attr(output, "data-max", output_data_max_value);
+			}
+
+			if ((changed.plan) && output_name_value !== (output_name_value = ctx.$propid)) {
+				attr(output, "name", output_name_value);
+			}
+
+			if (ctx.$prop.suffix) {
+				if (if_block0) {
+					if_block0.p(changed, ctx);
+				} else {
+					if_block0 = create_if_block_6(ctx);
+					if_block0.c();
+					if_block0.m(td0, null);
+				}
+			} else if (if_block0) {
+				if_block0.d(1);
+				if_block0 = null;
+			}
+
+			if (current_block_type === (current_block_type = select_block_type(changed, ctx)) && if_block1) {
+				if_block1.p(changed, ctx);
+			} else {
+				if_block1.d(1);
+				if_block1 = current_block_type(ctx);
+				if (if_block1) {
+					if_block1.c();
+					if_block1.m(td1, t3);
+				}
+			}
+
+			if (ctx.$prop.desc) {
+				if (if_block2) {
+					if_block2.p(changed, ctx);
+				} else {
+					if_block2 = create_if_block_4(ctx);
+					if_block2.c();
+					if_block2.m(td1, null);
+				}
+			} else if (if_block2) {
+				if_block2.d(1);
+				if_block2 = null;
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(tr);
+			}
+
+			if (if_block0) if_block0.d();
+			if_block1.d();
+			if (if_block2) if_block2.d();
+		}
+	};
+}
+
+// (102:14) {:else}
+function create_else_block_1(ctx) {
+	var span, html_tag, raw_value = parse(ctx.$feat.title) + "", t0, t1;
+
+	var if_block = (ctx.$feat.desc) && create_if_block_3(ctx);
+
+	return {
+		c() {
+			span = element("span");
+			t0 = space();
+			if (if_block) if_block.c();
+			t1 = space();
+			html_tag = new HtmlTag(raw_value, t0);
+		},
+
+		m(target, anchor) {
+			insert(target, span, anchor);
+			html_tag.m(span);
+			append(span, t0);
+			if (if_block) if_block.m(span, null);
+			append(span, t1);
+		},
+
+		p(changed, ctx) {
+			if ((changed.plan) && raw_value !== (raw_value = parse(ctx.$feat.title) + "")) {
+				html_tag.p(raw_value);
+			}
+
+			if (ctx.$feat.desc) {
+				if (if_block) {
+					if_block.p(changed, ctx);
+				} else {
+					if_block = create_if_block_3(ctx);
+					if_block.c();
+					if_block.m(span, t1);
+				}
+			} else if (if_block) {
+				if_block.d(1);
+				if_block = null;
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(span);
+			}
+
+			if (if_block) if_block.d();
+		}
+	};
+}
+
+// (92:14) {#if $feat.details}
+function create_if_block_2$1(ctx) {
+	var ui_tooltip, button, raw0_value = parse(ctx.$feat.title) + "", t0, html_tag, raw1_value = parse(ctx.$feat.details) + "", t1;
+
+	return {
+		c() {
+			ui_tooltip = element("ui-tooltip");
+			button = element("button");
+			t0 = space();
+			t1 = space();
+			attr(button, "class", "btn-link contexthelp");
+			attr(button, "title", "Context help");
+			attr(button, "slot", "button");
+			html_tag = new HtmlTag(raw1_value, t1);
+			set_custom_element_data(ui_tooltip, "maxwidth", "");
+		},
+
+		m(target, anchor) {
+			insert(target, ui_tooltip, anchor);
+			append(ui_tooltip, button);
+			button.innerHTML = raw0_value;
+			append(ui_tooltip, t0);
+			html_tag.m(ui_tooltip);
+			append(ui_tooltip, t1);
+		},
+
+		p(changed, ctx) {
+			if ((changed.plan) && raw0_value !== (raw0_value = parse(ctx.$feat.title) + "")) {
+				button.innerHTML = raw0_value;
+			}
+
+			if ((changed.plan) && raw1_value !== (raw1_value = parse(ctx.$feat.details) + "")) {
+				html_tag.p(raw1_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(ui_tooltip);
+			}
+		}
+	};
+}
+
+// (105:18) {#if $feat.desc}
+function create_if_block_3(ctx) {
+	var t, html_tag, raw_value = '(' + parse(ctx.$feat.desc) + ')' + "";
+
+	return {
+		c() {
+			t = text(" \n                    ");
+			html_tag = new HtmlTag(raw_value, null);
+		},
+
+		m(target, anchor) {
+			insert(target, t, anchor);
+			html_tag.m(target, anchor);
+		},
+
+		p(changed, ctx) {
+			if ((changed.plan) && raw_value !== (raw_value = '(' + parse(ctx.$feat.desc) + ')' + "")) {
+				html_tag.p(raw_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(t);
+				html_tag.d();
+			}
+		}
+	};
+}
+
+// (91:12) {#each plan.features as $feat, $featid}
+function create_each_block$2(ctx) {
+	var if_block_anchor;
+
+	function select_block_type_1(changed, ctx) {
+		if (ctx.$feat.details) return create_if_block_2$1;
+		return create_else_block_1;
+	}
+
+	var current_block_type = select_block_type_1(null, ctx);
+	var if_block = current_block_type(ctx);
+
+	return {
+		c() {
+			if_block.c();
+			if_block_anchor = empty();
+		},
+
+		m(target, anchor) {
+			if_block.m(target, anchor);
+			insert(target, if_block_anchor, anchor);
+		},
+
+		p(changed, ctx) {
+			if (current_block_type === (current_block_type = select_block_type_1(changed, ctx)) && if_block) {
+				if_block.p(changed, ctx);
+			} else {
+				if_block.d(1);
+				if_block = current_block_type(ctx);
+				if (if_block) {
+					if_block.c();
+					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+				}
+			}
+		},
+
+		d(detaching) {
+			if_block.d(detaching);
+
+			if (detaching) {
+				detach(if_block_anchor);
+			}
+		}
+	};
+}
+
+// (118:4) {#if plan.euro_price.min}
+function create_if_block_1$1(ctx) {
+	var input, input_min_value, input_max_value, dispose;
+
+	return {
+		c() {
+			input = element("input");
+			attr(input, "type", "range");
+			attr(input, "min", input_min_value = ctx.plan.euro_price.min);
+			attr(input, "max", input_max_value = ctx.plan.euro_price.max);
+			attr(input, "class", "slider");
+			attr(input, "id", "subscriptionValue");
+
+			dispose = [
+				listen(input, "change", ctx.input_change_input_handler),
+				listen(input, "input", ctx.input_change_input_handler)
+			];
+		},
+
+		m(target, anchor) {
+			insert(target, input, anchor);
+
+			set_input_value(input, ctx.plan.euro_price_value);
+		},
+
+		p(changed, ctx) {
+			if (changed.plan) set_input_value(input, ctx.plan.euro_price_value);
+
+			if ((changed.plan) && input_min_value !== (input_min_value = ctx.plan.euro_price.min)) {
+				attr(input, "min", input_min_value);
+			}
+
+			if ((changed.plan) && input_max_value !== (input_max_value = ctx.plan.euro_price.max)) {
+				attr(input, "max", input_max_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(input);
+			}
+
+			run_all(dispose);
+		}
+	};
+}
+
+// (131:4) {:else}
+function create_else_block$1(ctx) {
+	var button, t, dispose;
+
+	return {
+		c() {
+			button = element("button");
+			t = text(ctx.button_text);
+			attr(button, "class", "btn btn-primary btn-impressive");
+			dispose = listen(button, "click", ctx.click_handler);
+		},
+
+		m(target, anchor) {
+			insert(target, button, anchor);
+			append(button, t);
+		},
+
+		p(changed, ctx) {
+			if (changed.button_text) {
+				set_data(t, ctx.button_text);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(button);
+			}
+
+			dispose();
+		}
+	};
+}
+
+// (127:4) {#if selected}
+function create_if_block$1(ctx) {
+	var button, t;
+
+	return {
+		c() {
+			button = element("button");
+			t = text(ctx.button_text);
+			button.disabled = true;
+			attr(button, "class", "btn btn-success btn-impressive");
+		},
+
+		m(target, anchor) {
+			insert(target, button, anchor);
+			append(button, t);
+		},
+
+		p(changed, ctx) {
+			if (changed.button_text) {
+				set_data(t, ctx.button_text);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(button);
+			}
+		}
+	};
+}
+
+function create_fragment$3(ctx) {
+	var form, t0, input0, input0_value_value, t1, input1, input1_value_value, t2, div0, h4, raw0_value = parse(ctx.plan.title) + "", t3, i, i_class_value, t4, p, raw1_value = parse(ctx.plan.desc) + "", t5, div1, table, tbody, t6, tr, td0, t8, td1, t9, div2, t10, form_id_value;
+
+	var if_block0 = (ctx.plan.euro_price.min) && create_if_block_7(ctx);
+
+	let each_value_1 = Object.entries(ctx.plan.properties);
+
+	let each_blocks_1 = [];
+
+	for (let i_1 = 0; i_1 < each_value_1.length; i_1 += 1) {
+		each_blocks_1[i_1] = create_each_block_1(get_each_context_1(ctx, each_value_1, i_1));
+	}
+
+	let each_value = ctx.plan.features;
+
+	let each_blocks = [];
+
+	for (let i_1 = 0; i_1 < each_value.length; i_1 += 1) {
+		each_blocks[i_1] = create_each_block$2(get_each_context$2(ctx, each_value, i_1));
+	}
+
+	var if_block1 = (ctx.plan.euro_price.min) && create_if_block_1$1(ctx);
+
+	function select_block_type_2(changed, ctx) {
+		if (ctx.selected) return create_if_block$1;
+		return create_else_block$1;
+	}
+
+	var current_block_type = select_block_type_2(null, ctx);
+	var if_block2 = current_block_type(ctx);
+
+	return {
+		c() {
+			form = element("form");
+			if (if_block0) if_block0.c();
+			t0 = space();
+			input0 = element("input");
+			t1 = space();
+			input1 = element("input");
+			t2 = space();
+			div0 = element("div");
+			h4 = element("h4");
+			t3 = space();
+			i = element("i");
+			t4 = space();
+			p = element("p");
+			t5 = space();
+			div1 = element("div");
+			table = element("table");
+			tbody = element("tbody");
+
+			for (let i_1 = 0; i_1 < each_blocks_1.length; i_1 += 1) {
+				each_blocks_1[i_1].c();
+			}
+
+			t6 = space();
+			tr = element("tr");
+			td0 = element("td");
+			td0.textContent = "✓";
+			t8 = space();
+			td1 = element("td");
+
+			for (let i_1 = 0; i_1 < each_blocks.length; i_1 += 1) {
+				each_blocks[i_1].c();
+			}
+
+			t9 = space();
+			div2 = element("div");
+			if (if_block1) if_block1.c();
+			t10 = space();
+			if_block2.c();
+			attr(input0, "type", "hidden");
+			attr(input0, "name", "c");
+			input0.value = input0_value_value = ctx.plan.euro_price.min ? ctx.plan.euro_price.min : ctx.plan.euro_price;
+			attr(input1, "type", "hidden");
+			attr(input1, "name", "p");
+			input1.value = input1_value_value = ctx.plan.id;
+			attr(i, "class", i_class_value = "img " + ctx.plan.icon + " svelte-rlyv7c");
+			set_style(i, "font-size", "60pt");
+			set_style(i, "line-height", "120pt");
+			attr(div0, "class", "header");
+			attr(p, "class", "text-center p-2");
+			attr(td1, "class", "plans_feat_compact");
+			attr(div1, "class", "mx-4 mb-2 table table-sm");
+			attr(div2, "class", "text-center mb-3");
+			attr(form, "class", "col");
+			attr(form, "id", form_id_value = "subscriptionPlan" + ctx.plan.id);
+			toggle_class(form, "active", ctx.selected);
+		},
+
+		m(target, anchor) {
+			insert(target, form, anchor);
+			if (if_block0) if_block0.m(form, null);
+			append(form, t0);
+			append(form, input0);
+			append(form, t1);
+			append(form, input1);
+			append(form, t2);
+			append(form, div0);
+			append(div0, h4);
+			h4.innerHTML = raw0_value;
+			append(div0, t3);
+			append(div0, i);
+			append(form, t4);
+			append(form, p);
+			p.innerHTML = raw1_value;
+			append(form, t5);
+			append(form, div1);
+			append(div1, table);
+			append(table, tbody);
+
+			for (let i_1 = 0; i_1 < each_blocks_1.length; i_1 += 1) {
+				each_blocks_1[i_1].m(tbody, null);
+			}
+
+			append(tbody, t6);
+			append(tbody, tr);
+			append(tr, td0);
+			append(tr, t8);
+			append(tr, td1);
+
+			for (let i_1 = 0; i_1 < each_blocks.length; i_1 += 1) {
+				each_blocks[i_1].m(td1, null);
+			}
+
+			append(form, t9);
+			append(form, div2);
+			if (if_block1) if_block1.m(div2, null);
+			append(div2, t10);
+			if_block2.m(div2, null);
+		},
+
+		p(changed, ctx) {
+			if (ctx.plan.euro_price.min) {
+				if (if_block0) {
+					if_block0.p(changed, ctx);
+				} else {
+					if_block0 = create_if_block_7(ctx);
+					if_block0.c();
+					if_block0.m(form, t0);
+				}
+			} else if (if_block0) {
+				if_block0.d(1);
+				if_block0 = null;
+			}
+
+			if ((changed.plan) && input0_value_value !== (input0_value_value = ctx.plan.euro_price.min ? ctx.plan.euro_price.min : ctx.plan.euro_price)) {
+				input0.value = input0_value_value;
+			}
+
+			if ((changed.plan) && input1_value_value !== (input1_value_value = ctx.plan.id)) {
+				input1.value = input1_value_value;
+			}
+
+			if ((changed.plan) && raw0_value !== (raw0_value = parse(ctx.plan.title) + "")) {
+				h4.innerHTML = raw0_value;
+			}
+
+			if ((changed.plan) && i_class_value !== (i_class_value = "img " + ctx.plan.icon + " svelte-rlyv7c")) {
+				attr(i, "class", i_class_value);
+			}
+
+			if ((changed.plan) && raw1_value !== (raw1_value = parse(ctx.plan.desc) + "")) {
+				p.innerHTML = raw1_value;
+			}
+
+			if (changed.plan || changed.snarkdown || changed.prop_value) {
+				each_value_1 = Object.entries(ctx.plan.properties);
+
+				let i_1;
+				for (i_1 = 0; i_1 < each_value_1.length; i_1 += 1) {
+					const child_ctx = get_each_context_1(ctx, each_value_1, i_1);
+
+					if (each_blocks_1[i_1]) {
+						each_blocks_1[i_1].p(changed, child_ctx);
+					} else {
+						each_blocks_1[i_1] = create_each_block_1(child_ctx);
+						each_blocks_1[i_1].c();
+						each_blocks_1[i_1].m(tbody, t6);
+					}
+				}
+
+				for (; i_1 < each_blocks_1.length; i_1 += 1) {
+					each_blocks_1[i_1].d(1);
+				}
+				each_blocks_1.length = each_value_1.length;
+			}
+
+			if (changed.plan || changed.snarkdown) {
+				each_value = ctx.plan.features;
+
+				let i_1;
+				for (i_1 = 0; i_1 < each_value.length; i_1 += 1) {
+					const child_ctx = get_each_context$2(ctx, each_value, i_1);
+
+					if (each_blocks[i_1]) {
+						each_blocks[i_1].p(changed, child_ctx);
+					} else {
+						each_blocks[i_1] = create_each_block$2(child_ctx);
+						each_blocks[i_1].c();
+						each_blocks[i_1].m(td1, null);
+					}
+				}
+
+				for (; i_1 < each_blocks.length; i_1 += 1) {
+					each_blocks[i_1].d(1);
+				}
+				each_blocks.length = each_value.length;
+			}
+
+			if (ctx.plan.euro_price.min) {
+				if (if_block1) {
+					if_block1.p(changed, ctx);
+				} else {
+					if_block1 = create_if_block_1$1(ctx);
+					if_block1.c();
+					if_block1.m(div2, t10);
+				}
+			} else if (if_block1) {
+				if_block1.d(1);
+				if_block1 = null;
+			}
+
+			if (current_block_type === (current_block_type = select_block_type_2(changed, ctx)) && if_block2) {
+				if_block2.p(changed, ctx);
+			} else {
+				if_block2.d(1);
+				if_block2 = current_block_type(ctx);
+				if (if_block2) {
+					if_block2.c();
+					if_block2.m(div2, null);
+				}
+			}
+
+			if ((changed.plan) && form_id_value !== (form_id_value = "subscriptionPlan" + ctx.plan.id)) {
+				attr(form, "id", form_id_value);
+			}
+
+			if (changed.selected) {
+				toggle_class(form, "active", ctx.selected);
+			}
+		},
+
+		i: noop,
+		o: noop,
+
+		d(detaching) {
+			if (detaching) {
+				detach(form);
+			}
+
+			if (if_block0) if_block0.d();
+
+			destroy_each(each_blocks_1, detaching);
+
+			destroy_each(each_blocks, detaching);
+
+			if (if_block1) if_block1.d();
+			if_block2.d();
+		}
+	};
+}
+
+function prop_value(prop, minmax, cost) {
+  if (!minmax.min) return prop.base;
+  const range = minmax.max - minmax.min;
+  const lrange = prop.max - prop.base;
+  return prop.base + Math.floor(lrange * ((cost - minmax.min) / range));
+}
+
+function instance$3($$self, $$props, $$invalidate) {
+	let { plan = {}, user = {}, selected = false } = $$props;
+  const dispatch = createEventDispatcher();
+
+  function select_plan(e, plan_id) {
+    e.target.disabled = true;
+    e.preventDefault();
+    dispatch("select", plan_id);
+  }
+
+	function input_change_input_handler() {
+		plan.euro_price_value = to_number(this.value);
+		$$invalidate('plan', plan);
+	}
+
+	const click_handler = (e) => select_plan(e, plan.id);
+
+	$$self.$set = $$props => {
+		if ('plan' in $$props) $$invalidate('plan', plan = $$props.plan);
+		if ('user' in $$props) $$invalidate('user', user = $$props.user);
+		if ('selected' in $$props) $$invalidate('selected', selected = $$props.selected);
+	};
+
+	let button_text;
+
+	$$self.$$.update = ($$dirty = { plan: 1 }) => {
+		if ($$dirty.plan) { $$invalidate('button_text', button_text = !plan.euro_price_value
+        ? "Free"
+        : plan.euro_price_value + " € / Month"); }
+	};
+
+	return {
+		plan,
+		user,
+		selected,
+		select_plan,
+		button_text,
+		input_change_input_handler,
+		click_handler
+	};
+}
+
+class Subscription_plan extends SvelteComponent {
+	constructor(options) {
+		super();
+		if (!document.getElementById("svelte-rlyv7c-style")) add_css();
+		init(this, options, instance$3, create_fragment$3, safe_not_equal, ["plan", "user", "selected"]);
+	}
+}
+
+/* assets/js/ui-subscription/cmp.svelte generated by Svelte v3.12.0 */
+
+function add_css$1() {
+	var style = element("style");
+	style.id = 'svelte-u8hewo-style';
+	style.textContent = ".stats.svelte-u8hewo{display:grid;grid-template-columns:minmax(100px, 300px) 1fr;grid-gap:10px}";
+	append(document.head, style);
+}
+
+function get_each_context$3(ctx, list, i) {
+	const child_ctx = Object.create(ctx);
+	child_ctx.plan = list[i];
+	return child_ctx;
+}
+
+// (276:26) 
+function create_if_block_6$1(ctx) {
+	var div0, t0, h4, t2, div2, div1, span0, t4, span1, t5_value = ctx.data && ctx.data.influence_points ? ctx.data.influence_points : 0 + "", t5, t6, current;
+
+	let each_value = ctx.plans;
+
+	let each_blocks = [];
+
+	for (let i = 0; i < each_value.length; i += 1) {
+		each_blocks[i] = create_each_block$3(get_each_context$3(ctx, each_value, i));
+	}
+
+	const out = i => transition_out(each_blocks[i], 1, 1, () => {
+		each_blocks[i] = null;
+	});
+
+	var invoices = new Invoices({
+		props: {
+		userdata: ctx.userdb,
+		user: ctx.user
+	}
+	});
+	invoices.$on("error", ctx.error_handler);
+
+	return {
+		c() {
+			div0 = element("div");
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+
+			t0 = space();
+			h4 = element("h4");
+			h4.textContent = "Account";
+			t2 = space();
+			div2 = element("div");
+			div1 = element("div");
+			span0 = element("span");
+			span0.textContent = "Accumulated Influence Points";
+			t4 = space();
+			span1 = element("span");
+			t5 = text(t5_value);
+			t6 = space();
+			invoices.$$.fragment.c();
+			attr(div0, "id", "plans");
+			attr(div0, "class", "row");
+			attr(h4, "class", "mt-4");
+			attr(div1, "class", "card-body stats svelte-u8hewo");
+			attr(div2, "class", "card mt-4");
+		},
+
+		m(target, anchor) {
+			insert(target, div0, anchor);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].m(div0, null);
+			}
+
+			insert(target, t0, anchor);
+			insert(target, h4, anchor);
+			insert(target, t2, anchor);
+			insert(target, div2, anchor);
+			append(div2, div1);
+			append(div1, span0);
+			append(div1, t4);
+			append(div1, span1);
+			append(span1, t5);
+			insert(target, t6, anchor);
+			mount_component(invoices, target, anchor);
+			current = true;
+		},
+
+		p(changed, ctx) {
+			if (changed.plans || changed.user || changed.data) {
+				each_value = ctx.plans;
+
+				let i;
+				for (i = 0; i < each_value.length; i += 1) {
+					const child_ctx = get_each_context$3(ctx, each_value, i);
+
+					if (each_blocks[i]) {
+						each_blocks[i].p(changed, child_ctx);
+						transition_in(each_blocks[i], 1);
+					} else {
+						each_blocks[i] = create_each_block$3(child_ctx);
+						each_blocks[i].c();
+						transition_in(each_blocks[i], 1);
+						each_blocks[i].m(div0, null);
+					}
+				}
+
+				group_outros();
+				for (i = each_value.length; i < each_blocks.length; i += 1) {
+					out(i);
+				}
+				check_outros();
+			}
+
+			if ((!current || changed.data) && t5_value !== (t5_value = ctx.data && ctx.data.influence_points ? ctx.data.influence_points : 0 + "")) {
+				set_data(t5, t5_value);
+			}
+
+			var invoices_changes = {};
+			if (changed.userdb) invoices_changes.userdata = ctx.userdb;
+			if (changed.user) invoices_changes.user = ctx.user;
+			invoices.$set(invoices_changes);
+		},
+
+		i(local) {
+			if (current) return;
+			for (let i = 0; i < each_value.length; i += 1) {
+				transition_in(each_blocks[i]);
+			}
+
+			transition_in(invoices.$$.fragment, local);
+
+			current = true;
+		},
+
+		o(local) {
+			each_blocks = each_blocks.filter(Boolean);
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				transition_out(each_blocks[i]);
+			}
+
+			transition_out(invoices.$$.fragment, local);
+			current = false;
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(div0);
+			}
+
+			destroy_each(each_blocks, detaching);
+
+			if (detaching) {
+				detach(t0);
+				detach(h4);
+				detach(t2);
+				detach(div2);
+				detach(t6);
+			}
+
+			destroy_component(invoices, detaching);
+		}
+	};
+}
+
+// (203:28) 
+function create_if_block_4$1(ctx) {
+	var div3, div2, p0, t0, t1_value = ctx.summary.plan ? ctx.summary.plan.title : '' + "", t1, t2, div0, label0, input0, t3, b0, t4_value = ctx.summary.user_currency_value.toFixed(2) + "", t4, t5_value = ctx.summary.user_currency + "", t5, t6, br0, t7, small0, t8, t9_value = new ctx.Date(parseInt(ctx.summary.start)).toLocaleDateString() + "", t9, t10, t11_value = new ctx.Date(parseInt(ctx.summary.end)).toLocaleDateString() + "", t11, t12, label1, input1, t13, b1, t14_value = ctx.summary.user_currency_value.toFixed(2) + "", t14, t15_value = ctx.summary.user_currency + "", t15, t16, t17, br1, t18, small1, t19, t20_value = new ctx.Date(parseInt(ctx.summary.start)).toLocaleDateString() + "", t20, t21, p1, t23, p2, t24, updating_currency, t25, t26, t27, p3, label2, input2, t28, a, t30, div1, button0, t32, button1, t33, button1_disabled_value, current, dispose;
+
+	function currencyconverter_currency_binding(value) {
+		ctx.currencyconverter_currency_binding.call(null, value);
+		updating_currency = true;
+		add_flush_callback(() => updating_currency = false);
+	}
+
+	let currencyconverter_props = { value: ctx.summary.plan.euro_price_value };
+	if (ctx.summary.user_currency !== void 0) {
+		currencyconverter_props.currency = ctx.summary.user_currency;
+	}
+	var currencyconverter = new Currency({ props: currencyconverter_props });
+
+	binding_callbacks.push(() => bind(currencyconverter, 'currency', currencyconverter_currency_binding));
+	currencyconverter.$on("output", ctx.output_handler_1);
+
+	var if_block = (ctx.summary.plan.euro_price_value > 3) && create_if_block_5$1();
+
+	return {
+		c() {
+			div3 = element("div");
+			div2 = element("div");
+			p0 = element("p");
+			t0 = text("Subscription Type: ");
+			t1 = text(t1_value);
+			t2 = space();
+			div0 = element("div");
+			label0 = element("label");
+			input0 = element("input");
+			t3 = text("\n          One Month -\n          ");
+			b0 = element("b");
+			t4 = text(t4_value);
+			t5 = text(t5_value);
+			t6 = space();
+			br0 = element("br");
+			t7 = space();
+			small0 = element("small");
+			t8 = text("Period: ");
+			t9 = text(t9_value);
+			t10 = text(" - ");
+			t11 = text(t11_value);
+			t12 = space();
+			label1 = element("label");
+			input1 = element("input");
+			t13 = text("\n          Recurring* -\n          ");
+			b1 = element("b");
+			t14 = text(t14_value);
+			t15 = text(t15_value);
+			t16 = text(" /\n            month");
+			t17 = space();
+			br1 = element("br");
+			t18 = space();
+			small1 = element("small");
+			t19 = text("Start: ");
+			t20 = text(t20_value);
+			t21 = space();
+			p1 = element("p");
+			p1.textContent = "* You can cancel the subscription on a monthly base.";
+			t23 = space();
+			p2 = element("p");
+			t24 = text("(~\n        ");
+			currencyconverter.$$.fragment.c();
+			t25 = text("\n        )");
+			t26 = space();
+			if (if_block) if_block.c();
+			t27 = space();
+			p3 = element("p");
+			label2 = element("label");
+			input2 = element("input");
+			t28 = text("\n          You accept our\n          ");
+			a = element("a");
+			a.textContent = "Terms Of Service";
+			t30 = space();
+			div1 = element("div");
+			button0 = element("button");
+			button0.textContent = "Back";
+			t32 = space();
+			button1 = element("button");
+			t33 = text("Continue to Checkout");
+			ctx.$$binding_groups[0].push(input0);
+			attr(input0, "type", "radio");
+			attr(input0, "name", "options");
+			input0.__value = false;
+			input0.value = input0.__value;
+			ctx.$$binding_groups[0].push(input1);
+			attr(input1, "type", "radio");
+			attr(input1, "name", "options");
+			input1.__value = true;
+			input1.value = input1.__value;
+			set_style(div0, "display", "grid");
+			set_style(div0, "grid-auto-flow", "column");
+			set_style(div0, "grid-auto-columns", "300px");
+			set_style(div0, "grid-gap", "20px");
+			attr(p1, "class", "small");
+			attr(input2, "type", "checkbox");
+			attr(input2, "name", "agb");
+			attr(a, "href", "/terms");
+			attr(a, "target", "_blank");
+			attr(button0, "class", "btn btn-secondary");
+			attr(button1, "class", "btn btn-primary");
+			button1.disabled = button1_disabled_value = !ctx.summary.agb;
+			attr(div2, "class", "card-body");
+			attr(div3, "class", "card");
+
+			dispose = [
+				listen(input0, "change", ctx.input0_change_handler),
+				listen(input1, "change", ctx.input1_change_handler),
+				listen(input2, "change", ctx.input2_change_handler),
+				listen(button0, "click", ctx.click_handler_2),
+				listen(button1, "click", ctx.click_handler_3)
+			];
+		},
+
+		m(target, anchor) {
+			insert(target, div3, anchor);
+			append(div3, div2);
+			append(div2, p0);
+			append(p0, t0);
+			append(p0, t1);
+			append(div2, t2);
+			append(div2, div0);
+			append(div0, label0);
+			append(label0, input0);
+
+			input0.checked = input0.__value === ctx.summary.recurring;
+
+			append(label0, t3);
+			append(label0, b0);
+			append(b0, t4);
+			append(b0, t5);
+			append(label0, t6);
+			append(label0, br0);
+			append(label0, t7);
+			append(label0, small0);
+			append(small0, t8);
+			append(small0, t9);
+			append(small0, t10);
+			append(small0, t11);
+			append(div0, t12);
+			append(div0, label1);
+			append(label1, input1);
+
+			input1.checked = input1.__value === ctx.summary.recurring;
+
+			append(label1, t13);
+			append(label1, b1);
+			append(b1, t14);
+			append(b1, t15);
+			append(b1, t16);
+			append(label1, t17);
+			append(label1, br1);
+			append(label1, t18);
+			append(label1, small1);
+			append(small1, t19);
+			append(small1, t20);
+			append(div2, t21);
+			append(div2, p1);
+			append(div2, t23);
+			append(div2, p2);
+			append(p2, t24);
+			mount_component(currencyconverter, p2, null);
+			append(p2, t25);
+			append(div2, t26);
+			if (if_block) if_block.m(div2, null);
+			append(div2, t27);
+			append(div2, p3);
+			append(p3, label2);
+			append(label2, input2);
+
+			input2.checked = ctx.summary.agb;
+
+			append(label2, t28);
+			append(label2, a);
+			append(div2, t30);
+			append(div2, div1);
+			append(div1, button0);
+			append(div1, t32);
+			append(div1, button1);
+			append(button1, t33);
+			current = true;
+		},
+
+		p(changed, ctx) {
+			if ((!current || changed.summary) && t1_value !== (t1_value = ctx.summary.plan ? ctx.summary.plan.title : '' + "")) {
+				set_data(t1, t1_value);
+			}
+
+			if (changed.summary) input0.checked = input0.__value === ctx.summary.recurring;
+
+			if ((!current || changed.summary) && t4_value !== (t4_value = ctx.summary.user_currency_value.toFixed(2) + "")) {
+				set_data(t4, t4_value);
+			}
+
+			if ((!current || changed.summary) && t5_value !== (t5_value = ctx.summary.user_currency + "")) {
+				set_data(t5, t5_value);
+			}
+
+			if ((!current || changed.summary) && t9_value !== (t9_value = new ctx.Date(parseInt(ctx.summary.start)).toLocaleDateString() + "")) {
+				set_data(t9, t9_value);
+			}
+
+			if ((!current || changed.summary) && t11_value !== (t11_value = new ctx.Date(parseInt(ctx.summary.end)).toLocaleDateString() + "")) {
+				set_data(t11, t11_value);
+			}
+
+			if (changed.summary) input1.checked = input1.__value === ctx.summary.recurring;
+
+			if ((!current || changed.summary) && t14_value !== (t14_value = ctx.summary.user_currency_value.toFixed(2) + "")) {
+				set_data(t14, t14_value);
+			}
+
+			if ((!current || changed.summary) && t15_value !== (t15_value = ctx.summary.user_currency + "")) {
+				set_data(t15, t15_value);
+			}
+
+			if ((!current || changed.summary) && t20_value !== (t20_value = new ctx.Date(parseInt(ctx.summary.start)).toLocaleDateString() + "")) {
+				set_data(t20, t20_value);
+			}
+
+			var currencyconverter_changes = {};
+			if (changed.summary) currencyconverter_changes.value = ctx.summary.plan.euro_price_value;
+			if (!updating_currency && changed.summary) {
+				currencyconverter_changes.currency = ctx.summary.user_currency;
+			}
+			currencyconverter.$set(currencyconverter_changes);
+
+			if (ctx.summary.plan.euro_price_value > 3) {
+				if (!if_block) {
+					if_block = create_if_block_5$1();
+					if_block.c();
+					if_block.m(div2, t27);
+				}
+			} else if (if_block) {
+				if_block.d(1);
+				if_block = null;
+			}
+
+			if (changed.summary) input2.checked = ctx.summary.agb;
+
+			if ((!current || changed.summary) && button1_disabled_value !== (button1_disabled_value = !ctx.summary.agb)) {
+				button1.disabled = button1_disabled_value;
+			}
+		},
+
+		i(local) {
+			if (current) return;
+			transition_in(currencyconverter.$$.fragment, local);
+
+			current = true;
+		},
+
+		o(local) {
+			transition_out(currencyconverter.$$.fragment, local);
+			current = false;
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(div3);
+			}
+
+			ctx.$$binding_groups[0].splice(ctx.$$binding_groups[0].indexOf(input0), 1);
+			ctx.$$binding_groups[0].splice(ctx.$$binding_groups[0].indexOf(input1), 1);
+
+			destroy_component(currencyconverter);
+
+			if (if_block) if_block.d();
+			run_all(dispose);
+		}
+	};
+}
+
+// (144:29) 
+function create_if_block_2$2(ctx) {
+	var tab_container, tab_header, t3, tab_body, tab_body_item0, p0, t7, p1, t11, updating_currency, t12, div0, button0, t14, button1, t16, tab_body_item1, div1, start_braintree_action, t17, t18, div2, button2, t20, button3, current, dispose;
+
+	function iban_currency_binding(value) {
+		ctx.iban_currency_binding.call(null, value);
+		updating_currency = true;
+		add_flush_callback(() => updating_currency = false);
+	}
+
+	let iban_props = {
+		value: ctx.summary.plan.euro_price_value,
+		refcode: ctx.summary.refcode
+	};
+	if (ctx.summary.user_currency !== void 0) {
+		iban_props.currency = ctx.summary.user_currency;
+	}
+	var iban = new Iban({ props: iban_props });
+
+	binding_callbacks.push(() => bind(iban, 'currency', iban_currency_binding));
+	iban.$on("output", ctx.output_handler);
+
+	var if_block = (ctx.error_message_braintree) && create_if_block_3$1(ctx);
+
+	return {
+		c() {
+			tab_container = element("tab-container");
+			tab_header = element("tab-header");
+			tab_header.innerHTML = `<tab-header-item class="tab-active">
+			        IBAN Bank Account Transfer
+			      </tab-header-item> <tab-header-item>PayPal, Credit Card</tab-header-item>`;
+			t3 = space();
+			tab_body = element("tab-body");
+			tab_body_item0 = element("tab-body-item");
+			p0 = element("p");
+			p0.innerHTML = `
+			          An IBAN (Swift) transaction usually takes about 1 and up to 3 business
+			          days, but will save transaction and payment gateway fees. To
+			          compensate for the non-instant IBAN experience, your subscription
+			          status will still be upgraded
+			          <b>immediately</b>
+			          as with other payment options.
+			        `;
+			t7 = space();
+			p1 = element("p");
+			p1.innerHTML = `
+			          Please perform the bank transfer in the near future though. The
+			          account is automatically checked every 24 hours (
+			          <a href="https://github.com/openhab-nodes/cloud-subscriptions" target="_blank">
+			            check the source code
+			          </a>
+			          ).
+			        `;
+			t11 = space();
+			iban.$$.fragment.c();
+			t12 = space();
+			div0 = element("div");
+			button0 = element("button");
+			button0.textContent = "Back";
+			t14 = space();
+			button1 = element("button");
+			button1.textContent = "Finish Checkout & Send confirmation Mail";
+			t16 = space();
+			tab_body_item1 = element("tab-body-item");
+			div1 = element("div");
+			t17 = space();
+			if (if_block) if_block.c();
+			t18 = space();
+			div2 = element("div");
+			button2 = element("button");
+			button2.textContent = "Back";
+			t20 = space();
+			button3 = element("button");
+			button3.textContent = "Finish Checkout & Send confirmation Mail";
+			attr(button0, "class", "btn btn-secondary");
+			attr(button1, "class", "btn btn-primary");
+			attr(button2, "class", "btn btn-secondary");
+			attr(button3, "class", "btn btn-primary");
+
+			dispose = [
+				listen(button0, "click", ctx.click_handler),
+				listen(button1, "click", ctx.confirm_iban),
+				listen(button2, "click", ctx.click_handler_1),
+				listen(button3, "click", ctx.confirm)
+			];
+		},
+
+		m(target, anchor) {
+			insert(target, tab_container, anchor);
+			append(tab_container, tab_header);
+			append(tab_container, t3);
+			append(tab_container, tab_body);
+			append(tab_body, tab_body_item0);
+			append(tab_body_item0, p0);
+			append(tab_body_item0, t7);
+			append(tab_body_item0, p1);
+			append(tab_body_item0, t11);
+			mount_component(iban, tab_body_item0, null);
+			append(tab_body_item0, t12);
+			append(tab_body_item0, div0);
+			append(div0, button0);
+			append(div0, t14);
+			append(div0, button1);
+			append(tab_body, t16);
+			append(tab_body, tab_body_item1);
+			append(tab_body_item1, div1);
+			ctx.div1_binding(div1);
+			start_braintree_action = ctx.start_braintree.call(null, div1) || {};
+			append(tab_body_item1, t17);
+			if (if_block) if_block.m(tab_body_item1, null);
+			append(tab_body_item1, t18);
+			append(tab_body_item1, div2);
+			append(div2, button2);
+			append(div2, t20);
+			append(div2, button3);
+			current = true;
+		},
+
+		p(changed, ctx) {
+			var iban_changes = {};
+			if (changed.summary) iban_changes.value = ctx.summary.plan.euro_price_value;
+			if (changed.summary) iban_changes.refcode = ctx.summary.refcode;
+			if (!updating_currency && changed.summary) {
+				iban_changes.currency = ctx.summary.user_currency;
+			}
+			iban.$set(iban_changes);
+
+			if (ctx.error_message_braintree) {
+				if (if_block) {
+					if_block.p(changed, ctx);
+				} else {
+					if_block = create_if_block_3$1(ctx);
+					if_block.c();
+					if_block.m(tab_body_item1, t18);
+				}
+			} else if (if_block) {
+				if_block.d(1);
+				if_block = null;
+			}
+		},
+
+		i(local) {
+			if (current) return;
+			transition_in(iban.$$.fragment, local);
+
+			current = true;
+		},
+
+		o(local) {
+			transition_out(iban.$$.fragment, local);
+			current = false;
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(tab_container);
+			}
+
+			destroy_component(iban);
+
+			ctx.div1_binding(null);
+			if (start_braintree_action && typeof start_braintree_action.destroy === 'function') start_braintree_action.destroy();
+			if (if_block) if_block.d();
+			run_all(dispose);
+		}
+	};
+}
+
+// (142:0) {#if mode == 'confirmation'}
+function create_if_block_1$2(ctx) {
+	var t;
+
+	return {
+		c() {
+			t = text("asd");
+		},
+
+		m(target, anchor) {
+			insert(target, t, anchor);
+		},
+
+		p: noop,
+		i: noop,
+		o: noop,
+
+		d(detaching) {
+			if (detaching) {
+				detach(t);
+			}
+		}
+	};
+}
+
+// (278:4) {#each plans as plan}
+function create_each_block$3(ctx) {
+	var current;
+
+	var subscriptionplan = new Subscription_plan({
+		props: {
+		plan: ctx.plan,
+		user: ctx.user,
+		selected: ctx.data && ctx.data.subscription && ctx.data.subscription.plan ? ctx.data.subscription.plan == ctx.plan.id : ctx.plan.id == 'free'
+	}
+	});
+	subscriptionplan.$on("select", ctx.select_plan);
+
+	return {
+		c() {
+			subscriptionplan.$$.fragment.c();
+		},
+
+		m(target, anchor) {
+			mount_component(subscriptionplan, target, anchor);
+			current = true;
+		},
+
+		p(changed, ctx) {
+			var subscriptionplan_changes = {};
+			if (changed.plans) subscriptionplan_changes.plan = ctx.plan;
+			if (changed.user) subscriptionplan_changes.user = ctx.user;
+			if (changed.data || changed.plans) subscriptionplan_changes.selected = ctx.data && ctx.data.subscription && ctx.data.subscription.plan ? ctx.data.subscription.plan == ctx.plan.id : ctx.plan.id == 'free';
+			subscriptionplan.$set(subscriptionplan_changes);
+		},
+
+		i(local) {
+			if (current) return;
+			transition_in(subscriptionplan.$$.fragment, local);
+
+			current = true;
+		},
+
+		o(local) {
+			transition_out(subscriptionplan.$$.fragment, local);
+			current = false;
+		},
+
+		d(detaching) {
+			destroy_component(subscriptionplan, detaching);
+		}
+	};
+}
+
+// (250:6) {#if summary.plan.euro_price_value > 3}
+function create_if_block_5$1(ctx) {
+	var p;
+
+	return {
+		c() {
+			p = element("p");
+			p.textContent = "Your financial contribution will greatly help to add more exiting\n          stuff to this project. Thanks.";
+		},
+
+		m(target, anchor) {
+			insert(target, p, anchor);
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(p);
+			}
+		}
+	};
+}
+
+// (188:8) {#if error_message_braintree}
+function create_if_block_3$1(ctx) {
+	var p, t;
+
+	return {
+		c() {
+			p = element("p");
+			t = text(ctx.error_message_braintree);
+			attr(p, "class", "text-danger");
+		},
+
+		m(target, anchor) {
+			insert(target, p, anchor);
+			append(p, t);
+		},
+
+		p(changed, ctx) {
+			if (changed.error_message_braintree) {
+				set_data(t, ctx.error_message_braintree);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(p);
+			}
+		}
+	};
+}
+
+// (301:0) {#if error_message}
+function create_if_block$2(ctx) {
+	var p, t;
+
+	return {
+		c() {
+			p = element("p");
+			t = text(ctx.error_message);
+			attr(p, "class", "text-danger");
+		},
+
+		m(target, anchor) {
+			insert(target, p, anchor);
+			append(p, t);
+		},
+
+		p(changed, ctx) {
+			if (changed.error_message) {
+				set_data(t, ctx.error_message);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(p);
+			}
+		}
+	};
+}
+
+function create_fragment$4(ctx) {
+	var current_block_type_index, if_block0, t, if_block1_anchor, current;
+
+	var if_block_creators = [
+		create_if_block_1$2,
+		create_if_block_2$2,
+		create_if_block_4$1,
+		create_if_block_6$1
+	];
+
+	var if_blocks = [];
+
+	function select_block_type(changed, ctx) {
+		if (ctx.mode == 'confirmation') return 0;
+		if (ctx.mode == 'checkout') return 1;
+		if (ctx.mode == 'options') return 2;
+		if (ctx.mode == 'plans') return 3;
+		return -1;
+	}
+
+	if (~(current_block_type_index = select_block_type(null, ctx))) {
+		if_block0 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+	}
+
+	var if_block1 = (ctx.error_message) && create_if_block$2(ctx);
+
+	return {
+		c() {
+			if (if_block0) if_block0.c();
+			t = space();
+			if (if_block1) if_block1.c();
+			if_block1_anchor = empty();
+		},
+
+		m(target, anchor) {
+			if (~current_block_type_index) if_blocks[current_block_type_index].m(target, anchor);
+			insert(target, t, anchor);
+			if (if_block1) if_block1.m(target, anchor);
+			insert(target, if_block1_anchor, anchor);
+			current = true;
+		},
+
+		p(changed, ctx) {
+			var previous_block_index = current_block_type_index;
+			current_block_type_index = select_block_type(changed, ctx);
+			if (current_block_type_index === previous_block_index) {
+				if (~current_block_type_index) if_blocks[current_block_type_index].p(changed, ctx);
+			} else {
+				if (if_block0) {
+					group_outros();
+					transition_out(if_blocks[previous_block_index], 1, 1, () => {
+						if_blocks[previous_block_index] = null;
+					});
+					check_outros();
+				}
+
+				if (~current_block_type_index) {
+					if_block0 = if_blocks[current_block_type_index];
+					if (!if_block0) {
+						if_block0 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+						if_block0.c();
+					}
+					transition_in(if_block0, 1);
+					if_block0.m(t.parentNode, t);
+				} else {
+					if_block0 = null;
+				}
+			}
+
+			if (ctx.error_message) {
+				if (if_block1) {
+					if_block1.p(changed, ctx);
+				} else {
+					if_block1 = create_if_block$2(ctx);
+					if_block1.c();
+					if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
+				}
+			} else if (if_block1) {
+				if_block1.d(1);
+				if_block1 = null;
+			}
+		},
+
+		i(local) {
+			if (current) return;
+			transition_in(if_block0);
+			current = true;
+		},
+
+		o(local) {
+			transition_out(if_block0);
+			current = false;
+		},
+
+		d(detaching) {
+			if (~current_block_type_index) if_blocks[current_block_type_index].d(detaching);
+
+			if (detaching) {
+				detach(t);
+			}
+
+			if (if_block1) if_block1.d(detaching);
+
+			if (detaching) {
+				detach(if_block1_anchor);
+			}
+		}
+	};
+}
+
+function instance$4($$self, $$props, $$invalidate) {
+	
+
+  let error_message = null;
+  let error_message_braintree = null;
+  let fetchWithAuth;
+  let mode = "plans";
+  let plans = [];
+  let summary = { recurring: false };
+
+  // Braintree
+  let payment_instance;
+  let braintree_container;
+
+  let { classes = "" } = $$props;
+  let user = null;
+  let data = {};
+  let actionqueue = null;
+  let onDestroyProxy = () => {};
+  let userdb = null;
+  onDestroy(() => onDestroyProxy());
+
+  async function start() {
+    const temp = await (await fetch("/run/subscriptions.json")).json();
+    for (let plan of temp) {
+      if (!plan.euro_price) plan.euro_price = 0;
+      plan.euro_price_value = plan.euro_price.min
+        ? plan.euro_price.min
+        : plan.euro_price;
+    }
+    $$invalidate('plans', plans = temp);
+
+    const module = await import('../../../../../../../../js/cmp/userdata.js');
+    onDestroyProxy = module.UserAwareComponent(
+      user_ => ($$invalidate('user', user = user_)),
+      data_ => ($$invalidate('data', data = data_)),
+      aq_ => (actionqueue = aq_)
+    );
+    $$invalidate('userdb', userdb = module.userdata);
+    fetchWithAuth = module.fetchWithAuth;
+  }
+  start().catch(err => {
+    console.warn("Failed to request client token!", err);
+    $$invalidate('error_message', error_message = "Failed to request client token! " + err.message);
+  });
+  /// End -- User Aware Component
+
+  async function start_braintree(change_plan) {
+    const module = await import('../../../../../../../../js/cmp/payment.js');
+    let braintree = module.braintree;
+    fetchWithAuth("subscription.openhabx.com/clienttoken")
+      .then(json => {
+        if (!json.client_token)
+          throw new Error("Response does not contain a client token!");
+        const opts = {
+          authorization: json.client_token,
+          container: braintree_container,
+          paypal: {
+            flow: "vault"
+          },
+          preselectVaultedPaymentMethod: true
+        };
+        braintree.create(opts, (err, dropinInstance) => {
+          if (err) {
+            $$invalidate('error_message_braintree', error_message_braintree = err.message);
+            console.error(err);
+            return;
+          }
+          payment_instance = dropinInstance;
+        });
+      })
+      .catch(err => {
+        console.warn("Failed to request client token!", err);
+        $$invalidate('error_message_braintree', error_message_braintree =
+          "Failed to request client token! " + err.message);
+      });
+
+    return {
+      destroy() {}
+    };
+  }
+
+  function confirm_iban(e) {
+    $$invalidate('mode', mode = "confirmation");
+  }
+
+  function confirm(e) {
+    payment_instance.requestPaymentMethod((err, payload) => {
+      if (err) {
+        $$invalidate('error_message', error_message = err.message);
+        console.error(err);
+        return;
+      }
+      fetchWithAuth(
+        "subscription.openhabx.com/confirm",
+        "POST",
+        JSON.stringify(payload)
+      ).catch(err => {
+        console.warn("Failed to request client token!", err);
+        $$invalidate('error_message', error_message = "Failed to request client token! " + err.message);
+      });
+    });
+  }
+
+  function select_plan(e) {
+    let plan = plans.find(p => p.id == e.detail);
+    $$invalidate('summary', summary.plan = plan, summary);
+    $$invalidate('summary', summary.start =
+      data.subscription && data.subscription.ends
+        ? data.subscription.ends
+        : Date.now(), summary);
+    const d = new Date();
+    d.setDate(d.getDate() + 30);
+    $$invalidate('summary', summary.end = d.getTime(), summary);
+    $$invalidate('summary', summary.user_currency = "€", summary);
+    $$invalidate('summary', summary.user_currency_value = plan.euro_price_value, summary);
+    const start_date = new Date(summary.start);
+    $$invalidate('summary', summary.refcode = refcode(user, start_date), summary);
+
+    $$invalidate('mode', mode = "options");
+  }
+
+	const $$binding_groups = [[]];
+
+	function iban_currency_binding(value) {
+		summary.user_currency = value;
+		$$invalidate('summary', summary);
+	}
+
+	const output_handler = (e) => ($$invalidate('summary', summary.user_currency_value = e.detail, summary));
+
+	const click_handler = (e) => ($$invalidate('mode', mode = 'options'));
+
+	function div1_binding($$value) {
+		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
+			$$invalidate('braintree_container', braintree_container = $$value);
+		});
+	}
+
+	const click_handler_1 = (e) => ($$invalidate('mode', mode = 'options'));
+
+	function input0_change_handler() {
+		summary.recurring = this.__value;
+		$$invalidate('summary', summary);
+	}
+
+	function input1_change_handler() {
+		summary.recurring = this.__value;
+		$$invalidate('summary', summary);
+	}
+
+	function currencyconverter_currency_binding(value) {
+		summary.user_currency = value;
+		$$invalidate('summary', summary);
+	}
+
+	const output_handler_1 = (e) => ($$invalidate('summary', summary.user_currency_value = e.detail, summary));
+
+	function input2_change_handler() {
+		summary.agb = this.checked;
+		$$invalidate('summary', summary);
+	}
+
+	const click_handler_2 = (e) => ($$invalidate('mode', mode = 'plans'));
+
+	const click_handler_3 = (e) => ($$invalidate('mode', mode = 'checkout'));
+
+	const error_handler = (e) => ($$invalidate('error_message', error_message = e.detail));
+
+	$$self.$set = $$props => {
+		if ('classes' in $$props) $$invalidate('classes', classes = $$props.classes);
+	};
+
+	return {
+		error_message,
+		error_message_braintree,
+		mode,
+		plans,
+		summary,
+		braintree_container,
+		classes,
+		user,
+		data,
+		userdb,
+		start_braintree,
+		confirm_iban,
+		confirm,
+		select_plan,
+		Date,
+		iban_currency_binding,
+		output_handler,
+		click_handler,
+		div1_binding,
+		click_handler_1,
+		input0_change_handler,
+		input1_change_handler,
+		currencyconverter_currency_binding,
+		output_handler_1,
+		input2_change_handler,
+		click_handler_2,
+		click_handler_3,
+		error_handler,
+		$$binding_groups
+	};
+}
+
+class Cmp extends SvelteComponent {
+	constructor(options) {
+		super();
+		if (!document.getElementById("svelte-u8hewo-style")) add_css$1();
+		init(this, options, instance$4, create_fragment$4, safe_not_equal, ["classes"]);
+	}
+}
+
+window.customElements.define('ui-subscription', class extends HTMLElement {
+    constructor() {
+        super();
+    }
+    connectedCallback() {
+        const classes = this.getAttribute("class");
+        this.removeAttribute("class");
+        this.cmp = new Cmp({ target: this, props: { classes } });
+    }
+    disconnectedCallback() {
+        if (this.cmp) this.cmp.$destroy();
+    }
+});
 //# sourceMappingURL=ui-subscription.js.map

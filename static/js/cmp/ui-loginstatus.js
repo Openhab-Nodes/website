@@ -1,2 +1,544 @@
-function t(){}function n(t,n,e,i,c){t.__svelte_meta={loc:{file:n,line:e,column:i,char:c}}}function e(t){return t()}function i(){return Object.create(null)}function c(t){t.forEach(e)}function o(t){return"function"==typeof t}function s(t,n){return t!=t?n==n:t!==n||t&&"object"==typeof t||"function"==typeof t}function l(t,n){t.appendChild(n)}function u(t,n,e){t.insertBefore(n,e||null)}function a(t){t.parentNode.removeChild(t)}function r(t){return document.createElement(t)}function g(t){return document.createTextNode(t)}function d(t,n,e){null==e?t.removeAttribute(n):t.setAttribute(n,e)}function I(t,n){n=""+n,t.data!==n&&(t.data=n)}let m;function b(t){m=t}function X(t){(function(){if(!m)throw new Error("Function called outside component initialization");return m})().$$.on_destroy.push(t)}const p=[],f=[],G=[],Z=[],h=Promise.resolve();let C=!1;function y(t){G.push(t)}function x(){const t=new Set;do{for(;p.length;){const t=p.shift();b(t),W(t.$$)}for(;f.length;)f.pop()();for(let n=0;n<G.length;n+=1){const e=G[n];t.has(e)||(e(),t.add(e))}G.length=0}while(p.length);for(;Z.length;)Z.pop()();C=!1}function W(t){t.fragment&&(t.update(t.dirty),c(t.before_update),t.fragment.p(t.dirty,t.ctx),t.dirty=null,t.after_update.forEach(y))}const B=new Set;function A(t,n){t.$$.dirty||(p.push(t),C||(C=!0,h.then(x)),t.$$.dirty=i()),t.$$.dirty[n]=!0}function V(n,s,l,u,a,r){const g=m;b(n);const d=s.props||{},I=n.$$={fragment:null,ctx:null,props:r,update:t,not_equal:a,bound:i(),on_mount:[],on_destroy:[],before_update:[],after_update:[],context:new Map(g?g.$$.context:[]),callbacks:i(),dirty:null};let X=!1;var p,f,G;I.ctx=l?l(n,d,(t,e)=>{I.ctx&&a(I.ctx[t],I.ctx[t]=e)&&(I.bound[t]&&I.bound[t](e),X&&A(n,t))}):d,I.update(),X=!0,c(I.before_update),I.fragment=u(I.ctx),s.target&&(s.hydrate?I.fragment.l((G=s.target,Array.from(G.childNodes))):I.fragment.c(),s.intro&&((p=n.$$.fragment)&&p.i&&(B.delete(p),p.i(f))),function(t,n,i){const{fragment:s,on_mount:l,on_destroy:u,after_update:a}=t.$$;s.m(n,i),y(()=>{const n=l.map(e).filter(o);u?u.push(...n):c(n),t.$$.on_mount=[]}),a.forEach(y)}(n,s.target,s.anchor),x()),b(g)}class F{$destroy(){var n,e;e=1,(n=this).$$.fragment&&(c(n.$$.on_destroy),n.$$.fragment.d(e),n.$$.on_destroy=n.$$.fragment=null,n.$$.ctx={}),this.$destroy=t}$on(t,n){const e=this.$$.callbacks[t]||(this.$$.callbacks[t]=[]);return e.push(n),()=>{const t=e.indexOf(n);-1!==t&&e.splice(t,1)}}$set(){}}class N extends F{constructor(t){if(!t||!t.target&&!t.$$inline)throw new Error("'target' is a required option");super()}$destroy(){super.$destroy(),this.$destroy=(()=>{console.warn("Component was already destroyed")})}}const w="assets/js/ui-loginstatus/cmp.svelte";function Q(e){var i;return{c:function(){(i=r("a")).textContent="Login",d(i,"href","/login"),d(i,"id","signed-out"),d(i,"class","btn btn-outline-primary svelte-s4mpi6"),n(i,w,72,2,1547)},m:function(t,n){u(t,i,n)},p:t,d:function(t){t&&a(i)}}}function $(t){var e,i;return{c:function(){e=r("button"),i=g(t.loading_msg),d(e,"class","btn btn-outline-primary disabled svelte-s4mpi6"),d(e,"title",t.loading_msg),n(e,w,68,2,1437)},m:function(t,n){u(t,e,n),l(e,i)},p:function(t,n){t.loading_msg&&(I(i,n.loading_msg),d(e,"title",n.loading_msg))},d:function(t){t&&a(e)}}}function v(t){var e,i,c,o,s=t.userimg_url&&Y(t);return{c:function(){e=r("a"),s&&s.c(),i=g(" "),c=r("span"),o=g(t.username),n(c,w,65,4,1382),d(e,"id","signed-in"),d(e,"href","/dashboard"),d(e,"class","nav-link btn btn-outline-primary usernamewrapper svelte-s4mpi6"),n(e,w,58,2,1174)},m:function(t,n){u(t,e,n),s&&s.m(e,null),l(e,i),l(e,c),l(c,o)},p:function(t,n){n.userimg_url?s?s.p(t,n):((s=Y(n)).c(),s.m(e,i)):s&&(s.d(1),s=null),t.username&&I(o,n.username)},d:function(t){t&&a(e),s&&s.d()}}}function Y(t){var e;return{c:function(){d(e=r("img"),"class","userimg svelte-s4mpi6"),d(e,"src",t.userimg_url),d(e,"alt","User Avatar"),n(e,w,63,6,1308)},m:function(t,n){u(t,e,n)},p:function(t,n){t.userimg_url&&d(e,"src",n.userimg_url)},d:function(t){t&&a(e)}}}function U(n){var e;function i(t){return t.is_signedin?v:t.is_loading?$:Q}var c=i(n),o=c(n);return{c:function(){o.c(),e=g("")},l:function(t){throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option")},m:function(t,n){o.m(t,n),u(t,e,n)},p:function(t,n){c===(c=i(n))&&o?o.p(t,n):(o.d(1),(o=c(n))&&(o.c(),o.m(e.parentNode,e)))},i:t,o:t,d:function(t){o.d(t),t&&a(e)}}}function J(t,n,e){let i,c=!0,o="Loading",s=!1,l="",u="";function a(t){t?(t.photoURL&&e("userimg_url",l=t.photoURL),t.displayName?e("username",u=t.displayName):t.email&&e("username",u=t.email),e("is_signedin",s=!0)):e("is_signedin",s=!1),e("is_loading",c=!1)}return X(()=>{i&&i(),i=null}),async function(){let t=await import("../../../../../../../../js/cmp/userdata.js"),n=t.firebase;await t.userdata.ready(),a(),i=n.auth().onAuthStateChanged(a,t=>{e("loading_msg",o="Connection Issue!")})}(),{is_loading:c,loading_msg:o,is_signedin:s,userimg_url:l,username:u}}class _ extends N{constructor(t){var n;super(t),document.getElementById("svelte-s4mpi6-style")||((n=r("style")).id="svelte-s4mpi6-style",n.textContent=".usernamewrapper.svelte-s4mpi6{display:flex;align-items:center}.userimg.svelte-s4mpi6{height:20px;padding-right:5px}.btn.svelte-s4mpi6{margin-left:50px}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY21wLnN2ZWx0ZSIsInNvdXJjZXMiOlsiY21wLnN2ZWx0ZSJdLCJzb3VyY2VzQ29udGVudCI6WyI8c2NyaXB0PlxuICBsZXQgaXNfbG9hZGluZyA9IHRydWU7XG4gIGxldCBsb2FkaW5nX21zZyA9IFwiTG9hZGluZ1wiO1xuICBsZXQgaXNfc2lnbmVkaW4gPSBmYWxzZTtcbiAgbGV0IHVzZXJpbWdfdXJsID0gXCJcIjtcbiAgbGV0IHVzZXJuYW1lID0gXCJcIjtcbiAgbGV0IHVucmVnX2F1dGhfbGlzdGVuZXI7XG5cbiAgaW1wb3J0IHsgb25EZXN0cm95IH0gZnJvbSBcInN2ZWx0ZVwiO1xuICBvbkRlc3Ryb3koKCkgPT4ge1xuICAgIGlmICh1bnJlZ19hdXRoX2xpc3RlbmVyKSB1bnJlZ19hdXRoX2xpc3RlbmVyKCk7XG4gICAgdW5yZWdfYXV0aF9saXN0ZW5lciA9IG51bGw7XG4gIH0pO1xuXG4gIGZ1bmN0aW9uIGNoZWNrX3VzZXIodXNlcikge1xuICAgIGlmICh1c2VyKSB7XG4gICAgICBpZiAodXNlci5waG90b1VSTCkgdXNlcmltZ191cmwgPSB1c2VyLnBob3RvVVJMO1xuICAgICAgaWYgKHVzZXIuZGlzcGxheU5hbWUpIHVzZXJuYW1lID0gdXNlci5kaXNwbGF5TmFtZTtcbiAgICAgIGVsc2UgaWYgKHVzZXIuZW1haWwpIHVzZXJuYW1lID0gdXNlci5lbWFpbDtcbiAgICAgIGlzX3NpZ25lZGluID0gdHJ1ZTtcbiAgICB9IGVsc2Uge1xuICAgICAgaXNfc2lnbmVkaW4gPSBmYWxzZTtcbiAgICB9XG4gICAgaXNfbG9hZGluZyA9IGZhbHNlO1xuICB9XG5cbiAgYXN5bmMgZnVuY3Rpb24gc3RhcnQoKSB7XG4gICAgbGV0IG1vZHVsZSA9IGF3YWl0IGltcG9ydChcIi9qcy9jbXAvdXNlcmRhdGEuanNcIik7XG4gICAgbGV0IGZpcmViYXNlID0gbW9kdWxlLmZpcmViYXNlO1xuICAgIGF3YWl0IG1vZHVsZS51c2VyZGF0YS5yZWFkeSgpO1xuICAgIGNoZWNrX3VzZXIoKTtcbiAgICB1bnJlZ19hdXRoX2xpc3RlbmVyID0gZmlyZWJhc2VcbiAgICAgIC5hdXRoKClcbiAgICAgIC5vbkF1dGhTdGF0ZUNoYW5nZWQoY2hlY2tfdXNlciwgZXJyb3IgPT4ge1xuICAgICAgICBsb2FkaW5nX21zZyA9IFwiQ29ubmVjdGlvbiBJc3N1ZSFcIjtcbiAgICAgIH0pO1xuICB9XG5cbiAgc3RhcnQoKTtcbjwvc2NyaXB0PlxuXG48c3R5bGU+XG4gIC51c2VybmFtZXdyYXBwZXIge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgfVxuXG4gIC51c2VyaW1nIHtcbiAgICBoZWlnaHQ6IDIwcHg7XG4gICAgcGFkZGluZy1yaWdodDogNXB4O1xuICB9XG5cbiAgLmJ0biB7XG4gICAgbWFyZ2luLWxlZnQ6IDUwcHg7XG4gIH1cbjwvc3R5bGU+XG5cbnsjaWYgaXNfc2lnbmVkaW59XG4gIDxhXG4gICAgaWQ9XCJzaWduZWQtaW5cIlxuICAgIGhyZWY9XCIvZGFzaGJvYXJkXCJcbiAgICBjbGFzcz1cIm5hdi1saW5rIGJ0biBidG4tb3V0bGluZS1wcmltYXJ5IHVzZXJuYW1ld3JhcHBlclwiPlxuICAgIHsjaWYgdXNlcmltZ191cmx9XG4gICAgICA8aW1nIGNsYXNzPVwidXNlcmltZ1wiIHNyYz17dXNlcmltZ191cmx9IGFsdD1cIlVzZXIgQXZhdGFyXCIgLz5cbiAgICB7L2lmfVxuICAgIDxzcGFuPnt1c2VybmFtZX08L3NwYW4+XG4gIDwvYT5cbns6ZWxzZSBpZiBpc19sb2FkaW5nfVxuICA8YnV0dG9uIGNsYXNzPVwiYnRuIGJ0bi1vdXRsaW5lLXByaW1hcnkgZGlzYWJsZWRcIiB0aXRsZT17bG9hZGluZ19tc2d9PlxuICAgIHtsb2FkaW5nX21zZ31cbiAgPC9idXR0b24+XG57OmVsc2V9XG4gIDxhIGhyZWY9XCIvbG9naW5cIiBpZD1cInNpZ25lZC1vdXRcIiBjbGFzcz1cImJ0biBidG4tb3V0bGluZS1wcmltYXJ5XCI+TG9naW48L2E+XG57L2lmfVxuIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQTBDRSxnQkFBZ0IsY0FBQyxDQUFDLEFBQ2hCLE9BQU8sQ0FBRSxJQUFJLENBQ2IsV0FBVyxDQUFFLE1BQU0sQUFDckIsQ0FBQyxBQUVELFFBQVEsY0FBQyxDQUFDLEFBQ1IsTUFBTSxDQUFFLElBQUksQ0FDWixhQUFhLENBQUUsR0FBRyxBQUNwQixDQUFDLEFBRUQsSUFBSSxjQUFDLENBQUMsQUFDSixXQUFXLENBQUUsSUFBSSxBQUNuQixDQUFDIn0= */",l(document.head,n)),V(this,t,J,U,s,[])}}window.customElements.define("ui-loginstatus",class extends HTMLElement{constructor(){super()}connectedCallback(){this.cmp=new _({target:this,props:{}})}disconnectedCallback(){this.cmp&&this.cmp.$destroy()}});
+function noop() { }
+function run(fn) {
+    return fn();
+}
+function blank_object() {
+    return Object.create(null);
+}
+function run_all(fns) {
+    fns.forEach(run);
+}
+function is_function(thing) {
+    return typeof thing === 'function';
+}
+function safe_not_equal(a, b) {
+    return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+}
+
+function append(target, node) {
+    target.appendChild(node);
+}
+function insert(target, node, anchor) {
+    target.insertBefore(node, anchor || null);
+}
+function detach(node) {
+    node.parentNode.removeChild(node);
+}
+function element(name) {
+    return document.createElement(name);
+}
+function text(data) {
+    return document.createTextNode(data);
+}
+function space() {
+    return text(' ');
+}
+function empty() {
+    return text('');
+}
+function attr(node, attribute, value) {
+    if (value == null)
+        node.removeAttribute(attribute);
+    else
+        node.setAttribute(attribute, value);
+}
+function children(element) {
+    return Array.from(element.childNodes);
+}
+function set_data(text, data) {
+    data = '' + data;
+    if (text.data !== data)
+        text.data = data;
+}
+
+let current_component;
+function set_current_component(component) {
+    current_component = component;
+}
+function get_current_component() {
+    if (!current_component)
+        throw new Error(`Function called outside component initialization`);
+    return current_component;
+}
+function onDestroy(fn) {
+    get_current_component().$$.on_destroy.push(fn);
+}
+
+const dirty_components = [];
+const binding_callbacks = [];
+const render_callbacks = [];
+const flush_callbacks = [];
+const resolved_promise = Promise.resolve();
+let update_scheduled = false;
+function schedule_update() {
+    if (!update_scheduled) {
+        update_scheduled = true;
+        resolved_promise.then(flush);
+    }
+}
+function add_render_callback(fn) {
+    render_callbacks.push(fn);
+}
+function flush() {
+    const seen_callbacks = new Set();
+    do {
+        // first, call beforeUpdate functions
+        // and update components
+        while (dirty_components.length) {
+            const component = dirty_components.shift();
+            set_current_component(component);
+            update(component.$$);
+        }
+        while (binding_callbacks.length)
+            binding_callbacks.pop()();
+        // then, once components are updated, call
+        // afterUpdate functions. This may cause
+        // subsequent updates...
+        for (let i = 0; i < render_callbacks.length; i += 1) {
+            const callback = render_callbacks[i];
+            if (!seen_callbacks.has(callback)) {
+                callback();
+                // ...so guard against infinite loops
+                seen_callbacks.add(callback);
+            }
+        }
+        render_callbacks.length = 0;
+    } while (dirty_components.length);
+    while (flush_callbacks.length) {
+        flush_callbacks.pop()();
+    }
+    update_scheduled = false;
+}
+function update($$) {
+    if ($$.fragment) {
+        $$.update($$.dirty);
+        run_all($$.before_update);
+        $$.fragment.p($$.dirty, $$.ctx);
+        $$.dirty = null;
+        $$.after_update.forEach(add_render_callback);
+    }
+}
+const outroing = new Set();
+function transition_in(block, local) {
+    if (block && block.i) {
+        outroing.delete(block);
+        block.i(local);
+    }
+}
+function mount_component(component, target, anchor) {
+    const { fragment, on_mount, on_destroy, after_update } = component.$$;
+    fragment.m(target, anchor);
+    // onMount happens before the initial afterUpdate
+    add_render_callback(() => {
+        const new_on_destroy = on_mount.map(run).filter(is_function);
+        if (on_destroy) {
+            on_destroy.push(...new_on_destroy);
+        }
+        else {
+            // Edge case - component was destroyed immediately,
+            // most likely as a result of a binding initialising
+            run_all(new_on_destroy);
+        }
+        component.$$.on_mount = [];
+    });
+    after_update.forEach(add_render_callback);
+}
+function destroy_component(component, detaching) {
+    if (component.$$.fragment) {
+        run_all(component.$$.on_destroy);
+        component.$$.fragment.d(detaching);
+        // TODO null out other refs, including component.$$ (but need to
+        // preserve final state?)
+        component.$$.on_destroy = component.$$.fragment = null;
+        component.$$.ctx = {};
+    }
+}
+function make_dirty(component, key) {
+    if (!component.$$.dirty) {
+        dirty_components.push(component);
+        schedule_update();
+        component.$$.dirty = blank_object();
+    }
+    component.$$.dirty[key] = true;
+}
+function init(component, options, instance, create_fragment, not_equal, prop_names) {
+    const parent_component = current_component;
+    set_current_component(component);
+    const props = options.props || {};
+    const $$ = component.$$ = {
+        fragment: null,
+        ctx: null,
+        // state
+        props: prop_names,
+        update: noop,
+        not_equal,
+        bound: blank_object(),
+        // lifecycle
+        on_mount: [],
+        on_destroy: [],
+        before_update: [],
+        after_update: [],
+        context: new Map(parent_component ? parent_component.$$.context : []),
+        // everything else
+        callbacks: blank_object(),
+        dirty: null
+    };
+    let ready = false;
+    $$.ctx = instance
+        ? instance(component, props, (key, ret, value = ret) => {
+            if ($$.ctx && not_equal($$.ctx[key], $$.ctx[key] = value)) {
+                if ($$.bound[key])
+                    $$.bound[key](value);
+                if (ready)
+                    make_dirty(component, key);
+            }
+            return ret;
+        })
+        : props;
+    $$.update();
+    ready = true;
+    run_all($$.before_update);
+    $$.fragment = create_fragment($$.ctx);
+    if (options.target) {
+        if (options.hydrate) {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            $$.fragment.l(children(options.target));
+        }
+        else {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            $$.fragment.c();
+        }
+        if (options.intro)
+            transition_in(component.$$.fragment);
+        mount_component(component, options.target, options.anchor);
+        flush();
+    }
+    set_current_component(parent_component);
+}
+let SvelteElement;
+if (typeof HTMLElement !== 'undefined') {
+    SvelteElement = class extends HTMLElement {
+        constructor() {
+            super();
+            this.attachShadow({ mode: 'open' });
+        }
+        connectedCallback() {
+            // @ts-ignore todo: improve typings
+            for (const key in this.$$.slotted) {
+                // @ts-ignore todo: improve typings
+                this.appendChild(this.$$.slotted[key]);
+            }
+        }
+        attributeChangedCallback(attr, _oldValue, newValue) {
+            this[attr] = newValue;
+        }
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            // TODO should this delegate to addEventListener?
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set() {
+            // overridden by instance, if it has props
+        }
+    };
+}
+class SvelteComponent {
+    $destroy() {
+        destroy_component(this, 1);
+        this.$destroy = noop;
+    }
+    $on(type, callback) {
+        const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+        callbacks.push(callback);
+        return () => {
+            const index = callbacks.indexOf(callback);
+            if (index !== -1)
+                callbacks.splice(index, 1);
+        };
+    }
+    $set() {
+        // overridden by instance, if it has props
+    }
+}
+
+/* assets/js/ui-loginstatus/cmp.svelte generated by Svelte v3.12.0 */
+
+function add_css() {
+	var style = element("style");
+	style.id = 'svelte-s4mpi6-style';
+	style.textContent = ".usernamewrapper.svelte-s4mpi6{display:flex;align-items:center}.userimg.svelte-s4mpi6{height:20px;padding-right:5px}.btn.svelte-s4mpi6{margin-left:50px}";
+	append(document.head, style);
+}
+
+// (72:0) {:else}
+function create_else_block(ctx) {
+	var a;
+
+	return {
+		c() {
+			a = element("a");
+			a.textContent = "Login";
+			attr(a, "href", "/login");
+			attr(a, "id", "signed-out");
+			attr(a, "class", "btn btn-outline-primary svelte-s4mpi6");
+		},
+
+		m(target, anchor) {
+			insert(target, a, anchor);
+		},
+
+		p: noop,
+
+		d(detaching) {
+			if (detaching) {
+				detach(a);
+			}
+		}
+	};
+}
+
+// (68:21) 
+function create_if_block_2(ctx) {
+	var button, t;
+
+	return {
+		c() {
+			button = element("button");
+			t = text(ctx.loading_msg);
+			attr(button, "class", "btn btn-outline-primary disabled svelte-s4mpi6");
+			attr(button, "title", ctx.loading_msg);
+		},
+
+		m(target, anchor) {
+			insert(target, button, anchor);
+			append(button, t);
+		},
+
+		p(changed, ctx) {
+			if (changed.loading_msg) {
+				set_data(t, ctx.loading_msg);
+				attr(button, "title", ctx.loading_msg);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(button);
+			}
+		}
+	};
+}
+
+// (58:0) {#if is_signedin}
+function create_if_block(ctx) {
+	var a, t0, span, t1;
+
+	var if_block = (ctx.userimg_url) && create_if_block_1(ctx);
+
+	return {
+		c() {
+			a = element("a");
+			if (if_block) if_block.c();
+			t0 = space();
+			span = element("span");
+			t1 = text(ctx.username);
+			attr(a, "id", "signed-in");
+			attr(a, "href", "/dashboard");
+			attr(a, "class", "nav-link btn btn-outline-primary usernamewrapper svelte-s4mpi6");
+		},
+
+		m(target, anchor) {
+			insert(target, a, anchor);
+			if (if_block) if_block.m(a, null);
+			append(a, t0);
+			append(a, span);
+			append(span, t1);
+		},
+
+		p(changed, ctx) {
+			if (ctx.userimg_url) {
+				if (if_block) {
+					if_block.p(changed, ctx);
+				} else {
+					if_block = create_if_block_1(ctx);
+					if_block.c();
+					if_block.m(a, t0);
+				}
+			} else if (if_block) {
+				if_block.d(1);
+				if_block = null;
+			}
+
+			if (changed.username) {
+				set_data(t1, ctx.username);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(a);
+			}
+
+			if (if_block) if_block.d();
+		}
+	};
+}
+
+// (63:4) {#if userimg_url}
+function create_if_block_1(ctx) {
+	var img;
+
+	return {
+		c() {
+			img = element("img");
+			attr(img, "class", "userimg svelte-s4mpi6");
+			attr(img, "src", ctx.userimg_url);
+			attr(img, "alt", "User Avatar");
+		},
+
+		m(target, anchor) {
+			insert(target, img, anchor);
+		},
+
+		p(changed, ctx) {
+			if (changed.userimg_url) {
+				attr(img, "src", ctx.userimg_url);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(img);
+			}
+		}
+	};
+}
+
+function create_fragment(ctx) {
+	var if_block_anchor;
+
+	function select_block_type(changed, ctx) {
+		if (ctx.is_signedin) return create_if_block;
+		if (ctx.is_loading) return create_if_block_2;
+		return create_else_block;
+	}
+
+	var current_block_type = select_block_type(null, ctx);
+	var if_block = current_block_type(ctx);
+
+	return {
+		c() {
+			if_block.c();
+			if_block_anchor = empty();
+		},
+
+		m(target, anchor) {
+			if_block.m(target, anchor);
+			insert(target, if_block_anchor, anchor);
+		},
+
+		p(changed, ctx) {
+			if (current_block_type === (current_block_type = select_block_type(changed, ctx)) && if_block) {
+				if_block.p(changed, ctx);
+			} else {
+				if_block.d(1);
+				if_block = current_block_type(ctx);
+				if (if_block) {
+					if_block.c();
+					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+				}
+			}
+		},
+
+		i: noop,
+		o: noop,
+
+		d(detaching) {
+			if_block.d(detaching);
+
+			if (detaching) {
+				detach(if_block_anchor);
+			}
+		}
+	};
+}
+
+function instance($$self, $$props, $$invalidate) {
+	let is_loading = true;
+  let loading_msg = "Loading";
+  let is_signedin = false;
+  let userimg_url = "";
+  let username = "";
+  let unreg_auth_listener;
+  onDestroy(() => {
+    if (unreg_auth_listener) unreg_auth_listener();
+    unreg_auth_listener = null;
+  });
+
+  function check_user(user) {
+    if (user) {
+      if (user.photoURL) $$invalidate('userimg_url', userimg_url = user.photoURL);
+      if (user.displayName) $$invalidate('username', username = user.displayName);
+      else if (user.email) $$invalidate('username', username = user.email);
+      $$invalidate('is_signedin', is_signedin = true);
+    } else {
+      $$invalidate('is_signedin', is_signedin = false);
+    }
+    $$invalidate('is_loading', is_loading = false);
+  }
+
+  async function start() {
+    let module = await import('../../../../../../../../js/cmp/userdata.js');
+    let firebase = module.firebase;
+    await module.userdata.ready();
+    check_user();
+    unreg_auth_listener = firebase
+      .auth()
+      .onAuthStateChanged(check_user, error => {
+        $$invalidate('loading_msg', loading_msg = "Connection Issue!");
+      });
+  }
+
+  start();
+
+	return {
+		is_loading,
+		loading_msg,
+		is_signedin,
+		userimg_url,
+		username
+	};
+}
+
+class Cmp extends SvelteComponent {
+	constructor(options) {
+		super();
+		if (!document.getElementById("svelte-s4mpi6-style")) add_css();
+		init(this, options, instance, create_fragment, safe_not_equal, []);
+	}
+}
+
+window.customElements.define('ui-loginstatus', class extends HTMLElement {
+    constructor() {
+        super();
+    }
+    connectedCallback() {
+        this.cmp = new Cmp({
+            target: this, props: {
+            }
+        });
+    }
+    disconnectedCallback() {
+        if (this.cmp) this.cmp.$destroy();
+    }
+});
 //# sourceMappingURL=ui-loginstatus.js.map

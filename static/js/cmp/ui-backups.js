@@ -1,2 +1,1075 @@
-function t(){}function g(t,g,I,c,e){t.__svelte_meta={loc:{file:g,line:I,column:c,char:e}}}function I(t){return t()}function c(){return Object.create(null)}function e(t){t.forEach(I)}function n(t){return"function"==typeof t}function l(t,g){return t!=t?g==g:t!==g||t&&"object"==typeof t||"function"==typeof t}function C(t,g){t.appendChild(g)}function a(t,g,I){t.insertBefore(g,I||null)}function i(t){t.parentNode.removeChild(t)}function u(t){return document.createElement(t)}function s(t){return document.createTextNode(t)}function A(){return s(" ")}function d(t,g,I,c){return t.addEventListener(g,I,c),()=>t.removeEventListener(g,I,c)}function o(t,g,I){null==I?t.removeAttribute(g):t.setAttribute(g,I)}function b(t,g){g=""+g,t.data!==g&&(t.data=g)}function r(t,g,I){t.style.setProperty(g,I)}let G;function X(t){G=t}function Z(t){(function(){if(!G)throw new Error("Function called outside component initialization");return G})().$$.on_destroy.push(t)}const m=[],h=[],p=[],B=[],x=Promise.resolve();let V=!1;function Y(t){p.push(t)}function W(){const t=new Set;do{for(;m.length;){const t=m.shift();X(t),F(t.$$)}for(;h.length;)h.pop()();for(let g=0;g<p.length;g+=1){const I=p[g];t.has(I)||(I(),t.add(I))}p.length=0}while(m.length);for(;B.length;)B.pop()();V=!1}function F(t){t.fragment&&(t.update(t.dirty),e(t.before_update),t.fragment.p(t.dirty,t.ctx),t.dirty=null,t.after_update.forEach(Y))}const f=new Set;const N="undefined"!=typeof window?window:global;function y(t,g){t.$$.dirty||(m.push(t),V||(V=!0,x.then(W)),t.$$.dirty=c()),t.$$.dirty[g]=!0}function R(g,l,C,a,i,u){const s=G;X(g);const A=l.props||{},d=g.$$={fragment:null,ctx:null,props:u,update:t,not_equal:i,bound:c(),on_mount:[],on_destroy:[],before_update:[],after_update:[],context:new Map(s?s.$$.context:[]),callbacks:c(),dirty:null};let o=!1;var b,r,Z;d.ctx=C?C(g,A,(t,I)=>{d.ctx&&i(d.ctx[t],d.ctx[t]=I)&&(d.bound[t]&&d.bound[t](I),o&&y(g,t))}):A,d.update(),o=!0,e(d.before_update),d.fragment=a(d.ctx),l.target&&(l.hydrate?d.fragment.l((Z=l.target,Array.from(Z.childNodes))):d.fragment.c(),l.intro&&((b=g.$$.fragment)&&b.i&&(f.delete(b),b.i(r))),function(t,g,c){const{fragment:l,on_mount:C,on_destroy:a,after_update:i}=t.$$;l.m(g,c),Y(()=>{const g=C.map(I).filter(n);a?a.push(...g):e(g),t.$$.on_mount=[]}),i.forEach(Y)}(g,l.target,l.anchor),W()),X(s)}class k{$destroy(){var g,I;I=1,(g=this).$$.fragment&&(e(g.$$.on_destroy),g.$$.fragment.d(I),g.$$.on_destroy=g.$$.fragment=null,g.$$.ctx={}),this.$destroy=t}$on(t,g){const I=this.$$.callbacks[t]||(this.$$.callbacks[t]=[]);return I.push(g),()=>{const t=I.indexOf(g);-1!==t&&I.splice(t,1)}}$set(){}}class w extends k{constructor(t){if(!t||!t.target&&!t.$$inline)throw new Error("'target' is a required option");super()}$destroy(){super.$destroy(),this.$destroy=(()=>{console.warn("Component was already destroyed")})}}const{Object:J,console:S}=N,v="assets/js/ui-backups/cmp.svelte";function Q(t,g,I){const c=J.create(t);return c.backup=g[I],c.backup_index=I,c}function U(t){var I;return{c:function(){(I=u("p")).textContent="No Backups so far.",g(I,v,255,2,7010)},m:function(t,g){a(t,I,g)},d:function(t){t&&i(I)}}}function L(t){var I,c;function e(...g){return t.click_handler(t,...g)}return{c:function(){(I=u("button")).textContent="Show Download Link",o(I,"class","btn btn-success"),g(I,v,238,10,6564),c=d(I,"click",e)},m:function(t,g){a(t,I,g)},p:function(g,I){t=I},d:function(t){t&&i(I),c()}}}function H(t){var I,c,e;return{c:function(){I=u("a"),c=s("Download"),o(I,"href",e=t.backup.download_url),g(I,v,236,10,6495)},m:function(t,g){a(t,I,g),C(I,c)},p:function(t,g){t.backups&&e!==(e=g.backup.download_url)&&o(I,"href",e)},d:function(t){t&&i(I)}}}function j(t){var I,c,n,l,G,X,Z,m,h,p,B,x,V,Y,W,F,f,N,y,R,k,w,J,S,Q,U,j,_,z,D,E,K,T,P=t.backup.title+"",M=new t.Date(parseInt(t.backup.created_at)).toLocaleString()+"",O=Number.parseFloat(t.backup.size/1024/1024).toFixed(2)+"",$=t.backup.install_name+"",q=t.backup.iid+"";function tt(t){return t.backup.download_url?H:L}var gt=tt(t),It=gt(t);function ct(...g){return t.click_handler_1(t,...g)}function et(...g){return t.click_handler_2(t,...g)}return{c:function(){I=u("div"),c=u("div"),n=u("div"),l=u("h4"),G=s(P),X=A(),Z=u("p"),m=s("Created at: "),h=s(M),p=A(),B=u("br"),x=s("\n          Size: "),V=s(O),Y=s(" MB\n          "),W=u("br"),F=s("\n          Installation Name (ID): "),f=s($),N=s(" ("),y=s(q),R=s(")"),k=A(),w=u("div"),J=u("p"),S=s("Please note that a restore request is queued and not executed\n          directly. A restore will\n          "),Q=u("b"),(U=u("u")).textContent="OVERWRITE",j=s("\n          the selected installation."),_=A(),It.c(),z=A(),(D=u("button")).textContent="Restore",E=A(),(K=u("button")).textContent="Delete",g(l,v,217,8,5838),g(B,v,220,10,5963),g(W,v,222,10,6057),g(Z,v,218,8,5870),o(n,"class","svelte-etg4yh"),g(n,v,216,6,5824),g(U,v,231,12,6369),g(Q,v,230,10,6353),o(J,"class","small"),g(J,v,227,8,6218),o(D,"class","btn btn-danger"),g(D,v,245,8,6755),o(K,"class","btn btn-danger"),g(K,v,248,8,6866),o(w,"class","mr-3 svelte-etg4yh"),r(w,"max-width","400px"),g(w,v,226,6,6167),o(c,"class","card-body svelte-etg4yh"),g(c,v,215,4,5794),o(I,"class","card svelte-etg4yh"),g(I,v,214,2,5771),T=[d(D,"click",ct),d(K,"click",et)]},m:function(t,g){a(t,I,g),C(I,c),C(c,n),C(n,l),C(l,G),C(n,X),C(n,Z),C(Z,m),C(Z,h),C(Z,p),C(Z,B),C(Z,x),C(Z,V),C(Z,Y),C(Z,W),C(Z,F),C(Z,f),C(Z,N),C(Z,y),C(Z,R),C(c,k),C(c,w),C(w,J),C(J,S),C(J,Q),C(Q,U),C(J,j),C(w,_),It.m(w,null),C(w,z),C(w,D),C(w,E),C(w,K)},p:function(g,I){t=I,g.backups&&P!==(P=t.backup.title+"")&&b(G,P),g.backups&&M!==(M=new t.Date(parseInt(t.backup.created_at)).toLocaleString()+"")&&b(h,M),g.backups&&O!==(O=Number.parseFloat(t.backup.size/1024/1024).toFixed(2)+"")&&b(V,O),g.backups&&$!==($=t.backup.install_name+"")&&b(f,$),g.backups&&q!==(q=t.backup.iid+"")&&b(y,q),gt===(gt=tt(t))&&It?It.p(g,t):(It.d(1),(It=gt(t))&&(It.c(),It.m(w,z)))},d:function(t){t&&i(I),It.d(),e(T)}}}function _(t){var I,c;return{c:function(){(I=u("button")).textContent="Cancel Upload",o(I,"class","btn btn-primary ml-4"),g(I,v,270,4,7337),c=d(I,"click",t.cancel_upload)},m:function(t,g){a(t,I,g)},d:function(t){t&&i(I),c()}}}function z(t){var I,c,e,n;return{c:function(){I=u("button"),c=s("Refresh list"),o(I,"class","btn btn-primary ml-4"),o(I,"title",e="Cache is valid until "+new t.Date(t.cache_valid_until).toLocaleString()),g(I,v,275,4,7472),n=d(I,"click",t.refresh_cache)},m:function(t,g){a(t,I,g),C(I,c)},p:function(t,g){t.cache_valid_until&&e!==(e="Cache is valid until "+new g.Date(g.cache_valid_until).toLocaleString())&&o(I,"title",e)},d:function(t){t&&i(I),n()}}}function D(t){var I,c;return{c:function(){I=u("p"),c=s(t.error_message),g(I,v,285,2,7700)},m:function(t,g){a(t,I,g),C(I,c)},p:function(t,g){t.error_message&&b(c,g.error_message)},d:function(t){t&&i(I)}}}function E(I){for(var c,n,l,b,G,X,Z,m,h,p,B=I.backups,x=[],V=0;V<B.length;V+=1)x[V]=j(Q(I,B,V));var Y=null;B.length||(Y=U()).c();var W=I.upload_current&&_(I),F=I.cache_valid_until&&z(I),f=I.error_message&&D(I);return{c:function(){for(var t=0;t<x.length;t+=1)x[t].c();c=A(),n=u("div"),l=u("input"),b=A(),(G=u("button")).textContent="Upload",X=A(),W&&W.c(),Z=A(),F&&F.c(),m=A(),f&&f.c(),h=s(""),o(l,"type","file"),l.multiple=!0,o(l,"accept","application/zip"),r(l,"display","none"),g(l,v,259,2,7066),o(G,"class","btn btn-primary"),g(G,v,266,2,7219),o(n,"class","mt-4 svelte-etg4yh"),g(n,v,258,0,7045),p=[d(l,"change",I.change_handler),d(G,"click",I.click_handler_3)]},l:function(t){throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option")},m:function(t,g){for(var e=0;e<x.length;e+=1)x[e].m(t,g);Y&&Y.m(t,g),a(t,c,g),a(t,n,g),C(n,l),I.input_binding(l),C(n,b),C(n,G),C(n,X),W&&W.m(n,null),C(n,Z),F&&F.m(n,null),a(t,m,g),f&&f.m(t,g),a(t,h,g)},p:function(t,g){if(t.backups||t.Date){B=g.backups;for(var I=0;I<B.length;I+=1){const e=Q(g,B,I);x[I]?x[I].p(t,e):(x[I]=j(e),x[I].c(),x[I].m(c.parentNode,c))}for(;I<x.length;I+=1)x[I].d(1);x.length=B.length}B.length?Y&&(Y.d(1),Y=null):Y||((Y=U()).c(),Y.m(c.parentNode,c)),g.upload_current?W||((W=_(g)).c(),W.m(n,Z)):W&&(W.d(1),W=null),g.cache_valid_until?F?F.p(t,g):((F=z(g)).c(),F.m(n,null)):F&&(F.d(1),F=null),g.error_message?f?f.p(t,g):((f=D(g)).c(),f.m(h.parentNode,h)):f&&(f.d(1),f=null)},i:t,o:t,d:function(t){!function(t,g){for(let I=0;I<t.length;I+=1)t[I]&&t[I].d(g)}(x,t),Y&&Y.d(t),t&&(i(c),i(n)),I.input_binding(null),W&&W.d(),F&&F.d(),t&&i(m),f&&f.d(t),t&&i(h),e(p)}}}function K(t,g,I){let c,e,n,l,C,a=null,i=[],{classes:u=""}=g,s=null,A={installations:{}},d=null,o=()=>{},b=null;async function r(){let t=localStorage.getItem("backups");if(t&&(t=JSON.parse(t)),t&&t.valid_until>Date.now())return I("cache_valid_until",n=t.valid_until),void I("backups",i=t.data);const g=await e.listAll();t=[];for(let I of g.items){const g=await I.getMetadata(),[c,e]=g.name.split("_");t.push({iid:c,id:g.name,created_at:Date.parse(g.timeCreated),size:g.size,install_name:g.customMetadata.install_name,title:g.customMetadata.title?g.customMetadata.title:g.name,uid:s.uid,ref:g.fullPath}),console.log(g)}let c=new Date(Date.now());c.setDate(c.getDate()+1),localStorage.setItem("backups",JSON.stringify({data:t,valid_until:c.getTime()})),I("backups",i=t)}function G(){I("cache_valid_until",n=null),localStorage.removeItem("backups"),r()}function X(t,g){const c=g.bytesTransferred/g.totalBytes*100;I("error_message",a=`Uploading (${c}%) ${t.name} (Size: ${(t.size/1024).toFixed(2)}kb)`)}async function m(t,g,e){const n=c.refFromURL(b.BUCKET_BACKUP+"/"+g.ref);i[e].download_url=await n.getDownloadURL(),I("backups",i)}async function p(t){t.target.disabled=!0;for(let g of l.files){let[c,n]=g.name.split("_");if(!c||!n||!A.installations[c])return I("error_message",a="File name '"+g.name+"' must follow the pattern INSTALLID_A-TITLE.zip with INSTALLID matching one of the currently registered installation ids ("+Object.keys(A.installations).map(t=>`"${t}"`).join(", ")+") and A-TITLE being the backup title"),void(t.target.disabled=!1);if("application/zip"!=g.type)return I("error_message",a="File "+g.name+" is not a zip file: "+g.type),void(t.target.disabled=!1);if(g.size/1024/1024>5)return I("error_message",a="File "+g.name+" is bigger than 5 megabytes!"),void(t.target.disabled=!1);const l=e.child(c+"_"+Date.now());I("upload_current",C=l.put(g,{customMetadata:{title:n,install_name:A.installations[c].title}})),C.on("state_changed",t=>{X(g,t)});try{await C,I("upload_current",C=null)}catch(t){return I("upload_current",C=null),void I("error_message",a="Upload of "+g.name+" failed: "+t.message)}}I("error_message",a=null),G()}function B(t,g){b&&(t.target.disabled=!0,t.target.innerText="Restore Queued",b.queue_action(g.iid,"restore",g.id).then(()=>{t.target.disabled=!1}).catch(g=>{t.target.disabled=!1,I("error_message",a=g.message)}))}async function x(t,g){if(b){t.target.disabled=!0;try{const e=c.refFromURL(b.BUCKET_BACKUP+"/"+g.ref);await e.delete()}catch(g){return t.target.disabled=!1,void I("error_message",a=g.message)}G()}}Z(()=>o()),async function(){const t=await import("../../../../../../../../js/cmp/userdata.js");b=t.userdata,c=b.storage(b.BUCKET_BACKUP),o=t.UserAwareComponent(t=>{s=t,t&&(e=c.ref().child(s.uid),r().catch(t=>{I("error_message",a=t.message)}))},t=>A=Object.assign({installations:{}},t),t=>d=t)}();const V=["classes"];return J.keys(g).forEach(t=>{V.includes(t)||t.startsWith("$$")||S.warn(`<Cmp> was created with unknown prop '${t}'`)}),t.$set=(t=>{"classes"in t&&I("classes",u=t.classes)}),{error_message:a,backups:i,cache_valid_until:n,uploadfile:l,upload_current:C,classes:u,refresh_cache:G,cancel_upload:function(){C.cancel(),I("upload_current",C=null)},make_download_link:m,upload:p,restore:B,remove:x,Date,click_handler:function({backup:t,backup_index:g},I){return m(0,t,g)},click_handler_1:function({backup:t},g){return B(g,t)},click_handler_2:function({backup:t},g){return x(g,t)},input_binding:function(t){h[t?"unshift":"push"](()=>{I("uploadfile",l=t)})},change_handler:function(t){return p(t)},click_handler_3:function(t){return l.click()}}}class T extends w{constructor(t){var g;super(t),document.getElementById("svelte-etg4yh-style")||((g=u("style")).id="svelte-etg4yh-style",g.textContent=".card.svelte-etg4yh:hover{box-shadow:0 1px 3px 1px rgba(60, 64, 67, 0.2),\n      0 2px 8px 4px rgba(60, 64, 67, 0.1)}.card-body.svelte-etg4yh{display:flex}.card-body.svelte-etg4yh>div.svelte-etg4yh:first-child{flex:1}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY21wLnN2ZWx0ZSIsInNvdXJjZXMiOlsiY21wLnN2ZWx0ZSJdLCJzb3VyY2VzQ29udGVudCI6WyI8c2NyaXB0PlxuICBsZXQgc3RvcmFnZTtcbiAgbGV0IGJhY2t1cHNSZWY7XG4gIGxldCBlcnJvcl9tZXNzYWdlID0gbnVsbDtcbiAgbGV0IGJhY2t1cHMgPSBbXTtcbiAgbGV0IGNhY2hlX3ZhbGlkX3VudGlsO1xuICBsZXQgdXBsb2FkZmlsZTtcbiAgbGV0IHVwbG9hZF9jdXJyZW50O1xuICAvKiogTGF5b3V0IG9mIGEgYmFja3VwIGVudHJ5XG4gICAqICAgICB7XG4gICAgICB0aXRsZTogXCJUZXN0XCIsXG4gICAgICB1aWQ6IFwiYWJjXCIsXG4gICAgICBpZDogXCJ0ZXN0XCIsXG4gICAgICBpaWQ6IFwiZHVtbXlcIixcbiAgICAgIGluc3RhbGxfbmFtZTogXCJEdW1teVwiLFxuICAgICAgY3JlYXRlZF9hdDogRGF0ZS5ub3coKSxcbiAgICAgIHNpemU6IDEyNDU3NjM0XG4gICAgfVxuICAgICovXG5cbiAgZXhwb3J0IGxldCBjbGFzc2VzID0gXCJcIjtcblxuICAgIC8vLyBVc2VyIEF3YXJlIENvbXBvbmVudFxuICBpbXBvcnQgeyBvbkRlc3Ryb3kgfSBmcm9tIFwic3ZlbHRlXCI7XG4gIGxldCB1c2VyID0gbnVsbDtcbiAgbGV0IGRhdGEgPSB7IGluc3RhbGxhdGlvbnM6IHt9IH07XG4gIGxldCBhY3Rpb25xdWV1ZSA9IG51bGw7XG4gIGxldCBvbkRlc3Ryb3lQcm94eSA9ICgpID0+IHt9O1xuICBsZXQgdXNlcmRiID0gbnVsbDtcbiAgb25EZXN0cm95KCgpID0+IG9uRGVzdHJveVByb3h5KCkpO1xuXG4gIGFzeW5jIGZ1bmN0aW9uIHN0YXJ0KCkge1xuICAgIGNvbnN0IG1vZHVsZSA9IGF3YWl0IGltcG9ydChcIi9qcy9jbXAvdXNlcmRhdGEuanNcIik7XG4gICAgdXNlcmRiID0gbW9kdWxlLnVzZXJkYXRhO1xuICAgIHN0b3JhZ2UgPSB1c2VyZGIuc3RvcmFnZSh1c2VyZGIuQlVDS0VUX0JBQ0tVUCk7XG4gICAgb25EZXN0cm95UHJveHkgPSBtb2R1bGUuVXNlckF3YXJlQ29tcG9uZW50KFxuICAgICAgdSA9PiB7XG4gICAgICAgIHVzZXIgPSB1O1xuICAgICAgICBpZiAodSkge1xuICAgICAgICAgIGJhY2t1cHNSZWYgPSBzdG9yYWdlLnJlZigpLmNoaWxkKHVzZXIudWlkKTtcbiAgICAgICAgICBnZXRfYmFja3Vwc19saXN0KCkuY2F0Y2goZXJyb3IgPT4ge1xuICAgICAgICAgICAgZXJyb3JfbWVzc2FnZSA9IGVycm9yLm1lc3NhZ2U7XG4gICAgICAgICAgfSk7XG4gICAgICAgIH1cbiAgICAgIH0sXG4gICAgICBkYXRhXyA9PiAoZGF0YSA9IE9iamVjdC5hc3NpZ24oeyBpbnN0YWxsYXRpb25zOiB7fSB9LCBkYXRhXykpLFxuICAgICAgYXFfID0+IChhY3Rpb25xdWV1ZSA9IGFxXylcbiAgICApO1xuICB9XG4gIHN0YXJ0KCk7XG4gIC8vLyBFbmQgLS0gVXNlciBBd2FyZSBDb21wb25lbnRcblxuICBhc3luYyBmdW5jdGlvbiBnZXRfYmFja3Vwc19saXN0KCkge1xuICAgIGxldCBsaXN0ID0gbG9jYWxTdG9yYWdlLmdldEl0ZW0oXCJiYWNrdXBzXCIpO1xuICAgIGlmIChsaXN0KSBsaXN0ID0gSlNPTi5wYXJzZShsaXN0KTtcbiAgICBpZiAobGlzdCAmJiBsaXN0LnZhbGlkX3VudGlsID4gRGF0ZS5ub3coKSkge1xuICAgICAgY2FjaGVfdmFsaWRfdW50aWwgPSBsaXN0LnZhbGlkX3VudGlsO1xuICAgICAgYmFja3VwcyA9IGxpc3QuZGF0YTtcbiAgICAgIHJldHVybjtcbiAgICB9XG4gICAgY29uc3QgYmFja3Vwc0xpc3QgPSBhd2FpdCBiYWNrdXBzUmVmLmxpc3RBbGwoKTtcbiAgICBsaXN0ID0gW107XG4gICAgZm9yIChsZXQgaXRlbSBvZiBiYWNrdXBzTGlzdC5pdGVtcykge1xuICAgICAgY29uc3QgbWV0YSA9IGF3YWl0IGl0ZW0uZ2V0TWV0YWRhdGEoKTtcbiAgICAgIGNvbnN0IFtpaWQsIF9dID0gbWV0YS5uYW1lLnNwbGl0KFwiX1wiKTtcbiAgICAgIGxpc3QucHVzaCh7XG4gICAgICAgIGlpZCxcbiAgICAgICAgaWQ6IG1ldGEubmFtZSxcbiAgICAgICAgY3JlYXRlZF9hdDogRGF0ZS5wYXJzZShtZXRhLnRpbWVDcmVhdGVkKSxcbiAgICAgICAgc2l6ZTogbWV0YS5zaXplLFxuICAgICAgICBpbnN0YWxsX25hbWU6IG1ldGEuY3VzdG9tTWV0YWRhdGEuaW5zdGFsbF9uYW1lLFxuICAgICAgICB0aXRsZTogbWV0YS5jdXN0b21NZXRhZGF0YS50aXRsZVxuICAgICAgICAgID8gbWV0YS5jdXN0b21NZXRhZGF0YS50aXRsZVxuICAgICAgICAgIDogbWV0YS5uYW1lLFxuICAgICAgICB1aWQ6IHVzZXIudWlkLFxuICAgICAgICByZWY6IG1ldGEuZnVsbFBhdGhcbiAgICAgIH0pO1xuICAgICAgY29uc29sZS5sb2cobWV0YSk7XG4gICAgfVxuICAgIGxldCBkID0gbmV3IERhdGUoRGF0ZS5ub3coKSk7XG4gICAgZC5zZXREYXRlKGQuZ2V0RGF0ZSgpICsgMSk7XG4gICAgbG9jYWxTdG9yYWdlLnNldEl0ZW0oXG4gICAgICBcImJhY2t1cHNcIixcbiAgICAgIEpTT04uc3RyaW5naWZ5KHsgZGF0YTogbGlzdCwgdmFsaWRfdW50aWw6IGQuZ2V0VGltZSgpIH0pXG4gICAgKTtcbiAgICBiYWNrdXBzID0gbGlzdDtcbiAgfVxuXG4gIGZ1bmN0aW9uIHJlZnJlc2hfY2FjaGUoKSB7XG4gICAgY2FjaGVfdmFsaWRfdW50aWwgPSBudWxsO1xuICAgIGxvY2FsU3RvcmFnZS5yZW1vdmVJdGVtKFwiYmFja3Vwc1wiKTtcbiAgICBnZXRfYmFja3Vwc19saXN0KCk7XG4gIH1cblxuICBmdW5jdGlvbiBwcm9ncmVzc19tZXNzYWdlKHNlbGVjdGVkRmlsZSwgc25hcHNob3QpIHtcbiAgICBjb25zdCBwcm9ncmVzcyA9IChzbmFwc2hvdC5ieXRlc1RyYW5zZmVycmVkIC8gc25hcHNob3QudG90YWxCeXRlcykgKiAxMDA7XG4gICAgZXJyb3JfbWVzc2FnZSA9IGBVcGxvYWRpbmcgKCR7cHJvZ3Jlc3N9JSkgJHtzZWxlY3RlZEZpbGUubmFtZX0gKFNpemU6ICR7KFxuICAgICAgc2VsZWN0ZWRGaWxlLnNpemUgLyAxMDI0XG4gICAgKS50b0ZpeGVkKDIpfWtiKWA7XG4gIH1cblxuICBmdW5jdGlvbiBjYW5jZWxfdXBsb2FkKCkge1xuICAgIHVwbG9hZF9jdXJyZW50LmNhbmNlbCgpO1xuICAgIHVwbG9hZF9jdXJyZW50ID0gbnVsbDtcbiAgfVxuXG4gIGFzeW5jIGZ1bmN0aW9uIG1ha2VfZG93bmxvYWRfbGluayhlLCBiYWNrdXAsIGJhY2t1cF9pbmRleCkge1xuICAgIGNvbnN0IGdzUmVmZXJlbmNlID0gc3RvcmFnZS5yZWZGcm9tVVJMKFxuICAgICAgdXNlcmRiLkJVQ0tFVF9CQUNLVVAgKyBcIi9cIiArIGJhY2t1cC5yZWZcbiAgICApO1xuICAgIGJhY2t1cHNbYmFja3VwX2luZGV4XS5kb3dubG9hZF91cmwgPSBhd2FpdCBnc1JlZmVyZW5jZS5nZXREb3dubG9hZFVSTCgpO1xuICB9XG5cbiAgYXN5bmMgZnVuY3Rpb24gdXBsb2FkKGUpIHtcbiAgICBlLnRhcmdldC5kaXNhYmxlZCA9IHRydWU7XG4gICAgZm9yIChsZXQgc2VsZWN0ZWRGaWxlIG9mIHVwbG9hZGZpbGUuZmlsZXMpIHtcbiAgICAgIGxldCBbaWlkLCB0aXRsZV0gPSBzZWxlY3RlZEZpbGUubmFtZS5zcGxpdChcIl9cIik7XG4gICAgICBpZiAoIWlpZCB8fCAhdGl0bGUgfHwgIWRhdGEuaW5zdGFsbGF0aW9uc1tpaWRdKSB7XG4gICAgICAgIGVycm9yX21lc3NhZ2UgPVxuICAgICAgICAgIFwiRmlsZSBuYW1lICdcIiArXG4gICAgICAgICAgc2VsZWN0ZWRGaWxlLm5hbWUgK1xuICAgICAgICAgIFwiJyBtdXN0IGZvbGxvdyB0aGUgcGF0dGVybiBJTlNUQUxMSURfQS1USVRMRS56aXAgd2l0aCBJTlNUQUxMSUQgbWF0Y2hpbmcgb25lIG9mIHRoZSBjdXJyZW50bHkgcmVnaXN0ZXJlZCBpbnN0YWxsYXRpb24gaWRzIChcIiArXG4gICAgICAgICAgT2JqZWN0LmtleXMoZGF0YS5pbnN0YWxsYXRpb25zKVxuICAgICAgICAgICAgLm1hcChlID0+IGBcIiR7ZX1cImApXG4gICAgICAgICAgICAuam9pbihcIiwgXCIpICtcbiAgICAgICAgICBcIikgYW5kIEEtVElUTEUgYmVpbmcgdGhlIGJhY2t1cCB0aXRsZVwiO1xuICAgICAgICBlLnRhcmdldC5kaXNhYmxlZCA9IGZhbHNlO1xuICAgICAgICByZXR1cm47XG4gICAgICB9XG4gICAgICBpZiAoc2VsZWN0ZWRGaWxlLnR5cGUgIT0gXCJhcHBsaWNhdGlvbi96aXBcIikge1xuICAgICAgICBlcnJvcl9tZXNzYWdlID1cbiAgICAgICAgICBcIkZpbGUgXCIgK1xuICAgICAgICAgIHNlbGVjdGVkRmlsZS5uYW1lICtcbiAgICAgICAgICBcIiBpcyBub3QgYSB6aXAgZmlsZTogXCIgK1xuICAgICAgICAgIHNlbGVjdGVkRmlsZS50eXBlO1xuICAgICAgICBlLnRhcmdldC5kaXNhYmxlZCA9IGZhbHNlO1xuICAgICAgICByZXR1cm47XG4gICAgICB9XG4gICAgICBpZiAoc2VsZWN0ZWRGaWxlLnNpemUgLyAxMDI0IC8gMTAyNCA+IDUpIHtcbiAgICAgICAgZXJyb3JfbWVzc2FnZSA9XG4gICAgICAgICAgXCJGaWxlIFwiICsgc2VsZWN0ZWRGaWxlLm5hbWUgKyBcIiBpcyBiaWdnZXIgdGhhbiA1IG1lZ2FieXRlcyFcIjtcbiAgICAgICAgZS50YXJnZXQuZGlzYWJsZWQgPSBmYWxzZTtcbiAgICAgICAgcmV0dXJuO1xuICAgICAgfVxuICAgICAgY29uc3QgZmlsZVJlZiA9IGJhY2t1cHNSZWYuY2hpbGQoaWlkICsgXCJfXCIgKyBEYXRlLm5vdygpKTtcbiAgICAgIHVwbG9hZF9jdXJyZW50ID0gZmlsZVJlZi5wdXQoc2VsZWN0ZWRGaWxlLCB7XG4gICAgICAgIGN1c3RvbU1ldGFkYXRhOiB7XG4gICAgICAgICAgdGl0bGUsXG4gICAgICAgICAgaW5zdGFsbF9uYW1lOiBkYXRhLmluc3RhbGxhdGlvbnNbaWlkXS50aXRsZVxuICAgICAgICB9XG4gICAgICB9KTtcbiAgICAgIHVwbG9hZF9jdXJyZW50Lm9uKFwic3RhdGVfY2hhbmdlZFwiLCBzbmFwc2hvdCA9PiB7XG4gICAgICAgIHByb2dyZXNzX21lc3NhZ2Uoc2VsZWN0ZWRGaWxlLCBzbmFwc2hvdCk7XG4gICAgICB9KTtcbiAgICAgIHRyeSB7XG4gICAgICAgIGF3YWl0IHVwbG9hZF9jdXJyZW50O1xuICAgICAgICB1cGxvYWRfY3VycmVudCA9IG51bGw7XG4gICAgICB9IGNhdGNoIChlcnIpIHtcbiAgICAgICAgdXBsb2FkX2N1cnJlbnQgPSBudWxsO1xuICAgICAgICBlcnJvcl9tZXNzYWdlID1cbiAgICAgICAgICBcIlVwbG9hZCBvZiBcIiArIHNlbGVjdGVkRmlsZS5uYW1lICsgXCIgZmFpbGVkOiBcIiArIGVyci5tZXNzYWdlO1xuICAgICAgICByZXR1cm47XG4gICAgICB9XG4gICAgfVxuICAgIGVycm9yX21lc3NhZ2UgPSBudWxsO1xuICAgIHJlZnJlc2hfY2FjaGUoKTtcbiAgfVxuXG4gIGZ1bmN0aW9uIHJlc3RvcmUoZSwgYmFja3VwKSB7XG4gICAgaWYgKCF1c2VyZGIpIHJldHVybjtcbiAgICBlLnRhcmdldC5kaXNhYmxlZCA9IHRydWU7XG4gICAgZS50YXJnZXQuaW5uZXJUZXh0ID0gXCJSZXN0b3JlIFF1ZXVlZFwiO1xuICAgIHVzZXJkYlxuICAgICAgLnF1ZXVlX2FjdGlvbihiYWNrdXAuaWlkLCBcInJlc3RvcmVcIiwgYmFja3VwLmlkKVxuICAgICAgLnRoZW4oKCkgPT4ge1xuICAgICAgICBlLnRhcmdldC5kaXNhYmxlZCA9IGZhbHNlO1xuICAgICAgfSlcbiAgICAgIC5jYXRjaChlcnIgPT4ge1xuICAgICAgICBlLnRhcmdldC5kaXNhYmxlZCA9IGZhbHNlO1xuICAgICAgICBlcnJvcl9tZXNzYWdlID0gZXJyLm1lc3NhZ2U7XG4gICAgICB9KTtcbiAgfVxuXG4gIGFzeW5jIGZ1bmN0aW9uIHJlbW92ZShlLCBiYWNrdXApIHtcbiAgICBpZiAoIXVzZXJkYikgcmV0dXJuO1xuICAgIGUudGFyZ2V0LmRpc2FibGVkID0gdHJ1ZTtcbiAgICB0cnkge1xuICAgICAgY29uc3QgZ3NSZWZlcmVuY2UgPSBzdG9yYWdlLnJlZkZyb21VUkwoXG4gICAgICAgIHVzZXJkYi5CVUNLRVRfQkFDS1VQICsgXCIvXCIgKyBiYWNrdXAucmVmXG4gICAgICApO1xuICAgICAgYXdhaXQgZ3NSZWZlcmVuY2UuZGVsZXRlKCk7XG4gICAgfSBjYXRjaCAoZXJyKSB7XG4gICAgICBlLnRhcmdldC5kaXNhYmxlZCA9IGZhbHNlO1xuICAgICAgZXJyb3JfbWVzc2FnZSA9IGVyci5tZXNzYWdlO1xuICAgICAgcmV0dXJuO1xuICAgIH1cbiAgICByZWZyZXNoX2NhY2hlKCk7XG4gIH1cbjwvc2NyaXB0PlxuXG48c3R5bGU+XG4gIC5jYXJkOmhvdmVyIHtcbiAgICBib3gtc2hhZG93OiAwIDFweCAzcHggMXB4IHJnYmEoNjAsIDY0LCA2NywgMC4yKSxcbiAgICAgIDAgMnB4IDhweCA0cHggcmdiYSg2MCwgNjQsIDY3LCAwLjEpO1xuICB9XG4gIC5jYXJkLWJvZHkge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gIH1cbiAgLmNhcmQtYm9keSA+IGRpdjpmaXJzdC1jaGlsZCB7XG4gICAgZmxleDogMTtcbiAgfVxuPC9zdHlsZT5cblxueyNlYWNoIGJhY2t1cHMgYXMgYmFja3VwLCBiYWNrdXBfaW5kZXh9XG4gIDxkaXYgY2xhc3M9XCJjYXJkXCI+XG4gICAgPGRpdiBjbGFzcz1cImNhcmQtYm9keVwiPlxuICAgICAgPGRpdj5cbiAgICAgICAgPGg0PntiYWNrdXAudGl0bGV9PC9oND5cbiAgICAgICAgPHA+XG4gICAgICAgICAgQ3JlYXRlZCBhdDoge25ldyBEYXRlKHBhcnNlSW50KGJhY2t1cC5jcmVhdGVkX2F0KSkudG9Mb2NhbGVTdHJpbmcoKX1cbiAgICAgICAgICA8YnIgLz5cbiAgICAgICAgICBTaXplOiB7TnVtYmVyLnBhcnNlRmxvYXQoYmFja3VwLnNpemUgLyAxMDI0IC8gMTAyNCkudG9GaXhlZCgyKX0gTUJcbiAgICAgICAgICA8YnIgLz5cbiAgICAgICAgICBJbnN0YWxsYXRpb24gTmFtZSAoSUQpOiB7YmFja3VwLmluc3RhbGxfbmFtZX0gKHtiYWNrdXAuaWlkfSlcbiAgICAgICAgPC9wPlxuICAgICAgPC9kaXY+XG4gICAgICA8ZGl2IGNsYXNzPVwibXItM1wiIHN0eWxlPVwibWF4LXdpZHRoOjQwMHB4XCI+XG4gICAgICAgIDxwIGNsYXNzPVwic21hbGxcIj5cbiAgICAgICAgICBQbGVhc2Ugbm90ZSB0aGF0IGEgcmVzdG9yZSByZXF1ZXN0IGlzIHF1ZXVlZCBhbmQgbm90IGV4ZWN1dGVkXG4gICAgICAgICAgZGlyZWN0bHkuIEEgcmVzdG9yZSB3aWxsXG4gICAgICAgICAgPGI+XG4gICAgICAgICAgICA8dT5PVkVSV1JJVEU8L3U+XG4gICAgICAgICAgPC9iPlxuICAgICAgICAgIHRoZSBzZWxlY3RlZCBpbnN0YWxsYXRpb24uXG4gICAgICAgIDwvcD5cbiAgICAgICAgeyNpZiBiYWNrdXAuZG93bmxvYWRfdXJsfVxuICAgICAgICAgIDxhIGhyZWY9e2JhY2t1cC5kb3dubG9hZF91cmx9PkRvd25sb2FkPC9hPlxuICAgICAgICB7OmVsc2V9XG4gICAgICAgICAgPGJ1dHRvblxuICAgICAgICAgICAgY2xhc3M9XCJidG4gYnRuLXN1Y2Nlc3NcIlxuICAgICAgICAgICAgb246Y2xpY2s9e2UgPT4gbWFrZV9kb3dubG9hZF9saW5rKGUsIGJhY2t1cCwgYmFja3VwX2luZGV4KX0+XG4gICAgICAgICAgICBTaG93IERvd25sb2FkIExpbmtcbiAgICAgICAgICA8L2J1dHRvbj5cbiAgICAgICAgey9pZn1cblxuICAgICAgICA8YnV0dG9uIGNsYXNzPVwiYnRuIGJ0bi1kYW5nZXJcIiBvbjpjbGljaz17ZSA9PiByZXN0b3JlKGUsIGJhY2t1cCl9PlxuICAgICAgICAgIFJlc3RvcmVcbiAgICAgICAgPC9idXR0b24+XG4gICAgICAgIDxidXR0b24gY2xhc3M9XCJidG4gYnRuLWRhbmdlclwiIG9uOmNsaWNrPXtlID0+IHJlbW92ZShlLCBiYWNrdXApfT5cbiAgICAgICAgICBEZWxldGVcbiAgICAgICAgPC9idXR0b24+XG4gICAgICA8L2Rpdj5cbiAgICA8L2Rpdj5cbiAgPC9kaXY+XG57OmVsc2V9XG4gIDxwPk5vIEJhY2t1cHMgc28gZmFyLjwvcD5cbnsvZWFjaH1cblxuPGRpdiBjbGFzcz1cIm10LTRcIj5cbiAgPGlucHV0XG4gICAgdHlwZT1cImZpbGVcIlxuICAgIG11bHRpcGxlXG4gICAgYWNjZXB0PVwiYXBwbGljYXRpb24vemlwXCJcbiAgICBiaW5kOnRoaXM9e3VwbG9hZGZpbGV9XG4gICAgc3R5bGU9XCJkaXNwbGF5Om5vbmVcIlxuICAgIG9uOmNoYW5nZT17ZSA9PiB1cGxvYWQoZSl9IC8+XG4gIDxidXR0b24gY2xhc3M9XCJidG4gYnRuLXByaW1hcnlcIiBvbjpjbGljaz17ZSA9PiB1cGxvYWRmaWxlLmNsaWNrKCl9PlxuICAgIFVwbG9hZFxuICA8L2J1dHRvbj5cbiAgeyNpZiB1cGxvYWRfY3VycmVudH1cbiAgICA8YnV0dG9uIGNsYXNzPVwiYnRuIGJ0bi1wcmltYXJ5IG1sLTRcIiBvbjpjbGljaz17Y2FuY2VsX3VwbG9hZH0+XG4gICAgICBDYW5jZWwgVXBsb2FkXG4gICAgPC9idXR0b24+XG4gIHsvaWZ9XG4gIHsjaWYgY2FjaGVfdmFsaWRfdW50aWx9XG4gICAgPGJ1dHRvblxuICAgICAgY2xhc3M9XCJidG4gYnRuLXByaW1hcnkgbWwtNFwiXG4gICAgICB0aXRsZT1cIkNhY2hlIGlzIHZhbGlkIHVudGlsIHtuZXcgRGF0ZShjYWNoZV92YWxpZF91bnRpbCkudG9Mb2NhbGVTdHJpbmcoKX1cIlxuICAgICAgb246Y2xpY2s9e3JlZnJlc2hfY2FjaGV9PlxuICAgICAgUmVmcmVzaCBsaXN0XG4gICAgPC9idXR0b24+XG4gIHsvaWZ9XG48L2Rpdj5cblxueyNpZiBlcnJvcl9tZXNzYWdlfVxuICA8cD57ZXJyb3JfbWVzc2FnZX08L3A+XG57L2lmfVxuIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQXlNRSxtQkFBSyxNQUFNLEFBQUMsQ0FBQyxBQUNYLFVBQVUsQ0FBRSxDQUFDLENBQUMsR0FBRyxDQUFDLEdBQUcsQ0FBQyxHQUFHLENBQUMsS0FBSyxFQUFFLENBQUMsQ0FBQyxFQUFFLENBQUMsQ0FBQyxFQUFFLENBQUMsQ0FBQyxHQUFHLENBQUMsQ0FBQztNQUM5QyxDQUFDLENBQUMsR0FBRyxDQUFDLEdBQUcsQ0FBQyxHQUFHLENBQUMsS0FBSyxFQUFFLENBQUMsQ0FBQyxFQUFFLENBQUMsQ0FBQyxFQUFFLENBQUMsQ0FBQyxHQUFHLENBQUMsQUFDdkMsQ0FBQyxBQUNELFVBQVUsY0FBQyxDQUFDLEFBQ1YsT0FBTyxDQUFFLElBQUksQUFDZixDQUFDLEFBQ0Qsd0JBQVUsQ0FBRyxpQkFBRyxZQUFZLEFBQUMsQ0FBQyxBQUM1QixJQUFJLENBQUUsQ0FBQyxBQUNULENBQUMifQ== */",C(document.head,g)),R(this,t,K,E,l,["classes"])}get classes(){throw new Error("<Cmp>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set classes(t){throw new Error("<Cmp>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}}window.customElements.define("ui-backups",class extends HTMLElement{constructor(){super()}connectedCallback(){const t=this.getAttribute("class");this.removeAttribute("class"),this.cmp=new T({target:this,props:{classes:t}})}disconnectedCallback(){this.cmp&&this.cmp.$destroy()}});
+function noop() { }
+function run(fn) {
+    return fn();
+}
+function blank_object() {
+    return Object.create(null);
+}
+function run_all(fns) {
+    fns.forEach(run);
+}
+function is_function(thing) {
+    return typeof thing === 'function';
+}
+function safe_not_equal(a, b) {
+    return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+}
+
+function append(target, node) {
+    target.appendChild(node);
+}
+function insert(target, node, anchor) {
+    target.insertBefore(node, anchor || null);
+}
+function detach(node) {
+    node.parentNode.removeChild(node);
+}
+function destroy_each(iterations, detaching) {
+    for (let i = 0; i < iterations.length; i += 1) {
+        if (iterations[i])
+            iterations[i].d(detaching);
+    }
+}
+function element(name) {
+    return document.createElement(name);
+}
+function text(data) {
+    return document.createTextNode(data);
+}
+function space() {
+    return text(' ');
+}
+function empty() {
+    return text('');
+}
+function listen(node, event, handler, options) {
+    node.addEventListener(event, handler, options);
+    return () => node.removeEventListener(event, handler, options);
+}
+function attr(node, attribute, value) {
+    if (value == null)
+        node.removeAttribute(attribute);
+    else
+        node.setAttribute(attribute, value);
+}
+function children(element) {
+    return Array.from(element.childNodes);
+}
+function set_data(text, data) {
+    data = '' + data;
+    if (text.data !== data)
+        text.data = data;
+}
+function set_style(node, key, value, important) {
+    node.style.setProperty(key, value, important ? 'important' : '');
+}
+
+let current_component;
+function set_current_component(component) {
+    current_component = component;
+}
+function get_current_component() {
+    if (!current_component)
+        throw new Error(`Function called outside component initialization`);
+    return current_component;
+}
+function onDestroy(fn) {
+    get_current_component().$$.on_destroy.push(fn);
+}
+
+const dirty_components = [];
+const binding_callbacks = [];
+const render_callbacks = [];
+const flush_callbacks = [];
+const resolved_promise = Promise.resolve();
+let update_scheduled = false;
+function schedule_update() {
+    if (!update_scheduled) {
+        update_scheduled = true;
+        resolved_promise.then(flush);
+    }
+}
+function add_render_callback(fn) {
+    render_callbacks.push(fn);
+}
+function flush() {
+    const seen_callbacks = new Set();
+    do {
+        // first, call beforeUpdate functions
+        // and update components
+        while (dirty_components.length) {
+            const component = dirty_components.shift();
+            set_current_component(component);
+            update(component.$$);
+        }
+        while (binding_callbacks.length)
+            binding_callbacks.pop()();
+        // then, once components are updated, call
+        // afterUpdate functions. This may cause
+        // subsequent updates...
+        for (let i = 0; i < render_callbacks.length; i += 1) {
+            const callback = render_callbacks[i];
+            if (!seen_callbacks.has(callback)) {
+                callback();
+                // ...so guard against infinite loops
+                seen_callbacks.add(callback);
+            }
+        }
+        render_callbacks.length = 0;
+    } while (dirty_components.length);
+    while (flush_callbacks.length) {
+        flush_callbacks.pop()();
+    }
+    update_scheduled = false;
+}
+function update($$) {
+    if ($$.fragment) {
+        $$.update($$.dirty);
+        run_all($$.before_update);
+        $$.fragment.p($$.dirty, $$.ctx);
+        $$.dirty = null;
+        $$.after_update.forEach(add_render_callback);
+    }
+}
+const outroing = new Set();
+function transition_in(block, local) {
+    if (block && block.i) {
+        outroing.delete(block);
+        block.i(local);
+    }
+}
+
+const globals = (typeof window !== 'undefined' ? window : global);
+function mount_component(component, target, anchor) {
+    const { fragment, on_mount, on_destroy, after_update } = component.$$;
+    fragment.m(target, anchor);
+    // onMount happens before the initial afterUpdate
+    add_render_callback(() => {
+        const new_on_destroy = on_mount.map(run).filter(is_function);
+        if (on_destroy) {
+            on_destroy.push(...new_on_destroy);
+        }
+        else {
+            // Edge case - component was destroyed immediately,
+            // most likely as a result of a binding initialising
+            run_all(new_on_destroy);
+        }
+        component.$$.on_mount = [];
+    });
+    after_update.forEach(add_render_callback);
+}
+function destroy_component(component, detaching) {
+    if (component.$$.fragment) {
+        run_all(component.$$.on_destroy);
+        component.$$.fragment.d(detaching);
+        // TODO null out other refs, including component.$$ (but need to
+        // preserve final state?)
+        component.$$.on_destroy = component.$$.fragment = null;
+        component.$$.ctx = {};
+    }
+}
+function make_dirty(component, key) {
+    if (!component.$$.dirty) {
+        dirty_components.push(component);
+        schedule_update();
+        component.$$.dirty = blank_object();
+    }
+    component.$$.dirty[key] = true;
+}
+function init(component, options, instance, create_fragment, not_equal, prop_names) {
+    const parent_component = current_component;
+    set_current_component(component);
+    const props = options.props || {};
+    const $$ = component.$$ = {
+        fragment: null,
+        ctx: null,
+        // state
+        props: prop_names,
+        update: noop,
+        not_equal,
+        bound: blank_object(),
+        // lifecycle
+        on_mount: [],
+        on_destroy: [],
+        before_update: [],
+        after_update: [],
+        context: new Map(parent_component ? parent_component.$$.context : []),
+        // everything else
+        callbacks: blank_object(),
+        dirty: null
+    };
+    let ready = false;
+    $$.ctx = instance
+        ? instance(component, props, (key, ret, value = ret) => {
+            if ($$.ctx && not_equal($$.ctx[key], $$.ctx[key] = value)) {
+                if ($$.bound[key])
+                    $$.bound[key](value);
+                if (ready)
+                    make_dirty(component, key);
+            }
+            return ret;
+        })
+        : props;
+    $$.update();
+    ready = true;
+    run_all($$.before_update);
+    $$.fragment = create_fragment($$.ctx);
+    if (options.target) {
+        if (options.hydrate) {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            $$.fragment.l(children(options.target));
+        }
+        else {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            $$.fragment.c();
+        }
+        if (options.intro)
+            transition_in(component.$$.fragment);
+        mount_component(component, options.target, options.anchor);
+        flush();
+    }
+    set_current_component(parent_component);
+}
+let SvelteElement;
+if (typeof HTMLElement !== 'undefined') {
+    SvelteElement = class extends HTMLElement {
+        constructor() {
+            super();
+            this.attachShadow({ mode: 'open' });
+        }
+        connectedCallback() {
+            // @ts-ignore todo: improve typings
+            for (const key in this.$$.slotted) {
+                // @ts-ignore todo: improve typings
+                this.appendChild(this.$$.slotted[key]);
+            }
+        }
+        attributeChangedCallback(attr, _oldValue, newValue) {
+            this[attr] = newValue;
+        }
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            // TODO should this delegate to addEventListener?
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set() {
+            // overridden by instance, if it has props
+        }
+    };
+}
+class SvelteComponent {
+    $destroy() {
+        destroy_component(this, 1);
+        this.$destroy = noop;
+    }
+    $on(type, callback) {
+        const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+        callbacks.push(callback);
+        return () => {
+            const index = callbacks.indexOf(callback);
+            if (index !== -1)
+                callbacks.splice(index, 1);
+        };
+    }
+    $set() {
+        // overridden by instance, if it has props
+    }
+}
+
+/* assets/js/ui-backups/cmp.svelte generated by Svelte v3.12.0 */
+const { Object: Object_1 } = globals;
+
+function add_css() {
+	var style = element("style");
+	style.id = 'svelte-etg4yh-style';
+	style.textContent = ".card.svelte-etg4yh:hover{box-shadow:0 1px 3px 1px rgba(60, 64, 67, 0.2),\n      0 2px 8px 4px rgba(60, 64, 67, 0.1)}.card-body.svelte-etg4yh{display:flex}.card-body.svelte-etg4yh>div.svelte-etg4yh:first-child{flex:1}";
+	append(document.head, style);
+}
+
+function get_each_context(ctx, list, i) {
+	const child_ctx = Object_1.create(ctx);
+	child_ctx.backup = list[i];
+	child_ctx.backup_index = i;
+	return child_ctx;
+}
+
+// (255:0) {:else}
+function create_else_block_1(ctx) {
+	var p;
+
+	return {
+		c() {
+			p = element("p");
+			p.textContent = "No Backups so far.";
+		},
+
+		m(target, anchor) {
+			insert(target, p, anchor);
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(p);
+			}
+		}
+	};
+}
+
+// (238:8) {:else}
+function create_else_block(ctx) {
+	var button, dispose;
+
+	function click_handler(...args) {
+		return ctx.click_handler(ctx, ...args);
+	}
+
+	return {
+		c() {
+			button = element("button");
+			button.textContent = "Show Download Link";
+			attr(button, "class", "btn btn-success");
+			dispose = listen(button, "click", click_handler);
+		},
+
+		m(target, anchor) {
+			insert(target, button, anchor);
+		},
+
+		p(changed, new_ctx) {
+			ctx = new_ctx;
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(button);
+			}
+
+			dispose();
+		}
+	};
+}
+
+// (236:8) {#if backup.download_url}
+function create_if_block_3(ctx) {
+	var a, t, a_href_value;
+
+	return {
+		c() {
+			a = element("a");
+			t = text("Download");
+			attr(a, "href", a_href_value = ctx.backup.download_url);
+		},
+
+		m(target, anchor) {
+			insert(target, a, anchor);
+			append(a, t);
+		},
+
+		p(changed, ctx) {
+			if ((changed.backups) && a_href_value !== (a_href_value = ctx.backup.download_url)) {
+				attr(a, "href", a_href_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(a);
+			}
+		}
+	};
+}
+
+// (214:0) {#each backups as backup, backup_index}
+function create_each_block(ctx) {
+	var div3, div2, div0, h4, t0_value = ctx.backup.title + "", t0, t1, p0, t2, t3_value = new ctx.Date(parseInt(ctx.backup.created_at)).toLocaleString() + "", t3, t4, br0, t5, t6_value = Number.parseFloat(ctx.backup.size / 1024 / 1024).toFixed(2) + "", t6, t7, br1, t8, t9_value = ctx.backup.install_name + "", t9, t10, t11_value = ctx.backup.iid + "", t11, t12, t13, div1, p1, t17, t18, button0, t20, button1, dispose;
+
+	function select_block_type(changed, ctx) {
+		if (ctx.backup.download_url) return create_if_block_3;
+		return create_else_block;
+	}
+
+	var current_block_type = select_block_type(null, ctx);
+	var if_block = current_block_type(ctx);
+
+	function click_handler_1(...args) {
+		return ctx.click_handler_1(ctx, ...args);
+	}
+
+	function click_handler_2(...args) {
+		return ctx.click_handler_2(ctx, ...args);
+	}
+
+	return {
+		c() {
+			div3 = element("div");
+			div2 = element("div");
+			div0 = element("div");
+			h4 = element("h4");
+			t0 = text(t0_value);
+			t1 = space();
+			p0 = element("p");
+			t2 = text("Created at: ");
+			t3 = text(t3_value);
+			t4 = space();
+			br0 = element("br");
+			t5 = text("\n          Size: ");
+			t6 = text(t6_value);
+			t7 = text(" MB\n          ");
+			br1 = element("br");
+			t8 = text("\n          Installation Name (ID): ");
+			t9 = text(t9_value);
+			t10 = text(" (");
+			t11 = text(t11_value);
+			t12 = text(")");
+			t13 = space();
+			div1 = element("div");
+			p1 = element("p");
+			p1.innerHTML = `
+			          Please note that a restore request is queued and not executed
+			          directly. A restore will
+			          <b><u>OVERWRITE</u></b>
+			          the selected installation.
+			        `;
+			t17 = space();
+			if_block.c();
+			t18 = space();
+			button0 = element("button");
+			button0.textContent = "Restore";
+			t20 = space();
+			button1 = element("button");
+			button1.textContent = "Delete";
+			attr(div0, "class", "svelte-etg4yh");
+			attr(p1, "class", "small");
+			attr(button0, "class", "btn btn-danger");
+			attr(button1, "class", "btn btn-danger");
+			attr(div1, "class", "mr-3 svelte-etg4yh");
+			set_style(div1, "max-width", "400px");
+			attr(div2, "class", "card-body svelte-etg4yh");
+			attr(div3, "class", "card svelte-etg4yh");
+
+			dispose = [
+				listen(button0, "click", click_handler_1),
+				listen(button1, "click", click_handler_2)
+			];
+		},
+
+		m(target, anchor) {
+			insert(target, div3, anchor);
+			append(div3, div2);
+			append(div2, div0);
+			append(div0, h4);
+			append(h4, t0);
+			append(div0, t1);
+			append(div0, p0);
+			append(p0, t2);
+			append(p0, t3);
+			append(p0, t4);
+			append(p0, br0);
+			append(p0, t5);
+			append(p0, t6);
+			append(p0, t7);
+			append(p0, br1);
+			append(p0, t8);
+			append(p0, t9);
+			append(p0, t10);
+			append(p0, t11);
+			append(p0, t12);
+			append(div2, t13);
+			append(div2, div1);
+			append(div1, p1);
+			append(div1, t17);
+			if_block.m(div1, null);
+			append(div1, t18);
+			append(div1, button0);
+			append(div1, t20);
+			append(div1, button1);
+		},
+
+		p(changed, new_ctx) {
+			ctx = new_ctx;
+			if ((changed.backups) && t0_value !== (t0_value = ctx.backup.title + "")) {
+				set_data(t0, t0_value);
+			}
+
+			if ((changed.backups) && t3_value !== (t3_value = new ctx.Date(parseInt(ctx.backup.created_at)).toLocaleString() + "")) {
+				set_data(t3, t3_value);
+			}
+
+			if ((changed.backups) && t6_value !== (t6_value = Number.parseFloat(ctx.backup.size / 1024 / 1024).toFixed(2) + "")) {
+				set_data(t6, t6_value);
+			}
+
+			if ((changed.backups) && t9_value !== (t9_value = ctx.backup.install_name + "")) {
+				set_data(t9, t9_value);
+			}
+
+			if ((changed.backups) && t11_value !== (t11_value = ctx.backup.iid + "")) {
+				set_data(t11, t11_value);
+			}
+
+			if (current_block_type === (current_block_type = select_block_type(changed, ctx)) && if_block) {
+				if_block.p(changed, ctx);
+			} else {
+				if_block.d(1);
+				if_block = current_block_type(ctx);
+				if (if_block) {
+					if_block.c();
+					if_block.m(div1, t18);
+				}
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(div3);
+			}
+
+			if_block.d();
+			run_all(dispose);
+		}
+	};
+}
+
+// (270:2) {#if upload_current}
+function create_if_block_2(ctx) {
+	var button, dispose;
+
+	return {
+		c() {
+			button = element("button");
+			button.textContent = "Cancel Upload";
+			attr(button, "class", "btn btn-primary ml-4");
+			dispose = listen(button, "click", ctx.cancel_upload);
+		},
+
+		m(target, anchor) {
+			insert(target, button, anchor);
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(button);
+			}
+
+			dispose();
+		}
+	};
+}
+
+// (275:2) {#if cache_valid_until}
+function create_if_block_1(ctx) {
+	var button, t, button_title_value, dispose;
+
+	return {
+		c() {
+			button = element("button");
+			t = text("Refresh list");
+			attr(button, "class", "btn btn-primary ml-4");
+			attr(button, "title", button_title_value = "Cache is valid until " + new ctx.Date(ctx.cache_valid_until).toLocaleString());
+			dispose = listen(button, "click", ctx.refresh_cache);
+		},
+
+		m(target, anchor) {
+			insert(target, button, anchor);
+			append(button, t);
+		},
+
+		p(changed, ctx) {
+			if ((changed.cache_valid_until) && button_title_value !== (button_title_value = "Cache is valid until " + new ctx.Date(ctx.cache_valid_until).toLocaleString())) {
+				attr(button, "title", button_title_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(button);
+			}
+
+			dispose();
+		}
+	};
+}
+
+// (285:0) {#if error_message}
+function create_if_block(ctx) {
+	var p, t;
+
+	return {
+		c() {
+			p = element("p");
+			t = text(ctx.error_message);
+		},
+
+		m(target, anchor) {
+			insert(target, p, anchor);
+			append(p, t);
+		},
+
+		p(changed, ctx) {
+			if (changed.error_message) {
+				set_data(t, ctx.error_message);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(p);
+			}
+		}
+	};
+}
+
+function create_fragment(ctx) {
+	var t0, div, input, t1, button, t3, t4, t5, if_block2_anchor, dispose;
+
+	let each_value = ctx.backups;
+
+	let each_blocks = [];
+
+	for (let i = 0; i < each_value.length; i += 1) {
+		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+	}
+
+	let each_1_else = null;
+
+	if (!each_value.length) {
+		each_1_else = create_else_block_1();
+		each_1_else.c();
+	}
+
+	var if_block0 = (ctx.upload_current) && create_if_block_2(ctx);
+
+	var if_block1 = (ctx.cache_valid_until) && create_if_block_1(ctx);
+
+	var if_block2 = (ctx.error_message) && create_if_block(ctx);
+
+	return {
+		c() {
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+
+			t0 = space();
+			div = element("div");
+			input = element("input");
+			t1 = space();
+			button = element("button");
+			button.textContent = "Upload";
+			t3 = space();
+			if (if_block0) if_block0.c();
+			t4 = space();
+			if (if_block1) if_block1.c();
+			t5 = space();
+			if (if_block2) if_block2.c();
+			if_block2_anchor = empty();
+			attr(input, "type", "file");
+			input.multiple = true;
+			attr(input, "accept", "application/zip");
+			set_style(input, "display", "none");
+			attr(button, "class", "btn btn-primary");
+			attr(div, "class", "mt-4 svelte-etg4yh");
+
+			dispose = [
+				listen(input, "change", ctx.change_handler),
+				listen(button, "click", ctx.click_handler_3)
+			];
+		},
+
+		m(target, anchor) {
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].m(target, anchor);
+			}
+
+			if (each_1_else) {
+				each_1_else.m(target, anchor);
+			}
+
+			insert(target, t0, anchor);
+			insert(target, div, anchor);
+			append(div, input);
+			ctx.input_binding(input);
+			append(div, t1);
+			append(div, button);
+			append(div, t3);
+			if (if_block0) if_block0.m(div, null);
+			append(div, t4);
+			if (if_block1) if_block1.m(div, null);
+			insert(target, t5, anchor);
+			if (if_block2) if_block2.m(target, anchor);
+			insert(target, if_block2_anchor, anchor);
+		},
+
+		p(changed, ctx) {
+			if (changed.backups || changed.Date) {
+				each_value = ctx.backups;
+
+				let i;
+				for (i = 0; i < each_value.length; i += 1) {
+					const child_ctx = get_each_context(ctx, each_value, i);
+
+					if (each_blocks[i]) {
+						each_blocks[i].p(changed, child_ctx);
+					} else {
+						each_blocks[i] = create_each_block(child_ctx);
+						each_blocks[i].c();
+						each_blocks[i].m(t0.parentNode, t0);
+					}
+				}
+
+				for (; i < each_blocks.length; i += 1) {
+					each_blocks[i].d(1);
+				}
+				each_blocks.length = each_value.length;
+			}
+
+			if (each_value.length) {
+				if (each_1_else) {
+					each_1_else.d(1);
+					each_1_else = null;
+				}
+			} else if (!each_1_else) {
+				each_1_else = create_else_block_1();
+				each_1_else.c();
+				each_1_else.m(t0.parentNode, t0);
+			}
+
+			if (ctx.upload_current) {
+				if (!if_block0) {
+					if_block0 = create_if_block_2(ctx);
+					if_block0.c();
+					if_block0.m(div, t4);
+				}
+			} else if (if_block0) {
+				if_block0.d(1);
+				if_block0 = null;
+			}
+
+			if (ctx.cache_valid_until) {
+				if (if_block1) {
+					if_block1.p(changed, ctx);
+				} else {
+					if_block1 = create_if_block_1(ctx);
+					if_block1.c();
+					if_block1.m(div, null);
+				}
+			} else if (if_block1) {
+				if_block1.d(1);
+				if_block1 = null;
+			}
+
+			if (ctx.error_message) {
+				if (if_block2) {
+					if_block2.p(changed, ctx);
+				} else {
+					if_block2 = create_if_block(ctx);
+					if_block2.c();
+					if_block2.m(if_block2_anchor.parentNode, if_block2_anchor);
+				}
+			} else if (if_block2) {
+				if_block2.d(1);
+				if_block2 = null;
+			}
+		},
+
+		i: noop,
+		o: noop,
+
+		d(detaching) {
+			destroy_each(each_blocks, detaching);
+
+			if (each_1_else) each_1_else.d(detaching);
+
+			if (detaching) {
+				detach(t0);
+				detach(div);
+			}
+
+			ctx.input_binding(null);
+			if (if_block0) if_block0.d();
+			if (if_block1) if_block1.d();
+
+			if (detaching) {
+				detach(t5);
+			}
+
+			if (if_block2) if_block2.d(detaching);
+
+			if (detaching) {
+				detach(if_block2_anchor);
+			}
+
+			run_all(dispose);
+		}
+	};
+}
+
+function instance($$self, $$props, $$invalidate) {
+	let storage;
+  let backupsRef;
+  let error_message = null;
+  let backups = [];
+  let cache_valid_until;
+  let uploadfile;
+  let upload_current;
+  /** Layout of a backup entry
+   *     {
+      title: "Test",
+      uid: "abc",
+      id: "test",
+      iid: "dummy",
+      install_name: "Dummy",
+      created_at: Date.now(),
+      size: 12457634
+    }
+    */
+
+  let { classes = "" } = $$props;
+  let user = null;
+  let data = { installations: {} };
+  let actionqueue = null;
+  let onDestroyProxy = () => {};
+  let userdb = null;
+  onDestroy(() => onDestroyProxy());
+
+  async function start() {
+    const module = await import('../../../../../../../../js/cmp/userdata.js');
+    userdb = module.userdata;
+    storage = userdb.storage(userdb.BUCKET_BACKUP);
+    onDestroyProxy = module.UserAwareComponent(
+      u => {
+        user = u;
+        if (u) {
+          backupsRef = storage.ref().child(user.uid);
+          get_backups_list().catch(error => {
+            $$invalidate('error_message', error_message = error.message);
+          });
+        }
+      },
+      data_ => (data = Object.assign({ installations: {} }, data_)),
+      aq_ => (actionqueue = aq_)
+    );
+  }
+  start();
+  /// End -- User Aware Component
+
+  async function get_backups_list() {
+    let list = localStorage.getItem("backups");
+    if (list) list = JSON.parse(list);
+    if (list && list.valid_until > Date.now()) {
+      $$invalidate('cache_valid_until', cache_valid_until = list.valid_until);
+      $$invalidate('backups', backups = list.data);
+      return;
+    }
+    const backupsList = await backupsRef.listAll();
+    list = [];
+    for (let item of backupsList.items) {
+      const meta = await item.getMetadata();
+      const [iid, _] = meta.name.split("_");
+      list.push({
+        iid,
+        id: meta.name,
+        created_at: Date.parse(meta.timeCreated),
+        size: meta.size,
+        install_name: meta.customMetadata.install_name,
+        title: meta.customMetadata.title
+          ? meta.customMetadata.title
+          : meta.name,
+        uid: user.uid,
+        ref: meta.fullPath
+      });
+      console.log(meta);
+    }
+    let d = new Date(Date.now());
+    d.setDate(d.getDate() + 1);
+    localStorage.setItem(
+      "backups",
+      JSON.stringify({ data: list, valid_until: d.getTime() })
+    );
+    $$invalidate('backups', backups = list);
+  }
+
+  function refresh_cache() {
+    $$invalidate('cache_valid_until', cache_valid_until = null);
+    localStorage.removeItem("backups");
+    get_backups_list();
+  }
+
+  function progress_message(selectedFile, snapshot) {
+    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    $$invalidate('error_message', error_message = `Uploading (${progress}%) ${selectedFile.name} (Size: ${(
+      selectedFile.size / 1024
+    ).toFixed(2)}kb)`);
+  }
+
+  function cancel_upload() {
+    upload_current.cancel();
+    $$invalidate('upload_current', upload_current = null);
+  }
+
+  async function make_download_link(e, backup, backup_index) {
+    const gsReference = storage.refFromURL(
+      userdb.BUCKET_BACKUP + "/" + backup.ref
+    );
+    $$invalidate('backups', backups[backup_index].download_url = await gsReference.getDownloadURL(), backups);
+  }
+
+  async function upload(e) {
+    e.target.disabled = true;
+    for (let selectedFile of uploadfile.files) {
+      let [iid, title] = selectedFile.name.split("_");
+      if (!iid || !title || !data.installations[iid]) {
+        $$invalidate('error_message', error_message =
+          "File name '" +
+          selectedFile.name +
+          "' must follow the pattern INSTALLID_A-TITLE.zip with INSTALLID matching one of the currently registered installation ids (" +
+          Object.keys(data.installations)
+            .map(e => `"${e}"`)
+            .join(", ") +
+          ") and A-TITLE being the backup title");
+        e.target.disabled = false;
+        return;
+      }
+      if (selectedFile.type != "application/zip") {
+        $$invalidate('error_message', error_message =
+          "File " +
+          selectedFile.name +
+          " is not a zip file: " +
+          selectedFile.type);
+        e.target.disabled = false;
+        return;
+      }
+      if (selectedFile.size / 1024 / 1024 > 5) {
+        $$invalidate('error_message', error_message =
+          "File " + selectedFile.name + " is bigger than 5 megabytes!");
+        e.target.disabled = false;
+        return;
+      }
+      const fileRef = backupsRef.child(iid + "_" + Date.now());
+      $$invalidate('upload_current', upload_current = fileRef.put(selectedFile, {
+        customMetadata: {
+          title,
+          install_name: data.installations[iid].title
+        }
+      }));
+      upload_current.on("state_changed", snapshot => {
+        progress_message(selectedFile, snapshot);
+      });
+      try {
+        await upload_current;
+        $$invalidate('upload_current', upload_current = null);
+      } catch (err) {
+        $$invalidate('upload_current', upload_current = null);
+        $$invalidate('error_message', error_message =
+          "Upload of " + selectedFile.name + " failed: " + err.message);
+        return;
+      }
+    }
+    $$invalidate('error_message', error_message = null);
+    refresh_cache();
+  }
+
+  function restore(e, backup) {
+    if (!userdb) return;
+    e.target.disabled = true;
+    e.target.innerText = "Restore Queued";
+    userdb
+      .queue_action(backup.iid, "restore", backup.id)
+      .then(() => {
+        e.target.disabled = false;
+      })
+      .catch(err => {
+        e.target.disabled = false;
+        $$invalidate('error_message', error_message = err.message);
+      });
+  }
+
+  async function remove(e, backup) {
+    if (!userdb) return;
+    e.target.disabled = true;
+    try {
+      const gsReference = storage.refFromURL(
+        userdb.BUCKET_BACKUP + "/" + backup.ref
+      );
+      await gsReference.delete();
+    } catch (err) {
+      e.target.disabled = false;
+      $$invalidate('error_message', error_message = err.message);
+      return;
+    }
+    refresh_cache();
+  }
+
+	const click_handler = ({ backup, backup_index }, e) => make_download_link(e, backup, backup_index);
+
+	const click_handler_1 = ({ backup }, e) => restore(e, backup);
+
+	const click_handler_2 = ({ backup }, e) => remove(e, backup);
+
+	function input_binding($$value) {
+		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
+			$$invalidate('uploadfile', uploadfile = $$value);
+		});
+	}
+
+	const change_handler = (e) => upload(e);
+
+	const click_handler_3 = (e) => uploadfile.click();
+
+	$$self.$set = $$props => {
+		if ('classes' in $$props) $$invalidate('classes', classes = $$props.classes);
+	};
+
+	return {
+		error_message,
+		backups,
+		cache_valid_until,
+		uploadfile,
+		upload_current,
+		classes,
+		refresh_cache,
+		cancel_upload,
+		make_download_link,
+		upload,
+		restore,
+		remove,
+		Date,
+		click_handler,
+		click_handler_1,
+		click_handler_2,
+		input_binding,
+		change_handler,
+		click_handler_3
+	};
+}
+
+class Cmp extends SvelteComponent {
+	constructor(options) {
+		super();
+		if (!document.getElementById("svelte-etg4yh-style")) add_css();
+		init(this, options, instance, create_fragment, safe_not_equal, ["classes"]);
+	}
+}
+
+window.customElements.define('ui-backups', class extends HTMLElement {
+    constructor() {
+        super();
+    }
+    connectedCallback() {
+        const classes = this.getAttribute("class");
+        this.removeAttribute("class");
+        this.cmp = new Cmp({ target: this, props: { classes } });
+    }
+    disconnectedCallback() {
+        if (this.cmp) this.cmp.$destroy();
+    }
+});
 //# sourceMappingURL=ui-backups.js.map

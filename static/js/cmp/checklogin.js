@@ -1,2 +1,404 @@
-function t(){}function n(t,n,e,Q,i){t.__svelte_meta={loc:{file:n,line:e,column:Q,char:i}}}function e(t){return t()}function Q(){return Object.create(null)}function i(t){t.forEach(e)}function o(t){return"function"==typeof t}function s(t,n){return t!=t?n==n:t!==n||t&&"object"==typeof t||"function"==typeof t}function l(t,n){t.appendChild(n)}function c(t,n,e){t.insertBefore(n,e||null)}function g(t){t.parentNode.removeChild(t)}function I(t){return document.createElement(t)}function F(){return t="",document.createTextNode(t);var t}function U(t,n,e){null==e?t.removeAttribute(n):t.setAttribute(n,e)}let B;function a(t){B=t}const d=[],x=[],u=[],b=[],C=Promise.resolve();let r=!1;function A(t){u.push(t)}function L(){const t=new Set;do{for(;d.length;){const t=d.shift();a(t),G(t.$$)}for(;x.length;)x.pop()();for(let n=0;n<u.length;n+=1){const e=u[n];t.has(e)||(e(),t.add(e))}u.length=0}while(d.length);for(;b.length;)b.pop()();r=!1}function G(t){t.fragment&&(t.update(t.dirty),i(t.before_update),t.fragment.p(t.dirty,t.ctx),t.dirty=null,t.after_update.forEach(A))}const m=new Set;function N(t,n){t.$$.dirty||(d.push(t),r||(r=!0,C.then(L)),t.$$.dirty=Q()),t.$$.dirty[n]=!0}function Z(n,s,l,c,g,I){const F=B;a(n);const U=s.props||{},d=n.$$={fragment:null,ctx:null,props:I,update:t,not_equal:g,bound:Q(),on_mount:[],on_destroy:[],before_update:[],after_update:[],context:new Map(F?F.$$.context:[]),callbacks:Q(),dirty:null};let x=!1;var u,b,C;d.ctx=l?l(n,U,(t,e)=>{d.ctx&&g(d.ctx[t],d.ctx[t]=e)&&(d.bound[t]&&d.bound[t](e),x&&N(n,t))}):U,d.update(),x=!0,i(d.before_update),d.fragment=c(d.ctx),s.target&&(s.hydrate?d.fragment.l((C=s.target,Array.from(C.childNodes))):d.fragment.c(),s.intro&&((u=n.$$.fragment)&&u.i&&(m.delete(u),u.i(b))),function(t,n,Q){const{fragment:s,on_mount:l,on_destroy:c,after_update:g}=t.$$;s.m(n,Q),A(()=>{const n=l.map(e).filter(o);c?c.push(...n):i(n),t.$$.on_mount=[]}),g.forEach(A)}(n,s.target,s.anchor),L()),a(F)}class p{$destroy(){var n,e;e=1,(n=this).$$.fragment&&(i(n.$$.on_destroy),n.$$.fragment.d(e),n.$$.on_destroy=n.$$.fragment=null,n.$$.ctx={}),this.$destroy=t}$on(t,n){const e=this.$$.callbacks[t]||(this.$$.callbacks[t]=[]);return e.push(n),()=>{const t=e.indexOf(n);-1!==t&&e.splice(t,1)}}$set(){}}class D extends p{constructor(t){if(!t||!t.target&&!t.$$inline)throw new Error("'target' is a required option");super()}$destroy(){super.$destroy(),this.$destroy=(()=>{console.warn("Component was already destroyed")})}}const X="assets/js/checklogin/cmp.svelte";function W(t){var e,Q;return{c:function(){e=I("div"),(Q=I("div")).textContent="Logging in...",U(Q,"class","loader svelte-n44non"),n(Q,X,137,4,2749),U(e,"class","dimNotLoggedIn svelte-n44non"),n(e,X,136,2,2716)},m:function(t,n){c(t,e,n),l(e,Q)},d:function(t){t&&g(e)}}}function y(n){var e,Q=n.visible&&W();return{c:function(){Q&&Q.c(),e=F()},l:function(t){throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option")},m:function(t,n){Q&&Q.m(t,n),c(t,e,n)},p:function(t,n){n.visible?Q||((Q=W()).c(),Q.m(e.parentNode,e)):Q&&(Q.d(1),Q=null)},i:t,o:t,d:function(t){Q&&Q.d(t),t&&g(e)}}}function E(t,n,e){let Q=!1,i=null;function o(){i&&clearTimeout(i),window.location.search?window.location.assign("/login?redirect="+encodeURIComponent("/"+window.location.pathname+window.location.search)):window.location.assign("/login")}function s(t){i&&clearTimeout(i),i=null,window.loggedin=!!t,e("visible",Q=!t),t||o()}return async function(){i=setTimeout(()=>{const n=t.auth().currentUser;e("visible",Q=!n),window.loggedin=!!n,n||(i=setTimeout(()=>s(t.auth().currentUser),2500))},500);let t=(await import("../../../../../../../../js/cmp/userdata.js")).firebase;t.auth().onAuthStateChanged(s,function(t){console.log("Check login error",t),o()})}(),{visible:Q}}class h extends D{constructor(t){var n;super(t),document.getElementById("svelte-n44non-style")||((n=I("style")).id="svelte-n44non-style",n.textContent='.loader.svelte-n44non,.loader.svelte-n44non:before,.loader.svelte-n44non:after{border-radius:50%;width:2.5em;height:2.5em;-webkit-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation:svelte-n44non-load7 1.8s infinite ease-in-out;animation:svelte-n44non-load7 1.8s infinite ease-in-out}.loader.svelte-n44non{font-size:10px;margin:80px auto;position:relative;text-indent:-9999em;-webkit-transform:translateZ(0);-ms-transform:translateZ(0);transform:translateZ(0);-webkit-animation-delay:-0.16s;animation-delay:-0.16s}.loader.svelte-n44non:before,.loader.svelte-n44non:after{content:"";position:absolute;top:0}.loader.svelte-n44non:before{left:-3.5em;-webkit-animation-delay:-0.32s;animation-delay:-0.32s}.loader.svelte-n44non:after{left:3.5em}@-webkit-keyframes svelte-n44non-load7{0%,80%,100%{box-shadow:0 2.5em 0 -1.3em}40%{box-shadow:0 2.5em 0 0}}@keyframes svelte-n44non-load7{0%,80%,100%{box-shadow:0 2.5em 0 -1.3em}40%{box-shadow:0 2.5em 0 0}}.dimNotLoggedIn.svelte-n44non{position:fixed;top:0;bottom:0;left:0;right:0;z-index:100;background-color:#00000083;display:flex;justify-content:center}.dimNotLoggedIn.svelte-n44non .loader.svelte-n44non{color:white;align-self:center;font-size:20px;text-align:center;text-indent:-1em;white-space:nowrap}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY21wLnN2ZWx0ZSIsInNvdXJjZXMiOlsiY21wLnN2ZWx0ZSJdLCJzb3VyY2VzQ29udGVudCI6WyI8c2NyaXB0PlxuICBsZXQgdmlzaWJsZSA9IGZhbHNlO1xuICBsZXQgdGltZXIgPSBudWxsO1xuXG4gIGZ1bmN0aW9uIG5vdExvZ2dlZEluKCkge1xuICAgIGlmICh0aW1lcikgY2xlYXJUaW1lb3V0KHRpbWVyKTtcbiAgICAvL2RvY3VtZW50LmJvZHkuY2xhc3NMaXN0LnJlbW92ZShcImxvZ2dlZF9pblwiKTtcbiAgICBpZiAod2luZG93LmxvY2F0aW9uLnNlYXJjaClcbiAgICAgIHdpbmRvdy5sb2NhdGlvbi5hc3NpZ24oXG4gICAgICAgIFwiL2xvZ2luP3JlZGlyZWN0PVwiICtcbiAgICAgICAgICBlbmNvZGVVUklDb21wb25lbnQoXG4gICAgICAgICAgICBcIi9cIiArIHdpbmRvdy5sb2NhdGlvbi5wYXRobmFtZSArIHdpbmRvdy5sb2NhdGlvbi5zZWFyY2hcbiAgICAgICAgICApXG4gICAgICApO1xuICAgIGVsc2Ugd2luZG93LmxvY2F0aW9uLmFzc2lnbihcIi9sb2dpblwiKTtcbiAgfVxuXG4gIGZ1bmN0aW9uIGNoZWNrX3VzZXIodXNlcikge1xuICAgIGlmICh0aW1lcikgY2xlYXJUaW1lb3V0KHRpbWVyKTtcbiAgICB0aW1lciA9IG51bGw7XG4gICAgd2luZG93LmxvZ2dlZGluID0gISF1c2VyO1xuICAgIHZpc2libGUgPSAhdXNlcjtcbiAgICBpZiAoIXVzZXIpIHtcbiAgICAgIG5vdExvZ2dlZEluKCk7XG4gICAgfVxuICB9XG5cbiAgYXN5bmMgZnVuY3Rpb24gYXV0aCgpIHtcbiAgICAvLyBTaG93IGxvYWRpbmcgc2NyZWVuIGFmdGVyIDUwMG1zXG4gICAgdGltZXIgPSBzZXRUaW1lb3V0KCgpID0+IHtcbiAgICAgIGNvbnN0IHVzZXIgPSBmaXJlYmFzZS5hdXRoKCkuY3VycmVudFVzZXI7XG4gICAgICB2aXNpYmxlID0gIXVzZXI7XG4gICAgICB3aW5kb3cubG9nZ2VkaW4gPSAhIXVzZXI7XG4gICAgICBpZiAoIXVzZXIpIHtcbiAgICAgICAgLy8gQmFja3VwIHRpbWVyXG4gICAgICAgIHRpbWVyID0gc2V0VGltZW91dCgoKSA9PiBjaGVja191c2VyKGZpcmViYXNlLmF1dGgoKS5jdXJyZW50VXNlciksIDI1MDApO1xuICAgICAgfVxuICAgIH0sIDUwMCk7XG4gICAgbGV0IG1vZHVsZSA9IGF3YWl0IGltcG9ydChcIi9qcy9jbXAvdXNlcmRhdGEuanNcIik7XG4gICAgbGV0IGZpcmViYXNlID0gbW9kdWxlLmZpcmViYXNlO1xuXG4gICAgZmlyZWJhc2UuYXV0aCgpLm9uQXV0aFN0YXRlQ2hhbmdlZChjaGVja191c2VyLCBmdW5jdGlvbihlcnJvcikge1xuICAgICAgY29uc29sZS5sb2coXCJDaGVjayBsb2dpbiBlcnJvclwiLCBlcnJvcik7XG4gICAgICBub3RMb2dnZWRJbigpO1xuICAgIH0pO1xuICB9XG5cbiAgYXV0aCgpO1xuPC9zY3JpcHQ+XG5cbjxzdHlsZT5cbiAgLmxvYWRlcixcbiAgLmxvYWRlcjpiZWZvcmUsXG4gIC5sb2FkZXI6YWZ0ZXIge1xuICAgIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgICB3aWR0aDogMi41ZW07XG4gICAgaGVpZ2h0OiAyLjVlbTtcbiAgICAtd2Via2l0LWFuaW1hdGlvbi1maWxsLW1vZGU6IGJvdGg7XG4gICAgYW5pbWF0aW9uLWZpbGwtbW9kZTogYm90aDtcbiAgICAtd2Via2l0LWFuaW1hdGlvbjogbG9hZDcgMS44cyBpbmZpbml0ZSBlYXNlLWluLW91dDtcbiAgICBhbmltYXRpb246IGxvYWQ3IDEuOHMgaW5maW5pdGUgZWFzZS1pbi1vdXQ7XG4gIH1cblxuICAubG9hZGVyIHtcbiAgICBmb250LXNpemU6IDEwcHg7XG4gICAgbWFyZ2luOiA4MHB4IGF1dG87XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgIHRleHQtaW5kZW50OiAtOTk5OWVtO1xuICAgIC13ZWJraXQtdHJhbnNmb3JtOiB0cmFuc2xhdGVaKDApO1xuICAgIC1tcy10cmFuc2Zvcm06IHRyYW5zbGF0ZVooMCk7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVaKDApO1xuICAgIC13ZWJraXQtYW5pbWF0aW9uLWRlbGF5OiAtMC4xNnM7XG4gICAgYW5pbWF0aW9uLWRlbGF5OiAtMC4xNnM7XG4gIH1cblxuICAubG9hZGVyOmJlZm9yZSxcbiAgLmxvYWRlcjphZnRlciB7XG4gICAgY29udGVudDogXCJcIjtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgdG9wOiAwO1xuICB9XG5cbiAgLmxvYWRlcjpiZWZvcmUge1xuICAgIGxlZnQ6IC0zLjVlbTtcbiAgICAtd2Via2l0LWFuaW1hdGlvbi1kZWxheTogLTAuMzJzO1xuICAgIGFuaW1hdGlvbi1kZWxheTogLTAuMzJzO1xuICB9XG5cbiAgLmxvYWRlcjphZnRlciB7XG4gICAgbGVmdDogMy41ZW07XG4gIH1cblxuICBALXdlYmtpdC1rZXlmcmFtZXMgbG9hZDcge1xuICAgIDAlLFxuICAgIDgwJSxcbiAgICAxMDAlIHtcbiAgICAgIGJveC1zaGFkb3c6IDAgMi41ZW0gMCAtMS4zZW07XG4gICAgfVxuICAgIDQwJSB7XG4gICAgICBib3gtc2hhZG93OiAwIDIuNWVtIDAgMDtcbiAgICB9XG4gIH1cblxuICBAa2V5ZnJhbWVzIGxvYWQ3IHtcbiAgICAwJSxcbiAgICA4MCUsXG4gICAgMTAwJSB7XG4gICAgICBib3gtc2hhZG93OiAwIDIuNWVtIDAgLTEuM2VtO1xuICAgIH1cbiAgICA0MCUge1xuICAgICAgYm94LXNoYWRvdzogMCAyLjVlbSAwIDA7XG4gICAgfVxuICB9XG5cbiAgLmRpbU5vdExvZ2dlZEluIHtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiAwO1xuICAgIGJvdHRvbTogMDtcbiAgICBsZWZ0OiAwO1xuICAgIHJpZ2h0OiAwO1xuICAgIHotaW5kZXg6IDEwMDtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDAwMDAwODM7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgfVxuICAuZGltTm90TG9nZ2VkSW4gLmxvYWRlciB7XG4gICAgY29sb3I6IHdoaXRlO1xuICAgIGFsaWduLXNlbGY6IGNlbnRlcjtcbiAgICBmb250LXNpemU6IDIwcHg7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIHRleHQtaW5kZW50OiAtMWVtO1xuICAgIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gIH1cbjwvc3R5bGU+XG5cbnsjaWYgdmlzaWJsZX1cbiAgPGRpdiBjbGFzcz1cImRpbU5vdExvZ2dlZEluXCI+XG4gICAgPGRpdiBjbGFzcz1cImxvYWRlclwiPkxvZ2dpbmcgaW4uLi48L2Rpdj5cbiAgPC9kaXY+XG57L2lmfVxuIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQW1ERSxxQkFBTyxDQUNQLHFCQUFPLE9BQU8sQ0FDZCxxQkFBTyxNQUFNLEFBQUMsQ0FBQyxBQUNiLGFBQWEsQ0FBRSxHQUFHLENBQ2xCLEtBQUssQ0FBRSxLQUFLLENBQ1osTUFBTSxDQUFFLEtBQUssQ0FDYiwyQkFBMkIsQ0FBRSxJQUFJLENBQ2pDLG1CQUFtQixDQUFFLElBQUksQ0FDekIsaUJBQWlCLENBQUUsbUJBQUssQ0FBQyxJQUFJLENBQUMsUUFBUSxDQUFDLFdBQVcsQ0FDbEQsU0FBUyxDQUFFLG1CQUFLLENBQUMsSUFBSSxDQUFDLFFBQVEsQ0FBQyxXQUFXLEFBQzVDLENBQUMsQUFFRCxPQUFPLGNBQUMsQ0FBQyxBQUNQLFNBQVMsQ0FBRSxJQUFJLENBQ2YsTUFBTSxDQUFFLElBQUksQ0FBQyxJQUFJLENBQ2pCLFFBQVEsQ0FBRSxRQUFRLENBQ2xCLFdBQVcsQ0FBRSxPQUFPLENBQ3BCLGlCQUFpQixDQUFFLFdBQVcsQ0FBQyxDQUFDLENBQ2hDLGFBQWEsQ0FBRSxXQUFXLENBQUMsQ0FBQyxDQUM1QixTQUFTLENBQUUsV0FBVyxDQUFDLENBQUMsQ0FDeEIsdUJBQXVCLENBQUUsTUFBTSxDQUMvQixlQUFlLENBQUUsTUFBTSxBQUN6QixDQUFDLEFBRUQscUJBQU8sT0FBTyxDQUNkLHFCQUFPLE1BQU0sQUFBQyxDQUFDLEFBQ2IsT0FBTyxDQUFFLEVBQUUsQ0FDWCxRQUFRLENBQUUsUUFBUSxDQUNsQixHQUFHLENBQUUsQ0FBQyxBQUNSLENBQUMsQUFFRCxxQkFBTyxPQUFPLEFBQUMsQ0FBQyxBQUNkLElBQUksQ0FBRSxNQUFNLENBQ1osdUJBQXVCLENBQUUsTUFBTSxDQUMvQixlQUFlLENBQUUsTUFBTSxBQUN6QixDQUFDLEFBRUQscUJBQU8sTUFBTSxBQUFDLENBQUMsQUFDYixJQUFJLENBQUUsS0FBSyxBQUNiLENBQUMsQUFFRCxtQkFBbUIsbUJBQU0sQ0FBQyxBQUN4QixFQUFFLENBQ0YsR0FBRyxDQUNILElBQUksQUFBQyxDQUFDLEFBQ0osVUFBVSxDQUFFLENBQUMsQ0FBQyxLQUFLLENBQUMsQ0FBQyxDQUFDLE1BQU0sQUFDOUIsQ0FBQyxBQUNELEdBQUcsQUFBQyxDQUFDLEFBQ0gsVUFBVSxDQUFFLENBQUMsQ0FBQyxLQUFLLENBQUMsQ0FBQyxDQUFDLENBQUMsQUFDekIsQ0FBQyxBQUNILENBQUMsQUFFRCxXQUFXLG1CQUFNLENBQUMsQUFDaEIsRUFBRSxDQUNGLEdBQUcsQ0FDSCxJQUFJLEFBQUMsQ0FBQyxBQUNKLFVBQVUsQ0FBRSxDQUFDLENBQUMsS0FBSyxDQUFDLENBQUMsQ0FBQyxNQUFNLEFBQzlCLENBQUMsQUFDRCxHQUFHLEFBQUMsQ0FBQyxBQUNILFVBQVUsQ0FBRSxDQUFDLENBQUMsS0FBSyxDQUFDLENBQUMsQ0FBQyxDQUFDLEFBQ3pCLENBQUMsQUFDSCxDQUFDLEFBRUQsZUFBZSxjQUFDLENBQUMsQUFDZixRQUFRLENBQUUsS0FBSyxDQUNmLEdBQUcsQ0FBRSxDQUFDLENBQ04sTUFBTSxDQUFFLENBQUMsQ0FDVCxJQUFJLENBQUUsQ0FBQyxDQUNQLEtBQUssQ0FBRSxDQUFDLENBQ1IsT0FBTyxDQUFFLEdBQUcsQ0FDWixnQkFBZ0IsQ0FBRSxTQUFTLENBQzNCLE9BQU8sQ0FBRSxJQUFJLENBQ2IsZUFBZSxDQUFFLE1BQU0sQUFDekIsQ0FBQyxBQUNELDZCQUFlLENBQUMsT0FBTyxjQUFDLENBQUMsQUFDdkIsS0FBSyxDQUFFLEtBQUssQ0FDWixVQUFVLENBQUUsTUFBTSxDQUNsQixTQUFTLENBQUUsSUFBSSxDQUNmLFVBQVUsQ0FBRSxNQUFNLENBQ2xCLFdBQVcsQ0FBRSxJQUFJLENBQ2pCLFdBQVcsQ0FBRSxNQUFNLEFBQ3JCLENBQUMifQ== */',l(document.head,n)),Z(this,t,E,y,s,[])}}window.customElements.define("ui-checklogin",class extends HTMLElement{constructor(){super()}connectedCallback(){this.cmp=new h({target:this,props:{}})}disconnectedCallback(){this.cmp&&this.cmp.$destroy()}});
+function noop() { }
+function run(fn) {
+    return fn();
+}
+function blank_object() {
+    return Object.create(null);
+}
+function run_all(fns) {
+    fns.forEach(run);
+}
+function is_function(thing) {
+    return typeof thing === 'function';
+}
+function safe_not_equal(a, b) {
+    return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+}
+
+function append(target, node) {
+    target.appendChild(node);
+}
+function insert(target, node, anchor) {
+    target.insertBefore(node, anchor || null);
+}
+function detach(node) {
+    node.parentNode.removeChild(node);
+}
+function element(name) {
+    return document.createElement(name);
+}
+function text(data) {
+    return document.createTextNode(data);
+}
+function empty() {
+    return text('');
+}
+function attr(node, attribute, value) {
+    if (value == null)
+        node.removeAttribute(attribute);
+    else
+        node.setAttribute(attribute, value);
+}
+function children(element) {
+    return Array.from(element.childNodes);
+}
+
+let current_component;
+function set_current_component(component) {
+    current_component = component;
+}
+
+const dirty_components = [];
+const binding_callbacks = [];
+const render_callbacks = [];
+const flush_callbacks = [];
+const resolved_promise = Promise.resolve();
+let update_scheduled = false;
+function schedule_update() {
+    if (!update_scheduled) {
+        update_scheduled = true;
+        resolved_promise.then(flush);
+    }
+}
+function add_render_callback(fn) {
+    render_callbacks.push(fn);
+}
+function flush() {
+    const seen_callbacks = new Set();
+    do {
+        // first, call beforeUpdate functions
+        // and update components
+        while (dirty_components.length) {
+            const component = dirty_components.shift();
+            set_current_component(component);
+            update(component.$$);
+        }
+        while (binding_callbacks.length)
+            binding_callbacks.pop()();
+        // then, once components are updated, call
+        // afterUpdate functions. This may cause
+        // subsequent updates...
+        for (let i = 0; i < render_callbacks.length; i += 1) {
+            const callback = render_callbacks[i];
+            if (!seen_callbacks.has(callback)) {
+                callback();
+                // ...so guard against infinite loops
+                seen_callbacks.add(callback);
+            }
+        }
+        render_callbacks.length = 0;
+    } while (dirty_components.length);
+    while (flush_callbacks.length) {
+        flush_callbacks.pop()();
+    }
+    update_scheduled = false;
+}
+function update($$) {
+    if ($$.fragment) {
+        $$.update($$.dirty);
+        run_all($$.before_update);
+        $$.fragment.p($$.dirty, $$.ctx);
+        $$.dirty = null;
+        $$.after_update.forEach(add_render_callback);
+    }
+}
+const outroing = new Set();
+function transition_in(block, local) {
+    if (block && block.i) {
+        outroing.delete(block);
+        block.i(local);
+    }
+}
+function mount_component(component, target, anchor) {
+    const { fragment, on_mount, on_destroy, after_update } = component.$$;
+    fragment.m(target, anchor);
+    // onMount happens before the initial afterUpdate
+    add_render_callback(() => {
+        const new_on_destroy = on_mount.map(run).filter(is_function);
+        if (on_destroy) {
+            on_destroy.push(...new_on_destroy);
+        }
+        else {
+            // Edge case - component was destroyed immediately,
+            // most likely as a result of a binding initialising
+            run_all(new_on_destroy);
+        }
+        component.$$.on_mount = [];
+    });
+    after_update.forEach(add_render_callback);
+}
+function destroy_component(component, detaching) {
+    if (component.$$.fragment) {
+        run_all(component.$$.on_destroy);
+        component.$$.fragment.d(detaching);
+        // TODO null out other refs, including component.$$ (but need to
+        // preserve final state?)
+        component.$$.on_destroy = component.$$.fragment = null;
+        component.$$.ctx = {};
+    }
+}
+function make_dirty(component, key) {
+    if (!component.$$.dirty) {
+        dirty_components.push(component);
+        schedule_update();
+        component.$$.dirty = blank_object();
+    }
+    component.$$.dirty[key] = true;
+}
+function init(component, options, instance, create_fragment, not_equal, prop_names) {
+    const parent_component = current_component;
+    set_current_component(component);
+    const props = options.props || {};
+    const $$ = component.$$ = {
+        fragment: null,
+        ctx: null,
+        // state
+        props: prop_names,
+        update: noop,
+        not_equal,
+        bound: blank_object(),
+        // lifecycle
+        on_mount: [],
+        on_destroy: [],
+        before_update: [],
+        after_update: [],
+        context: new Map(parent_component ? parent_component.$$.context : []),
+        // everything else
+        callbacks: blank_object(),
+        dirty: null
+    };
+    let ready = false;
+    $$.ctx = instance
+        ? instance(component, props, (key, ret, value = ret) => {
+            if ($$.ctx && not_equal($$.ctx[key], $$.ctx[key] = value)) {
+                if ($$.bound[key])
+                    $$.bound[key](value);
+                if (ready)
+                    make_dirty(component, key);
+            }
+            return ret;
+        })
+        : props;
+    $$.update();
+    ready = true;
+    run_all($$.before_update);
+    $$.fragment = create_fragment($$.ctx);
+    if (options.target) {
+        if (options.hydrate) {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            $$.fragment.l(children(options.target));
+        }
+        else {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            $$.fragment.c();
+        }
+        if (options.intro)
+            transition_in(component.$$.fragment);
+        mount_component(component, options.target, options.anchor);
+        flush();
+    }
+    set_current_component(parent_component);
+}
+let SvelteElement;
+if (typeof HTMLElement !== 'undefined') {
+    SvelteElement = class extends HTMLElement {
+        constructor() {
+            super();
+            this.attachShadow({ mode: 'open' });
+        }
+        connectedCallback() {
+            // @ts-ignore todo: improve typings
+            for (const key in this.$$.slotted) {
+                // @ts-ignore todo: improve typings
+                this.appendChild(this.$$.slotted[key]);
+            }
+        }
+        attributeChangedCallback(attr, _oldValue, newValue) {
+            this[attr] = newValue;
+        }
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            // TODO should this delegate to addEventListener?
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set() {
+            // overridden by instance, if it has props
+        }
+    };
+}
+class SvelteComponent {
+    $destroy() {
+        destroy_component(this, 1);
+        this.$destroy = noop;
+    }
+    $on(type, callback) {
+        const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+        callbacks.push(callback);
+        return () => {
+            const index = callbacks.indexOf(callback);
+            if (index !== -1)
+                callbacks.splice(index, 1);
+        };
+    }
+    $set() {
+        // overridden by instance, if it has props
+    }
+}
+
+/* assets/js/checklogin/cmp.svelte generated by Svelte v3.12.0 */
+
+function add_css() {
+	var style = element("style");
+	style.id = 'svelte-n44non-style';
+	style.textContent = ".loader.svelte-n44non,.loader.svelte-n44non:before,.loader.svelte-n44non:after{border-radius:50%;width:2.5em;height:2.5em;-webkit-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation:svelte-n44non-load7 1.8s infinite ease-in-out;animation:svelte-n44non-load7 1.8s infinite ease-in-out}.loader.svelte-n44non{font-size:10px;margin:80px auto;position:relative;text-indent:-9999em;-webkit-transform:translateZ(0);-ms-transform:translateZ(0);transform:translateZ(0);-webkit-animation-delay:-0.16s;animation-delay:-0.16s}.loader.svelte-n44non:before,.loader.svelte-n44non:after{content:\"\";position:absolute;top:0}.loader.svelte-n44non:before{left:-3.5em;-webkit-animation-delay:-0.32s;animation-delay:-0.32s}.loader.svelte-n44non:after{left:3.5em}@-webkit-keyframes svelte-n44non-load7{0%,80%,100%{box-shadow:0 2.5em 0 -1.3em}40%{box-shadow:0 2.5em 0 0}}@keyframes svelte-n44non-load7{0%,80%,100%{box-shadow:0 2.5em 0 -1.3em}40%{box-shadow:0 2.5em 0 0}}.dimNotLoggedIn.svelte-n44non{position:fixed;top:0;bottom:0;left:0;right:0;z-index:100;background-color:#00000083;display:flex;justify-content:center}.dimNotLoggedIn.svelte-n44non .loader.svelte-n44non{color:white;align-self:center;font-size:20px;text-align:center;text-indent:-1em;white-space:nowrap}";
+	append(document.head, style);
+}
+
+// (136:0) {#if visible}
+function create_if_block(ctx) {
+	var div_1;
+
+	return {
+		c() {
+			div_1 = element("div");
+			div_1.innerHTML = `<div class="loader svelte-n44non">Logging in...</div>`;
+			attr(div_1, "class", "dimNotLoggedIn svelte-n44non");
+		},
+
+		m(target, anchor) {
+			insert(target, div_1, anchor);
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(div_1);
+			}
+		}
+	};
+}
+
+function create_fragment(ctx) {
+	var if_block_anchor;
+
+	var if_block = (ctx.visible) && create_if_block();
+
+	return {
+		c() {
+			if (if_block) if_block.c();
+			if_block_anchor = empty();
+		},
+
+		m(target, anchor) {
+			if (if_block) if_block.m(target, anchor);
+			insert(target, if_block_anchor, anchor);
+		},
+
+		p(changed, ctx) {
+			if (ctx.visible) {
+				if (!if_block) {
+					if_block = create_if_block();
+					if_block.c();
+					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+				}
+			} else if (if_block) {
+				if_block.d(1);
+				if_block = null;
+			}
+		},
+
+		i: noop,
+		o: noop,
+
+		d(detaching) {
+			if (if_block) if_block.d(detaching);
+
+			if (detaching) {
+				detach(if_block_anchor);
+			}
+		}
+	};
+}
+
+function instance($$self, $$props, $$invalidate) {
+	let visible = false;
+  let timer = null;
+
+  function notLoggedIn() {
+    if (timer) clearTimeout(timer);
+    //document.body.classList.remove("logged_in");
+    if (window.location.search)
+      window.location.assign(
+        "/login?redirect=" +
+          encodeURIComponent(
+            "/" + window.location.pathname + window.location.search
+          )
+      );
+    else window.location.assign("/login");
+  }
+
+  function check_user(user) {
+    if (timer) clearTimeout(timer);
+    timer = null;
+    window.loggedin = !!user;
+    $$invalidate('visible', visible = !user);
+    if (!user) {
+      notLoggedIn();
+    }
+  }
+
+  async function auth() {
+    // Show loading screen after 500ms
+    timer = setTimeout(() => {
+      const user = firebase.auth().currentUser;
+      $$invalidate('visible', visible = !user);
+      window.loggedin = !!user;
+      if (!user) {
+        // Backup timer
+        timer = setTimeout(() => check_user(firebase.auth().currentUser), 2500);
+      }
+    }, 500);
+    let module = await import('../../../../../../../../js/cmp/userdata.js');
+    let firebase = module.firebase;
+
+    firebase.auth().onAuthStateChanged(check_user, function(error) {
+      console.log("Check login error", error);
+      notLoggedIn();
+    });
+  }
+
+  auth();
+
+	return { visible };
+}
+
+class Cmp extends SvelteComponent {
+	constructor(options) {
+		super();
+		if (!document.getElementById("svelte-n44non-style")) add_css();
+		init(this, options, instance, create_fragment, safe_not_equal, []);
+	}
+}
+
+window.customElements.define('ui-checklogin', class extends HTMLElement {
+    constructor() {
+        super();
+    }
+    connectedCallback() {
+        this.cmp = new Cmp({
+            target: this, props: { }
+        });
+    }
+    disconnectedCallback() {
+        if (this.cmp) this.cmp.$destroy();
+    }
+});
 //# sourceMappingURL=checklogin.js.map

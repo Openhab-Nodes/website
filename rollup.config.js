@@ -3,6 +3,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 //import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import json from 'rollup-plugin-json';
 
 //import localResolve from 'rollup-plugin-local-resolve';
 import filesize from 'rollup-plugin-filesize';
@@ -30,8 +31,13 @@ function createPluginsArray(modulename, make_custom_component, use_commonjs) {
 				importee === '@firebase' || importee.startsWith('@firebase/') ||
 				importee === 'firebaseui' || importee.startsWith('firebaseui/')
 		}),
+		json({
+			preferConst: true,
+			compact: true,
+			namedExports: false
+		}),
 		use_commonjs && commonjs(),
-		terser({module:true,ecma:8}),
+		//terser({module:true,ecma:8}),
 		filesize()
 	];
 }
