@@ -40,7 +40,7 @@ window.customElements.define('bind-addon-useraccount', class extends HTMLElement
             var db = this._userdata.db();
             await db.collection("ratings")
                 .doc(user.uid + "_" + data.addonid)
-                .update({ rate: data.rate, is_update: data.is_update, addon_id: data.addonid });
+                .update({ rate: data.rate, last_rating: data.last_rating, addon_id: data.addonid });
 
             // Update user data
             let upObj = {};

@@ -142,7 +142,7 @@ Addons and also openHAB X core services are bundled into software containers for
 For running an addon in a debug session, containers are not recommended. The interaction between the debugger and the encapsulated addon container process might be interfered by the operating system. Instead:
 
 1. Execute `sh ./start_all.sh` of the [core repository](https://github.com/openhab-nodes/core) on the command line to start openHAB X.
-2. Start your Addon (or an example Addon) via the command line given above, like `cargo run` for a Rust addon or `npm run start` for NodeJS orr use the respective debugger to start the process.
+2. Start your Addon (or an example Addon) via the command line given above, like `cargo run` for a Rust addon or `npm run start` for NodeJS or use the respective debugger to start the process.
 
 ### Test With Production OHX
 
@@ -590,20 +590,6 @@ OHX uses containers for distributing addons and a [Docker Compose](https://docs.
 Although the software Docker compose itself is not used in the standalone installation, the file format is a well understood, simple and documented format for container setups.
 Metadata like the addon title, description, author information as well as mandatory and optional permissions and network setup are part of this declaration. The file format is [Yaml](/userguide/administer#the-yaml-format).
 
-### Multi-Architecture
-
-Because containers contain machine architecture bound executables you usually define multiple `docker-compose.yml` files. One with all the meta information and for each supported architecture one more.
-
-The default build scripts understand the following files:
-
-| Architecture 	| Filename                  	| Dockerfile        	|
-|--------------	|---------------------------	|-------------------	|
-| -            	| docker-compose.yml        	| Dockerfile        	|
-| x86-32bit    	| docker-compose-x86.yml    	| Dockerfile-x86    	|
-| x86-64bit    	| docker-compose-x64.yml    	| Dockerfile-x64    	|
-| ARMv7        	| docker-compose-armv70.yml 	| Dockerfile-armv70 	|
-| ARMv8.0-A    	| docker-compose-armv80.yml 	| Dockerfile-armv80 	|
-
 ### Example 
 
 The following example for an imaginary addon called "ohx-addon-name" lists two container services. 
@@ -617,21 +603,23 @@ Find the full file specification at https://docs.docker.com/compose/compose-file
 version: '3.7'
 services:
   ohx-addon-name:
+    build:
+      context: ./
+      dockerfile: Dockerfile
     ports:
     - "5000:5000"
-    volumes:
-    - logvolume01:/var/log
     depends_on:
     - mqttbroker
   mqttbroker:
+    image: eclipse-mosquitto:latest
     volumes:
-    - logvolume01:/var/log
+    - logvolume:/var/log
     ports:
     - "1883:1883"
-volumes:
-  logvolume01: {}
 metadata:
-  name: ohx-addon-name
+  # This addon id must match the service name from above.
+  # It also must be unique amonst all addons on the addon registry.
+  id: ohx-addon-name
   version: "1.0"
   type: binding
   authors: ["your name"]
@@ -650,30 +638,35 @@ metadata:
     min: 20
     max: 50
   homepage: "https://example.com"
-  github: "https://www.github.com/my/repository"
+  github: "https://github.com/my/repository"
 ```
 
-An exemplary `docker-compose-x86.yml` file for the x84-32bit architecture follows.
-The two files are merged, so only the machine-dependant bits need to be included.
-That is all build instructions (`build:`) and all referenced images (`image:`).
+If you have docker compose installed, you can start your Addon with this compose file.
+Please check with the 
 
-```yaml
-version: '3.7'
-services:
-  ohx-addon-name:
-    build:
-      context: ./
-      dockerfile: Dockerfile-x86
-  mqttbroker:
-    image: eclipse-mosquitto:latest
-```
+### Multi-Architecture
+
+Because containers bundle *processor architecture* dependant executables,
+multiple containers need to be created.
+
+The Addon Registry command line tool will handle this for you.
+It expects a Dockerfile-ARCH file for each supported architecture..
+
+| Architecture 	| Dockerfile        	|
+|--------------	| -------------------	|
+| x86-64bit    	| Dockerfile        	|
+| x86-32bit    	| Dockerfile-x86    	|
+| ARMv7        	| Dockerfile-armv70 	|
+| ARMv8.0-A    	| Dockerfile-armv80 	|
+
+The command line tool will try its best to resolve external containers for all
+supported architectures. For the example above it would try to find **eclipse-mosquitto:latest**
+for x86-64bit, ARMv7 and ARMv8. If it does not succeed, it will print a warning
+and build your Addon only for the available architectures.
 
 ### Metadata
 
-The `ohx-addon-name` entry with the `build` key points to the dockerfile that creates the image.
-The `build` key is implicit and can be left out if the standard "Dockerfile" name, as listed in the architecture table above, has been used and if that file resides in the same directory as the `docker-compose.yml` file.
-
-All addon metadata sits under "metadata". 
+All addon metadata resides under the "metadata" section.
 
 * `title` and `description` can be translated by having the 2 or 3 letter language code as subkey to `titles` or `descriptions`. (eg *de* for German).
 * `version` Assign your addon a version. Consider to use semantic versioning.
@@ -681,9 +674,9 @@ All addon metadata sits under "metadata".
 * `manufacturers` and `products` List appropriate entries here. Relevant for binding Addons. For an Addon that supports specific Samsung TVs, you would set the keys accordingly. 
 * `permissions` List the mandatory and optional permissions. See further down for further information and a list of available permissions.
 * `homepage` A website for that addon. Might just point to a Github repository.
-* `github` An optional key to the github page of your addon. If this is set, a "Report an Issue" link will appear whenever appropriate in the **Setup &amp; Maintenance** interface. The addon registry page will show your repository "stars" and issue count. It will also be used as homepage if no `homepage` has been set. If you use Github releases (you should!) for distributing new addon versions, the **AddonsManager** will notice this and periodically check for new releases.
-* `logo_url` An optional url to a logo graphics file that is display in the addon manager and on the addon registry page. Must be square and ideally it is in 200x200px resolution. If this is not set, your github repostory is checked if it contains a "logo.png" file in the root directory.
-* `status` The "code" part is an important bit, it states if your addon is available for installation ("AVAILABE"), if it is available but unmaintained ("UNMAINTAINED") or replaced ("REPLACED") or unavailable ("REMOVED"). You can also add a `description` or `descriptions` key to explain any other state than "AVAILABE".
+* `github` An optional link to the github page of your addon. Must follow the https://github.com/your/repo pattern. If this is set, a "Report an Issue" link will appear whenever appropriate in the **Setup &amp; Maintenance** interface. The addon registry page will show your repository "stars" and issue count. It will also be used as homepage if no `homepage` has been set.
+* `logo_url` An optional url to a logo graphics file that is displayed in the addon manager and on the addon registry page. Must be square and for optimal results it should be in 200x200px resolution. If this is not set, your github repostory is checked if it contains a "logo.png" file in the root directory.
+* `status` The status section contains a machine readable `code`. It states if your addon is available for installation ("AVAILABE"), if it is available but unmaintained ("UNMAINTAINED") or replaced ("REPLACED") or unavailable ("REMOVED"). You can also add a `description` or `descriptions` key to explain the state.
 * `estimated_memory_mb`: The memory budget, expressed as a range between `min` and `max` in megabytes, that your application probably requires.
   Native code with no or little runtime like Rust, C, C++, Go usually use between 5 and 30 MB.
   If a runtime is required like for Python you can assume up to 80 MB and if additionally a garbage collector is used like with Java, you can assume from 80 to 160 MB.
