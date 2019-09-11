@@ -555,59 +555,41 @@ fn main() {
     </tab-container>
 </div>
 
-## Bundle Addon to Container
-
-Your addon executable and all libraries to execute your Addon binary are bundled into a container.
-A recipe tells a container image creation tool how to bundle your addon. OHX uses the [Dockerfile](https://docs.docker.com/engine/reference/builder/) format and therefore expect a file with that name in your source code repository.
-
-The template repositories already contain `Dockerfile`s.
-Depending on your programming language the recipe looks slightly different.
-The following file is for a Rust based addon.
-
-```dockerfile
-FROM rust:1.35-slim
-WORKDIR /usr/src/myapp
-COPY . .
-RUN cargo install --path .
-HEALTHCHECK --interval=30s --timeout=2s --retries=2 CMD grpc_health_probe -addr=localhost:443 -connect-timeout 250ms -rpc-timeout 100ms
-EXPOSE 443
-LABEL version="1.0"
-LABEL description="This text illustrates \
-that label-values can span multiple lines."
-LABEL maintainer="Author name <your-email@addr.com>"
-CMD ["myapp"]
-```
-
-Change the `LABEL version`, `maintainer` and `description` accordingly.
-A few parameters may need to be adjusted for your needs, for example `HEALTHCHECK` and `EXPOSE`.
-
-The template repositories contain a build script `./build.sh`, but you can also manually call `docker build`: `docker build . -name ohx-addon-name` or `podman build . -name ohx-addon-name`.
-
 ## Prepare For Publishing
 
-OHX uses containers for distributing addons and a [Docker Compose](https://docs.docker.com/compose/) file `docker-compose.yml` that describes how to start your container(s).
+OHX uses software containers for distributing addons.
+It uses an `addon.yml` file to define metadata like the addon title, description and author information. This file also defines the services and their mandatory and optional permissions and network setup. The file format is [Yaml](/userguide/administer#the-yaml-format).
 
-Although the software Docker compose itself is not used in the standalone installation, the file format is a well understood, simple and documented format for container setups.
-Metadata like the addon title, description, author information as well as mandatory and optional permissions and network setup are part of this declaration. The file format is [Yaml](/userguide/administer#the-yaml-format).
+{{< advanced >}} The file format is compatible to [Docker Compose](https://docs.docker.com/compose/), a well understood, simple and documented format for container setups. Find the full file specification at https://docs.docker.com/compose/compose-file/. If you have docker compose installed, you can start your Addon with this compose file.
 
 ### Example 
 
 The following example for an imaginary addon called "ohx-addon-name" lists two container services. 
-The first entry references the addon application (which we named "ohx-addon-name" in the section above) and the second service entry an mqtt broker container for demonstrational purposes.
+The first entry references the addon application (note the `build` sub-key) and the second service entry an mqtt broker container for demonstrational purposes.
 
-Find the full file specification at https://docs.docker.com/compose/compose-file/.
+Don't worry if the file looks overwhelming in the first few moments.
+We will walk through all bits and pieces in the next sections.
 
-`docker-compose.yml`:
+`addon.yml`:
 
 ```yaml
+# This is the docker compose version tag
 version: '3.7'
 services:
   ohx-addon-name:
     build:
       context: ./
-      dockerfile: Dockerfile
     ports:
     - "5000:5000"
+    permissions:
+      mandatory: ["HW_BLUETOOTH"]
+      optional: []
+    firewall_allow:
+    - "www.google.com"
+    - "*.example.com"
+    - "8.8.8.8"
+    - "8.8.8.8/24"
+    - "*"
     depends_on:
     - mqttbroker
   mqttbroker:
@@ -616,11 +598,9 @@ services:
     - logvolume:/var/log
     ports:
     - "1883:1883"
-metadata:
-  # This addon id must match the service name from above.
-  # It also must be unique amonst all addons on the addon registry.
+x-ohx-registry:
   id: ohx-addon-name
-  version: "1.0"
+  version: "1.0.0"
   type: binding
   authors: ["your name"]
   title: "My addon"
@@ -629,28 +609,70 @@ metadata:
   description: "A long description that *may* use markdown and \n line breaks"
   manufacturers: ["Samsong"]
   products: ["XT-1247"]
-  permissions:
-    mandatory: ["HW_BLUETOOTH"]
-    optional: []
   status:
     code: AVAILABLE
+  homepage: "https://example.com"
+  github: "https://github.com/my/repository"
   estimated_memory_mb:
     min: 20
     max: 50
-  homepage: "https://example.com"
-  github: "https://github.com/my/repository"
 ```
 
-If you have docker compose installed, you can start your Addon with this compose file.
-Please check with the 
+### Metadata
 
-### Multi-Architecture
+All addon metadata resides under the "x-ohx-registry" section.
 
-Because containers bundle *processor architecture* dependant executables,
-multiple containers need to be created.
+* `title` and `description` can be translated by having the 2 or 3 letter language code as subkey to `titles` or `descriptions`. (eg *de* for German).
+* `version` Assign your addon a version. Consider to use semantic versioning.
+   A maximum of 3 segments, separated by dots, each consisting of numbers is allowed.
+* `type` is either "binding", "ioservice" or "other".
+* `manufacturers` and `products` List appropriate entries here. Relevant for binding Addons. 
+   For an Addon that supports specific Samsung TVs, you would set the keys accordingly. 
+* `homepage` A website for that addon. Might just point to a Github repository.
+* `github` An optional link to the github page of your addon.
+   Must follow the https://github.com/your/repo pattern.
+  If this is set, a "Report an Issue" link will appear whenever appropriate in the **Setup &amp; Maintenance** interface.
+  The addon registry page will show your repository "stars" and issue count.
+  It will also be used as homepage if no `homepage` has been set.
+* `logo_url` An optional url to a logo graphics file that is displayed in the addon manager and on the addon registry page. Must be square and for optimal results it should be in 200x200px resolution. If this is not set, your github repostory is checked if it contains a "logo.png" file in the root directory.
+* `status` The status section contains a machine readable `code`. It states if your addon is available for installation ("AVAILABLE"), if it is available but unmaintained ("UNMAINTAINED") or replaced ("REPLACED") or unavailable ("REMOVED"). You can also add a `description` or `descriptions` key to explain the state.
+* `estimated_memory_mb`: The memory budget, expressed as a range between `min` and `max` in megabytes, that your application probably requires.
+  Native code with no or little runtime like Rust, C, C++, Go usually use between 5 and 30 MB.
+  If a runtime or interpreter is required like for Python you can assume up to 80 MB and if additionally a garbage collector is used like with Java, you can assume from 80 to 160 MB.
+  The range is shown to the user in the Addon registry. The actual value can be queried in the **Setup & Maintenance** interface.
+  An installation will trigger a system warning if your Addon exceeds the budget for a certain time.
 
-The Addon Registry command line tool will handle this for you.
-It expects a Dockerfile-ARCH file for each supported architecture..
+### Service entries
+
+A service either references an external software container via the `image` key,
+or references a directory for building via the `build` key and an attached `context` path.
+
+#### External services
+
+The *Addon Manager* needs to know where to fetch an external service from and what the name is.
+Use the `image` key to reference a container registry to fetch from (the default is `docker.io`),
+and the name and optionally the tag of the image.
+
+The image key can be of the following format:
+
+```yaml
+image: redis # just the name, on the default docker.io registry
+image: ubuntu:14.04 # a name and a tag
+image: example-registry.com:4000/postgresql # different registry, no tag
+```
+
+#### {{< advanced >}} Bundle your Addon as container
+
+Your addon and all libraries to execute your Addon are bundled into a container.
+A recipe tells a container image creation tool how to bundle your addon.
+OHX uses the [Dockerfile](https://docs.docker.com/engine/reference/builder/) format.
+The Addon Registry command line tool (`ohx-addon-cli`) will handle this for you.
+It expects an installed `docker`, `podman` or `buildah` executable to be installed.
+
+Because containers bundle *processor architecture* dependant executables, multiple containers need to be created.
+
+`ohx-addon-cli` expects multiple Dockerfiles for each supported architecture.
+The template repositories already contain those `Dockerfile`s, suitable for the respective programming language.
 
 | Architecture 	| Dockerfile        	|
 |--------------	| -------------------	|
@@ -664,79 +686,20 @@ supported architectures. For the example above it would try to find **eclipse-mo
 for x86-64bit, ARMv7 and ARMv8. If it does not succeed, it will print a warning
 and build your Addon only for the available architectures.
 
-### Metadata
+### Service restrictions
 
-All addon metadata resides under the "metadata" section.
+A service, in the example above this is **ohx-addon-name** and **mqttbroker**, by default, runs sandboxed. No hardware or Internet access, no exposed ports and limited CPU time.
 
-* `title` and `description` can be translated by having the 2 or 3 letter language code as subkey to `titles` or `descriptions`. (eg *de* for German).
-* `version` Assign your addon a version. Consider to use semantic versioning.
-* `type` is either "binding" or "ioservice". Leave this key out if none of those are matching.
-* `manufacturers` and `products` List appropriate entries here. Relevant for binding Addons. For an Addon that supports specific Samsung TVs, you would set the keys accordingly. 
-* `permissions` List the mandatory and optional permissions. See further down for further information and a list of available permissions.
-* `homepage` A website for that addon. Might just point to a Github repository.
-* `github` An optional link to the github page of your addon. Must follow the https://github.com/your/repo pattern. If this is set, a "Report an Issue" link will appear whenever appropriate in the **Setup &amp; Maintenance** interface. The addon registry page will show your repository "stars" and issue count. It will also be used as homepage if no `homepage` has been set.
-* `logo_url` An optional url to a logo graphics file that is displayed in the addon manager and on the addon registry page. Must be square and for optimal results it should be in 200x200px resolution. If this is not set, your github repostory is checked if it contains a "logo.png" file in the root directory.
-* `status` The status section contains a machine readable `code`. It states if your addon is available for installation ("AVAILABE"), if it is available but unmaintained ("UNMAINTAINED") or replaced ("REPLACED") or unavailable ("REMOVED"). You can also add a `description` or `descriptions` key to explain the state.
-* `estimated_memory_mb`: The memory budget, expressed as a range between `min` and `max` in megabytes, that your application probably requires.
-  Native code with no or little runtime like Rust, C, C++, Go usually use between 5 and 30 MB.
-  If a runtime is required like for Python you can assume up to 80 MB and if additionally a garbage collector is used like with Java, you can assume from 80 to 160 MB.
-  The range is shown to the user in the Addon registry. The actual value can be queried in the **Setup & Maintenance** interface.
-  An installation will trigger a system warning if your Addon exceeds the budget for a certain time.
+In the following sections you will learn on how to lift those restrictions for your Addon.
+Those instructions will be shown to the user during installation, be thoughtful.
 
-### Process Management Addon
-
-If your Addon is some form of process management interface, it needs to share the process id namespace and maybe also the
-<ui-tooltip maxwidth>
-<button class="btn-link contexthelp" title="IPC (POSIX/SysV IPC)" slot="button">IPC (POSIX/SysV IPC)</button>
-IPC (POSIX/SysV IPC) namespace provides separation of named shared memory segments, semaphores and message queues.
-<br><br>
-Shared memory segments are used to accelerate inter-process communication at memory speed, rather than through pipes or through the network stack.</ui-tooltip> namespace. Do so with:
-
-```yml
-pid: "host"
-ipc: "host"
-```
-
-### Hardware
-
-If your addon interacts with the host kernel directly for tasks like network hardware management, serial interface configuration and hardware related kernel calls, you have some options.
-
-Add Linux [capabilities](http://man7.org/linux/man-pages/man7/capabilities.7.html). That is possible via the `cap_add` and `cap_drop` keys. See https://docs.docker.com/compose/compose-file/#cap_add-cap_drop.
-
-```yaml
-cap_add:
-  - ALL
-
-cap_drop:
-  - NET_ADMIN
-  - SYS_ADMIN
-```
-
-Use explicit device file mapping. This is not recommended.
-
-```yml
-devices:
-  - "/dev/ttyUSB0:/dev/ttyUSB0"
-```
-
-Use OHX permissions. The supervisior process will make sure that your container gets access to related hardware file nodes. The following permissions are currently supported.
-
-* USB: You need the HW_USB permission
-* Bluetooth: HW_BLUETOOTH
-* I2C: HW_I2C
-* Cameras: HW_CAM. This is most of the time a subset of the USB permission because many cameras are integrated via USB. This permission allows you to access the video4linux (eg `/dev/video*`) device files.
-
-A later section talks about permissions and restrictions in more detail.
-If you forget to declare required hardware in the Kubernetes Pods file, you will **not have access.**
-
-### Networking
+#### Networking
 
 By default a single network for your addon is set up. Each container of your addon joins the default network with an own IP address and is both reachable by other containers on that network, and discoverable by them at a hostname identical to the container name.
 
 Let's examine the relevant networking parts of the example from above:
 
 ```yaml
-version: '3.7'
 services:
   mqttbroker:
     image: eclipse-mosquitto:latest
@@ -749,21 +712,25 @@ Each container can now look up the hostname "mqttbroker" and get back the approp
 If your addon needs full network host access you can set `network_mode`. This is not recommended and will result in a big warning during addon installation.
 
 ```yaml
-network_mode: host
+services:
+  mqttbroker:
+    network_mode: host
 ```
 
 Instead you should explicitely name the ports that you want to be exposed. A few examples:
 
 ```yml
-ports:
- - "3000"
- - "3000-3005"
- - "8000:8000"
- - "9090-9091:8080-8081"
- - "49100:22"
- - "127.0.0.1:8001:8001"
- - "127.0.0.1:5000-5010:5000-5010"
- - "6060:6060/udp"
+services:
+  mqttbroker:
+    ports:
+    - "3000"
+    - "3000-3005"
+    - "8000:8000"
+    - "9090-9091:8080-8081"
+    - "49100:22"
+    - "127.0.0.1:8001:8001"
+    - "127.0.0.1:5000-5010:5000-5010"
+    - "6060:6060/udp"
 ```
 
 As you can see, you can expose single ports (`3000`), a port range (`3000-3005`), map container ports to host ports (`8000:8000`) and restrict ports to specific network interfaces like localhost (`127.0.0.1`). The default port type is TCP, for UDP use a `/udp` suffix.
@@ -771,10 +738,8 @@ As you can see, you can expose single ports (`3000`), a port range (`3000-3005`)
 If you expose a port, without mapping it, that port is only visible to other containers and is not visible to the host network interface. To make the mqtt broker from above potentially accessible from the Internet, you would use a port mapping like so:
 
 ```yaml
-version: '3.7'
 services:
   mqttbroker:
-    image: eclipse-mosquitto:latest
     ports:
     - "1883:1883"
 ```
@@ -782,15 +747,13 @@ services:
 TCP Port 8443 is always exported and used for interprocess communication (gRPC).
 UDP Port 5353 is mapped to the same host port for service discovery announcements via mDNS.
 
-#### Access Internet
+##### Access Internet
 
 Outgoing connections (addresses outside of the container network subnet) are by default blocked. If your addon requires certain network services, you must list them under the `firewall_allow` key. A few examples:
 
 ```yml
-version: '3.7'
 services:
   mqttbroker:
-    image: eclipse-mosquitto:latest
     firewall_allow:
     - "www.google.com"
     - "*.example.com"
@@ -799,10 +762,22 @@ services:
     - "*"
 ```
 
-### Restrictions &amp; Permissions
+#### Restrictions &amp; Permissions
 
 A container runs in an isolated, contained environment and is confined to certain restrictions.
-Access to hardware like Bluetooth and USB is denied by default. Some restrictions are only enforced if the container supervisior is correctly instrumented. This is the case for the standalone installation.
+Access to hardware like Bluetooth and USB is denied by default.
+Some restrictions are only enforced if the container supervisior is correctly instrumented.
+This is the case for the standalone installation and the default start script.
+
+An example for a set of permissions looks like this:
+
+```yml
+services:
+  my_addon:
+    permissions:
+      - DISK_QUOTA_500
+      - CPU_MAX
+```
 
 Storage
 : An Addon is confined to 100 MB of disk quota and 1 MB of configuration data. A container might request a larger disk quota via the DISK_QUOTA_500 (500 MB), DISK_QUOTA_1000 (1 GB) and DISK_QUOTA_MAX permissions.
@@ -850,6 +825,69 @@ fn main() {
 		</tab-body>
     </tab-container>
 </div>
+
+#### Hardware
+
+If your addon interacts with the host kernel directly for tasks like network hardware management, serial interface configuration and hardware related kernel calls, you have some options.
+
+Add Linux [capabilities](http://man7.org/linux/man-pages/man7/capabilities.7.html). That is possible via the `cap_add` and `cap_drop` keys. See https://docs.docker.com/compose/compose-file/#cap_add-cap_drop.
+
+```yaml
+services:
+  my_addon:
+    cap_add:
+      - ALL
+    cap_drop:
+      - NET_ADMIN
+      - SYS_ADMIN
+```
+
+Use explicit device file mapping. This is not recommended.
+
+```yml
+services:
+  my_addon:
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+```
+
+Use OHX permissions. The supervisior process will make sure that your container gets access to related hardware file nodes. The following permissions are currently supported.
+
+* USB: You need the HW_USB permission
+* Bluetooth: HW_BLUETOOTH
+* I2C: HW_I2C
+* Cameras: HW_CAM. This is most of the time a subset of the USB permission because many cameras are integrated via USB. This permission allows you to access the video4linux (eg `/dev/video*`) device files.
+
+A later section talks about permissions and restrictions in more detail.
+If you forget to declare required hardware, you will **not have access.**
+
+#### Shared Process ID namespace
+
+If your Addon is some form of process management interface, it needs to share the process id namespace and maybe also the
+<ui-tooltip maxwidth>
+<button class="btn-link contexthelp" title="IPC (POSIX/SysV IPC)" slot="button">IPC (POSIX/SysV IPC)</button>
+IPC (POSIX/SysV IPC) namespace provides separation of named shared memory segments, semaphores and message queues.
+<br><br>
+Shared memory segments are used to accelerate inter-process communication at memory speed, rather than through pipes or through the network stack.</ui-tooltip> namespace. Do so with:
+
+```yml
+services:
+  my_addon:
+    pid: "host"
+    ipc: "host"
+```
+
+#### Volumes: For logging
+
+Usually the standard output is used as primary logging input.
+If a container is not under your control like with the mqtt broker in the example above, and it expects a certain directory for logging, you can instead use a predefined `logvolume` for the service to write its logs to:
+
+```yaml
+services:
+  mqttbroker:
+    volumes:
+    - logvolume:/var/log
+```
 
 ## Publish to Addon Registry
 
