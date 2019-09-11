@@ -598,10 +598,12 @@ services:
     - logvolume:/var/log
     ports:
     - "1883:1883"
+
 x-ohx-registry:
   id: ohx-addon-name
   version: "1.0.0"
   type: binding
+  license: MIT
   authors: ["your name"]
   title: "My addon"
   titles:
@@ -613,9 +615,10 @@ x-ohx-registry:
     code: AVAILABLE
   homepage: "https://example.com"
   github: "https://github.com/my/repository"
-  estimated_memory_mb:
-    min: 20
-    max: 50
+
+x-runtime:
+  memory_min: 20
+  memory_max: 50
 ```
 
 ### Metadata
@@ -626,6 +629,7 @@ All addon metadata resides under the "x-ohx-registry" section.
 * `version` Assign your addon a version. Consider to use semantic versioning.
    A maximum of 3 segments, separated by dots, each consisting of numbers is allowed.
 * `type` is either "binding", "ioservice" or "other".
+* `license` The addon license name
 * `manufacturers` and `products` List appropriate entries here. Relevant for binding Addons. 
    For an Addon that supports specific Samsung TVs, you would set the keys accordingly. 
 * `homepage` A website for that addon. Might just point to a Github repository.
@@ -636,7 +640,10 @@ All addon metadata resides under the "x-ohx-registry" section.
   It will also be used as homepage if no `homepage` has been set.
 * `logo_url` An optional url to a logo graphics file that is displayed in the addon manager and on the addon registry page. Must be square and for optimal results it should be in 200x200px resolution. If this is not set, your github repostory is checked if it contains a "logo.png" file in the root directory.
 * `status` The status section contains a machine readable `code`. It states if your addon is available for installation ("AVAILABLE"), if it is available but unmaintained ("UNMAINTAINED") or replaced ("REPLACED") or unavailable ("REMOVED"). You can also add a `description` or `descriptions` key to explain the state.
-* `estimated_memory_mb`: The memory budget, expressed as a range between `min` and `max` in megabytes, that your application probably requires.
+
+Runtime related metadata is defined in the `x-runtime` section.
+
+* `memory_min` / `memory_max`: The memory budget, expressed as a range in megabytes, that your application requires.
   Native code with no or little runtime like Rust, C, C++, Go usually use between 5 and 30 MB.
   If a runtime or interpreter is required like for Python you can assume up to 80 MB and if additionally a garbage collector is used like with Java, you can assume from 80 to 160 MB.
   The range is shown to the user in the Addon registry. The actual value can be queried in the **Setup & Maintenance** interface.

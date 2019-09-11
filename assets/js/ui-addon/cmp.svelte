@@ -31,10 +31,16 @@
   });
 
   export async function start() {
-    if (!addon.id) {
-      const addon_id = new URL(window.location).searchParams.get("id");
-      addon = addondb.db_by_id[addon_id];
-    }
+    const addon_id = new URL(window.location).searchParams.get("id") || addon.id;
+    addon = addondb.db_by_id[addon_id];
+    addondb.from_cache_or_fetch(addon_id+".json",
+      `https://raw.githubusercontent.com/openhab-nodes/addons-registry/master/${addon_id}.json`).then(v => {
+      addon.reviewed_by = v.reviewed_by;
+      addon.archs = v.archs;
+      addon.size = v.size;
+      addon.estimated_mem = v.estimated_mem;
+    });
+
     if (!onDestroyProxy) {
       onDestroyProxy = UserAwareComponent(
         user_ => {
@@ -114,7 +120,7 @@
   on:click={e => dispatch('click', { id: addon.id })}>
   <ui-tooltip nobutton bind:this={popup}>{error_message}</ui-tooltip>
   <header title={addon.id}>
-    <span>{addon.label}</span>
+    <span>{addon.title}</span>
     <small class="ml-2">{addon.version}</small>
     <small class="" style="white-space: nowrap; text-overflow: ellipsis;">
       – By {addon.author}
@@ -162,8 +168,18 @@
         </tr>
         <tr>
           <th scope="row">Install Size</th>
-          <td title={addon.size + ' bytes'}>
+          <td>
+            {#if addon.size}
             {Number.parseFloat(addon.size / 1024 / 1024).toFixed(2)} MB
+            {/if}
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Supported architectures</th>
+          <td>
+            {#if addon.archs}
+            {addon.archs}
+            {/if}
           </td>
         </tr>
         <tr>
@@ -186,10 +202,10 @@
             {addon.reviewed_by && addon.reviewed_by.length > 0 ? 'Yes' : 'No'}
           </td>
         </tr>
-        {#if addon.stat && addon.stat.license && addon.stat.license.name}
+        {#if addon.stat && addon.stat.license && addon.stat.license}
           <tr>
             <th scope="row">License</th>
-            <td>{addon.stat.license.name}</td>
+            <td>{addon.stat.license}</td>
           </tr>
         {/if}
       </table>

@@ -29,22 +29,6 @@ function sortedIndexLastUpdated(array, value) {
     return array;
 }
 
-async function from_cache_or_fetch(key, url) {
-    let list = localStorage.getItem(key);
-    if (list) list = JSON.parse(list);
-    if (list && list.valid_until > Date.now()) {
-        // list.valid_until;
-        return list.data;
-    } else {
-        const resData = await fetch(url, { cache: "default" });
-        let result = await resData.json();
-        let d = new Date(Date.now());
-        d.setHours(d.getHours() + 1);
-        localStorage.setItem(key, JSON.stringify({ data: result, valid_until: d.getTime() }));
-        return result;
-    }
-}
-
 function adapt_db(db) {
     if(!db) return db;
     for(let entry of db) {
@@ -62,14 +46,31 @@ class AddonDB extends EventTarget {
         this.db = [];
         this.stats = {};
     }
+
+    async from_cache_or_fetch(key, url) {
+        let list = localStorage.getItem(key);
+        if (list) list = JSON.parse(list);
+        if (list && list.valid_until > Date.now()) {
+            // list.valid_until;
+            return list.data;
+        } else {
+            const resData = await fetch(url, { cache: "default" });
+            let result = await resData.json();
+            let d = new Date(Date.now());
+            d.setHours(d.getHours() + 1);
+            localStorage.setItem(key, JSON.stringify({ data: result, valid_until: d.getTime() }));
+            return result;
+        }
+    }
+    
     async start() {
         this.dispatchEvent(new CustomEvent('loader', { detail: {} }));
 
         let recommended;
-        await Promise.all([from_cache_or_fetch("permissions.json", ADDONS_PERMISSIONS).then(r => this.permissions = r),
-        from_cache_or_fetch("recommended.json", ADDONS_RECOMMENDED_URL).then(r => recommended = r),
-        from_cache_or_fetch("extensions.json", ADDONS_URL).then(r => this.db = adapt_db(r)),
-        from_cache_or_fetch("extensions_stats.json", ADDONS_STATS_URL).then(r => this.stats = r)]);
+        await Promise.all([this.from_cache_or_fetch("permissions.json", ADDONS_PERMISSIONS).then(r => this.permissions = r),
+        this.from_cache_or_fetch("recommended.json", ADDONS_RECOMMENDED_URL).then(r => recommended = r),
+        this.from_cache_or_fetch("extensions.json", ADDONS_URL).then(r => this.db = adapt_db(r)),
+        this.from_cache_or_fetch("extensions_stats.json", ADDONS_STATS_URL).then(r => this.stats = r)]);
 
         this.db_by_id = {};
         this.last_updated = [];
@@ -105,7 +106,7 @@ class AddonDB extends EventTarget {
     invalidate_cache() {
         localStorage.removeItem("extensions.json");
         localStorage.removeItem("extensions_stats.json");
-        this.connectedCallback();
+        this.start();
     }
 }
 
