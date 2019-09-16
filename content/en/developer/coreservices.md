@@ -30,7 +30,7 @@ Usually core services are bundled into software containers for distribution, but
 
 For running a service (or an addon) in a debug session, containers are not recommended.
 
-1. Follow the steps of the last section except step 5. Execute `sh ./start_all.sh` on the command line to start openHAB X without containers.
+1. Follow the steps of the last section except step 5. Execute `sh ./start_all.sh` on the command line to start OHX without containers.
 2. Stop / kill the service that you want to start in debug mode.
 3. Start the service in question via your IDE or `cargo run` in debug mode.
 
@@ -64,7 +64,7 @@ Rule module execution could also be modelled as process spawning with interproce
 
 A **security** concern as well as **stability** concern is the javascript engine, which happens to be the mozilla spidermonkey one. It runs in-process and any crash in the complex spidermonkey codebase crashes the rule engine.
 
-Any malicous, non-legit script that breaks out of the engines sandbox can affect the openHAB X installation with the permission level of the rule engine. A script also has unlimited access to the network, meaning that it can download and execute further scripts. This needs to be observed and if necessary, revised in the future.
+Any malicous, non-legit script that breaks out of the engines sandbox can affect the OHX installation with the permission level of the rule engine. A script also has unlimited access to the network, meaning that it can download and execute further scripts. This needs to be observed and if necessary, revised in the future.
 
 ### Start up
 
@@ -129,7 +129,7 @@ you need to wrap messages with the Thing ID:
 }
 ```
 
-The service also adds an emulated Thing "openHAB X". This Thing has multiple "events" defined, which are used to push notifications to WoT clients. A client should subscribe to the "emergency" event. Notifications about crashed containers, low disk space, ddos attacks are pushed via this event.
+The service also adds an emulated Thing "OHX". This Thing has multiple "events" defined, which are used to push notifications to WoT clients. A client should subscribe to the "emergency" event. Notifications about crashed containers, low disk space, ddos attacks are pushed via this event.
 
 Groups, Scenes, Scheduled Tasks are also exposed as Things, tagged as "Group", "Scene", "Scheduled" respectively.
 

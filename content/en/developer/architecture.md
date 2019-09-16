@@ -1,13 +1,13 @@
 +++
-title = "openHAB X Architecture"
+title = "OHX Architecture"
 author = "David Graeff"
 weight = 20
 tags = []
 +++
 
-This chapter talks about the general architecture of openHAB X and how services interact with each other. This overview provides an insight on what technologies and protocols are used in which situations and also talks about alternatives when appropriate.
+This chapter talks about the general architecture of OHX and how services interact with each other. This overview provides an insight on what technologies and protocols are used in which situations and also talks about alternatives when appropriate.
 
-openHAB X follows a microservices architecture, meaning that it is composed of multiple single-purpose processes.
+OHX follows a microservices architecture, meaning that it is composed of multiple single-purpose processes.
 It makes use of external, well-known and understood solutions and protocols whenever possible, as long as those match with the [design principles](/developer/design_principles):
 
 * The state database is a REDIS instance.
@@ -54,7 +54,7 @@ If a `package.json` file is present, no matter if in an addon static directory o
 
 ## Addons
 
-An Addon in OHX may consist of multiple processes (services). At least one process registers itself to the **Addons Manger**. An Addon usually integrate external web-services or devices ("binding") or exposes openHAB X Things in some form or another ("IO Service").
+An Addon in OHX may consist of multiple processes (services). At least one process registers itself to the **Addons Manger**. An Addon usually integrate external web-services or devices ("binding") or exposes OHX Things in some form or another ("IO Service").
 
 For easy distribution and enhanced resource control as well as enforcing security features, Addon processes are bundled and running as *software containers*.
 
@@ -64,7 +64,7 @@ Docker is just one of many container engines. OHX uses vendor neutral software c
 <br><br>
 The Open Container Initiative (OCI), founded by Docker, is a Linux Foundation project to design open standards for operating-system-level virtualization, most importantly containers.</ui-tooltip.
 
-A set of related containers, like an openHAB X Addon, is called a *Pod*.
+A set of related containers, like an OHX Addon, is called a *Pod*.
 {{< /callout >}}
 
 In most cases your Addon consists of exactly one container, which runs software that is linked to `libAddon`. Sometimes you might require additional external services, like a database. This is when you have more than one container running.
@@ -98,7 +98,7 @@ The [Addon](/developer/addons) chapter contains all information about Addon deve
 
 ## Addon Manager
 
-The addon manager process maintains a list of registered and running addons. It also talks to [podman](https://podman.io/), the daemonless container engine that is used together with openHAB X, for starting installed addons.
+The addon manager process maintains a list of registered and running addons. It also talks to [podman](https://podman.io/), the daemonless container engine that is used together with OHX, for starting installed addons.
 
 {{< mermaid options="{sequence:{mirrorActors:false}}" context="addonmanager_sequence">}}
 sequenceDiagram
@@ -129,7 +129,7 @@ The generic file storage is [quota](https://access.redhat.com/documentation/en-u
 {{< img src="/img/doc/configuration-storage.svg" >}}
 
 {{< colpic ratio="50" >}}
-*Configuration* in openHAB X is Service configuration, Inbox accepted Things, Manually configured Things, Rules, Rule Templates.
+*Configuration* in OHX is Service configuration, Inbox accepted Things, Manually configured Things, Rules, Rule Templates.
 <split>
 *Runtime-Only Documents* are config descriptions (JSonSchemas), Thing descriptions ([WoT TD](https://w3c.github.io/wot-thing-description/)), Inbox Thing instances, Refresh Tokens.
 {{< /colpic >}}
@@ -140,12 +140,12 @@ Configuration happens in *Namespaces*. Each addon and each service, for example 
 This is implemented via software [container volumes](https://docs.docker.com/storage/volumes/), pointing each to a subdirectory of `${OHX_HOME}/config`. Configuration of the namespace "addon-zwave" for instance can be found in `${OHX_HOME}/config/addon-zwave`.
 
 Standalone
-: In a standalone installation, the operating systems filesystem is immutable, including the `/etc` directory. An overlayfs is mounted, using files residing in the openHAB X configuration storage under the namespace "os-etc". Most importantely this includes Wifi and Network Configuration (networkmanager) and Supervisior configuration (systemd).
+: In a standalone installation, the operating systems filesystem is immutable, including the `/etc` directory. An overlayfs is mounted, using files residing in the OHX configuration storage under the namespace "os-etc". Most importantely this includes Wifi and Network Configuration (networkmanager) and Supervisior configuration (systemd).
 
 Checkpoints & Restore
-: openHAB X supports configuration checkpoints and restoring. Git is used to archive a specific point in time. Git remotes can be added in the **Backup &amp; Restore** service. Automatic commits are performed every 24 hours and if remotes are added and credentials are present, automatic pushes happes as well. Creating a configuration checkpoint means git tagging. Restoring means checking out a previous tag.
+: OHX supports configuration checkpoints and restoring. Git is used to archive a specific point in time. Git remotes can be added in the **Backup &amp; Restore** service. Automatic commits are performed every 24 hours and if remotes are added and credentials are present, automatic pushes happes as well. Creating a configuration checkpoint means git tagging. Restoring means checking out a previous tag.
 
-This architecture allows to synchronize openHAB X instances. If the periodic git commit and push cycle is not instant enough, GlusterFS or a similar scalable network filesystem works.
+This architecture allows to synchronize OHX instances. If the periodic git commit and push cycle is not instant enough, GlusterFS or a similar scalable network filesystem works.
 
 ## Identity and Access Management (IAM)
 
@@ -162,11 +162,11 @@ Requirements for this service are:
 SAML 2 was also evaluated, but it is too complex and heavy with its big xml SOAP messaging and embedded x509 signatures for openHABs SSO and service authentication. 
 {{< /callout >}}
 
-OpenHAB X IAM implements [OpenID Connect Discovery](https://openid.net/connect/) for the identity broker part via [Konnect](https://github.com/Kopano-dev/konnect) with [GlAuth](https://github.com/glauth/glauth) as ldap backend for the credentials database. OpenID Connect Discovery is based on OAuth2.
+OHX IAM implements [OpenID Connect Discovery](https://openid.net/connect/) for the identity broker part via [Konnect](https://github.com/Kopano-dev/konnect) with [GlAuth](https://github.com/glauth/glauth) as ldap backend for the credentials database. OpenID Connect Discovery is based on OAuth2.
 
 Access Tokens and Refresh Tokens in OHX are [Json Web Tokens (JWT)](https://jwt.io/). Such a token can carry additional information, which is used to communicate connection endpoints like the Redis DB URL or an InfluxDB username+password). Refresh Tokens have a limited life-time of 1 hour. Access Tokens can be revoked.
 
-Access to certain services or information is restricted by *Permissions* in openHAB X. A permission maps to an *OAuth 2 Scope*. Access tokens have all granted *Scopes* encoded and can be verified by a destination service without calling back to IAM. 
+Access to certain services or information is restricted by *Permissions* in OHX. A permission maps to an *OAuth 2 Scope*. Access tokens have all granted *Scopes* encoded and can be verified by a destination service without calling back to IAM. 
 
 {{< callout type="danger">}}
 IAM is probably the most powerful service. It is responsible for provisioning tokens to all other services and the entire interprocess communication comes to a halt if no tokens or invalid tokens are issued. An attacker that gained access to IAM has basically full control.
@@ -223,7 +223,7 @@ More information about the rule engine implementation can be found in the [Core 
 
 ## Command Queue
 
-A *Command* in openHAB X consists of a target (Addon-ID + Thing-ID + Property-ID) and a new state. The state is usually a plain text value like "100%" or "on" or "true" but can also be a complex type depending on the target Addon. A command can target
+A *Command* in OHX consists of a target (Addon-ID + Thing-ID + Property-ID) and a new state. The state is usually a plain text value like "100%" or "on" or "true" but can also be a complex type depending on the target Addon. A command can target
 
 * an Addon ("Enable Pairing mode for Hue Emulation Addon"),
 * a Thing ("Start self-healing of Zigbee Network"),
@@ -258,7 +258,7 @@ Because the only real consumer of such a message queue is the Addon Manager, and
 
 {{< img src="/img/doc/state-storage.svg" >}}
 
-State in openHAB X is stored in two different types of databases. Time-Series data is stored in InfluxDB. State data like Thing States (identified by Thing-IDs), Thing Property States (identified by Thing-Property-IDs), IAM Refresh Tokens etc are stored in Redis. 
+State in OHX is stored in two different types of databases. Time-Series data is stored in InfluxDB. State data like Thing States (identified by Thing-IDs), Thing Property States (identified by Thing-Property-IDs), IAM Refresh Tokens etc are stored in Redis. 
 
 The Redis database is configured for 3 concurrent connections. Redis supports "namespacing" via numbered "databases".
 
@@ -288,7 +288,7 @@ InfluxDB which is used for Thing State History is also used for runtime metrics.
 
 ## Logging
 
-openHAB X services log to the standard output channels. On the standalone installation those outputs are routed to journald, which understands the used logging format and tokens. journald is then used for any log queries, log sorting and filtering.
+OHX services log to the standard output channels. On the standalone installation those outputs are routed to journald, which understands the used logging format and tokens. journald is then used for any log queries, log sorting and filtering.
 
 Addons standard output channels are captured by the addon manager and also routed to journald. If the used logging format is not recognised and log messages cannot be tokenized by journald, log queries are limited to fulltext search.
 

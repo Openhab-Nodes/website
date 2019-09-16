@@ -3,20 +3,20 @@ title = "Compatibility / Difference to openHAB"
 type = "plain"
 +++
 
-openHAB X evolved on concepts of the [openHAB project](https://www.openhab.org) and supports openHAB addons.
-This document is structured in that it first takes a look at conceptual aspects before it dives into implementation differences. The latter might read a bit technical, but will help to understand why openHAB X exists in the first place and why it offers a better security model and industry grade robustness.
+OHX evolved on concepts of the [openHAB project](https://www.openhab.org) and supports openHAB addons.
+This document is structured in that it first takes a look at conceptual aspects before it dives into implementation differences. The latter might read a bit technical, but will help to understand why OHX exists in the first place and why it offers a better security model and industry grade robustness.
 
 **Disclaimer:** This text might read a teeny bit biased. As usual, read with a grain of salt and inform and compare yourself.
 
 ## Conceptional differences
 
-openHAB developers did good when they designed the concepts. Many concepts are taken over and are just refined. The following table sums those up and contrasts them with openHAB X concepts.
+openHAB developers did good when they designed the concepts. Many concepts are taken over and are just refined. The following table sums those up and contrasts them with OHX concepts.
 
 <table class="table">
   <tr>
     <th></th>
     <th>openHAB</th>
-    <th>openHAB X</th>
+    <th>OHX</th>
   </tr>
   <tr>
     <td>Addon</td>
@@ -36,7 +36,7 @@ openHAB developers did good when they designed the concepts. Many concepts are t
   <tr>
     <td>Rule Modules</td>
     <td>openHAB calls Rule Triggers, Conditions and Actions <b>Rule Modules</b>. Those can be added via the Addons system of openHAB.</td>
-    <td>openHAB X also has the same notation of <b>Rule Modules</b>. Additional Rule Modules cannot be installed as this has been recognised as security flaw. An additional rule module would need to run in-process with all other rules and would have the same permissions and access levels as the rule engine service itself.</td>
+    <td>OHX also has the same notation of <b>Rule Modules</b>. Additional Rule Modules cannot be installed as this has been recognised as security flaw. An additional rule module would need to run in-process with all other rules and would have the same permissions and access levels as the rule engine service itself.</td>
   </tr>
   <tr>
     <td>State Filter<br></td>
@@ -82,12 +82,12 @@ openHAB developers did good when they designed the concepts. Many concepts are t
 
 ## Do It Yourself IoT Support
 
-There are some protocols that Makers can use for their IoT devices so that openHAB and openHAB X can discover and interact without any additional Add-on. The following table lists supported protocols.
+There are some protocols that Makers can use for their IoT devices so that openHAB and OHX can discover and interact without any additional Add-on. The following table lists supported protocols.
 
 <table class="table">
   <tr>
     <th></th>
-    <th>openHAB X Core</th>
+    <th>OHX Core</th>
     <th>openHAB Core</th>
   </tr>
   <tr>
@@ -104,7 +104,7 @@ The following table reads a bit technical. Some of the aspects are picked up and
 <table class="table">
   <tr>
     <th></th>
-    <th>openHAB X Core</th>
+    <th>OHX Core</th>
     <th>openHAB Core</th>
   </tr>
   <tr>
@@ -144,7 +144,7 @@ The following table reads a bit technical. Some of the aspects are picked up and
   </tr>
 </table>
 
-**¹:** openHAB X requires external services to run: A Redis Database which stores states and InfluxDB for historic states.
+**¹:** OHX requires external services to run: A Redis Database which stores states and InfluxDB for historic states.
 
 ### Programming Language
 
@@ -225,7 +225,7 @@ The chosen architecture pre-determines a few properties of the software product.
 
 At the same time you have signed for some drawbacks. The operating systems process specific security mechanisms have no impact like isolation, process capabilities (for example to open network sockets), filesystem access. openHAB runs its core and all addons in one process context. Everything that the core requires to work (like writable filesystem directories, network access, etc) is therefore available to all addons. **Any addon can read and write any other addons or the cores configuration and thing state**. Resource usage can only be monitored for the entire java openHAB process, not for single addons or services. That makes it especially **hard to find buggy addon code**.
 
-In contrast openHAB X runs a multitude of services with a specific directory each, exposed for reading/writing and with restricted and monitored resource limits (cpu, memory, disk quota). Services and Addons run in their own process each. A malicous addon or a hacked core service can only go so far on the system and will be detected, reported and killed on non-expected behaviour.
+In contrast OHX runs a multitude of services with a specific directory each, exposed for reading/writing and with restricted and monitored resource limits (cpu, memory, disk quota). Services and Addons run in their own process each. A malicous addon or a hacked core service can only go so far on the system and will be detected, reported and killed on non-expected behaviour.
 
 What architecture to choose for Home Automation?
 : If the entire purpose of a system is to run a java virtual machine process with preconfigured, trusted bundles, the monolith is the architecture of choice. For user installable addons from untrusted sources (like on Android or iOS mobile operating systems, but also a home automation system with community developed addons) the multi-service architecture is clearly the favourable one.

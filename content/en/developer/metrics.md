@@ -5,10 +5,10 @@ weight = 30
 tags = []
 +++
 
-Collecting runtime metrics is an important factor to evaluate stabilty and detect unusual service behaviour. openHAB X uses the [Influx Database](https://www.influxdata.com/). 
+Collecting runtime metrics is an important factor to evaluate stabilty and detect unusual service behaviour. OHX uses the [Influx Database](https://www.influxdata.com/). 
 InfluxDB is a time-series database that can handle millions of data points per second and is able to compact data to minimize storage space.
 
-This chapter introduces into openHAB X predefined metrics and how to use the API. OHX also stores Thing time-series data (eg the Thing state over time) for opt-in Things in the same database.
+This chapter introduces into OHX predefined metrics and how to use the API. OHX also stores Thing time-series data (eg the Thing state over time) for opt-in Things in the same database.
 
 ## About InfluxDB
 
@@ -16,7 +16,7 @@ InfluxDB uses *Retention Policies* to automate downsampling and data expiration 
 
 Prometheus metric scraping is integrated, which makes InfluxDB compatible to all services that export in the Prometheus format like [etcd](https://github.com/coreos/etcd/blob/master/Documentation/metrics.md) and Kubernetes. Services that are interesting in the area of home automation might not export in Prometheus format yet, but chances are high that a *Prometheus Exporter* has been developed like for example for the MQTT Broker Mosquitto: [Mosquitto Exporter](https://github.com/sapcc/mosquitto-exporter).
 
-openHAB X encourages Addon developers to use the `libAddon` library and core service developers to use `libRuntimeMetrics` for metrics data pushing. OHX libraries communicate with InfluxDB natively.
+OHX encourages Addon developers to use the `libAddon` library and core service developers to use `libRuntimeMetrics` for metrics data pushing. OHX libraries communicate with InfluxDB natively.
 
 A web interface and web APIs are integrated into InfluxDB. It uses the concept of "Dashboards" for grouping and visualizing multiple metrics together. 
 

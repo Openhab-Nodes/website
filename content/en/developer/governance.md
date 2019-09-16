@@ -3,12 +3,12 @@ title = "Governance of the Project"
 author = "David Graeff"
 weight = 100
 tags = []
-summary = "The guiding principles for openHAB X are the 'open source rules of engagement' including Transparency, Openness and Meritocracy."
+summary = "The guiding principles for OHX are the 'open source rules of engagement' including Transparency, Openness and Meritocracy."
 +++
 
 ## Principles
 
-The guiding principles for openHAB X are the "open source rules of engagement", which comprise:
+The guiding principles for OHX are the "open source rules of engagement", which comprise:
 
 - Transparency,
 - Openness,
@@ -16,21 +16,21 @@ The guiding principles for openHAB X are the "open source rules of engagement", 
 
 To operate with transparency, discussions, minutes, deliberations, project plans, plans for new features, and other artifacts are open, public, and easily accessible.
 
-The project is open to all; openHAB X provides the same opportunity to all. Everyone participates with the same rules; there are no rules to exclude any potential contributors.
+The project is open to all; OHX provides the same opportunity to all. Everyone participates with the same rules; there are no rules to exclude any potential contributors.
 
-openHAB X is a meritocracy. The more that somebody contributes, the more responsibility they will earn. A pattern of quality contribution may lead to an invitation to join the project as a maintainer. Leadership roles are merit-based and earned by peer acclaim. Merit must be demonstrated in publicly-accessible activities. Maintainers are added to a project via election.
+OHX is a meritocracy. The more that somebody contributes, the more responsibility they will earn. A pattern of quality contribution may lead to an invitation to join the project as a maintainer. Leadership roles are merit-based and earned by peer acclaim. Merit must be demonstrated in publicly-accessible activities. Maintainers are added to a project via election.
 
 ## Structure
 
-The openHAB X project is a big ecosystem of different components.
-Starting with the operating system bundle, called openHAB X Distribution, 
-While people often think of the runtime + addons when talking about openHAB X, there are other parts like openHAB X Cloud, the mobile apps, the voice skills, etc. - all in all, there are well over [40 different repos](https://github.com/openhab-nodes) under the OHX GitHub organisation.
+The OHX project is a big ecosystem of different components.
+Starting with the operating system bundle, called OHX Distribution, 
+While people often think of the runtime + addons when talking about OHX, there are other parts like OHX Cloud, the mobile apps, the voice skills, etc. - all in all, there are well over [40 different repos](https://github.com/openhab-nodes) under the OHX GitHub organisation.
 
 The different components are mostly maintained independently of each other. Many have their own release cycles and a dedicated maintainer team.
 
 ## Maintainers
 
-The [maintainers of openHAB X](https://github.com/orgs/openhab-nodes/teams/maintainers) is the superset of [all maintainers of the different code repositories](https://github.com/orgs/openhab-nodes/teams/maintainers/teams).
+The [maintainers of OHX](https://github.com/orgs/openhab-nodes/teams/maintainers) is the superset of [all maintainers of the different code repositories](https://github.com/orgs/openhab-nodes/teams/maintainers/teams).
 This means that the maintainer role is always related to a certain repository/component only and not to the entire project as such.
 
 Every component can (and should!) have more than one maintainer. All maintainers of a given repository build the maintainer team of the component in this repository.
@@ -48,9 +48,9 @@ Maintainers take care of the respective repository, i.e. they
 - sync with other maintainer teams wrt cross-team changes
 - announce important news in the community
 
-In general, a maintainer team is free to define its own rules of how the work in the team is organised, e.g. what is required for a PR to be accepted. Those rules should be written down as a pinned discussion on the GitHub team page, see [this one](https://github.com/orgs/openHAB X/teams/2-x-add-ons-maintainers) as an example.
+In general, a maintainer team is free to define its own rules of how the work in the team is organised, e.g. what is required for a PR to be accepted. Those rules should be written down as a pinned discussion on the GitHub team page, see [this one](https://github.com/orgs/OHX/teams/2-x-add-ons-maintainers) as an example.
 
-A [couple of rules](https://github.com/orgs/openHAB X/teams/maintainers/discussions/1) must be followed by all maintainer teams, they ensure that there's some consistency in the workflows across the different repositories.
+A [couple of rules](https://github.com/orgs/OHX/teams/maintainers/discussions/1) must be followed by all maintainer teams, they ensure that there's some consistency in the workflows across the different repositories.
 
 ### Maintainer Elections
 

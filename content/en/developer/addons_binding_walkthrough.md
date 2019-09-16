@@ -158,7 +158,7 @@ fn define_thing(ctx: &AddonContext) {
     </tab-container>
 </div>
 
-Only one property is shown in the example, but it works the same for all the other properties. A property requires an ID (`Next12`) and a base type (string, number, integer, boolean, object). Optionally you also provide a title and description in as many languages as possible (you might read those from a file). The `type` and `unit` describe the property semantically. In this case we use the https://iot.mozilla.org/schemas/#TemperatureProperty. openHAB X supports all types of that schema.
+Only one property is shown in the example, but it works the same for all the other properties. A property requires an ID (`Next12`) and a base type (string, number, integer, boolean, object). Optionally you also provide a title and description in as many languages as possible (you might read those from a file). The `type` and `unit` describe the property semantically. In this case we use the https://iot.mozilla.org/schemas/#TemperatureProperty. OHX supports all types of that schema.
 
 TODO 
 

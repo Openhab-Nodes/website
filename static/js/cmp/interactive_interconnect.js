@@ -73,7 +73,6 @@ class DimmerCmp extends Rete.Component {
 window.customElements.define('ui-interactive-interconnect', class extends HTMLElement {
     constructor() {
         super();
-        this.initCb = () => this.init();
     }
 
     init() {
@@ -110,10 +109,9 @@ window.customElements.define('ui-interactive-interconnect', class extends HTMLEl
     }
     
     connectedCallback() {
-        document.addEventListener("MainContentChanged", this.initCb);
+        this.init();
     }
     disconnectedCallback() {
-        document.removeEventListener("MainContentChanged", this.initCb);
     }
 });
 //# sourceMappingURL=interactive_interconnect.js.map

@@ -28215,8 +28215,13 @@ class UserData {
                     this.auth_promise.is_resolved = true;
                     this.auth_resolve();
                 }, error => {
+                    this.auth_promise.is_resolved = true;
+                    this.auth_resolve();
                     console.warn("User data error", error);
                 });
+        } else {
+            this.auth_promise.is_resolved = true;
+            this.auth_resolve();
         }
     }
 

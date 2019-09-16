@@ -5,7 +5,7 @@ weight = 41
 tags = ["frontend", "ui"]
 +++
 
-openHAB X strives to be accessible and easy to grasp, without reading tons of documentation first. An important role plays the **Setup & Maintenance** Interface.
+OHX strives to be accessible and easy to grasp, without reading tons of documentation first. An important role plays the **Setup & Maintenance** Interface.
 
 This chapter introduces into this interface, technical backgrounds and how to start hacking on it.<!--more-->
 
@@ -47,7 +47,7 @@ allows a clear design concept with actions/sub-navigation on the left, main cont
 ### Forms or Text
 Every configuration, ranging from Addons, Things, Properties, Rules (also Scenes, Scheduled Actions), are editable via forms and dialogs as well as in a textual view mode. The latter allows search &amp; replace, copy &amp; paste batch editing.
 
-If new objects and components are introduced, textual configuration should always be considered! Syntax highlighting and validation happens via the vscode editor support for JsonSchema. Every configuration in openHAB X must reqister a corresponding JsonSchema and that is queried for.
+If new objects and components are introduced, textual configuration should always be considered! Syntax highlighting and validation happens via the vscode editor support for JsonSchema. Every configuration in OHX must reqister a corresponding JsonSchema and that is queried for.
 
 Vscodes support for YAML, TOML and JSON is used to offer the user a choice during editing and changing between those formats.
 
@@ -95,9 +95,9 @@ Web Components and Custom Components allow for framework independant browser com
 The following Web Components have been developed and are potentially also useful for other projects:
 
 * fetching and displaying markdown context help including rendering to html,
-* featching and displaying forum topics (used for the openHAB community forum),
+* featching and displaying forum topics (used for the OHX community forum),
 * navigation components (breadcrumb, prev/next-buttons),
-* openHAB and openHAB X addons documentation fetching and displaying component.
+* OHX and OHX addons documentation fetching and displaying component.
 
 More complex, reactive components are a bit tedious with just the clumsy html dom API alone. Svelte is
 In the future, one option could be [Vue 3](https://medium.com/the-vue-point/plans-for-the-next-iteration-of-vue-js-777ffea6fabf). Thanks

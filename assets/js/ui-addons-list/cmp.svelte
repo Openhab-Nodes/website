@@ -13,7 +13,6 @@
   };
 
   let loading = false;
-  let db = [];
   let db_searchstring = "";
   let error_message = "";
   let alink;
@@ -52,14 +51,12 @@
   export function setFilters(filters_) {
     filters = filters_;
     let count = 0;
-    for (let item of db) if (filters[item.type]) ++count;
-    console.log("SET FILTERS in list");
+    for (let item of Object.values(addondb.db_by_id)) if (filters[item.type]) ++count;
     return count;
   }
 
   export function start(filters_) {
     loading = true;
-    db = addondb.db;
     db_searchstring = addondb.searchstr;
     recommended = addondb.recommended;
     permissions = addondb.permissions;
@@ -126,7 +123,7 @@
       <ul>
         {#each last_updated as addon}
           <li class="mb-2">
-            {addon.label}
+            {addon.title}
             {#if addon.changelog_url}
               <a target="_blank" href={addon.changelog_url}>Changelog</a>
             {/if}

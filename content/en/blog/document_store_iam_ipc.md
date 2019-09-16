@@ -17,9 +17,9 @@ This post is about the **Document Store** or persistent storage.
 
 Next to relational database with data organised in tables and rows and following a defined data schema, there exist document based databases. An example is MongoDB or CouchDB. Such a database stores schema-less, "complex", json-like documents. A document contains key-value pairs, but may as well contain further nested documents. Supported datatypes for document based databases are often strings, numbers, geo-locations and date/time. Indices can be created for specific fields or are automatically created.
 
-openHAB X requires a document storage for addon-, service-, thing- and other **configurations** as well as **rules** (including scenes and scheduled actions). Especially the first category of data cannot be coined into a schema and is more suited for a document storage than a relational database.
+OHX requires a document storage for addon-, service-, thing- and other **configurations** as well as **rules** (including scenes and scheduled actions). Especially the first category of data cannot be coined into a schema and is more suited for a document storage than a relational database.
 
-Other data of openHAB X is:
+Other data of OHX is:
 
 * **Configuration Schemas** can be requested on-demand from addons and services and are cached in the key-value storage.
 * **Inbox** Things are stored in the key-value storage. They do not need to be persisted even, because they can be auto discovered at any time.
@@ -51,7 +51,7 @@ What features are actually used, that justifies MongoDB? Documents need to be qu
 
 The filesystem allows quering for filenames. Those are indexed. Querying for a range of files, especially if happening in rapid succession is also fast, the kernel caches filesystem inodes.
 
-Combined with git, for snapshoting and rolling back, the most suitable document storage for openHAB X's usecase have been found.
+Combined with git, for snapshoting and rolling back, the most suitable document storage for OHX's usecase have been found.
 
 Using a distributed filesystem or a git-commit-push-on-change service this solution scales up fine. Remember that we do not need real-time configuration "synchronisation" and it only needs to be eventually consistent.
 

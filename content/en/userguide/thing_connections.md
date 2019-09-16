@@ -21,9 +21,9 @@ You will find all Things arranged in the first column, labeled with "Source", in
 
 A Thing consists of multiple properties. A coloured light bulb Thing for example at least has an on/off, a brightness and a color property. Additional vendor specific properties like a white-light temperature, or an animation-mode property might be present.
 
-By default you connects two *Things* together via the interface. Internally this boils down to a pair of properties that are linked. openHAB X intelligently selects the correct properties based on the [semantic context](/userguide/tags) of *Things* and their properties.
+By default you connects two *Things* together via the interface. Internally this boils down to a pair of properties that are linked. OHX intelligently selects the correct properties based on the [semantic context](/userguide/tags) of *Things* and their properties.
 
-For example if you connect a wall-switch with an on/off property to a light bulb, openHAB X will select the on/off property of the light bulb Thing. If you connect a wall-dimmer unit with a percentage property, openHAB X will select the brightness property of the light bulb Thing. And for the case of a color wheel unit, openHAB X selects the color property.
+For example if you connect a wall-switch with an on/off property to a light bulb, OHX will select the on/off property of the light bulb Thing. If you connect a wall-dimmer unit with a percentage property, OHX will select the brightness property of the light bulb Thing. And for the case of a color wheel unit, OHX selects the color property.
 
 Primary Properties
 : Now imagine a two-gang wall-switch. If there are multiple properties with the same semantic context, in this case two on/off properties, an addon developer must define a "primary" property.
@@ -34,7 +34,7 @@ Connect Properties, not *Things*
 Property Compatibility
 : Not all property types are compatible to each other. It doesn't make sense for a video-stream property of a camera *Thing* to be connected to the brightness property of a light bulb Thing. Even if the value type matches, like a number type of a temperature sensor and the mentioned brightness property, a link will not make much sense.
 
-openHAB X uses a compatibility table, based on property types (number, string, boolean, binary-data) and semantic context of a property and will draw non-matching connection links as dotted, red lines instead of solid, black ones.
+OHX uses a compatibility table, based on property types (number, string, boolean, binary-data) and semantic context of a property and will draw non-matching connection links as dotted, red lines instead of solid, black ones.
 
 You may wonder, why OHX still let you link up incompatible properties. The reason is, that a link can transform an input value (say "23°C temperature") to an output value ("on/off: on"). Such a transformation is performed by a so called "Link Processor".
 

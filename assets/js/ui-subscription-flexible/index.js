@@ -1,7 +1,6 @@
 window.customElements.define('ui-subscription-flexible', class extends HTMLElement {
     constructor() {
         super();
-        this.initCb = () => this.init();
     }
 
     init() {
@@ -34,9 +33,8 @@ window.customElements.define('ui-subscription-flexible', class extends HTMLEleme
     }
 
     connectedCallback() {
-        document.addEventListener("MainContentChanged", this.initCb);
+        this.init();
     }
     disconnectedCallback() {
-        document.removeEventListener("MainContentChanged", this.initCb);
     }
 });

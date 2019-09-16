@@ -3,10 +3,10 @@ title = "Design Principles"
 author = "David Graeff"
 weight = 11
 tags = []
-summary = "openHAB X is for developers who crave **efficiency**, **speed**, **security**, **maintainability** and **stability** in a home automation system. Read about the design principles and philosophy in this chapter."
+summary = "OHX is for developers who crave **efficiency**, **speed**, **security**, **maintainability** and **stability** in a home automation system. Read about the design principles and philosophy in this chapter."
 +++
 
-openHAB X is for developers who crave **efficiency**, **speed**, **security**, **maintainability** and **stability** in a home automation system.
+OHX is for developers who crave **efficiency**, **speed**, **security**, **maintainability** and **stability** in a home automation system.
 
 {{< col3md class="mx-md-4 mb-4" >}}
 
@@ -58,7 +58,7 @@ There are multiple ways how you can archive this goal. This project understands 
 
 #### Reuse
 
-A few projects suffer from the Not-Invented-Here syndrom. openHAB X strives to use other stable software whenever possible.
+A few projects suffer from the Not-Invented-Here syndrom. OHX strives to use other stable software whenever possible.
 
 Storing state is best done in a [Redis Key-Value Database](https://redis.io) for example.
 
@@ -85,9 +85,9 @@ The filesystem write speed (for configuration changes), network interface and me
 
 #### Backwards compatibility
 
-Providing Long-Term-Stability variants binds developer resources that are rather spend in integrating new solutions and improving existing ones. openHAB X follows a fast-phase-out strategy.
+Providing Long-Term-Stability variants binds developer resources that are rather spend in integrating new solutions and improving existing ones. OHX follows a fast-phase-out strategy.
 
-Each component provides a versioned API and is able to run next to an older variant. As soon as all parts of openHAB X are migrated to a new version, the old component will be decommissioned.
+Each component provides a versioned API and is able to run next to an older variant. As soon as all parts of OHX are migrated to a new version, the old component will be decommissioned.
 
 Components are versioned according to [Semantic Versioning](https://semver.org/).
 
@@ -98,26 +98,26 @@ Supporting multiple versions or keep deprecated code is not a goal.
 
 A contribution is **required** to include unit tests and, if necessary, integration tests. That way we can automatically make sure that a software piece works under specified use-cases.
 
-OpenHAB X components are small in code size and are written in a language (Rust) that prevents wrong memory handling in most cases (crashes).
+OHX components are small in code size and are written in a language (Rust) that prevents wrong memory handling in most cases (crashes).
 
 As long as all tests pass and the API stays intact, even less optimal code is accepted. It can easily be identified and replaced with better code.
 {{< /col3md >}}
 
-## How to develop for openHAB X
+## How to develop for OHX
 
-Whenever you want to introduce a new feature, please have a user story in mind (or better, write it down). For openHAB X itself for example the user story reads like this:
+Whenever you want to introduce a new feature, please have a user story in mind (or better, write it down). For OHX itself for example the user story reads like this:
 
 Early stage:
 
 * John has bought the Philips Hue system. He also got an Echo and a Xiaomi Vacuum.
-* He decides to combine all this with openHAB X.
-* He installs openHab and starts it, according to the instructions linked from the download page.
-* He opens the webpage of openHAB X in his browser (he already knows this procedure because his smart wall sockets required him to enter the wifi credentials via embedded web pages, too)
+* He decides to combine all this with OHX.
+* He installs OHX and starts it, according to the instructions linked from the download page.
+* He opens the webpage of OHX in his browser (he already knows this procedure because his smart wall sockets required him to enter the wifi credentials via embedded web pages, too)
 * He is greeted by a tutorial that explains him some OH concepts, like bindings, things and schedules.
 * John doesn't want to read soo much, but thankfully there are many pictures and even an embedded video.
 * He knows now that he need to install bindings for Hue, Xiaomi and his Echo.
 * His Inbox shows him already his hue bridge and the vacuum. He adds those. While adding the things, he is asked to perform one or two pairing processes. That is something he knows from the Hue and Xiaomi app already.
-* Lights pop up in the Inbox. As expected. And he adds those that he want to control with openHAB X.
+* Lights pop up in the Inbox. As expected. And he adds those that he want to control with OHX.
 
 Side story embedded in full story:
 
@@ -126,7 +126,7 @@ Side story embedded in full story:
 * He adds his echo manually via the Thing page. The Echo Thing is special, because it "consumes" other Things to let the Alexa voice assistant control his home. He is asked what Things he want to expose to the Echo.
 * He now wants to set his hue light on and off to have a first success feeling.
 * He is not seeing any "control" part in the interface though, but wait. He remembers from the tutorial but also from the start/home page that there was another interface very prominently linked.
-* He opens that other interface. It looks awesome, fluid and animated. He sees his light bulbs on the first page already. Even sorted by room, because the Hue addon read that information from the Hue bridge during the Inbox Approval. Astonishing. He turns the lights on and off and is happy with his selection of openHAB X because it was so easy to setup.
+* He opens that other interface. It looks awesome, fluid and animated. He sees his light bulbs on the first page already. Even sorted by room, because the Hue addon read that information from the Hue bridge during the Inbox Approval. Astonishing. He turns the lights on and off and is happy with his selection of OHX because it was so easy to setup.
 
 User stories like that help a lot to streamline interfaces and work flows. For users as well as programmers that will use your new APIs.
 

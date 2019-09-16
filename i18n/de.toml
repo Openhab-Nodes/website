@@ -1,14 +1,14 @@
 [aboutustitle]
-other = "Über openHAB X"
+other = "Über OHX"
 
 [aboutus]
-other = "openHAB plus X ist eine Quellcode offene, vollumfängliche Smarthome Lösung. Keine <i>Cloud</i> benötigt, deine Daten bleiben bei dir. Hunderte von Geräten und Diensten, auch <abbr title='Do it Yourself Hardware wie selbstprogrammierte Steckdosenschalter-, Knöpfe und Lampen.'>DIY</abbr>, sind mit einem Knopfdruck eingebunden. <br><br>Mach dein Zuhause <i>Smart</i> mit dem integrierten, einfach zu bedienenden, jedoch leistungsstarken Automatisierungs-System. Google Assistant, Amazon Alexa und IFTTT sind natürlich auch dabei, wenn du es willst, über den optionalen Cloud Connector."
+other = "OHX ist eine Quellcode offene, vollumfängliche Smarthome Lösung. Keine <i>Cloud</i> benötigt, deine Daten bleiben bei dir. Hunderte von Geräten und Diensten, auch <abbr title='Do it Yourself Hardware wie selbstprogrammierte Steckdosenschalter-, Knöpfe und Lampen.'>DIY</abbr>, sind mit einem Knopfdruck eingebunden. <br><br>Mach dein Zuhause <i>Smart</i> mit dem integrierten, einfach zu bedienenden, jedoch leistungsstarken Automatisierungs-System. Google Assistant, Amazon Alexa und IFTTT sind natürlich auch dabei, wenn du es willst, über den optionalen Cloud Connector."
 
 [aboutus_index]
-other = "openHAB plus X ist eine Quellcode offene, vollumfängliche Smarthome Lösung. Keine <i>Cloud</i> benötigt, deine Daten bleiben bei dir. Hunderte von Geräten und Diensten, auch <abbr title='Do it Yourself Hardware wie selbstprogrammierte Steckdosenschalter-, Knöpfe und Lampen.'>DIY</abbr>, sind mit einem Knopfdruck eingebunden. <br><br>Mach dein Zuhause <i>Smart</i> mit dem integrierten, einfach zu bedienenden, jedoch leistungsstarken Automatisierungs-System."
+other = "OHX ist eine Quellcode offene, vollumfängliche Smarthome Lösung. Keine <i>Cloud</i> benötigt, deine Daten bleiben bei dir. Hunderte von Geräten und Diensten, auch <abbr title='Do it Yourself Hardware wie selbstprogrammierte Steckdosenschalter-, Knöpfe und Lampen.'>DIY</abbr>, sind mit einem Knopfdruck eingebunden. <br><br>Mach dein Zuhause <i>Smart</i> mit dem integrierten, einfach zu bedienenden, jedoch leistungsstarken Automatisierungs-System."
 
 [aboutus_warn]
-other = "openHAB X steht in keiner Beziehung zur <a href='https://www.openhabfoundation.org/'>openHAB Foundation e.V.</a>"
+other = "OHX steht in keiner Beziehung zur <a href='https://www.openhabfoundation.org/'>openHAB Foundation e.V.</a>"
 
 [footer3]
 other = "Entwickler Dokumentation"

@@ -4,7 +4,7 @@
     &>div {
         background-image: url(/img/pageheader.png);
         background-size: cover;
-        background-color: #f7ad41;
+        background-color: var(--primary);
         padding-top: 50px;
         padding-bottom: 20px;
         width: 100%;

@@ -9,7 +9,7 @@ tags = ["backup","restore","reliable","stability"]
 *Backup* refers to the copying of physical or virtual files or databases to a secondary location for preservation in case of equipment failure or catastrophe. The process of backing up data is pivotal to a successful disaster recovery plan (DRP).
 {{< /indent >}}
 
-Having a disaster recovery plan is generally a good idea to protect from miss-configuration and hardware failures. openHAB X implements a Snapshot/Rollback system and offers integration points for external backup providers.
+Having a disaster recovery plan is generally a good idea to protect from miss-configuration and hardware failures. OHX implements a Snapshot/Rollback system and offers integration points for external backup providers.
 
 Although OHX consists of robust, mostly self-recovering services a deliberately provoked miss-configuration, for example for testing certain limits, might reduce the operability considerably. That is when you want to roll back to a former configuration snapshot.
 
@@ -19,7 +19,7 @@ This chapter explains some used technologies and explains capabilities and limit
 
 ## Snapshots
 
-openHAB X creates a snapshot automatically every 24 hours and on demand.
+OHX creates a snapshot automatically every 24 hours and on demand.
 They do not require much disk space, because only differences to the last state are actually stored. If no configuration change has happened, no snapshot will be created.
 
 Snapsnots need a name. Automatically created ones carry the data and time as a name.
@@ -32,7 +32,7 @@ The time-series database is not included in snapshots. Be aware that frequently 
 
 Only user accounts with the BACKUP permission are allowed to create on-demand snapshots.
 
-Snapshots are stored on-disk and are plain text, non encrypted data. openHAB X generally assumes that no unauthorized person has access to the disk. The storage is protected by runtime measures like quota restrictions and service access models however to minimize impact if an addon contains malicous code.
+Snapshots are stored on-disk and are plain text, non encrypted data. OHX generally assumes that no unauthorized person has access to the disk. The storage is protected by runtime measures like quota restrictions and service access models however to minimize impact if an addon contains malicous code.
 
 ### Schedule
 
@@ -60,7 +60,7 @@ When a backup takes place, the time-series database (InfluxDB) is exported first
 
 ### What data is covered 
 
-The snapshot system of openHAB X covers all configured user accounts, Things, Rules, and service configuration. A backup additionally covers Time-Series data.
+The snapshot system of OHX covers all configured user accounts, Things, Rules, and service configuration. A backup additionally covers Time-Series data.
 
 A typical backup for a 5 addons installation that has run for 2 months with a decent amount of configuration changes and time-series enabled Things is about 250kb.
 

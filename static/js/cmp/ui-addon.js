@@ -1841,7 +1841,41 @@ function add_css() {
 	append(document.head, style);
 }
 
-// (132:4) {:else}
+// (144:4) {#if addon.authors}
+function create_if_block_11$1(ctx) {
+	var small, t0, t1_value = ctx.addon.authors.join(', ') + "", t1;
+
+	return {
+		c() {
+			small = element("small");
+			t0 = text("– By ");
+			t1 = text(t1_value);
+			attr(small, "class", "");
+			set_style(small, "white-space", "nowrap");
+			set_style(small, "text-overflow", "ellipsis");
+		},
+
+		m(target, anchor) {
+			insert(target, small, anchor);
+			append(small, t0);
+			append(small, t1);
+		},
+
+		p(changed, ctx) {
+			if ((changed.addon) && t1_value !== (t1_value = ctx.addon.authors.join(', ') + "")) {
+				set_data(t1, t1_value);
+			}
+		},
+
+		d(detaching) {
+			if (detaching) {
+				detach(small);
+			}
+		}
+	};
+}
+
+// (153:4) {:else}
 function create_else_block_2$1(ctx) {
 	var div;
 
@@ -1883,7 +1917,7 @@ function create_else_block_2$1(ctx) {
 	};
 }
 
-// (130:4) {#if logo_url}
+// (151:4) {#if logo_url}
 function create_if_block_9$1(ctx) {
 	var img, dispose;
 
@@ -1915,7 +1949,7 @@ function create_if_block_9$1(ctx) {
 	};
 }
 
-// (134:8) {#if suggest_logo_url}
+// (155:8) {#if suggest_logo_url}
 function create_if_block_10$1(ctx) {
 	var a, t;
 
@@ -1945,7 +1979,7 @@ function create_if_block_10$1(ctx) {
 	};
 }
 
-// (219:4) {:else}
+// (238:4) {:else}
 function create_else_block_1$1(ctx) {
 	var p, t_value = ctx.addon.description + "", t;
 
@@ -1977,7 +2011,7 @@ function create_else_block_1$1(ctx) {
 	};
 }
 
-// (152:35) 
+// (173:35) 
 function create_if_block_3$1(ctx) {
 	var table, tr0, th0, t1, td0, t2_value = new Date(ctx.addon.last_updated).toLocaleString() + "", t2, t3, t4, tr1, th1, t6, td1, raw_value = maintenance_code_str(ctx.addon.status.code) + "", t7, tr2, th2, t9, td2, t10, tr3, th3, t12, td3, t13, tr4, th4, t15, td4, t16, tr5, th5, t18, td5, t19_value = ctx.addon.reviewed_by && ctx.addon.reviewed_by.length > 0 ? 'Yes' : 'No' + "", t19, t20, t21, button, t22, button_disabled_value, button_title_value, dispose;
 
@@ -1987,7 +2021,7 @@ function create_if_block_3$1(ctx) {
 
 	var if_block2 = (ctx.addon.archs) && create_if_block_6$1(ctx);
 
-	var if_block3 = (ctx.addon.estimated_mem) && create_if_block_5$1(ctx);
+	var if_block3 = (ctx.addon.memory_min && ctx.addon.memory_max) && create_if_block_5$1(ctx);
 
 	var if_block4 = (ctx.addon.stat && ctx.addon.stat.license && ctx.addon.stat.license) && create_if_block_4$1(ctx);
 
@@ -2157,7 +2191,7 @@ function create_if_block_3$1(ctx) {
 				if_block2 = null;
 			}
 
-			if (ctx.addon.estimated_mem) {
+			if (ctx.addon.memory_min && ctx.addon.memory_max) {
 				if (if_block3) {
 					if_block3.p(changed, ctx);
 				} else {
@@ -2220,7 +2254,7 @@ function create_if_block_3$1(ctx) {
 	};
 }
 
-// (141:4) {#if mode == 'permissions'}
+// (162:4) {#if mode == 'permissions'}
 function create_if_block_2$1(ctx) {
 	var t, button, current, dispose;
 
@@ -2283,7 +2317,7 @@ function create_if_block_2$1(ctx) {
 	};
 }
 
-// (158:12) {#if addon.changelog_url}
+// (179:12) {#if addon.changelog_url}
 function create_if_block_8$1(ctx) {
 	var a, t, a_href_value;
 
@@ -2313,7 +2347,7 @@ function create_if_block_8$1(ctx) {
 	};
 }
 
-// (172:12) {#if addon.size}
+// (193:12) {#if addon.size}
 function create_if_block_7$1(ctx) {
 	var t0_value = Number.parseFloat(ctx.addon.size / 1024 / 1024).toFixed(2) + "", t0, t1;
 
@@ -2343,7 +2377,7 @@ function create_if_block_7$1(ctx) {
 	};
 }
 
-// (180:12) {#if addon.archs}
+// (201:12) {#if addon.archs}
 function create_if_block_6$1(ctx) {
 	var t_value = ctx.addon.archs + "", t;
 
@@ -2370,9 +2404,9 @@ function create_if_block_6$1(ctx) {
 	};
 }
 
-// (193:12) {#if addon.estimated_mem}
+// (212:12) {#if addon.memory_min && addon.memory_max}
 function create_if_block_5$1(ctx) {
-	var t0_value = Number.parseFloat(ctx.addon.estimated_mem.min).toFixed(2) + "", t0, t1, t2_value = Number.parseFloat(ctx.addon.estimated_mem.max).toFixed(2) + "", t2, t3;
+	var t0_value = Number.parseFloat(ctx.addon.memory_min).toFixed(2) + "", t0, t1, t2_value = Number.parseFloat(ctx.addon.memory_max).toFixed(2) + "", t2, t3;
 
 	return {
 		c() {
@@ -2390,11 +2424,11 @@ function create_if_block_5$1(ctx) {
 		},
 
 		p(changed, ctx) {
-			if ((changed.addon) && t0_value !== (t0_value = Number.parseFloat(ctx.addon.estimated_mem.min).toFixed(2) + "")) {
+			if ((changed.addon) && t0_value !== (t0_value = Number.parseFloat(ctx.addon.memory_min).toFixed(2) + "")) {
 				set_data(t0, t0_value);
 			}
 
-			if ((changed.addon) && t2_value !== (t2_value = Number.parseFloat(ctx.addon.estimated_mem.max).toFixed(2) + "")) {
+			if ((changed.addon) && t2_value !== (t2_value = Number.parseFloat(ctx.addon.memory_max).toFixed(2) + "")) {
 				set_data(t2, t2_value);
 			}
 		},
@@ -2410,7 +2444,7 @@ function create_if_block_5$1(ctx) {
 	};
 }
 
-// (205:8) {#if addon.stat && addon.stat.license && addon.stat.license}
+// (224:8) {#if addon.stat && addon.stat.license && addon.stat.license}
 function create_if_block_4$1(ctx) {
 	var tr, th, t1, td, t2_value = ctx.addon.stat.license + "", t2;
 
@@ -2448,7 +2482,7 @@ function create_if_block_4$1(ctx) {
 	};
 }
 
-// (239:4) {:else}
+// (258:4) {:else}
 function create_else_block$1(ctx) {
 	var a, t, a_href_value, a_title_value;
 
@@ -2485,7 +2519,7 @@ function create_else_block$1(ctx) {
 	};
 }
 
-// (224:4) {#if addon.github && addon.stat && addon.stat.s}
+// (243:4) {#if addon.github && addon.stat && addon.stat.s}
 function create_if_block_1$1(ctx) {
 	var a, span0, i0, t0, t1_value = ctx.addon.stat.s + "", t1, t2, t3, span1, i1, t4, t5_value = ctx.addon.stat.iss + "", t5, t6, a_href_value, a_title_value;
 
@@ -2554,7 +2588,7 @@ function create_if_block_1$1(ctx) {
 	};
 }
 
-// (248:4) {#if addon.stat}
+// (267:4) {#if addon.stat}
 function create_if_block$1(ctx) {
 	var span, i, t0, t1_value = ctx.addon.stat.d + "", t1, t2, t3, ui_star_rating, ui_star_rating_title_value, ui_star_rating_disabled_value, dispose;
 
@@ -2626,7 +2660,9 @@ function create_if_block$1(ctx) {
 }
 
 function create_fragment$1(ctx) {
-	var article, ui_tooltip, t0, t1, header, span, t2_value = ctx.addon.label + "", t2, t3, small0, t4_value = ctx.addon.version + "", t4, t5, small1, t6, t7_value = ctx.addon.author + "", t7, header_title_value, t8, section0, t9, section1, current_block_type_index, if_block1, t10, footer, t11, article_id_value, article_class_value, current, dispose;
+	var article, ui_tooltip, t0, t1, header, span, t2_value = ctx.addon.title + "", t2, t3, small, t4_value = ctx.addon.version + "", t4, t5, header_title_value, t6, section0, t7, section1, current_block_type_index, if_block2, t8, footer, t9, article_id_value, article_class_value, current, dispose;
+
+	var if_block0 = (ctx.addon.authors) && create_if_block_11$1(ctx);
 
 	function select_block_type(changed, ctx) {
 		if (ctx.logo_url) return create_if_block_9$1;
@@ -2634,7 +2670,7 @@ function create_fragment$1(ctx) {
 	}
 
 	var current_block_type = select_block_type(null, ctx);
-	var if_block0 = current_block_type(ctx);
+	var if_block1 = current_block_type(ctx);
 
 	var if_block_creators = [
 		create_if_block_2$1,
@@ -2651,7 +2687,7 @@ function create_fragment$1(ctx) {
 	}
 
 	current_block_type_index = select_block_type_1(null, ctx);
-	if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+	if_block2 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
 
 	function select_block_type_2(changed, ctx) {
 		if (ctx.addon.github && ctx.addon.stat && ctx.addon.stat.s) return create_if_block_1$1;
@@ -2659,9 +2695,9 @@ function create_fragment$1(ctx) {
 	}
 
 	var current_block_type_1 = select_block_type_2(null, ctx);
-	var if_block2 = current_block_type_1(ctx);
+	var if_block3 = current_block_type_1(ctx);
 
-	var if_block3 = (ctx.addon.stat) && create_if_block$1(ctx);
+	var if_block4 = (ctx.addon.stat) && create_if_block$1(ctx);
 
 	return {
 		c() {
@@ -2673,28 +2709,23 @@ function create_fragment$1(ctx) {
 			span = element("span");
 			t2 = text(t2_value);
 			t3 = space();
-			small0 = element("small");
+			small = element("small");
 			t4 = text(t4_value);
 			t5 = space();
-			small1 = element("small");
-			t6 = text("– By ");
-			t7 = text(t7_value);
-			t8 = space();
+			if (if_block0) if_block0.c();
+			t6 = space();
 			section0 = element("section");
-			if_block0.c();
-			t9 = space();
-			section1 = element("section");
 			if_block1.c();
-			t10 = space();
-			footer = element("footer");
+			t7 = space();
+			section1 = element("section");
 			if_block2.c();
-			t11 = space();
-			if (if_block3) if_block3.c();
+			t8 = space();
+			footer = element("footer");
+			if_block3.c();
+			t9 = space();
+			if (if_block4) if_block4.c();
 			set_custom_element_data(ui_tooltip, "nobutton", "");
-			attr(small0, "class", "ml-2");
-			attr(small1, "class", "");
-			set_style(small1, "white-space", "nowrap");
-			set_style(small1, "text-overflow", "ellipsis");
+			attr(small, "class", "ml-2");
 			attr(header, "title", header_title_value = ctx.addon.id);
 			attr(section0, "class", "logo");
 			attr(section1, "class", "description");
@@ -2713,23 +2744,21 @@ function create_fragment$1(ctx) {
 			append(header, span);
 			append(span, t2);
 			append(header, t3);
-			append(header, small0);
-			append(small0, t4);
+			append(header, small);
+			append(small, t4);
 			append(header, t5);
-			append(header, small1);
-			append(small1, t6);
-			append(small1, t7);
-			append(article, t8);
+			if (if_block0) if_block0.m(header, null);
+			append(article, t6);
 			append(article, section0);
-			if_block0.m(section0, null);
-			append(article, t9);
+			if_block1.m(section0, null);
+			append(article, t7);
 			append(article, section1);
 			if_blocks[current_block_type_index].m(section1, null);
-			append(article, t10);
+			append(article, t8);
 			append(article, footer);
-			if_block2.m(footer, null);
-			append(footer, t11);
-			if (if_block3) if_block3.m(footer, null);
+			if_block3.m(footer, null);
+			append(footer, t9);
+			if (if_block4) if_block4.m(footer, null);
 			current = true;
 		},
 
@@ -2738,7 +2767,7 @@ function create_fragment$1(ctx) {
 				set_data(t0, ctx.error_message);
 			}
 
-			if ((!current || changed.addon) && t2_value !== (t2_value = ctx.addon.label + "")) {
+			if ((!current || changed.addon) && t2_value !== (t2_value = ctx.addon.title + "")) {
 				set_data(t2, t2_value);
 			}
 
@@ -2746,22 +2775,31 @@ function create_fragment$1(ctx) {
 				set_data(t4, t4_value);
 			}
 
-			if ((!current || changed.addon) && t7_value !== (t7_value = ctx.addon.author + "")) {
-				set_data(t7, t7_value);
+			if (ctx.addon.authors) {
+				if (if_block0) {
+					if_block0.p(changed, ctx);
+				} else {
+					if_block0 = create_if_block_11$1(ctx);
+					if_block0.c();
+					if_block0.m(header, null);
+				}
+			} else if (if_block0) {
+				if_block0.d(1);
+				if_block0 = null;
 			}
 
 			if ((!current || changed.addon) && header_title_value !== (header_title_value = ctx.addon.id)) {
 				attr(header, "title", header_title_value);
 			}
 
-			if (current_block_type === (current_block_type = select_block_type(changed, ctx)) && if_block0) {
-				if_block0.p(changed, ctx);
+			if (current_block_type === (current_block_type = select_block_type(changed, ctx)) && if_block1) {
+				if_block1.p(changed, ctx);
 			} else {
-				if_block0.d(1);
-				if_block0 = current_block_type(ctx);
-				if (if_block0) {
-					if_block0.c();
-					if_block0.m(section0, null);
+				if_block1.d(1);
+				if_block1 = current_block_type(ctx);
+				if (if_block1) {
+					if_block1.c();
+					if_block1.m(section0, null);
 				}
 			}
 
@@ -2776,37 +2814,37 @@ function create_fragment$1(ctx) {
 				});
 				check_outros();
 
-				if_block1 = if_blocks[current_block_type_index];
-				if (!if_block1) {
-					if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-					if_block1.c();
+				if_block2 = if_blocks[current_block_type_index];
+				if (!if_block2) {
+					if_block2 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+					if_block2.c();
 				}
-				transition_in(if_block1, 1);
-				if_block1.m(section1, null);
+				transition_in(if_block2, 1);
+				if_block2.m(section1, null);
 			}
 
-			if (current_block_type_1 === (current_block_type_1 = select_block_type_2(changed, ctx)) && if_block2) {
-				if_block2.p(changed, ctx);
+			if (current_block_type_1 === (current_block_type_1 = select_block_type_2(changed, ctx)) && if_block3) {
+				if_block3.p(changed, ctx);
 			} else {
-				if_block2.d(1);
-				if_block2 = current_block_type_1(ctx);
-				if (if_block2) {
-					if_block2.c();
-					if_block2.m(footer, t11);
+				if_block3.d(1);
+				if_block3 = current_block_type_1(ctx);
+				if (if_block3) {
+					if_block3.c();
+					if_block3.m(footer, t9);
 				}
 			}
 
 			if (ctx.addon.stat) {
-				if (if_block3) {
-					if_block3.p(changed, ctx);
+				if (if_block4) {
+					if_block4.p(changed, ctx);
 				} else {
-					if_block3 = create_if_block$1(ctx);
-					if_block3.c();
-					if_block3.m(footer, null);
+					if_block4 = create_if_block$1(ctx);
+					if_block4.c();
+					if_block4.m(footer, null);
 				}
-			} else if (if_block3) {
-				if_block3.d(1);
-				if_block3 = null;
+			} else if (if_block4) {
+				if_block4.d(1);
+				if_block4 = null;
 			}
 
 			if ((!current || changed.addon) && article_id_value !== (article_id_value = ctx.addon.id)) {
@@ -2820,12 +2858,12 @@ function create_fragment$1(ctx) {
 
 		i(local) {
 			if (current) return;
-			transition_in(if_block1);
+			transition_in(if_block2);
 			current = true;
 		},
 
 		o(local) {
-			transition_out(if_block1);
+			transition_out(if_block2);
 			current = false;
 		},
 
@@ -2835,10 +2873,11 @@ function create_fragment$1(ctx) {
 			}
 
 			ctx.ui_tooltip_binding(null);
-			if_block0.d();
+			if (if_block0) if_block0.d();
+			if_block1.d();
 			if_blocks[current_block_type_index].d();
-			if_block2.d();
-			if (if_block3) if_block3.d();
+			if_block3.d();
+			if (if_block4) if_block4.d();
 			dispose();
 		}
 	};
@@ -2881,15 +2920,34 @@ function instance$1($$self, $$props, $$invalidate) {
   });
 
   async function start() {
-    const addon_id = new URL(window.location).searchParams.get("id") || addon.id;
+    const addon_id =
+      new URL(window.location).searchParams.get("id") || addon.id;
     $$invalidate('addon', addon = addondb.db_by_id[addon_id]);
-    addondb.from_cache_or_fetch(addon_id+".json",
-      `https://raw.githubusercontent.com/openhab-nodes/addons-registry/master/${addon_id}.json`).then(v => {
-      $$invalidate('addon', addon.reviewed_by = v.reviewed_by, addon);
-      $$invalidate('addon', addon.archs = v.archs, addon);
-      $$invalidate('addon', addon.size = v.size, addon);
-      $$invalidate('addon', addon.estimated_mem = v.estimated_mem, addon);
-    });
+    addondb
+      .from_cache_or_fetch(
+        addon_id + ".json",
+        `https://raw.githubusercontent.com/openhab-nodes/addons-registry/master/${addon_id}.json`
+      )
+      .then(v => {
+        $$invalidate('addon', addon.reviewed_by = v.reviewed_by, addon);
+        $$invalidate('addon', addon.archs = v.archs, addon);
+        $$invalidate('addon', addon.size = v.size, addon);
+        $$invalidate('addon', addon.memory_min = v.memory_min, addon);
+        $$invalidate('addon', addon.memory_max = v.memory_max, addon);
+        $$invalidate('addon', addon.ports = [], addon);
+        $$invalidate('addon', addon.firewall_allow = [], addon);
+        $$invalidate('addon', addon.permissions = [], addon);
+        // Go through services and collect ports, firewall_allowed, permissions
+        for (let { service_id, service } in v.services) {
+          if (service.ports) $$invalidate('addon', addon.ports = addon.ports.concat(service.ports), addon);
+          if (service.firewall_allow)
+            $$invalidate('addon', addon.firewall_allow = addon.firewall_allow.concat(
+              service.firewall_allow
+            ), addon);
+          if (service.permissions)
+            $$invalidate('addon', addon.permissions = addon.permissions.concat(service.permissions), addon);
+        }
+      });
 
     if (!onDestroyProxy) {
       onDestroyProxy = UserAwareComponent(

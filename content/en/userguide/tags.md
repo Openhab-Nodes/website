@@ -5,7 +5,7 @@ weight = 42
 tags = ["tags"]
 +++
 
-OpenHAB X uses the [Brick schema](https://brickschema.org/) to add semantic context to Things via a defined set of *Tags*. Such a context consists of one or more location, equipment and property tags. For example "Garden, MotionDetector, Battery, Current" for the battery current of the garden motion sensor.
+OHX uses the [Brick schema](https://brickschema.org/) to add semantic context to Things via a defined set of *Tags*. Such a context consists of one or more location, equipment and property tags. For example "Garden, MotionDetector, Battery, Current" for the battery current of the garden motion sensor.
 
 What is a semantic context used for?
 

@@ -9,9 +9,9 @@ type = "plain"
     “The Difficulty Lies Not So Much In Developing New Ideas As In Escaping From Old Ones.” <small>– John Maynard Keynes</small>
 </blockquote>
 
-openHAB X is a young player on the Home Automation Solutions market.
+OHX is a young player on the Home Automation Solutions market.
 
-openHAB X is however also a very efficient and scalable technology, developed with cloud infrastructure expertise in mind. The careful choice of <button class="btn-link contexthelp" id="technology" title="Context help">technology</button> provides industrial grade robustness.
+OHX is however also a very efficient and scalable technology, developed with cloud infrastructure expertise in mind. The careful choice of <button class="btn-link contexthelp" id="technology" title="Context help">technology</button> provides industrial grade robustness.
 
 <ui-tooltip target="technology" maxwidth>
 OHX Core shoulders on <b>Rust</b>, the modern, efficient, secure system programming language and relies on <b>EXT4</b> for document storage and <b>REDIS</b> for state management. <b>InfluxDB</b> makes up its long term memory.
@@ -25,7 +25,7 @@ Feature overview:
 
 <ui-tooltip target="benchmark" maxwidth>
 <p>
-Based on a p99 50ms response time on a Raspberry PI 3B+ with the openHAB X Distribution OS 2019-05-30, 7000 simulated https connected WebThings and 7000 scheduled rules with a rule execution every 1 second.
+Based on a p99 50ms response time on a Raspberry PI 3B+ with the OHX Distribution OS 2019-05-30, 7000 simulated https connected WebThings and 7000 scheduled rules with a rule execution every 1 second.
 </p>
 <p>Perform your own benchmark with the <a href="{{< relref "/developer/coreservices" >}}#tools">Benchmark Tool</a>.
 </ui-tooltip>

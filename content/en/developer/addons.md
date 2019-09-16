@@ -5,19 +5,25 @@ weight = 50
 tags = []
 +++
 
-Developing an Addon for openHAB X is not complicated.
-Programming libraries are provided for Rust, C++, Java and NodeJS.
+Developing an Addon for OHX is not complicated.
+Software development kits (SDK) are provided for Rust, C++, Java and NodeJS.
 
-This chapter sheds some light on what addons actually are and introduces into addon development. It starts with how to setup your development environment and refers to the various *template* repositories that allow you to easily clone example code.
+This chapter sheds some light on what addons actually are and introduces into addon development.
+It starts with how to setup your development environment and continues with introducing concepts and APIs.
+Various *template* projects allow you to easily clone a scaffolded Addon and add your device or service support in a breeze.
 
-This text assumes that you know how to open and operate a terminal, because for brevity reasons only command line instructions are given.
+This text assumes that you know how to open and operate a terminal.
+For brevity reasons only command line instructions are given.
 
 ## Home Automation Framework n+1
 
-There are a few other open source Home Automation software frameworks out there. Most of them don't meet the high stability and performance standards of OHX, still developing an Addon for OHX shouldn't feel like developing for the n+1 framework.
+There are a few other open source Home Automation software frameworks out there.
+Some are of good quality, some are more like meh in terms of reliability, performance,
+security or restrictions on how to extend the software.
 
-An idiomatic OHX Addon follows standards whenever possible and runs as an autonomous process, making it hopefully easy to integrate it with other frameworks if necessary.
-
+Developing an Addon for OHX shouldn't feel like developing for the n+1 framework.
+An idiomatic OHX Addon follows standards whenever possible and runs as an autonomous process,
+making it easy to integrate it with other frameworks.
 
 {{< colpic ratio="50" left="mx-2" right="mx-2" >}}
 
@@ -44,7 +50,7 @@ Addon and Thing States are by default published via interprocess communication, 
 This guide assumes that you develop with an Integrated Developer Enviroment (IDE).<br>
 A recommended one is [Visual Studio Code](https://code.visualstudio.com/).
 
-The source code of openHAB X is hosted on https://www.github.com. Respective repositories are referenced further down. To retrieve the source code, you either download zipped archives or `git clone` repositories via [git](https://git-scm.com/) (recommended).
+The source code of OHX is hosted on https://www.github.com. Respective repositories are referenced further down. To retrieve the source code, you either download zipped archives or `git clone` repositories via [git](https://git-scm.com/) (recommended).
 
 Depending on your your target programming language you need to install the required compiler or development runtime.
 
@@ -137,11 +143,11 @@ That is what the next sections are about.
 
 ### Test without Containers
 
-Addons and also openHAB X core services are bundled into software containers for distribution and execution. Containers are explained in a later section.
+Addons and also OHX core services are bundled into software containers for distribution and execution. Containers are explained in a later section.
 
 For running an addon in a debug session, containers are not recommended. The interaction between the debugger and the encapsulated addon container process might be interfered by the operating system. Instead:
 
-1. Execute `sh ./start_all.sh` of the [core repository](https://github.com/openhab-nodes/core) on the command line to start openHAB X.
+1. Execute `sh ./start_all.sh` of the [core repository](https://github.com/openhab-nodes/core) on the command line to start OHX.
 2. Start your Addon (or an example Addon) via the command line given above, like `cargo run` for a Rust addon or `npm run start` for NodeJS or use the respective debugger to start the process.
 
 ### Test With Production OHX
@@ -240,7 +246,7 @@ Addons should not expect users to skim through log files to identify issues or r
 
 An Addon should use the *Events* API for user interaction. An Addon should NOT use events to show debug information or everything that rather goes into the log.
 
-**Setup &amp; Maintenance** lists all possible actions of an Addon on the respective Addon page and also displays incoming Addon Events. Events have a lifetime and are stored by openHAB X for that time. Received Evenets can be listed on the <a href="" class="demolink">Addon</a> page.
+**Setup &amp; Maintenance** lists all possible actions of an Addon on the respective Addon page and also displays incoming Addon Events. Events have a lifetime and are stored by OHX for that time. Received Evenets can be listed on the <a href="" class="demolink">Addon</a> page.
 
 Events and Actions are registered during the addon registration phase.
 
@@ -305,7 +311,7 @@ fn show_event(ctx: &AddonContext) {
 
 ## Configurations for Addons
 
-Configuration, may it be Thing or Addon or Service configuration, in openHAB X must be possible in textual form as well as graphical via forms and dialogs.
+Configuration, may it be Thing or Addon or Service configuration, in OHX must be possible in textual form as well as graphical via forms and dialogs.
 For this to work, the configuration meta data or configuration description is necessary. 
 OHX uses **JsonSchema** for this purpose.
 
@@ -496,7 +502,7 @@ fn main() {
 
 Sometimes you need to restructure your addon and your configuration structure changes. This includes service as well as Thing configurations.
 
-As seen in the last example, openHAB X calls you back if your addon version doesn't match your configuration version for a given config_id. Add migration paths for each new version to an `upgrade_cb` function as seen in the following example.
+As seen in the last example, OHX calls you back if your addon version doesn't match your configuration version for a given config_id. Add migration paths for each new version to an `upgrade_cb` function as seen in the following example.
 
 <div class="mb-2">
 	<tab-container>
@@ -630,6 +636,7 @@ All addon metadata resides under the "x-ohx-registry" section.
    A maximum of 3 segments, separated by dots, each consisting of numbers is allowed.
 * `type` is either "binding", "ioservice" or "other".
 * `license` The addon license name
+* `authors`: A list of authors
 * `manufacturers` and `products` List appropriate entries here. Relevant for binding Addons. 
    For an Addon that supports specific Samsung TVs, you would set the keys accordingly. 
 * `homepage` A website for that addon. Might just point to a Github repository.
@@ -735,12 +742,10 @@ services:
     - "8000:8000"
     - "9090-9091:8080-8081"
     - "49100:22"
-    - "127.0.0.1:8001:8001"
-    - "127.0.0.1:5000-5010:5000-5010"
     - "6060:6060/udp"
 ```
 
-As you can see, you can expose single ports (`3000`), a port range (`3000-3005`), map container ports to host ports (`8000:8000`) and restrict ports to specific network interfaces like localhost (`127.0.0.1`). The default port type is TCP, for UDP use a `/udp` suffix.
+As you can see, you can expose single ports (`3000`), a port range (`3000-3005`) and map container ports to host ports (`8000:8000`). The default port type is TCP, for UDP use a `/udp` suffix.
 
 If you expose a port, without mapping it, that port is only visible to other containers and is not visible to the host network interface. To make the mqtt broker from above potentially accessible from the Internet, you would use a port mapping like so:
 
@@ -906,19 +911,23 @@ Publishing is done via a command line utility.
 2. If you haven't installed Rust yet, you need at least [Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html)
 3. Install the tool with `cargo install ohx-publish`.
 4. If your addon is hosted in a git repository and you are executing the tool in a repository directory, make sure that the workspace is clean and everything is commited.
-4. The utility does not take any arguments and is expected to be executed in the directory that contains the `docker-compose.yml` file: `./ohx-publish`.
+4. The utility does not take any arguments and is expected to be executed in the directory that contains the `addon.yml` file.
+   You may provide the path/filename via the `-i` argument: `ohx-publish -i another_directory/addon.yml`.
 
-Your `docker-compose.yml` file is analysed to find out about your addons name and version. 
+Your `addon.yml` file is analysed to find out about your addons name and version. 
 
 Publish for the first time
-: If you haven't published anything yet from your addon directory, the tool opens https://www.openhabx.com for you to authenticate. If there is no addon from another user with the same name, your addon is build and published.
+: If you haven't published anything yet, the tool opens https://www.openhabx.com for you to authenticate.
+If there is no addon from another user with the same name, your addon is build and published.
 
 If there is an older version, that version is archived and replaced with the new version. 
 
 {{< callout type="info" >}}
-If your Addon is written in a language that is compiled to machine code (Rust, C++, Go), it needs to be cross compiled to Armv7 and Armv8. This will require about 1 GB disk space for the compiler toolchains. You are expected to build on an x86-64 machine.
+If your Addon is written in a language that is compiled to machine code (Rust, C++, Go), it needs to be cross compiled to Armv7 and Armv8. This will require about 1 GB disk space for the compiler toolchains.
 {{< /callout >}}
 
 ### Addon Reviews
 
-An Addon can get the "reviewed" badge by Addon registry maintainers. The build artifacts are associated with your git revision during build. Your source code at the given git revision will be checked for malicous code, and code quality in terms of resource leakage.
+If Addon registry maintainers have time, they will review Addons.
+The build artifacts are associated with your git revision during build.
+Your source code at the given git revision will be checked for malicous code, and code quality in terms of resource leakage.

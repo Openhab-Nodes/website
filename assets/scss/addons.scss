@@ -1,4 +1,5 @@
 @import "index_addons";
+@import "colors";
 
 #addons_stack_wrapper {
     overflow: hidden;
@@ -48,7 +49,7 @@
     height: 25px;
     line-height: 25px;
     position: absolute;
-    background-color: #ff8a65;
+    background-color: $primary;
     z-index: 1;
     right: 5px;
     top: 0;

@@ -11,14 +11,14 @@ summary = "Do it yourself (DIY) is the method of building, modifying, or repairi
 Do it yourself" ("DIY") is the method of building, modifying, or repairing things without the direct aid of experts or professionals.
 {{< /indent >}}
 
-DIY in this context means that you integrate non-shelf solutions, like self programmed microcontrollers or, for example, an arbitrary internet weather service into openHAB X (OHX) without writing any openHAB X addon. As you might have guessed, you can archive that in two ways.
+DIY in this context means that you integrate non-shelf solutions, like self programmed microcontrollers or, for example, an arbitrary internet weather service into OHX (OHX) without writing any OHX addon. As you might have guessed, you can archive that in two ways.
 
 <img src="/img/doc/diy-2-ways.jpg" class="w-100">
 
 1. Either you craft your device firmware or service software in a way that it speaks a *native* protocol of OHX,
 2. or you use write your own Add-On.
 
-Option 1 has the big advantage that auto dicovery and configuration works. You can hand your device to any other openHAB X user or move it to a completely fresh installation and it is found and setup with one click.
+Option 1 has the big advantage that auto dicovery and configuration works. You can hand your device to any other OHX user or move it to a completely fresh installation and it is found and setup with one click.
 
 Somtimes you cannot change the target. Integrating an HTTP based weather forecast service is of course only possible via a specific OHX addon. If the target service or device uses any of the Internet-Of-Things (IoT) protocols, namely [MQTT](https://www.mqtt.org), [CoAP](https://coap.technology/) and [HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) (including HTTP2 &amp; Websockets), writing an Add-On is done in a few dozens of lines. The [Developer Documentation](/develop) tells you more.
 
@@ -276,7 +276,7 @@ const char* ssid = "";
 const char* password = "";
 ```
 
-Enter your WiFi credentials. This example project will expose the inbuild LED as a WebThing that we can control in a few moments from openHAB X.
+Enter your WiFi credentials. This example project will expose the inbuild LED as a WebThing that we can control in a few moments from OHX.
 
 Build the project via the **PlatformIO: Home** screen or via the task commander (`Ctrl+Alt+T`). Enter or select: `PlatformIO:Build (nodemcuv2)`.
 
@@ -290,8 +290,8 @@ After completion, the led should start blinking and turn off after a connection 
 
 Open "http://w25.local/things/led" in a Webbrowser - You might need to wait a few seconds. A modern operating system is able to resolve `.local` addresses (mDNS). You are now talking to your WebThing. You can issue commands directly via the Browser and request the current Thing state.
 
-## Add to openHAB X
+## Add to OHX
 
-Navigate to your openHAB X Inbox and approve the automatically discovered WebThing.
+Navigate to your OHX Inbox and approve the automatically discovered WebThing.
 
 <img style="max-width:600px" src="/img/doc/diy-inbox.png">

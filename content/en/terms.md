@@ -1,43 +1,43 @@
 +++
 title = "Terms of Use"
-subtitle = "openHAB X"
+subtitle = "OHX"
 tinytitle = true
 type = "legal"
 dateInfo = "Last update May 14th, 2018"
 
 +++
 
-# Welcome to openhab X
+# Welcome to OHX
 
-These terms and conditions outline the rules and regulations for the use of openhab X's Website and Services.
+These terms and conditions outline the rules and regulations for the use of OHX's Website and Services.
 
 By accessing this website we assume you accept these terms and conditions in full.
-Do not continue to use openhab X's website 
+Do not continue to use OHX's website 
 if you do not accept all of the terms and conditions stated on this page.
 
 The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice
 and any or all Agreements: "Client", "You" and "Your" refers to you, the person accessing this website
-and accepting the openhab X's terms and conditions. "Provider", "Ourselves", "We", "Our" and "Us", refers
-to openhab X. "Party", "Parties", or "Us", refers to both the Client and ourselves, or either the Client
+and accepting the OHX's terms and conditions. "Provider", "Ourselves", "We", "Our" and "Us", refers
+to OHX. "Party", "Parties", or "Us", refers to both the Client and ourselves, or either the Client
 or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake
 the process of our assistance to the Client in the most appropriate manner, whether by formal meetings
 of a fixed duration, or any other means, for the express purpose of meeting the Client's needs in respect
-of provision of the openhab X's stated services/products, in accordance with and subject to, prevailing law
+of provision of the OHX's stated services/products, in accordance with and subject to, prevailing law
 of Germany (Deutschland). Any use of the above terminology or other words in the singular, plural,
 capitalisation and/or he/she or they, are taken as interchangeable and therefore as referring to same.
 
 ### Cookies
 
-We employ the use of cookies. By using openhab X's website you consent to the use of cookies 
-in accordance with openhab X's privacy policy.Most of the modern day interactive web sites
+We employ the use of cookies. By using OHX's website you consent to the use of cookies 
+in accordance with OHX's privacy policy.Most of the modern day interactive web sites
 use cookies to enable us to retrieve user details for each visit. Cookies are used in some areas of our site
 to enable the functionality of this area and ease of use for those people visiting. Some of our 
 affiliate / advertising partners may also use cookies.
 
 ### License
 
-Unless otherwise stated, openhab X and/or it's licensors own the intellectual property rights for
-all material on openhab X. All intellectual property rights are reserved. You may view and/or print
+Unless otherwise stated, OHX and/or it's licensors own the intellectual property rights for
+all material on OHX. All intellectual property rights are reserved. You may view and/or print
 pages from https://www.openhabx.com for your own personal use subject to restrictions set in these terms and conditions.
 You must not:
 
@@ -45,7 +45,7 @@ You must not:
 	* Sell, rent or sub-license material from https://www.openhabx.com
 	* Reproduce, duplicate or copy material from https://www.openhabx.com
 
-Redistribute content from openhab X (unless content is specifically made for redistribution).
+Redistribute content from OHX (unless content is specifically made for redistribution).
 
 ### Deep linking to our Content
 
@@ -108,10 +108,10 @@ we will not be liable for any loss or damage of any nature.
 		We reserve the right to limit or restrict access to the backup system if abuse has been detected.
 
     * **Cloud based speech assistants (Amazon Alexa, Google Home):** 
-		The provider establishes a secure connection between user selected cloud based digital assistants or services and your registered openHAB X instances, thus allowing those assistants or services to control your devices.
+		The provider establishes a secure connection between user selected cloud based digital assistants or services and your registered OHX instances, thus allowing those assistants or services to control your devices.
 		The provider cannot be hold responsible for defects, malfunctions or unresponsiveness of those external services, nor can he guarantee that those services will exist pass your contract time.
-    * **openHAB X support:**
-		The provider will do a best effort job to keep your openHAB X instance responsive and running.
+    * **OHX support:**
+		The provider will do a best effort job to keep your OHX instance responsive and running.
 		Support questions will be answered within a reasonable timeframe.
     * **Vote on developer roadmap topics:** You can use monthly topped up "points" to priorize aspects on the developer roadmap or suggest your own topic. A suggestion may be denied as inappropriate in which case no points will be deducted.
 1. Your account may only be used by yourself. Likewise, you are responsible as the owner of the account for the protection against its misuse. Your credentials must therefore be protected from third party access.

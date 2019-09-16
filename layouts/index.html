@@ -12,15 +12,15 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				{{ with .Site.Params.slider }}
-				<img class="animated fadeInUp mainlogo" src="/img/openhab-logo-x.svg">
-				<p class="animated fadeInUp block">
-					{{- i18n "aboutus_index" | safeHTML -}}
-				</p>
+				<div style="display: flex">
+					<img class="animated fadeInUp mainlogo mr-3" style="min-height: 120px" src="/img/logo.svg">
+					<p class="animated fadeInUp block">
+						{{- i18n "aboutus_index" | safeHTML -}}
+					</p>
+				</div>
 				<div class="animated fadeInUp descriptions">
 					<a href="#features" class="btn btn-lg btn-primary btn-impressive">Learn more</a>
 				</div>
-				{{ end }}
 			</div>
 			<div class="col-md-4 offset-md-2 text-center d-none d-md-block" id="jumbo_features">
 				<div class="swiper-container" style="max-width: 350px;height: 250px">

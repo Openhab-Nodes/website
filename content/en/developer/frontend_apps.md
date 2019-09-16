@@ -21,7 +21,7 @@ This application is targeting (Wall-mounted) tablets. Because those tablets gene
 
 It consists of only 3 html pages, one for the settings, one for logging in and one that shows the actual dashboard screen. The Dashboard App is developed with html, scss for styling (transpiled to css) and svelte for the javascript part.
 
-A user can create and switch between multiple dashboards. Those boards are stored on the openHAB X system via the *User-Inferface-Storage IO Service*.
+A user can create and switch between multiple dashboards. Those boards are stored on the OHX system via the *User-Inferface-Storage IO Service*.
 
 The *Tiles* that a Dashboard consists of are [custom web components](https://developers.google.com/web/fundamentals/web-components/customelements). 
 A custom component is used like any other html tag. The tag for a Switch Thing property looks like this for example:
@@ -145,7 +145,7 @@ window.customElements.define('dashboard-bold-text', class extends HTMLElement {
 Events that your custom web component can emit and that are understood by the dashboard app.
 
 command
-: When the user interacts with your *Tile*, you need to send the changed value back to the openHAB X instance. You do so by issuing a "command" event. Depending on the the type of your *Tile* this is either a string, a boolean, a number or a complex javascript object. A light Thing for example can receive a complex type containing one or more values like the hue, brightness, saturation, color temperature.
+: When the user interacts with your *Tile*, you need to send the changed value back to the OHX instance. You do so by issuing a "command" event. Depending on the the type of your *Tile* this is either a string, a boolean, a number or a complex javascript object. A light Thing for example can receive a complex type containing one or more values like the hue, brightness, saturation, color temperature.
 
 {{< highlight js "linenos=table" >}}
 window.customElements.define('dashboard-bold-text', class extends HTMLElement {

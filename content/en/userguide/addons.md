@@ -7,10 +7,10 @@ tags = ["addons"]
 
 {{< scss file="addons" >}}
 
-openHAB X has been developed with extendability in mind. OHX extensions are called **Bindings** if they integrate physical hardware, external systems and web services, and called **IO Services** if they expose configured Things.
+OHX has been developed with extendability in mind. OHX extensions are called **Bindings** if they integrate physical hardware, external systems and web services, and called **IO Services** if they expose configured Things.
 
 {{< callout type="danger" title="Security considerations" >}}
-{{< advanced >}} openHAB X addons are isolated containers with no access to the base operating system, a dedicated, limited space for configuration and a user restrictable access to system resources like CPU and main memory.
+{{< advanced >}} OHX addons are isolated containers with no access to the base operating system, a dedicated, limited space for configuration and a user restrictable access to system resources like CPU and main memory.
 
 Like with Android or iOS mobile applications you must acknowledge elevated permission requests, for example to enumerate or alter *Thing* states or to raise the default CPU / memory limit.
 
@@ -125,7 +125,7 @@ Addon sources are managed on the <a class="demolink" href="">Addons</a> page in 
 
 ## Things
 
-openHAB X is abstracting devices and services **Things**. A simple example is a lightbulb. A Thing can have related or child Things, like a HiFi amplifier with different control zones and various functionalities. A Thing consists of a Name, a description and Thing Properties.
+OHX is abstracting devices and services **Things**. A simple example is a lightbulb. A Thing can have related or child Things, like a HiFi amplifier with different control zones and various functionalities. A Thing consists of a Name, a description and Thing Properties.
 
 Specific Things are expected to have specific Properties. The lightbulb Thing for example must have an On/Off property and can have a brightness, a light temperature and a color property.
 

@@ -1,0 +1,8 @@
+{{ define "body" }}
+{{ partial "pageheader.html" . }}
+<script defer type="module" src="/js/cmp/ui-login.js"></script>
+
+<main id="mainContent" class="container my-4">
+	{{ markdownify .Content }}
+</main>
+{{ end }}

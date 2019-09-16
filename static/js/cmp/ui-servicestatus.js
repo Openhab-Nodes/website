@@ -61,6 +61,14 @@ let current_component;
 function set_current_component(component) {
     current_component = component;
 }
+function get_current_component() {
+    if (!current_component)
+        throw new Error(`Function called outside component initialization`);
+    return current_component;
+}
+function onDestroy(fn) {
+    get_current_component().$$.on_destroy.push(fn);
+}
 
 const dirty_components = [];
 const binding_callbacks = [];
@@ -279,7 +287,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (108:6) {:else}
+// (121:6) {:else}
 function create_else_block(ctx) {
 	var span, t, span_title_value;
 
@@ -310,7 +318,7 @@ function create_else_block(ctx) {
 	};
 }
 
-// (106:43) 
+// (119:43) 
 function create_if_block_1(ctx) {
 	var span;
 
@@ -335,7 +343,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (99:6) {#if service.ok}
+// (112:6) {#if service.ok}
 function create_if_block(ctx) {
 	var span, t, span_title_value;
 
@@ -366,7 +374,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (96:2) {#each services_values as service}
+// (109:2) {#each services_values as service}
 function create_each_block(ctx) {
 	var div, t0_value = ctx.service.title + "", t0, t1, t2;
 
@@ -498,8 +506,10 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
-	let firebase;
+	
   let { classes = "" } = $$props;
+  let onDestroyProxy = () => {};
+  onDestroy(() => onDestroyProxy());
 
   let services = {
     registry: {
@@ -532,55 +542,66 @@ function instance($$self, $$props, $$invalidate) {
     }
   };
 
-  async function start() {
-    let module = await import('../../../../../../../../js/cmp/userdata.js');
-    firebase = module.firebase;
-    await module.userdata.ready();
-    let user = module.userdata.user;
+  function check_cache(serviceid, service) {
+    const cache = localStorage.getItem("servicetest/" + serviceid);
+    if (cache && cache.ttl > Date.now()) {
+      service.ok = true;
+      service.cached = true;
+      service.last_checked = cache.last_checked;
+      $$invalidate('services', services[serviceid] = service, services); // Assignment for svelte reactive
+      return true;
+    }
+    return false;
+  }
 
+  function check_result(serviceid, service, f) {
+    f.then(() => {
+      service.ok = true;
+      service.last_checked = Date.now();
+      service.ttl = Date.now() + 3600 * 1000;
+      localStorage.setItem("servicetest/" + serviceid, JSON.stringify(service));
+      $$invalidate('services', services[serviceid] = service, services); // Assignment for svelte reactive
+    }).catch(e => {
+      service.error_msg = e.message;
+      service.ok = false;
+      service.last_checked = Date.now();
+      $$invalidate('services', services[serviceid] = service, services); // Assignment for svelte reactive
+    });
+  }
+
+  async function start() {
     for (let [serviceid, service] of Object.entries(services)) {
-      const cache = localStorage.getItem("servicetest/" + serviceid);
-      if (cache && cache.ttl > Date.now()) {
-        service.ok = true;
-        service.cached = true;
-        service.last_checked = cache.last_checked;
-        $$invalidate('services', services[serviceid] = service, services); // Assignment for svelte reactive
-        continue;
-      }
-      let f = null;
-      if (service.test_url.startsWith("http")) {
-        f = fetch(service.test_url, { mode: "no-cors" }).then(res => {
+      if (!service.test_url.startsWith("http")) continue;
+      if (check_cache(serviceid, service)) continue;
+
+      check_result(
+        serviceid,
+        service,
+        fetch(service.test_url).then(res => {
           if (res.status < 200 || res.status >= 300) {
             throw new Error(`Unhealthy status code ${res.status}`);
           }
-        });
-      } else if (service.test_url.startsWith("gs")) {
+        })
+      );
+    }
+
+    let module = await import('../../../../../../../../js/cmp/userdata.js');
+    let firebase = module.firebase;
+    onDestroyProxy = module.UserAwareComponent(user => {
+      for (let [serviceid, service] of Object.entries(services)) {
+        if (!service.test_url.startsWith("gs")) continue;
+        if (check_cache(serviceid, service)) continue;
+
         const storage = firebase.app().storage(service.test_url);
         const storageRef = storage.ref();
-        const listRef = storageRef.child(user.uid);
-        f = listRef.listAll();
+        if (user) {
+          const listRef = storageRef.child(user.uid);
+          check_result(serviceid, service, listRef.listAll());
+        } else {
+          check_result(serviceid, service, Promise.reject(new Error("No user session")));
+        }
       }
-      if (!f) {
-        service.ok = false;
-        console.error("Not supported service!");
-        return;
-      }
-      f.then(() => {
-        service.ok = true;
-        service.last_checked = Date.now();
-        service.ttl = Date.now() + 3600 * 1000;
-        localStorage.setItem(
-          "servicetest/" + service.id,
-          JSON.stringify(service)
-        );
-        $$invalidate('services', services[serviceid] = service, services); // Assignment for svelte reactive
-      }).catch(e => {
-        service.error_msg = e.message;
-        service.ok = false;
-        service.last_checked = Date.now();
-        $$invalidate('services', services[serviceid] = service, services); // Assignment for svelte reactive
-      });
-    }
+    });
   }
   start();
 

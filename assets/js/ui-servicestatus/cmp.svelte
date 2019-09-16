@@ -1,7 +1,9 @@
 <script>
-  let firebase;
   let disabled = true;
   export let classes = "";
+  import { onDestroy } from "svelte";
+  let onDestroyProxy = () => {};
+  onDestroy(() => onDestroyProxy());
 
   let services = {
     registry: {
@@ -36,55 +38,66 @@
 
   $: services_values = Object.values(services);
 
-  async function start() {
-    let module = await import("/js/cmp/userdata.js");
-    firebase = module.firebase;
-    await module.userdata.ready();
-    let user = module.userdata.user;
+  function check_cache(serviceid, service) {
+    const cache = localStorage.getItem("servicetest/" + serviceid);
+    if (cache && cache.ttl > Date.now()) {
+      service.ok = true;
+      service.cached = true;
+      service.last_checked = cache.last_checked;
+      services[serviceid] = service; // Assignment for svelte reactive
+      return true;
+    }
+    return false;
+  }
 
+  function check_result(serviceid, service, f) {
+    f.then(() => {
+      service.ok = true;
+      service.last_checked = Date.now();
+      service.ttl = Date.now() + 3600 * 1000;
+      localStorage.setItem("servicetest/" + serviceid, JSON.stringify(service));
+      services[serviceid] = service; // Assignment for svelte reactive
+    }).catch(e => {
+      service.error_msg = e.message;
+      service.ok = false;
+      service.last_checked = Date.now();
+      services[serviceid] = service; // Assignment for svelte reactive
+    });
+  }
+
+  async function start() {
     for (let [serviceid, service] of Object.entries(services)) {
-      const cache = localStorage.getItem("servicetest/" + serviceid);
-      if (cache && cache.ttl > Date.now()) {
-        service.ok = true;
-        service.cached = true;
-        service.last_checked = cache.last_checked;
-        services[serviceid] = service; // Assignment for svelte reactive
-        continue;
-      }
-      let f = null;
-      if (service.test_url.startsWith("http")) {
-        f = fetch(service.test_url, { mode: "no-cors" }).then(res => {
+      if (!service.test_url.startsWith("http")) continue;
+      if (check_cache(serviceid, service)) continue;
+
+      check_result(
+        serviceid,
+        service,
+        fetch(service.test_url).then(res => {
           if (res.status < 200 || res.status >= 300) {
             throw new Error(`Unhealthy status code ${res.status}`);
           }
-        });
-      } else if (service.test_url.startsWith("gs")) {
+        })
+      );
+    }
+
+    let module = await import("/js/cmp/userdata.js");
+    let firebase = module.firebase;
+    onDestroyProxy = module.UserAwareComponent(user => {
+      for (let [serviceid, service] of Object.entries(services)) {
+        if (!service.test_url.startsWith("gs")) continue;
+        if (check_cache(serviceid, service)) continue;
+
         const storage = firebase.app().storage(service.test_url);
         const storageRef = storage.ref();
-        const listRef = storageRef.child(user.uid);
-        f = listRef.listAll();
+        if (user) {
+          const listRef = storageRef.child(user.uid);
+          check_result(serviceid, service, listRef.listAll());
+        } else {
+          check_result(serviceid, service, Promise.reject(new Error("No user session")));
+        }
       }
-      if (!f) {
-        service.ok = false;
-        console.error("Not supported service!");
-        return;
-      }
-      f.then(() => {
-        service.ok = true;
-        service.last_checked = Date.now();
-        service.ttl = Date.now() + 3600 * 1000;
-        localStorage.setItem(
-          "servicetest/" + service.id,
-          JSON.stringify(service)
-        );
-        services[serviceid] = service; // Assignment for svelte reactive
-      }).catch(e => {
-        service.error_msg = e.message;
-        service.ok = false;
-        service.last_checked = Date.now();
-        services[serviceid] = service; // Assignment for svelte reactive
-      });
-    }
+    });
   }
   start();
 </script>

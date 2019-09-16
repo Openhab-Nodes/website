@@ -1,6 +1,6 @@
-title: Warum openHAB X
+title: Warum OHX
 subtitle: >
-  openHAB X versteht nicht nur Geräte eines einzelnen Herstellers und verhindert, dass es bei dir Zuhause zu einem Hersteller-lock-in kommt.
+  OHX versteht nicht nur Geräte eines einzelnen Herstellers und verhindert, dass es bei dir Zuhause zu einem Hersteller-lock-in kommt.
   Unter anderen funktionieren &hellip;
 subtitle2: >
   &hellip;, ZWave, Zigbee und viele mehr. Sieh' dich einfach in
@@ -10,7 +10,7 @@ content:
     image: /img/logos/hue-font.png
     text: >
       Steuere deine Geräte einfach über beliebige <abbr
-      title="Natürlich kann nicht garantiert werden, dass die offzielle Hue APP auch funktioniert. openHAB X ist kompatibel, aber kein 1:1 Ersatz.">kompatible</abbr>
+      title="Natürlich kann nicht garantiert werden, dass die offzielle Hue APP auch funktioniert. OHX ist kompatibel, aber kein 1:1 Ersatz.">kompatible</abbr>
       Hue Apps. Auch die Hue Raumverwaltung, Regeln und Zeitsteuerung funktionieren.
   - title: Nutze Sprachassistenten
     icon: mobile-alt
@@ -21,7 +21,7 @@ content:
   - title: Handy / Tablet App
     icon: microphone
     text: >
-      Die simple, anpassbare Android &amp; iOS App lässt dich dein openHAB X einfach steuern.
+      Die simple, anpassbare Android &amp; iOS App lässt dich dein OHX einfach steuern.
 
 content2:
   - title: Textual &amp; Graphical interface

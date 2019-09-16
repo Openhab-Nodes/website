@@ -9,7 +9,7 @@ author = "David Graeff"
 
 A project is only as good as its documentation.
 
-openHAB X is pretty solid when it comes to that. But there is always room for improvement. You encounter a spelling mistake or find a paragraph missleading or expressed in an unusual way? Improving a page, including blog posts, is always welcome. And it's pretty easy, too.<!--more-->New documents and blog posts are highly appreciated as well, of course.
+OHX is pretty solid when it comes to that. But there is always room for improvement. You encounter a spelling mistake or find a paragraph missleading or expressed in an unusual way? Improving a page, including blog posts, is always welcome. And it's pretty easy, too.<!--more-->New documents and blog posts are highly appreciated as well, of course.
 
 
 Documents are written in Markdown. It is a quite intuitive markup dialect and you will find a quick introduction in the next section of this post.

@@ -1,22 +1,18 @@
 {
   "ohx": {
     "id": "ohx",
-    "title": "OpenHAB X Installation",
+    "title": "OHX Installation",
     "author": "David Gräff",
-    "logo_url": "/img/openhab-installation.svg",
-    "redirect_uri": [ ],
-    "scopes": ["device", "offline_access"]
+    "logo_url": "/img/oauth-client-cloud-connector.png",
+    "scopes": ["device"]
   },
   "addoncli": {
     "id": "addoncli",
     "title": "Addon Registry Tool",
     "author": "David Gräff",
-    "logo_url": "/img/openhab-cli.svg",
-    "redirect_uri": [
-      "https://openhabx.com/oauth_device_confirm"
-    ],
+    "logo_url": "/img/oauth-client-addon-cli.png",
     "requires_state": true,
-    "scopes": ["addons", "profile", "offline_access"]
+    "scopes": ["addons"]
   },
   "amazon_echo": {
     "id": "amazon_echo",

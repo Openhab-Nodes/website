@@ -263,7 +263,7 @@ function add_css() {
 	append(document.head, style);
 }
 
-// (136:0) {#if visible}
+// (141:0) {#if visible}
 function create_if_block(ctx) {
 	var div_1;
 
@@ -356,20 +356,25 @@ function instance($$self, $$props, $$invalidate) {
   }
 
   async function auth() {
+    let is_resolved = false;
+    let module = import('../../../../../../../../js/cmp/userdata.js').then(t => {
+      is_resolved = true;
+      return t;
+    });
     // Show loading screen after 500ms
-    timer = setTimeout(() => {
-      const user = firebase.auth().currentUser;
+    timer = setTimeout(async () => {
+      const user = is_resolved ? (await module).firebase.auth().currentUser : null;
       $$invalidate('visible', visible = !user);
       window.loggedin = !!user;
       if (!user) {
         // Backup timer
-        timer = setTimeout(() => check_user(firebase.auth().currentUser), 2500);
+        timer = setTimeout(
+          async () => check_user((await module).firebase.auth().currentUser),
+          2500
+        );
       }
     }, 500);
-    let module = await import('../../../../../../../../js/cmp/userdata.js');
-    let firebase = module.firebase;
-
-    firebase.auth().onAuthStateChanged(check_user, function(error) {
+    (await module).firebase.auth().onAuthStateChanged(check_user, function(error) {
       console.log("Check login error", error);
       notLoggedIn();
     });

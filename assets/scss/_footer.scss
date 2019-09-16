@@ -1,3 +1,5 @@
+@import "colors";
+
 footer#footer {
     width: 100%;
     background: #F5F5F5;
@@ -31,13 +33,13 @@ footer#footer {
     }
 
     a:hover {
-        border-bottom: 1px solid #FF8A65;
-        color: #FF8A65;
+        border-bottom: 1px solid $primary;
+        color: $primary;
     }
 
     a {
         border-bottom: 1px solid transparent;
-        color: #FF8A65;
+        color: $primary;
         transition: color .3s;
     }
 
@@ -49,7 +51,7 @@ footer#footer {
 
     .footer-links a:hover {
         border-bottom: 1px solid transparent;
-        color: #FF8A65;
+        color: $primary;
     }
 
     .footer-links-non-block a {
@@ -60,7 +62,7 @@ footer#footer {
 
     .footer-links-non-block a:hover {
         border-bottom: 1px solid transparent;
-        color: #FF8A65;
+        color: $primary;
     }
 
     .footer-legal {
@@ -88,8 +90,8 @@ footer#footer {
     }
 
     .footer-legal a:hover {
-        color: #FF8A65;
-        border-bottom: 1px solid #FF8A65;
+        color: $primary;
+        border-bottom: 1px solid $primary;
         padding: 0 0 5px;
     }
 

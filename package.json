@@ -25,6 +25,7 @@
     "swiper": "^4"
   },
   "scripts": {
+    "deploy": "./deploy.sh",
     "build": "rollup -c",
     "autobuild": "rollup -c -w",
     "dev": "run-p start autobuild",

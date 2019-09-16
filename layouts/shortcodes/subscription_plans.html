@@ -14,9 +14,6 @@
     {{- $dynprice := $scratch.Get "dynprice" -}}
 
     <form class="col" method="GET" action="{{ $element.href }}" id="subscriptionPlan{{ $element.id }}">
-        {{ with $dynprice }}
-        <ui-subscription-flexible target="subscriptionPlan{{ $element.id }}"></ui-subscription-flexible>
-        {{ end }}
         <input type="hidden" name="c" value="{{ $price }}">
         <input type="hidden" name="p" value="{{ $element.id }}">
         <div class="header">
@@ -97,5 +94,8 @@
             </button>
         </div>
     </form>
+    {{ with $dynprice }}
+    <ui-subscription-flexible target="subscriptionPlan{{ $element.id }}"></ui-subscription-flexible>
+    {{ end }}
     {{- end -}}
 </div>

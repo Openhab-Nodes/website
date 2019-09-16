@@ -1,6 +1,6 @@
 +++
 title = "Datenschutzerklärung"
-subtitle = "openHAB X"
+subtitle = "OHX"
 tinytitle = true
 type = "legal"
 dateInfo = "Stand 14. Mai 2018"

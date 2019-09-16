@@ -3,6 +3,7 @@
 @import "index_interactive_connection";
 @import "index_addons";
 @import "subscriptions";
+@import "colors";
 
 header#header {
     box-shadow: 0 2px 4px 0 transparent;
@@ -55,7 +56,7 @@ h2:after {
     height: 5px;
     width: 60px;
     margin-left: -30px;
-    background-color: #ff8a65;
+    background-color: $primary;
 }
 
 .developer_link::before {

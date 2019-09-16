@@ -8,7 +8,7 @@ author = "David Graeff"
 image = "/img/features/scenes.png"
 +++
 
-openHAB X strives to be accessible and easy to grasp, without reading tons of documentation first. An important role plays the **Setup & Maintenance** Interface.
+OHX strives to be accessible and easy to grasp, without reading tons of documentation first. An important role plays the **Setup & Maintenance** Interface.
 
 Read on to hear about design considerations, implementation obstacles and technical details.<!--more-->
 

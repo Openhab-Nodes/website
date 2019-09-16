@@ -5,7 +5,7 @@ weight = 110
 tags = ["rules"]
 +++
 
-This chapter introduces you into the concepts of openHAB X Rules, its limitations and its extensibility via Scripts.
+This chapter introduces you into the concepts of OHX Rules, its limitations and its extensibility via Scripts.
 
 Rules do not have the goal to replace complex, control flow driven scripts and are defined in a declarative way. This allows to offer an easy to grasp, graphical Rule Editor and Rule sharing.
 That's why you will not find a step-by-step "how to create a Rule" guide in this chapter.
@@ -19,7 +19,7 @@ Examples for Rules are:
 * Switch off a specific light bulb, 5 minutes after it has been switched on. But only if no motion sensor movement has been registered.
 * Turn on the garden sprinkler every day at 7 in the morning in the months from May-Oct. Turn it off after 10 mins if the last 3 days had a mid-day temperature above 30°C otherwise after 5 mins.
 
-The next section talks about Non-Rules and how you would realize certain scenarios in openHAB X in the idiomatic way.
+The next section talks about Non-Rules and how you would realize certain scenarios in OHX in the idiomatic way.
 
 ## Non-Rules
 
@@ -280,7 +280,7 @@ This needs clearification. A "sleeping" as in "delayed" rule does not count towa
 
 With *Rules*, [*State Filters*](/userguide/control) and [*Thing Connections*](/userguide/thing_connections) you can handle about 98% of your automation needs. Very advanced, unusual or complex scenarios with plenty of control flow might require a scripted solution.
 
-The script language of openHAB X is [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and the specific version that is supported is ECMAScript Draft 2020.
+The script language of OHX is [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and the specific version that is supported is ECMAScript Draft 2020.
 
 External Libraries
 : You can use javascript libraries, as long as those do not expect a browser specific API to be present (like `window` and `DOM` APIs) and use the official javascript module import syntax (as opposed to Nodejs `require` imports). Look out for ES6-Module libraries.

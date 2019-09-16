@@ -2,7 +2,7 @@
     {
         "id": "free",
         "title": "Always Open Source",
-        "desc": "All parts of openHAB X will always be<br>open source!",
+        "desc": "All parts of OHX will always be<br>open source!",
         "icon": "fas fa-heart",
         "button_text": "Getting started",
         "href": "/userguide/getting_started",
@@ -61,7 +61,7 @@
     {
         "id": "support",
         "title": "Support plan",
-        "desc": "This plan funds openHAB X development. It also includes dedicated support time.",
+        "desc": "This plan funds OHX development. It also includes dedicated support time.",
         "icon": "fas fa-headset text-primary",
         "href": "/dashboard/subscription",
         "properties": {

@@ -1,14 +1,14 @@
 [aboutustitle]
-other = "About openHAB X"
+other = "About OHX"
 
 [aboutus]
-other = "openHAB plux X is a powerful, open source Smarthome Solution. No cloud required, keeps your data private and supports hundreds of devices and services also <abbr title='Do it yourself hardware like self-programmed sockets, buttons, lamps.'>DIY</abbr> with a button click!<br><br>An easy to use but powerful rule engine adds <i>Smart</i> to your Home. The optional cloud connector integrates Google Assistant, Amazon Alexa and IFTTT."
+other = "OHX is a powerful, open source smart home solution. No cloud required, keeps your data private and supports hundreds of <abbr title='There is also extensive documentation on how to integrate your Do it yourself hardware like self-programmed sockets, buttons, lamps.'>devices and services</abbr>!<br><br>An powerful rule engine adds <i>Smart</i> to your Home. The optional cloud connector integrates Google Assistant, Amazon Alexa and IFTTT."
 
 [aboutus_index]
-other = "openHAB plux X is a powerful, open source Smarthome Solution. No cloud required, keeps your data private and supports hundreds of devices and services also <abbr title='Do it yourself hardware like self-programmed sockets, buttons, lamps.'>DIY</abbr> with a button click!<br><br>A easy to use but powerful rule engine adds <i>Smart</i> to your Home."
+other = "OHX is a powerful, open source smart home solution. No cloud required, keeps your data private and supports hundreds of <abbr title='There is also extensive documentation on how to integrate your Do it yourself hardware like self-programmed sockets, buttons, lamps.'>devices and services</abbr><br><br>The powerful rule engine adds <i>Smart</i> to your Home."
 
 [aboutus_warn]
-other = "openHAB X is not affiliated with the <a href='https://www.openhabfoundation.org/'>openHAB Foundation e.V.</a>"
+other = "OHX is not affiliated with the <a href='https://www.openhabfoundation.org/'>openHAB Foundation e.V.</a>"
 
 [footer3]
 other = "Developer documentation"

@@ -10,9 +10,9 @@ You've got a few options.
 
 {{< img src="/img/raspberry-pi-3-case-enclosure.jpg" title="Standalone"  maxwidth="300px" height="220px">}}
 
-openHAB X comes as a [standalone](#standalone) SD-Card Image for the Raspberry PI Hardware Bundle.
+OHX comes as a [standalone](#standalone) SD-Card Image for the Raspberry PI Hardware Bundle.
 
-This is the easiest and most secure way to get a copy of openHAB X running.
+This is the easiest and most secure way to get a copy of OHX running.
 
 <split>
 
@@ -20,19 +20,19 @@ This is the easiest and most secure way to get a copy of openHAB X running.
 
 There is also a [container](#container) ("Docker") based installation for Windows, Mac OS or Linux.
 
-You want this option to try openHAB X out and if you want to manage the operating system yourself. The provided container is stateless (easy updates!) and you only need to provide a writable directory and network connection.
+You want this option to try OHX out and if you want to manage the operating system yourself. The provided container is stateless (easy updates!) and you only need to provide a writable directory and network connection.
 
 <split> 
 
 {{< imgicon src="fas fa-laptop-code" color="var(--primary)" title="From Source"  maxwidth="300px" height="220px">}}
 
-A third option is to dowload the open sourced services that openHAB X is composed of and build and start those individually.
+A third option is to dowload the open sourced services that OHX is composed of and build and start those individually.
 
 Head over to the [Developer Documentation](/developer) for more information, if interested.
 
 {{< /col3md >}}
 
-Minimal openHAB X Requirements (including basic Addons):
+Minimal OHX Requirements (including basic Addons):
 
 * 256 MB Memory
 * 1GHz Dual Core x86 or ARM CPU
@@ -108,6 +108,7 @@ Snips Satelites like the [Snips AIR](https://www.snips.ai) can be used for recor
 </ui-tooltip>
 </small>
 
+<div style="display:inline">
 <a href="{{< readdata browser_download_url rpi3-64 >}}" title="{{< readdata name rpi3-64 >}}"
     class="btn btn-dwnload">
     <img src="/img/raspberrypi.png" style="height: 1em" class="mr-2">
@@ -119,6 +120,7 @@ Snips Satelites like the [Snips AIR](https://www.snips.ai) can be used for recor
     {{< listofdownloads >}}
 </dl>
 </ui-tooltip>
+</div>
 
 Please uncompress the downloaded file with any tool that can handle `gz` files (7-Zip, WinRar, `tar xfv` etc).
 
@@ -153,7 +155,7 @@ Type in “http://gateway.local” into your web browser to connect to it.
 
 #### Wireless
 
-When the gateway starts up it will create a Wi-Fi hotspot called “openHAB X XXXX” with XXXX being 4 device specific characters. Once connected the welcome screen should pop up. If not, type in “http://gateway.local” into your web browser.
+When the gateway starts up it will create a Wi-Fi hotspot called “OHX XXXX” with XXXX being 4 device specific characters. Once connected the welcome screen should pop up. If not, type in “http://gateway.local” into your web browser.
 
 {{< /col3md >}}
 
@@ -164,18 +166,18 @@ Skip to [First Time Setup](#first-time-setup).
 A software container allows one or muliple applications to run in an isolated, defined environment.
 The most known implementation for containers is [Docker](https://www.docker.io) and runs on all major operating systems. 
 
-openHAB X requires the [Redis Key-Value Database](https://redis.io) as well as [Influx Time Series Database](https://influxdata.com) and [Keycloak Identity Broker](https://www.keycloak.org/) next to the core services.
+OHX requires the [Redis Key-Value Database](https://redis.io) as well as [Influx Time Series Database](https://influxdata.com).
 
 The command line on any operating system will allow to download required images via:
 
 ```
-docker pull {{< readdata name ova >}}
+docker pull {{< readdata name x86 >}}
 docker pull redis
 docker pull influxdb
 docker pull keycloak
 ```
 
-Download and use the [Docker Compose](https://example.com) file to run the full openHAB X distribution.
+Download and use the [Docker Compose](https://example.com) file to run the full OHX distribution.
 
 ## First Time Setup
 
@@ -201,4 +203,4 @@ Throughout the guide, references to different pages are given like this: <a clas
 
 You generally use *Setup &amp; Maintenance* for administering your installation, add and remove addons as well as configuring Things and connections between Things. Remember that you can always log into the interface by entering “http://gateway.local” into your webbroser (as long as you haven't changed the respective configuration).
 
-Learn in the next chapter on how to administer your openHAB X installation including how to create additional user accounts.
+Learn in the next chapter on how to administer your OHX installation including how to create additional user accounts.

@@ -1,6 +1,6 @@
 baseURL = "https://www.openhabx.com/"
 languageCode = "en-us"
-title = "openHAB X"
+title = "OHX"
 canonifyurls = true
 paginate = 10
 copyright = "© 2019 David Graeff"
@@ -109,7 +109,7 @@ enableInlineShortcodes = true
       url = "/developer/design_principles"
       weight = 11
     [[languages.en.menu.footer3]]
-      name = "openHAB X Architecture"
+      name = "OHX Architecture"
       url = "/developer/architecture"
       weight = 20
     [[languages.en.menu.footer3]]
@@ -291,7 +291,7 @@ enableInlineShortcodes = true
       url = "/developer/design_principles"
       weight = 11
     [[languages.de.menu.footer3]]
-      name = "openHAB X Architektur"
+      name = "OHX Architektur"
       url = "/developer/architecture"
       weight = 20
     [[languages.de.menu.footer3]]
@@ -320,7 +320,7 @@ enableInlineShortcodes = true
       url = "/userguide/getting_started"
       weight = 10
     [[languages.de.menu.footer1]]
-      name = "Verwalte openHAB X"
+      name = "Verwalte OHX"
       url = "/userguide/administer"
       weight = 20
     [[languages.de.menu.footer1]]

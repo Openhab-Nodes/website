@@ -29,21 +29,10 @@ function sortedIndexLastUpdated(array, value) {
     return array;
 }
 
-function adapt_db(db) {
-    if(!db) return db;
-    for(let entry of db) {
-        // Adapt relative urls to absolute urls
-        if (entry.changelog_url && entry.changelog_url.startsWith("/")) {
-            entry.changelog_url = entry.github + entry.changelog_url;
-        }
-    }
-    return db;
-}
-
 class AddonDB extends EventTarget {
     constructor() {
         super();
-        this.db = [];
+        this.db_by_id = {};
         this.stats = {};
     }
 
@@ -69,21 +58,24 @@ class AddonDB extends EventTarget {
         let recommended;
         await Promise.all([this.from_cache_or_fetch("permissions.json", ADDONS_PERMISSIONS).then(r => this.permissions = r),
         this.from_cache_or_fetch("recommended.json", ADDONS_RECOMMENDED_URL).then(r => recommended = r),
-        this.from_cache_or_fetch("extensions.json", ADDONS_URL).then(r => this.db = adapt_db(r)),
+        this.from_cache_or_fetch("extensions.json", ADDONS_URL).then(r => this.db_by_id = r),
         this.from_cache_or_fetch("extensions_stats.json", ADDONS_STATS_URL).then(r => this.stats = r)]);
 
-        this.db_by_id = {};
         this.last_updated = [];
         this.often_installed = [];
         this.recommended = [];
         let searchstr = "";
-        for (let item of this.db) {
+        for(let [addonid, item] of Object.entries(this.db_by_id)) {
             if (recommended[item.id]) {
                 this.recommended.push(Object.assign(item, recommended[item.id]));
             }
             item.stat = this.stats[item.id];
-            // Build key-value store
-            this.db_by_id[item.id] = item;
+
+            // Adapt relative urls to absolute urls
+            if (item.changelog_url && item.changelog_url.startsWith("/")) {
+                item.changelog_url = item.github + item.changelog_url;
+            }
+
             // Build often-installed
             if (item.stat && item.stat.d)
                 sortedIndexDownloads(this.often_installed, item);
@@ -91,7 +83,7 @@ class AddonDB extends EventTarget {
             sortedIndexLastUpdated(this.last_updated, item);
             // Build searchable string
             searchstr += JSON.stringify({
-                id: item.id, label: item.label,
+                id: item.id, label: item.title,
                 author: item.author, description: item.description,
                 manufacturers: item.manufacturers, products: item.products
             });

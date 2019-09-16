@@ -280,19 +280,19 @@ class SvelteComponent {
 
 function add_css() {
 	var style = element("style");
-	style.id = 'svelte-r4sam9-style';
-	style.textContent = ".img_details.svelte-r4sam9{display:flex}.img_details.svelte-r4sam9>img.svelte-r4sam9{max-width:200px}.user_details.svelte-r4sam9{max-width:400px;flex:1;justify-content:center}";
+	style.id = 'svelte-13ejgpb-style';
+	style.textContent = ".img_details.svelte-13ejgpb{display:flex}.img_details.svelte-13ejgpb>img.svelte-13ejgpb{max-width:200px;object-fit:contain}.user_details.svelte-13ejgpb{max-width:400px;flex:1;justify-content:center}";
 	append(document.head, style);
 }
 
-// (124:2) {#if user && user.photoURL}
+// (125:2) {#if user && user.photoURL}
 function create_if_block_8(ctx) {
 	var img, img_src_value;
 
 	return {
 		c() {
 			img = element("img");
-			attr(img, "class", "mr-3 svelte-r4sam9");
+			attr(img, "class", "mr-3 svelte-13ejgpb");
 			attr(img, "src", img_src_value = ctx.user.photoURL);
 			attr(img, "alt", "Profile picture");
 		},
@@ -315,7 +315,7 @@ function create_if_block_8(ctx) {
 	};
 }
 
-// (166:4) {:else}
+// (167:4) {:else}
 function create_else_block_1(ctx) {
 	var p, t0, t1, t2, br, t3, t4_value = ctx.user?ctx.user.email:"" + "", t4;
 
@@ -358,7 +358,7 @@ function create_else_block_1(ctx) {
 	};
 }
 
-// (129:4) {#if user && user.providerData.find(e => e.providerId === 'password')}
+// (130:4) {#if user && user.providerData.find(e => e.providerId === 'password')}
 function create_if_block_7(ctx) {
 	var div0, label0, t1, input0, t2, button0, t3, button0_disabled_value, t4, hr, t5, div1, label1, t7, input1, t8, small, t10, button1, t11, button1_disabled_value, dispose;
 
@@ -472,7 +472,7 @@ function create_if_block_7(ctx) {
 	};
 }
 
-// (174:4) {#if user && !user.emailVerified}
+// (175:4) {#if user && !user.emailVerified}
 function create_if_block_5(ctx) {
 	var p, span, t_1;
 
@@ -518,7 +518,7 @@ function create_if_block_5(ctx) {
 	};
 }
 
-// (179:8) {#if !verifcation_send}
+// (180:8) {#if !verifcation_send}
 function create_if_block_6(ctx) {
 	var button, dispose;
 
@@ -544,7 +544,7 @@ function create_if_block_6(ctx) {
 	};
 }
 
-// (187:4) {#if user && user.metadata}
+// (188:4) {#if user && user.metadata}
 function create_if_block_4(ctx) {
 	var hr, t0, p, t1, t2_value = new Date(parseInt(ctx.user.metadata.a)).toLocaleString() + "", t2, t3, br, t4, t5_value = new Date(parseInt(ctx.user.metadata.b)).toLocaleString() + "", t5;
 
@@ -593,7 +593,7 @@ function create_if_block_4(ctx) {
 	};
 }
 
-// (205:6) {:else}
+// (206:6) {:else}
 function create_else_block(ctx) {
 	var t;
 
@@ -616,7 +616,7 @@ function create_else_block(ctx) {
 	};
 }
 
-// (199:6) {#if data && data.subscription && data.subscription.ends && data.subscription.ends < Date.now()}
+// (200:6) {#if data && data.subscription && data.subscription.ends && data.subscription.ends < Date.now()}
 function create_if_block_3(ctx) {
 	var t0, t1_value = ctx.data.subscription.valid ? 'Enabled' : 'Payment pending' + "", t1, t2, br0, t3, t4_value = new Date(parseInt(ctx.data.subscription.ends)).toLocaleString() + "", t4, t5, br1, t6, t7_value = ctx.data.subscription.renewal ? 'Enabled' : 'Disabled' + "", t7;
 
@@ -678,14 +678,14 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (208:4) {#if data && data.queued_remove}
+// (209:4) {#if data && data.queued_remove}
 function create_if_block_2(ctx) {
 	var small;
 
 	return {
 		c() {
 			small = element("small");
-			small.textContent = "Your account is queued to be removed. This will happen after your\n        current subscription ends or within 24 hours, whatever comes first.";
+			small.textContent = "Your account is queued to be removed. This will happen within 24 hours,\n        but not before your current subscription, if any, has run out.";
 			attr(small, "class", "text-danger");
 		},
 
@@ -701,7 +701,7 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (215:4) {#if error_message}
+// (216:4) {#if error_message}
 function create_if_block_1(ctx) {
 	var p, t;
 
@@ -731,7 +731,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (221:4) {#if user && user.providerData.find(e => e.providerId === 'password')}
+// (222:4) {#if user && user.providerData.find(e => e.providerId === 'password')}
 function create_if_block(ctx) {
 	var h4, t1, div0, label0, t3, input0, t4, div1, label1, t6, input1, t7, button, t8, button_disabled_value, dispose;
 
@@ -885,9 +885,9 @@ function create_fragment(ctx) {
 			t9 = space();
 			div1 = element("div");
 			if (if_block7) if_block7.c();
-			attr(div0, "class", "user_details svelte-r4sam9");
+			attr(div0, "class", "user_details svelte-13ejgpb");
 			attr(div1, "class", "ml-3");
-			attr(div2, "class", div2_class_value = "img_details " + ctx.classes + " svelte-r4sam9");
+			attr(div2, "class", div2_class_value = "img_details " + ctx.classes + " svelte-13ejgpb");
 		},
 
 		m(target, anchor) {
@@ -1017,7 +1017,7 @@ function create_fragment(ctx) {
 				if_block7 = null;
 			}
 
-			if ((changed.classes) && div2_class_value !== (div2_class_value = "img_details " + ctx.classes + " svelte-r4sam9")) {
+			if ((changed.classes) && div2_class_value !== (div2_class_value = "img_details " + ctx.classes + " svelte-13ejgpb")) {
 				attr(div2, "class", div2_class_value);
 			}
 		},
@@ -1195,7 +1195,7 @@ function instance($$self, $$props, $$invalidate) {
 class Cmp extends SvelteComponent {
 	constructor(options) {
 		super();
-		if (!document.getElementById("svelte-r4sam9-style")) add_css();
+		if (!document.getElementById("svelte-13ejgpb-style")) add_css();
 		init(this, options, instance, create_fragment, safe_not_equal, ["classes"]);
 	}
 }

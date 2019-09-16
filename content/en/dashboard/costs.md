@@ -4,7 +4,7 @@ title = "Cloud Connector Costs"
 
 #### Technical background
 
-Cloud based services like Amazon Alexa or IFTT require a way to communicate with your local openHAB X installations.
+Cloud based services like Amazon Alexa or IFTT require a way to communicate with your local OHX installations.
 
 This can usually not happen in a direct fashion because your openHAB installation most likely does not have a public (IP) address and is hidden behind a router that performs Network-Address-Translation (NAT).
 Instead your OHX installations connect and listen to a 24/7 running message bus service. Alexa, Google Home, IFTT etc are now posting their commands to this message bus.
@@ -12,7 +12,7 @@ Instead your OHX installations connect and listen to a 24/7 running message bus 
 {{< mermaid align="left" context="how_cloud_backend_works">}}
 graph LR;
     A[Amazon Alexa] -->|cmd: ON| bus(Message Bus)
-	bus -->|cmd: ON| i1(openHAB X Installation)
+	bus -->|cmd: ON| i1(OHX Installation)
 {{< /mermaid >}}
 
 {{< advanced >}} Please note, that with some router configuration like port forwarding and a dedicated Amazon Lambda function with your IP compiled in, you could get for example Amazon Alexa functionality for your personal installation for free (as long as you are not exceeding the free tier).

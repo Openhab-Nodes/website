@@ -1,6 +1,7 @@
 @import "_header_login";
 @import "_header_clouds";
 @import "_header_cookie";
+@import "colors";
 
 header#header {
     background: #fff;
@@ -31,12 +32,12 @@ header#header {
 
         a.nav-link:hover,
         a.nav-link.active {
-            color: #FF8A65 !important;
-            border-bottom: 1px solid #FF8A65;
+            color: $primary !important;
+            border-bottom: 1px solid $primary;
         }
 
         a.nav-link.sub {
-            border-bottom: 1px dashed #FF8A65;
+            border-bottom: 1px dashed $primary;
         }
 
         a.nav-link i {
@@ -71,7 +72,7 @@ header#header {
 }
 
 .progress {
-    background: linear-gradient(to right, #FF8A65 var(--scroll), transparent 0);
+    background: linear-gradient(to right, $primary var(--scroll), transparent 0);
     background-repeat: no-repeat;
     position: fixed;
     width: 100%;

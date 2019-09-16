@@ -1,6 +1,6 @@
 +++
 title = "Allgemeine Geschäftsbedingungen"
-subtitle = "openHAB X"
+subtitle = "OHX"
 tinytitle = true
 type = "legal"
 dateInfo = "Last update May 14th, 2019"
@@ -28,7 +28,7 @@ Wir sind nicht verpflichtet Dienstspezifische Leistungen außerhalb der Verwendu
 
 2. Im Falle des Vertragsschlusses kommt der Vertrag mit
 
-        openHAB X
+        OHX
         David Graeff
         Lützowstr 31a
         D-42653 Solingen
@@ -145,7 +145,7 @@ beruflichen Tätigkeit zugerechnet werden können:
         
     Um Ihr Widerrufsrecht auszuüben, müssen Sie uns
 
-    openHAB X
+    OHX
     David Graeff
     Lützowstr 31a
     D-42653 Solingen

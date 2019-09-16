@@ -112,6 +112,7 @@
   }
   .img_details > img {
     max-width: 200px;
+    object-fit: contain;
   }
   .user_details {
     max-width: 400px;
@@ -207,8 +208,8 @@
 
     {#if data && data.queued_remove}
       <small class="text-danger">
-        Your account is queued to be removed. This will happen after your
-        current subscription ends or within 24 hours, whatever comes first.
+        Your account is queued to be removed. This will happen within 24 hours,
+        but not before your current subscription, if any, has run out.
       </small>
     {/if}
 

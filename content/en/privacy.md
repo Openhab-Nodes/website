@@ -1,6 +1,6 @@
 +++
 title = "Privacy Policy"
-subtitle = "openHAB X"
+subtitle = "OHX"
 tinytitle = true
 type = "legal"
 dateInfo = "Last update May 14th, 2018"

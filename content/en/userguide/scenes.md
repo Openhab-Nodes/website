@@ -36,7 +36,7 @@ Create a *Scene* via the Scene screen.
 
 <split>
 
-#### openHAB X App
+#### OHX App
 
 Slide in the left navigation menu and choose "Create Scene".
 
@@ -54,7 +54,7 @@ In all cases you need to select the Thing Properties that should be part of the 
 ## Run a Scene
 {{< colpic ratio="70" >}}
 
-Scenes will appear in control interfaces, like the Hue App, openHAB X App, openHAB X Dashboard and also in the Setup &amp; Maintenance interface.
+Scenes will appear in control interfaces, like the Hue App, OHX App, OHX Dashboard and also in the Setup &amp; Maintenance interface.
 
 All interfaces offer to run a Scene, some might offer to edit the Scene.
 

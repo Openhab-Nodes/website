@@ -13,7 +13,7 @@ Adding your first devices is done in a breath.
 <div class="row">
     <div class="col-md-5">
         <h4>1. Install Addon</h4>
-        <p>Choose from over 200 Device and Service Addons. Not just commercial ones. We will come to openHAB X's
+        <p>Choose from over 200 Device and Service Addons. Not just commercial ones. We will come to OHX's
             extensive Do-It-Yourself support in a moment.</p>
     </div>
     <div class="col-md-7">
@@ -148,7 +148,7 @@ Adding your first devices is done in a breath.
 <split>
 
 #### 2. Find Devices in the Inbox*
-Head to the Inbox and Approve or Hide **Things**. Things in openHAB X are representations of external
+Head to the Inbox and Approve or Hide **Things**. Things in OHX are representations of external
 devices ("Light bulb") or Services ("Weather service") and are provided via Addons. A physical device might
 provide multiple Things.
 
@@ -177,21 +177,21 @@ the KNX Addon for example need to be configured manually. All modern standards a
 
 {{< colpic ration="40" right="offset-md-1 mt-md-4 pt-md-4" >}}
 Digitial assistants can be pretty neat. The picture shows Amazon Alexa, Google Home and Apple Homepod (Siri) from left to right.
-You might use one or two of those already. And that's why they work out of the box with openHAB X*.
+You might use one or two of those already. And that's why they work out of the box with OHX*.
 
 {{< small >}}\* A subscription is required to balance costs of the cloud connector.{{< /small >}}
 <split>
-If you want to go all offline, openHAB X also features a [Snips]("https://snips.ai/)  integration.
+If you want to go all offline, OHX also features a [Snips]("https://snips.ai/)  integration.
 
 <img src="/img/snips.png" class="w-100" title="Snips AIR. You don't need them. Any microphone array, directly connected to the Raspberry PI3 works.">
 {{< /colpic >}}
 
-## Interact with openHAB X
+## Interact with OHX
 
 <div class="row mb-4">
     <div class="col-md-5">
         <h4>Compatible to any Hue App</h4>
-        <p>Control your lights with any Hue compatible App on Android or iOS. openHAB X supports Hue Rooms, Scenes,
+        <p>Control your lights with any Hue compatible App on Android or iOS. OHX supports Hue Rooms, Scenes,
             Timers and Rules.</p>
     </div>
     <div class="col-md-7">
@@ -268,7 +268,7 @@ If you want to go all offline, openHAB X also features a [Snips]("https://snips.
         <p>Especially if you experience a Rule Module like the <i>Fixed time of Day</i> Trigger the first time, you want to use the graphical <a href='{{< relref "/userguide/rules" >}}'>Rule Editor</a>. JavaScript  Conditions and Actions help if you need to go beyond what the Rule Engine provides out
             of the box.</p>
         <p>Clicking everything together can be tedious, especially if you could use Copy&amp;Paste or
-            Search&amp;Replace. We got you sorted. Edit Rules (and all other Configuration across openHAB X by the way) in text
+            Search&amp;Replace. We got you sorted. Edit Rules (and all other Configuration across OHX by the way) in text
             mode via the maintenance user-interface. <button class="btn-link contexthelp" id="text_rule"
                 title="Context help">Example</button>
     </div>
@@ -331,7 +331,7 @@ triggers:
     </div>
     <div class="col-md-5">
         <h4>Time Series Data</h4>
-        <p>openHAB X uses <a href="https://www.influxdata.com" target="_blank">InfluxDB</a> Dashboards to collect and visualize runtime metrics. You can base rule triggers on
+        <p>OHX uses <a href="https://www.influxdata.com" target="_blank">InfluxDB</a> Dashboards to collect and visualize runtime metrics. You can base rule triggers on
             past data, setup alarm thresholds and also react to them via Rules.</p>
         <div class="bs-callout bs-callout-tiny bs-callout-default">
             <h4>Example Rule Idea</h4>
@@ -365,7 +365,7 @@ triggers:
         </p>
         <p>Flashing your devices with the right firmware allows <button class="btn-link contexthelp"
                 id="diy_auto_discovery" title="Context help">auto discovery</button> of
-            Things straight to your openHAB X Inbox. OHX supports two major initiatives for MQTT and HTTP
+            Things straight to your OHX Inbox. OHX supports two major initiatives for MQTT and HTTP
             respectively.</p>
         <a href="https://homieiot.github.io/" target="_blank" title="Homie (MQTT)" class="noref card-hover">
             <img src="/img/mqtt_homie.jpg" style="width: 150px" class="m-2">
@@ -446,7 +446,7 @@ triggers:
         <a href="https://www.balena.io/etcher/" class="noref" target="_blank"><img style="float:left;height: 70px;" class="mr-3"
                 src="/img/etcher.svg"></a>
         <p><a href="https://www.balena.io/etcher/" target="_blank">Etcher</a> transfers the Operating System
-            and openHAB X Software onto your SD-Card.</p>
+            and OHX Software onto your SD-Card.</p>
     </div>
 </div>
 

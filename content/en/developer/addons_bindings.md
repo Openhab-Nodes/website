@@ -5,9 +5,9 @@ weight = 51
 tags = []
 +++
 
-This chapter is about developing a Binding for openHAB X. Remember that if your service already exposes Web Things via HTTP or follows the MQTT Homie convention, you don't need to write an Addon.
+This chapter is about developing a Binding for OHX. Remember that if your service already exposes Web Things via HTTP or follows the MQTT Homie convention, you don't need to write an Addon.
 
-To integrate a service or a device into openHAB X the framework need to know about supported Things including their configuration, attached properties, events and actions.
+To integrate a service or a device into OHX the framework need to know about supported Things including their configuration, attached properties, events and actions.
 
 {{< img src="/img/doc/addon-binding-thing.svg" >}}
 
@@ -268,7 +268,7 @@ You might want to report back to the user that a *Thing* configuration is invali
 
 {{< img src="/img/doc/thing_instance.svg" >}}
 
-That is why you want to model openHAB X Things as structs or classes within your Addon code.
+That is why you want to model OHX Things as structs or classes within your Addon code.
 Those hold the **Thing Data**, as seen above, and your own resources and state.
 
 You instruct the framework to create an object instance of your **Thing class** via an `on_instance_created` handler.
@@ -370,7 +370,7 @@ Instead it allows you to return a stream of progress events.
 Just be aware that some timing restrictions are put on this asynchronous API.
 You MUST report progress in periods smaller that 30 seconds and you may not take longer than 5 minutes to fulfill a method call and close the `Progress` stream with a `done` call.
 
-It is important to keep those restrictions in mind, because openHAB X will forcefully restart your Addon on missbehaviour.
+It is important to keep those restrictions in mind, because OHX will forcefully restart your Addon on missbehaviour.
 
 <div class="mb-2">
 	<tab-container>
@@ -402,7 +402,7 @@ impl ThingInstance for MyThingInstance {
 
 ### Populate the Inbox
 
-If you are able to discover devices or services automatically, you would push those to the openHAB X Inbox.
+If you are able to discover devices or services automatically, you would push those to the OHX Inbox.
 A user can easily pick them up and has a hassle free experience with your Addon.
 
 A discovery result can have a time-to-live (TTL) value assigned.
@@ -580,7 +580,7 @@ impl Thing for MyThing {
 
 An Addon and configured Things of a Binding Addon usually have some form of *State*. Like a light bulb Thing that has a brightness. This state is expected to be kept / cached within your Addon, so that relative commands like "+5%" can be applied.
 
-openHAB X expects Addons to synchronize their state to the *State Database*. That database is queried to display current Addon, Thing and Thing Property States in user interfaces and is used to trigger *Rules*.
+OHX expects Addons to synchronize their state to the *State Database*. That database is queried to display current Addon, Thing and Thing Property States in user interfaces and is used to trigger *Rules*.
 
 Addons are generally not trusted, that's why they cannot connect to the *State Database* directly.
 You use `libAddon` instead, which talks to a proxy process ("State Proxy"). That proxy only forwards state updates that match your Addon-ID.

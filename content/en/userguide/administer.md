@@ -5,7 +5,7 @@ weight = 20
 tags = ["administration","users"]
 +++
 
-In this chapter you will learn about maintenance tasks and configuration of openHAB X in general, except Backup &amp; Restore which is handled separately in the next chapter. All tasks in this chapter are performed via the <a class="demolink" href="">Maintenance</a> page of the *Setup &amp; Maintenance* interface.
+In this chapter you will learn about maintenance tasks and configuration of OHX in general, except Backup &amp; Restore which is handled separately in the next chapter. All tasks in this chapter are performed via the <a class="demolink" href="">Maintenance</a> page of the *Setup &amp; Maintenance* interface.
 
 You should check by from time to time. All send notifications, logs and runtime metrics are accessible here.
 If your SD-Card is about to die or if attackers have targeted you is what you can find out on the summary page.
@@ -14,7 +14,7 @@ If your SD-Card is about to die or if attackers have targeted you is what you ca
 
 One the left side menu of the Maintenance page you will find "User Management". User accounts and permissions are managed by the **Identity and Access Management (IAM) service**.
 
-Your currently logged in user must have the permission "USER_ADMIN" to view, edit, create and delete users. If you just have installed openHAB X, you are logged in as an administrative user and thus you have full access.
+Your currently logged in user must have the permission "USER_ADMIN" to view, edit, create and delete users. If you just have installed OHX, you are logged in as an administrative user and thus you have full access.
 
 You can create a new user via the "New User" link on the left side menu. A user requires a name and a password and you can assign different permissions.
 
@@ -47,7 +47,7 @@ Almost all services notify you on unusual behaviour or if you have enabled notif
 Configure all notification services on the "Notification Services" sub-page.
 
 {{< callout type="info" title="New here?" >}}
-If you have just installed openHAB X you should configure at least one notification type. E-Mail is recommended, but might not work on your internet connection or behind firewalls. If you are a subscriber, you can use the Cloud Connector notification without any additional setup.
+If you have just installed OHX you should configure at least one notification type. E-Mail is recommended, but might not work on your internet connection or behind firewalls. If you are a subscriber, you can use the Cloud Connector notification without any additional setup.
 {{< /callout >}}
 
 ## Disk Space and System Resources
@@ -64,7 +64,7 @@ The above restrictions make sure that a malicous addon cannot just start mining 
 
 ## Updates
 
-Each component of openHAB X is individually versioned. You find current and latest versions displayed on the root maintenance screen.
+Each component of OHX is individually versioned. You find current and latest versions displayed on the root maintenance screen.
 
 If you are using the standalone installation, the UI will offer an update button if there is one or more newer service versions or a new operating system available. Add-ons may block the update if relying on older versions. Downgrades are not intended nor supported, but should never be necessary anyway.
 

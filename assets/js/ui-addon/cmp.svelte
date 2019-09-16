@@ -31,15 +31,34 @@
   });
 
   export async function start() {
-    const addon_id = new URL(window.location).searchParams.get("id") || addon.id;
+    const addon_id =
+      new URL(window.location).searchParams.get("id") || addon.id;
     addon = addondb.db_by_id[addon_id];
-    addondb.from_cache_or_fetch(addon_id+".json",
-      `https://raw.githubusercontent.com/openhab-nodes/addons-registry/master/${addon_id}.json`).then(v => {
-      addon.reviewed_by = v.reviewed_by;
-      addon.archs = v.archs;
-      addon.size = v.size;
-      addon.estimated_mem = v.estimated_mem;
-    });
+    addondb
+      .from_cache_or_fetch(
+        addon_id + ".json",
+        `https://raw.githubusercontent.com/openhab-nodes/addons-registry/master/${addon_id}.json`
+      )
+      .then(v => {
+        addon.reviewed_by = v.reviewed_by;
+        addon.archs = v.archs;
+        addon.size = v.size;
+        addon.memory_min = v.memory_min;
+        addon.memory_max = v.memory_max;
+        addon.ports = [];
+        addon.firewall_allow = [];
+        addon.permissions = [];
+        // Go through services and collect ports, firewall_allowed, permissions
+        for (let { service_id, service } in v.services) {
+          if (service.ports) addon.ports = addon.ports.concat(service.ports);
+          if (service.firewall_allow)
+            addon.firewall_allow = addon.firewall_allow.concat(
+              service.firewall_allow
+            );
+          if (service.permissions)
+            addon.permissions = addon.permissions.concat(service.permissions);
+        }
+      });
 
     if (!onDestroyProxy) {
       onDestroyProxy = UserAwareComponent(
@@ -122,9 +141,11 @@
   <header title={addon.id}>
     <span>{addon.title}</span>
     <small class="ml-2">{addon.version}</small>
+    {#if addon.authors}
     <small class="" style="white-space: nowrap; text-overflow: ellipsis;">
-      – By {addon.author}
+      – By {addon.authors.join(', ')}
     </small>
+    {/if}
   </header>
   <section class="logo">
     {#if logo_url}
@@ -170,16 +191,14 @@
           <th scope="row">Install Size</th>
           <td>
             {#if addon.size}
-            {Number.parseFloat(addon.size / 1024 / 1024).toFixed(2)} MB
+              {Number.parseFloat(addon.size / 1024 / 1024).toFixed(2)} MB
             {/if}
           </td>
         </tr>
         <tr>
           <th scope="row">Supported architectures</th>
           <td>
-            {#if addon.archs}
-            {addon.archs}
-            {/if}
+            {#if addon.archs}{addon.archs}{/if}
           </td>
         </tr>
         <tr>
@@ -190,8 +209,8 @@
             Est. Mem Usage
           </th>
           <td>
-            {#if addon.estimated_mem}
-              {Number.parseFloat(addon.estimated_mem.min).toFixed(2)} - {Number.parseFloat(addon.estimated_mem.max).toFixed(2)}
+            {#if addon.memory_min && addon.memory_max}
+              {Number.parseFloat(addon.memory_min).toFixed(2)} - {Number.parseFloat(addon.memory_max).toFixed(2)}
               MB
             {/if}
           </td>

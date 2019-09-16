@@ -41,6 +41,6 @@ The default is: **AND**
 
 ## Using Groups
 
-Hue Apps as well as the openHAB X App and Dashboard App present you Groups, next to ordinary Things.
+Hue Apps as well as the OHX App and Dashboard App present you Groups, next to ordinary Things.
 If you semantically tag a Group Thing with a location tag, it will also be recognised as Room by Hue Apps.
 
