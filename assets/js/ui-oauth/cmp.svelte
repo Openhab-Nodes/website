@@ -99,7 +99,8 @@
           unsigned,
           code,
           scopes: selected_scopes
-        })
+        }),
+        7000
       );
       const oauth_code = await response.text();
 
