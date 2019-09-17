@@ -325,7 +325,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (185:0) {:else}
+// (203:0) {:else}
 function create_else_block(ctx) {
 	var h4, t0, t1_value = ctx.client_name || ctx.client.title + "", t1, t2, div6, div3, div2, img, img_src_value, t3, div1, b0, t4_value = ctx.client.title + "", t4, t5, i, t6_value = ctx.client.author + "", t6, t7, div0, t8, b1, t9_value = ctx.user.displayName || ctx.user.email + "", t9, t10, t11, t12, hr, t13, div5, button, t14, t15_value = ctx.client_name || ctx.client.title + "", t15, button_disabled_value, t16, div4, t17, show_if = !ctx.client.scopes.includes('offline_access'), t18, t19, div7, dispose;
 
@@ -402,7 +402,7 @@ function create_else_block(ctx) {
 			attr(div6, "class", "card mb-4 svelte-v20aic");
 			toggle_class(div6, "opacity50", ctx.client.disabled || !ctx.user.uid);
 			attr(div7, "class", "small text-center");
-			dispose = listen(button, "click", ctx.authorize);
+			dispose = listen(button, "click", ctx.click_handler);
 		},
 
 		m(target_1, anchor) {
@@ -556,7 +556,7 @@ function create_else_block(ctx) {
 	};
 }
 
-// (180:32) 
+// (198:32) 
 function create_if_block_3(ctx) {
 	var p, b, t0_value = ctx.client_name || ctx.client.title + "", t0, t1;
 
@@ -589,7 +589,7 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (174:39) 
+// (192:39) 
 function create_if_block_2(ctx) {
 	var p, t0, b, t1_value = ctx.client.title + "", t1, t2, ui_login;
 
@@ -631,7 +631,7 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (170:0) {#if loading}
+// (188:0) {#if loading}
 function create_if_block_1(ctx) {
 	var p;
 
@@ -660,7 +660,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (203:8) {#if scope.includes(scope_id)}
+// (221:8) {#if scope.includes(scope_id)}
 function create_if_block_6(ctx) {
 	var div1, i, t0, label, input, input_disabled_value, t1, t2_value = ctx.scope_entry.title + "", t2, t3, div0, t4_value = ctx.scope_entry.description + "", t4, t5, dispose;
 
@@ -725,7 +725,7 @@ function create_if_block_6(ctx) {
 	};
 }
 
-// (202:6) {#each Object.entries(oauth_scopes) as [scope_id, scope_entry]}
+// (220:6) {#each Object.entries(oauth_scopes) as [scope_id, scope_entry]}
 function create_each_block(ctx) {
 	var show_if = ctx.scope.includes(ctx.scope_id), if_block_anchor;
 
@@ -756,7 +756,7 @@ function create_each_block(ctx) {
 	};
 }
 
-// (230:8) {#if !client.scopes.includes('offline_access')}
+// (248:8) {#if !client.scopes.includes('offline_access')}
 function create_if_block_5(ctx) {
 	var t0, button, t1, button_disabled_value, t2, dispose;
 
@@ -768,7 +768,7 @@ function create_if_block_5(ctx) {
 			t2 = text("\n          .");
 			attr(button, "class", "btn btn-link");
 			button.disabled = button_disabled_value = ctx.client.disabled || !ctx.user.uid;
-			dispose = listen(button, "click", ctx.authorize_limited);
+			dispose = listen(button, "click", ctx.click_handler_1);
 		},
 
 		m(target_1, anchor) {
@@ -796,7 +796,7 @@ function create_if_block_5(ctx) {
 	};
 }
 
-// (241:6) {#if redirect_uri}
+// (259:6) {#if redirect_uri}
 function create_if_block_4(ctx) {
 	var div1, t0, div0, b, t1_value = ctx.client.redirect_uri + "", t1;
 
@@ -832,7 +832,7 @@ function create_if_block_4(ctx) {
 	};
 }
 
-// (256:0) {#if error_messages}
+// (274:0) {#if error_messages}
 function create_if_block(ctx) {
 	var p, t;
 
@@ -984,7 +984,7 @@ function instance($$self, $$props, $$invalidate) {
 
   let loading = "Fetching data &hellip;";
   let data;
-  let userdata;
+  let fetchWithAuth;
   let user = null;
   let error_messages = null;
   let done_without_redirect = false;
@@ -1003,7 +1003,7 @@ function instance($$self, $$props, $$invalidate) {
       },
       data_ => (data = data_)
     );
-    userdata = module.userdata;
+    fetchWithAuth = module.fetchWithAuth;
   }
   start().catch(err => {
     $$invalidate('error_messages', error_messages = err.message);
@@ -1053,19 +1053,19 @@ function instance($$self, $$props, $$invalidate) {
     }
   }
 
-  function authorize_limited() {
-    authorize(true);
-  }
-
   async function authorize(limited = false) {
-    $$invalidate('selected_scopes', selected_scopes = selected_scopes.filter(e => e != "offline_access"));
-    if (!limited) selected_scopes.push("offline_access");
+    selected_scopes.push("offline_access");
+    console.log("SCOPES B", selected_scopes);
+    if (limited)
+      $$invalidate('selected_scopes', selected_scopes = selected_scopes.filter(e => e != "offline_access"));
+
+    console.log("SCOPES", selected_scopes);
 
     $$invalidate('client', client.disabled = true, client);
 
     try {
-      const response = await userdata.fetchWithAuth(
-        "oauth.openhabx.com/grant_scopes",
+      const response = await fetchWithAuth(
+        "https://oauth.openhabx.com/grant_scopes",
         "POST",
         JSON.stringify({
           unsigned,
@@ -1073,12 +1073,30 @@ function instance($$self, $$props, $$invalidate) {
           scopes: selected_scopes
         })
       );
-      if (response.status !== 200) throw new Error(response.text());
       const oauth_code = await response.text();
 
       if (redirect_uri) redirect_uri.searchParams.append("code", oauth_code);
     } catch (err) {
-      $$invalidate('error_messages', error_messages = `Failed to fetch authorisation code: ${err.message}`);
+      let response = err.response;
+      if (response && response.status == 400) {
+        let err_json = await response.json();
+        let err = err_json.error;
+        switch (err) {
+          case "access_denied":
+            $$invalidate('error_messages', error_messages = `Access denied`);
+            break;
+          case "already_used":
+            $$invalidate('error_messages', error_messages = `Token already used`);
+            break;
+          case "expired":
+            $$invalidate('error_messages', error_messages = `This session has already expired. Just try again.`);
+            break;
+          default:
+            $$invalidate('error_messages', error_messages = err);
+        }
+      } else {
+        $$invalidate('error_messages', error_messages = `Failed to fetch authorisation code: ${err.message}`);
+      }
       return;
     }
 
@@ -1096,6 +1114,10 @@ function instance($$self, $$props, $$invalidate) {
 		$$invalidate('selected_scopes', selected_scopes);
 	}
 
+	const click_handler = () => authorize(false);
+
+	const click_handler_1 = () => authorize(true);
+
 	$$self.$set = $$props => {
 		if ('classes' in $$props) $$invalidate('classes', classes = $$props.classes);
 	};
@@ -1111,10 +1133,11 @@ function instance($$self, $$props, $$invalidate) {
 		client_name,
 		scope,
 		client,
-		authorize_limited,
 		authorize,
 		Object,
 		input_change_handler,
+		click_handler,
+		click_handler_1,
 		$$binding_groups
 	};
 }

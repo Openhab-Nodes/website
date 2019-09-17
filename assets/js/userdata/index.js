@@ -41,8 +41,12 @@ export async function fetchWithAuth(url, method = 'GET', body = null, timeout_ms
             'Content-Type': 'application/json'
         }), body
     });
-    if (!response.ok) throw new Error('Request failed. Error code: ' + response.status, response);
-    return await response.json();
+    if (!response.ok) {
+        let e = new Error('Request failed. Error code: ' + response.status);
+        e.response = response;
+        throw e;
+    }
+    return response;
 }
 
 import { readable, get as store_get } from 'svelte/store';
@@ -58,11 +62,11 @@ class UserData {
 
         this.data_setter = null;
         this.data = readable(null, setter => this.data_setter = setter);
-        this.tidyupFn.push(this.data.subscribe(()=>{})); // The setter is only set if subscribed
+        this.tidyupFn.push(this.data.subscribe(() => { })); // The setter is only set if subscribed
 
         this.user_setter = null;
         this.user = readable(null, setter => this.user_setter = setter);
-        this.tidyupFn.push(this.user.subscribe(()=>{})); // The setter is only set if subscribed
+        this.tidyupFn.push(this.user.subscribe(() => { })); // The setter is only set if subscribed
 
         this.actionqueue_has_subscribers = false;
         this.actionqueue_setter = null;
@@ -75,7 +79,7 @@ class UserData {
                 this.actionqueue_init();
             };
         });
-        this.tidyupFn.push(this.actionqueue.subscribe(()=>{})); // The setter is only set if subscribed
+        this.tidyupFn.push(this.actionqueue.subscribe(() => { })); // The setter is only set if subscribed
 
         this.BUCKET_BACKUP = "gs://openhabx-backups";
         this.BUCKET_BILLING = "gs://openhabx-bills";
@@ -102,7 +106,7 @@ class UserData {
             this.userdata_listener_unsubscribe();
         delete this.userdata_listener_unsubscribe;
         for (const tidyFn of this.tidyupFn) tidyFn();
-        this.tidyupFn=[];
+        this.tidyupFn = [];
         if (this.actionqueue_unsubscribe)
             this.actionqueue_unsubscribe();
         delete this.actionqueue_unsubscribe;

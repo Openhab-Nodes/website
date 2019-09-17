@@ -55,6 +55,7 @@
     const module = await import("/js/cmp/payment.js");
     let braintree = module.braintree;
     fetchWithAuth("subscription.openhabx.com/clienttoken")
+      .then(response => response.json())
       .then(json => {
         if (!json.client_token)
           throw new Error("Response does not contain a client token!");

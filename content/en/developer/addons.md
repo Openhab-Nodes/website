@@ -688,17 +688,19 @@ Because containers bundle *processor architecture* dependant executables, multip
 `ohx-addon-cli` expects multiple Dockerfiles for each supported architecture.
 The template repositories already contain those `Dockerfile`s, suitable for the respective programming language.
 
-| Architecture 	| Dockerfile        	|
-|--------------	| -------------------	|
-| x86-64bit    	| Dockerfile        	|
-| x86-32bit    	| Dockerfile-x86    	|
-| ARMv7        	| Dockerfile-armv70 	|
-| ARMv8.0-A    	| Dockerfile-armv80 	|
+| Architecture 	| Dockerfile        	| Example Systems |
+|--------------	| -------------------	|-----------------|
+| x86-64bit    	| Dockerfile        	| Your PC, Intel NUC |
+| ARMv7        	| Dockerfile-armhf  	| Raspberry Pi 3  |
+| ARMv8-64bit  	| Dockerfile-aarch64 	| Raspberry Pi 4  |
 
 The command line tool will try its best to resolve external containers for all
 supported architectures. For the example above it would try to find **eclipse-mosquitto:latest**
 for x86-64bit, ARMv7 and ARMv8. If it does not succeed, it will print a warning
 and build your Addon only for the available architectures.
+
+All `containerd` supported architectures are supported. The arch specifiers
+defined in https://github.com/containerd/containerd/blob/master/platforms/platforms.go#L88 are used.
 
 ### Service restrictions
 

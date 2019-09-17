@@ -83,19 +83,17 @@
     }
   }
 
-  function authorize_limited() {
-    authorize(true);
-  }
-
   async function authorize(limited = false) {
-    selected_scopes = selected_scopes.filter(e => e != "offline_access");
-    if (!limited) selected_scopes.push("offline_access");
+    selected_scopes.push("offline_access");
+
+    if (limited)
+      selected_scopes = selected_scopes.filter(e => e != "offline_access");
 
     client.disabled = true;
 
     try {
       const response = await fetchWithAuth(
-        "oauth.openhabx.com/grant_scopes",
+        "https://oauth.openhabx.com/grant_scopes",
         "POST",
         JSON.stringify({
           unsigned,
@@ -103,12 +101,30 @@
           scopes: selected_scopes
         })
       );
-      if (response.status !== 200) throw new Error(response.text());
       const oauth_code = await response.text();
 
       if (redirect_uri) redirect_uri.searchParams.append("code", oauth_code);
     } catch (err) {
-      error_messages = `Failed to fetch authorisation code: ${err.message}`;
+      let response = err.response;
+      if (response && response.status == 400) {
+        let err_json = await response.json();
+        let err = err_json.error;
+        switch (err) {
+          case "access_denied":
+            error_messages = `Access denied`;
+            break;
+          case "already_used":
+            error_messages = `Token already used`;
+            break;
+          case "expired":
+            error_messages = `This session has already expired. Just try again.`;
+            break;
+          default:
+            error_messages = err;
+        }
+      } else {
+        error_messages = `Failed to fetch authorisation code: ${err.message}`;
+      }
       return;
     }
 
@@ -222,7 +238,7 @@
       <button
         class="btn btn-success w-100 mb-2"
         disabled={client.disabled || !user.uid}
-        on:click={authorize}>
+        on:click={() => authorize(false)}>
         Authorize {client_name || client.title}
       </button>
       <div class="text-center small">
@@ -232,7 +248,7 @@
           <button
             class="btn btn-link"
             disabled={client.disabled || !user.uid}
-            on:click={authorize_limited}>
+            on:click={() => authorize(true)}>
             Authorize for only 60 minutes
           </button>
           .

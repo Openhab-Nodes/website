@@ -2378,7 +2378,7 @@ function get_each_context$3(ctx, list, i) {
 	return child_ctx;
 }
 
-// (276:26) 
+// (277:26) 
 function create_if_block_6$1(ctx) {
 	var div0, t0, h4, t2, div2, div1, span0, t4, span1, t5_value = ctx.data && ctx.data.influence_points ? ctx.data.influence_points : 0 + "", t5, t6, current;
 
@@ -2528,7 +2528,7 @@ function create_if_block_6$1(ctx) {
 	};
 }
 
-// (203:28) 
+// (204:28) 
 function create_if_block_4$1(ctx) {
 	var div3, div2, p0, t0, t1_value = ctx.summary.plan ? ctx.summary.plan.title : '' + "", t1, t2, div0, label0, input0, t3, b0, t4_value = ctx.summary.user_currency_value.toFixed(2) + "", t4, t5_value = ctx.summary.user_currency + "", t5, t6, br0, t7, small0, t8, t9_value = new ctx.Date(parseInt(ctx.summary.start)).toLocaleDateString() + "", t9, t10, t11_value = new ctx.Date(parseInt(ctx.summary.end)).toLocaleDateString() + "", t11, t12, label1, input1, t13, b1, t14_value = ctx.summary.user_currency_value.toFixed(2) + "", t14, t15_value = ctx.summary.user_currency + "", t15, t16, t17, br1, t18, small1, t19, t20_value = new ctx.Date(parseInt(ctx.summary.start)).toLocaleDateString() + "", t20, t21, p1, t23, p2, t24, updating_currency, t25, t26, t27, p3, label2, input2, t28, a, t30, div1, button0, t32, button1, t33, button1_disabled_value, current, dispose;
 
@@ -2803,7 +2803,7 @@ function create_if_block_4$1(ctx) {
 	};
 }
 
-// (144:29) 
+// (145:29) 
 function create_if_block_2$2(ctx) {
 	var tab_container, tab_header, t3, tab_body, tab_body_item0, p0, t7, p1, t11, updating_currency, t12, div0, button0, t14, button1, t16, tab_body_item1, div1, start_braintree_action, t17, t18, div2, button2, t20, button3, current, dispose;
 
@@ -2971,7 +2971,7 @@ function create_if_block_2$2(ctx) {
 	};
 }
 
-// (142:0) {#if mode == 'confirmation'}
+// (143:0) {#if mode == 'confirmation'}
 function create_if_block_1$2(ctx) {
 	var t;
 
@@ -2996,7 +2996,7 @@ function create_if_block_1$2(ctx) {
 	};
 }
 
-// (278:4) {#each plans as plan}
+// (279:4) {#each plans as plan}
 function create_each_block$3(ctx) {
 	var current;
 
@@ -3045,7 +3045,7 @@ function create_each_block$3(ctx) {
 	};
 }
 
-// (250:6) {#if summary.plan.euro_price_value > 3}
+// (251:6) {#if summary.plan.euro_price_value > 3}
 function create_if_block_5$1(ctx) {
 	var p;
 
@@ -3067,7 +3067,7 @@ function create_if_block_5$1(ctx) {
 	};
 }
 
-// (188:8) {#if error_message_braintree}
+// (189:8) {#if error_message_braintree}
 function create_if_block_3$1(ctx) {
 	var p, t;
 
@@ -3097,7 +3097,7 @@ function create_if_block_3$1(ctx) {
 	};
 }
 
-// (301:0) {#if error_message}
+// (302:0) {#if error_message}
 function create_if_block$2(ctx) {
 	var p, t;
 
@@ -3288,6 +3288,7 @@ function instance$4($$self, $$props, $$invalidate) {
     const module = await import('../../../../../../../../js/cmp/payment.js');
     let braintree = module.braintree;
     fetchWithAuth("subscription.openhabx.com/clienttoken")
+      .then(response => response.json())
       .then(json => {
         if (!json.client_token)
           throw new Error("Response does not contain a client token!");
