@@ -22,7 +22,7 @@
     "firebase": "^6",
     "mermaid.cli": "^0.5.1",
     "sirv-cli": "^0.4",
-    "swiper": "^4"
+    "swiper": "^6"
   },
   "scripts": {
     "deploy": "./deploy.sh",
